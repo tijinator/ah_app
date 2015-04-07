@@ -6,8 +6,12 @@
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#ifndef fitmoo_FitmooHelper_h
-#define fitmoo_FitmooHelper_h
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+@interface FitmooHelper : NSObject{
+    
+}
++ (FitmooHelper*) sharedInstance;
+- (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView;
 
-
-#endif
+@end

@@ -15,6 +15,29 @@
 		27188F791AD4646300C34372 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27188F781AD4646300C34372 /* Images.xcassets */; };
 		27188F7C1AD4646300C34372 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F7A1AD4646300C34372 /* LaunchScreen.xib */; };
 		27188F881AD4646300C34372 /* fitmooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F871AD4646300C34372 /* fitmooTests.m */; };
+		27188FAA1AD4695000C34372 /* dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F921AD4695000C34372 /* dots.png */; };
+		27188FAB1AD4695000C34372 /* dots2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F931AD4695000C34372 /* dots2.png */; };
+		27188FAC1AD4695000C34372 /* fitmoo-favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F941AD4695000C34372 /* fitmoo-favicon.png */; };
+		27188FAD1AD4695000C34372 /* fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F951AD4695000C34372 /* fitmoo_logo_white.png */; };
+		27188FAE1AD4695000C34372 /* fitmoologo_mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F961AD4695000C34372 /* fitmoologo_mobile.png */; };
+		27188FAF1AD4695000C34372 /* fitmoologo_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F971AD4695000C34372 /* fitmoologo_top.png */; };
+		27188FB01AD4695000C34372 /* fitstoresplashpage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27188F991AD4695000C34372 /* fitstoresplashpage.jpg */; };
+		27188FB11AD4695000C34372 /* ionic.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F9A1AD4695000C34372 /* ionic.png */; };
+		27188FB21AD4695000C34372 /* logo_only.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F9C1AD4695000C34372 /* logo_only.png */; };
+		27188FB31AD4695000C34372 /* mobilelogin_screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F9D1AD4695000C34372 /* mobilelogin_screen1.png */; };
+		27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F9E1AD4695000C34372 /* mobilelogin_screen2.png */; };
+		27188FB51AD4695000C34372 /* mobilelogin_slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188F9F1AD4695000C34372 /* mobilelogin_slogan.png */; };
+		27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA01AD4695000C34372 /* mobilescreen3_blur.png */; };
+		27188FB71AD4695000C34372 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA11AD4695000C34372 /* x.png */; };
+		27188FB81AD4695000C34372 /* x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA21AD4695000C34372 /* x2.png */; };
+		27188FB91AD4695000C34372 /* logo-lg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA31AD4695000C34372 /* logo-lg.png */; };
+		27188FBA1AD4695000C34372 /* mobile_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA41AD4695000C34372 /* mobile_logo.png */; };
+		27188FBB1AD4695000C34372 /* mobile_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA51AD4695000C34372 /* mobile_splash.png */; };
+		27188FBC1AD4695000C34372 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA61AD4695000C34372 /* play.png */; };
+		27188FBD1AD4695000C34372 /* rsz2_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA71AD4695000C34372 /* rsz2_fitmoo_logo_white.png */; };
+		27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */; };
+		27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */; };
+		27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +65,30 @@
 		27188F811AD4646300C34372 /* fitmooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitmooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27188F861AD4646300C34372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27188F871AD4646300C34372 /* fitmooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fitmooTests.m; sourceTree = "<group>"; };
+		27188F921AD4695000C34372 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
+		27188F931AD4695000C34372 /* dots2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots2.png; sourceTree = "<group>"; };
+		27188F941AD4695000C34372 /* fitmoo-favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitmoo-favicon.png"; sourceTree = "<group>"; };
+		27188F951AD4695000C34372 /* fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitmoo_logo_white.png; sourceTree = "<group>"; };
+		27188F961AD4695000C34372 /* fitmoologo_mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitmoologo_mobile.png; sourceTree = "<group>"; };
+		27188F971AD4695000C34372 /* fitmoologo_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitmoologo_top.png; sourceTree = "<group>"; };
+		27188F991AD4695000C34372 /* fitstoresplashpage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fitstoresplashpage.jpg; sourceTree = "<group>"; };
+		27188F9A1AD4695000C34372 /* ionic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ionic.png; sourceTree = "<group>"; };
+		27188F9C1AD4695000C34372 /* logo_only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_only.png; sourceTree = "<group>"; };
+		27188F9D1AD4695000C34372 /* mobilelogin_screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilelogin_screen1.png; sourceTree = "<group>"; };
+		27188F9E1AD4695000C34372 /* mobilelogin_screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilelogin_screen2.png; sourceTree = "<group>"; };
+		27188F9F1AD4695000C34372 /* mobilelogin_slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilelogin_slogan.png; sourceTree = "<group>"; };
+		27188FA01AD4695000C34372 /* mobilescreen3_blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilescreen3_blur.png; sourceTree = "<group>"; };
+		27188FA11AD4695000C34372 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		27188FA21AD4695000C34372 /* x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x2.png; sourceTree = "<group>"; };
+		27188FA31AD4695000C34372 /* logo-lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-lg.png"; sourceTree = "<group>"; };
+		27188FA41AD4695000C34372 /* mobile_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile_logo.png; sourceTree = "<group>"; };
+		27188FA51AD4695000C34372 /* mobile_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile_splash.png; sourceTree = "<group>"; };
+		27188FA61AD4695000C34372 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		27188FA71AD4695000C34372 /* rsz2_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz2_fitmoo_logo_white.png; sourceTree = "<group>"; };
+		27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz3_fitmoo_logo_white.png; sourceTree = "<group>"; };
+		27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_fitmoo_logo_white.png; sourceTree = "<group>"; };
+		27188FC21AD4775200C34372 /* FitmooHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitmooHelper.m; sourceTree = "<group>"; };
+		27188FC41AD4776700C34372 /* FitmooHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +132,14 @@
 			children = (
 				27188F6C1AD4646300C34372 /* AppDelegate.h */,
 				27188F6D1AD4646300C34372 /* AppDelegate.m */,
+				27188F751AD4646300C34372 /* Main.storyboard */,
+				27188FC41AD4776700C34372 /* FitmooHelper.h */,
+				27188FC21AD4775200C34372 /* FitmooHelper.m */,
 				27188F721AD4646300C34372 /* ViewController.h */,
 				27188F731AD4646300C34372 /* ViewController.m */,
-				27188F751AD4646300C34372 /* Main.storyboard */,
+				27188FC61AD47BD700C34372 /* CustomObjects */,
+				27188FC51AD47BC600C34372 /* 3rdParty */,
+				27188F911AD4695000C34372 /* img */,
 				27188F781AD4646300C34372 /* Images.xcassets */,
 				27188F7A1AD4646300C34372 /* LaunchScreen.xib */,
 				27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */,
@@ -120,6 +172,65 @@
 				27188F861AD4646300C34372 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27188F911AD4695000C34372 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				27188F921AD4695000C34372 /* dots.png */,
+				27188F931AD4695000C34372 /* dots2.png */,
+				27188F941AD4695000C34372 /* fitmoo-favicon.png */,
+				27188F951AD4695000C34372 /* fitmoo_logo_white.png */,
+				27188F961AD4695000C34372 /* fitmoologo_mobile.png */,
+				27188F971AD4695000C34372 /* fitmoologo_top.png */,
+				27188F981AD4695000C34372 /* fitstore */,
+				27188F9A1AD4695000C34372 /* ionic.png */,
+				27188F9B1AD4695000C34372 /* login */,
+				27188FA31AD4695000C34372 /* logo-lg.png */,
+				27188FA41AD4695000C34372 /* mobile_logo.png */,
+				27188FA51AD4695000C34372 /* mobile_splash.png */,
+				27188FA61AD4695000C34372 /* play.png */,
+				27188FA71AD4695000C34372 /* rsz2_fitmoo_logo_white.png */,
+				27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */,
+				27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		27188F981AD4695000C34372 /* fitstore */ = {
+			isa = PBXGroup;
+			children = (
+				27188F991AD4695000C34372 /* fitstoresplashpage.jpg */,
+			);
+			path = fitstore;
+			sourceTree = "<group>";
+		};
+		27188F9B1AD4695000C34372 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				27188F9C1AD4695000C34372 /* logo_only.png */,
+				27188F9D1AD4695000C34372 /* mobilelogin_screen1.png */,
+				27188F9E1AD4695000C34372 /* mobilelogin_screen2.png */,
+				27188F9F1AD4695000C34372 /* mobilelogin_slogan.png */,
+				27188FA01AD4695000C34372 /* mobilescreen3_blur.png */,
+				27188FA11AD4695000C34372 /* x.png */,
+				27188FA21AD4695000C34372 /* x2.png */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		27188FC51AD47BC600C34372 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		27188FC61AD47BD700C34372 /* CustomObjects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +313,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27188FAC1AD4695000C34372 /* fitmoo-favicon.png in Resources */,
+				27188FB31AD4695000C34372 /* mobilelogin_screen1.png in Resources */,
+				27188FBA1AD4695000C34372 /* mobile_logo.png in Resources */,
+				27188FB51AD4695000C34372 /* mobilelogin_slogan.png in Resources */,
+				27188FB01AD4695000C34372 /* fitstoresplashpage.jpg in Resources */,
+				27188FB71AD4695000C34372 /* x.png in Resources */,
+				27188FB21AD4695000C34372 /* logo_only.png in Resources */,
+				27188FBC1AD4695000C34372 /* play.png in Resources */,
+				27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */,
+				27188FB91AD4695000C34372 /* logo-lg.png in Resources */,
+				27188FAD1AD4695000C34372 /* fitmoo_logo_white.png in Resources */,
 				27188F771AD4646300C34372 /* Main.storyboard in Resources */,
+				27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */,
+				27188FB11AD4695000C34372 /* ionic.png in Resources */,
+				27188FAA1AD4695000C34372 /* dots.png in Resources */,
+				27188FAB1AD4695000C34372 /* dots2.png in Resources */,
+				27188FAF1AD4695000C34372 /* fitmoologo_top.png in Resources */,
 				27188F7C1AD4646300C34372 /* LaunchScreen.xib in Resources */,
+				27188FAE1AD4695000C34372 /* fitmoologo_mobile.png in Resources */,
 				27188F791AD4646300C34372 /* Images.xcassets in Resources */,
+				27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */,
+				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
+				27188FBD1AD4695000C34372 /* rsz2_fitmoo_logo_white.png in Resources */,
+				27188FBB1AD4695000C34372 /* mobile_splash.png in Resources */,
+				27188FB81AD4695000C34372 /* x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +359,7 @@
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
 				27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */,
+				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = fitmoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = fitmoo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

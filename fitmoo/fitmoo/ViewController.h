@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FitmooHelper.h"
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
+
+@property (strong, nonatomic) IBOutlet UIImageView *fitmooNameImage;
+@property (strong, nonatomic) IBOutlet UIImageView *allRightImage;
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+- (IBAction)signupButtonClick:(id)sender;
+- (IBAction)loginButtonClick:(id)sender;
 
 
 @end
