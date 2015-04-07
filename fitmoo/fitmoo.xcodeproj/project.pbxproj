@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27188F6B1AD4646300C34372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6A1AD4646300C34372 /* main.m */; };
+		27188F6E1AD4646300C34372 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* AppDelegate.m */; };
+		27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */; };
+		27188F741AD4646300C34372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
+		27188F771AD4646300C34372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27188F751AD4646300C34372 /* Main.storyboard */; };
+		27188F791AD4646300C34372 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27188F781AD4646300C34372 /* Images.xcassets */; };
+		27188F7C1AD4646300C34372 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F7A1AD4646300C34372 /* LaunchScreen.xib */; };
+		27188F881AD4646300C34372 /* fitmooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F871AD4646300C34372 /* fitmooTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27188F821AD4646300C34372 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27188F5D1AD4646300C34372 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27188F641AD4646300C34372;
+			remoteInfo = fitmoo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27188F651AD4646300C34372 /* fitmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27188F691AD4646300C34372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27188F6A1AD4646300C34372 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27188F6C1AD4646300C34372 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		27188F6D1AD4646300C34372 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		27188F701AD4646300C34372 /* fitmoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fitmoo.xcdatamodel; sourceTree = "<group>"; };
+		27188F721AD4646300C34372 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		27188F731AD4646300C34372 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27188F761AD4646300C34372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27188F781AD4646300C34372 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		27188F7B1AD4646300C34372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		27188F811AD4646300C34372 /* fitmooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitmooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27188F861AD4646300C34372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27188F871AD4646300C34372 /* fitmooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fitmooTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27188F621AD4646300C34372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27188F7E1AD4646300C34372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27188F5C1AD4646300C34372 = {
+			isa = PBXGroup;
+			children = (
+				27188F671AD4646300C34372 /* fitmoo */,
+				27188F841AD4646300C34372 /* fitmooTests */,
+				27188F661AD4646300C34372 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27188F661AD4646300C34372 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27188F651AD4646300C34372 /* fitmoo.app */,
+				27188F811AD4646300C34372 /* fitmooTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27188F671AD4646300C34372 /* fitmoo */ = {
+			isa = PBXGroup;
+			children = (
+				27188F6C1AD4646300C34372 /* AppDelegate.h */,
+				27188F6D1AD4646300C34372 /* AppDelegate.m */,
+				27188F721AD4646300C34372 /* ViewController.h */,
+				27188F731AD4646300C34372 /* ViewController.m */,
+				27188F751AD4646300C34372 /* Main.storyboard */,
+				27188F781AD4646300C34372 /* Images.xcassets */,
+				27188F7A1AD4646300C34372 /* LaunchScreen.xib */,
+				27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */,
+				27188F681AD4646300C34372 /* Supporting Files */,
+			);
+			path = fitmoo;
+			sourceTree = "<group>";
+		};
+		27188F681AD4646300C34372 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27188F691AD4646300C34372 /* Info.plist */,
+				27188F6A1AD4646300C34372 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27188F841AD4646300C34372 /* fitmooTests */ = {
+			isa = PBXGroup;
+			children = (
+				27188F871AD4646300C34372 /* fitmooTests.m */,
+				27188F851AD4646300C34372 /* Supporting Files */,
+			);
+			path = fitmooTests;
+			sourceTree = "<group>";
+		};
+		27188F851AD4646300C34372 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27188F861AD4646300C34372 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27188F641AD4646300C34372 /* fitmoo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27188F8B1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmoo" */;
+			buildPhases = (
+				27188F611AD4646300C34372 /* Sources */,
+				27188F621AD4646300C34372 /* Frameworks */,
+				27188F631AD4646300C34372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fitmoo;
+			productName = fitmoo;
+			productReference = 27188F651AD4646300C34372 /* fitmoo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		27188F801AD4646300C34372 /* fitmooTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27188F8E1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmooTests" */;
+			buildPhases = (
+				27188F7D1AD4646300C34372 /* Sources */,
+				27188F7E1AD4646300C34372 /* Frameworks */,
+				27188F7F1AD4646300C34372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27188F831AD4646300C34372 /* PBXTargetDependency */,
+			);
+			name = fitmooTests;
+			productName = fitmooTests;
+			productReference = 27188F811AD4646300C34372 /* fitmooTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27188F5D1AD4646300C34372 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = com.fitmoo;
+				TargetAttributes = {
+					27188F641AD4646300C34372 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					27188F801AD4646300C34372 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 27188F641AD4646300C34372;
+					};
+				};
+			};
+			buildConfigurationList = 27188F601AD4646300C34372 /* Build configuration list for PBXProject "fitmoo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27188F5C1AD4646300C34372;
+			productRefGroup = 27188F661AD4646300C34372 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27188F641AD4646300C34372 /* fitmoo */,
+				27188F801AD4646300C34372 /* fitmooTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27188F631AD4646300C34372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27188F771AD4646300C34372 /* Main.storyboard in Resources */,
+				27188F7C1AD4646300C34372 /* LaunchScreen.xib in Resources */,
+				27188F791AD4646300C34372 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27188F7F1AD4646300C34372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27188F611AD4646300C34372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27188F6E1AD4646300C34372 /* AppDelegate.m in Sources */,
+				27188F6B1AD4646300C34372 /* main.m in Sources */,
+				27188F741AD4646300C34372 /* ViewController.m in Sources */,
+				27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27188F7D1AD4646300C34372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27188F881AD4646300C34372 /* fitmooTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27188F831AD4646300C34372 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27188F641AD4646300C34372 /* fitmoo */;
+			targetProxy = 27188F821AD4646300C34372 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27188F751AD4646300C34372 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27188F761AD4646300C34372 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27188F7A1AD4646300C34372 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27188F7B1AD4646300C34372 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27188F891AD4646300C34372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27188F8A1AD4646300C34372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27188F8C1AD4646300C34372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fitmoo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		27188F8D1AD4646300C34372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fitmoo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		27188F8F1AD4646300C34372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = fitmooTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fitmoo.app/fitmoo";
+			};
+			name = Debug;
+		};
+		27188F901AD4646300C34372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = fitmooTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fitmoo.app/fitmoo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27188F601AD4646300C34372 /* Build configuration list for PBXProject "fitmoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27188F891AD4646300C34372 /* Debug */,
+				27188F8A1AD4646300C34372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27188F8B1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmoo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27188F8C1AD4646300C34372 /* Debug */,
+				27188F8D1AD4646300C34372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27188F8E1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmooTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27188F8F1AD4646300C34372 /* Debug */,
+				27188F901AD4646300C34372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				27188F701AD4646300C34372 /* fitmoo.xcdatamodel */,
+			);
+			currentVersion = 27188F701AD4646300C34372 /* fitmoo.xcdatamodel */;
+			path = fitmoo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 27188F5D1AD4646300C34372 /* Project object */;
+}
