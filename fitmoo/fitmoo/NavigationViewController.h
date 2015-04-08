@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
+#import "FitmooHelper.h"
 
 @interface NavigationViewController : UIViewController
+
+@property (strong, nonatomic) ViewController *baseView;
+@property (strong, nonatomic) UINavigationController *nav;
+@property (nonatomic, assign) BOOL allowRotation;
 
 @end

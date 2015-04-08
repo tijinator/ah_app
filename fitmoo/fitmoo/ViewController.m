@@ -14,6 +14,18 @@
 
 @implementation ViewController
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+        _sighUpView=nil;
+        // Custom initialization
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
@@ -21,6 +33,17 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if (_sighUpView!=nil) {
+          _sighUpView=nil;
+    }
+    if (_loginView!=nil) {
+        _loginView=nil;
+    }
+}
+
 int count=0;
 - (void) showImagesWithDelay
 {
@@ -31,6 +54,7 @@ int count=0;
     _allRightImage.alpha=0;
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayPic:) userInfo:nil repeats:YES];
 }
+
 
 - (void) displayPic: (NSTimer *)timer {
     
@@ -75,11 +99,17 @@ int count=0;
 }
 
 - (IBAction)signupButtonClick:(id)sender {
-    
+     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     _sighUpView = [mainStoryboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    [self.navigationController pushViewController:_sighUpView animated:YES];
     
 }
 
 - (IBAction)loginButtonClick:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _loginView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [self.navigationController pushViewController:_loginView animated:YES];
     
 }
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LocalUser : UIViewController
+#import <CoreData/CoreData.h>
+@interface LocalUser : NSManagedObject
+@property (nonatomic, retain) NSString * secret_id;
+@property (nonatomic, retain) NSString * auth_token;
 
 @end

@@ -16,6 +16,31 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+  //  _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
+    _leftView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftViewController"];
+    _rightView = [mainStoryboard instantiateViewControllerWithIdentifier:@"RightViewController"];
+    _navigateView = [mainStoryboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+    
+    _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
+    _deckController.delegate = self;
+    [_deckController setLeftSize:110.0f];
+    [_deckController setRightSize:110.0f];
+    
+    [_deckController setEnabled:YES];
+    
+    [_deckController shouldAutorotate];
+    [_deckController preferredInterfaceOrientationForPresentation];
+    [_deckController supportedInterfaceOrientations];
+    
+    
+    self.window.rootViewController = _deckController;
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
+
+
     // Override point for customization after application launch.
     return YES;
 }
@@ -122,6 +147,16 @@
             abort();
         }
     }
+}
+
+#pragma mark - IIViewDeckControllerDelegate
+- (void)viewDeckController:(IIViewDeckController *)viewDeckController applyShadow:(CALayer *)shadowLayer withBounds:(CGRect)rect {
+    shadowLayer.masksToBounds = NO;
+    shadowLayer.shadowRadius = 0;
+    shadowLayer.shadowOpacity = 0;
+    shadowLayer.shadowColor = nil;
+    shadowLayer.shadowOffset = CGSizeZero;
+    shadowLayer.shadowPath = nil;
 }
 
 @end

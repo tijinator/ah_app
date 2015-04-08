@@ -10,4 +10,8 @@
 
 @implementation LocalUser
 
+@dynamic secret_id;
+@dynamic auth_token;
+
+
 @end

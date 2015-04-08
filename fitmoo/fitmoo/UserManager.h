@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface UserManager : UIViewController
+@interface UserManager : NSObject
+{
+    
+}
+
++ (id)sharedUserManager;
 
 @end

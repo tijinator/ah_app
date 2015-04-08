@@ -10,4 +10,28 @@
 
 @implementation UserManager
 
++ (id)sharedUserManager;
+{
+    static dispatch_once_t pred;
+    static UserManager *mFUserManagement = nil;
+    
+    dispatch_once(&pred, ^{ mFUserManagement = [[self alloc] init]; });
+    return mFUserManagement;
+    
+}
+
+- (id)init;{
+    
+    self = [super init];
+    if (self) {
+
+    }
+    
+    return self;
+}
+
+
+
+
+
 @end

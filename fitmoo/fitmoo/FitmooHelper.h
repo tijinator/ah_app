@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LocalUser.h"
+
+#import <CoreData/CoreData.h>
 @interface FitmooHelper : NSObject{
     
 }
 + (FitmooHelper*) sharedInstance;
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView;
+- (void) saveLocalUser: (LocalUser *) localUser;
+
 
 @end
