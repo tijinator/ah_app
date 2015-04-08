@@ -12,8 +12,9 @@
 #import "LeftViewController.h"
 #import "RightViewController.h"
 #import "IIViewDeckController.h"
+#import "FitmooHelper.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
+@interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

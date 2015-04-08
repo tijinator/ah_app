@@ -29,62 +29,78 @@
     return view.frame;
 }
 
--(void) deleteDataLocally:(NSManagedObjectContext *) context
+-(void) deleteDataLocally
 {
-  
-   
+    
     NSFetchRequest * UserFetched = [[NSFetchRequest alloc] init];
-    [UserFetched setEntity:[NSEntityDescription entityForName:@"Fuzz" inManagedObjectContext:context]];
+    [UserFetched setEntity:[NSEntityDescription entityForName:@"LocalUser" inManagedObjectContext:_context]];
     [UserFetched setIncludesPropertyValues:NO]; //only fetch the managedObjectID
     
     NSError * error = nil;
-    NSArray * users = [context executeFetchRequest:UserFetched error:&error];
+    NSArray * users = [_context executeFetchRequest:UserFetched error:&error];
     
-    //error handling goes here
     for (NSManagedObject * user in users) {
-        [context deleteObject:user];
+        [_context deleteObject:user];
     }
     NSError *saveError = nil;
-    [context save:&saveError];
+    [_context save:&saveError];
     //more error handling here
 }
 
-
-- (void) saveLocalUser: (LocalUser *) localUser withContent: (NSManagedObjectContext *) context
+- (void) setContext: (NSManagedObjectContext *) con
 {
-    [self deleteDataLocally: context];
-    
-    //get the context from appDelegate
-  
-    NSManagedObjectContext * localcontext = context;
-    
-    
-   
-        
+    _context=con;
+}
+
+- (void) saveLocalUser: (User *) localUser
+{
+    [self deleteDataLocally];
     LocalUser *user = [NSEntityDescription insertNewObjectForEntityForName:@"LocalUser"
-                                                   inManagedObjectContext:context];
-   
+                                                   inManagedObjectContext:_context];
     user.auth_token= localUser.auth_token;
     user.secret_id=localUser.secret_id;
-    
+    user.user_id=localUser.user_id;
     
         NSError *error;
-        if (![context save:&error]) {
+        if (![_context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-        
     
+}
 
+-(User *) getUserLocally
+{
+   
+    NSError *error;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LocalUser"
+                                              inManagedObjectContext:_context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [_context executeFetchRequest:fetchRequest error:&error];
+   
+    User *user= [[User alloc] init];
+    
+    for (LocalUser *result in fetchedObjects) {
+        user.auth_token= result.auth_token;
+        user.secret_id=result.secret_id;
+        user.user_id=result.user_id;
+     
+    }
+    
+    
+    return user;
 }
 
 
 - (id) init;{
     
     if ((self = [super init])) {
-        
-        
-        
     }
+    
+    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
+    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+    
     
     return self;
 }

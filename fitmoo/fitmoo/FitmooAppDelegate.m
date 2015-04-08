@@ -6,19 +6,21 @@
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "FitmooAppDelegate.h"
 
-@interface AppDelegate ()
+@interface FitmooAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation FitmooAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    NSManagedObjectContext * context = [self managedObjectContext];
+    [[FitmooHelper sharedInstance] setContext:context];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-  //  _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"PopupViewController"];
     _leftView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftViewController"];
     _rightView = [mainStoryboard instantiateViewControllerWithIdentifier:@"RightViewController"];
     _navigateView = [mainStoryboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];

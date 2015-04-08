@@ -11,5 +11,6 @@
 @interface LocalUser : NSManagedObject
 @property (nonatomic, retain) NSString * secret_id;
 @property (nonatomic, retain) NSString * auth_token;
+@property (nonatomic, retain) NSString * user_id;
 
 @end

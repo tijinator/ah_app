@@ -49,14 +49,24 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"hongjianlin1989@gmail.com", @"email", @"lin22549010", @"password", @"undefined", @"secret_id", nil];
     
-    [manager POST:@"http://staging.fitmoo.com/api/tokens" parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager POST:[[FitmooHelper sharedInstance] loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
+        User *localUser= [[User alloc] init];
+        localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
+        localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+        
+        NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
         
         
+        NSNumber * user_id=[userInfo objectForKey:@"id"];
+        localUser.user_id= [user_id stringValue];
         
+        [[FitmooHelper sharedInstance] saveLocalUser:localUser];
         
-        NSLog(@"Submit response data: %@", responseObject);
+        [self openHomePage];
+        
+  //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -64,9 +74,13 @@
               NSLog(@"Error: %@", error);} // failure callback block
      ];
     
+}
 
-    
-    
+- (void) openHomePage
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+    [self.navigationController pushViewController:homepage animated:YES];
 }
 
 - (IBAction)signUoButtonClick:(id)sender {

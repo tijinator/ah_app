@@ -3,8 +3,9 @@
     <entity name="LocalUser" syncable="YES">
         <attribute name="auth_token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="secret_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LocalUser" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="LocalUser" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

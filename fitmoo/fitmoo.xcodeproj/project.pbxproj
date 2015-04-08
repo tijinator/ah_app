@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27188F6B1AD4646300C34372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6A1AD4646300C34372 /* main.m */; };
-		27188F6E1AD4646300C34372 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* AppDelegate.m */; };
+		27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
 		27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */; };
 		27188F741AD4646300C34372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
 		27188F771AD4646300C34372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27188F751AD4646300C34372 /* Main.storyboard */; };
@@ -66,6 +66,8 @@
 		2725824A1AD57F070059F43C /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582421AD57F070059F43C /* UIWebView+AFNetworking.m */; };
 		272582741AD591ED0059F43C /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582731AD591ED0059F43C /* UserManager.m */; };
 		272582771AD593150059F43C /* LocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582761AD593150059F43C /* LocalUser.m */; };
+		2725827A1AD5A4DE0059F43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
+		272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +84,8 @@
 		27188F651AD4646300C34372 /* fitmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27188F691AD4646300C34372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27188F6A1AD4646300C34372 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		27188F6C1AD4646300C34372 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		27188F6D1AD4646300C34372 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooAppDelegate.h; sourceTree = "<group>"; };
+		27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FitmooAppDelegate.m; sourceTree = "<group>"; };
 		27188F701AD4646300C34372 /* fitmoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fitmoo.xcdatamodel; sourceTree = "<group>"; };
 		27188F721AD4646300C34372 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		27188F731AD4646300C34372 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -175,6 +177,10 @@
 		272582731AD591ED0059F43C /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		272582751AD593150059F43C /* LocalUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalUser.h; sourceTree = "<group>"; };
 		272582761AD593150059F43C /* LocalUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalUser.m; sourceTree = "<group>"; };
+		272582781AD5A4DE0059F43C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		272582791AD5A4DE0059F43C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		2725827F1AD5AAA40059F43C /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		272582801AD5AAA40059F43C /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,8 +222,8 @@
 		27188F671AD4646300C34372 /* fitmoo */ = {
 			isa = PBXGroup;
 			children = (
-				27188F6C1AD4646300C34372 /* AppDelegate.h */,
-				27188F6D1AD4646300C34372 /* AppDelegate.m */,
+				27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */,
+				27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */,
 				27188F751AD4646300C34372 /* Main.storyboard */,
 				27188FC41AD4776700C34372 /* FitmooHelper.h */,
 				27188FC21AD4775200C34372 /* FitmooHelper.m */,
@@ -225,6 +231,7 @@
 				27188F731AD4646300C34372 /* ViewController.m */,
 				272582061AD5673F0059F43C /* NavigationViewController.h */,
 				272582071AD5673F0059F43C /* NavigationViewController.m */,
+				2725827E1AD5AA7D0059F43C /* MainPages */,
 				2725820F1AD578A80059F43C /* UserManagement */,
 				272582021AD563280059F43C /* RightView */,
 				272581FE1AD562F90059F43C /* LeftView */,
@@ -429,8 +436,19 @@
 				272582731AD591ED0059F43C /* UserManager.m */,
 				272582751AD593150059F43C /* LocalUser.h */,
 				272582761AD593150059F43C /* LocalUser.m */,
+				272582781AD5A4DE0059F43C /* User.h */,
+				272582791AD5A4DE0059F43C /* User.m */,
 			);
 			name = UserManager;
+			sourceTree = "<group>";
+		};
+		2725827E1AD5AA7D0059F43C /* MainPages */ = {
+			isa = PBXGroup;
+			children = (
+				2725827F1AD5AAA40059F43C /* HomePageViewController.h */,
+				272582801AD5AAA40059F43C /* HomePageViewController.m */,
+			);
+			name = MainPages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,12 +577,13 @@
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
+				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				272582491AD57F070059F43C /* UIRefreshControl+AFNetworking.m in Sources */,
 				272582461AD57F070059F43C /* UIButton+AFNetworking.m in Sources */,
 				272582451AD57F070059F43C /* UIAlertView+AFNetworking.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
-				27188F6E1AD4646300C34372 /* AppDelegate.m in Sources */,
+				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,
 				2725822F1AD57EFD0059F43C /* AFURLResponseSerialization.m in Sources */,
 				2725822D1AD57EFD0059F43C /* AFURLConnectionOperation.m in Sources */,
 				272582121AD579080059F43C /* LoginViewController.m in Sources */,
@@ -586,6 +605,7 @@
 				272582431AD57F070059F43C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2725822A1AD57EFD0059F43C /* AFHTTPSessionManager.m in Sources */,
 				2725824A1AD57F070059F43C /* UIWebView+AFNetworking.m in Sources */,
+				272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */,
 				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,
 				272582301AD57EFD0059F43C /* AFURLSessionManager.m in Sources */,
 			);

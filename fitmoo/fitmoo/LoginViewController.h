@@ -10,9 +10,9 @@
 #import "FitmooHelper.h"
 #import "AFNetworking.h"
 
-#import "LocalUser.h"
+#import "User.h"
 #import <CoreData/CoreData.h>
-
+#import "HomePageViewController.h"
 
 @interface LoginViewController : UIViewController
 
