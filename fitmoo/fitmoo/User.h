@@ -13,11 +13,15 @@
     NSString *_secret_id;
     NSString *_auth_token;
     NSString *_user_id;
+    NSString *_email;
+    NSString *_password;
 }
 
 @property (nonatomic, strong) NSString *secret_id;
 @property (nonatomic, strong) NSString *auth_token;
 @property (nonatomic, strong) NSString *user_id;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *password;
 -(id)init;
 
 

@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)facebookButtonClick:(id)sender;

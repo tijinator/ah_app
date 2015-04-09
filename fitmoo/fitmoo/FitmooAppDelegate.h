@@ -13,6 +13,7 @@
 #import "RightViewController.h"
 #import "IIViewDeckController.h"
 #import "FitmooHelper.h"
+#import "UserManager.h"
 
 @interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
 

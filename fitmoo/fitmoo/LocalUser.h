@@ -12,5 +12,6 @@
 @property (nonatomic, retain) NSString * secret_id;
 @property (nonatomic, retain) NSString * auth_token;
 @property (nonatomic, retain) NSString * user_id;
-
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * password;
 @end

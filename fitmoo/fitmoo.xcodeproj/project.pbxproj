@@ -68,6 +68,48 @@
 		272582771AD593150059F43C /* LocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582761AD593150059F43C /* LocalUser.m */; };
 		2725827A1AD5A4DE0059F43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
 		272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
+		274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */; };
+		274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
+		274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
+		276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760940E1AD7085500A769CE /* ss-symbolicons-block.ttf */; };
+		276094111AD7085500A769CE /* ss-symbolicons-line.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760940F1AD7085500A769CE /* ss-symbolicons-line.ttf */; };
+		2760941D1AD708AD00A769CE /* SemplicitaPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094131AD708AD00A769CE /* SemplicitaPro-Bold.otf */; };
+		2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094141AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf */; };
+		2760941F1AD708AD00A769CE /* SemplicitaPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094151AD708AD00A769CE /* SemplicitaPro-Italic.otf */; };
+		276094201AD708AD00A769CE /* SemplicitaPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094161AD708AD00A769CE /* SemplicitaPro-Light.otf */; };
+		276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094171AD708AD00A769CE /* SemplicitaPro-LightItalic.otf */; };
+		276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094181AD708AD00A769CE /* SemplicitaPro-Medium.otf */; };
+		276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094191AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf */; };
+		276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760941A1AD708AD00A769CE /* SemplicitaPro-Regular.otf */; };
+		276094251AD708AD00A769CE /* SemplicitaPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760941B1AD708AD00A769CE /* SemplicitaPro-SemiBold.otf */; };
+		276094261AD708AD00A769CE /* SemplicitaPro-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760941C1AD708AD00A769CE /* SemplicitaPro-SemiBoldItalic.otf */; };
+		276094431AD708C100A769CE /* BentonSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094291AD708C100A769CE /* BentonSans-Black.otf */; };
+		276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942A1AD708C100A769CE /* BentonSans-Bold.otf */; };
+		276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942B1AD708C100A769CE /* BentonSans-Book.otf */; };
+		276094461AD708C100A769CE /* BentonSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */; };
+		276094471AD708C100A769CE /* BentonSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942D1AD708C100A769CE /* BentonSans-Light.otf */; };
+		276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942E1AD708C100A769CE /* BentonSans-Medium.otf */; };
+		276094491AD708C100A769CE /* BentonSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942F1AD708C100A769CE /* BentonSans-Regular.otf */; };
+		2760944A1AD708C100A769CE /* BentonSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094301AD708C100A769CE /* BentonSans-Thin.otf */; };
+		2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094311AD708C100A769CE /* BentonSansComp-Black.otf */; };
+		2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094321AD708C100A769CE /* BentonSansComp-Bold.otf */; };
+		2760944D1AD708C100A769CE /* BentonSansComp-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094331AD708C100A769CE /* BentonSansComp-Book.otf */; };
+		2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094341AD708C100A769CE /* BentonSansComp-Light.otf */; };
+		2760944F1AD708C100A769CE /* BentonSansComp-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094351AD708C100A769CE /* BentonSansComp-Medium.otf */; };
+		276094501AD708C100A769CE /* BentonSansComp-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094361AD708C100A769CE /* BentonSansComp-Regular.otf */; };
+		276094511AD708C100A769CE /* BentonSansCond-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094371AD708C100A769CE /* BentonSansCond-Black.otf */; };
+		276094521AD708C100A769CE /* BentonSansCond-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094381AD708C100A769CE /* BentonSansCond-Bold.otf */; };
+		276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094391AD708C100A769CE /* BentonSansCond-Book.otf */; };
+		276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943A1AD708C100A769CE /* BentonSansCond-Light.otf */; };
+		276094551AD708C100A769CE /* BentonSansCond-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943B1AD708C100A769CE /* BentonSansCond-Medium.otf */; };
+		276094561AD708C100A769CE /* BentonSansCond-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943C1AD708C100A769CE /* BentonSansCond-Regular.otf */; };
+		276094571AD708C100A769CE /* BentonSansExtraComp-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943D1AD708C100A769CE /* BentonSansExtraComp-Black.otf */; };
+		276094581AD708C100A769CE /* BentonSansExtraComp-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943E1AD708C100A769CE /* BentonSansExtraComp-Bold.otf */; };
+		276094591AD708C100A769CE /* BentonSansExtraComp-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760943F1AD708C100A769CE /* BentonSansExtraComp-Book.otf */; };
+		2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094401AD708C100A769CE /* BentonSansExtraComp-Light.otf */; };
+		2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */; };
+		2760945C1AD708C100A769CE /* BentonSansExtraComp-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */; };
+		2760945E1AD717E700A769CE /* fontello.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760945D1AD717E700A769CE /* fontello.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +223,49 @@
 		272582791AD5A4DE0059F43C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		2725827F1AD5AAA40059F43C /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		272582801AD5AAA40059F43C /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
+		274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = "<group>"; };
+		274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = "<group>"; };
+		274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTableViewCell.xib; sourceTree = "<group>"; };
+		2760940E1AD7085500A769CE /* ss-symbolicons-block.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-symbolicons-block.ttf"; sourceTree = "<group>"; };
+		2760940F1AD7085500A769CE /* ss-symbolicons-line.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-symbolicons-line.ttf"; sourceTree = "<group>"; };
+		276094131AD708AD00A769CE /* SemplicitaPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-Bold.otf"; sourceTree = "<group>"; };
+		276094141AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-BoldItalic.otf"; sourceTree = "<group>"; };
+		276094151AD708AD00A769CE /* SemplicitaPro-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-Italic.otf"; sourceTree = "<group>"; };
+		276094161AD708AD00A769CE /* SemplicitaPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-Light.otf"; sourceTree = "<group>"; };
+		276094171AD708AD00A769CE /* SemplicitaPro-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-LightItalic.otf"; sourceTree = "<group>"; };
+		276094181AD708AD00A769CE /* SemplicitaPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-Medium.otf"; sourceTree = "<group>"; };
+		276094191AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-MediumItalic.otf"; sourceTree = "<group>"; };
+		2760941A1AD708AD00A769CE /* SemplicitaPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-Regular.otf"; sourceTree = "<group>"; };
+		2760941B1AD708AD00A769CE /* SemplicitaPro-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-SemiBold.otf"; sourceTree = "<group>"; };
+		2760941C1AD708AD00A769CE /* SemplicitaPro-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SemplicitaPro-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		276094291AD708C100A769CE /* BentonSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Black.otf"; sourceTree = "<group>"; };
+		2760942A1AD708C100A769CE /* BentonSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Bold.otf"; sourceTree = "<group>"; };
+		2760942B1AD708C100A769CE /* BentonSans-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Book.otf"; sourceTree = "<group>"; };
+		2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-ExtraLight.otf"; sourceTree = "<group>"; };
+		2760942D1AD708C100A769CE /* BentonSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Light.otf"; sourceTree = "<group>"; };
+		2760942E1AD708C100A769CE /* BentonSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Medium.otf"; sourceTree = "<group>"; };
+		2760942F1AD708C100A769CE /* BentonSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Regular.otf"; sourceTree = "<group>"; };
+		276094301AD708C100A769CE /* BentonSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Thin.otf"; sourceTree = "<group>"; };
+		276094311AD708C100A769CE /* BentonSansComp-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Black.otf"; sourceTree = "<group>"; };
+		276094321AD708C100A769CE /* BentonSansComp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Bold.otf"; sourceTree = "<group>"; };
+		276094331AD708C100A769CE /* BentonSansComp-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Book.otf"; sourceTree = "<group>"; };
+		276094341AD708C100A769CE /* BentonSansComp-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Light.otf"; sourceTree = "<group>"; };
+		276094351AD708C100A769CE /* BentonSansComp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Medium.otf"; sourceTree = "<group>"; };
+		276094361AD708C100A769CE /* BentonSansComp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Regular.otf"; sourceTree = "<group>"; };
+		276094371AD708C100A769CE /* BentonSansCond-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Black.otf"; sourceTree = "<group>"; };
+		276094381AD708C100A769CE /* BentonSansCond-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Bold.otf"; sourceTree = "<group>"; };
+		276094391AD708C100A769CE /* BentonSansCond-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Book.otf"; sourceTree = "<group>"; };
+		2760943A1AD708C100A769CE /* BentonSansCond-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Light.otf"; sourceTree = "<group>"; };
+		2760943B1AD708C100A769CE /* BentonSansCond-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Medium.otf"; sourceTree = "<group>"; };
+		2760943C1AD708C100A769CE /* BentonSansCond-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansCond-Regular.otf"; sourceTree = "<group>"; };
+		2760943D1AD708C100A769CE /* BentonSansExtraComp-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Black.otf"; sourceTree = "<group>"; };
+		2760943E1AD708C100A769CE /* BentonSansExtraComp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Bold.otf"; sourceTree = "<group>"; };
+		2760943F1AD708C100A769CE /* BentonSansExtraComp-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Book.otf"; sourceTree = "<group>"; };
+		276094401AD708C100A769CE /* BentonSansExtraComp-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Light.otf"; sourceTree = "<group>"; };
+		276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Medium.otf"; sourceTree = "<group>"; };
+		276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Regular.otf"; sourceTree = "<group>"; };
+		2760945D1AD717E700A769CE /* fontello.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontello.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +310,7 @@
 				27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */,
 				27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */,
 				27188F751AD4646300C34372 /* Main.storyboard */,
+				274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */,
 				27188FC41AD4776700C34372 /* FitmooHelper.h */,
 				27188FC21AD4775200C34372 /* FitmooHelper.m */,
 				27188F721AD4646300C34372 /* ViewController.h */,
@@ -250,6 +336,11 @@
 			isa = PBXGroup;
 			children = (
 				27188F691AD4646300C34372 /* Info.plist */,
+				2760940E1AD7085500A769CE /* ss-symbolicons-block.ttf */,
+				2760940F1AD7085500A769CE /* ss-symbolicons-line.ttf */,
+				276094271AD708C100A769CE /* Benton Sans */,
+				276094121AD708AD00A769CE /* Semplicita Pro */,
+				2760945D1AD717E700A769CE /* fontello.ttf */,
 				27188F6A1AD4646300C34372 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -332,6 +423,9 @@
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
+				274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */,
+				274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */,
+				274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -451,6 +545,65 @@
 			name = MainPages;
 			sourceTree = "<group>";
 		};
+		276094121AD708AD00A769CE /* Semplicita Pro */ = {
+			isa = PBXGroup;
+			children = (
+				276094131AD708AD00A769CE /* SemplicitaPro-Bold.otf */,
+				276094141AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf */,
+				276094151AD708AD00A769CE /* SemplicitaPro-Italic.otf */,
+				276094161AD708AD00A769CE /* SemplicitaPro-Light.otf */,
+				276094171AD708AD00A769CE /* SemplicitaPro-LightItalic.otf */,
+				276094181AD708AD00A769CE /* SemplicitaPro-Medium.otf */,
+				276094191AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf */,
+				2760941A1AD708AD00A769CE /* SemplicitaPro-Regular.otf */,
+				2760941B1AD708AD00A769CE /* SemplicitaPro-SemiBold.otf */,
+				2760941C1AD708AD00A769CE /* SemplicitaPro-SemiBoldItalic.otf */,
+			);
+			name = "Semplicita Pro";
+			path = "Semplicita Pro/Semplicita Pro";
+			sourceTree = "<group>";
+		};
+		276094271AD708C100A769CE /* Benton Sans */ = {
+			isa = PBXGroup;
+			children = (
+				276094281AD708C100A769CE /* Benton Sans */,
+			);
+			path = "Benton Sans";
+			sourceTree = "<group>";
+		};
+		276094281AD708C100A769CE /* Benton Sans */ = {
+			isa = PBXGroup;
+			children = (
+				276094291AD708C100A769CE /* BentonSans-Black.otf */,
+				2760942A1AD708C100A769CE /* BentonSans-Bold.otf */,
+				2760942B1AD708C100A769CE /* BentonSans-Book.otf */,
+				2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */,
+				2760942D1AD708C100A769CE /* BentonSans-Light.otf */,
+				2760942E1AD708C100A769CE /* BentonSans-Medium.otf */,
+				2760942F1AD708C100A769CE /* BentonSans-Regular.otf */,
+				276094301AD708C100A769CE /* BentonSans-Thin.otf */,
+				276094311AD708C100A769CE /* BentonSansComp-Black.otf */,
+				276094321AD708C100A769CE /* BentonSansComp-Bold.otf */,
+				276094331AD708C100A769CE /* BentonSansComp-Book.otf */,
+				276094341AD708C100A769CE /* BentonSansComp-Light.otf */,
+				276094351AD708C100A769CE /* BentonSansComp-Medium.otf */,
+				276094361AD708C100A769CE /* BentonSansComp-Regular.otf */,
+				276094371AD708C100A769CE /* BentonSansCond-Black.otf */,
+				276094381AD708C100A769CE /* BentonSansCond-Bold.otf */,
+				276094391AD708C100A769CE /* BentonSansCond-Book.otf */,
+				2760943A1AD708C100A769CE /* BentonSansCond-Light.otf */,
+				2760943B1AD708C100A769CE /* BentonSansCond-Medium.otf */,
+				2760943C1AD708C100A769CE /* BentonSansCond-Regular.otf */,
+				2760943D1AD708C100A769CE /* BentonSansExtraComp-Black.otf */,
+				2760943E1AD708C100A769CE /* BentonSansExtraComp-Bold.otf */,
+				2760943F1AD708C100A769CE /* BentonSansExtraComp-Book.otf */,
+				276094401AD708C100A769CE /* BentonSansExtraComp-Light.otf */,
+				276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */,
+				276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */,
+			);
+			path = "Benton Sans";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -531,30 +684,71 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */,
+				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
+				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
+				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
+				2760945E1AD717E700A769CE /* fontello.ttf in Resources */,
+				276094261AD708AD00A769CE /* SemplicitaPro-SemiBoldItalic.otf in Resources */,
 				27188FAC1AD4695000C34372 /* fitmoo-favicon.png in Resources */,
+				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
+				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,
+				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
+				276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */,
+				276094581AD708C100A769CE /* BentonSansExtraComp-Bold.otf in Resources */,
 				27188FB31AD4695000C34372 /* mobilelogin_screen1.png in Resources */,
 				27188FBA1AD4695000C34372 /* mobile_logo.png in Resources */,
+				2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */,
 				27188FB51AD4695000C34372 /* mobilelogin_slogan.png in Resources */,
 				27188FB01AD4695000C34372 /* fitstoresplashpage.jpg in Resources */,
 				27188FB71AD4695000C34372 /* x.png in Resources */,
 				27188FB21AD4695000C34372 /* logo_only.png in Resources */,
+				276094251AD708AD00A769CE /* SemplicitaPro-SemiBold.otf in Resources */,
+				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
 				27188FBC1AD4695000C34372 /* play.png in Resources */,
+				276094521AD708C100A769CE /* BentonSansCond-Bold.otf in Resources */,
 				27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */,
 				27188FB91AD4695000C34372 /* logo-lg.png in Resources */,
 				27188FAD1AD4695000C34372 /* fitmoo_logo_white.png in Resources */,
+				2760941F1AD708AD00A769CE /* SemplicitaPro-Italic.otf in Resources */,
+				2760944A1AD708C100A769CE /* BentonSans-Thin.otf in Resources */,
 				27188F771AD4646300C34372 /* Main.storyboard in Resources */,
+				276094591AD708C100A769CE /* BentonSansExtraComp-Book.otf in Resources */,
 				27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */,
+				2760941D1AD708AD00A769CE /* SemplicitaPro-Bold.otf in Resources */,
+				2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */,
+				276094201AD708AD00A769CE /* SemplicitaPro-Light.otf in Resources */,
 				27188FB11AD4695000C34372 /* ionic.png in Resources */,
 				27188FAA1AD4695000C34372 /* dots.png in Resources */,
+				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
+				276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */,
+				276094491AD708C100A769CE /* BentonSans-Regular.otf in Resources */,
+				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
+				276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */,
+				2760945C1AD708C100A769CE /* BentonSansExtraComp-Regular.otf in Resources */,
+				276094551AD708C100A769CE /* BentonSansCond-Medium.otf in Resources */,
+				2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */,
+				2760944F1AD708C100A769CE /* BentonSansComp-Medium.otf in Resources */,
 				27188FAB1AD4695000C34372 /* dots2.png in Resources */,
 				27188FAF1AD4695000C34372 /* fitmoologo_top.png in Resources */,
+				276094431AD708C100A769CE /* BentonSans-Black.otf in Resources */,
+				276094561AD708C100A769CE /* BentonSansCond-Regular.otf in Resources */,
 				27188F7C1AD4646300C34372 /* LaunchScreen.xib in Resources */,
+				276094471AD708C100A769CE /* BentonSans-Light.otf in Resources */,
 				27188FAE1AD4695000C34372 /* fitmoologo_mobile.png in Resources */,
 				27188F791AD4646300C34372 /* Images.xcassets in Resources */,
+				276094461AD708C100A769CE /* BentonSans-ExtraLight.otf in Resources */,
+				274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */,
+				2760944D1AD708C100A769CE /* BentonSansComp-Book.otf in Resources */,
 				27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */,
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
+				276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */,
 				27188FBD1AD4695000C34372 /* rsz2_fitmoo_logo_white.png in Resources */,
+				276094571AD708C100A769CE /* BentonSansExtraComp-Black.otf in Resources */,
+				276094111AD7085500A769CE /* ss-symbolicons-line.ttf in Resources */,
+				276094511AD708C100A769CE /* BentonSansCond-Black.otf in Resources */,
 				27188FBB1AD4695000C34372 /* mobile_splash.png in Resources */,
+				276094501AD708C100A769CE /* BentonSansComp-Regular.otf in Resources */,
 				27188FB81AD4695000C34372 /* x2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +792,7 @@
 				2725822B1AD57EFD0059F43C /* AFNetworkReachabilityManager.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,
 				272582471AD57F070059F43C /* UIImageView+AFNetworking.m in Sources */,
+				274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */,
 				272582081AD5673F0059F43C /* NavigationViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
 				272582281AD57EFD0059F43C /* AFHTTPRequestOperation.m in Sources */,

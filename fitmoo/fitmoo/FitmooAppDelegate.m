@@ -19,6 +19,8 @@
     
     NSManagedObjectContext * context = [self managedObjectContext];
     [[FitmooHelper sharedInstance] setContext:context];
+    [[FitmooHelper sharedInstance] setScreenSizeView:self.window];
+    [[UserManager sharedUserManager] setContext:context];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _leftView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftViewController"];

@@ -29,10 +29,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    [self showImagesWithDelay];
     
+    [self checkLogin];
+   // [self showImagesWithDelay];
+    [self createObservers];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+-(void) checkLogin
+{
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    [[UserManager sharedUserManager] performLogin:localUser];
+   
+}
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkLoginScuess:) name:@"checkLoginScuess" object:nil];
+}
+
+
+- (void) checkLoginScuess: (NSNotification * ) note
+{
+    User * user= [note object];
+    if (user.user_id!=nil) {
+        [self openHomePage];
+    }
+}
+
+- (void) openHomePage
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+    [self.navigationController pushViewController:homepage animated:YES];
+}
+
 
 -(void) viewWillAppear:(BOOL)animated
 {
@@ -90,6 +120,7 @@ int count=0;
     _signUpButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_signUpButton respectToSuperFrame:self.view];
     _fitmooNameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_fitmooNameImage respectToSuperFrame:self.view];
     _allRightImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_allRightImage respectToSuperFrame:self.view];
+    _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
     
 }
 

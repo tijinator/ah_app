@@ -22,9 +22,17 @@
 
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView
 {
-    double Radio= superView.frame.size.width / 320;
+    if (superView!=nil) {
+         double Radio= superView.frame.size.width / 320;
+         view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
+    }else
+    {
+        double Radio= self.screenSizeView.frame.size.width/320;
+        view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
+    }
+   
     
-    view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
+   
     
     return view.frame;
 }
@@ -52,6 +60,11 @@
     _context=con;
 }
 
+- (void) setScreenSizeView:(UIView *)screenView
+{
+    _screenSizeView=screenView;
+}
+
 - (void) saveLocalUser: (User *) localUser
 {
     [self deleteDataLocally];
@@ -60,6 +73,8 @@
     user.auth_token= localUser.auth_token;
     user.secret_id=localUser.secret_id;
     user.user_id=localUser.user_id;
+    user.email=localUser.email;
+    user.password=localUser.password;
     
         NSError *error;
         if (![_context save:&error]) {
@@ -85,7 +100,8 @@
         user.auth_token= result.auth_token;
         user.secret_id=result.secret_id;
         user.user_id=result.user_id;
-     
+        user.email=result.email;
+        user.password=result.password;
     }
     
     

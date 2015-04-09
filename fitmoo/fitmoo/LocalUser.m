@@ -13,5 +13,7 @@
 @dynamic secret_id;
 @dynamic auth_token;
 @dynamic user_id;
+@dynamic email;
+@dynamic password;
 
 @end

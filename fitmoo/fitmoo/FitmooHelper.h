@@ -21,6 +21,8 @@
 - (User *) getUserLocally;
 
 @property (strong, nonatomic) NSManagedObjectContext * context;
+@property (strong, nonatomic) UIView * screenSizeView;
+
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;

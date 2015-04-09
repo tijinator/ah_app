@@ -27,6 +27,7 @@
     _sighUpButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
     _facebookButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_facebookButton respectToSuperFrame:self.view];
     _forgotPasswordButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgotPasswordButton respectToSuperFrame:self.view];
+    _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
     
 }
 
@@ -55,6 +56,8 @@
         User *localUser= [[User alloc] init];
         localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
         localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+        localUser.email=@"hongjianlin1989@gmail.com";
+        localUser.password=@"lin22549010";
         
         NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
         

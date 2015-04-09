@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UIButton *sighUpButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)facebookButtonClick:(id)sender;

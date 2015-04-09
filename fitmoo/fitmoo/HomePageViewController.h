@@ -11,7 +11,18 @@
 #import "FitmooHelper.h"
 #import "AFNetworking.h"
 #import "User.h"
-@interface HomePageViewController : UIViewController
+#import "ShareTableViewCell.h"
+@interface HomePageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSMutableArray * ressponseArray;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
+
+
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
+@property (strong, nonatomic) IBOutlet UIView *topView;
+
 @end

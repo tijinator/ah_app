@@ -12,6 +12,8 @@
 @synthesize secret_id = _secret_id;
 @synthesize auth_token = _auth_token;
 @synthesize user_id = _user_id;
+@synthesize email = _email;
+@synthesize password = _password;
 
 -(id)init
 {
