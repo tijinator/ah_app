@@ -11,6 +11,7 @@
 #import "LocalUser.h"
 #import "User.h"
 #import <CoreData/CoreData.h>
+#import "HomeFeed.h"
 @interface FitmooHelper : NSObject{
     
 }
@@ -19,7 +20,7 @@
 - (void) saveLocalUser: (User *) localUser;
 - (void) setContext: (NSManagedObjectContext *) con;
 - (User *) getUserLocally;
-
+-(HomeFeed *) generateHomeFeed: (NSDictionary *) dic;
 @property (strong, nonatomic) NSManagedObjectContext * context;
 @property (strong, nonatomic) UIView * screenSizeView;
 

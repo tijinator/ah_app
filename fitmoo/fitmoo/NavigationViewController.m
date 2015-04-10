@@ -33,13 +33,33 @@
  //   [self.view insertSubview:self.nav.view belowSubview:self.topView];
     _allowRotation=false;
    
-   // [self createObservers];
+    [self createObservers];
 
 }
 
-//-(void)createObservers{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTopView:) name:@"showTopView" object:nil];
-//}
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSideMenuAction:) name:@"leftSideMenuAction" object:nil];
+}
+
+-(void)leftSideMenuAction:(NSNotification*)note{
+    
+    NSString *key = [note object];
+
+
+    if ([key isEqualToString:@"0"]) {
+       HomePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+        [[self nav] pushViewController:homePage animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+    }else  if ([key isEqualToString:@"5"]) {
+       
+        
+        _baseView = [[self storyboard] instantiateViewControllerWithIdentifier:@"ViewController"];
+        [[self nav] pushViewController:_baseView animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+    }
+    
+    
+}
 
 
 

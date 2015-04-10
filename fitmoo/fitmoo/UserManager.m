@@ -62,6 +62,36 @@
    
 }
 
+-(void) performLogout: (User *) user
+{
+    
+   
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.auth_token, @"auth_token", user.secret_id, @"secret_id", nil];
+    
+    [manager DELETE:_logoutUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+
+        [self deleteDataLocally];
+         self.localUser=nil;
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"5"];
+        
+        NSLog(@"logout response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+       
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+    
+}
+
+
 
 -(void) deleteDataLocally
 {
@@ -78,6 +108,8 @@
     }
     NSError *saveError = nil;
     [_context save:&saveError];
+    
+    
     //more error handling here
 }
 
@@ -139,7 +171,11 @@
 
     }
     _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+  //  _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+    
+     _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
+    
+    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
     return self;
 }
 

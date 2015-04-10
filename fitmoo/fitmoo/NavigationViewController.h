@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 #import "FitmooHelper.h"
+#import "HomePageViewController.h"
+#import "UserManager.h"
+#import "User.h"
 
 @interface NavigationViewController : UIViewController
 

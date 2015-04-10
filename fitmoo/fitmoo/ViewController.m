@@ -38,8 +38,12 @@
 
 -(void) checkLogin
 {
-    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    [[UserManager sharedUserManager] performLogin:localUser];
+    User *localUser= [[UserManager sharedUserManager] getUserLocally];
+    
+    if (localUser.user_id!=nil) {
+        [[UserManager sharedUserManager] performLogin:localUser];
+    }
+  
    
 }
 

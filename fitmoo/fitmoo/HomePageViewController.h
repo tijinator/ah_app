@@ -12,7 +12,10 @@
 #import "AFNetworking.h"
 #import "User.h"
 #import "ShareTableViewCell.h"
-@interface HomePageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate>
+#import "BaseViewController.h"
+#import "UserManager.h"
+
+@interface HomePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * ressponseArray;
@@ -24,5 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
+- (IBAction)leftButtonClick:(id)sender;
 
 @end

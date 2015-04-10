@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FitmooHelper.h"
+#import "User.h"
+#import "UserManager.h"
 
 @interface LeftViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *leftTableView;
+@property (strong, nonatomic)  NSArray * imageArray;
+@property (strong, nonatomic)  NSArray * textArray;
+
+@property (strong, nonatomic) IBOutlet UIView *topView;
 
 @end

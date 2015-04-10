@@ -12,6 +12,8 @@
 #import "LocalUser.h"
 #import <CoreData/CoreData.h>
 #import "AFNetworking.h"
+
+
 @interface UserManager : NSObject
 {
     
@@ -27,8 +29,10 @@
 - (User *) getUserLocally;
 
 -(void) performLogin: (User *) localUser;
+-(void) performLogout: (User *) user;
 
 @property (strong, nonatomic) NSString * loginUrl;
+@property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;

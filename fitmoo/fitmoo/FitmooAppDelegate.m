@@ -29,10 +29,10 @@
     
     _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
     _deckController.delegate = self;
-    [_deckController setLeftSize:110.0f];
+    [_deckController setLeftSize:60.0f];
     [_deckController setRightSize:110.0f];
     
-    [_deckController setEnabled:YES];
+    [_deckController setEnabled:NO];
     
     [_deckController shouldAutorotate];
     [_deckController preferredInterfaceOrientationForPresentation];
@@ -43,11 +43,34 @@
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
-
+    [self createObservers];
 
     // Override point for customization after application launch.
     return YES;
 }
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(EnableSlideView:) name:@"EnableSlideView" object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openSideMenu:) name:@"openSideMenu" object:nil];
+}
+
+-(void)openSideMenu:(NSNotification*)note{
+    [_deckController toggleLeftViewAnimated:YES];
+    
+}
+
+- (void) EnableSlideView: (NSNotification * ) note
+{
+    NSString * flag= [note object];
+    if ([flag isEqualToString:@"YES"]) {
+           [_deckController setEnabled:YES];
+    }else
+    {
+           [_deckController setEnabled:NO];
+    }
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

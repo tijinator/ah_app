@@ -33,20 +33,26 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
-                              @"0", @"offset",@"10", @"limit",nil];
+ //   NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
+ //                             @"0", @"offset",@"10", @"limit",nil];
     
-    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],
-                     localUser.user_id,@"/home_feeds.json"];
+
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"83c923b62182cfda", @"secret_id", @"otEOucb5wZVrOOyh8SW3orGHmSDtSdtYdTnAmU8Ip2M", @"auth_token", @"true", @"mobile", @"0", @"offset",@"10", @"limit",nil];
+    
+ //   NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
+    
+    NSString * url=[[UserManager sharedUserManager] homeFeedUrl];
+    
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         
-        for (NSDictionary *dic in _responseDic) {
-            [_ressponseArray addObject:dic];
-        }
+     
         
-        [self.tableView reloadData];
+        [self defineFeedObjects];
+        
+   //     [self.tableView reloadData];
         
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -57,11 +63,22 @@
      ];
 }
 
+- (void) defineFeedObjects
+{
+    for (NSDictionary *dic in _responseDic) {
+        
+        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
+        [_ressponseArray addObject:feed];
+        
+    }
+
+}
+
 - (void) postNotifications
 {
     
- //   NSString * flag= @"Home";
- //   [[NSNotificationCenter defaultCenter] postNotificationName:@"showTopView" object:flag];
+    NSString * flag= @"YES";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"EnableSlideView" object:flag];
     
 }
 
@@ -125,6 +142,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+
+
+- (IBAction)leftButtonClick:(id)sender {
+    
+    
+}
 
 
 @end

@@ -37,6 +37,67 @@
     return view.frame;
 }
 
+-(HomeFeed *) generateHomeFeed: (NSDictionary *) dic
+{
+    HomeFeed * homeFeed= [[HomeFeed alloc] init];
+    
+    NSNumber * feed_id=[dic objectForKey:@"id"];
+    homeFeed.feed_id= [feed_id stringValue];
+    homeFeed.text= [dic objectForKey:@"text"];
+    homeFeed.community_id=[dic objectForKey:@"community_id"];
+    
+    
+   
+  
+    homeFeed.community_name= [dic objectForKey:@"community_name"];
+    homeFeed.community_cover_photo= [dic objectForKey:@"community_cover_photo"];
+    
+    NSNumber * created_at=[dic objectForKey:@"created_at"];
+    if (created_at!=nil) {
+        homeFeed.created_at= [created_at stringValue];
+    }
+    
+    
+    
+    NSNumber * updated_at=[dic objectForKey:@"updated_at"];
+    
+    if (updated_at!=nil) {
+         homeFeed.updated_at= [updated_at stringValue];
+    }
+   
+    
+    NSNumber * total_comment=[dic objectForKey:@"total_comment"];
+    
+    if (total_comment!=nil) {
+         homeFeed.total_comment= [total_comment stringValue];
+    }
+ 
+   
+    NSNumber * total_like=[dic objectForKey:@"total_like"];
+    if (total_like!=nil) {
+        homeFeed.total_like= [total_like stringValue];
+    }
+  
+    
+    
+    homeFeed.is_liked= [dic objectForKey:@"is_liked"];
+    homeFeed.workout_title= [dic objectForKey:@"workout_title"];
+    homeFeed.type= [dic objectForKey:@"type"];
+    homeFeed.action_sheet= [dic objectForKey:@"action_sheet"];
+    homeFeed.service= [dic objectForKey:@"service"];
+    
+    NSDictionary * photoArray= [dic objectForKey:@"photos"];
+    if (photoArray !=nil) {
+        for (NSDictionary *photoDic in photoArray) {
+            
+        }
+    }
+    
+    
+    
+    return homeFeed;
+}
+
 -(void) deleteDataLocally
 {
     
