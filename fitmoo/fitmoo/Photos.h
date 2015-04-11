@@ -13,7 +13,7 @@
 //photo can be many, only show first three or show it as slider
 
 @property (nonatomic, strong) NSString *photo_id;
-@property (nonatomic, strong) NSString *original;      // -----get photo_url  (not used)
-@property (nonatomic, strong) NSString *styles;        //----styles ---photo_url  (use for table home feed)
+@property (nonatomic, strong) NSString *originalUrl;      // -----get photo_url  (not used)
+@property (nonatomic, strong) NSString *stylesUrl;        //----styles ---photo_url  (use for table home feed)
 
 @end

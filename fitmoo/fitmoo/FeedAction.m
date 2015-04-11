@@ -12,5 +12,12 @@
 
 
 
+-(id)init
+{
+    _created_by=[[CreatedBy alloc] init];
+    _created_by_community=[[CreatedByCommunity alloc] init];
+    return self;
+}
+
 
 @end

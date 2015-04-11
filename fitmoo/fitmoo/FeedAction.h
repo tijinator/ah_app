@@ -17,6 +17,6 @@
 @property (nonatomic, strong) NSString *community_id;  //if community_id then us community_id first
 @property (nonatomic, strong) NSString *share_message; //share message is on top of text message
 @property (nonatomic, strong) NSString *action;      //three types: post, sharem endorse
-@property (nonatomic, strong) CreatedBy *user;
-@property (nonatomic, strong) CreatedByCommunity *community;
+@property (nonatomic, strong) CreatedBy *created_by;
+@property (nonatomic, strong) CreatedByCommunity *created_by_community;
 @end

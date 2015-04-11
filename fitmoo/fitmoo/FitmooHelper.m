@@ -45,10 +45,6 @@
     homeFeed.feed_id= [feed_id stringValue];
     homeFeed.text= [dic objectForKey:@"text"];
     homeFeed.community_id=[dic objectForKey:@"community_id"];
-    
-    
-   
-  
     homeFeed.community_name= [dic objectForKey:@"community_name"];
     homeFeed.community_cover_photo= [dic objectForKey:@"community_cover_photo"];
     
@@ -56,18 +52,14 @@
     if (created_at!=nil) {
         homeFeed.created_at= [created_at stringValue];
     }
-    
-    
-    
+
     NSNumber * updated_at=[dic objectForKey:@"updated_at"];
-    
     if (updated_at!=nil) {
          homeFeed.updated_at= [updated_at stringValue];
     }
    
     
     NSNumber * total_comment=[dic objectForKey:@"total_comment"];
-    
     if (total_comment!=nil) {
          homeFeed.total_comment= [total_comment stringValue];
     }
@@ -77,9 +69,7 @@
     if (total_like!=nil) {
         homeFeed.total_like= [total_like stringValue];
     }
-  
-    
-    
+
     homeFeed.is_liked= [dic objectForKey:@"is_liked"];
     homeFeed.workout_title= [dic objectForKey:@"workout_title"];
     homeFeed.type= [dic objectForKey:@"type"];
@@ -87,12 +77,131 @@
     homeFeed.service= [dic objectForKey:@"service"];
     
     NSDictionary * photoArray= [dic objectForKey:@"photos"];
-    if (photoArray !=nil) {
+     if (![photoArray isEqual:[NSNull null ]]) {
         for (NSDictionary *photoDic in photoArray) {
+            homeFeed.photos.photo_id= [photoDic objectForKey:@"id"];
+            NSDictionary *orignal=[photoDic objectForKey:@"original"];
+            homeFeed.photos.originalUrl= [orignal objectForKey:@"photo_url"];
             
+            NSDictionary *styles=[photoDic objectForKey:@"styles"];
+            NSDictionary *slider=[styles objectForKey:@"slider"];
+            homeFeed.photos.stylesUrl=[slider objectForKey:@"photo_url"];
+            [homeFeed.photoArray addObject:homeFeed.photos];
         }
     }
     
+    NSDictionary * commentsArray= [dic objectForKey:@"comments"];
+    if (![commentsArray isEqual:[NSNull null ]]) {
+        for (NSDictionary *commentsDic in commentsArray) {
+            homeFeed.comments.comment_id= [commentsDic objectForKey:@"id"];
+            homeFeed.comments.text= [commentsDic objectForKey:@"text"];
+            NSDictionary *created_by=[commentsDic objectForKey:@"created_by"];
+            homeFeed.comments.created_by_id= [created_by objectForKey:@"id"];
+            homeFeed.comments.full_name= [created_by objectForKey:@"full_name"];
+            homeFeed.comments.is_following= [created_by objectForKey:@"is_following"];
+            NSDictionary *profile=[created_by objectForKey:@"profile"];
+            NSDictionary *avatars=[profile objectForKey:@"avatars"];
+            homeFeed.comments.original=[avatars objectForKey:@"original"];
+            homeFeed.comments.thumb=[avatars objectForKey:@"thumb"];
+            homeFeed.comments.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+            
+            [homeFeed.commentsArray addObject:homeFeed.comments];
+        }
+    }
+    
+    NSDictionary *created_by=[dic objectForKey:@"created_by"];
+    if (![created_by isEqual:[NSNull null ]]) {
+        homeFeed.created_by.created_by_id= [created_by objectForKey:@"id"];
+        homeFeed.created_by.full_name= [created_by objectForKey:@"full_name"];
+        homeFeed.created_by.is_following= [created_by objectForKey:@"is_following"];
+        NSDictionary *profile=[created_by objectForKey:@"profile"];
+        NSDictionary *avatars=[profile objectForKey:@"avatars"];
+        homeFeed.created_by.original=[avatars objectForKey:@"original"];
+        homeFeed.created_by.thumb=[avatars objectForKey:@"thumb"];
+        homeFeed.created_by.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+
+    }
+    
+    NSDictionary *createdByCommunity=[dic objectForKey:@"created_by_community"];
+    if (![createdByCommunity isEqual:[NSNull null ]]) {
+        homeFeed.created_by_community.created_by_community_id= [createdByCommunity objectForKey:@"id"];
+        homeFeed.created_by_community.name= [createdByCommunity objectForKey:@"name"];
+        homeFeed.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
+    }
+    
+    NSDictionary *feed_action=[dic objectForKey:@"feed_action"];
+    if (![feed_action isEqual:[NSNull null ]]) {
+        homeFeed.feed_action.feed_action_id= [feed_action objectForKey:@"id"];
+        homeFeed.feed_action.user_id= [feed_action objectForKey:@"user_id"];
+        homeFeed.feed_action.community_id= [feed_action objectForKey:@"community_id"];
+        homeFeed.feed_action.share_message= [feed_action objectForKey:@"share_message"];
+        homeFeed.feed_action.action= [feed_action objectForKey:@"action"];
+        
+        NSDictionary *createdByCommunity=[feed_action objectForKey:@"community"];
+        if (![createdByCommunity isEqual:[NSNull null ]]) {
+            homeFeed.feed_action.created_by_community.created_by_community_id= [createdByCommunity objectForKey:@"id"];
+            homeFeed.feed_action.created_by_community.name= [createdByCommunity objectForKey:@"name"];
+            homeFeed.feed_action.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
+        }
+       
+    }
+    
+    
+    NSDictionary *title_info=[dic objectForKey:@"title_info"];
+    if (![title_info isEqual:[NSNull null ]]) {
+        homeFeed.title_info.avatar_id= [title_info objectForKey:@"avatar_id"];
+        homeFeed.title_info.avatar_title= [title_info objectForKey:@"avatar_title"];
+        homeFeed.title_info.avatar_type= [title_info objectForKey:@"avatar_type"];
+        homeFeed.title_info.type= [title_info objectForKey:@"type"];
+        
+    }
+    
+    
+    NSDictionary *product=[dic objectForKey:@"product"];
+    if (![product isEqual:[NSNull null ]]) {
+        homeFeed.product.product_id= [product objectForKey:@"id"];
+        homeFeed.product.type_product= [product objectForKey:@"type_product"];
+        homeFeed.product.title= [product objectForKey:@"title"];
+        homeFeed.product.detail= [product objectForKey:@"detail"];
+        homeFeed.product.gender= [product objectForKey:@"gender"];
+        
+        homeFeed.product.original_price= [product objectForKey:@"original_price"];
+        homeFeed.product.selling_price= [product objectForKey:@"selling_price"];
+        homeFeed.product.brand= [product objectForKey:@"brand"];
+        homeFeed.product.photo= [product objectForKey:@"photo"];
+        homeFeed.product.videos= [product objectForKey:@"videos"];
+        
+    }
+    
+    NSDictionary *nutrition=[dic objectForKey:@"nutrition"];
+    if (![nutrition isEqual:[NSNull null ]]) {
+        homeFeed.nutrition.nutrition_id= [nutrition objectForKey:@"id"];
+        homeFeed.nutrition.title= [nutrition objectForKey:@"title"];
+        homeFeed.nutrition.ingredients= [nutrition objectForKey:@"ingredients"];
+        homeFeed.nutrition.preparation= [nutrition objectForKey:@"preparation"];
+    }
+    
+    NSDictionary * videosArray= [dic objectForKey:@"videos"];
+    if (![videosArray isEqual:[NSNull null ]]) {
+        for (NSDictionary *videosDic in videosArray) {
+            homeFeed.videos.video_url= [videosDic objectForKey:@"video_url"];
+           
+            NSDictionary *thumbnail=[videosDic objectForKey:@"thumbnail"];
+            homeFeed.videos.thumbnail_url= [thumbnail objectForKey:@"url"];
+            
+           [homeFeed.videosArray addObject:homeFeed.videos];
+        }
+    }
+    
+    NSDictionary *event=[dic objectForKey:@"event"];
+    if (![event isEqual:[NSNull null ]]) {
+        homeFeed.event.event_id= [event objectForKey:@"id"];
+        homeFeed.event.name= [event objectForKey:@"name"];
+        homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
+        homeFeed.event.end_time= [event objectForKey:@"end_time"];
+        homeFeed.event.theme= [event objectForKey:@"theme"];
+       
+    }
     
     
     return homeFeed;

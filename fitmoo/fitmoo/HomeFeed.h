@@ -27,9 +27,10 @@
 @property (nonatomic, strong) Photos *photos;
 @property (nonatomic, strong) NSMutableArray * photoArray;
 
-@property (nonatomic, strong) NSObject *comments;
-@property (nonatomic, strong) NSObject *created_by;
-@property (nonatomic, strong) NSObject *created_by_community;
+@property (nonatomic, strong) Comments *comments;
+@property (nonatomic, strong) NSMutableArray * commentsArray;
+@property (nonatomic, strong) CreatedBy *created_by;
+@property (nonatomic, strong) CreatedByCommunity *created_by_community;
 @property (nonatomic, strong) NSString *community_cover_photo;  //not used
 @property (nonatomic, strong) NSString *created_at;
 
@@ -48,6 +49,8 @@
 @property (nonatomic, strong) NSObject *service;    //not used
 @property (nonatomic, strong) Nutrition *nutrition;
 @property (nonatomic, strong) Videos *videos;
+@property (nonatomic, strong) NSMutableArray * videosArray;
+
 @property (nonatomic, strong) Event *event;
 
 
