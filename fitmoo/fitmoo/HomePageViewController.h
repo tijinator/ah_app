@@ -14,11 +14,13 @@
 #import "ShareTableViewCell.h"
 #import "BaseViewController.h"
 #import "UserManager.h"
+#import "AsyncImageView.h"
+#import "SpecialPageViewController.h"
 
 @interface HomePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
-@property (strong, nonatomic)  NSMutableArray * ressponseArray;
+@property (strong, nonatomic)  NSMutableArray * homeFeedArray;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 
