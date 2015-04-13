@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSString *user_id;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *cover_photo_url;
+
 -(id)init;
 
 

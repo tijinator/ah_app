@@ -18,13 +18,80 @@
     _textArray= [[NSArray alloc] initWithObjects: @"HOME",@"PROFILE",@"FIT STORE",@"SEARCH",@"SETTINGS",@"LOGOUT", nil];
     
     [_leftTableView reloadData];
+    
+    [self createObservers];
+    
+}
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopImage:) name:@"updateTopImage" object:nil];
+}
+
+
+- (void) updateTopImage: (NSNotification * ) note
+{
+//    NSString *imageUrl= (NSString *) [note object];
+//      AsyncImageView *toImage = [[AsyncImageView alloc] init];
+//     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:toImage];
+//    if (imageUrl!=nil) {
+//        toImage.imageURL =[NSURL URLWithString:imageUrl];
+//    }else
+//    {
+//        toImage.imageURL =[NSURL URLWithString:@"https://fitmoo.com/assets/cover/profile-cover.png"];
+//     
+//    }
+//       _topImage.image=toImage.image;
+     NSString *imageUrl= (NSString *) [note object];
+     if (imageUrl==nil) {
+         imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
+         
+     }
+    [self downloadImageWithURL:[NSURL URLWithString:imageUrl] completionBlock:^(BOOL succeeded, UIImage *image) {
+        if (succeeded) {
+            
+            if (image!=nil) {
+                _topImage.image = image;
+              
+            }else
+            {
+             //   imageLabel.image= [UIImage imageNamed:@"images"];
+            }
+            
+            
+            
+        }
+    }];
+}
+//Making an AsynchronousRequest to get the image download
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request1
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   completionBlock(NO,nil);
+                               }
+                           }];
 }
 
 - (void) initFrames
 {
     _leftTableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftTableView respectToSuperFrame:self.view];
-    _topView.frame= CGRectMake(0, 0, 275, 50);
-    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
+//    _topView.frame= CGRectMake(0, 0, 275, 50);
+//    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
+    
+ //   _topImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 275, 50)];
+    _topImage.frame=CGRectMake(0, 0, 275, 50);
+    _topImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topImage respectToSuperFrame:self.view];
+    
+  //  [_topView insertSubview:_topImage atIndex:0];
+ //   [self.view insertSubview:_topImage aboveSubview:_topView];
+ //   [self.view addSubview:_topImage];
     
 }
 

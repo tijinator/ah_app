@@ -46,7 +46,31 @@
     
 }
 
-
+-(void) performLike:(NSString *) postId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",nil];
+    
+     NSString *url= [NSString stringWithFormat:@"%@%@%@",_likeUrl, postId ,@"/like" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        
+        
+       // [[NSNotificationCenter defaultCenter] postNotificationName:@"likeFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
 
 
 -(void) performPost:(NSString *) postText
@@ -96,6 +120,9 @@
         tempUser.email=user.email;
         tempUser.password=user.password;
         
+        //not stored yet
+        tempUser.cover_photo_url=[_responseDic objectForKey:@"cover_photo_url"];
+        
         NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
 
         NSNumber * user_id=[userInfo objectForKey:@"id"];
@@ -106,6 +133,7 @@
         self.localUser=tempUser;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLoginScuess" object:tempUser];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:tempUser.cover_photo_url];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -237,6 +265,8 @@
     _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
     
     _commentUrl=@"http://staging.fitmoo.com/api/feeds/";
+    _likeUrl=@"http://staging.fitmoo.com/api/feeds/";
+    
     return self;
 }
 

@@ -31,7 +31,7 @@
     [self initFrames];
     
     [self checkLogin];
-   // [self showImagesWithDelay];
+  // [self showImagesWithDelay];
     [self createObservers];
     // Do any additional setup after loading the view, typically from a nib.
 }

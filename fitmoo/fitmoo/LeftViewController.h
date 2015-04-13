@@ -10,6 +10,7 @@
 #import "FitmooHelper.h"
 #import "User.h"
 #import "UserManager.h"
+#import "AsyncImageView.h"
 
 @interface LeftViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *leftTableView;
@@ -17,5 +18,6 @@
 @property (strong, nonatomic)  NSArray * textArray;
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UIImageView *topImage;
 
 @end

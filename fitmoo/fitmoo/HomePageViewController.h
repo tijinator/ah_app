@@ -23,7 +23,7 @@
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
-
+@property (assign, nonatomic)  int count;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

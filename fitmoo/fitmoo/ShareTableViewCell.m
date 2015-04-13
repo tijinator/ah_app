@@ -15,8 +15,10 @@
     [self initFrames];
     _homeFeed= [[HomeFeed alloc] init];
     
-    int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height+10;
+    int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
+    
+    NSLog(@"%d",frameHeight);
     // Initialization code
 }
 
@@ -90,14 +92,18 @@
     _commentDetail.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail respectToSuperFrame:nil];
     
 
-    _likeButton.imageEdgeInsets = UIEdgeInsetsMake(15,38,15,38);
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(14,33,14,33)];
+     v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:nil];
+    
+    _likeButton.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     _likeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_likeButton respectToSuperFrame:nil];
     
-    _shareButton.imageEdgeInsets = UIEdgeInsetsMake(15,38,15,38);
+    _shareButton.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     _shareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButton respectToSuperFrame:nil];
-    _commentButton.imageEdgeInsets = UIEdgeInsetsMake(15,38,15,38);
+    
+    _commentButton.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     _commentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentButton respectToSuperFrame:nil];
-    _optionButton.imageEdgeInsets = UIEdgeInsetsMake(15,38,15,38);
+    _optionButton.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     _optionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_optionButton respectToSuperFrame:nil];
     
     _bodyImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyImage respectToSuperFrame:nil];

@@ -105,7 +105,11 @@ int contentHight1=50;
             cell.bodyImage.hidden=false;
         }else
         {
-            cell.bodyImage.hidden=true;
+            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+            bodyImage.imageURL =[NSURL URLWithString:_homeFeed.photos.originalUrl];
+            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
+            cell.bodyImage.hidden=false;
         }
         
     }else
@@ -113,14 +117,14 @@ int contentHight1=50;
         cell.bodyImage.hidden=true;
     }
     
-    UITextView* textview = [[UITextView alloc] initWithFrame:CGRectMake(10, cell.buttomView.frame.origin.y+20, self.view.frame.size.width-20, 80)];
-    [textview setDelegate:self];
+     _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, cell.buttomView.frame.origin.y+20, self.view.frame.size.width-20, 80)];
+    [_textView setDelegate:self];
     
     
     
-    cell.contentView.frame=CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, textview.frame.size.height+textview.frame.origin.y+150);
+    cell.contentView.frame=CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, _textView.frame.size.height+_textView.frame.origin.y+150);
     
-    [cell.contentView addSubview:textview ];
+    [cell.contentView addSubview:_textView ];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self action:@selector(postButtonClick:)
@@ -128,7 +132,7 @@ int contentHight1=50;
     [button setBackgroundColor:[UIColor blueColor]];
     [button setTintColor:[UIColor whiteColor]];
     [button setTitle:@"Post" forState:UIControlStateNormal];
-    button.frame = CGRectMake(self.view.frame.size.width-80,textview.frame.size.height+30+textview.frame.origin.y , 60.0, 48.0);
+    button.frame = CGRectMake(self.view.frame.size.width-80,_textView.frame.size.height+30+_textView.frame.origin.y , 60.0, 48.0);
     [cell.contentView addSubview:button];
     
     contentHight1=button.frame.size.height+ button.frame.origin.y+30 ;
@@ -157,7 +161,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
     if([text isEqualToString:@"\n"]) {
-        _postText= textView.text;
+    //    _postText= textView.text;
         [textView resignFirstResponder];
         return NO;
     }
@@ -168,7 +172,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)postButtonClick:(id)sender {
     
     
-    [[UserManager sharedUserManager] performComment:_postText withId:_homeFeed.feed_id];
+    [[UserManager sharedUserManager] performComment:_textView.text withId:_homeFeed.feed_id];
     
 }
 

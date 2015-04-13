@@ -16,7 +16,7 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-    [self getHomePageItems];
+ //   [self getHomePageItems];
     [self createObservers];
 }
 
@@ -36,33 +36,38 @@
 {
     _offset=0;
     _limit=10;
+    _count=0;
     _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
 -(void) getHomePageItems
 {
+    _tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
- //   NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
- //                             @"0", @"offset",@"10", @"limit",nil];
+    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
+                              ofs, @"offset", lim , @"limit",nil];
     
 
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"83c923b62182cfda", @"secret_id", @"otEOucb5wZVrOOyh8SW3orGHmSDtSdtYdTnAmU8Ip2M", @"auth_token", @"true", @"mobile", @"0", @"offset",@"20", @"limit",nil];
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"83c923b62182cfda", @"secret_id", @"otEOucb5wZVrOOyh8SW3orGHmSDtSdtYdTnAmU8Ip2M", @"auth_token", @"true", @"mobile", @"0", @"offset",@"20", @"limit",nil];
     
- //   NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
     
-    NSString * url=[[UserManager sharedUserManager] homeFeedUrl];
+//    NSString * url=[[UserManager sharedUserManager] homeFeedUrl];
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         
      
-        
+        _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
         
         [self.tableView reloadData];
@@ -71,7 +76,7 @@
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             
+             _tableView.userInteractionEnabled=true;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
 }
@@ -130,9 +135,9 @@ int contentHight=50;
 {
     
     
-    ShareTableViewCell *cell = [tableView
-                             dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
-   
+  //  ShareTableViewCell *cell = [tableView
+  //                           dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+    ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
@@ -154,9 +159,7 @@ int contentHight=50;
    
     
     if (tempHomefeed.commentsArray!=nil) {
-        int commentCount=(int)[tempHomefeed.commentsArray count];
-        NSString *count= [NSString stringWithFormat:@"%i",commentCount];
-        [cell.commentButton setTitle:count  forState:UIControlStateNormal];
+        [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             AsyncImageView *commentImage = [[AsyncImageView alloc] init];
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
@@ -179,31 +182,47 @@ int contentHight=50;
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
+       //     cell.bodyImage.hidden=false;
         }else
         {
-            cell.bodyImage.hidden=true;
+            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+            bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
+            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
+         //   cell.bodyImage.hidden=false;
           //  [cell removeViewsFromBodyView:cell.bodyImage];
         }
         
     }else
     {
      //  [cell removeViewsFromBodyView:cell.bodyImage];
-            cell.bodyImage.hidden=true;
+     //       cell.bodyImage.hidden=true;
     }
     
-  
+   
+    
+    
     [cell.likeButton setTag:indexPath.row*100+4];
     [cell.commentButton setTag:indexPath.row*100+5];
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     
+    [cell.likeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
+    if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
+     [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+    }else
+    {
+        
+    [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
     [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    contentHight= cell.contentView.frame.size.height;
+    contentHight=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
+ //    NSLog(@"%d",contentHight);
     return cell;
 }
 
@@ -220,6 +239,69 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    return contentHight;
 }
 
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableView.contentOffset.y<-45){
+        if (_count==0) {
+            [self initValuable];
+            
+            [self getHomePageItems];
+        }
+        _count++;
+
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+        NSLog(@"bottom!");
+        NSLog(@"%f",self.tableView.contentOffset.y );
+        NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+        if (_count==0) {
+            _offset +=10;
+            [self getHomePageItems];
+        }
+        _count++;
+        
+      
+    }else
+    {
+        _count=0;
+    }
+}
+
+-(void) refreshRow:(NSTimer *)timer
+{
+    if (_count==0) {
+        [self initValuable];
+        
+        [self getHomePageItems];
+    }
+    _count++;
+    
+    if (_count>0) {
+        [timer invalidate];
+    }
+
+}
+
+-(void) loadMoreRow:(NSTimer *)timer
+{
+   
+    
+    if (_count==0) {
+        _offset +=10;
+        [self getHomePageItems];
+    }
+    _count++;
+    
+    if (_count>0) {
+        [timer invalidate];
+    }
+}
+
+
 - (IBAction)commentButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
@@ -231,8 +313,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 - (IBAction)likeButtonClick:(id)sender {
-    
-    
+     UIButton *button = (UIButton *)sender;
+     NSInteger index=(NSInteger) button.tag/100;
+    int totalLike=1+(int) [button.titleLabel.text integerValue];
+    NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
+    [button setTitle:newLikeString forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+   
+    HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
+    [[UserManager sharedUserManager] performLike:feed.feed_id];
 }
 - (IBAction)optionButtonClick:(id)sender {
     

@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 
 
+
 @interface UserManager : NSObject
 {
     
@@ -32,13 +33,14 @@
 -(void) performLogout: (User *) user;
 -(void) performPost:(NSString *) postText;
 -(void) performComment:(NSString *) postText withId:(NSString *) postId;
-
+-(void) performLike:(NSString *) postId;
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;
 @property (strong, nonatomic) NSString * postUrl;
 @property (strong, nonatomic) NSString * commentUrl;
+@property (strong, nonatomic) NSString * likeUrl;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;
 

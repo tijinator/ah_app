@@ -69,8 +69,10 @@
     if (total_like!=nil) {
         homeFeed.total_like= [total_like stringValue];
     }
-
-    homeFeed.is_liked= [dic objectForKey:@"is_liked"];
+    
+    NSNumber * is_like=[dic objectForKey:@"is_liked"];
+    homeFeed.is_liked= [is_like stringValue];
+    
     homeFeed.workout_title= [dic objectForKey:@"workout_title"];
     homeFeed.type= [dic objectForKey:@"type"];
     homeFeed.action_sheet= [dic objectForKey:@"action_sheet"];

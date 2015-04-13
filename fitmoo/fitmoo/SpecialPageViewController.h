@@ -25,4 +25,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @property (strong, nonatomic)  NSString * postText;
+@property (strong, nonatomic)  UITextView * textView;
+
 @end
