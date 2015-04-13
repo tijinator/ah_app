@@ -35,6 +35,8 @@
 @property (strong, nonatomic) HomeFeed *homeFeed;
 @property (strong, nonatomic) IBOutlet UIButton *bodyImage;
 
+- (void) removeViewsFromBodyView: (UIView *) removeView;
+
 
 - (void) addScrollView;
 

@@ -30,10 +30,15 @@
 
 -(void) performLogin: (User *) localUser;
 -(void) performLogout: (User *) user;
+-(void) performPost:(NSString *) postText;
+-(void) performComment:(NSString *) postText withId:(NSString *) postId;
+
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;
+@property (strong, nonatomic) NSString * postUrl;
+@property (strong, nonatomic) NSString * commentUrl;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;
 

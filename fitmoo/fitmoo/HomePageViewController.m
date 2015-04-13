@@ -17,7 +17,19 @@
     [self initValuable];
     [self postNotifications];
     [self getHomePageItems];
-    
+    [self createObservers];
+}
+
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
+}
+
+
+- (void) didPostFinished: (NSNotification * ) note
+{
+    [self initValuable];
+    [self getHomePageItems];
 }
 
 -(void) initValuable
@@ -116,10 +128,11 @@ int contentHight=50;
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     ShareTableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
-    
-    
+   
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
@@ -138,9 +151,12 @@ int contentHight=50;
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     cell.bodyDetailLabel.text= tempHomefeed.text;
+   
     
     if (tempHomefeed.commentsArray!=nil) {
-        
+        int commentCount=(int)[tempHomefeed.commentsArray count];
+        NSString *count= [NSString stringWithFormat:@"%i",commentCount];
+        [cell.commentButton setTitle:count  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             AsyncImageView *commentImage = [[AsyncImageView alloc] init];
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
@@ -167,10 +183,12 @@ int contentHight=50;
         }else
         {
             cell.bodyImage.hidden=true;
+          //  [cell removeViewsFromBodyView:cell.bodyImage];
         }
         
     }else
     {
+     //  [cell removeViewsFromBodyView:cell.bodyImage];
             cell.bodyImage.hidden=true;
     }
     

@@ -20,6 +20,63 @@
     
 }
 
+-(void) performComment:(NSString *) postText withId:(NSString *) postId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+   
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", postText, @"text",
+                             nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@",_commentUrl, postId ,@"/comments" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+ 
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"postFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+
+
+
+-(void) performPost:(NSString *) postText
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: postText, @"text",photos_attributes, @"photos_attributes", nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", postText, @"text",
+        feed, @"feed",nil];
+    
+    [manager POST: _postUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+      
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"postFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+
+}
 
 -(void) performLogin: (User *) user
 {
@@ -28,7 +85,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.email, @"email", user.password, @"password", @"undefined", @"secret_id", nil];
+      NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.email, @"email", user.password, @"password", @"undefined", @"secret_id", nil];
     
     [manager POST: _loginUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -173,9 +230,13 @@
     _loginUrl= @"http://staging.fitmoo.com/api/tokens";
   //  _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
     
-     _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
+    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
     
     _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
+ 
+    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
+    
+    _commentUrl=@"http://staging.fitmoo.com/api/feeds/";
     return self;
 }
 

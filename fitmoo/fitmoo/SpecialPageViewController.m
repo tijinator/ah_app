@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    [self createObservers];
     // Do any additional setup after loading the view.
 }
 
@@ -57,14 +58,16 @@ int contentHight1=50;
     ShareTableViewCell *cell = [tableView
                                 dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
     
-    
+    if (cell!=nil) {
+        cell=nil;
+    }
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-    [cell.commentView removeFromSuperview];
+   
     
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] init];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
@@ -110,12 +113,33 @@ int contentHight1=50;
         cell.bodyImage.hidden=true;
     }
     
-
+    UITextView* textview = [[UITextView alloc] initWithFrame:CGRectMake(10, cell.buttomView.frame.origin.y+20, self.view.frame.size.width-20, 80)];
+    [textview setDelegate:self];
     
     
-    contentHight1= cell.contentView.frame.size.height;
+    
+    cell.contentView.frame=CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, textview.frame.size.height+textview.frame.origin.y+150);
+    
+    [cell.contentView addSubview:textview ];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(postButtonClick:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setBackgroundColor:[UIColor blueColor]];
+    [button setTintColor:[UIColor whiteColor]];
+    [button setTitle:@"Post" forState:UIControlStateNormal];
+    button.frame = CGRectMake(self.view.frame.size.width-80,textview.frame.size.height+30+textview.frame.origin.y , 60.0, 48.0);
+    [cell.contentView addSubview:button];
+    
+    contentHight1=button.frame.size.height+ button.frame.origin.y+30 ;
+     [cell.buttomView removeFromSuperview];
     return cell;
 }
+
+
+
+
+
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -130,7 +154,35 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return contentHight1;
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        _postText= textView.text;
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
 
+- (IBAction)postButtonClick:(id)sender {
+    
+    
+    [[UserManager sharedUserManager] performComment:_postText withId:_homeFeed.feed_id];
+    
+}
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postFinished:) name:@"postFinished" object:nil];
+}
+
+
+- (void) postFinished: (NSNotification * ) note
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

@@ -50,7 +50,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" id="Qlf-JA-wjl">
-                        <rect key="frame" x="0.0" y="71" width="320" height="359"/>
+                        <rect key="frame" x="0.0" y="71" width="320" height="353"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5KS-NR-9qu">
@@ -72,7 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" id="Nj7-bO-nv3">
-                        <rect key="frame" x="0.0" y="511" width="320" height="40.5"/>
+                        <rect key="frame" x="0.0" y="505" width="320" height="40.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Un-Zy-bsO">
@@ -116,7 +116,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" id="WN9-Gi-ccZ">
-                        <rect key="frame" x="0.0" y="433" width="320" height="75"/>
+                        <rect key="frame" x="0.0" y="427" width="320" height="75"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitmoo share kill clift's post" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1yX-W5-CPp">
@@ -150,12 +150,12 @@
                 <outlet property="bodyDetailLabel" destination="5KS-NR-9qu" id="k11-2r-25i"/>
                 <outlet property="bodyImage" destination="8bI-So-MFV" id="mcD-fU-kEc"/>
                 <outlet property="bodyView" destination="Qlf-JA-wjl" id="dAW-WR-OIv"/>
-                <outlet property="buttomView" destination="WN9-Gi-ccZ" id="o09-VB-d9g"/>
+                <outlet property="buttomView" destination="Nj7-bO-nv3" id="fP1-iv-trd"/>
                 <outlet property="commentButton" destination="4Un-Zy-bsO" id="YXs-Oo-ZNg"/>
                 <outlet property="commentDetail" destination="fn7-Ha-caD" id="7gU-sN-qry"/>
                 <outlet property="commentImage" destination="2V8-rK-zMH" id="vm4-GO-vhQ"/>
                 <outlet property="commentName" destination="1yX-W5-CPp" id="Rff-s4-Di7"/>
-                <outlet property="commentView" destination="Nj7-bO-nv3" id="aGD-AM-HZU"/>
+                <outlet property="commentView" destination="WN9-Gi-ccZ" id="PfP-ao-503"/>
                 <outlet property="dayLabel" destination="Ccn-A1-cCY" id="KrF-VY-SAj"/>
                 <outlet property="headerImage2" destination="TDj-7H-saz" id="gri-iw-Msf"/>
                 <outlet property="headerView" destination="tkh-mX-ra1" id="6TD-G9-x6W"/>

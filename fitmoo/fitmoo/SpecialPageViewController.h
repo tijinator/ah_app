@@ -16,7 +16,7 @@
 #import "AsyncImageView.h"
 #import "HomeFeed.h"
 
-@interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate>
+@interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 
@@ -24,4 +24,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
+@property (strong, nonatomic)  NSString * postText;
 @end

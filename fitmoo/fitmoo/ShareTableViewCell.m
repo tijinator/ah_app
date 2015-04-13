@@ -15,7 +15,7 @@
     [self initFrames];
     _homeFeed= [[HomeFeed alloc] init];
     
-    int frameHeight= self.commentView.frame.origin.y + self.commentView.frame.size.height+20;
+    int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height+10;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
     // Initialization code
 }
@@ -57,6 +57,18 @@
     
   //  [_bodyView addSubview:scrollImageView];
 }
+
+- (void) removeViewsFromBodyView: (UIView *) removeView
+{
+    [removeView removeFromSuperview];
+    int frameHeight=self.bodyDetailLabel.frame.origin.y + self.bodyDetailLabel.frame.size.height;
+    self.bodyView.frame= CGRectMake(self.bodyView.frame.origin.x, self.bodyView.frame.origin.y, self.bodyView.frame.size.width, frameHeight);
+    self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, self.commentView.frame.origin.y-removeView.frame.size.height, self.commentView.frame.size.width, self.commentView.frame.size.height);
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.buttomView.frame.origin.y-removeView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+    self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height-removeView.frame.size.height);
+    
+}
+
 
 - (void) initFrames
 {
