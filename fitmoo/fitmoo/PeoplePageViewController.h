@@ -16,6 +16,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "SpecialPageViewController.h"
+#import "PeopleTitleCell.h"
 @interface PeoplePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

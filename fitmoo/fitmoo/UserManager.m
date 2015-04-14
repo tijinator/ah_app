@@ -20,6 +20,40 @@
     
 }
 
+-(void) getUserProfile
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",@"http://staging.fitmoo.com/api/users/", _localUser.user_id];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+         NSNumber * following=[_responseDic objectForKey:@"following"];
+        _localUser.following= [following stringValue];
+         NSNumber * followers=[_responseDic objectForKey:@"followers"];
+        _localUser.followers= [followers stringValue];
+         NSNumber * communities=[_responseDic objectForKey:@"communities"];
+        _localUser.communities= [communities stringValue];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLoginScuess" object:_localUser];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.cover_photo_url];
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
+
+
 -(void) performShare:(NSString *) postText withId:(NSString *) postId
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -148,20 +182,22 @@
         tempUser.password=user.password;
         
         //not stored yet
-        tempUser.cover_photo_url=[_responseDic objectForKey:@"cover_photo_url"];
-        
+    
         NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
-
+       
+        NSDictionary * profile=[userInfo objectForKey:@"profile"];
+        tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+        NSDictionary *avatar=[profile objectForKey:@"avatars"];
+        tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
         NSNumber * user_id=[userInfo objectForKey:@"id"];
         tempUser.user_id= [user_id stringValue];
+        tempUser.name= [userInfo objectForKey:@"full_name"];
         
         [self saveLocalUser:tempUser];
-        
         self.localUser=tempUser;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLoginScuess" object:tempUser];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:tempUser.cover_photo_url];
         
+        [self getUserProfile];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -282,10 +318,11 @@
     if (self) {
 
     }
+    _clientUrl= @"http://staging.fitmoo.com";
     _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-  //  _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
     
-    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
+   // _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
     
     _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
  

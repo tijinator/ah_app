@@ -23,6 +23,11 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *cover_photo_url;
+@property (nonatomic, strong) NSString *profile_avatar_thumb;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *following;
+@property (nonatomic, strong) NSString *followers;
+@property (nonatomic, strong) NSString *communities;
 
 -(id)init;
 

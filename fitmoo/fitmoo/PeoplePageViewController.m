@@ -20,7 +20,7 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-       [self getHomePageItems];
+   // [self getHomePageItems];
     [self createObservers];
 }
 
@@ -44,6 +44,9 @@
     _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
+
+
+
 -(void) getHomePageItems
 {
     _tableView.userInteractionEnabled=false;
@@ -59,12 +62,7 @@
                               ofs, @"offset", lim , @"limit",nil];
     
     
-    
-    //    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"83c923b62182cfda", @"secret_id", @"otEOucb5wZVrOOyh8SW3orGHmSDtSdtYdTnAmU8Ip2M", @"auth_token", @"true", @"mobile", @"0", @"offset",@"20", @"limit",nil];
-    
-    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],localUser.user_id,@"/feeds.json"];
-    
-    //    NSString * url=[[UserManager sharedUserManager] homeFeedUrl];
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/feeds.json"];
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -74,6 +72,7 @@
         _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
         
+    //    [self getUserProfile];
         [self.tableView reloadData];
         
         NSLog(@"Submit response data: %@", responseObject);
@@ -128,7 +127,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
     
-    return [_homeFeedArray count];
+    return ([_homeFeedArray count]+1);
     
 }
 
@@ -139,8 +138,35 @@ int contentHight2=50;
 {
     
     
-    //  ShareTableViewCell *cell = [tableView
-    //                           dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+    
+    if (indexPath.row==0) {
+        PeopleTitleCell *cell=(PeopleTitleCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        if (cell==nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PeopleTitleCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        User *temUser= [[UserManager sharedUserManager] localUser];
+        cell.nameLabel.text= temUser.name;
+        self.titleLabel.text= temUser.name;
+        NSString * imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
+        if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
+            imageUrl=temUser.cover_photo_url;
+        }
+       
+     
+        cell.followCountLabel.text= temUser.following;
+        cell.followerCountLabel.text=temUser.followers;
+        cell.communityCountLabel.text=temUser.communities;
+        
+        
+        [cell loadHeaderImage:imageUrl];
+        [cell loadHeader1Image:temUser.profile_avatar_thumb];
+        contentHight2= cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
+        return cell;
+    }
+    
+    
     ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
@@ -148,7 +174,9 @@ int contentHight2=50;
         cell = [nib objectAtIndex:0];
     }
     
-    HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row];
+    
+    
+    HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
     cell.homeFeed=tempHomefeed;
     
     
@@ -186,21 +214,21 @@ int contentHight2=50;
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            //     cell.bodyImage.hidden=false;
+                 cell.bodyImage.hidden=false;
         }else
         {
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            //   cell.bodyImage.hidden=false;
+               cell.bodyImage.hidden=false;
             //  [cell removeViewsFromBodyView:cell.bodyImage];
         }
         
     }else
     {
         //  [cell removeViewsFromBodyView:cell.bodyImage];
-        //       cell.bodyImage.hidden=true;
+            cell.bodyImage.hidden=true;
     }
     
     
@@ -226,6 +254,7 @@ int contentHight2=50;
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     contentHight2=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
+    
     //    NSLog(@"%d",contentHight);
     return cell;
 }
@@ -243,67 +272,43 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return contentHight2;
 }
 
-//
-//- (void)scrollViewDidScroll: (UIScrollView*)scroll {
-//    
-//    
-//    if(self.tableView.contentOffset.y<-45){
-//        if (_count==0) {
-//            [self initValuable];
-//            
-//            [self getHomePageItems];
-//        }
-//        _count++;
-//        
-//        //it means table view is pulled down like refresh
-//        return;
-//    }
-//    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-//        NSLog(@"bottom!");
-//        NSLog(@"%f",self.tableView.contentOffset.y );
-//        NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
-//        if (_count==0) {
-//            _offset +=10;
-//            [self getHomePageItems];
-//        }
-//        _count++;
-//        
-//        
-//    }else
-//    {
-//        _count=0;
-//    }
-//}
-//
-//-(void) refreshRow:(NSTimer *)timer
-//{
-//    if (_count==0) {
-//        [self initValuable];
-//        
-//        [self getHomePageItems];
-//    }
-//    _count++;
-//    
-//    if (_count>0) {
-//        [timer invalidate];
-//    }
-//    
-//}
-//
-//-(void) loadMoreRow:(NSTimer *)timer
-//{
-//    
-//    
-//    if (_count==0) {
-//        _offset +=10;
-//        [self getHomePageItems];
-//    }
-//    _count++;
-//    
-//    if (_count>0) {
-//        [timer invalidate];
-//    }
-//}
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableView.contentOffset.y<-75){
+         NSLog(@"%f",self.tableView.contentOffset.y );
+        if (_count==0) {
+            [self initValuable];
+            
+            [self getHomePageItems];
+        }
+        _count++;
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+        //   NSLog(@"bottom!");
+        //   NSLog(@"%f",self.tableView.contentOffset.y );
+        //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+        if (_count==0) {
+            if (self.tableView.contentOffset.y<0) {
+                  _offset =0;
+            }else
+            {
+            _offset +=10;
+            }
+            [self getHomePageItems];
+        }
+        _count++;
+        
+        
+    }else
+    {
+        _count=0;
+    }
+}
 
 
 - (IBAction)commentButtonClick:(id)sender {

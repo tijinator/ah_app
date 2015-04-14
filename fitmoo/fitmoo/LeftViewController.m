@@ -42,7 +42,7 @@
 //    }
 //       _topImage.image=toImage.image;
      NSString *imageUrl= (NSString *) [note object];
-     if (imageUrl==nil) {
+     if ([imageUrl isEqual:[NSNull null ]]) {
          imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
          
      }

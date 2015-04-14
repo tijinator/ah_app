@@ -60,6 +60,8 @@
   //  [_bodyView addSubview:scrollImageView];
 }
 
+
+
 - (void) removeViewsFromBodyView: (UIView *) removeView
 {
     [removeView removeFromSuperview];
@@ -68,6 +70,33 @@
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, self.commentView.frame.origin.y-removeView.frame.size.height, self.commentView.frame.size.width, self.commentView.frame.size.height);
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.buttomView.frame.origin.y-removeView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height-removeView.frame.size.height);
+    
+}
+
+- (void) loadHeaderImage1: (NSString *)url
+{
+    AsyncImageView *headerImage1 = [[AsyncImageView alloc] init];
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
+    headerImage1.imageURL =[NSURL URLWithString:url];
+    [self.heanderImage1 setImage:headerImage1.image forState:UIControlStateNormal];
+   
+    
+}
+
+- (void) loadCommentImage: (NSString *)url
+{
+    AsyncImageView *commentImage = [[AsyncImageView alloc] init];
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
+    commentImage.imageURL =[NSURL URLWithString:url];
+    [self.commentImage setImage:commentImage.image forState:UIControlStateNormal];
+}
+
+- (void) loadHeaderImage2: (NSString *)url
+{
+    AsyncImageView *headerImage2 = [[AsyncImageView alloc] init];
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+    headerImage2.imageURL =[NSURL URLWithString:url];
+    [self.headerImage2 setImage:headerImage2.image forState:UIControlStateNormal];
     
 }
 
@@ -116,6 +145,5 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)likeClick:(id)sender {
-}
+
 @end

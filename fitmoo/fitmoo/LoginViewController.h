@@ -13,8 +13,8 @@
 #import "User.h"
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"
-
-@interface LoginViewController : UIViewController
+#import <FacebookSDK/FacebookSDK.h>
+@interface LoginViewController : UIViewController<FBLoginViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;

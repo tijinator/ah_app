@@ -286,8 +286,7 @@
     if ((self = [super init])) {
     }
     
-    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+   
     
     
     return self;

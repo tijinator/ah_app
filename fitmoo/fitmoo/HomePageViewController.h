@@ -16,8 +16,9 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "SpecialPageViewController.h"
+#import "ActionSheetViewController.h"
 
-@interface HomePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
+@interface HomePageViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
@@ -29,6 +30,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
-- (IBAction)leftButtonClick:(id)sender;
+
 
 @end

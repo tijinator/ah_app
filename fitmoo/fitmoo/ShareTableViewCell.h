@@ -29,7 +29,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *commentButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *optionButton;
-- (IBAction)likeClick:(id)sender;
+
 
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic) HomeFeed *homeFeed;
@@ -37,7 +37,9 @@
 
 - (void) removeViewsFromBodyView: (UIView *) removeView;
 
-
+- (void) loadHeaderImage1: (NSString *)url;
+- (void) loadHeaderImage2: (NSString *)url;
+- (void) loadCommentImage: (NSString *)url;
 - (void) addScrollView;
 
 @end

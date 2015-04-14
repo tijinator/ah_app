@@ -71,6 +71,11 @@
 		2725827A1AD5A4DE0059F43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
 		272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
 		2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
+		2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731C62F1ADD632F00788181 /* FacebookSDK.framework */; };
+		2731C6321ADD632F00788181 /* Fitmoo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6301ADD632F00788181 /* Fitmoo-Info.plist */; };
+		2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6341ADD6FD800788181 /* PeopleTitleCell.m */; };
+		2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */; };
+		2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6391ADDAAD000788181 /* ActionSheetViewController.m */; };
 		2732B7111AD809E900610821 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70D1AD809E900610821 /* comment.png */; };
 		2732B7121AD809E900610821 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70E1AD809E900610821 /* like.png */; };
 		2732B7131AD809E900610821 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70F1AD809E900610821 /* reply.png */; };
@@ -256,6 +261,13 @@
 		272582801AD5AAA40059F43C /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		2731C62C1ADD55D300788181 /* PeoplePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoplePageViewController.h; sourceTree = "<group>"; };
 		2731C62D1ADD55D300788181 /* PeoplePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoplePageViewController.m; sourceTree = "<group>"; };
+		2731C62F1ADD632F00788181 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		2731C6301ADD632F00788181 /* Fitmoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Fitmoo-Info.plist"; sourceTree = "<group>"; };
+		2731C6331ADD6FD800788181 /* PeopleTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTitleCell.h; sourceTree = "<group>"; };
+		2731C6341ADD6FD800788181 /* PeopleTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTitleCell.m; sourceTree = "<group>"; };
+		2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleTitleCell.xib; sourceTree = "<group>"; };
+		2731C6381ADDAAD000788181 /* ActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetViewController.h; sourceTree = "<group>"; };
+		2731C6391ADDAAD000788181 /* ActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetViewController.m; sourceTree = "<group>"; };
 		2732B70D1AD809E900610821 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		2732B70E1AD809E900610821 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		2732B70F1AD809E900610821 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
@@ -342,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +420,8 @@
 			isa = PBXGroup;
 			children = (
 				27188F691AD4646300C34372 /* Info.plist */,
+				2731C62F1ADD632F00788181 /* FacebookSDK.framework */,
+				2731C6301ADD632F00788181 /* Fitmoo-Info.plist */,
 				2760940E1AD7085500A769CE /* ss-symbolicons-block.ttf */,
 				2760940F1AD7085500A769CE /* ss-symbolicons-line.ttf */,
 				276094271AD708C100A769CE /* Benton Sans */,
@@ -500,6 +515,9 @@
 				274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */,
 				274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */,
 				274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */,
+				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
+				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
+				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -637,6 +655,8 @@
 			children = (
 				2725827F1AD5AAA40059F43C /* HomePageViewController.h */,
 				272582801AD5AAA40059F43C /* HomePageViewController.m */,
+				2731C6381ADDAAD000788181 /* ActionSheetViewController.h */,
+				2731C6391ADDAAD000788181 /* ActionSheetViewController.m */,
 				2731C62C1ADD55D300788181 /* PeoplePageViewController.h */,
 				2731C62D1ADD55D300788181 /* PeoplePageViewController.m */,
 				27163D941ADAF733005B95D5 /* SpecialPageViewController.h */,
@@ -836,6 +856,7 @@
 				2760944A1AD708C100A769CE /* BentonSans-Thin.otf in Resources */,
 				27188F771AD4646300C34372 /* Main.storyboard in Resources */,
 				276094591AD708C100A769CE /* BentonSansExtraComp-Book.otf in Resources */,
+				2731C6321ADD632F00788181 /* Fitmoo-Info.plist in Resources */,
 				2732B7111AD809E900610821 /* comment.png in Resources */,
 				27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */,
 				2760941D1AD708AD00A769CE /* SemplicitaPro-Bold.otf in Resources */,
@@ -845,6 +866,7 @@
 				27188FAA1AD4695000C34372 /* dots.png in Resources */,
 				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
 				276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */,
+				2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */,
 				276094491AD708C100A769CE /* BentonSans-Regular.otf in Resources */,
 				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
 				276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */,
@@ -937,6 +959,7 @@
 				274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */,
 				272582081AD5673F0059F43C /* NavigationViewController.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
+				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
 				272582281AD57EFD0059F43C /* AFHTTPRequestOperation.m in Sources */,
 				27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */,
@@ -949,6 +972,7 @@
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,
 				272582301AD57EFD0059F43C /* AFURLSessionManager.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,
+				2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1094,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitmoo",
+				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1081,6 +1109,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitmoo",
+				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

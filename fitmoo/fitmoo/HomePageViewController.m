@@ -54,13 +54,9 @@
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
                               ofs, @"offset", lim , @"limit",nil];
     
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
+    
 
-    
-//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"83c923b62182cfda", @"secret_id", @"otEOucb5wZVrOOyh8SW3orGHmSDtSdtYdTnAmU8Ip2M", @"auth_token", @"true", @"mobile", @"0", @"offset",@"20", @"limit",nil];
-    
-    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[FitmooHelper sharedInstance] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
-    
-//    NSString * url=[[UserManager sharedUserManager] homeFeedUrl];
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -182,21 +178,21 @@ int contentHight=50;
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-       //     cell.bodyImage.hidden=false;
+            cell.bodyImage.hidden=false;
         }else
         {
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-         //   cell.bodyImage.hidden=false;
+            cell.bodyImage.hidden=false;
           //  [cell removeViewsFromBodyView:cell.bodyImage];
         }
         
     }else
     {
      //  [cell removeViewsFromBodyView:cell.bodyImage];
-     //       cell.bodyImage.hidden=true;
+            cell.bodyImage.hidden=true;
     }
     
    
@@ -243,14 +239,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
-    if(self.tableView.contentOffset.y<-45){
+    if(self.tableView.contentOffset.y<-75){
         if (_count==0) {
             [self initValuable];
-            
             [self getHomePageItems];
         }
         _count++;
-
         //it means table view is pulled down like refresh
         return;
     }
@@ -264,44 +258,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         _count++;
         
-      
-    }else
-    {
+    }else{
         _count=0;
     }
 }
 
--(void) refreshRow:(NSTimer *)timer
-{
-    if (_count==0) {
-        [self initValuable];
-        
-        [self getHomePageItems];
-    }
-    _count++;
-    
-    if (_count>0) {
-        [timer invalidate];
-    }
 
-}
 
--(void) loadMoreRow:(NSTimer *)timer
-{
-   
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    int sectionWidth = 300;
     
-    if (_count==0) {
-        _offset +=10;
-        [self getHomePageItems];
-    }
-    _count++;
-    
-    if (_count>0) {
-        [timer invalidate];
-    }
+    return sectionWidth;
 }
 
 
+
+#pragma mark -buttomButton functions
 - (IBAction)commentButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
@@ -325,9 +298,38 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[UserManager sharedUserManager] performLike:feed.feed_id];
 }
 - (IBAction)optionButtonClick:(id)sender {
+     UIButton *button = (UIButton *)sender;
+     NSInteger index=(NSInteger) button.tag/100;
+     HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+   
     
+    if ([feed.action_sheet isEqualToString:@"endorse"]) {
+        
+        
+        
+    }else if ([feed.action_sheet isEqualToString:@"report"]) {
+        
+    }else if ([feed.action_sheet isEqualToString:@"delete"]) {
+        
+    }
+    
+    [self.view addSubview:ActionSheet.view];
+}
+
+- (IBAction)deleteButtonClick:(id)sender{
     
 }
+
+- (IBAction)cancelButtonClick:(id)sender{
+    
+}
+
+- (IBAction)endorseButtonClick:(id)sender{
+    
+}
+
 - (IBAction)shareButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
@@ -340,10 +342,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (IBAction)leftButtonClick:(id)sender {
-    
-    
-}
+
 
 
 @end

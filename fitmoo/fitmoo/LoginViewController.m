@@ -43,6 +43,37 @@
     
 }
 
+//#pragma mark - FBLoginView Delegate method implementation
+//
+//-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+//    self.lblLoginStatus.text = @"You are logged in.";
+//    
+//    [self toggleHiddenState:NO];
+//}
+//
+//
+//-(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
+//    NSLog(@"%@", user);
+//    self.profilePicture.profileID = user.id;
+//    self.lblUsername.text = user.name;
+//    self.lblEmail.text = [user objectForKey:@"email"];
+//}
+//
+//
+//-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+//    self.lblLoginStatus.text = @"You are logged out";
+//    
+//    [self toggleHiddenState:YES];
+//}
+//
+//
+//-(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
+//    NSLog(@"%@", [error localizedDescription]);
+//}
+//
+
+
+
 - (IBAction)loginButtonClick:(id)sender {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -50,7 +81,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"hongjianlin1989@gmail.com", @"email", @"lin22549010", @"password", @"undefined", @"secret_id", nil];
     
-    [manager POST:[[FitmooHelper sharedInstance] loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [manager POST:[[UserManager sharedUserManager]  loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         User *localUser= [[User alloc] init];
@@ -60,7 +91,6 @@
         localUser.password=@"lin22549010";
         
         NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
-        
         
         NSNumber * user_id=[userInfo objectForKey:@"id"];
         localUser.user_id= [user_id stringValue];

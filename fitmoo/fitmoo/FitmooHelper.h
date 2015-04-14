@@ -25,7 +25,6 @@
 @property (strong, nonatomic) UIView * screenSizeView;
 
 
-@property (strong, nonatomic) NSString * loginUrl;
-@property (strong, nonatomic) NSString * homeFeedUrl;
+
 
 @end
