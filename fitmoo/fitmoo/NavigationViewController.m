@@ -56,6 +56,12 @@
         _baseView = [[self storyboard] instantiateViewControllerWithIdentifier:@"ViewController"];
         [[self nav] pushViewController:_baseView animated:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+    }else  if ([key isEqualToString:@"1"]) {
+        
+        
+        PeoplePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+        [[self nav] pushViewController:homePage animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
     }
     
     

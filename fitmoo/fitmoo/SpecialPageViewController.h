@@ -26,5 +26,6 @@
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @property (strong, nonatomic)  NSString * postText;
 @property (strong, nonatomic)  UITextView * textView;
+@property (strong, nonatomic)  NSString * action;
 
 @end

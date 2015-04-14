@@ -255,9 +255,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-        NSLog(@"bottom!");
-        NSLog(@"%f",self.tableView.contentOffset.y );
-        NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+     //   NSLog(@"bottom!");
+     //   NSLog(@"%f",self.tableView.contentOffset.y );
+     //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
         if (_count==0) {
             _offset +=10;
             [self getHomePageItems];
@@ -307,6 +307,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index=(NSInteger) button.tag/100;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    specialPage.action=@"Post";
     specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
     
     [self.navigationController presentViewController:specialPage animated:YES completion:nil];
@@ -328,7 +329,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 - (IBAction)shareButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    specialPage.action=@"Share";
+    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
     
+    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
 }
 

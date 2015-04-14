@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "FitmooHelper.h"
+#import "AFNetworking.h"
+#import "User.h"
+#import "ShareTableViewCell.h"
+#import "BaseViewController.h"
+#import "UserManager.h"
+#import "AsyncImageView.h"
+#import "SpecialPageViewController.h"
+@interface PeoplePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
 
-@interface PeoplePageViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
+@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSMutableArray * homeFeedArray;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
+@property (assign, nonatomic)  int count;
 
 @end

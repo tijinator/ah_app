@@ -131,7 +131,7 @@ int contentHight1=50;
      forControlEvents:UIControlEventTouchUpInside];
     [button setBackgroundColor:[UIColor blueColor]];
     [button setTintColor:[UIColor whiteColor]];
-    [button setTitle:@"Post" forState:UIControlStateNormal];
+    [button setTitle:_action forState:UIControlStateNormal];
     button.frame = CGRectMake(self.view.frame.size.width-80,_textView.frame.size.height+30+_textView.frame.origin.y , 60.0, 48.0);
     [cell.contentView addSubview:button];
     
@@ -171,8 +171,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)postButtonClick:(id)sender {
     
+    if ([_action isEqualToString:@"Post"]) {
+        
+         [[UserManager sharedUserManager] performComment:_textView.text withId:_homeFeed.feed_id];
+        
+    }else if ([_action isEqualToString:@"Share"])
+    {
+         [[UserManager sharedUserManager] performShare:_textView.text withId:_homeFeed.feed_id];
+
+    }
     
-    [[UserManager sharedUserManager] performComment:_textView.text withId:_homeFeed.feed_id];
+   
     
 }
 

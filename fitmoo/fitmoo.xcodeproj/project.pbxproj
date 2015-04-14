@@ -70,6 +70,7 @@
 		272582771AD593150059F43C /* LocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582761AD593150059F43C /* LocalUser.m */; };
 		2725827A1AD5A4DE0059F43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
 		272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
+		2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
 		2732B7111AD809E900610821 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70D1AD809E900610821 /* comment.png */; };
 		2732B7121AD809E900610821 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70E1AD809E900610821 /* like.png */; };
 		2732B7131AD809E900610821 /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 2732B70F1AD809E900610821 /* reply.png */; };
@@ -253,6 +254,8 @@
 		272582791AD5A4DE0059F43C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		2725827F1AD5AAA40059F43C /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		272582801AD5AAA40059F43C /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		2731C62C1ADD55D300788181 /* PeoplePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoplePageViewController.h; sourceTree = "<group>"; };
+		2731C62D1ADD55D300788181 /* PeoplePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoplePageViewController.m; sourceTree = "<group>"; };
 		2732B70D1AD809E900610821 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		2732B70E1AD809E900610821 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		2732B70F1AD809E900610821 /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 			children = (
 				2725827F1AD5AAA40059F43C /* HomePageViewController.h */,
 				272582801AD5AAA40059F43C /* HomePageViewController.m */,
+				2731C62C1ADD55D300788181 /* PeoplePageViewController.h */,
+				2731C62D1ADD55D300788181 /* PeoplePageViewController.m */,
 				27163D941ADAF733005B95D5 /* SpecialPageViewController.h */,
 				27163D951ADAF733005B95D5 /* SpecialPageViewController.m */,
 			);
@@ -896,6 +901,7 @@
 				272581FB1AD562A60059F43C /* IISideController.m in Sources */,
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
+				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
