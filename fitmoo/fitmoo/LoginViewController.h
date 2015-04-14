@@ -32,6 +32,7 @@
 - (IBAction)signUoButtonClick:(id)sender;
 - (IBAction)forgotPasswordbuttonClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
 
 
 @end

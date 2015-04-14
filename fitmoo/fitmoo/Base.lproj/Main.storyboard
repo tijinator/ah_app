@@ -327,6 +327,11 @@
                                     <action selector="forgotPasswordbuttonClick:" destination="cYW-n1-1EP" eventType="touchUpInside" id="t0s-pF-KlP"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="L5g-yb-f7e" customClass="FBLoginView">
+                                <rect key="frame" x="34" y="369" width="244" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -335,6 +340,7 @@
                         <outlet property="closeButton" destination="Jze-Gl-jVX" id="0RY-Zm-cLz"/>
                         <outlet property="emailTextField" destination="lOa-XE-E2T" id="yy8-pY-R96"/>
                         <outlet property="facebookButton" destination="fWL-no-a53" id="l3d-xH-x0f"/>
+                        <outlet property="facebookLoginView" destination="L5g-yb-f7e" id="oSE-9P-arc"/>
                         <outlet property="forgotPasswordButton" destination="UGc-gP-gDs" id="cRC-Dj-Ph6"/>
                         <outlet property="loginButton" destination="zl2-Y9-YHp" id="DcY-bu-Gwx"/>
                         <outlet property="passwordTextField" destination="NeA-nZ-rTh" id="D8X-8j-AI6"/>

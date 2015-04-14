@@ -7,7 +7,7 @@
 //
 
 #import "FitmooAppDelegate.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 @interface FitmooAppDelegate ()
 
 @end
@@ -16,6 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FBLoginView class];
     
     NSManagedObjectContext * context = [self managedObjectContext];
     [[FitmooHelper sharedInstance] setContext:context];
@@ -94,6 +95,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication];
 }
 
 #pragma mark - Core Data stack
