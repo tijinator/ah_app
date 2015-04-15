@@ -18,6 +18,7 @@
 #import "SpecialPageViewController.h"
 #import "ActionSheetViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "PeoplePageViewController.h"
 
 @interface HomePageViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

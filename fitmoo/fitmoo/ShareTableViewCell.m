@@ -18,7 +18,7 @@
     int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
     
-    NSLog(@"%d",frameHeight);
+   // NSLog(@"%d",frameHeight);
     // Initialization code
 }
 

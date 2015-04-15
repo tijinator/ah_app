@@ -41,7 +41,7 @@
          NSNumber * communities=[_responseDic objectForKey:@"communities"];
         _localUser.communities= [communities stringValue];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLoginScuess" object:_localUser];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.cover_photo_url];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -230,8 +230,9 @@
 
 }
 
--(void) performLogin: (User *) user
+-(User *) performLogin: (User *) user
 {
+   
     
     User *tempUser= [[User alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -265,16 +266,19 @@
         
         
         [self getUserProfile];
+        
+       
+        
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
-     
-          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+    failure:^(AFHTTPRequestOperation *operation, NSError *error){
         self.localUser=tempUser;
               NSLog(@"Error: %@", error);} // failure callback block
+     
      ];
 
     
-   
+    return tempUser;
 }
 
 -(void) performLogout: (User *) user

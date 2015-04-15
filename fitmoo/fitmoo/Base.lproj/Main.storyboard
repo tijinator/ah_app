@@ -177,19 +177,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="koe-ao-n8s">
-                                <rect key="frame" x="24" y="68" width="270" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17867127430771035" green="0.46186039353124286" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="CONTINUE WITH FACEBOOK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookButtonClick:" destination="NpG-6q-dTj" eventType="touchUpInside" id="GR2-wU-nEg"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="xNK-IE-pm6">
                                 <rect key="frame" x="24" y="115" width="270" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -227,6 +214,11 @@
                                     <action selector="loginButtonClick:" destination="NpG-6q-dTj" eventType="touchUpInside" id="thZ-cD-MHT"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="P4i-yS-H0i" customClass="FBLoginView">
+                                <rect key="frame" x="31" y="267" width="263" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -234,7 +226,7 @@
                         <outlet property="backgroundImage" destination="gUe-CU-ACX" id="omm-8M-xtG"/>
                         <outlet property="closeButton" destination="tJP-pP-MuY" id="CQe-1l-Rva"/>
                         <outlet property="emailTextField" destination="xNK-IE-pm6" id="HAX-FW-wXV"/>
-                        <outlet property="facebookButton" destination="koe-ao-n8s" id="c6Q-2V-GYU"/>
+                        <outlet property="facebookLoginView" destination="P4i-yS-H0i" id="90Z-PY-S6g"/>
                         <outlet property="loginButton" destination="7Td-vW-UhG" id="cCg-EY-VyM"/>
                         <outlet property="sighUpButton" destination="P6S-s5-G0Q" id="RpX-Tx-627"/>
                     </connections>
@@ -255,19 +247,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fWL-no-a53">
-                                <rect key="frame" x="24" y="68" width="270" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17867127429999999" green="0.46186039350000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="CONTINUE WITH FACEBOOK">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookButtonClick:" destination="cYW-n1-1EP" eventType="touchUpInside" id="IbS-9d-sWt"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email Address" minimumFontSize="17" id="lOa-XE-E2T">
                                 <rect key="frame" x="24" y="115" width="270" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -339,7 +318,6 @@
                         <outlet property="backgroundImage" destination="o7u-g1-OLc" id="atS-bx-rWj"/>
                         <outlet property="closeButton" destination="Jze-Gl-jVX" id="0RY-Zm-cLz"/>
                         <outlet property="emailTextField" destination="lOa-XE-E2T" id="yy8-pY-R96"/>
-                        <outlet property="facebookButton" destination="fWL-no-a53" id="l3d-xH-x0f"/>
                         <outlet property="facebookLoginView" destination="L5g-yb-f7e" id="oSE-9P-arc"/>
                         <outlet property="forgotPasswordButton" destination="UGc-gP-gDs" id="cRC-Dj-Ph6"/>
                         <outlet property="loginButton" destination="zl2-Y9-YHp" id="DcY-bu-Gwx"/>
@@ -350,85 +328,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M7-4B-wEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="894" y="335"/>
-        </scene>
-        <!--Home Page View Controller-->
-        <scene sceneID="OhG-F6-Yfv">
-            <objects>
-                <viewController storyboardIdentifier="HomePageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q6z-HN-tf0" customClass="HomePageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CUf-js-FxQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TKU-47-ofe">
-                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="261" id="aqM-JX-EgW" customClass="ShareTableViewCell">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqM-JX-EgW" id="w6g-qh-cOV">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="71" id="vLy-LU-ItT">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vLy-LU-ItT" id="mnE-Zd-QfO">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="q6z-HN-tf0" id="KPl-nc-7VA"/>
-                                    <outlet property="delegate" destination="q6z-HN-tf0" id="MtH-r3-7nB"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="top" id="CZr-HM-0a3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B3q-eM-TNi">
-                                        <rect key="frame" x="10" y="15" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="home.png">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="openSideMenu:" destination="q6z-HN-tf0" eventType="touchUpInside" id="vCQ-om-jTi"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9ij-G4-63J">
-                                        <rect key="frame" x="287" y="15" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="home.png">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mh7-Kf-VPo">
-                                        <rect key="frame" x="129" y="18" width="62" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="leftButton" destination="B3q-eM-TNi" id="KKW-a2-hgf"/>
-                        <outlet property="rightButton" destination="9ij-G4-63J" id="BgR-Fn-1qA"/>
-                        <outlet property="tableView" destination="TKU-47-ofe" id="U23-OB-mrc"/>
-                        <outlet property="titleLabel" destination="mh7-Kf-VPo" id="7JZ-4A-fdo"/>
-                        <outlet property="topView" destination="CZr-HM-0a3" id="63a-Qh-r90"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WGa-Mg-Izx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1262" y="341"/>
         </scene>
         <!--Special Page View Controller-->
         <scene sceneID="n7s-2L-rkA">
@@ -587,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aZ-HR-BxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1998" y="347"/>
+            <point key="canvasLocation" x="1998" y="353"/>
         </scene>
         <!--Action Sheet View Controller-->
         <scene sceneID="3L6-8N-nhu">
@@ -649,6 +548,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDG-zH-fah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2362" y="347"/>
+        </scene>
+        <!--Home Page View Controller-->
+        <scene sceneID="H8l-N4-AeX">
+            <objects>
+                <viewController storyboardIdentifier="HomePageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pOw-8U-Ydn" customClass="HomePageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HMg-cU-ZQ3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="223" sectionHeaderHeight="22" sectionFooterHeight="22" id="NgL-1F-u7D">
+                                <rect key="frame" x="0.0" y="30" width="320" height="518"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="300" id="5eT-z7-QTO" customClass="ShareTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5eT-z7-QTO" id="50A-q4-L7e">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pOw-8U-Ydn" id="Q2A-EO-11X"/>
+                                    <outlet property="delegate" destination="pOw-8U-Ydn" id="sSP-VO-YpN"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="top" id="P1W-vB-uPZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fov-Gu-p8a">
+                                        <rect key="frame" x="10" y="15" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="home.png">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openSideMenu:" destination="pOw-8U-Ydn" eventType="touchUpInside" id="JTS-fp-2Wu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pcW-ru-VdT">
+                                        <rect key="frame" x="287" y="15" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="home.png">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0tx-lh-NQG">
+                                        <rect key="frame" x="81" y="18" width="158" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="leftButton" destination="Fov-Gu-p8a" id="jih-0x-cbK"/>
+                        <outlet property="rightButton" destination="pcW-ru-VdT" id="TYJ-1v-ZMi"/>
+                        <outlet property="tableView" destination="NgL-1F-u7D" id="eWm-p7-n7H"/>
+                        <outlet property="titleLabel" destination="0tx-lh-NQG" id="qbm-dA-Q5u"/>
+                        <outlet property="topView" destination="P1W-vB-uPZ" id="nda-Sv-gDl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEK-XG-1a6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1258" y="353"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
+		2711144D1ADF095D0056EB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
+		2711144E1ADF096F0056EB13 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582731AD591ED0059F43C /* UserManager.m */; };
+		2711144F1ADF0A8B0056EB13 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731C62F1ADD632F00788181 /* FacebookSDK.framework */; };
+		271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
+		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
+		271114521ADF11610056EB13 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7161AD81C1600610821 /* BaseViewController.m */; };
+		271114531ADF11630056EB13 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582071AD5673F0059F43C /* NavigationViewController.m */; };
+		271114541ADF11670056EB13 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
+		271114551ADF11690056EB13 /* ActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6391ADDAAD000788181 /* ActionSheetViewController.m */; };
+		271114561ADF116B0056EB13 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
+		271114571ADF116E0056EB13 /* SpecialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27163D951ADAF733005B95D5 /* SpecialPageViewController.m */; };
+		271114581ADF11710056EB13 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC81AD48DD000C34372 /* SignUpViewController.m */; };
+		271114591ADF11730056EB13 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582111AD579080059F43C /* LoginViewController.m */; };
+		2711145A1ADF11780056EB13 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582041AD5633F0059F43C /* RightViewController.m */; };
+		2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582001AD5631D0059F43C /* LeftViewController.m */; };
+		2711145C1ADF117D0056EB13 /* UIUnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */; };
+		2711145D1ADF117F0056EB13 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
+		2711145E1ADF11840056EB13 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
+		2711145F1ADF11880056EB13 /* PeopleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */; };
+		271114601ADF118B0056EB13 /* PeopleTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6341ADD6FD800788181 /* PeopleTitleCell.m */; };
+		271114611ADF11920056EB13 /* fitmoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */; };
+		271114621ADF11A10056EB13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27188F691AD4646300C34372 /* Info.plist */; };
+		271114631ADF11A20056EB13 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27188F691AD4646300C34372 /* Info.plist */; };
+		271114641ADF11CD0056EB13 /* LocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582761AD593150059F43C /* LocalUser.m */; };
+		271114651ADF128C0056EB13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27188F751AD4646300C34372 /* Main.storyboard */; };
+		271114661ADF12AE0056EB13 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
+		271114671ADF12B00056EB13 /* HomeFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7291AD83BE300610821 /* HomeFeed.m */; };
+		271114681ADF12B30056EB13 /* Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B72C1AD83DC300610821 /* Photos.m */; };
+		271114691ADF12B50056EB13 /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B72F1AD8439100610821 /* Comments.m */; };
+		2711146A1ADF12B80056EB13 /* CreatedBy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7321AD8454600610821 /* CreatedBy.m */; };
+		2711146B1ADF12BA0056EB13 /* CreatedByCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7351AD845FC00610821 /* CreatedByCommunity.m */; };
+		2711146C1ADF12BC0056EB13 /* FeedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7381AD846B800610821 /* FeedAction.m */; };
+		2711146D1ADF12BF0056EB13 /* TitleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B73B1AD8493100610821 /* TitleInfo.m */; };
+		2711146E1ADF12C10056EB13 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B73E1AD849D000610821 /* Product.m */; };
+		2711146F1ADF12C30056EB13 /* Nutrition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7411AD84B5600610821 /* Nutrition.m */; };
+		271114701ADF12C60056EB13 /* Videos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7471AD84EF200610821 /* Videos.m */; };
+		271114711ADF12C80056EB13 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7441AD84D1000610821 /* Event.m */; };
+		271114721ADF12D90056EB13 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
+		271114731ADF12E70056EB13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F7A1AD4646300C34372 /* LaunchScreen.xib */; };
 		27163D961ADAF733005B95D5 /* SpecialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27163D951ADAF733005B95D5 /* SpecialPageViewController.m */; };
 		27188F6B1AD4646300C34372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6A1AD4646300C34372 /* main.m */; };
 		27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
@@ -155,6 +195,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
 		27163D941ADAF733005B95D5 /* SpecialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPageViewController.h; sourceTree = "<group>"; };
 		27163D951ADAF733005B95D5 /* SpecialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPageViewController.m; sourceTree = "<group>"; };
 		27188F651AD4646300C34372 /* fitmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2711144F1ADF0A8B0056EB13 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				27188F871AD4646300C34372 /* fitmooTests.m */,
+				2711144B1ADF07220056EB13 /* UserManagerTests.m */,
 				27188F851AD4646300C34372 /* Supporting Files */,
 			);
 			path = fitmooTests;
@@ -843,6 +886,7 @@
 				27188FB71AD4695000C34372 /* x.png in Resources */,
 				27188FB21AD4695000C34372 /* logo_only.png in Resources */,
 				276094251AD708AD00A769CE /* SemplicitaPro-SemiBold.otf in Resources */,
+				271114621ADF11A10056EB13 /* Info.plist in Resources */,
 				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
 				27188FBC1AD4695000C34372 /* play.png in Resources */,
 				276094521AD708C100A769CE /* BentonSansCond-Bold.otf in Resources */,
@@ -910,6 +954,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271114731ADF12E70056EB13 /* LaunchScreen.xib in Resources */,
+				2711145E1ADF11840056EB13 /* ShareTableViewCell.xib in Resources */,
+				2711145F1ADF11880056EB13 /* PeopleTitleCell.xib in Resources */,
+				271114631ADF11A20056EB13 /* Info.plist in Resources */,
+				271114651ADF128C0056EB13 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,7 +1029,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271114711ADF12C80056EB13 /* Event.m in Sources */,
+				2711144D1ADF095D0056EB13 /* ViewController.m in Sources */,
+				2711146C1ADF12BC0056EB13 /* FeedAction.m in Sources */,
+				2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */,
+				271114541ADF11670056EB13 /* HomePageViewController.m in Sources */,
+				271114641ADF11CD0056EB13 /* LocalUser.m in Sources */,
+				2711144E1ADF096F0056EB13 /* UserManager.m in Sources */,
+				271114591ADF11730056EB13 /* LoginViewController.m in Sources */,
+				271114661ADF12AE0056EB13 /* User.m in Sources */,
+				2711145A1ADF11780056EB13 /* RightViewController.m in Sources */,
+				271114551ADF11690056EB13 /* ActionSheetViewController.m in Sources */,
+				2711145D1ADF117F0056EB13 /* ShareTableViewCell.m in Sources */,
+				271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */,
+				271114531ADF11630056EB13 /* NavigationViewController.m in Sources */,
+				271114701ADF12C60056EB13 /* Videos.m in Sources */,
+				2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */,
+				271114691ADF12B50056EB13 /* Comments.m in Sources */,
+				271114601ADF118B0056EB13 /* PeopleTitleCell.m in Sources */,
+				271114561ADF116B0056EB13 /* PeoplePageViewController.m in Sources */,
+				271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */,
+				271114681ADF12B30056EB13 /* Photos.m in Sources */,
+				271114671ADF12B00056EB13 /* HomeFeed.m in Sources */,
+				271114521ADF11610056EB13 /* BaseViewController.m in Sources */,
+				271114721ADF12D90056EB13 /* AsyncImageView.m in Sources */,
+				2711146E1ADF12C10056EB13 /* Product.m in Sources */,
+				2711146B1ADF12BA0056EB13 /* CreatedByCommunity.m in Sources */,
+				2711146F1ADF12C30056EB13 /* Nutrition.m in Sources */,
+				2711145C1ADF117D0056EB13 /* UIUnderlinedButton.m in Sources */,
+				2711146A1ADF12B80056EB13 /* CreatedBy.m in Sources */,
 				27188F881AD4646300C34372 /* fitmooTests.m in Sources */,
+				271114611ADF11920056EB13 /* fitmoo.xcdatamodeld in Sources */,
+				271114581ADF11710056EB13 /* SignUpViewController.m in Sources */,
+				271114571ADF116E0056EB13 /* SpecialPageViewController.m in Sources */,
+				2711146D1ADF12BF0056EB13 /* TitleInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1179,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1112,6 +1195,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1127,6 +1211,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/fitmoo",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1146,6 +1231,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/fitmoo",
 				);
 				INFOPLIST_FILE = fitmooTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

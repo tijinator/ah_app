@@ -18,8 +18,14 @@
     [self postNotifications];
    // [self getHomePageItems];
     [self createObservers];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
+   
 }
 
+- (void) displayOneMoreTime: (NSTimer *)timer {
+    
+        [self.tableView reloadData];
+}
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
@@ -65,6 +71,7 @@
      
         _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
+        
         
         [self.tableView reloadData];
       
@@ -129,7 +136,6 @@ int contentHight=50;
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     
   //  ShareTableViewCell *cell = [tableView
   //                           dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
@@ -266,8 +272,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }else
             {
                 _offset +=10;
+                 [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
             }
             [self getHomePageItems];
+           
         }
         _count++;
         

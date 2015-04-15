@@ -29,7 +29,7 @@
 - (void) setContext: (NSManagedObjectContext *) con;
 - (User *) getUserLocally;
 
--(void) performLogin: (User *) localUser;
+-(User *) performLogin: (User *) user;
 -(void) performLogout: (User *) user;
 -(void) performPost:(NSString *) postText;
 -(void) performComment:(NSString *) postText withId:(NSString *) postId;
@@ -39,7 +39,7 @@
 -(void) performDelete:(NSString *) postId;
 -(void) performEndorse:(NSString *) postId;
 
--(void) performGetUserProfile;
+
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;

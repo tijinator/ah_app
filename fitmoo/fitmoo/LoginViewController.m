@@ -61,7 +61,21 @@
 
 
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
- 
+    loginView.frame = CGRectMake(24, 68, 270, 37);
+    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+    for (id obj in loginView.subviews)
+    {
+        
+       
+            if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+        //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+
 }
 
 
@@ -74,37 +88,55 @@
 
 - (IBAction)loginButtonClick:(id)sender {
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"hongjianlin1989@gmail.com", @"email", @"lin22549010", @"password", @"undefined", @"secret_id", nil];
-    
-    [manager POST:[[UserManager sharedUserManager]  loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.securityPolicy.allowInvalidCertificates = YES;
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"hongjianlin1989@gmail.com", @"email", @"lin22549010", @"password", @"undefined", @"secret_id", nil];
+//    
+//    [manager POST:[[UserManager sharedUserManager]  loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        _responseDic= responseObject;
+//        User *localUser= [[User alloc] init];
+//        localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
+//        localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+//        localUser.email=@"hongjianlin1989@gmail.com";
+//        localUser.password=@"lin22549010";
+//        
+//        
+//        
+//        NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
+//        
+//        NSDictionary * profile=[userInfo objectForKey:@"profile"];
+//        localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+//        NSDictionary *avatar=[profile objectForKey:@"avatars"];
+//        localUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+//        NSNumber * user_id=[userInfo objectForKey:@"id"];
+//        localUser.user_id= [user_id stringValue];
+//        localUser.name= [userInfo objectForKey:@"full_name"];
+//        
+//      
+//        
+//       
+//        
+//        [[FitmooHelper sharedInstance] saveLocalUser:localUser];
+//     
+//        [self openHomePage];
+//        
+//  //      NSLog(@"Submit response data: %@", responseObject);
+//    } // success callback block
+//     
+//          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+//              
+//              NSLog(@"Error: %@", error);} // failure callback block
+//     ];
+
         
-        _responseDic= responseObject;
         User *localUser= [[User alloc] init];
-        localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
-        localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
         localUser.email=@"hongjianlin1989@gmail.com";
         localUser.password=@"lin22549010";
-        
-        NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
-        
-        NSNumber * user_id=[userInfo objectForKey:@"id"];
-        localUser.user_id= [user_id stringValue];
-        
-        [[FitmooHelper sharedInstance] saveLocalUser:localUser];
-        
-        [self openHomePage];
-        
-  //      NSLog(@"Submit response data: %@", responseObject);
-    } // success callback block
-     
-          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              
-              NSLog(@"Error: %@", error);} // failure callback block
-     ];
     
+        [[UserManager sharedUserManager] performLogin:localUser];
+
 }
 
 - (void) openHomePage

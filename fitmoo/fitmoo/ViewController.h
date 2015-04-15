@@ -26,7 +26,7 @@
 
 - (IBAction)signupButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;
-
+-(void) checkLogin;
 
 @end
 

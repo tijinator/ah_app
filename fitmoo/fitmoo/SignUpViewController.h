@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-@interface SignUpViewController : UIViewController
+#import <FacebookSDK/FacebookSDK.h>
+@interface SignUpViewController : UIViewController<FBLoginViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
@@ -20,6 +21,6 @@
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)facebookButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;
-
+@property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
 
 @end

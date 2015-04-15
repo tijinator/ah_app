@@ -55,9 +55,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
     }else  if ([key isEqualToString:@"5"]) {
        
-        
-        _baseView = [[self storyboard] instantiateViewControllerWithIdentifier:@"ViewController"];
-        [[self nav] pushViewController:_baseView animated:YES];
+        [[self nav] popViewControllerAnimated:YES];
+//        _baseView = [[self storyboard] instantiateViewControllerWithIdentifier:@"ViewController"];
+//        [[self nav] pushViewController:_baseView animated:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
     }else  if ([key isEqualToString:@"1"]) {
         

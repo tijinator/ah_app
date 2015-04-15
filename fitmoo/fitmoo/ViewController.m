@@ -29,10 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    
     [self checkLogin];
   // [self showImagesWithDelay];
     [self createObservers];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -47,12 +47,14 @@
    
 }
 
+
+
 -(void)createObservers{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkLoginScuess:) name:@"checkLoginScuess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkLogin:) name:@"checkLogin" object:nil];
 }
 
 
-- (void) checkLoginScuess: (NSNotification * ) note
+-(void)checkLogin:(NSNotification * )note
 {
     User * user= [note object];
     if (user.user_id!=nil) {
