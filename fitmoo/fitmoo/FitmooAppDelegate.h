@@ -14,6 +14,7 @@
 #import "IIViewDeckController.h"
 #import "FitmooHelper.h"
 #import "UserManager.h"
+#import "ActionSheetViewController.h"
 
 @interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
 
@@ -26,6 +27,7 @@
 @property (strong, nonatomic)  LeftViewController *leftView;
 @property (strong, nonatomic)  RightViewController *rightView;
 @property (strong, nonatomic) NavigationViewController *navigateView;
+@property (strong, nonatomic) ActionSheetViewController *popupView;
 @property (strong, nonatomic) IIViewDeckController *deckController;
 
 

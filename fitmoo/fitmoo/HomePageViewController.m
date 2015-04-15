@@ -16,7 +16,7 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
- //   [self getHomePageItems];
+   // [self getHomePageItems];
     [self createObservers];
 }
 
@@ -67,7 +67,7 @@
         [self defineFeedObjects];
         
         [self.tableView reloadData];
-        
+      
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -148,7 +148,7 @@ int contentHight=50;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
     headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
     [cell.headerImage2 setBackgroundImage:headerImage2.image forState:UIControlStateNormal];
-    
+
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     cell.bodyDetailLabel.text= tempHomefeed.text;
@@ -158,7 +158,10 @@ int contentHight=50;
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             AsyncImageView *commentImage = [[AsyncImageView alloc] init];
+          
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
+            
+           
             tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
             commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
             [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
@@ -175,14 +178,18 @@ int contentHight=50;
         if (![tempHomefeed.photos.stylesUrl isEqual:@""]) {
       
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+            
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+            
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
             cell.bodyImage.hidden=false;
         }else
         {
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+           
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+         
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
             cell.bodyImage.hidden=false;
@@ -252,15 +259,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
      //   NSLog(@"bottom!");
      //   NSLog(@"%f",self.tableView.contentOffset.y );
      //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+        
         if (_count==0) {
-            _offset +=10;
+            if (self.tableView.contentOffset.y<0) {
+                _offset =0;
+            }else
+            {
+                _offset +=10;
+            }
             [self getHomePageItems];
         }
         _count++;
         
-    }else{
+        
+    }else
+    {
         _count=0;
     }
+
 }
 
 
@@ -301,21 +317,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
      UIButton *button = (UIButton *)sender;
      NSInteger index=(NSInteger) button.tag/100;
      HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
+   
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
-   
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
-        
-        
-        
+        ActionSheet.action= @"endorse";
+   
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
-        
+        ActionSheet.action= @"report";
+  
     }else if ([feed.action_sheet isEqualToString:@"delete"]) {
-        
+        ActionSheet.action= @"delete";
+        [ActionSheet.reportButton setTitle:@"Delete" forState:UIControlStateNormal];
+      
     }
-    
-    [self.view addSubview:ActionSheet.view];
+    ActionSheet.postId= feed.feed_id;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+
 }
 
 - (IBAction)deleteButtonClick:(id)sender{

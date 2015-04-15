@@ -43,7 +43,15 @@
     
     NSNumber * feed_id=[dic objectForKey:@"id"];
     homeFeed.feed_id= [feed_id stringValue];
-    homeFeed.text= [dic objectForKey:@"text"];
+    
+     homeFeed.text= [dic objectForKey:@"text"];
+    if ([homeFeed.text isEqual:[NSNull null ]]) {
+       homeFeed.text=@"";
+        
+    }
+   
+    
+    
     homeFeed.community_id=[dic objectForKey:@"community_id"];
     homeFeed.community_name= [dic objectForKey:@"community_name"];
     homeFeed.community_cover_photo= [dic objectForKey:@"community_cover_photo"];

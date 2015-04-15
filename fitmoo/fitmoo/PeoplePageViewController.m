@@ -304,16 +304,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         _count++;
         
         
-    }else
-    {
+        }else
+        {
         _count=0;
-    }
+        }
 }
 
 
 - (IBAction)commentButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag/100;
+    NSInteger index=(NSInteger) button.tag/100-1;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
     specialPage.action=@"Post";
@@ -324,7 +324,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)likeButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag/100;
+    NSInteger index=(NSInteger) button.tag/100-1;
     int totalLike=1+(int) [button.titleLabel.text integerValue];
     NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
     [button setTitle:newLikeString forState:UIControlStateNormal];
@@ -335,11 +335,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)optionButtonClick:(id)sender {
     
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100-1;
+    HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
     
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    
+    if ([feed.action_sheet isEqualToString:@"endorse"]) {
+        ActionSheet.action= @"endorse";
+       
+    }else if ([feed.action_sheet isEqualToString:@"report"]) {
+        ActionSheet.action= @"report";
+      
+    }else if ([feed.action_sheet isEqualToString:@"delete"]) {
+        ActionSheet.action= @"delete";
+     
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
 }
 - (IBAction)shareButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag/100;
+    NSInteger index=(NSInteger) button.tag/100-1;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
     specialPage.action=@"Share";

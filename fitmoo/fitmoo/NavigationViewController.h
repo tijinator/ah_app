@@ -13,6 +13,8 @@
 #import "UserManager.h"
 #import "User.h"
 #import "PeoplePageViewController.h"
+#import "ActionSheetViewController.h"
+#import "HomeFeed.h"
 
 @interface NavigationViewController : UIViewController
 

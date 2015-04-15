@@ -27,6 +27,7 @@
     _leftView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LeftViewController"];
     _rightView = [mainStoryboard instantiateViewControllerWithIdentifier:@"RightViewController"];
     _navigateView = [mainStoryboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+    _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
     _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
     _deckController.delegate = self;
@@ -53,6 +54,8 @@
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(EnableSlideView:) name:@"EnableSlideView" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openSideMenu:) name:@"openSideMenu" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPopup:) name:@"openPopup" object:nil];
+
 }
 
 -(void)openSideMenu:(NSNotification*)note{
@@ -71,7 +74,12 @@
     }
 }
 
-
+-(void)openPopup:(NSNotification*)note{
+    
+    _popupView= [note object];
+    [_deckController.view addSubview:_popupView.view];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -17,6 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    
+    if ([_action isEqualToString:@"delete"]) {
+    [_reportButton setTitle:@"Delete" forState:UIControlStateNormal];
+     [_endorseButton setHidden:true];
+    }else if ([_action isEqualToString:@"report"])
+    {
+    [_reportButton setTitle:@"Report" forState:UIControlStateNormal];
+       [_endorseButton setHidden:true];
+    }else
+    {
+        [_endorseButton setHidden:false];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -78,13 +90,21 @@
 }
 
 - (IBAction)endoseButtonClick:(id)sender {
+      [[UserManager sharedUserManager] performEndorse:_postId];
+    
 }
 
 - (IBAction)reportButtonClick:(id)sender {
+    if ([_action isEqualToString:@"delete"]) {
+        [[UserManager sharedUserManager] performDelete:_postId];
+    }else if([_action isEqualToString:@"report"]) {
+        
+        [[UserManager sharedUserManager] performReport:_postId];
+    }
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
-  //    [self.view removeFromSuperview];
+      [self.view removeFromSuperview];
   //  [self disableViews];
 }
 

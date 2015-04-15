@@ -39,7 +39,10 @@
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSideMenuAction:) name:@"leftSideMenuAction" object:nil];
+    
 }
+
+
 
 -(void)leftSideMenuAction:(NSNotification*)note{
     

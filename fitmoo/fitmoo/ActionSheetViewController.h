@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
+#import "UserManager.h"
 
 @interface ActionSheetViewController : UIViewController
 @property (strong, nonatomic) NSString * action;
