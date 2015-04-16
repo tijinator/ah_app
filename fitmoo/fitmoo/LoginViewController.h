@@ -25,14 +25,17 @@
 @property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (strong, nonatomic) IBOutlet UIView *forgetPasswordView;
 
 - (IBAction)closeButtonClick:(id)sender;
-- (IBAction)facebookButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;
 - (IBAction)signUoButtonClick:(id)sender;
 - (IBAction)forgotPasswordbuttonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *forgotPasswordEmail;
+- (IBAction)requestButtonClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
+@property (strong, nonatomic)  id<FBGraphUser> cachedUser;
 
 
 @end

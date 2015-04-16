@@ -20,7 +20,85 @@
     
 }
 
--(void) getUserProfile
+
+-(void) checkEmailExistFromFitmoo:(User *)user
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    _localUser= [self getUserLocally];
+    
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"undefined", @"secret_id", user.facebook_uid, @"uid",user.email, @"email",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",_homeFeedUrl, @"find_user_by_fb_uid"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+    
+        NSNumber * found=[_responseDic objectForKey:@"found"];
+        NSString *f= [found stringValue];
+        if ([f isEqualToString:@"1"]) {
+            _localUser=user;
+            _localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+            _localUser.auth_token=[_responseDic objectForKey:@"auth_token"];
+            NSNumber * user_id=[_responseDic objectForKey:@"user_id"];
+            _localUser.user_id= [user_id stringValue];
+     //       _localUser.user_id=[_responseDic objectForKey:@"user_id"];
+      //      [self performLogin:_localUser];
+            [self saveLocalUser:_localUser];
+            [self getUserProfile:_localUser];
+        }else if ([f isEqualToString:@"0"])
+        {
+            _localUser=user;
+            [self createAccountFromFacebook:_localUser];
+        }
+        
+        
+              //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+
+}
+
+
+-(void) createAccountFromFacebook:(User *)user
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *jsonUserDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.email, @"email", user.name, @"full_name",user.gender, @"gender",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.day_of_birth, @"date_of_birth", jsonUserDict, @"user",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",_homeFeedUrl, @"create_user_from_mobile"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        _localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+        _localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
+        NSNumber * user_id=[_responseDic objectForKey:@"user_id"];
+        _localUser.user_id= [user_id stringValue];
+         [self saveLocalUser:_localUser];
+        [self getUserProfile:_localUser];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
+
+
+-(void) getUserProfile:(User *) user;
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -29,7 +107,7 @@
 
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",@"http://staging.fitmoo.com/api/users/", _localUser.user_id];
+    NSString *url= [NSString stringWithFormat:@"%@%@",_homeFeedUrl, _localUser.user_id];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
@@ -41,6 +119,13 @@
          NSNumber * communities=[_responseDic objectForKey:@"communities"];
         _localUser.communities= [communities stringValue];
         
+        NSDictionary * profile=[_responseDic objectForKey:@"profile"];
+        _localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+        NSDictionary *avatar=[profile objectForKey:@"avatars"];
+        _localUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+        
+        
+        [self saveLocalUser:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.cover_photo_url];
         //      NSLog(@"Submit response data: %@", responseObject);
@@ -265,7 +350,7 @@
         self.localUser=tempUser;
         
         
-        [self getUserProfile];
+        [self getUserProfile:_localUser];
         
        
         
@@ -306,7 +391,17 @@
               NSLog(@"Error: %@", error);} // failure callback block
      ];
     
+    FBSession* session = [FBSession activeSession];
+    [session closeAndClearTokenInformation];
+    [session close];
+    [FBSession setActiveSession:nil];
     
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
     
 }
 
@@ -378,7 +473,7 @@
         user.password=result.password;
     }
     
-    
+    _localUser=user;
     return user;
 }
 

@@ -13,9 +13,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    
+    _cachedUser= nil;
     self.facebookLoginView.delegate = self;
-    self.facebookLoginView.readPermissions = @[@"public_profile", @"email"];
+    self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -34,29 +34,73 @@
 }
 
 
-
-
 - (IBAction)closeButtonClick:(id)sender {
-      [self.navigationController popViewControllerAnimated:YES];
-    
+      [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)facebookButtonClick:(id)sender {
-    
-}
+
 
 #pragma mark - FBLoginView Delegate method implementation
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     
-  
+    loginView.frame = CGRectMake(24, 68, 270, 37);
+    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+    for (id obj in loginView.subviews)
+    {
+        
+        
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+
 
 }
 
+- (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
+
+    NSString *user_id1=firstUser[@"id"];
+    NSString *user_id2=secondUser[@"id"];
+    
+    if (![user_id1 isEqual:user_id2]) {
+        return false;
+    }
+    
+    if (![firstUser.name isEqual:secondUser.name]) {
+        return false;
+    }
+    
+    if (![firstUser.name isEqual:secondUser.name]) {
+        return false;
+    }
+    
+    return true;
+}
 
 -(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
     NSLog(@"%@", user);
- 
+    
+    if (![self isUser:_cachedUser equalToUser:user]) {
+       
+        User *localUser= [[User alloc] init];
+        
+        localUser.email= user[@"email"];
+        localUser.gender=user[@"gender"];
+        localUser.name= user[@"name"];
+        localUser.day_of_birth= user[@"birthday"];
+        localUser.facebook_uid=user[@"id"];
+        
+        [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
+         _cachedUser = user;
+        
+    }
+    
+    
 }
 
 
@@ -147,8 +191,20 @@
 }
 
 - (IBAction)signUoButtonClick:(id)sender {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"openNextpage" object:@"signUp"];
 }
 
 - (IBAction)forgotPasswordbuttonClick:(id)sender {
+    UIButton *b= (UIButton *) sender;
+    if (b.tag==1) {
+        _forgetPasswordView.hidden=false;
+    }else if (b.tag==2)
+    {
+        _forgetPasswordView.hidden=true;
+    }
+        
+    
+}
+- (IBAction)requestButtonClick:(id)sender {
 }
 @end

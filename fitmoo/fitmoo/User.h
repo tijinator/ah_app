@@ -28,7 +28,9 @@
 @property (nonatomic, strong) NSString *following;
 @property (nonatomic, strong) NSString *followers;
 @property (nonatomic, strong) NSString *communities;
-
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *day_of_birth;
+@property (nonatomic, strong) NSString *facebook_uid;
 -(id)init;
 
 

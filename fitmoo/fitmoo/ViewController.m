@@ -31,6 +31,7 @@
     [self initFrames];
     [self checkLogin];
   // [self showImagesWithDelay];
+    
     [self createObservers];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -40,8 +41,8 @@
 {
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
     
-    if (localUser.user_id!=nil) {
-        [[UserManager sharedUserManager] performLogin:localUser];
+    if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
+        [[UserManager sharedUserManager] getUserProfile:localUser];
     }
   
    
@@ -50,7 +51,9 @@
 
 
 -(void)createObservers{
+  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkLogin:) name:@"checkLogin" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openNextpage:) name:@"openNextpage" object:nil];
 }
 
 
@@ -67,6 +70,16 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
     [self.navigationController pushViewController:homepage animated:YES];
+}
+
+-(void)openNextpage:(NSNotification * )note
+{
+    NSString *key= [note object];
+    if ([key isEqualToString:@"login"]) {
+        [self openLogingView];
+    }else if ([key isEqualToString:@"signUp"]) {
+        [self openSignUpView];
+    }
 }
 
 
@@ -135,18 +148,26 @@ int count=0;
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)signupButtonClick:(id)sender {
-     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-     _sighUpView = [mainStoryboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
-    [self.navigationController pushViewController:_sighUpView animated:YES];
-    
-}
-
-- (IBAction)loginButtonClick:(id)sender {
-    
+-(void) openLogingView
+{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _loginView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self.navigationController pushViewController:_loginView animated:YES];
-    
+}
+
+-(void) openSignUpView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _sighUpView = [mainStoryboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    [self.navigationController pushViewController:_sighUpView animated:YES];
+}
+
+- (IBAction)signupButtonClick:(id)sender {
+    [self openSignUpView];
+
+}
+
+- (IBAction)loginButtonClick:(id)sender {
+    [self openLogingView];
 }
 @end

@@ -12,7 +12,7 @@
 #import "LocalUser.h"
 #import <CoreData/CoreData.h>
 #import "AFNetworking.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 
 
 @interface UserManager : NSObject
@@ -38,7 +38,9 @@
 -(void) performReport:(NSString *) postId;
 -(void) performDelete:(NSString *) postId;
 -(void) performEndorse:(NSString *) postId;
-
+-(void) checkEmailExistFromFitmoo:(User *) user;
+-(void) createAccountFromFacebook:(User *) user;
+-(void) getUserProfile:(User *) user;
 
 
 @property (strong, nonatomic) NSString * loginUrl;
