@@ -11,6 +11,7 @@
 @implementation SignUpViewController
 {
     @private BOOL _valEmail;
+    @private BOOL _checkEmpty;
 }
 
 - (void)viewDidLoad {
@@ -26,6 +27,24 @@
 
 - (void) initFrames
 {
+    
+    _nameField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nameField respectToSuperFrame:self.view];
+    _passwordField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_passwordField respectToSuperFrame:self.view];
+    _dateBirthView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_dateBirthView respectToSuperFrame:self.view];
+    _genderView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_genderView respectToSuperFrame:self.view];
+    _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
+    
+    _pickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerView respectToSuperFrame:self.view];
+    _pickerView2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerView2 respectToSuperFrame:self.view];
+    _datePicker.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_datePicker respectToSuperFrame:self.view];
+    _datePicker.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_datePicker respectToSuperFrame:self.view];
+    
+    _genderPickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_genderPickerView respectToSuperFrame:self.view];
+    _doneButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton respectToSuperFrame:self.view];
+    _doneButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton1 respectToSuperFrame:self.view];
+    _clearButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_clearButton respectToSuperFrame:self.view];
+
+    
     _loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
     _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:self.view];
     _emailTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_emailTextField respectToSuperFrame:self.view];
@@ -138,6 +157,14 @@
 
 - (IBAction)signUpButtonClick:(id)sender {
     
+    if ([self checkValidEmail]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not create account."
+                                                          message : @"Enter Valid Email." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    }else
+    {
+    
     if (_valEmail==false) {
         NSString *email= _emailTextField.text;
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -170,10 +197,138 @@
 
     }else
     {
+        _checkEmpty=[self checkEmpty];
+        
+        if (_checkEmpty==false) {
+            
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            manager.securityPolicy.allowInvalidCertificates = YES;
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            
+            User *localUser= [[User alloc] init];
+            
+            NSString *date= _dateBirthLabel.text;
+            NSRange range = NSMakeRange(0,2);
+            NSRange range1 = NSMakeRange(3,2);
+            NSRange range2 = NSMakeRange(6,4);
+            NSString *month= [date substringWithRange:range];
+            NSString *day= [date substringWithRange:range1];
+            NSString *year= [date substringWithRange:range2];
+            
+            NSDictionary * userData= [[NSDictionary alloc] initWithObjectsAndKeys:_emailTextField.text, @"email",_nameField.text, @"full_name",_passwordField.text, @"password",_genderLabel.text, @"gender",nil];
+            
+            NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:month, @"dob_month",day, @"dob_day",year, @"dob_year",userData, @"user",nil];
+            NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] homeFeedUrl], @"create_user_from_mobile"];
+            [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+                
+                NSDictionary * _responseDic= responseObject;
+                
+                localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
+                localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
+                NSNumber * user_id=[_responseDic objectForKey:@"user_id"];
+                localUser.user_id= [user_id stringValue];
+                [[UserManager sharedUserManager] setLocalUser:localUser];
+                [[UserManager sharedUserManager] saveLocalUser:localUser];
+                [[UserManager sharedUserManager] getUserProfile:localUser];
+                
+                
+              
+            } // success callback block
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                     NSLog(@"Error: %@", error);} // failure callback block
+             ];
+            
+
+            
+        }
+    }
+        
         
     }
 }
 
+-(BOOL) checkValidEmail
+{
+    
+     BOOL valid=true;
+    
+    if ([_emailTextField.text isEqualToString:@""]) {
+        return false;
+    }
+    
+    if (![_emailTextField.text containsString:@"@"]) {
+        return false;
+    }
+    if (![_emailTextField.text containsString:@".com"]) {
+        return false;
+    }
+    
+    return valid;
+}
+
+- (BOOL) checkEmpty
+{
+    NSString *emptyMessage;
+    NSString *emptyMessage1;
+    NSString *emptyMessage2;
+    BOOL empty=false;
+    
+    if ([_nameField.text isEqualToString:@""]) {
+        emptyMessage=@"Enter a full name.";
+        empty=true;
+    }else { emptyMessage=@""; }
+    
+    if ([_passwordField.text isEqualToString:@""]) {
+        emptyMessage1=@"Enter a password.";
+          empty=true;
+    }else {emptyMessage1=@"";}
+    
+    if ([_dateBirthLabel.text isEqualToString:@""]) {
+        emptyMessage2=@"Enter a birthday.";
+          empty=true;
+    }else {emptyMessage2=@"";}
+    
+    if (empty==true) {
+        NSString *totaleMessage= [NSString stringWithFormat:@"%@\n%@\n%@", emptyMessage,emptyMessage1,emptyMessage2];
+        
+        _valEmail=false;
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not create account."
+                                                          message : totaleMessage delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show];
+    }
+    
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:now];
+    [components setHour:10];
+    NSDate *today10am = [calendar dateFromComponents:components];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"yyyy";
+    NSString *thisYear=  [format stringFromDate:today10am];
+    
+    
+    NSString *date= _dateBirthLabel.text;
+    NSRange range2 = NSMakeRange(6,4);
+    NSString *year= [date substringWithRange:range2];
+    
+    if ([thisYear integerValue]-[year integerValue]<12) {
+        
+          empty=true;
+        
+        NSString *totaleMessage=@"You must be older than 13.";
+        
+        _valEmail=false;
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not create account."
+                                                          message : totaleMessage delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show];
+
+    }
+    
+    return empty;
+}
 
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {

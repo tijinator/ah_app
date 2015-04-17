@@ -65,6 +65,12 @@
         PeoplePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
         [[self nav] pushViewController:homePage animated:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+    }else  if ([key isEqualToString:@"3"]) {
+        
+        
+        SearchViewController *searchPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SearchViewController"];
+        [[self nav] pushViewController:searchPage animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
     }
     
     

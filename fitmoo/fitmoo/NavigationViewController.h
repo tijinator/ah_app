@@ -15,6 +15,7 @@
 #import "PeoplePageViewController.h"
 #import "ActionSheetViewController.h"
 #import "HomeFeed.h"
+#import "SearchViewController.h"
 
 @interface NavigationViewController : UIViewController
 

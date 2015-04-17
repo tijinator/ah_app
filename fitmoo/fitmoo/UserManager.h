@@ -38,6 +38,7 @@
 -(void) performReport:(NSString *) postId;
 -(void) performDelete:(NSString *) postId;
 -(void) performEndorse:(NSString *) postId;
+
 -(void) checkEmailExistFromFitmoo:(User *) user;
 -(void) createAccountFromFacebook:(User *) user;
 -(void) getUserProfile:(User *) user;

@@ -14,7 +14,7 @@
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
-@interface LoginViewController : UIViewController<FBLoginViewDelegate>
+@interface LoginViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
@@ -26,6 +26,12 @@
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (strong, nonatomic) IBOutlet UIView *forgetPasswordView;
+@property (strong, nonatomic) IBOutlet UIView *forgetPdView;
+@property (strong, nonatomic) IBOutlet UILabel *dontWorryLabel;
+@property (strong, nonatomic) IBOutlet UITextField *emailLabel;
+@property (strong, nonatomic) IBOutlet UIButton *requestButton;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+
 
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;

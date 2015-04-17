@@ -21,6 +21,9 @@
 }
 
 
+
+
+
 -(void) checkEmailExistFromFitmoo:(User *)user
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -358,7 +361,13 @@
     } // success callback block
     failure:^(AFHTTPRequestOperation *operation, NSError *error){
         self.localUser=tempUser;
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
+                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    
+    } // failure callback block
      
      ];
 
@@ -432,6 +441,10 @@
     _context=con;
 }
 
+- (void) setLocalUser:(User *)User{
+    
+    _localUser=User;
+}
 
 
 - (void) saveLocalUser: (User *) localUser

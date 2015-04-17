@@ -91,7 +91,7 @@
 
 - (IBAction)endoseButtonClick:(id)sender {
       [[UserManager sharedUserManager] performEndorse:_postId];
-    
+      [self.view removeFromSuperview];
 }
 
 - (IBAction)reportButtonClick:(id)sender {
@@ -101,6 +101,7 @@
         
         [[UserManager sharedUserManager] performReport:_postId];
     }
+      [self.view removeFromSuperview];
 }
 
 - (IBAction)cancelButtonClick:(id)sender {

@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FitmooHelper.h"
 
 @interface BaseViewController : UIViewController
 
 - (IBAction)openSideMenu:(id)sender;
-
+@property (nonatomic, strong) UIButton *postButton;
+@property (nonatomic, strong) UIButton *postPhoto;
+@property (nonatomic, strong) UIButton *postVideo;
+@property (strong, nonatomic)  UIView *bottomView;
 @end

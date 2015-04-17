@@ -27,8 +27,18 @@
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
 @property (strong, nonatomic) IBOutlet UIView *pickerView2;
 @property (strong, nonatomic) IBOutlet UIPickerView *genderPickerView;
+@property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
+@property (strong, nonatomic) IBOutlet UIButton *clearButton;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton1;
 @property (strong, nonatomic)  id<FBGraphUser> cachedUser;
+@property (strong, nonatomic) IBOutlet UIView *genderView;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *genderButton;
+@property (strong, nonatomic) IBOutlet UIButton *DateOfBirthButton;
+@property (strong, nonatomic) IBOutlet UIView *dateBirthView;
 
 - (IBAction)signUpButtonClick:(id)sender;
 - (IBAction)dateBirthButtonClick:(id)sender;

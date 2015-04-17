@@ -1,10 +1,11 @@
 //
-//  HomePageViewController.h
+//  SearchViewController.h
 //  fitmoo
 //
-//  Created by hongjian lin on 4/8/15.
+//  Created by hongjian lin on 4/17/15.
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -19,21 +20,16 @@
 #import "ActionSheetViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
+@interface SearchViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 
-@interface HomePageViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic)  NSDictionary * responseDic;
-@property (strong, nonatomic)  NSMutableArray * homeFeedArray;
-@property (assign, nonatomic)  int limit;
-@property (assign, nonatomic)  int offset;
-@property (assign, nonatomic)  int count;
-
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
-@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
 
 
-
+@property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSMutableArray * searchArray;
 
 @end

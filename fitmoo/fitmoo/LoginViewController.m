@@ -31,6 +31,11 @@
     _forgotPasswordButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgotPasswordButton respectToSuperFrame:self.view];
     _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
     
+    _dontWorryLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_dontWorryLabel respectToSuperFrame:self.view];
+    _forgetPasswordView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgetPasswordView respectToSuperFrame:self.view];
+    _emailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_emailLabel respectToSuperFrame:self.view];
+    _requestButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_requestButton respectToSuperFrame:self.view];
+    _cancelButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cancelButton respectToSuperFrame:self.view];
 }
 
 
@@ -38,7 +43,29 @@
       [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+-(BOOL) checkValidEmail: (UITextField *)textfield
+{
+    
+    BOOL valid=true;
+    
+    if ([textfield.text isEqualToString:@""]) {
+        return false;
+    }
+    
+    if (![textfield.text containsString:@"@"]) {
+        return false;
+    }
+    if (![textfield.text containsString:@".com"]) {
+        return false;
+    }
+    
+    return valid;
+}
 
 #pragma mark - FBLoginView Delegate method implementation
 
@@ -132,54 +159,22 @@
 
 - (IBAction)loginButtonClick:(id)sender {
     
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.securityPolicy.allowInvalidCertificates = YES;
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"hongjianlin1989@gmail.com", @"email", @"lin22549010", @"password", @"undefined", @"secret_id", nil];
-//    
-//    [manager POST:[[UserManager sharedUserManager]  loginUrl] parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-//        
-//        _responseDic= responseObject;
-//        User *localUser= [[User alloc] init];
-//        localUser.auth_token= [_responseDic objectForKey:@"auth_token"];
-//        localUser.secret_id= [_responseDic objectForKey:@"secret_id"];
-//        localUser.email=@"hongjianlin1989@gmail.com";
-//        localUser.password=@"lin22549010";
-//        
-//        
-//        
-//        NSDictionary * userInfo=[_responseDic objectForKey:@"user_info"];
-//        
-//        NSDictionary * profile=[userInfo objectForKey:@"profile"];
-//        localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
-//        NSDictionary *avatar=[profile objectForKey:@"avatars"];
-//        localUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-//        NSNumber * user_id=[userInfo objectForKey:@"id"];
-//        localUser.user_id= [user_id stringValue];
-//        localUser.name= [userInfo objectForKey:@"full_name"];
-//        
-//      
-//        
-//       
-//        
-//        [[FitmooHelper sharedInstance] saveLocalUser:localUser];
-//     
-//        [self openHomePage];
-//        
-//  //      NSLog(@"Submit response data: %@", responseObject);
-//    } // success callback block
-//     
-//          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-//              
-//              NSLog(@"Error: %@", error);} // failure callback block
-//     ];
-
-        
         User *localUser= [[User alloc] init];
-        localUser.email=@"hongjianlin1989@gmail.com";
-        localUser.password=@"lin22549010";
+       // localUser.email=@"hongjianlin1989@gmail.com";
+       // localUser.password=@"lin22549010";
     
+    if (!([_emailTextField.text isEqualToString:@""]||[_passwordTextField.text isEqualToString:@""])) {
+        localUser.email= _emailTextField.text;
+        localUser.password=_passwordTextField.text;
         [[UserManager sharedUserManager] performLogin:localUser];
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
+                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    }
+   
 
 }
 
@@ -206,5 +201,45 @@
     
 }
 - (IBAction)requestButtonClick:(id)sender {
+    if ([self checkValidEmail:_emailLabel]==true) {
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
+        NSDictionary *user = [[NSDictionary alloc] initWithObjectsAndKeys:_emailLabel.text, @"email",nil];
+        
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user, @"user",nil];
+        NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] homeFeedUrl], @"forgot"];
+        [manager PUT: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            _responseDic= responseObject;
+            
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Sucess"
+                                                              message : @"We've sent you an email with a link to reset your password." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            
+            //      NSLog(@"Submit response data: %@", responseObject);
+        } // success callback block
+         
+             failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Error"
+                                                                   message : @"The email entered could not be found" delegate : nil cancelButtonTitle : @"OK"
+                                                         otherButtonTitles : nil ];
+                 [alert show ];
+
+                 NSLog(@"Error: %@", error);} // failure callback block
+         ];
+        
+        
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not request."
+                                                          message : @"Enter Valid Email" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    }
+    
 }
 @end

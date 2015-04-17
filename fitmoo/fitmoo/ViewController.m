@@ -44,8 +44,7 @@
     if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
         [[UserManager sharedUserManager] getUserProfile:localUser];
     }
-  
-   
+
 }
 
 

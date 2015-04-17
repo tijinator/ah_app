@@ -140,7 +140,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==5) {
         User *localUser= [[UserManager sharedUserManager] getUserLocally];
         [[UserManager sharedUserManager] performLogout:localUser];
-    }else
+    }
+    else
     {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }

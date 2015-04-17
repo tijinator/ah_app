@@ -80,6 +80,7 @@
 		27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */; };
 		27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
 		27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC81AD48DD000C34372 /* SignUpViewController.m */; };
+		2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719EBDD1AE1970000019079 /* SearchViewController.m */; };
 		2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
 		272581FB1AD562A60059F43C /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F61AD562A60059F43C /* IISideController.m */; };
 		272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F81AD562A60059F43C /* IIViewDeckController.m */; };
@@ -238,6 +239,8 @@
 		27188FC41AD4776700C34372 /* FitmooHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooHelper.h; sourceTree = "<group>"; };
 		27188FC71AD48DD000C34372 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		27188FC81AD48DD000C34372 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		2719EBDC1AE1970000019079 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		2719EBDD1AE1970000019079 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		2720091A1ADAB59400CC3070 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		2720091B1ADAB59400CC3070 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		272581F51AD562A60059F43C /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
@@ -704,6 +707,8 @@
 				2731C62D1ADD55D300788181 /* PeoplePageViewController.m */,
 				27163D941ADAF733005B95D5 /* SpecialPageViewController.h */,
 				27163D951ADAF733005B95D5 /* SpecialPageViewController.m */,
+				2719EBDC1AE1970000019079 /* SearchViewController.h */,
+				2719EBDD1AE1970000019079 /* SearchViewController.m */,
 			);
 			name = MainPages;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				TargetAttributes = {
 					27188F641AD4646300C34372 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = GQ8R63HQY2;
 					};
 					27188F801AD4646300C34372 = {
 						CreatedOnToolsVersion = 6.2;
@@ -973,6 +979,7 @@
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
+				2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
@@ -1176,6 +1183,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
@@ -1185,6 +1194,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1192,6 +1202,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
@@ -1201,6 +1213,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

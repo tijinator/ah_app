@@ -19,8 +19,12 @@
    // [self getHomePageItems];
     [self createObservers];
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
    
 }
+
+
+
 
 - (void) displayOneMoreTime: (NSTimer *)timer {
     
