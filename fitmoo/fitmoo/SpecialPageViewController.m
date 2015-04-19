@@ -186,6 +186,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"postFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postFinished:) name:@"postFinished" object:nil];
 }
 

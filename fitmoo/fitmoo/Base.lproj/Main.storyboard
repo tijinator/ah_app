@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="1LR-wu-jv4">
-                                <rect key="frame" x="0.0" y="30" width="320" height="527"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="537"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -190,12 +190,40 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="PtU-ad-vNd">
+                                <rect key="frame" x="0.0" y="390" width="320" height="177"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pwk-cl-p8U">
+                                        <rect key="frame" x="266" y="8" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="hcf-6K-sfu" eventType="touchUpInside" id="eGm-0X-vDz"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" id="Mr8-Li-pMG">
+                                        <rect key="frame" x="0.0" y="53" width="320" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="hcf-6K-sfu" id="zrV-3u-hKE"/>
+                                            <outlet property="delegate" destination="hcf-6K-sfu" id="tkK-r6-WSq"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="pwk-cl-p8U" id="Ne8-Rs-Wes"/>
                         <outlet property="headerView" destination="puL-jk-Eo7" id="wsy-z7-wXb"/>
                         <outlet property="leftButton" destination="sdK-hW-67H" id="ha6-hc-BqN"/>
+                        <outlet property="pickerView" destination="PtU-ad-vNd" id="V52-nS-D61"/>
+                        <outlet property="pickerview" destination="Mr8-Li-pMG" id="skf-IS-R2y"/>
                         <outlet property="rightButton" destination="WYa-Wx-vFL" id="nMm-Yn-qMD"/>
                         <outlet property="tableview" destination="1LR-wu-jv4" id="DnO-RA-otv"/>
                         <outlet property="titleLabel" destination="pjV-Cp-OE9" id="mtz-tp-M3V"/>

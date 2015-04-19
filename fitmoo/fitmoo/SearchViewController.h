@@ -20,15 +20,22 @@
 #import "ActionSheetViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
-@interface SearchViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface SearchViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UIView *pickerView;
+- (IBAction)doneButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerview;
 
-
+@property (strong, nonatomic)  NSString * category;
+@property (strong, nonatomic)  NSString * Category;
+@property (strong, nonatomic)  NSString * searchterm;
+@property (strong, nonatomic)  UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * searchArray;
 

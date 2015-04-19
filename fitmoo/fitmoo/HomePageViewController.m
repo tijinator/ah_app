@@ -16,7 +16,7 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-   // [self getHomePageItems];
+    [self getHomePageItems];
     [self createObservers];
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
     [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
@@ -32,6 +32,7 @@
 }
 
 -(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
 }
 
@@ -46,7 +47,7 @@
 {
     _offset=0;
     _limit=10;
-    _count=0;
+    _count=1;
     _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
