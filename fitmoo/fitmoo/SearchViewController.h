@@ -20,6 +20,7 @@
 #import "ActionSheetViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
+#import "CreatedByCommunity.h"
 @interface SearchViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 
@@ -37,6 +38,7 @@
 @property (strong, nonatomic)  NSString * searchterm;
 @property (strong, nonatomic)  UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;
-@property (strong, nonatomic)  NSMutableArray * searchArray;
+@property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
+@property (strong, nonatomic)  NSMutableArray * searchArrayCommunitiess;
 
 @end

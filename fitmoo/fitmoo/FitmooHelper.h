@@ -19,12 +19,13 @@
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView;
 - (void) saveLocalUser: (User *) localUser;
 - (void) setContext: (NSManagedObjectContext *) con;
+
 - (User *) getUserLocally;
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic;
 @property (strong, nonatomic) NSManagedObjectContext * context;
 @property (strong, nonatomic) UIView * screenSizeView;
 
-
+- (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 
 
 @end

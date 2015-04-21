@@ -111,6 +111,8 @@
 		272582771AD593150059F43C /* LocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582761AD593150059F43C /* LocalUser.m */; };
 		2725827A1AD5A4DE0059F43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582791AD5A4DE0059F43C /* User.m */; };
 		272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582801AD5AAA40059F43C /* HomePageViewController.m */; };
+		272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */; };
+		272F27721AE6BE2B00C9EADC /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */; };
 		2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
 		2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731C62F1ADD632F00788181 /* FacebookSDK.framework */; };
 		2731C6321ADD632F00788181 /* Fitmoo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6301ADD632F00788181 /* Fitmoo-Info.plist */; };
@@ -303,6 +305,9 @@
 		272582791AD5A4DE0059F43C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		2725827F1AD5AAA40059F43C /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		272582801AD5AAA40059F43C /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		272F276E1AE6BE2B00C9EADC /* CommunityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityTableViewCell.h; sourceTree = "<group>"; };
+		272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityTableViewCell.m; sourceTree = "<group>"; };
+		272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
 		2731C62C1ADD55D300788181 /* PeoplePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoplePageViewController.h; sourceTree = "<group>"; };
 		2731C62D1ADD55D300788181 /* PeoplePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoplePageViewController.m; sourceTree = "<group>"; };
 		2731C62F1ADD632F00788181 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -564,6 +569,9 @@
 				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
 				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
 				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
+				272F276E1AE6BE2B00C9EADC /* CommunityTableViewCell.h */,
+				272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */,
+				272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -899,6 +907,7 @@
 				2732B7231AD820FB00610821 /* profile.png in Resources */,
 				27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */,
 				2732B7121AD809E900610821 /* like.png in Resources */,
+				272F27721AE6BE2B00C9EADC /* CommunityTableViewCell.xib in Resources */,
 				27188FB91AD4695000C34372 /* logo-lg.png in Resources */,
 				27188FAD1AD4695000C34372 /* fitmoo_logo_white.png in Resources */,
 				2760941F1AD708AD00A769CE /* SemplicitaPro-Italic.otf in Resources */,
@@ -977,6 +986,7 @@
 			files = (
 				272581FB1AD562A60059F43C /* IISideController.m in Sources */,
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
 				2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */,

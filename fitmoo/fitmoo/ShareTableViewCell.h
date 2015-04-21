@@ -36,10 +36,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *bodyImage;
 
 - (void) removeViewsFromBodyView: (UIView *) removeView;
-
+- (void) removeCommentView;
+- (void) addCommentView: (UIView *) addView Atindex:(int) index;
 - (void) loadHeaderImage1: (NSString *)url;
 - (void) loadHeaderImage2: (NSString *)url;
 - (void) loadCommentImage: (NSString *)url;
+-(void) deleteViews:(UIView *)view;
 - (void) addScrollView;
 
 @end

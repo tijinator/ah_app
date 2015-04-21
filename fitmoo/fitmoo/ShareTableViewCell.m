@@ -60,17 +60,48 @@
   //  [_bodyView addSubview:scrollImageView];
 }
 
+-(void) deleteViews:(UIView *)view
+{
+   
+}
 
+- (void) addCommentView: (UIView *) addView Atindex:(int) index
+{
+    if (index==0) {
+        AsyncImageView *commentImage = [[AsyncImageView alloc] init];
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
+        _homeFeed.Comments= [_homeFeed.commentsArray objectAtIndex:0];
+        commentImage.imageURL =[NSURL URLWithString:_homeFeed.comments.thumb];
+        [self.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
+        self.commentName.text=_homeFeed.comments.full_name;
+        self.commentDetail.text= _homeFeed.comments.text;
+    }
+   
+//    if (index==1) {
+//        UIView *view= [[UIView alloc] initWithFrame:CGRectMake(_commentView.frame.origin.x, _commentView.frame.origin.y+_commentView.frame.size.height+1, _commentView.frame.size.width, _commentView.frame.size.height)];
+//        [view setBackgroundColor:[UIColor yellowColor]];
+//        self.buttomView.frame= CGRectMake(_buttomView.frame.origin.x, _commentView.frame.origin.y+2*_commentView.frame.size.height+5, _buttomView.frame.size.width, _buttomView.frame.size.height);
+//        
+//       [self.contentView addSubview:view];
+//    }
+    
+    
+    
+}
+
+- (void) removeCommentView
+{
+     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+    [_commentView removeFromSuperview];
+}
 
 - (void) removeViewsFromBodyView: (UIView *) removeView
 {
-    [removeView removeFromSuperview];
-    int frameHeight=self.bodyDetailLabel.frame.origin.y + self.bodyDetailLabel.frame.size.height;
+    int frameHeight=_bodyView.frame.size.height-removeView.frame.size.height;
     self.bodyView.frame= CGRectMake(self.bodyView.frame.origin.x, self.bodyView.frame.origin.y, self.bodyView.frame.size.width, frameHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, self.commentView.frame.origin.y-removeView.frame.size.height, self.commentView.frame.size.width, self.commentView.frame.size.height);
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.buttomView.frame.origin.y-removeView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
-    self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height-removeView.frame.size.height);
-    
+    [removeView removeFromSuperview];
 }
 
 - (void) loadHeaderImage1: (NSString *)url

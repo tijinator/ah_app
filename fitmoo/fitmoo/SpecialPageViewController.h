@@ -15,6 +15,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "HomeFeed.h"
+#import "PeoplePageViewController.h"
 
 @interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate>
 - (IBAction)backButtonClick:(id)sender;

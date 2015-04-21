@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic)  NSString * searchId;
+@property (strong, nonatomic)  User * temSearchUser;
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;

@@ -48,12 +48,12 @@
     _offset=0;
     _limit=10;
     _count=1;
-    _homeFeedArray= [[NSMutableArray alloc]init];
+ //   _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
 -(void) getHomePageItems
 {
-    _tableView.userInteractionEnabled=false;
+    //_tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -74,7 +74,7 @@
         _responseDic= responseObject;
         
      
-        _tableView.userInteractionEnabled=true;
+     //   _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
         
         
@@ -91,12 +91,18 @@
 
 - (void) defineFeedObjects
 {
+    if (_offset==0) {
+        _homeFeedArray= [[NSMutableArray alloc]init];
+    }
+    
+    
     for (NSDictionary *dic in _responseDic) {
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         [_homeFeedArray addObject:feed];
         
     }
+    
 
 }
 
@@ -163,24 +169,32 @@ int contentHight=50;
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     cell.bodyDetailLabel.text= tempHomefeed.text;
-   
     
-    if (tempHomefeed.commentsArray!=nil) {
+    NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
+    NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
+    NSDate *today= [NSDate date];
+    
+   cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
+    if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-          
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-            
-           
             tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
             commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
             [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
-            
             cell.commentName.text=tempHomefeed.comments.full_name;
             cell.commentDetail.text= tempHomefeed.comments.text;
+            
+            if (i>0) {
+                //[cell]
+            }
         }
        
+    }else
+    {
+        [cell removeCommentView];
     }
     
     if ([tempHomefeed.photoArray count]!=0) {
@@ -209,8 +223,8 @@ int contentHight=50;
         
     }else
     {
-     //  [cell removeViewsFromBodyView:cell.bodyImage];
-            cell.bodyImage.hidden=true;
+       [cell removeViewsFromBodyView:cell.bodyImage];
+     
     }
     
    
@@ -239,6 +253,7 @@ int contentHight=50;
  //    NSLog(@"%d",contentHight);
     return cell;
 }
+
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

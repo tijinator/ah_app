@@ -42,7 +42,7 @@
     _offset=0;
     _limit=10;
     _count=1;
-    _homeFeedArray= [[NSMutableArray alloc]init];
+ //   _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
 
@@ -50,7 +50,7 @@
 
 -(void) getHomePageItems
 {
-    _tableView.userInteractionEnabled=false;
+   // _tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -61,16 +61,20 @@
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
                               ofs, @"offset", lim , @"limit",nil];
-    
-    
-    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/feeds.json"];
+    NSString * url;
+    if (_searchId!=nil) {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],_searchId,@"/feeds.json"];
+    }else
+    {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/feeds.json"];
+    }
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         
         
-        _tableView.userInteractionEnabled=true;
+    //    _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
         
     //    [self getUserProfile];
@@ -87,6 +91,9 @@
 
 - (void) defineFeedObjects
 {
+    if (_offset==0) {
+        _homeFeedArray= [[NSMutableArray alloc]init];
+    }
     for (NSDictionary *dic in _responseDic) {
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
@@ -138,8 +145,6 @@ int contentHight2=50;
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     if (indexPath.row==0) {
         PeopleTitleCell *cell=(PeopleTitleCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         
@@ -147,7 +152,14 @@ int contentHight2=50;
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PeopleTitleCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        User *temUser= [[UserManager sharedUserManager] localUser];
+        User *temUser;
+        
+        if (_temSearchUser !=nil) {
+            temUser=_temSearchUser;
+        }else
+        {
+        temUser= [[UserManager sharedUserManager] localUser];
+        }
         cell.nameLabel.text= temUser.name;
         self.titleLabel.text= temUser.name;
         NSString * imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
@@ -175,8 +187,6 @@ int contentHight2=50;
         cell = [nib objectAtIndex:0];
     }
     
-    
-    
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
     cell.homeFeed=tempHomefeed;
     
@@ -190,20 +200,37 @@ int contentHight2=50;
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     cell.bodyDetailLabel.text= tempHomefeed.text;
     
+    NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
+    NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
+    NSDate *today= [NSDate date];
     
-    if (tempHomefeed.commentsArray!=nil) {
+    cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
+    if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
-            AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-            tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
-            commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
-            [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
-            
-            cell.commentName.text=tempHomefeed.comments.full_name;
-            cell.commentDetail.text= tempHomefeed.comments.text;
+//            AsyncImageView *commentImage = [[AsyncImageView alloc] init];
+//            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
+//            tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
+//            commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
+//            [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
+//            cell.commentName.text=tempHomefeed.comments.full_name;
+//            cell.commentDetail.text= tempHomefeed.comments.text;
+            cell.homeFeed=tempHomefeed;
+            [cell addCommentView:cell.commentView Atindex:i];
+          //  if (i==1) {
+                UIView *view= [[UIView alloc] initWithFrame:CGRectMake(cell.commentView.frame.origin.x, cell.commentView.frame.origin.y+cell.commentView.frame.size.height+1, cell.commentView.frame.size.width, cell.commentView.frame.size.height)];
+                [view setBackgroundColor:[UIColor yellowColor]];
+                cell.buttomView.frame= CGRectMake(cell.buttomView.frame.origin.x, cell.commentView.frame.origin.y+2*cell.commentView.frame.size.height+5, cell.buttomView.frame.size.width, cell.buttomView.frame.size.height);
+                
+                [cell.contentView insertSubview:view belowSubview:cell.buttomView];
+                [cell.contentView bringSubviewToFront:view];
+         //   }
         }
         
+    }else
+    {
+        [cell removeCommentView];
     }
     
     if ([tempHomefeed.photoArray count]!=0) {
@@ -212,24 +239,28 @@ int contentHight2=50;
         if (![tempHomefeed.photos.stylesUrl isEqual:@""]) {
             
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+            
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+            
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-                 cell.bodyImage.hidden=false;
+            cell.bodyImage.hidden=false;
         }else
         {
             AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
+            
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
+            
             bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
             [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-               cell.bodyImage.hidden=false;
+            cell.bodyImage.hidden=false;
             //  [cell removeViewsFromBodyView:cell.bodyImage];
         }
         
     }else
     {
-        //  [cell removeViewsFromBodyView:cell.bodyImage];
-            cell.bodyImage.hidden=true;
+        [cell removeViewsFromBodyView:cell.bodyImage];
+        
     }
     
     
@@ -255,7 +286,6 @@ int contentHight2=50;
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     contentHight2=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
-    
     //    NSLog(@"%d",contentHight);
     return cell;
 }

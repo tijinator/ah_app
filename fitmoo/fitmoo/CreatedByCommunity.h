@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *cover_photo_url;
 
-
+@property (nonatomic, strong) NSString *joiners_count;
+@property (nonatomic, strong) NSString *is_member;
+@property (nonatomic, strong) NSString *is_owner;
 
 @end

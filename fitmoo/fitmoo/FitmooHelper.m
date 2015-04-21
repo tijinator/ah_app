@@ -20,6 +20,37 @@
     
 }
 
+- (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
+{
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitDay | NSCalendarUnitMonth|NSCalendarUnitYear;
+    
+    NSDateComponents *conversionInfo = [calendar components:unitFlags fromDate:fromDateTime   toDate:toDateTime  options:0];
+    
+    int months = (int)[conversionInfo month];
+    int days =(int) [conversionInfo day];
+    int hours = (int)[conversionInfo hour];
+    int minutes = (int)[conversionInfo minute];
+    int year = (int)[conversionInfo year];
+    if (year!=0) {
+        return [NSString stringWithFormat:@"%d%@",year, @" years ago"];
+    }
+    else if (months!=0) {
+        return [NSString stringWithFormat:@"%d%@",months, @" months ago"];
+    }else if (days!=0) {
+        return [NSString stringWithFormat:@"%d%@",days, @" days ago"];
+    }else if (hours!=0) {
+        return [NSString stringWithFormat:@"%d%@",hours, @" hours ago"];
+    }else if (minutes!=0) {
+        return [NSString stringWithFormat:@"%d%@",minutes, @" minutes ago"];
+    }
+    
+    
+    return @"Just now";
+}
+
+
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView
 {
     if (superView!=nil) {
