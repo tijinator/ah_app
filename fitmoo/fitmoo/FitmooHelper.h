@@ -22,9 +22,10 @@
 
 - (User *) getUserLocally;
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic;
+-(CGRect) caculateLabelHeight: (UILabel *) label;
 @property (strong, nonatomic) NSManagedObjectContext * context;
 @property (strong, nonatomic) UIView * screenSizeView;
-
+@property (assign, nonatomic) double frameRadio;
 - (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 
 

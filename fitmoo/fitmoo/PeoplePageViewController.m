@@ -74,11 +74,13 @@
         _responseDic= responseObject;
         
         
-    //    _tableView.userInteractionEnabled=true;
+ 
         [self defineFeedObjects];
+  
+        if ([_responseDic count]>0) {
+            [self.tableView reloadData];
+        }
         
-    //    [self getUserProfile];
-        [self.tableView reloadData];
         
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -190,81 +192,78 @@ int contentHight2=50;
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
     cell.homeFeed=tempHomefeed;
     
+    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]) {
+        cell.heanderImage1.hidden=true;
+        [cell reDefineHearderViewsFrame];
+    }else
+    {
+        cell.heanderImage1.hidden=false;
+        AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
+        if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
+        {
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by.thumb];
+        }else
+        {
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
+        }
+        [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.heanderImage1 addSubview:headerImage1];
+        
+    }
     
-    AsyncImageView *headerImage2 = [[AsyncImageView alloc] init];
+    AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
-    headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
-    [cell.headerImage2 setBackgroundImage:headerImage2.image forState:UIControlStateNormal];
+    if ([tempHomefeed.community_id isEqual:[NSNull null]])
+    {
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
+    }else
+    {
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
+    }
+    [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [cell.headerImage2 addSubview:headerImage2];
+
     
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
-    cell.bodyDetailLabel.text= tempHomefeed.text;
-    
     NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
-    
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
+//    if ([tempHomefeed.type isEqualToString:@"regular"]) {
+        cell.bodyDetailLabel.text= tempHomefeed.text;
+        cell.bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:cell.bodyDetailLabel];
+        if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
+            [cell addScrollView];
+        }else
+        {
+            [cell removeViewsFromBodyView:cell.bodyImage];
+        }
+        [cell rebuiltBodyViewFrame];
+ //   }
+    
     
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
-//            AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-//            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-//            tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
-//            commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
-//            [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
-//            cell.commentName.text=tempHomefeed.comments.full_name;
-//            cell.commentDetail.text= tempHomefeed.comments.text;
             cell.homeFeed=tempHomefeed;
             [cell addCommentView:cell.commentView Atindex:i];
-          //  if (i==1) {
-                UIView *view= [[UIView alloc] initWithFrame:CGRectMake(cell.commentView.frame.origin.x, cell.commentView.frame.origin.y+cell.commentView.frame.size.height+1, cell.commentView.frame.size.width, cell.commentView.frame.size.height)];
-                [view setBackgroundColor:[UIColor yellowColor]];
-                cell.buttomView.frame= CGRectMake(cell.buttomView.frame.origin.x, cell.commentView.frame.origin.y+2*cell.commentView.frame.size.height+5, cell.buttomView.frame.size.width, cell.buttomView.frame.size.height);
-                
-                [cell.contentView insertSubview:view belowSubview:cell.buttomView];
-                [cell.contentView bringSubviewToFront:view];
-         //   }
         }
-        
+        if ([tempHomefeed.commentsArray count]==1) {
+            [cell removeCommentView2];
+            [cell removeCommentView1];
+        }
+        if ([tempHomefeed.commentsArray count]==2) {
+            [cell removeCommentView2];
+        }
     }else
     {
-        [cell removeCommentView];
+         [cell removeCommentView2];
+         [cell removeCommentView1];
+         [cell removeCommentView];
     }
-    
-    if ([tempHomefeed.photoArray count]!=0) {
-        tempHomefeed.photos= [tempHomefeed.photoArray objectAtIndex:0];
-        
-        if (![tempHomefeed.photos.stylesUrl isEqual:@""]) {
-            
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-            
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-            
-            bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-        }else
-        {
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-            
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-            
-            bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-            //  [cell removeViewsFromBodyView:cell.bodyImage];
-        }
-        
-    }else
-    {
-        [cell removeViewsFromBodyView:cell.bodyImage];
-        
-    }
-    
-    
-    
     
     [cell.likeButton setTag:indexPath.row*100+4];
     [cell.commentButton setTag:indexPath.row*100+5];

@@ -99,7 +99,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="geb-PZ-hxg">
+                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="geb-PZ-hxg">
                                                     <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -787,8 +787,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="hfy-7c-KzY" id="Dds-Lq-tPQ"/>
-                                    <outlet property="delegate" destination="hfy-7c-KzY" id="pXx-Mx-6fN"/>
+                                    <outlet property="dataSource" destination="hfy-7c-KzY" id="sRi-UN-dXp"/>
+                                    <outlet property="delegate" destination="hfy-7c-KzY" id="jfG-ex-C1t"/>
                                 </connections>
                             </tableView>
                             <view contentMode="top" id="PAc-vU-lab">

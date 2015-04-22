@@ -18,7 +18,7 @@
 #import "SpecialPageViewController.h"
 #import "PeopleTitleCell.h"
 #import "ActionSheetViewController.h"
-@interface PeoplePageViewController : BaseViewController <UITableViewDataSource , UITableViewDelegate>
+@interface PeoplePageViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

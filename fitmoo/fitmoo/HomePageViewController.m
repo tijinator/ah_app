@@ -18,8 +18,8 @@
     [self postNotifications];
     [self getHomePageItems];
     [self createObservers];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
-    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
    
 }
 
@@ -53,7 +53,7 @@
 
 -(void) getHomePageItems
 {
-    //_tableView.userInteractionEnabled=false;
+ 
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -72,13 +72,11 @@
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
-        
-     
-     //   _tableView.userInteractionEnabled=true;
         [self defineFeedObjects];
-        
-        
-        [self.tableView reloadData];
+        if ([_responseDic count]>0) {
+            [self.tableView reloadData];
+        }
+     
       
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -160,71 +158,81 @@ int contentHight=50;
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row];
     cell.homeFeed=tempHomefeed;
     
+    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]) {
+        cell.heanderImage1.hidden=true;
+        [cell reDefineHearderViewsFrame];
+    }else
+    {
+        cell.heanderImage1.hidden=false;
+        AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        headerImage1.userInteractionEnabled = NO;
+        headerImage1.exclusiveTouch = NO;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
+        if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
+        {
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by.thumb];
+        }else
+        {
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
+        }
+        [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.heanderImage1 addSubview:headerImage1];
+   
+    }
     
-    AsyncImageView *headerImage2 = [[AsyncImageView alloc] init];
+    AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
+    headerImage2.userInteractionEnabled = NO;
+    headerImage2.exclusiveTouch = NO;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
-    headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
-    [cell.headerImage2 setBackgroundImage:headerImage2.image forState:UIControlStateNormal];
-
+    if ([tempHomefeed.community_id isEqual:[NSNull null]])
+    {
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
+    }else
+    {
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
+    }
+    [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [cell.headerImage2 addSubview:headerImage2];
+    
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
-    cell.bodyDetailLabel.text= tempHomefeed.text;
-    
     NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
+    cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-   cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
+    
+    cell.bodyDetailLabel.text= tempHomefeed.text;
+    cell.bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:cell.bodyDetailLabel];
+    if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
+        [cell addScrollView];
+    }else
+    {
+        [cell removeViewsFromBodyView:cell.bodyImage];
+    }
+    [cell rebuiltBodyViewFrame];
+    
+    
     
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
-            AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-            tempHomefeed.Comments= [tempHomefeed.commentsArray objectAtIndex:0];
-            commentImage.imageURL =[NSURL URLWithString:tempHomefeed.comments.thumb];
-            [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
-            cell.commentName.text=tempHomefeed.comments.full_name;
-            cell.commentDetail.text= tempHomefeed.comments.text;
-            
-            if (i>0) {
-                //[cell]
-            }
+            cell.homeFeed=tempHomefeed;
+            [cell addCommentView:cell.commentView Atindex:i];
         }
-       
+        if ([tempHomefeed.commentsArray count]==1) {
+            [cell removeCommentView2];
+            [cell removeCommentView1];
+        }
+        if ([tempHomefeed.commentsArray count]==2) {
+            [cell removeCommentView2];
+        }
     }else
     {
+        [cell removeCommentView2];
+        [cell removeCommentView1];
         [cell removeCommentView];
-    }
-    
-    if ([tempHomefeed.photoArray count]!=0) {
-        tempHomefeed.photos= [tempHomefeed.photoArray objectAtIndex:0];
-        
-        if (![tempHomefeed.photos.stylesUrl isEqual:@""]) {
-      
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-            
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-            
-            bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.stylesUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-        }else
-        {
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-           
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-         
-            bodyImage.imageURL =[NSURL URLWithString:tempHomefeed.photos.originalUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-          //  [cell removeViewsFromBodyView:cell.bodyImage];
-        }
-        
-    }else
-    {
-       [cell removeViewsFromBodyView:cell.bodyImage];
-     
     }
     
    
@@ -234,17 +242,14 @@ int contentHight=50;
     [cell.commentButton setTag:indexPath.row*100+5];
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
-    
     [cell.likeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
      [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
     }else
     {
-        
     [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
     [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -292,7 +297,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }else
             {
                 _offset +=10;
-                 [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
+         //        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(displayOneMoreTime:) userInfo:nil repeats:NO];
             }
             [self getHomePageItems];
            

@@ -20,7 +20,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
 
-@interface HomePageViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>
+@interface HomePageViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;

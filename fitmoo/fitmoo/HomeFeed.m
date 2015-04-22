@@ -29,5 +29,9 @@
     return self;
 }
 
+-(void) resetComments
+{
+    _comments= [[Comments alloc] init];
+}
 
 @end

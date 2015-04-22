@@ -55,6 +55,7 @@
 
 
 -(id)init;
+-(void) resetComments;
 
 
 @end

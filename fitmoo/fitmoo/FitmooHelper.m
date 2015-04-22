@@ -43,22 +43,32 @@
     }else if (hours!=0) {
         return [NSString stringWithFormat:@"%d%@",hours, @" hours ago"];
     }else if (minutes!=0) {
-        return [NSString stringWithFormat:@"%d%@",minutes, @" minutes ago"];
+        return [NSString stringWithFormat:@"%d%@",ABS(minutes), @" minutes ago"];
     }
     
     
-    return @"Just now";
+    return @"about a minute ago";
 }
 
-
+-(CGRect) caculateLabelHeight: (UILabel *) label
+{
+    CGSize maximumLabelSize = CGSizeMake(label.frame.size.width*_frameRadio, FLT_MAX);
+    
+    CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
+    CGRect newFrame = label.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    return  newFrame;
+}
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView
 {
     if (superView!=nil) {
          double Radio= superView.frame.size.width / 320;
+        _frameRadio=Radio;
          view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
     }else
     {
         double Radio= self.screenSizeView.frame.size.width/320;
+        _frameRadio=Radio;
         view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
     }
    
@@ -134,6 +144,7 @@
     NSDictionary * commentsArray= [dic objectForKey:@"comments"];
     if (![commentsArray isEqual:[NSNull null ]]) {
         for (NSDictionary *commentsDic in commentsArray) {
+            [homeFeed resetComments];
             homeFeed.comments.comment_id= [commentsDic objectForKey:@"id"];
             homeFeed.comments.text= [commentsDic objectForKey:@"text"];
             NSDictionary *created_by=[commentsDic objectForKey:@"created_by"];
@@ -185,6 +196,19 @@
             homeFeed.feed_action.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
         }
        
+        NSDictionary *created_by=[feed_action objectForKey:@"user"];
+        if (![created_by isEqual:[NSNull null ]]) {
+            homeFeed.feed_action.created_by.created_by_id= [created_by objectForKey:@"id"];
+            homeFeed.feed_action.created_by.full_name= [created_by objectForKey:@"full_name"];
+            homeFeed.feed_action.created_by.is_following= [created_by objectForKey:@"is_following"];
+            NSDictionary *profile=[created_by objectForKey:@"profile"];
+            NSDictionary *avatars=[profile objectForKey:@"avatars"];
+            homeFeed.feed_action.created_by.original=[avatars objectForKey:@"original"];
+            homeFeed.feed_action.created_by.thumb=[avatars objectForKey:@"thumb"];
+            homeFeed.feed_action.created_by.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+            
+        }
+        
     }
     
     
