@@ -16,8 +16,10 @@
 #import "AsyncImageView.h"
 #import "HomeFeed.h"
 #import "PeoplePageViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate>
+@interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 
@@ -28,5 +30,8 @@
 @property (strong, nonatomic)  NSString * postText;
 @property (strong, nonatomic)  UITextView * textView;
 @property (strong, nonatomic)  NSString * action;
+
+@property (strong, nonatomic) NSURL *videoURL;
+@property (strong, nonatomic) MPMoviePlayerController *videoController;
 
 @end

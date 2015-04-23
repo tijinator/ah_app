@@ -52,21 +52,50 @@
                         <rect key="frame" x="0.0" y="71" width="320" height="353"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5KS-NR-9qu">
+                            <view hidden="YES" contentMode="scaleToFill" id="n14-DL-4YU">
+                                <rect key="frame" x="15" y="15" width="290" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.84965214416058399" green="0.84865419708029199" blue="0.84557481751824815" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5KS-NR-9qu">
                                 <rect key="frame" x="14" y="8" width="290" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">detail detail detail detail detail detail detail detaildetail detail detail detail detail detail detail detaildetail detail detail </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8bI-So-MFV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mUh-zh-qKT">
+                                <rect key="frame" x="15" y="152" width="290" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DdZ-H4-zY2">
+                                <rect key="frame" x="15" y="152" width="290" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F5j-FK-tAV">
+                                <rect key="frame" x="15" y="140" width="290" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZDj-6f-42c">
+                                <rect key="frame" x="15" y="167" width="290" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="q3C-Yv-23y">
                                 <rect key="frame" x="14" y="59" width="290" height="290"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="share.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -202,8 +231,12 @@
                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bodyCastView" destination="n14-DL-4YU" id="Aa7-A7-hWD"/>
                 <outlet property="bodyDetailLabel" destination="5KS-NR-9qu" id="k11-2r-25i"/>
-                <outlet property="bodyImage" destination="8bI-So-MFV" id="mcD-fU-kEc"/>
+                <outlet property="bodyLabel1" destination="mUh-zh-qKT" id="vWJ-ys-M16"/>
+                <outlet property="bodyLabel2" destination="DdZ-H4-zY2" id="E3h-if-9vk"/>
+                <outlet property="bodyLabel3" destination="ZDj-6f-42c" id="s1V-sm-Yxf"/>
+                <outlet property="bodyTitle" destination="F5j-FK-tAV" id="8br-45-XW1"/>
                 <outlet property="bodyView" destination="Qlf-JA-wjl" id="dAW-WR-OIv"/>
                 <outlet property="buttomView" destination="Nj7-bO-nv3" id="fP1-iv-trd"/>
                 <outlet property="commentButton" destination="4Un-Zy-bsO" id="YXs-Oo-ZNg"/>
@@ -225,6 +258,7 @@
                 <outlet property="heanderImage1" destination="PQ8-25-NVO" id="EHX-um-RWt"/>
                 <outlet property="likeButton" destination="Zpz-cz-tRy" id="vrw-bA-KbG"/>
                 <outlet property="optionButton" destination="fqu-ju-mnZ" id="hzl-hh-0Km"/>
+                <outlet property="scrollView" destination="q3C-Yv-23y" id="Cr8-5R-hr7"/>
                 <outlet property="shareButton" destination="STj-8R-P1u" id="FhY-8U-1Sw"/>
                 <outlet property="titleLabel" destination="107-J3-Qj0" id="BUj-mo-Pq4"/>
             </connections>

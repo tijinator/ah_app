@@ -232,17 +232,30 @@ int contentHight2=50;
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-//    if ([tempHomefeed.type isEqualToString:@"regular"]) {
-        cell.bodyDetailLabel.text= tempHomefeed.text;
-        cell.bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:cell.bodyDetailLabel];
-        if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
-            [cell addScrollView];
-        }else
-        {
-            [cell removeViewsFromBodyView:cell.bodyImage];
-        }
-        [cell rebuiltBodyViewFrame];
- //   }
+    if ([tempHomefeed.type isEqualToString:@"regular"]) {
+        [cell setBodyFrameForRegular];
+    }else if ([tempHomefeed.type isEqualToString:@"workout"])
+    {
+        [cell setBodyFrameForWorkout];
+    }else if ([tempHomefeed.type isEqualToString:@"nutrition"])
+    {
+        [cell setBodyFrameForNutrition];
+    }else if ([tempHomefeed.type isEqualToString:@"product"])
+    {
+        [cell setBodyFrameForProduct];
+    }
+    else if ([tempHomefeed.type isEqualToString:@"event"])
+    {
+        [cell setBodyFrameForEvent];
+    }
+    if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
+        [cell addScrollView];
+    }else
+    {
+        [cell removeViewsFromBodyView:cell.scrollView];
+    }
+    [cell rebuiltBodyViewFrame];
+
     
     
     if ([tempHomefeed.commentsArray count]!=0) {
@@ -269,7 +282,7 @@ int contentHight2=50;
     [cell.commentButton setTag:indexPath.row*100+5];
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
-    
+    [cell.bodyImage setTag:indexPath.row*100+8];
     [cell.likeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
         [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
@@ -283,7 +296,7 @@ int contentHight2=50;
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     contentHight2=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
     //    NSLog(@"%d",contentHight);
     return cell;
@@ -394,6 +407,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
+}
+- (IBAction)bodyImageButtonClick:(id)sender{
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    specialPage.action=@"playVideo";
+    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+    
+    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
 }
 
 - (IBAction)leftButtonClick:(id)sender {

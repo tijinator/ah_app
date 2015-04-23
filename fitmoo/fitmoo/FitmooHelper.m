@@ -179,6 +179,9 @@
         homeFeed.created_by_community.created_by_community_id= [createdByCommunity objectForKey:@"id"];
         homeFeed.created_by_community.name= [createdByCommunity objectForKey:@"name"];
         homeFeed.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
+        if ([homeFeed.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
+            homeFeed.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+        }
     }
     
     NSDictionary *feed_action=[dic objectForKey:@"feed_action"];
@@ -230,8 +233,10 @@
         homeFeed.product.detail= [product objectForKey:@"detail"];
         homeFeed.product.gender= [product objectForKey:@"gender"];
         
-        homeFeed.product.original_price= [product objectForKey:@"original_price"];
-        homeFeed.product.selling_price= [product objectForKey:@"selling_price"];
+        NSNumber * original_price=[product objectForKey:@"original_price"];
+        homeFeed.product.original_price=[original_price stringValue];
+        NSNumber * selling_price=[product objectForKey:@"selling_price"];
+        homeFeed.product.selling_price= [selling_price stringValue];
         homeFeed.product.brand= [product objectForKey:@"brand"];
         homeFeed.product.photo= [product objectForKey:@"photo"];
         homeFeed.product.videos= [product objectForKey:@"videos"];
@@ -265,6 +270,10 @@
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
         homeFeed.event.theme= [event objectForKey:@"theme"];
+        if([homeFeed.event.theme isEqualToString:@""])
+        {
+            homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
+        }
        
     }
     

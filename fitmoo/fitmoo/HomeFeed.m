@@ -28,10 +28,19 @@
     _event= [[Event alloc] init];
     return self;
 }
-
+-(void) resetVideos
+{
+    _videos=[[Videos alloc] init];
+}
 -(void) resetComments
 {
     _comments= [[Comments alloc] init];
+}
+
+-(void) resetPhotos
+{
+    _photos= [[Photos alloc] init];
+    _photoArray= [[NSMutableArray alloc] init];
 }
 
 @end

@@ -500,14 +500,9 @@
     _clientUrl= @"http://staging.fitmoo.com";
     _loginUrl= @"http://staging.fitmoo.com/api/tokens";
     _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
-    
    // _homeFeedUrl= @"http://staging.fitmoo.com/api/users/3952/feeds?";
-    
     _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
- 
     _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
-    
-    
     _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
     return self;
 }

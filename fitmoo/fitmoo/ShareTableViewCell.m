@@ -8,7 +8,9 @@
 
 #import "ShareTableViewCell.h"
 #import "FitmooHelper.h"
+
 @implementation ShareTableViewCell
+
 
 - (void)awakeFromNib {
    
@@ -18,6 +20,10 @@
     int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
     _frameRadio= [[FitmooHelper sharedInstance] frameRadio];
+    _scrollViewWidth=290;
+    _scrollViewHeight=290;
+  //  _scrollbelowFrame= [[UIView alloc] initWithFrame:_bodyDetailLabel.frame];
+ //   _scrollViewOriginx=14;
    // NSLog(@"%d",frameHeight);
     // Initialization code
 }
@@ -46,7 +52,8 @@
         _scrollView=nil;
     }
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(14, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height+10, 290, 290)];
+ //   self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_scrollbelowFrame.frame.origin.x-3, _scrollbelowFrame.frame.origin.y+_scrollbelowFrame.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    _scrollView= [[UIScrollView alloc] initWithFrame:_scrollbelowFrame.frame];
     _scrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scrollView respectToSuperFrame:nil];
 
     _scrollView.delegate = self;
@@ -67,12 +74,17 @@
         
         [_scrollView addSubview:scrollImage];
         
-        UIImageView *play= [[UIImageView alloc] initWithFrame:CGRectMake(_scrollView.frame.size.width/4, _scrollView.frame.size.height/4, _scrollView.frame.size.width/2, _scrollView.frame.size.height/2)];
-        play.image= [UIImage imageNamed:@"play.png"];
-        [_scrollView addSubview:play];
+        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         
-        _scrollView.userInteractionEnabled=NO;
-        _scrollView.exclusiveTouch=NO;
+        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(80,80,80,80)];
+        v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:nil];
+        _bodyImage.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
+
+        [_bodyImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [_scrollView addSubview:_bodyImage];
+        
+  //      _scrollView.userInteractionEnabled=NO;
+  //      _scrollView.exclusiveTouch=NO;
         
     }else
     {
@@ -90,8 +102,8 @@
         }
         scrollImage.contentMode = UIViewContentModeScaleAspectFit;
         [_scrollView addSubview:scrollImage];
-         _scrollView.contentSize= CGSizeMake(290*_frameRadio+i*x, 290*_frameRadio);
-        x= x+ 290*_frameRadio;
+         _scrollView.contentSize= CGSizeMake(_scrollView.frame.size.width*_frameRadio+i*x, _scrollView.frame.size.height*_frameRadio);
+        x= x+ _scrollView.frame.size.width*_frameRadio;
     }
     if ([_homeFeed.photoArray count]==1) {
         _scrollView.userInteractionEnabled=NO;
@@ -99,12 +111,144 @@
     }
     }
    
-    [_bodyView insertSubview:_scrollView aboveSubview:_bodyImage];
+  //  [_bodyView insertSubview:_scrollView aboveSubview:_bodyImage];
+    [_bodyView addSubview:_scrollView];
 }
+
+
 
 -(void) deleteViews:(UIView *)view
 {
    
+}
+
+- (void) setBodyFrameForProduct
+{
+    if ([_homeFeed.feed_action.action isEqualToString:@"share"]) {
+        _bodyDetailLabel.text= _homeFeed.feed_action.share_message;
+        _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+    }
+    
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    
+    _bodyTitle.text= _homeFeed.product.detail;
+    _bodyTitle.frame= CGRectMake(14, 315, 200, _bodyTitle.frame.size.height);
+    _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
+    
+    _bodyLabel1.text= [NSString stringWithFormat:@"%@%@%@",_homeFeed.product.type_product,@" | ", _homeFeed.product.gender];
+    _bodyLabel1.frame= CGRectMake(14, 335, 200, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
+   
+    _bodyLabel2.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.selling_price];
+    _bodyLabel2.frame= CGRectMake(260, 315, 40, _bodyLabel2.frame.size.height);
+    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
+    
+    if (![_homeFeed.product.original_price isEqualToString:@"0"]) {
+        _bodyLabel3.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.original_price];
+        _bodyLabel3.frame= CGRectMake(260, 335, 40, _bodyLabel3.frame.size.height);
+        _bodyLabel3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel3 respectToSuperFrame:nil];
+        UIView *crossView= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyLabel3.frame.size.height/2, 30, 1)];
+        crossView.backgroundColor=[UIColor blackColor];
+        [_bodyLabel3 addSubview:crossView];
+    }
+}
+
+- (void) setBodyFrameForEvent
+{
+    _bodyTitle.text= _homeFeed.event.name;
+    _bodyDetailLabel.text= _homeFeed.text;
+    _bodyLabel1.text= _homeFeed.event.begin_time;
+    _bodyLabel2.text=_homeFeed.event.end_time;
+    [_homeFeed resetPhotos];
+    _homeFeed.photos.originalUrl=_homeFeed.event.theme;
+    _homeFeed.photos.stylesUrl=_homeFeed.event.theme;
+    [_homeFeed.photoArray addObject:_homeFeed.photos];
+    
+ 
+
+    _bodyCastView.hidden=false;
+    _scrollViewWidth=260;
+    _scrollViewHeight=60;
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, _scrollViewWidth, _scrollViewHeight)];
+    
+    _bodyTitle.frame= CGRectMake(36, 95, 290, _bodyTitle.frame.size.height);
+    _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
+    
+    _bodyLabel1.frame= CGRectMake(37, 115, 260, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
+    
+    _bodyLabel2.frame= CGRectMake(37,135, 260, _bodyLabel2.frame.size.height);
+    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
+    [_bodyLabel2 setFont:_bodyLabel1.font];
+    [_bodyLabel2 setTextColor:_bodyLabel1.textColor];
+
+    _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+    _bodyDetailLabel.frame=CGRectMake(38, 155, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
+    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
+    
+    _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
+                                   , _bodyCastView.frame.size.width, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3);
+}
+- (void) setBodyFrameForRegular
+{
+    _bodyDetailLabel.text= _homeFeed.text;
+    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    
+}
+- (void) setBodyFrameForWorkout
+{
+    _bodyDetailLabel.text= _homeFeed.text;
+    _bodyTitle.text= _homeFeed.workout_title;
+    _bodyTitle.frame= CGRectMake(29, 18, 290, _bodyTitle.frame.size.height);
+    _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
+    _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+    _bodyDetailLabel.frame=CGRectMake(31, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y+3, _bodyDetailLabel.frame.size.width, _bodyTitle.frame.size.height);
+    _bodyCastView.hidden=false;
+    _scrollViewWidth=260;
+    _scrollViewHeight=260;
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+   // _scrollbelowFrame= [[UIView alloc] initWithFrame:_bodyDetailLabel.frame];
+}
+
+- (void) setBodyFrameForNutrition
+{
+    _bodyTitle.text= _homeFeed.nutrition.title;
+    _bodyLabel2.text=@"Ingredients";
+    _bodyDetailLabel.text= _homeFeed.nutrition.ingredients;
+    _bodyLabel3.text=@"Preparation";
+    _bodyLabel1.text= _homeFeed.nutrition.preparation;
+    
+    _bodyTitle.frame= CGRectMake(30, 20, 260, _bodyTitle.frame.size.height);
+    _bodyTitle.textAlignment = NSTextAlignmentCenter;
+    _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
+    
+    _bodyLabel2.frame= CGRectMake(30, 309, 260, _bodyLabel2.frame.size.height);
+    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
+    
+    _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+    _bodyDetailLabel.frame= CGRectMake(30, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, 260, _bodyDetailLabel.frame.size.height);
+    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
+    _bodyDetailLabel.frame= CGRectMake(_bodyDetailLabel.frame.origin.x, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
+    
+    _bodyLabel3.frame= CGRectMake(30, 309, 260, _bodyLabel3.frame.size.height);
+    _bodyLabel3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel3 respectToSuperFrame:nil];
+    _bodyLabel3.frame= CGRectMake(_bodyLabel3.frame.origin.x, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3, _bodyLabel3.frame.size.width, _bodyLabel3.frame.size.height);
+    
+    _bodyLabel1.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyLabel1];
+    _bodyLabel1.frame= CGRectMake(30, 309, 260, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
+    _bodyLabel1.frame= CGRectMake(_bodyLabel1.frame.origin.x, _bodyLabel3.frame.size.height+_bodyLabel3.frame.origin.y+3, _bodyLabel1.frame.size.width, _bodyLabel1.frame.size.height);
+    
+    _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
+    , _bodyCastView.frame.size.width, _bodyLabel1.frame.size.height+_bodyLabel1.frame.origin.y+3);
+    
+    _bodyCastView.hidden=false;
+    _scrollViewWidth=260;
+    _scrollViewHeight=260;
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyTitle.frame.origin.x-3, _bodyTitle.frame.origin.y+_bodyTitle.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+  //  _scrollbelowFrame= [[UIView alloc] initWithFrame:_bodyTitle.frame];
+    
 }
 
 - (void) addCommentView: (UIView *) addView Atindex:(int) index
@@ -250,8 +394,9 @@
     _optionButton.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     _optionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_optionButton respectToSuperFrame:nil];
     
-    _bodyImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyImage respectToSuperFrame:nil];
-    
+ //   _bodyImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyImage respectToSuperFrame:nil];
+    _scrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scrollView respectToSuperFrame:nil];
+    _bodyCastView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyCastView respectToSuperFrame:nil];
   //  _viewArray=[[NSMutableArray alloc] initWithObjects:_headerView,_bodyView,_commentView,_commentView1,_commentView2, nil];
     
 }

@@ -55,12 +55,7 @@ int contentHight1=50;
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShareTableViewCell *cell = [tableView
-                                dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
-    
-    if (cell!=nil) {
-        cell=nil;
-    }
+    ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
@@ -68,60 +63,108 @@ int contentHight1=50;
     }
     
    
+    cell.homeFeed=_homeFeed;
     
-    AsyncImageView *headerImage2 = [[AsyncImageView alloc] init];
+    if ([_homeFeed.feed_action.action isEqualToString:@"post"]) {
+        cell.heanderImage1.hidden=true;
+        [cell reDefineHearderViewsFrame];
+    }else
+    {
+        cell.heanderImage1.hidden=false;
+        AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        headerImage1.userInteractionEnabled = NO;
+        headerImage1.exclusiveTouch = NO;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
+        if ([_homeFeed.feed_action.community_id isEqual:[NSNull null]])
+        {
+            headerImage1.imageURL =[NSURL URLWithString:_homeFeed.feed_action.created_by.thumb];
+        }else
+        {
+            headerImage1.imageURL =[NSURL URLWithString:_homeFeed.feed_action.created_by_community.cover_photo_url];
+        }
+        [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.heanderImage1 addSubview:headerImage1];
+        
+    }
+    
+    AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
+    headerImage2.userInteractionEnabled = NO;
+    headerImage2.exclusiveTouch = NO;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
-    headerImage2.imageURL =[NSURL URLWithString:_homeFeed.created_by.thumb];
-    [cell.headerImage2 setBackgroundImage:headerImage2.image forState:UIControlStateNormal];
+    if ([_homeFeed.community_id isEqual:[NSNull null]])
+    {
+        headerImage2.imageURL =[NSURL URLWithString:_homeFeed.created_by.thumb];
+    }else
+    {
+        headerImage2.imageURL =[NSURL URLWithString:_homeFeed.created_by_community.cover_photo_url];
+    }
+    [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [cell.headerImage2 addSubview:headerImage2];
     
     
     cell.titleLabel.text= _homeFeed.title_info.avatar_title;
-    cell.bodyDetailLabel.text= _homeFeed.text;
+    NSTimeInterval time=(NSTimeInterval ) ([_homeFeed.created_at integerValue]/1000);
+    NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
+    NSDate *today= [NSDate date];
+    cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-    if (_homeFeed.commentsArray!=nil) {
-        
-        for (int i=0; i<[_homeFeed.commentsArray count]; i++) {
-            AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-            _homeFeed.Comments= [_homeFeed.commentsArray objectAtIndex:0];
-            commentImage.imageURL =[NSURL URLWithString:_homeFeed.comments.thumb];
-            [cell.commentImage setBackgroundImage:commentImage.image forState:UIControlStateNormal];
-            
-            cell.commentName.text=_homeFeed.comments.full_name;
-            cell.commentDetail.text= _homeFeed.comments.text;
-        }
-        
+    
+    if ([_homeFeed.type isEqualToString:@"regular"]) {
+        [cell setBodyFrameForRegular];
+    }else if ([_homeFeed.type isEqualToString:@"workout"])
+    {
+        [cell setBodyFrameForWorkout];
+    }else if ([_homeFeed.type isEqualToString:@"nutrition"])
+    {
+        [cell setBodyFrameForNutrition];
+    }else if ([_homeFeed.type isEqualToString:@"product"])
+    {
+        [cell setBodyFrameForProduct];
     }
-    
-    if ([_homeFeed.photoArray count]!=0) {
-        _homeFeed.photos= [_homeFeed.photoArray objectAtIndex:0];
-        
-        if (![_homeFeed.photos.stylesUrl isEqual:@""]) {
-            
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-            bodyImage.imageURL =[NSURL URLWithString:_homeFeed.photos.stylesUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-        }else
-        {
-            AsyncImageView *bodyImage = [[AsyncImageView alloc] init];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:bodyImage];
-            bodyImage.imageURL =[NSURL URLWithString:_homeFeed.photos.originalUrl];
-            [cell.bodyImage setBackgroundImage:bodyImage.image forState:UIControlStateNormal];
-            cell.bodyImage.hidden=false;
-        }
-        
+    else if ([_homeFeed.type isEqualToString:@"event"])
+    {
+        [cell setBodyFrameForEvent];
+    }
+    if ([_homeFeed.photoArray count]!=0||[_homeFeed.videosArray count]!=0) {
+        [cell addScrollView];
     }else
     {
-        cell.bodyImage.hidden=true;
+        [cell removeViewsFromBodyView:cell.scrollView];
     }
+    [cell rebuiltBodyViewFrame];
+    
+    
+    
+    if ([_homeFeed.commentsArray count]!=0) {
+        [cell.commentButton setTitle:_homeFeed.total_comment  forState:UIControlStateNormal];
+        for (int i=0; i<[_homeFeed.commentsArray count]; i++) {
+            cell.homeFeed=_homeFeed;
+            [cell addCommentView:cell.commentView Atindex:i];
+        }
+        if ([_homeFeed.commentsArray count]==1) {
+            [cell removeCommentView2];
+            [cell removeCommentView1];
+        }
+        if ([_homeFeed.commentsArray count]==2) {
+            [cell removeCommentView2];
+        }
+    }else
+    {
+        [cell removeCommentView2];
+        [cell removeCommentView1];
+        [cell removeCommentView];
+    }
+    
+    
+    if ([_action isEqualToString:@"playVideo"]) {
+        
+         contentHight1=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
+        [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }else
+    {
     
      _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, cell.buttomView.frame.origin.y+20, self.view.frame.size.width-20, 80)];
     [_textView setDelegate:self];
-    
-    
-    
     cell.contentView.frame=CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, _textView.frame.size.height+_textView.frame.origin.y+150);
     
     [cell.contentView addSubview:_textView ];
@@ -134,9 +177,11 @@ int contentHight1=50;
     [button setTitle:_action forState:UIControlStateNormal];
     button.frame = CGRectMake(self.view.frame.size.width-80,_textView.frame.size.height+30+_textView.frame.origin.y , 60.0, 48.0);
     [cell.contentView addSubview:button];
+     contentHight1=button.frame.size.height+ button.frame.origin.y+30 ;
+    [cell.buttomView removeFromSuperview];
+    }
+   
     
-    contentHight1=button.frame.size.height+ button.frame.origin.y+30 ;
-     [cell.buttomView removeFromSuperview];
     return cell;
 }
 
@@ -207,6 +252,45 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)bodyImageButtonClick:(id)sender{
+    
+    self.videoURL = [NSURL URLWithString:@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11175515_790024634426907_1373194277_n.mp4"];
+    self.videoController = [[MPMoviePlayerController alloc] init];
+    
+    [self.videoController setContentURL:self.videoURL];
+    [self.videoController.view setFrame:CGRectMake (0, 0, 300, 200)];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:self.videoController];
+    self.videoController.controlStyle = MPMovieControlStyleDefault;
+    self.videoController.shouldAutoplay = YES;
+    [self.videoController prepareToPlay];
+    [self.view addSubview:self.videoController.view];
+  //  [self.videoController setFullscreen:YES animated:YES];
+    [self.videoController stop];
+    [self.videoController play];
+
+ 
+}
+
+
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification {
+    MPMoviePlayerController *player = [notification object];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:player];
+    
+    if ([player
+         respondsToSelector:@selector(setFullscreen:animated:)])
+    {
+        [player.view removeFromSuperview];
+    }
+}
 
 - (IBAction)backButtonClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

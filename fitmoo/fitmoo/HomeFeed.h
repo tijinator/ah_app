@@ -56,6 +56,6 @@
 
 -(id)init;
 -(void) resetComments;
-
-
+-(void) resetPhotos;
+-(void) resetVideos;
 @end
