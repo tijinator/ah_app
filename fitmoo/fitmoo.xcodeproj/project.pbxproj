@@ -82,6 +82,9 @@
 		27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC81AD48DD000C34372 /* SignUpViewController.m */; };
 		2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719EBDD1AE1970000019079 /* SearchViewController.m */; };
 		2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
+		272098421AEA9088007577B7 /* vimeo.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2720983F1AEA9088007577B7 /* vimeo.js.txt */; };
+		272098431AEA9088007577B7 /* VimeoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098411AEA9088007577B7 /* VimeoHelper.m */; };
+		272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098461AEA960B007577B7 /* YTVimeoExtractor.m */; };
 		272581FB1AD562A60059F43C /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F61AD562A60059F43C /* IISideController.m */; };
 		272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F81AD562A60059F43C /* IIViewDeckController.m */; };
 		272581FD1AD562A60059F43C /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581FA1AD562A60059F43C /* IIWrapController.m */; };
@@ -245,6 +248,11 @@
 		2719EBDD1AE1970000019079 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		2720091A1ADAB59400CC3070 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		2720091B1ADAB59400CC3070 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		2720983F1AEA9088007577B7 /* vimeo.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vimeo.js.txt; sourceTree = "<group>"; };
+		272098401AEA9088007577B7 /* VimeoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VimeoHelper.h; sourceTree = "<group>"; };
+		272098411AEA9088007577B7 /* VimeoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoHelper.m; sourceTree = "<group>"; };
+		272098451AEA960B007577B7 /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
+		272098461AEA960B007577B7 /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
 		272581F51AD562A60059F43C /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		272581F61AD562A60059F43C /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		272581F71AD562A60059F43C /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -551,6 +559,8 @@
 			children = (
 				2720091A1ADAB59400CC3070 /* AsyncImageView.h */,
 				2720091B1ADAB59400CC3070 /* AsyncImageView.m */,
+				272098441AEA960B007577B7 /* YTVimeoExtractor */,
+				2720983E1AEA9088007577B7 /* VimeoHelper */,
 				272582311AD57F070059F43C /* UIKit+AFNetworking */,
 				272582141AD57EFD0059F43C /* AFNetworking */,
 				272581F41AD5621F0059F43C /* IIViewDeck */,
@@ -574,6 +584,25 @@
 				272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */,
 			);
 			name = CustomObjects;
+			sourceTree = "<group>";
+		};
+		2720983E1AEA9088007577B7 /* VimeoHelper */ = {
+			isa = PBXGroup;
+			children = (
+				2720983F1AEA9088007577B7 /* vimeo.js.txt */,
+				272098401AEA9088007577B7 /* VimeoHelper.h */,
+				272098411AEA9088007577B7 /* VimeoHelper.m */,
+			);
+			path = VimeoHelper;
+			sourceTree = "<group>";
+		};
+		272098441AEA960B007577B7 /* YTVimeoExtractor */ = {
+			isa = PBXGroup;
+			children = (
+				272098451AEA960B007577B7 /* YTVimeoExtractor.h */,
+				272098461AEA960B007577B7 /* YTVimeoExtractor.m */,
+			);
+			path = YTVimeoExtractor;
 			sourceTree = "<group>";
 		};
 		272581F41AD5621F0059F43C /* IIViewDeck */ = {
@@ -890,6 +919,7 @@
 				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
 				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
+				272098421AEA9088007577B7 /* vimeo.js.txt in Resources */,
 				276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */,
 				276094581AD708C100A769CE /* BentonSansExtraComp-Bold.otf in Resources */,
 				27188FB31AD4695000C34372 /* mobilelogin_screen1.png in Resources */,
@@ -992,6 +1022,7 @@
 				2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
+				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				27163D961ADAF733005B95D5 /* SpecialPageViewController.m in Sources */,
@@ -1008,6 +1039,7 @@
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
 				2725822D1AD57EFD0059F43C /* AFURLConnectionOperation.m in Sources */,
 				272582121AD579080059F43C /* LoginViewController.m in Sources */,
+				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,
 				272582051AD5633F0059F43C /* RightViewController.m in Sources */,
 				272582481AD57F070059F43C /* UIProgressView+AFNetworking.m in Sources */,
 				272582291AD57EFD0059F43C /* AFHTTPRequestOperationManager.m in Sources */,

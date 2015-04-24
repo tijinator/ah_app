@@ -127,9 +127,26 @@ int contentHight1=50;
     }
     if ([_homeFeed.photoArray count]!=0||[_homeFeed.videosArray count]!=0) {
         [cell addScrollView];
+        
+        NSString * url= _homeFeed.videos.video_url;
+        if ([url rangeOfString:@"youtube.com"].location != NSNotFound){
+            NSRange range= [url rangeOfString:@"v="];
+            double ran=range.length+range.location;
+            NSRange range1=NSMakeRange(ran, url.length-ran);
+            NSString *video_id= [url substringWithRange:range1];
+            NSString *videoString=[NSString stringWithFormat:@"%@%@%@", @"http://www.youtube.com/embed/", video_id, @"?showinfo=0&fs=0&rel=0"];
+            self.videoURL =[NSURL URLWithString:videoString];
+            cell.scrollbelowFrame.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:cell.scrollbelowFrame respectToSuperFrame:nil];
+            UIWebView *  videoView = [[UIWebView alloc] initWithFrame:cell.scrollbelowFrame.frame];
+            [cell.bodyView addSubview:videoView];
+            NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
+            [videoView loadRequest:request];
+            
+        }
+        
     }else
     {
-        [cell removeViewsFromBodyView:cell.scrollView];
+        [cell removeViewsFromBodyView:cell.scrollbelowFrame];
     }
     [cell rebuiltBodyViewFrame];
     
@@ -253,29 +270,53 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 */
 - (IBAction)bodyImageButtonClick:(id)sender{
-    
-    self.videoURL = [NSURL URLWithString:@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11175515_790024634426907_1373194277_n.mp4"];
-    self.videoController = [[MPMoviePlayerController alloc] init];
-    
-    [self.videoController setContentURL:self.videoURL];
-    [self.videoController.view setFrame:CGRectMake (0, 0, 300, 200)];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moviePlayBackDidFinish:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:self.videoController];
-    self.videoController.controlStyle = MPMovieControlStyleDefault;
-    self.videoController.shouldAutoplay = YES;
-    [self.videoController prepareToPlay];
-    [self.view addSubview:self.videoController.view];
-  //  [self.videoController setFullscreen:YES animated:YES];
-    [self.videoController stop];
-    [self.videoController play];
 
- 
+    NSString * url= _homeFeed.videos.video_url;
+    
+    if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+            if (error) {
+                NSLog(@"Error : %@", [error localizedDescription]);
+            } else if (videoURL) {
+                NSLog(@"Extracted url : %@", [videoURL absoluteString]);
+                
+                 _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                [self.playerView.moviePlayer prepareToPlay];
+                [self presentViewController:self.playerView animated:YES completion:^(void) {
+                    self.playerView = nil;
+                }];
+            }
+        }];
+
+    } else if ([url rangeOfString:@"youtube.com"].location != NSNotFound){
+//                NSRange range= [url rangeOfString:@"v="];
+//                double ran=range.length+range.location;
+//                NSRange range1=NSMakeRange(ran, url.length-ran);
+//                NSString *video_id= [url substringWithRange:range1];
+//                NSString *videoString=[NSString stringWithFormat:@"%@%@%@", @"http://www.youtube.com/embed/", video_id, @"?showinfo=0&fs=0&rel=0"];
+//                self.videoURL =[NSURL URLWithString:videoString];
+// 
+//      UIWebView *  videoView = [[UIWebView alloc] initWithFrame:CGRectMake (0, 0, 300, 400)];
+//      [self.view addSubview:videoView];
+//      NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
+//      [videoView loadRequest:request];
+      
+    }else
+    {
+        self.videoURL= [NSURL URLWithString:url];
+        MPMoviePlayerViewController*  movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.videoURL];
+        [self presentMoviePlayerViewControllerAnimated:movieController];
+        [movieController.moviePlayer play];
+    }
+    
+
 }
 
+- (void)finishedGetVimeoURL:(NSString *)url
+{
+   MPMoviePlayerViewController * _moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:url]];
+    [self presentViewController:_moviePlayerController animated:NO completion:nil];
+}
 
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {

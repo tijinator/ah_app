@@ -222,7 +222,7 @@ int contentHight=50;
         [cell addScrollView];
     }else
     {
-        [cell removeViewsFromBodyView:cell.scrollView];
+        [cell removeViewsFromBodyView:cell.scrollbelowFrame];
     }
     [cell rebuiltBodyViewFrame];
     

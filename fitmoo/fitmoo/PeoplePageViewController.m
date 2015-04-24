@@ -410,7 +410,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)bodyImageButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag/100;
+    NSInteger index=(NSInteger) button.tag/100-1;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
     specialPage.action=@"playVideo";

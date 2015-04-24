@@ -55,7 +55,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(EnableSlideView:) name:@"EnableSlideView" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openSideMenu:) name:@"openSideMenu" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPopup:) name:@"openPopup" object:nil];
-
+  
 }
 
 -(void)openSideMenu:(NSNotification*)note{
@@ -80,6 +80,7 @@
     [_deckController.view addSubview:_popupView.view];
     
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -110,6 +111,11 @@
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication];
 }
+
+//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+//{
+//    return (UIInterfaceOrientationMaskPortrait);
+//}
 
 #pragma mark - Core Data stack
 

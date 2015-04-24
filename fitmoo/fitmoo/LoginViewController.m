@@ -15,9 +15,9 @@
     [self initFrames];
     _cachedUser= nil;
     self.facebookLoginView.delegate = self;
-    self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
+
 }
 
 - (void) initFrames
