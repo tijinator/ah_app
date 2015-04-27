@@ -115,6 +115,8 @@
         
         _responseDic= responseObject;
         
+        _localUser.name=[_responseDic objectForKey:@"full_name"];
+        
          NSNumber * following=[_responseDic objectForKey:@"following"];
         _localUser.following= [following stringValue];
          NSNumber * followers=[_responseDic objectForKey:@"followers"];
@@ -130,7 +132,7 @@
         
         [self saveLocalUser:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.cover_photo_url];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.name];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      

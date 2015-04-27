@@ -29,20 +29,30 @@
     _navigateView = [mainStoryboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
     _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
-    _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
-    _deckController.delegate = self;
-    [_deckController setLeftSize:60.0f];
-    [_deckController setRightSize:110.0f];
-    
-    [_deckController setEnabled:NO];
-    
-    [_deckController shouldAutorotate];
-    [_deckController preferredInterfaceOrientationForPresentation];
-    [_deckController supportedInterfaceOrientations];
-    
-    
-    self.window.rootViewController = _deckController;
+//    _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
+//    _deckController.delegate = self;
+//    [_deckController setLeftSize:60.0f];
+//    [_deckController setRightSize:110.0f];
+//    
+//    [_deckController setEnabled:NO];
+//    
+//    [_deckController shouldAutorotate];
+//    [_deckController preferredInterfaceOrientationForPresentation];
+//    [_deckController supportedInterfaceOrientations];
+//    self.window.rootViewController = _deckController;
 
+    _sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:_navigateView
+                                                                    leftMenuViewController:_leftView
+                                                                   rightMenuViewController:_rightView];
+    _sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars.png"];
+    _sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    _sideMenuViewController.delegate = self;
+    _sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    _sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    _sideMenuViewController.contentViewShadowOpacity = 0.6;
+    _sideMenuViewController.contentViewShadowRadius = 12;
+    _sideMenuViewController.contentViewShadowEnabled = YES;
+    self.window.rootViewController = _sideMenuViewController;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
     [self createObservers];
@@ -55,11 +65,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(EnableSlideView:) name:@"EnableSlideView" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openSideMenu:) name:@"openSideMenu" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPopup:) name:@"openPopup" object:nil];
-  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSideMenu:) name:@"hideSideMenu" object:nil];
 }
 
 -(void)openSideMenu:(NSNotification*)note{
-    [_deckController toggleLeftViewAnimated:YES];
+   [_deckController toggleLeftViewAnimated:YES];
+    
+}
+
+-(void)hideSideMenu:(NSNotification*)note{
+    [_sideMenuViewController hideMenuViewController];
     
 }
 

@@ -353,6 +353,57 @@
 }
 
 
+-(NSAttributedString *) setAttributedString: (NSString *) stringToChange Font: (NSString *) fontName size:(CGFloat)size
+{
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:stringToChange attributes:@{NSFontAttributeName: font}  ];
+    return attributedString;
+}
+
+-(NSAttributedString *) setPartialAttributedString: (NSMutableAttributedString *) stringToChange Font: (NSString *) fontName size:(CGFloat) size range:(NSString *)rangeString color:(UIColor *)color
+{
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:rangeString attributes:@{NSFontAttributeName: font}  ];
+    NSRange range = [[stringToChange string] rangeOfString:rangeString];
+    [stringToChange replaceCharactersInRange:range withAttributedString:attributedString];
+    [stringToChange addAttribute:NSForegroundColorAttributeName value:color range:range];
+    
+    
+    return stringToChange;
+}
+
+-(NSAttributedString *) setBaseLineOffsetAttributedString: (NSMutableAttributedString *) stringToChange Font: (NSString *) fontName size:(CGFloat)size range:(NSString *)rangeString
+{
+    NSRange range = [[stringToChange string] rangeOfString:rangeString];
+    int endRange=range.length;
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:rangeString];
+    [attributedString setAttributes:@{NSFontAttributeName : font, NSBaselineOffsetAttributeName : @7} range:NSMakeRange(0, endRange)];
+    [stringToChange replaceCharactersInRange:range withAttributedString:attributedString];
+    
+    
+    return stringToChange;
+    
+}
+
+-(NSAttributedString *) replaceAttributedString: (NSMutableAttributedString *) stringToChange Font: (UIFont *) fontName range:(NSString *)rangeString newString:(NSString *)newString
+{
+    NSRange range = [[stringToChange string] rangeOfString:rangeString];
+    int endRange=range.length;
+    UIFont *font = fontName;
+    
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:newString];
+    [attributedString setAttributes:@{NSFontAttributeName : font} range:NSMakeRange(0, endRange)];
+    [stringToChange replaceCharactersInRange:range withAttributedString:attributedString];
+    
+    
+    return stringToChange;
+    
+}
+
+
+
 - (id) init;{
     
     if ((self = [super init])) {

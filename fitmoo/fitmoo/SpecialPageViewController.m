@@ -152,25 +152,25 @@ int contentHight1=50;
     
     
     
-    if ([_homeFeed.commentsArray count]!=0) {
-        [cell.commentButton setTitle:_homeFeed.total_comment  forState:UIControlStateNormal];
-        for (int i=0; i<[_homeFeed.commentsArray count]; i++) {
-            cell.homeFeed=_homeFeed;
-            [cell addCommentView:cell.commentView Atindex:i];
-        }
-        if ([_homeFeed.commentsArray count]==1) {
-            [cell removeCommentView2];
-            [cell removeCommentView1];
-        }
-        if ([_homeFeed.commentsArray count]==2) {
-            [cell removeCommentView2];
-        }
-    }else
-    {
-        [cell removeCommentView2];
-        [cell removeCommentView1];
-        [cell removeCommentView];
-    }
+//    if ([_homeFeed.commentsArray count]!=0) {
+//        [cell.commentButton setTitle:_homeFeed.total_comment  forState:UIControlStateNormal];
+//        for (int i=0; i<[_homeFeed.commentsArray count]; i++) {
+//            cell.homeFeed=_homeFeed;
+//            [cell addCommentView:cell.commentView Atindex:i];
+//        }
+//        if ([_homeFeed.commentsArray count]==1) {
+//            [cell removeCommentView2];
+//            [cell removeCommentView1];
+//        }
+//        if ([_homeFeed.commentsArray count]==2) {
+//            [cell removeCommentView2];
+//        }
+//    }else
+//    {
+//        [cell removeCommentView2];
+//        [cell removeCommentView1];
+//        [cell removeCommentView];
+//    }
     
     
     if ([_action isEqualToString:@"playVideo"]) {

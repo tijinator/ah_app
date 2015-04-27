@@ -34,11 +34,11 @@
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 
 @property (strong, nonatomic) IBOutlet UIView *commentView;
+@property (strong, nonatomic) IBOutlet UIImageView *commentImage;
+
 @property (strong, nonatomic) IBOutlet UIView *commentView1;
 @property (strong, nonatomic) IBOutlet UIView *commentView2;
-@property (strong, nonatomic) IBOutlet UIButton *commentImage;
-@property (strong, nonatomic) IBOutlet UIButton *commentImage1;
-@property (strong, nonatomic) IBOutlet UIButton *commentImage2;
+
 @property (strong, nonatomic) IBOutlet UILabel *commentName;
 @property (strong, nonatomic) IBOutlet UILabel *commentName1;
 @property (strong, nonatomic) IBOutlet UILabel *commentName2;

@@ -146,6 +146,13 @@
 		2732B7421AD84B5600610821 /* Nutrition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7411AD84B5600610821 /* Nutrition.m */; };
 		2732B7451AD84D1000610821 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7441AD84D1000610821 /* Event.m */; };
 		2732B7481AD84EF200610821 /* Videos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7471AD84EF200610821 /* Videos.m */; };
+		273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */; };
+		273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59E1AEE6FE000BCC66F /* RESideMenu.m */; };
+		273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5A01AEE6FE000BCC66F /* UIViewController+RESideMenu.m */; };
+		273CE5A51AEE7E3400BCC66F /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 273CE5A41AEE7E3400BCC66F /* Stars@2x.png */; };
+		273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5A71AEE863600BCC66F /* BentonSansMedium.m */; };
+		273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */; };
+		273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */; };
 		274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */; };
 		274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
 		274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
@@ -361,6 +368,19 @@
 		2732B7441AD84D1000610821 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		2732B7461AD84EF200610821 /* Videos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Videos.h; sourceTree = "<group>"; };
 		2732B7471AD84EF200610821 /* Videos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Videos.m; sourceTree = "<group>"; };
+		273CE59B1AEE6FE000BCC66F /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		273CE59D1AEE6FE000BCC66F /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		273CE59E1AEE6FE000BCC66F /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		273CE59F1AEE6FE000BCC66F /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		273CE5A01AEE6FE000BCC66F /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		273CE5A41AEE7E3400BCC66F /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
+		273CE5A61AEE863600BCC66F /* BentonSansMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansMedium.h; sourceTree = "<group>"; };
+		273CE5A71AEE863600BCC66F /* BentonSansMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansMedium.m; sourceTree = "<group>"; };
+		273CE5A91AEEB24900BCC66F /* BentonSansRegular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansRegular.h; sourceTree = "<group>"; };
+		273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansRegular.m; sourceTree = "<group>"; };
+		273CE5AC1AEEC13A00BCC66F /* BentonSansBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansBook.h; sourceTree = "<group>"; };
+		273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansBook.m; sourceTree = "<group>"; };
 		274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
 		274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = "<group>"; };
 		274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = "<group>"; };
@@ -516,6 +536,7 @@
 				2732B70C1AD809D300610821 /* utf8 images */,
 				27188F941AD4695000C34372 /* fitmoo-favicon.png */,
 				27188F951AD4695000C34372 /* fitmoo_logo_white.png */,
+				273CE5A41AEE7E3400BCC66F /* Stars@2x.png */,
 				27188F961AD4695000C34372 /* fitmoologo_mobile.png */,
 				27188F971AD4695000C34372 /* fitmoologo_top.png */,
 				27188F981AD4695000C34372 /* fitstore */,
@@ -559,6 +580,7 @@
 			children = (
 				2720091A1ADAB59400CC3070 /* AsyncImageView.h */,
 				2720091B1ADAB59400CC3070 /* AsyncImageView.m */,
+				273CE59A1AEE6FE000BCC66F /* RESideMenu */,
 				272098441AEA960B007577B7 /* YTVimeoExtractor */,
 				2720983E1AEA9088007577B7 /* VimeoHelper */,
 				272582311AD57F070059F43C /* UIKit+AFNetworking */,
@@ -582,6 +604,12 @@
 				272F276E1AE6BE2B00C9EADC /* CommunityTableViewCell.h */,
 				272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */,
 				272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */,
+				273CE5A61AEE863600BCC66F /* BentonSansMedium.h */,
+				273CE5A71AEE863600BCC66F /* BentonSansMedium.m */,
+				273CE5A91AEEB24900BCC66F /* BentonSansRegular.h */,
+				273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */,
+				273CE5AC1AEEC13A00BCC66F /* BentonSansBook.h */,
+				273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -769,6 +797,19 @@
 			name = "utf8 images";
 			sourceTree = "<group>";
 		};
+		273CE59A1AEE6FE000BCC66F /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				273CE59B1AEE6FE000BCC66F /* RECommonFunctions.h */,
+				273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */,
+				273CE59D1AEE6FE000BCC66F /* RESideMenu.h */,
+				273CE59E1AEE6FE000BCC66F /* RESideMenu.m */,
+				273CE59F1AEE6FE000BCC66F /* UIViewController+RESideMenu.h */,
+				273CE5A01AEE6FE000BCC66F /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
 		276094121AD708AD00A769CE /* Semplicita Pro */ = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +952,7 @@
 			files = (
 				2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */,
 				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
+				273CE5A51AEE7E3400BCC66F /* Stars@2x.png in Resources */,
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
 				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
 				2760945E1AD717E700A769CE /* fontello.ttf in Resources */,
@@ -1015,7 +1057,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				272581FB1AD562A60059F43C /* IISideController.m in Sources */,
+				273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */,
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
@@ -1031,6 +1075,8 @@
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				272582451AD57F070059F43C /* UIAlertView+AFNetworking.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
+				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
+				273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */,
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
 				2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */,
 				2732B7481AD84EF200610821 /* Videos.m in Sources */,
@@ -1043,8 +1089,10 @@
 				272582051AD5633F0059F43C /* RightViewController.m in Sources */,
 				272582481AD57F070059F43C /* UIProgressView+AFNetworking.m in Sources */,
 				272582291AD57EFD0059F43C /* AFHTTPRequestOperationManager.m in Sources */,
+				273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */,
 				2732B73F1AD849D000610821 /* Product.m in Sources */,
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
+				273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */,
 				2725822C1AD57EFD0059F43C /* AFSecurityPolicy.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,

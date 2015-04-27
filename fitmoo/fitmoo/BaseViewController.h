@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-
+#import "RESideMenu.h"
 @interface BaseViewController : UIViewController
 
 - (IBAction)openSideMenu:(id)sender;
-@property (nonatomic, strong) UIButton *postButton;
-@property (nonatomic, strong) UIButton *postPhoto;
-@property (nonatomic, strong) UIButton *postVideo;
+@property (nonatomic, strong) UIButton *leftButton1;
+@property (nonatomic, strong) UIButton *middleButton1;
+@property (nonatomic, strong) UIButton *rightButton1;
 @property (strong, nonatomic)  UIView *bottomView;
 @end

@@ -39,6 +39,32 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BentonSansExtraComp-Light.otf</string>
+		<string>BentonSansExtraComp-Medium.otf</string>
+		<string>BentonSansExtraComp-Regular.otf</string>
+		<string>BentonSans-Thin.otf</string>
+		<string>BentonSansComp-Black.otf</string>
+		<string>BentonSansComp-Bold.otf</string>
+		<string>BentonSansComp-Book.otf</string>
+		<string>BentonSansComp-Light.otf</string>
+		<string>BentonSansComp-Medium.otf</string>
+		<string>BentonSansComp-Regular.otf</string>
+		<string>BentonSansCond-Black.otf</string>
+		<string>BentonSansCond-Bold.otf</string>
+		<string>BentonSansCond-Book.otf</string>
+		<string>BentonSansCond-Light.otf</string>
+		<string>BentonSansCond-Medium.otf</string>
+		<string>BentonSansCond-Regular.otf</string>
+		<string>BentonSansExtraComp-Black.otf</string>
+		<string>BentonSansExtraComp-Bold.otf</string>
+		<string>BentonSansExtraComp-Book.otf</string>
+		<string>BentonSans-Black.otf</string>
+		<string>BentonSans-Bold.otf</string>
+		<string>BentonSans-Book.otf</string>
+		<string>BentonSans-ExtraLight.otf</string>
+		<string>BentonSans-Light.otf</string>
+		<string>BentonSans-Medium.otf</string>
+		<string>BentonSans-Regular.otf</string>
 		<string>ss-symbolicons-block.ttf</string>
 		<string>fontello.ttf</string>
 		<string>ss-symbolicons-line.ttf</string>

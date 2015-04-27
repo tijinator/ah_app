@@ -14,10 +14,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"profile.png",@"shop.png",@"search.png",@"settings.png",@"logout.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"HOME",@"PROFILE",@"FIT STORE",@"SEARCH",@"SETTINGS",@"LOGOUT", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"shop.png",@"search.png",@"settings.png",@"logout.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
-    [_leftTableView reloadData];
+ //   [_leftTableView reloadData];
+    
+    self.tableView = ({
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.opaque = NO;
+        tableView.backgroundColor = [UIColor clearColor];
+        tableView.backgroundView = nil;
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.bounces = NO;
+        tableView.scrollsToTop = NO;
+        tableView;
+    });
+    [self.view addSubview:self.tableView];
     
     [self createObservers];
     
@@ -30,37 +45,29 @@
 
 - (void) updateTopImage: (NSNotification * ) note
 {
-//    NSString *imageUrl= (NSString *) [note object];
-//      AsyncImageView *toImage = [[AsyncImageView alloc] init];
-//     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:toImage];
-//    if (imageUrl!=nil) {
-//        toImage.imageURL =[NSURL URLWithString:imageUrl];
-//    }else
-//    {
-//        toImage.imageURL =[NSURL URLWithString:@"https://fitmoo.com/assets/cover/profile-cover.png"];
-//     
-//    }
-//       _topImage.image=toImage.image;
-     NSString *imageUrl= (NSString *) [note object];
-     if ([imageUrl isEqual:[NSNull null ]]) {
-         imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
-         
-     }
-    [self downloadImageWithURL:[NSURL URLWithString:imageUrl] completionBlock:^(BOOL succeeded, UIImage *image) {
-        if (succeeded) {
-            
-            if (image!=nil) {
-                _topImage.image = image;
-              
-            }else
-            {
-             //   imageLabel.image= [UIImage imageNamed:@"images"];
-            }
-            
-            
-            
-        }
-    }];
+
+//     NSString *imageUrl= (NSString *) [note object];
+//     if ([imageUrl isEqual:[NSNull null ]]) {
+//         imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
+//         
+//     }
+//    [self downloadImageWithURL:[NSURL URLWithString:imageUrl] completionBlock:^(BOOL succeeded, UIImage *image) {
+//        if (succeeded) {
+//            
+//            if (image!=nil) {
+//                _topImage.image = image;
+//              
+//            }else
+//            {
+//             //   imageLabel.image= [UIImage imageNamed:@"images"];
+//            }
+//            
+//            
+//            
+//        }
+//    }];
+    _nameLabel.text= (NSString *) [note object];
+    
 }
 //Making an AsynchronousRequest to get the image download
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
@@ -81,17 +88,12 @@
 
 - (void) initFrames
 {
-    _leftTableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftTableView respectToSuperFrame:self.view];
-//    _topView.frame= CGRectMake(0, 0, 275, 50);
-//    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
+//    _leftTableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftTableView respectToSuperFrame:self.view];
+//
+//    _topImage.frame=CGRectMake(0, 0, 275, 50);
+//    _topImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topImage respectToSuperFrame:self.view];
     
- //   _topImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 275, 50)];
-    _topImage.frame=CGRectMake(0, 0, 275, 50);
-    _topImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topImage respectToSuperFrame:self.view];
-    
-  //  [_topView insertSubview:_topImage atIndex:0];
- //   [self.view insertSubview:_topImage aboveSubview:_topView];
- //   [self.view addSubview:_topImage];
+     _nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nameLabel respectToSuperFrame:self.view];
     
 }
 
@@ -107,28 +109,47 @@
  numberOfRowsInSection:(NSInteger)section
 {
     
-    return 6;
+    return 5;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView
-                                dequeueReusableCellWithIdentifier:@"leftCell"];
+//    UITableViewCell *cell = [tableView
+//                                dequeueReusableCellWithIdentifier:@"leftCell"];
+//    
+//
+//    UIImageView * imageView=(UIImageView *) [cell viewWithTag:3];
+// //   imageView.frame= CGRectMake(25, 20, 20, 20);
+//    
+//    
+//    imageView.image= [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
+//    
+//    UILabel *label= (UILabel *) [cell viewWithTag:2];
+//    label.text=[_textArray objectAtIndex:indexPath.row];
     
-
-    UIImageView * imageView=(UIImageView *) [cell viewWithTag:3];
- //   imageView.frame= CGRectMake(25, 20, 20, 20);
+    static NSString *cellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont fontWithName:@"BentonSans-Regular" size:17];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
+        cell.selectedBackgroundView = [[UIView alloc] init];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
     
     
-    imageView.image= [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    
-    UILabel *label= (UILabel *) [cell viewWithTag:2];
-    label.text=[_textArray objectAtIndex:indexPath.row];
-    
+    cell.textLabel.text = _textArray[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
     
     return cell;
+
+  
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -137,13 +158,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString * key= [NSString stringWithFormat:@"%li",indexPath.row];
     
-    if (indexPath.row==5) {
+    if (indexPath.row==4) {
         User *localUser= [[UserManager sharedUserManager] getUserLocally];
         [[UserManager sharedUserManager] performLogout:localUser];
     }
     else
     {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+       
     }
     
 }

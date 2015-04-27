@@ -20,8 +20,8 @@
     int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
     _frameRadio= [[FitmooHelper sharedInstance] frameRadio];
-    _scrollViewWidth=290;
-    _scrollViewHeight=290;
+    _scrollViewWidth=320;
+    _scrollViewHeight=320;
   //  _scrollbelowFrame= [[UIView alloc] initWithFrame:_bodyDetailLabel.frame];
  //   _scrollViewOriginx=14;
    // NSLog(@"%d",frameHeight);
@@ -37,11 +37,11 @@
     }
     _bodyView.frame= CGRectMake(0, _bodyView.frame.origin.y, _bodyView.frame.size.width, maxHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y+2, self.commentView.frame.size.width, self.commentView.frame.size.height);
-    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView.frame.origin.y+self.commentView.frame.size.height+2, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
-    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView1.frame.origin.y+self.commentView1.frame.size.height+2, self.commentView1.frame.size.width, self.commentView2.frame.size.height);
-    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView2.frame.size.height+self.commentView2.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+//    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView.frame.origin.y+self.commentView.frame.size.height+2, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
+//    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView1.frame.origin.y+self.commentView1.frame.size.height+2, self.commentView1.frame.size.width, self.commentView2.frame.size.height);
+//    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView2.frame.size.height+self.commentView2.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
 
-    
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     
 }
 
@@ -129,7 +129,7 @@
         _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
     }
     
-    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
     
     _bodyTitle.text= _homeFeed.product.detail;
     _bodyTitle.frame= CGRectMake(14, 315, 200, _bodyTitle.frame.size.height);
@@ -193,7 +193,7 @@
 {
     _bodyDetailLabel.text= _homeFeed.text;
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
     
 }
 - (void) setBodyFrameForWorkout
@@ -253,58 +253,64 @@
 
 - (void) addCommentView: (UIView *) addView Atindex:(int) index
 {
+  
+    UIFont *font= [UIFont fontWithName:@"BentonSans-ExtraLight" size:(CGFloat)(14)];
+    UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(14)];
+    NSString *string1=_homeFeed.comments.full_name;
+    NSString *string2=_homeFeed.comments.text;
+
+    
+    NSString *string= [NSString stringWithFormat:@"%@ %@",string1,string2];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
+    attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font1 range:string1 newString:string1];
+    
+    
     if (index==0) {
-        AsyncImageView *commentImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _commentImage.frame.size.width, _commentImage.frame.size.height)];
-        commentImage.userInteractionEnabled = NO;
-        commentImage.exclusiveTouch = NO;
-        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-        _homeFeed.comments= [_homeFeed.commentsArray objectAtIndex:0];
-        commentImage.imageURL =[NSURL URLWithString:_homeFeed.comments.thumb];
-        [_commentImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [_commentImage addSubview:commentImage];
-        self.commentName.text=_homeFeed.comments.full_name;
-        self.commentDetail.text= _homeFeed.comments.text;
+     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 15, 15)];
+     _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
+     _commentImage.image= [UIImage imageNamed:@"comment.png"];
+   
+    _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30, 15, 270,20)];
+    [_commentDetail setAttributedText:attributedString];
+        _commentDetail.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail];
+    _commentDetail.lineBreakMode=  NSLineBreakByCharWrapping;
+    _commentDetail.numberOfLines=30;
+    _commentDetail.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail respectToSuperFrame:nil];
+    [_commentView addSubview:_commentImage];
+    [_commentView addSubview:_commentDetail];
     }
    
     if (index==1) {
-        AsyncImageView *commentImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _commentImage1.frame.size.width, _commentImage1.frame.size.height)];
-        commentImage1.userInteractionEnabled = NO;
-        commentImage1.exclusiveTouch = NO;
-        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage1];
-        _homeFeed.comments= [_homeFeed.commentsArray objectAtIndex:1];
-        commentImage1.imageURL =[NSURL URLWithString:_homeFeed.comments.thumb];
-        [_commentImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [_commentImage1 addSubview:commentImage1];
-        self.commentName1.text=_homeFeed.comments.full_name;
-        self.commentDetail1.text= _homeFeed.comments.text;
+       
+        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30, 15, 270,20)];
+        _commentDetail1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail1 respectToSuperFrame:nil];
+        [_commentDetail1 setAttributedText:attributedString];
+        _commentDetail1.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail1];
+        _commentDetail1.frame= CGRectMake(_commentDetail1.frame.origin.x, 15+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, _commentDetail1.frame.size.width,_commentDetail1.frame.size.height);
+        _commentDetail1.lineBreakMode= NSLineBreakByCharWrapping;
+        _commentDetail1.numberOfLines=30;
+        
+        [_commentView addSubview:_commentDetail1];
     }
     
     if (index==2) {
-        AsyncImageView *commentImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _commentImage2.frame.size.width, _commentImage2.frame.size.height)];
-        commentImage2.userInteractionEnabled = NO;
-        commentImage2.exclusiveTouch = NO;
-        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage2];
-        _homeFeed.comments= [_homeFeed.commentsArray objectAtIndex:2];
-        commentImage2.imageURL =[NSURL URLWithString:_homeFeed.comments.thumb];
-        [_commentImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [_commentImage2 addSubview:commentImage2];
-        self.commentName2.text=_homeFeed.comments.full_name;
-        self.commentDetail2.text= _homeFeed.comments.text;
+      
+ 
     }
     
 }
 
-- (void) removeCommentView2
-{
-    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView2.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
-    [_commentView2 removeFromSuperview];
-}
-- (void) removeCommentView1
-{
-    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView1.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
-    [_commentView1 removeFromSuperview];
-}
-
+//- (void) removeCommentView2
+//{
+//    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView2.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+//    [_commentView2 removeFromSuperview];
+//}
+//- (void) removeCommentView1
+//{
+//    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView1.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+//    [_commentView1 removeFromSuperview];
+//}
+//
 - (void) removeCommentView
 {
      self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
@@ -317,8 +323,8 @@
     self.bodyView.frame= CGRectMake(self.bodyView.frame.origin.x, self.bodyView.frame.origin.y, self.bodyView.frame.size.width, frameHeight);
     self.bodyCastView.frame= CGRectMake(self.bodyCastView.frame.origin.x, self.bodyCastView.frame.origin.y, self.bodyCastView.frame.size.width, frameHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, self.commentView.frame.origin.y-removeView.frame.size.height, self.commentView.frame.size.width, self.commentView.frame.size.height);
-    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView1.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
-    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView2.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView2.frame.size.height);
+//    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView1.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
+//    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView2.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView2.frame.size.height);
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.buttomView.frame.origin.y-removeView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     
     [_scrollView removeFromSuperview];
@@ -332,13 +338,7 @@
     [self.heanderImage1 setImage:headerImage1.image forState:UIControlStateNormal];
 }
 
-- (void) loadCommentImage: (NSString *)url
-{
-    AsyncImageView *commentImage = [[AsyncImageView alloc] init];
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:commentImage];
-    commentImage.imageURL =[NSURL URLWithString:url];
-    [self.commentImage setImage:commentImage.image forState:UIControlStateNormal];
-}
+
 
 - (void) loadHeaderImage2: (NSString *)url
 {
@@ -365,22 +365,23 @@
        _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:nil];
     _heanderImage1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_heanderImage1 respectToSuperFrame:nil];
     _headerImage2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_headerImage2 respectToSuperFrame:nil];
+    
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:nil];
     _dayLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_dayLabel respectToSuperFrame:nil];
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
     
     _commentView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentView respectToSuperFrame:nil];
-    _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
+
     _commentName.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentName respectToSuperFrame:nil];
     _commentDetail.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail respectToSuperFrame:nil];
     
     _commentView1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentView1 respectToSuperFrame:nil];
-    _commentImage1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage1 respectToSuperFrame:nil];
+
     _commentName1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentName1 respectToSuperFrame:nil];
     _commentDetail1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail1 respectToSuperFrame:nil];
     
     _commentView2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentView2 respectToSuperFrame:nil];
-    _commentImage2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage2 respectToSuperFrame:nil];
+
     _commentName2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentName2 respectToSuperFrame:nil];
     _commentDetail2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail2 respectToSuperFrame:nil];
     

@@ -11,13 +11,15 @@
 #import "User.h"
 #import "UserManager.h"
 #import "AsyncImageView.h"
+#import "RESideMenu.h"
 
-@interface LeftViewController : UIViewController
+@interface LeftViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, RESideMenuDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *leftTableView;
 @property (strong, nonatomic)  NSArray * imageArray;
 @property (strong, nonatomic)  NSArray * textArray;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIImageView *topImage;
-
+@property (strong, readwrite, nonatomic) UITableView *tableView;
 @end

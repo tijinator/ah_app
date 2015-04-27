@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     [self addfootButtonsForThree];
    
 }
@@ -32,40 +33,54 @@
     
     _bottomView= [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio)];
     
-    
-    _postButton= [[UIButton alloc] initWithFrame:CGRectMake(103, 12, 115,35)];
-    _postPhoto= [[UIButton alloc] initWithFrame:CGRectMake(226, 12, 83,35)];
-    _postVideo= [[UIButton alloc] initWithFrame:CGRectMake(12, 12, 83,35)];
+  
+    _leftButton1= [[UIButton alloc] initWithFrame:CGRectMake(16, 12, 40,40)];
+    _middleButton1= [[UIButton alloc] initWithFrame:CGRectMake(138, 12, 40,40)];
+    _rightButton1= [[UIButton alloc] initWithFrame:CGRectMake(272, 12, 40,40)];
     
  //   _bottomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bottomView respectToSuperFrame:self.view];
-    _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
-    _postPhoto.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postPhoto respectToSuperFrame:self.view];
-    _postVideo.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postVideo respectToSuperFrame:self.view];
+    _leftButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton1 respectToSuperFrame:self.view];
+    _middleButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_middleButton1 respectToSuperFrame:self.view];
+    _rightButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton1 respectToSuperFrame:self.view];
     
     
-    _postButton.tag=11;
-    _postPhoto.tag=12;
-    _postVideo.tag=13;
+    _leftButton1.tag=11;
+    _middleButton1.tag=12;
+    _rightButton1.tag=13;
     
-    [_postButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_postPhoto addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_postVideo addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_leftButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_middleButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_rightButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage *im= [UIImage imageNamed:@"like.png"];
-    [_postButton setBackgroundImage:im forState:UIControlStateNormal];
+    [_leftButton1 setBackgroundImage:im forState:UIControlStateNormal];
     UIImage *im1= [UIImage imageNamed:@"home.png"];
-    [_postPhoto setBackgroundImage:im1 forState:UIControlStateNormal];
+    [_middleButton1 setBackgroundImage:im1 forState:UIControlStateNormal];
     UIImage *im2= [UIImage imageNamed:@"share.png"];
-    [_postVideo setBackgroundImage:im2 forState:UIControlStateNormal];
+    [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
     
-    [self.bottomView addSubview:_postButton];
-    [self.bottomView addSubview:_postPhoto];
-    [self.bottomView addSubview:_postVideo];
+    [self.bottomView addSubview:_leftButton1];
+    [self.bottomView addSubview:_middleButton1];
+    [self.bottomView addSubview:_rightButton1];
     
     [self.view addSubview:_bottomView];
     [self.view bringSubviewToFront:_bottomView];
+    
+    UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    [gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
+//    UISwipeGestureRecognizer *gestureRecognizer1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandlerForRight:)];
+//    [gestureRecognizer1 setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+//    [self.view addGestureRecognizer:gestureRecognizer1];
+
+    
 }
 
+-(void)swipeHandler:(UISwipeGestureRecognizer *)recognizer {
+   
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
+}
 
 - (IBAction)footbuttonClick:(id)sender {
    
@@ -73,7 +88,7 @@
     switch (((UIButton*)sender).tag) {
         case 11:
         
-        
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
             break;
         case 12:
             

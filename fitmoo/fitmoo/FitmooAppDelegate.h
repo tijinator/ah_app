@@ -15,8 +15,9 @@
 #import "FitmooHelper.h"
 #import "UserManager.h"
 #import "ActionSheetViewController.h"
+#import "RESideMenu.h"
 
-@interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate>
+@interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate,RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NavigationViewController *navigateView;
 @property (strong, nonatomic) ActionSheetViewController *popupView;
 @property (strong, nonatomic) IIViewDeckController *deckController;
+@property (strong, nonatomic) RESideMenu *sideMenuViewController;
 
 
 - (void)saveContext;

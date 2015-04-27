@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
+
 
 
 

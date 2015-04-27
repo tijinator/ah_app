@@ -16,13 +16,12 @@
 #import "ActionSheetViewController.h"
 #import "HomeFeed.h"
 #import "SearchViewController.h"
-
+#import "RESideMenu.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
 @property (strong, nonatomic) UINavigationController *nav;
 @property (nonatomic, assign) BOOL allowRotation;
-
 
 
 
