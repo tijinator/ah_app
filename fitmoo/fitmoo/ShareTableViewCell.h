@@ -66,6 +66,7 @@
 - (void) deleteViews:(UIView *)view;
 - (void) addScrollView;
 - (void) rebuiltBodyViewFrame;
+- (void) rebuiltCommentViewFrame;
 - (void) setBodyFrameForWorkout;
 - (void) setBodyFrameForRegular;
 - (void) setBodyFrameForNutrition;

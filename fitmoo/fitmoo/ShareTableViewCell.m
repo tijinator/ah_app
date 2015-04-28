@@ -28,6 +28,19 @@
     // Initialization code
 }
 
+- (void) rebuiltCommentViewFrame
+{
+    int maxHeight=0;
+    for (UIView * subview in _commentView.subviews) {
+        int temHeight= (subview.frame.size.height+subview.frame.origin.y+5);
+        maxHeight= MAX(maxHeight, temHeight);
+    }
+    _commentView.frame= CGRectMake(0, _commentView.frame.origin.y, _commentView.frame.size.width, maxHeight);
+
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+
+}
+
 - (void) rebuiltBodyViewFrame
 {
     int maxHeight=0;
@@ -287,7 +300,7 @@
         [_commentDetail1 setAttributedText:attributedString];
         _commentDetail1.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail1];
         _commentDetail1.frame= CGRectMake(_commentDetail1.frame.origin.x, 15+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, _commentDetail1.frame.size.width,_commentDetail1.frame.size.height);
-        _commentDetail1.lineBreakMode= NSLineBreakByCharWrapping;
+        _commentDetail1.lineBreakMode= NSLineBreakByWordWrapping;
         _commentDetail1.numberOfLines=30;
         
         [_commentView addSubview:_commentDetail1];
@@ -295,8 +308,18 @@
     
     if (index==2) {
       
- 
+        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30, 15, 270,20)];
+        _commentDetail2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail2 respectToSuperFrame:nil];
+        [_commentDetail2 setAttributedText:attributedString];
+        _commentDetail2.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail2];
+        _commentDetail2.frame= CGRectMake(_commentDetail2.frame.origin.x, 15+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, _commentDetail2.frame.size.width,_commentDetail2.frame.size.height);
+        _commentDetail2.lineBreakMode= NSLineBreakByWordWrapping;
+        _commentDetail2.numberOfLines=30;
+        
+        [_commentView addSubview:_commentDetail2];
     }
+    
+    
     
 }
 

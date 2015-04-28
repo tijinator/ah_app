@@ -146,6 +146,10 @@
 		2732B7421AD84B5600610821 /* Nutrition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7411AD84B5600610821 /* Nutrition.m */; };
 		2732B7451AD84D1000610821 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7441AD84D1000610821 /* Event.m */; };
 		2732B7481AD84EF200610821 /* Videos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7471AD84EF200610821 /* Videos.m */; };
+		2736B2231AEFC9920013B4B9 /* BentonSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2736B2221AEFC9920013B4B9 /* BentonSans-Regular.otf */; };
+		2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */; };
+		2736B2301AF003540013B4B9 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736B22F1AF003540013B4B9 /* CameraViewController.m */; };
+		2736B2321AF004E40013B4B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2736B2311AF004E40013B4B9 /* CoreGraphics.framework */; };
 		273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */; };
 		273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59E1AEE6FE000BCC66F /* RESideMenu.m */; };
 		273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5A01AEE6FE000BCC66F /* UIViewController+RESideMenu.m */; };
@@ -174,7 +178,6 @@
 		276094461AD708C100A769CE /* BentonSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */; };
 		276094471AD708C100A769CE /* BentonSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942D1AD708C100A769CE /* BentonSans-Light.otf */; };
 		276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942E1AD708C100A769CE /* BentonSans-Medium.otf */; };
-		276094491AD708C100A769CE /* BentonSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2760942F1AD708C100A769CE /* BentonSans-Regular.otf */; };
 		2760944A1AD708C100A769CE /* BentonSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094301AD708C100A769CE /* BentonSans-Thin.otf */; };
 		2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094311AD708C100A769CE /* BentonSansComp-Black.otf */; };
 		2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094321AD708C100A769CE /* BentonSansComp-Bold.otf */; };
@@ -368,6 +371,12 @@
 		2732B7441AD84D1000610821 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		2732B7461AD84EF200610821 /* Videos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Videos.h; sourceTree = "<group>"; };
 		2732B7471AD84EF200610821 /* Videos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Videos.m; sourceTree = "<group>"; };
+		2736B2221AEFC9920013B4B9 /* BentonSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Regular.otf"; sourceTree = "<group>"; };
+		2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePostViewController.h; sourceTree = "<group>"; };
+		2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePostViewController.m; sourceTree = "<group>"; };
+		2736B22E1AF003540013B4B9 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		2736B22F1AF003540013B4B9 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		2736B2311AF004E40013B4B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		273CE59B1AEE6FE000BCC66F /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		273CE59D1AEE6FE000BCC66F /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
@@ -403,7 +412,6 @@
 		2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-ExtraLight.otf"; sourceTree = "<group>"; };
 		2760942D1AD708C100A769CE /* BentonSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Light.otf"; sourceTree = "<group>"; };
 		2760942E1AD708C100A769CE /* BentonSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Medium.otf"; sourceTree = "<group>"; };
-		2760942F1AD708C100A769CE /* BentonSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Regular.otf"; sourceTree = "<group>"; };
 		276094301AD708C100A769CE /* BentonSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSans-Thin.otf"; sourceTree = "<group>"; };
 		276094311AD708C100A769CE /* BentonSansComp-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Black.otf"; sourceTree = "<group>"; };
 		276094321AD708C100A769CE /* BentonSansComp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansComp-Bold.otf"; sourceTree = "<group>"; };
@@ -431,6 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2736B2321AF004E40013B4B9 /* CoreGraphics.framework in Frameworks */,
 				2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +458,7 @@
 		27188F5C1AD4646300C34372 = {
 			isa = PBXGroup;
 			children = (
+				2736B2311AF004E40013B4B9 /* CoreGraphics.framework */,
 				27188F671AD4646300C34372 /* fitmoo */,
 				27188F841AD4646300C34372 /* fitmooTests */,
 				27188F661AD4646300C34372 /* Products */,
@@ -479,6 +489,7 @@
 				2732B7161AD81C1600610821 /* BaseViewController.m */,
 				272582061AD5673F0059F43C /* NavigationViewController.h */,
 				272582071AD5673F0059F43C /* NavigationViewController.m */,
+				2736B2241AEFD99C0013B4B9 /* posts */,
 				2725827E1AD5AA7D0059F43C /* MainPages */,
 				2725820F1AD578A80059F43C /* UserManagement */,
 				272582021AD563280059F43C /* RightView */,
@@ -797,6 +808,17 @@
 			name = "utf8 images";
 			sourceTree = "<group>";
 		};
+		2736B2241AEFD99C0013B4B9 /* posts */ = {
+			isa = PBXGroup;
+			children = (
+				2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */,
+				2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */,
+				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
+				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
+			);
+			name = posts;
+			sourceTree = "<group>";
+		};
 		273CE59A1AEE6FE000BCC66F /* RESideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,11 +863,11 @@
 			children = (
 				276094291AD708C100A769CE /* BentonSans-Black.otf */,
 				2760942A1AD708C100A769CE /* BentonSans-Bold.otf */,
+				2736B2221AEFC9920013B4B9 /* BentonSans-Regular.otf */,
 				2760942B1AD708C100A769CE /* BentonSans-Book.otf */,
 				2760942C1AD708C100A769CE /* BentonSans-ExtraLight.otf */,
 				2760942D1AD708C100A769CE /* BentonSans-Light.otf */,
 				2760942E1AD708C100A769CE /* BentonSans-Medium.otf */,
-				2760942F1AD708C100A769CE /* BentonSans-Regular.otf */,
 				276094301AD708C100A769CE /* BentonSans-Thin.otf */,
 				276094311AD708C100A769CE /* BentonSansComp-Black.otf */,
 				276094321AD708C100A769CE /* BentonSansComp-Bold.otf */,
@@ -998,7 +1020,6 @@
 				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
 				276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */,
 				2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */,
-				276094491AD708C100A769CE /* BentonSans-Regular.otf in Resources */,
 				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
 				276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */,
 				2732B7251AD820FB00610821 /* settings.png in Resources */,
@@ -1006,6 +1027,7 @@
 				276094551AD708C100A769CE /* BentonSansCond-Medium.otf in Resources */,
 				2732B7221AD820FB00610821 /* options.png in Resources */,
 				2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */,
+				2736B2231AEFC9920013B4B9 /* BentonSans-Regular.otf in Resources */,
 				2732B7201AD820FB00610821 /* home.png in Resources */,
 				2760944F1AD708C100A769CE /* BentonSansComp-Medium.otf in Resources */,
 				27188FAB1AD4695000C34372 /* dots2.png in Resources */,
@@ -1075,6 +1097,7 @@
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				272582451AD57F070059F43C /* UIAlertView+AFNetworking.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
+				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
 				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
 				273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */,
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
@@ -1090,6 +1113,7 @@
 				272582481AD57F070059F43C /* UIProgressView+AFNetworking.m in Sources */,
 				272582291AD57EFD0059F43C /* AFHTTPRequestOperationManager.m in Sources */,
 				273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */,
+				2736B2301AF003540013B4B9 /* CameraViewController.m in Sources */,
 				2732B73F1AD849D000610821 /* Product.m in Sources */,
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
 				273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */,

@@ -278,6 +278,7 @@
             cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
             [cell addCommentView:cell.commentView Atindex:i];
         }
+        [cell rebuiltCommentViewFrame];
     }else
     {
          [cell removeCommentView];

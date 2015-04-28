@@ -7,13 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "FitmooHelper.h"
 #import "RESideMenu.h"
-@interface BaseViewController : UIViewController
+#import "CameraViewController.h"
+@interface BaseViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 - (IBAction)openSideMenu:(id)sender;
 @property (nonatomic, strong) UIButton *leftButton1;
 @property (nonatomic, strong) UIButton *middleButton1;
 @property (nonatomic, strong) UIButton *rightButton1;
 @property (strong, nonatomic)  UIView *bottomView;
+
+@property (nonatomic, strong) UIButton *postButton;
+@property (nonatomic, strong) UIButton *videoButton;
+@property (nonatomic, strong) UIButton *pictureButton;
+@property (strong, nonatomic)  UIView *subBottomView;
+
+@property (strong, nonatomic)  CameraViewController *overlay;
+@property (strong, nonatomic)  UIImagePickerController *picker;
 @end
