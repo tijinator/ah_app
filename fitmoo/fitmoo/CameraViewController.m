@@ -9,7 +9,9 @@
 #import "CameraViewController.h"
 
 @interface CameraViewController ()
-
+{
+    bool takePhoto;
+}
 @end
 
 @implementation CameraViewController
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-   
+    takePhoto= true;
 
     // Do any additional setup after loading the view.
 }
@@ -73,12 +75,119 @@
 
 - (IBAction)imageButtonClick:(id)sender {
     
-    
+    _picker1 = [[UIImagePickerController alloc] init];
+    _picker1.delegate = self;
+    _picker1.allowsEditing = YES;
+    _picker1.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+     takePhoto= false;
+    [self presentViewController:_picker1 animated:YES completion:NULL];
 }
 
 - (IBAction)screenShotButtonClick:(id)sender {
+    
+    [_picker takePicture];
+    takePhoto=true;
 }
 
 - (IBAction)changeCameraButtonClick:(id)sender {
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        
+//        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//        picker.delegate = self;
+//        picker.allowsEditing = YES;
+//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+//        
+//        [self presentViewController:picker animated:YES completion:NULL];
+//    }
+
+    
 }
+
+- (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
+    CGAffineTransform scaleTransform;
+    CGPoint origin;
+    
+    if (image.size.width > image.size.height) {
+        CGFloat scaleRatio = newSize / image.size.height;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(-(image.size.width - image.size.height) / 2.0f, 0);
+    } else {
+        CGFloat scaleRatio = newSize / image.size.width;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(0, -(image.size.height - image.size.width) / 2.0f);
+    }
+    
+    CGSize size = CGSizeMake(newSize, newSize);
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    } else {
+        UIGraphicsBeginImageContext(size);
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextConcatCTM(context, scaleTransform);
+    
+    [image drawAtPoint:origin];
+    
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+- (void) showFliterImages
+{
+    
+}
+
+//-(void) openPostView
+//{
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
+//    _postView.PostImage= self.chosenImage;
+//    _postView.postType= @"post";
+//    [self presentViewController:_postView animated:YES completion:nil];
+//    
+//}
+
+#pragma mark - Image Picker Controller delegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    double radio= self.view.frame.size.width/320;
+    if (takePhoto==true) {
+         _chosenImage = info[UIImagePickerControllerOriginalImage];
+        _chosenImage= [self squareImageFromImage:_chosenImage scaledToSize:320*radio];
+        
+        [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+        [picker dismissViewControllerAnimated:YES completion:nil];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+        NSParameterAssert(_chosenImage);
+        UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
+    }else
+    {
+        _chosenImage = info[UIImagePickerControllerEditedImage];
+        [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+        [_picker1 dismissViewControllerAnimated:YES completion:nil];
+        [_picker dismissViewControllerAnimated:YES completion:nil];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+        
+    }
+ //   [self showFliterImages];
+    
+ //   [self openPostView];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [_picker1 dismissViewControllerAnimated:YES completion:NULL];
+     takePhoto= true;
+    
+}
+
+
 @end

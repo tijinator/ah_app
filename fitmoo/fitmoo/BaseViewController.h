@@ -10,8 +10,10 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "FitmooHelper.h"
 #import "RESideMenu.h"
-#import "CameraViewController.h"
-@interface BaseViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+#import "BasePostViewController.h"
+
+@interface BaseViewController : UIViewController
 
 - (IBAction)openSideMenu:(id)sender;
 @property (nonatomic, strong) UIButton *leftButton1;
@@ -24,6 +26,7 @@
 @property (nonatomic, strong) UIButton *pictureButton;
 @property (strong, nonatomic)  UIView *subBottomView;
 
-@property (strong, nonatomic)  CameraViewController *overlay;
-@property (strong, nonatomic)  UIImagePickerController *picker;
+//@property (strong, nonatomic)  CameraViewController *overlay;
+//@property (strong, nonatomic)  UIImagePickerController *picker;
+@property (strong, nonatomic)  BasePostViewController *postView;
 @end

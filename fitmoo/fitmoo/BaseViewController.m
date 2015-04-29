@@ -167,24 +167,15 @@
 
 -(void) presentCameraView
 {
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-  //  _overlay.sourceType=UIImagePickerControllerSourceTypeCamera;
-    
-    _picker = [[UIImagePickerController alloc] init];
-    _picker.allowsEditing = YES;
-    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.picker.showsCameraControls = NO;
-    self.picker.navigationBarHidden = YES;
-    self.picker.toolbarHidden = YES;
+    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
+    _postView.postType= @"post";
+    [self presentViewController:_postView animated:YES completion:nil];
+    [self hideThreeSubButtons];
+    showButton=false;
 
-//    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
-//    v.backgroundColor=[UIColor yellowColor];
-    self.overlay.picker = self.picker;
-    self.picker.cameraOverlayView = self.overlay.view;
-    self.picker.delegate = self.overlay;
-    
-    [self presentViewController:_picker animated:YES completion:NULL];
+  
 }
 
 - (IBAction)footbuttonClick:(id)sender {

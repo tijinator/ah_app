@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-@interface BasePostViewController : UIViewController
+#import "UserManager.h"
+#import "CameraViewController.h"
+@interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
+@property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
 
 @property (strong, nonatomic) IBOutlet UIView *normalPostView;
-@property (strong, nonatomic) IBOutlet UIImageView *normalPostImage;
-@property (strong, nonatomic) IBOutlet UIImageView *workoutPostImage;
-@property (strong, nonatomic) IBOutlet UIImageView *nutritionPostImage;
+
+@property (strong, nonatomic) IBOutlet UIButton *workoutPostImage;
+@property (strong, nonatomic) IBOutlet UIButton *nutritionPostImage;
+- (IBAction)postImageButtonClick:(id)sender;
+
+- (IBAction)cancelButtonClick:(id)sender;
+- (IBAction)postButtonClick:(id)sender;
+
+@property (strong, nonatomic)  UIImage *PostImage;
 
 @property (strong, nonatomic) IBOutlet UITextView *normalPostText;
 
@@ -38,7 +47,14 @@
 
 
 @property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic)  UIImagePickerController *picker;
+@property (strong, nonatomic)  BasePostViewController *postView;
 
+@property (strong, nonatomic)  CameraViewController *overlay;
+//@property (strong, nonatomic)  UIImagePickerController *picker;
+- (IBAction)nutritionButtonClick:(id)sender;
+- (IBAction)normalPostButtonClick:(id)sender;
+- (IBAction)workoutButtonClick:(id)sender;
 
 
 @end

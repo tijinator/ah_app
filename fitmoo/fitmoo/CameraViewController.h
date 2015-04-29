@@ -9,11 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "FitmooHelper.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+//#import "BasePostViewController.h"
+
 //@interface CameraViewController : UIImagePickerController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic)  UIImagePickerController *picker;
+@property (strong, nonatomic)  UIImagePickerController *picker1;
+//@property (strong, nonatomic)  BasePostViewController *postView;
+@property (strong, nonatomic)  UIImage *chosenImage;
+@property (strong, nonatomic)  NSString *type;
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *cameraDirectionButton;

@@ -290,16 +290,48 @@
     
 }
 
-
--(void) performPost:(NSString *) postText
+-(void) performPostToAmazon:(NSDictionary *)feed
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: postText, @"text",photos_attributes, @"photos_attributes", nil];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", postText, @"text",
+    //   NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+    
+    
+    //    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: postText, @"text",photos_attributes, @"photos_attributes", nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",
+                              feed, @"feed",nil];
+    
+    [manager POST: _amazonUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+-(void) performPost:(NSDictionary *)feed
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+ //   NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+    
+    
+//    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: postText, @"text",photos_attributes, @"photos_attributes", nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",
         feed, @"feed",nil];
     
     [manager POST: _postUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -309,7 +341,7 @@
       
         
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"postFinished" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -506,6 +538,8 @@
     _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
     _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
     _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
+    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    
     return self;
 }
 

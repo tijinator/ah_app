@@ -121,6 +121,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="postButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="YNB-yb-pv9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QIx-LG-BE2">
                                         <rect key="frame" x="13" y="30" width="63" height="30"/>
@@ -131,7 +134,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openSideMenu:" destination="hcf-6K-sfu" eventType="touchUpInside" id="7JG-AI-LpV"/>
+                                            <action selector="cancelButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="s5R-XO-CSr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -149,15 +152,9 @@
                                             <color key="titleColor" red="0.80392156862745101" green="0.40392156862745099" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lB3-E6-nbH">
-                                        <rect key="frame" x="113" y="0.0" width="95" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="POST">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <connections>
+                                            <action selector="nutritionButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="ve8-IQ-Zvi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qNp-yJ-XZa">
                                         <rect key="frame" x="217" y="0.0" width="97" height="55"/>
@@ -167,6 +164,21 @@
                                             <color key="titleColor" red="0.5725490196078431" green="0.80000000000000004" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="workoutButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="p6q-Fl-yJe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lB3-E6-nbH">
+                                        <rect key="frame" x="113" y="0.0" width="95" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="POST">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="normalPostButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="ejZ-c3-DBy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.27058823529411763" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -182,10 +194,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.png" id="LUD-0G-qU2">
-                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="QA3-4H-ziY">
                                         <rect key="frame" x="96" y="71" width="216" height="84"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,6 +201,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ixC-pO-AbG">
+                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="play.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postImageButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="Ftb-7C-uF5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
@@ -200,10 +218,6 @@
                                 <rect key="frame" x="0.0" y="127" width="320" height="110"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.png" id="I3K-yq-W7v">
-                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Wd-O1-UGj">
                                         <rect key="frame" x="96" y="19" width="216" height="71"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,10 +225,20 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1gt-UT-bsA">
+                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="play.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postImageButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="c8B-dG-iX2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" id="QqL-od-0x6">
+                            <view hidden="YES" contentMode="scaleToFill" id="QqL-od-0x6">
                                 <rect key="frame" x="0.0" y="245" width="320" height="248"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -232,10 +256,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.png" id="VXF-lE-DJx">
-                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UZu-qs-z85">
                                         <rect key="frame" x="96" y="160" width="216" height="80"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,6 +263,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mus-6t-j14">
+                                        <rect key="frame" x="8" y="10" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="play.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postImageButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="UFL-oA-09O"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
@@ -256,17 +286,17 @@
                         <outlet property="WorkoutButton" destination="lB3-E6-nbH" id="E2L-1E-esu"/>
                         <outlet property="backButton" destination="QIx-LG-BE2" id="sAS-5c-uNX"/>
                         <outlet property="buttonView" destination="tzq-A1-hee" id="ovV-d1-9Io"/>
-                        <outlet property="normalPostImage" destination="I3K-yq-W7v" id="SY2-Qd-Rra"/>
+                        <outlet property="normalPostImage" destination="1gt-UT-bsA" id="zfu-id-qmT"/>
                         <outlet property="normalPostText" destination="8Wd-O1-UGj" id="LzH-31-fDF"/>
                         <outlet property="normalPostView" destination="l9e-oe-5yW" id="RRJ-g3-Xtx"/>
                         <outlet property="nutritionIngedients" destination="9mj-13-ocu" id="6my-sG-SzL"/>
-                        <outlet property="nutritionPostImage" destination="VXF-lE-DJx" id="uZW-T4-bsz"/>
+                        <outlet property="nutritionPostImage" destination="Mus-6t-j14" id="bFI-Ky-7NA"/>
                         <outlet property="nutritionPreparation" destination="UZu-qs-z85" id="15J-cJ-hFi"/>
                         <outlet property="nutritionTitle" destination="0i1-1P-Gq9" id="QiK-e4-K5g"/>
                         <outlet property="nutritionView" destination="QqL-od-0x6" id="I7D-Mt-LUy"/>
                         <outlet property="topView" destination="B8x-li-nWl" id="wrz-CA-Kh3"/>
                         <outlet property="workoutInstruction" destination="QA3-4H-ziY" id="AvY-sL-41b"/>
-                        <outlet property="workoutPostImage" destination="LUD-0G-qU2" id="z5n-hH-0LI"/>
+                        <outlet property="workoutPostImage" destination="ixC-pO-AbG" id="6g6-wi-5LG"/>
                         <outlet property="workoutTitle" destination="w7t-OV-CVp" id="PGc-In-vZr"/>
                         <outlet property="workoutView" destination="YbD-Xx-fax" id="grS-PG-5ch"/>
                     </connections>

@@ -267,7 +267,14 @@
 - (void) addCommentView: (UIView *) addView Atindex:(int) index
 {
   
-    UIFont *font= [UIFont fontWithName:@"BentonSans-ExtraLight" size:(CGFloat)(14)];
+//    for(NSString* family in [UIFont familyNames]) {
+//        NSLog(@"%@", family);
+//        for(NSString* name in [UIFont fontNamesForFamilyName: family]) {
+//            NSLog(@"  %@", name);
+//        }
+//    }
+   // UIFont *font= [UIFont fontWithName:@"BentonSans-ExtraLight" size:(CGFloat)(14)];
+    UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];
     UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(14)];
     NSString *string1=_homeFeed.comments.full_name;
     NSString *string2=_homeFeed.comments.text;

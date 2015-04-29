@@ -31,13 +31,14 @@
 
 -(User *) performLogin: (User *) user;
 -(void) performLogout: (User *) user;
--(void) performPost:(NSString *) postText;
+-(void) performPost:(NSDictionary *)feed;
 -(void) performComment:(NSString *) postText withId:(NSString *) postId;
 -(void) performLike:(NSString *) postId;
 -(void) performShare:(NSString *) postText withId:(NSString *) postId;
 -(void) performReport:(NSString *) postId;
 -(void) performDelete:(NSString *) postId;
 -(void) performEndorse:(NSString *) postId;
+-(void) performPostToAmazon:(NSDictionary *)feed;
 
 -(void) checkEmailExistFromFitmoo:(User *) user;
 -(void) createAccountFromFacebook:(User *) user;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;
 @property (strong, nonatomic) NSString * postUrl;
+@property (strong, nonatomic) NSString * amazonUrl;
 
 @property (strong, nonatomic) NSString * clientUrl;
 @property (strong, nonatomic) NSString * feedsUrl;
