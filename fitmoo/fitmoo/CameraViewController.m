@@ -11,6 +11,7 @@
 @interface CameraViewController ()
 {
     bool takePhoto;
+    bool startCapture;
 }
 @end
 
@@ -20,7 +21,8 @@
     [super viewDidLoad];
     [self initFrames];
     takePhoto= true;
-
+    startCapture= false;
+    _mediaType=@"camera";
     // Do any additional setup after loading the view.
 }
 
@@ -85,8 +87,25 @@
 
 - (IBAction)screenShotButtonClick:(id)sender {
     
-    [_picker takePicture];
-    takePhoto=true;
+    if ([_mediaType isEqualToString:@"camera"]) {
+        [_picker takePicture];
+        takePhoto=true;
+     
+    }else
+    {
+        if (startCapture==false) {
+            [_picker startVideoCapture];
+            startCapture=true;
+        }else
+        {
+            [_picker stopVideoCapture];
+            startCapture=false;
+        }
+       
+       
+    }
+    
+    
 }
 
 - (IBAction)changeCameraButtonClick:(id)sender {
@@ -100,8 +119,18 @@
 //        
 //        [self presentViewController:picker animated:YES completion:NULL];
 //    }
-
-    
+    if ([_mediaType isEqualToString:@"camera"]) {
+        _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+        _mediaType=@"video";
+      //  _picker.allowsEditing = YES;
+     //   self.picker.navigationBarHidden = NO;
+     //   self.picker.toolbarHidden = NO;
+     //   [self.view removeFromSuperview];
+    }else
+    {
+        _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+        _mediaType=@"camera";
+    }
 }
 
 - (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
@@ -144,6 +173,7 @@
     
 }
 
+
 //-(void) openPostView
 //{
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -158,27 +188,35 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     double radio= self.view.frame.size.width/320;
-    if (takePhoto==true) {
-         _chosenImage = info[UIImagePickerControllerOriginalImage];
-        _chosenImage= [self squareImageFromImage:_chosenImage scaledToSize:320*radio];
-        
-        [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
-        [picker dismissViewControllerAnimated:YES completion:nil];
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
-        NSParameterAssert(_chosenImage);
-        UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
+
+    if ([_mediaType isEqualToString:@"video"]) {
+        self.videoURL = info[UIImagePickerControllerMediaURL];
+        UISaveVideoAtPathToSavedPhotosAlbum([self.videoURL path], nil, nil, nil);
     }else
     {
-        _chosenImage = info[UIImagePickerControllerEditedImage];
-        [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
-        [_picker1 dismissViewControllerAnimated:YES completion:nil];
-        [_picker dismissViewControllerAnimated:YES completion:nil];
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
-        
+        if (takePhoto==true) {
+            _chosenImage = info[UIImagePickerControllerOriginalImage];
+            _chosenImage= [self squareImageFromImage:_chosenImage scaledToSize:320*radio];
+            
+            [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+            [picker dismissViewControllerAnimated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+            NSParameterAssert(_chosenImage);
+            UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
+        }else
+        {
+            _chosenImage = info[UIImagePickerControllerEditedImage];
+            [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+            [_picker1 dismissViewControllerAnimated:YES completion:nil];
+            [_picker dismissViewControllerAnimated:YES completion:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+            
+        }
+
     }
- //   [self showFliterImages];
     
- //   [self openPostView];
+    
+    
     
 }
 

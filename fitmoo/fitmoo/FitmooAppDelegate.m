@@ -8,6 +8,7 @@
 
 #import "FitmooAppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
+
 @interface FitmooAppDelegate ()
 
 @end

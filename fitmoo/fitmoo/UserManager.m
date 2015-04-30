@@ -327,13 +327,11 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
- //   NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+
     
-    
-//    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: postText, @"text",photos_attributes, @"photos_attributes", nil];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",
         feed, @"feed",nil];
-    
+
     [manager POST: _postUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
@@ -539,6 +537,8 @@
     _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
     _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
     _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    
+    
     
     return self;
 }

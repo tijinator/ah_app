@@ -22,6 +22,8 @@
 //@property (strong, nonatomic)  BasePostViewController *postView;
 @property (strong, nonatomic)  UIImage *chosenImage;
 @property (strong, nonatomic)  NSString *type;
+@property (strong, nonatomic)  NSString *mediaType;
+@property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *cameraDirectionButton;

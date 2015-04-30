@@ -24,8 +24,33 @@
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
     [self createObservers];
     
-  //  [self presentCameraView];
-    // Do any additional setup after loading the view.
+    
+//    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
+//                                                          credentialsWithRegionType:AWSRegionUSEast1
+//                                                          accountId:@"271404364214"
+//                                                          identityPoolId:@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870"
+//                                                          unauthRoleArn:@"arn:aws:cognito-identity:us-east-1:271404364214:role/Cognito_fitmoo_appAuth_Role"
+//                                                          authRoleArn:@"arn:aws:cognito-identity:us-east-1:271404364214:role/Cognito_fitmoo_appUnauth_Role"];
+//    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
+//                                                          credentialsWithRegionType:AWSRegionUSEast1
+//                                                          accountId:@"074088242106"
+//                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
+//                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"
+//                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"];
+//    
+//    AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
+//                                                                          credentialsProvider:credentialsProvider];
+    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
+                                                          credentialsWithRegionType:AWSRegionUSEast1
+                                                          accountId:@"074088242106"
+                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
+                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"
+                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"];
+    
+    AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
+                                                                          credentialsProvider:credentialsProvider];
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+
 }
 
 
@@ -33,7 +58,7 @@
 - (void)uploadToS3{
     // get the image
     UIImage *img = _PostImage;
-    
+   // UIImage *img = [UIImage imageNamed:@"like.png"];
     // create a local image that we can use to upload to s3
     NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"image.png"];
     NSData *imageData = UIImagePNGRepresentation(img);
@@ -45,11 +70,14 @@
     // next we set up the S3 upload request manager
     _uploadRequest = [AWSS3TransferManagerUploadRequest new];
     // set the bucket
-    _uploadRequest.bucket = @"s3-demo-objectivec";
+ //   _uploadRequest.bucket = @"s3-demo-objectivec";
+ //    _uploadRequest.bucket = @"fitmoo-staging";
+    _uploadRequest.bucket = @"fitmoo-staging-test";
     // I want this image to be public to anyone to view it so I'm setting it to Public Read
     _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     // set the image's name that will be used on the s3 server. I am also creating a folder to place the image in
-    _uploadRequest.key = @"foldername/image.png";
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    _uploadRequest.key = [NSString stringWithFormat:@"%@%@%@",@"photos/",uuid,@".png"];
     // set the content type
     _uploadRequest.contentType = @"image/png";
     // we will track progress through an AWSNetworkingUploadProgressBlock
@@ -73,10 +101,20 @@
         
         // once the uploadmanager finishes check if there were any errors
         if (task.error) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"Upload Image Failed" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+
             NSLog(@"%@", task.error);
         }else{// if there aren't any then the image is uploaded!
             // this is the url of the image we just uploaded
-            NSLog(@"https://s3.amazonaws.com/s3-demo-objectivec/foldername/image.png");
+            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png"];
+            NSLog(@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
+            NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
+         //   NSString *uploadImage= @"https://fitmoo-staging.s3.amazonaws.com/photos%2F39528c839944-4b8a-457f-a5fe-ec9f386cae8e.jpg";
+            [self makePost:uploadImage];
+            
         }
         
         return nil;
@@ -85,7 +123,7 @@
 }
 
 - (void) update{
-//    _progressLabel.text = [NSString stringWithFormat:@"Uploading:%.0f%%", ((float)self.amountUploaded/ (float)self.filesize) * 100];
+      NSLog(@"%@", [NSString stringWithFormat:@"Uploading:%.0f%%", ((float)self.amountUploaded/ (float)self.filesize) * 100]); ;
 }
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateImages" object:nil];
@@ -108,15 +146,6 @@
 
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    if (self.PostImage==nil) {
-//        
-//    }else
-//    {
-//        [self defineTypeOfPost];
-//    }
-//}
 
 - (void) defineTypeOfPost
 {
@@ -211,9 +240,6 @@
     _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
 
     
-   
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -264,84 +290,111 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+-(void) makePost: (NSString *) imageUrl
+{
+    if ([self.postType isEqualToString:@"post"]) {
+        if ([_normalPostText.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"text can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+        }else
+        {
+            NSArray *photoArray;
+            NSDictionary *photos_attributes;
+            if ([imageUrl isEqualToString:@""]) {
+                photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+            }else
+            {
+                
+                photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
+                photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
+            }
+           
+            NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photoArray, @"photos_attributes", nil];
+            
+            [ [UserManager sharedUserManager] performPost:feed];
+        }
+        
+    }else  if ([self.postType isEqualToString:@"nutrition"]) {
+        if ([_nutritionTitle.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+        }else
+        {
+            if ([_nutritionPreparation.text isEqualToString:@""]&&[_nutritionIngedients.text isEqualToString:@""]) {
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                                  message : @"Ingrediens and Preparation can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+            }else
+            {
+                NSArray *photoArray;
+                NSDictionary *photos_attributes;
+                if ([imageUrl isEqualToString:@""]) {
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                }else
+                {
+                    
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
+                    photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
+                }
+
+                NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
+                NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photoArray, @"photos_attributes",@"", @"text", nil];
+                [ [UserManager sharedUserManager] performPost:feed];
+            }
+        }
+        
+    }else  if ([self.postType isEqualToString:@"workout"]) {
+        if ([_workoutTitle.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+        }else
+        {
+            if ([_workoutInstruction.text isEqualToString:@""]) {
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                                  message : @"Instruction can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+            }else
+            {
+                NSArray *photoArray;
+                NSDictionary *photos_attributes;
+                if ([imageUrl isEqualToString:@""]) {
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                }else
+                {
+                    
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
+                    photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
+                }
+
+                NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photoArray, @"photos_attributes", nil];
+                
+                [ [UserManager sharedUserManager] performPost:feed];
+            }
+        }
+
+    }
+
+}
+
+
+
 - (IBAction)postButtonClick:(id)sender {
     
     if (self.PostImage==nil) {
-        
-        if ([self.postType isEqualToString:@"post"]) {
-            if ([_normalPostText.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"text can not be empty" delegate : nil cancelButtonTitle : @"OK"
-                                                        otherButtonTitles : nil ];
-                [alert show ];
-            }else
-            {
-            NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-            NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photos_attributes, @"photos_attributes", nil];
-           
-            [ [UserManager sharedUserManager] performPost:feed];
-            }
-            
-        }else  if ([self.postType isEqualToString:@"nutrition"]) {
-            if ([_nutritionTitle.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
-                                                        otherButtonTitles : nil ];
-                [alert show ];
-            }else
-            {
-                if ([_nutritionPreparation.text isEqualToString:@""]&&[_nutritionIngedients.text isEqualToString:@""]) {
-                    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                      message : @"Ingrediens and Preparation can not be both empty" delegate : nil cancelButtonTitle : @"OK"
-                                                            otherButtonTitles : nil ];
-                    [alert show ];
-                }else
-                {
-            NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-            NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
-            NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photos_attributes, @"photos_attributes", nil];
-            [ [UserManager sharedUserManager] performPost:feed];
-            }
-            }
-          
-        }else  if ([self.postType isEqualToString:@"workout"]) {
-            if ([_workoutTitle.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
-                                                        otherButtonTitles : nil ];
-                [alert show ];
-            }else
-            {
-                if ([_workoutInstruction.text isEqualToString:@""]) {
-                    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                      message : @"Instruction can not be both empty" delegate : nil cancelButtonTitle : @"OK"
-                                                            otherButtonTitles : nil ];
-                    [alert show ];
-                }else
-                {
-                    NSDictionary *photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-                    NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes", nil];
-                    
-                    [ [UserManager sharedUserManager] performPost:feed];
-                }
-            }
-            
-            
-            
-           
-        }
+        [self makePost:@""];
         
     }else
     {
-        if ([self.postType isEqualToString:@"post"]) {
-            
-            [self uploadToS3];
-          
-        }else  if ([self.postType isEqualToString:@"nutrition"]) {
-           
-        }else  if ([self.postType isEqualToString:@"workout"]) {
-          
-        }
+        [self uploadToS3];
     }
     
   

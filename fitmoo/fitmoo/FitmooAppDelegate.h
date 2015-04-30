@@ -17,6 +17,7 @@
 #import "ActionSheetViewController.h"
 #import "RESideMenu.h"
 
+
 @interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate,RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
