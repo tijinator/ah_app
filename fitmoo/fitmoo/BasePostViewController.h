@@ -10,6 +10,8 @@
 #import "FitmooHelper.h"
 #import "UserManager.h"
 #import "CameraViewController.h"
+
+
 @interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
 

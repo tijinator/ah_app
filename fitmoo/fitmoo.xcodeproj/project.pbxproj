@@ -10,7 +10,6 @@
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		2711144D1ADF095D0056EB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
 		2711144E1ADF096F0056EB13 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582731AD591ED0059F43C /* UserManager.m */; };
-		2711144F1ADF0A8B0056EB13 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731C62F1ADD632F00788181 /* FacebookSDK.framework */; };
 		271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
 		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
 		271114521ADF11610056EB13 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7161AD81C1600610821 /* BaseViewController.m */; };
@@ -117,7 +116,6 @@
 		272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */; };
 		272F27721AE6BE2B00C9EADC /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */; };
 		2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
-		2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2731C62F1ADD632F00788181 /* FacebookSDK.framework */; };
 		2731C6321ADD632F00788181 /* Fitmoo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6301ADD632F00788181 /* Fitmoo-Info.plist */; };
 		2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6341ADD6FD800788181 /* PeopleTitleCell.m */; };
 		2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */; };
@@ -198,6 +196,7 @@
 		2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */; };
 		2760945C1AD708C100A769CE /* BentonSansExtraComp-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */; };
 		2760945E1AD717E700A769CE /* fontello.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760945D1AD717E700A769CE /* fontello.ttf */; };
+		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +210,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CC700DB5F9343FBFFA1E76D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
 		27163D941ADAF733005B95D5 /* SpecialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPageViewController.h; sourceTree = "<group>"; };
 		27163D951ADAF733005B95D5 /* SpecialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPageViewController.m; sourceTree = "<group>"; };
@@ -328,7 +328,6 @@
 		272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
 		2731C62C1ADD55D300788181 /* PeoplePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoplePageViewController.h; sourceTree = "<group>"; };
 		2731C62D1ADD55D300788181 /* PeoplePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoplePageViewController.m; sourceTree = "<group>"; };
-		2731C62F1ADD632F00788181 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2731C6301ADD632F00788181 /* Fitmoo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Fitmoo-Info.plist"; sourceTree = "<group>"; };
 		2731C6331ADD6FD800788181 /* PeopleTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTitleCell.h; sourceTree = "<group>"; };
 		2731C6341ADD6FD800788181 /* PeopleTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTitleCell.m; sourceTree = "<group>"; };
@@ -432,6 +431,8 @@
 		276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Medium.otf"; sourceTree = "<group>"; };
 		276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Regular.otf"; sourceTree = "<group>"; };
 		2760945D1AD717E700A769CE /* fontello.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontello.ttf; sourceTree = "<group>"; };
+		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,7 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2736B2321AF004E40013B4B9 /* CoreGraphics.framework in Frameworks */,
-				2731C6311ADD632F00788181 /* FacebookSDK.framework in Frameworks */,
+				61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +449,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2711144F1ADF0A8B0056EB13 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +462,8 @@
 				27188F671AD4646300C34372 /* fitmoo */,
 				27188F841AD4646300C34372 /* fitmooTests */,
 				27188F661AD4646300C34372 /* Products */,
+				9EFAD12DB94C2C1F8BB2FB70 /* Pods */,
+				D96F9A295AC20A094AED2361 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -509,7 +511,6 @@
 			isa = PBXGroup;
 			children = (
 				27188F691AD4646300C34372 /* Info.plist */,
-				2731C62F1ADD632F00788181 /* FacebookSDK.framework */,
 				2731C6301ADD632F00788181 /* Fitmoo-Info.plist */,
 				2760940E1AD7085500A769CE /* ss-symbolicons-block.ttf */,
 				2760940F1AD7085500A769CE /* ss-symbolicons-line.ttf */,
@@ -891,6 +892,23 @@
 			path = "Benton Sans";
 			sourceTree = "<group>";
 		};
+		9EFAD12DB94C2C1F8BB2FB70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */,
+				F81E84D967E00EE3E569149A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D96F9A295AC20A094AED2361 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CC700DB5F9343FBFFA1E76D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -898,9 +916,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27188F8B1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmoo" */;
 			buildPhases = (
+				9337F955E5C525983E9D6ACF /* Check Pods Manifest.lock */,
 				27188F611AD4646300C34372 /* Sources */,
 				27188F621AD4646300C34372 /* Frameworks */,
 				27188F631AD4646300C34372 /* Resources */,
+				69376F4F6C3CD7F1B05058BB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1072,6 +1092,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		69376F4F6C3CD7F1B05058BB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9337F955E5C525983E9D6ACF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27188F611AD4646300C34372 /* Sources */ = {
@@ -1295,6 +1348,7 @@
 		};
 		27188F8C1AD4646300C34372 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1314,6 +1368,7 @@
 		};
 		27188F8D1AD4646300C34372 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81E84D967E00EE3E569149A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

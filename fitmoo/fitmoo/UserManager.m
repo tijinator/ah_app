@@ -7,7 +7,7 @@
 //
 
 #import "UserManager.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 @implementation UserManager
 
 + (id)sharedUserManager;

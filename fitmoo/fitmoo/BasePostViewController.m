@@ -7,9 +7,12 @@
 //
 
 #import "BasePostViewController.h"
-
+#import "AWSCore.h"
+#import "AWSS3.h"
 @interface BasePostViewController ()
-
+@property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
+@property (nonatomic) uint64_t filesize;
+@property (nonatomic) uint64_t amountUploaded;
 @end
 
 @implementation BasePostViewController
@@ -25,6 +28,65 @@
     // Do any additional setup after loading the view.
 }
 
+
+#pragma mark S3 stuff
+- (void)uploadToS3{
+    // get the image
+    UIImage *img = _PostImage;
+    
+    // create a local image that we can use to upload to s3
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"image.png"];
+    NSData *imageData = UIImagePNGRepresentation(img);
+    [imageData writeToFile:path atomically:YES];
+    
+    // once the image is saved we can use the path to create a local fileurl
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
+    
+    // next we set up the S3 upload request manager
+    _uploadRequest = [AWSS3TransferManagerUploadRequest new];
+    // set the bucket
+    _uploadRequest.bucket = @"s3-demo-objectivec";
+    // I want this image to be public to anyone to view it so I'm setting it to Public Read
+    _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+    // set the image's name that will be used on the s3 server. I am also creating a folder to place the image in
+    _uploadRequest.key = @"foldername/image.png";
+    // set the content type
+    _uploadRequest.contentType = @"image/png";
+    // we will track progress through an AWSNetworkingUploadProgressBlock
+    _uploadRequest.body = url;
+    
+    __weak BasePostViewController *weakSelf = self;
+    
+    _uploadRequest.uploadProgress =^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend){
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            weakSelf.amountUploaded = totalBytesSent;
+            weakSelf.filesize = totalBytesExpectedToSend;
+            [weakSelf update];
+            
+        });
+    };
+    
+    // now the upload request is set up we can creat the transfermanger, the credentials are already set up in the app delegate
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    // start the upload
+    [[transferManager upload:_uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
+        
+        // once the uploadmanager finishes check if there were any errors
+        if (task.error) {
+            NSLog(@"%@", task.error);
+        }else{// if there aren't any then the image is uploaded!
+            // this is the url of the image we just uploaded
+            NSLog(@"https://s3.amazonaws.com/s3-demo-objectivec/foldername/image.png");
+        }
+        
+        return nil;
+    }];
+    
+}
+
+- (void) update{
+//    _progressLabel.text = [NSString stringWithFormat:@"Uploading:%.0f%%", ((float)self.amountUploaded/ (float)self.filesize) * 100];
+}
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateImages" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImages:) name:@"updateImages" object:nil];
@@ -273,7 +335,7 @@
     {
         if ([self.postType isEqualToString:@"post"]) {
             
-            
+            [self uploadToS3];
           
         }else  if ([self.postType isEqualToString:@"nutrition"]) {
            

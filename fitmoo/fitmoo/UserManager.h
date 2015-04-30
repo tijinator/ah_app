@@ -12,7 +12,7 @@
 #import "LocalUser.h"
 #import <CoreData/CoreData.h>
 #import "AFNetworking.h"
-#import <FacebookSDK/FacebookSDK.h>
+
 
 
 @interface UserManager : NSObject
