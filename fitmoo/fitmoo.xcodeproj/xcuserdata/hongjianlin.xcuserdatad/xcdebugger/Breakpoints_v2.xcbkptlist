@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/FitmooHelper.m"
-            timestampString = "451849211.375219"
+            timestampString = "452204118.81846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/FitmooHelper.m"
-            timestampString = "451511564.748063"
+            timestampString = "452204118.81846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-generateHomeFeed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -416,7 +416,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
@@ -2700,11 +2700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SpecialPageViewController.m"
-            timestampString = "451588160.912424"
+            timestampString = "452206888.977135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-bodyImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2716,11 +2716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SpecialPageViewController.m"
-            timestampString = "451588160.912424"
+            timestampString = "452206888.977135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-moviePlayBackDidFinish:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2748,11 +2748,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SpecialPageViewController.m"
-            timestampString = "451588160.912424"
+            timestampString = "452206888.977135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "-finishedGetVimeoURL:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2770,22 +2770,6 @@
             startingLineNumber = "131"
             endingLineNumber = "131"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/SpecialPageViewController.m"
-            timestampString = "451588549.446207"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-bodyImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3464,39 +3448,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/BasePostViewController.m"
-            timestampString = "452114073.989756"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-presentCameraView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/BasePostViewController.m"
-            timestampString = "452114073.989756"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-makePostFinished:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"

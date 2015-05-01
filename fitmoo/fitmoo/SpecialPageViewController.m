@@ -274,19 +274,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * url= _homeFeed.videos.video_url;
     
     if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
-        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+//        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+//            if (error) {
+//                NSLog(@"Error : %@", [error localizedDescription]);
+//            } else if (videoURL) {
+//                NSLog(@"Extracted url : %@", [videoURL absoluteString]);
+//                
+//                 _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+//                [self.playerView.moviePlayer prepareToPlay];
+//                [self presentViewController:self.playerView animated:YES completion:^(void) {
+//                    self.playerView = nil;
+//                }];
+//            }
+//        }];
+       
+        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
             } else if (videoURL) {
                 NSLog(@"Extracted url : %@", [videoURL absoluteString]);
                 
-                 _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
                 [self.playerView.moviePlayer prepareToPlay];
                 [self presentViewController:self.playerView animated:YES completion:^(void) {
                     self.playerView = nil;
                 }];
             }
         }];
+        
 
     } else if ([url rangeOfString:@"youtube.com"].location != NSNotFound){
 //                NSRange range= [url rangeOfString:@"v="];

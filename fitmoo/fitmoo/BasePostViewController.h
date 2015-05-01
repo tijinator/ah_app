@@ -26,6 +26,8 @@
 
 @property (strong, nonatomic)  UIImage *PostImage;
 
+
+
 @property (strong, nonatomic) IBOutlet UITextView *normalPostText;
 
 @property (strong, nonatomic) IBOutlet UIView *workoutView;
@@ -47,10 +49,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *SubmitButton;
 
-
+@property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic) NSString *postActionType;
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  BasePostViewController *postView;
+@property (strong, nonatomic)  NSDictionary * responseDic;
 
 @property (strong, nonatomic)  CameraViewController *overlay;
 //@property (strong, nonatomic)  UIImagePickerController *picker;

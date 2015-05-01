@@ -37,7 +37,7 @@
     _imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_imageButton respectToSuperFrame:self.view];
     _screenShotButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_screenShotButton respectToSuperFrame:self.view];
     _changeToCameraButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_changeToCameraButton respectToSuperFrame:self.view];
-
+    
 }
 
 
@@ -47,14 +47,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)closeButtonClick:(id)sender {
     [_picker dismissViewControllerAnimated:YES completion:nil];
@@ -81,7 +81,7 @@
     _picker1.delegate = self;
     _picker1.allowsEditing = YES;
     _picker1.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-     takePhoto= false;
+    takePhoto= false;
     [self presentViewController:_picker1 animated:YES completion:NULL];
 }
 
@@ -90,7 +90,7 @@
     if ([_mediaType isEqualToString:@"camera"]) {
         [_picker takePicture];
         takePhoto=true;
-     
+        
     }else
     {
         if (startCapture==false) {
@@ -101,31 +101,31 @@
             [_picker stopVideoCapture];
             startCapture=false;
         }
-       
-       
+        
+        
     }
     
     
 }
 
 - (IBAction)changeCameraButtonClick:(id)sender {
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//        
-//        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//        picker.delegate = self;
-//        picker.allowsEditing = YES;
-//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-//        
-//        [self presentViewController:picker animated:YES completion:NULL];
-//    }
+    //    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    //
+    //        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    //        picker.delegate = self;
+    //        picker.allowsEditing = YES;
+    //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+    //
+    //        [self presentViewController:picker animated:YES completion:NULL];
+    //    }
     if ([_mediaType isEqualToString:@"camera"]) {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         _mediaType=@"video";
-      //  _picker.allowsEditing = YES;
-     //   self.picker.navigationBarHidden = NO;
-     //   self.picker.toolbarHidden = NO;
-     //   [self.view removeFromSuperview];
+        //  _picker.allowsEditing = YES;
+        //   self.picker.navigationBarHidden = NO;
+        //   self.picker.toolbarHidden = NO;
+        //   [self.view removeFromSuperview];
     }else
     {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
@@ -181,17 +181,20 @@
 //    _postView.PostImage= self.chosenImage;
 //    _postView.postType= @"post";
 //    [self presentViewController:_postView animated:YES completion:nil];
-//    
+//
 //}
 
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     double radio= self.view.frame.size.width/320;
-
+    
     if ([_mediaType isEqualToString:@"video"]) {
         self.videoURL = info[UIImagePickerControllerMediaURL];
         UISaveVideoAtPathToSavedPhotosAlbum([self.videoURL path], nil, nil, nil);
+        [_picker dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateVideo" object:self.videoURL];
+        
     }else
     {
         if (takePhoto==true) {
@@ -212,7 +215,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
             
         }
-
+        
     }
     
     
@@ -223,7 +226,7 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [_picker1 dismissViewControllerAnimated:YES completion:NULL];
-     takePhoto= true;
+    takePhoto= true;
     
 }
 

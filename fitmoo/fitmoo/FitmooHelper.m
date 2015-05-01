@@ -257,9 +257,10 @@
             homeFeed.videos.video_url= [videosDic objectForKey:@"video_url"];
            
             NSDictionary *thumbnail=[videosDic objectForKey:@"thumbnail"];
-            homeFeed.videos.thumbnail_url= [thumbnail objectForKey:@"url"];
-            
-           [homeFeed.videosArray addObject:homeFeed.videos];
+            if (![thumbnail isEqual:[NSNull null]]) {
+                homeFeed.videos.thumbnail_url= [thumbnail objectForKey:@"url"];
+            }
+              [homeFeed.videosArray addObject:homeFeed.videos];
         }
     }
     
