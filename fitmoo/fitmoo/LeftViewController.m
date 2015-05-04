@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"shop.png",@"search.png",@"settings.png",@"logout.png", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"homeicon.png",@"shopicon.png",@"followicon.png",@"settingsicon.png",@"logouticon.png", nil];
     _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
  //   [_leftTableView reloadData];
@@ -45,28 +45,25 @@
 
 - (void) updateTopImage: (NSNotification * ) note
 {
+    User * localuser= (User *) [note object];
+ 
+    
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, _humanImage.frame.size.width, _humanImage.frame.size.height)];
+    view.layer.cornerRadius=view.frame.size.width/2;
+    view.clipsToBounds=YES;
+    
+    
+    AsyncImageView *imageview=[[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _humanImage.frame.size.width, _humanImage.frame.size.height)];
+    imageview.userInteractionEnabled = NO;
+    imageview.exclusiveTouch = NO;
 
-//     NSString *imageUrl= (NSString *) [note object];
-//     if ([imageUrl isEqual:[NSNull null ]]) {
-//         imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
-//         
-//     }
-//    [self downloadImageWithURL:[NSURL URLWithString:imageUrl] completionBlock:^(BOOL succeeded, UIImage *image) {
-//        if (succeeded) {
-//            
-//            if (image!=nil) {
-//                _topImage.image = image;
-//              
-//            }else
-//            {
-//             //   imageLabel.image= [UIImage imageNamed:@"images"];
-//            }
-//            
-//            
-//            
-//        }
-//    }];
-    _nameLabel.text= (NSString *) [note object];
+    imageview.imageURL =[NSURL URLWithString:localuser.profile_avatar_thumb];
+    
+    [_humanImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [view addSubview:imageview];
+    [_humanImage addSubview:view];
+    
+    _nameLabel.text= localuser.name;
     
 }
 //Making an AsynchronousRequest to get the image download
@@ -94,7 +91,7 @@
 //    _topImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topImage respectToSuperFrame:self.view];
     
      _nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nameLabel respectToSuperFrame:self.view];
-    
+     _humanImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_humanImage respectToSuperFrame:self.view];
 }
 
 

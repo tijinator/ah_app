@@ -38,6 +38,8 @@
 -(void) performReport:(NSString *) postId;
 -(void) performDelete:(NSString *) postId;
 -(void) performEndorse:(NSString *) postId;
+-(void) performFollow:(NSString *) postId;
+-(void) performUnFollow:(NSString *) postId;
 -(void) performPostToAmazon:(NSDictionary *)feed;
 
 -(void) checkEmailExistFromFitmoo:(User *) user;

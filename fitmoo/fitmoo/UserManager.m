@@ -21,7 +21,47 @@
 }
 
 
+-(void) performFollow:(NSString *) postId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@",_homeFeedUrl, postId,@"/follow" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
 
+}
+-(void) performUnFollow:(NSString *) postId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@",_homeFeedUrl, postId,@"/unfollow" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+}
 
 
 -(void) checkEmailExistFromFitmoo:(User *)user
@@ -132,7 +172,7 @@
         
         [self saveLocalUser:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser.name];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      

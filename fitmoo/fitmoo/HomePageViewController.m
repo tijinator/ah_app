@@ -407,11 +407,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-    specialPage.action=@"Post";
-    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+    CommentViewController *commentPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommentViewController"];
+    commentPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+  //  [self.navigationController presentViewController:commentPage animated:YES completion:nil];
     
-    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+    [self.navigationController pushViewController:commentPage animated:YES];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+//    specialPage.action=@"Post";
+//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
 }
 - (IBAction)likeButtonClick:(id)sender {

@@ -28,7 +28,7 @@
 
 @property (strong, nonatomic)  NSString * searchId;
 @property (strong, nonatomic)  User * temSearchUser;
-
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
 @property (assign, nonatomic)  int limit;

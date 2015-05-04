@@ -140,6 +140,9 @@ int count=0;
     _allRightImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_allRightImage respectToSuperFrame:self.view];
     _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
     
+//    self.view.frame= CGRectMake(0, 0, 320, 568);
+//    self.view.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.view respectToSuperFrame:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {

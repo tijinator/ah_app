@@ -45,6 +45,7 @@
     _sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:_navigateView
                                                                     leftMenuViewController:_leftView
                                                                    rightMenuViewController:_rightView];
+
     _sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars.png"];
     _sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
     _sideMenuViewController.delegate = self;
@@ -53,6 +54,7 @@
     _sideMenuViewController.contentViewShadowOpacity = 0.6;
     _sideMenuViewController.contentViewShadowRadius = 12;
     _sideMenuViewController.contentViewShadowEnabled = YES;
+    _sideMenuViewController.contentViewInPortraitOffsetCenterX=-20;
     self.window.rootViewController = _sideMenuViewController;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     

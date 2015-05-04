@@ -9,7 +9,10 @@
 #import "PeoplePageViewController.h"
 
 @interface PeoplePageViewController ()
-
+{
+    NSNumber * contentHight;
+    
+}
 @end
 
 @implementation PeoplePageViewController
@@ -17,6 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    contentHight=[NSNumber numberWithInteger:0];
+    _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
+    
     [self initFrames];
     [self initValuable];
     [self postNotifications];
@@ -127,6 +133,21 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+    }else
+    {
+        height=[NSNumber numberWithInt:600];
+    }
+    NSLog(@"%ld",(long)height.integerValue);
+    return height.integerValue;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
@@ -177,7 +198,7 @@ int contentHight2=50;
         
         [cell loadHeaderImage:imageUrl];
         [cell loadHeader1Image:temUser.profile_avatar_thumb];
-        contentHight2= cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
+        contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10] ;
         return cell;
     }
     
@@ -187,6 +208,9 @@ int contentHight2=50;
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
+    }else
+    {
+        return cell;
     }
     
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
@@ -198,7 +222,14 @@ int contentHight2=50;
     }else
     {
         cell.heanderImage1.hidden=false;
+        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        view.layer.cornerRadius=view.frame.size.width/2;
+        view.clipsToBounds=YES;
         AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        
+        
+        headerImage1.userInteractionEnabled = NO;
+        headerImage1.exclusiveTouch = NO;
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
         if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
         {
@@ -208,11 +239,18 @@ int contentHight2=50;
             headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
         }
         [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.heanderImage1 addSubview:headerImage1];
+        [view addSubview:headerImage1];
+        [cell.heanderImage1 addSubview:view];
         
     }
     
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
+    view.clipsToBounds=YES;
+    view.layer.cornerRadius=view.frame.size.width/2;
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
+    headerImage2.userInteractionEnabled = NO;
+    headerImage2.exclusiveTouch = NO;
+    headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
     if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
@@ -222,8 +260,8 @@ int contentHight2=50;
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    [cell.headerImage2 addSubview:headerImage2];
-
+    [view addSubview:headerImage2];
+    [cell.headerImage2 addSubview:view];
     
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
@@ -231,6 +269,7 @@ int contentHight2=50;
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
     
     if ([tempHomefeed.type isEqualToString:@"regular"]) {
         [cell setBodyFrameForRegular];
@@ -252,31 +291,46 @@ int contentHight2=50;
         [cell addScrollView];
     }else
     {
-        [cell removeViewsFromBodyView:cell.scrollView];
+        [cell removeViewsFromBodyView:cell.scrollbelowFrame];
     }
     [cell rebuiltBodyViewFrame];
-
     
+    
+    
+    //    if ([tempHomefeed.commentsArray count]!=0) {
+    //        [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
+    //        for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
+    //            cell.homeFeed=tempHomefeed;
+    //            [cell addCommentView:cell.commentView Atindex:i];
+    //        }
+    //        if ([tempHomefeed.commentsArray count]==1) {
+    //            [cell removeCommentView2];
+    //            [cell removeCommentView1];
+    //        }
+    //        if ([tempHomefeed.commentsArray count]==2) {
+    //            [cell removeCommentView2];
+    //        }
+    //    }else
+    //    {
+    //        [cell removeCommentView2];
+    //        [cell removeCommentView1];
+    //        [cell removeCommentView];
+    //    }
     
     if ([tempHomefeed.commentsArray count]!=0) {
+        [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.commentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
-            cell.homeFeed=tempHomefeed;
+            cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
             [cell addCommentView:cell.commentView Atindex:i];
         }
-        if ([tempHomefeed.commentsArray count]==1) {
-            [cell removeCommentView2];
-            [cell removeCommentView1];
-        }
-        if ([tempHomefeed.commentsArray count]==2) {
-            [cell removeCommentView2];
-        }
+        [cell rebuiltCommentViewFrame];
     }else
     {
-         [cell removeCommentView2];
-         [cell removeCommentView1];
-         [cell removeCommentView];
+        [cell removeCommentView];
     }
+    
+    
     
     [cell.likeButton setTag:indexPath.row*100+4];
     [cell.commentButton setTag:indexPath.row*100+5];
@@ -288,18 +342,21 @@ int contentHight2=50;
         [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
     }else
     {
-        
         [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
-    
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    contentHight2=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
-    //    NSLog(@"%d",contentHight);
-    return cell;
+    
+    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10] ;
+    if (indexPath.row>=[_heighArray count]) {
+        [_heighArray addObject:contentHight];
+    }else
+    {
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+    }    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -311,8 +368,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    if (indexPath.row==0) {
+        return contentHight.integerValue;
+    }
     
-    return contentHight2;
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+    }else
+    {
+        height=[NSNumber numberWithInt:contentHight.integerValue];
+    }
+    NSLog(@"%ld",(long)height.integerValue);
+    return height.integerValue;
 }
 
 

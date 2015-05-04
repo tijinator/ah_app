@@ -31,6 +31,7 @@
 
 - (void) initFrames
 {
+    double radio= self.view.frame.size.width/320;
     _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:self.view];
     _rightButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:self.view];
@@ -38,9 +39,49 @@
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
     _pickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerView respectToSuperFrame:self.view];
     _doneButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton respectToSuperFrame:self.view];
+    
+    double xorigin=(self.view.frame.size.width-_pickerView.frame.size.width)/2;
+    double yorigin=_pickerView.frame.size.width*radio;
+    
     _pickerview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerview respectToSuperFrame:self.view];
+  //   _pickerview.frame= CGRectMake(xorigin, yorigin, _pickerView.frame.size.width, _pickerView.frame.size.height);
+    
 
 }
+
+-(void) parseResponseDicDiscover: (NSString *) category
+{
+    
+    NSDictionary *resultArray= [_responseDic objectForKey:@"all"];
+    
+   
+        for (NSDictionary * result in resultArray) {
+            User *tempUser= [[User alloc]  init];
+            NSNumber * following=[result objectForKey:@"is_following"];
+            tempUser.following= [following stringValue];
+            NSNumber * followers=[result objectForKey:@"followers"];
+            tempUser.followers= [followers stringValue];
+           
+            
+            NSDictionary * profile=[result objectForKey:@"profile"];
+            NSDictionary *avatar=[profile objectForKey:@"avatars"];
+            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+            
+            tempUser.name= [result objectForKey:@"full_name"];
+            NSNumber * user_id=[result objectForKey:@"id"];
+            tempUser.user_id= [user_id stringValue];
+            
+            [_searchArrayPeople addObject:tempUser];
+        }
+        
+        
+    
+    
+    [_tableview reloadData];
+    
+    
+}
+
 
 -(void) parseResponseDic: (NSString *) category
 {
@@ -99,11 +140,9 @@
     
 }
 
-
-
 - (void) getSearchItemForPeople
 {
-      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -122,6 +161,32 @@
         {
             [self getSearchItemForCommunity];
         }
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+- (void) getdiscoverItemForPeople
+{
+      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",_searchTermField.text, @"keyword",@"10", @"limit",@"any", @"gender",@"18", @"min",@"102", @"max",@"", @"lat",@"", @"lng",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/discover"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        [self parseResponseDicDiscover:@"People"];
+        
+       
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -282,9 +347,9 @@
         nameLabel.frame= CGRectMake(58, 20, 230, 21);
         nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
         
-        
-        
-      
+        UIButton * followButton= (UIButton *) [cell viewWithTag:7];
+        followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
+
         if (indexPath.section==1) {
             if ([_Category isEqualToString:@"People"]||[_Category isEqualToString:@"All"]) {
                 User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row];
@@ -293,6 +358,14 @@
                 [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:userImage];
                 userImage.imageURL =[NSURL URLWithString:temUser.profile_avatar_thumb];
                 imageview.image= userImage.image;
+                
+                [followButton setTag:indexPath.row*100+7];
+                if ([temUser.following isEqualToString:@"0"]) {
+                    [followButton setTitle:@"Follow" forState:UIControlStateNormal];
+                }else
+                {
+                     [followButton setTitle:@"unFollow" forState:UIControlStateNormal];
+                }
             }else
             {
                 CreatedByCommunity *temCom= [_searchArrayCommunitiess objectAtIndex:indexPath.row];
@@ -301,6 +374,7 @@
                 [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:comImage];
                 comImage.imageURL =[NSURL URLWithString:temCom.cover_photo_url];
                 imageview.image= comImage.image;
+                [followButton setTag:indexPath.row*100+8];
             }
             
 
@@ -313,15 +387,15 @@
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:comImage];
             comImage.imageURL =[NSURL URLWithString:temCom.cover_photo_url];
             imageview.image= comImage.image;
+              [followButton setTag:indexPath.row*100+8];
         }
-        
-        
-        
+         [followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     
        return cell;
 }
+
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -361,14 +435,44 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 50*Radio;
 }
+- (IBAction)followButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
+    NSInteger type=(NSInteger) button.tag%100;
+    
+    if (type==7) {
+        User *user= [_searchArrayPeople objectAtIndex:index];
+        
+        if ([user.following isEqualToString:@"0"]) {
+               [[UserManager sharedUserManager] performFollow:user.user_id];
+                user.following=@"1";
+            [button setTitle:@"unFollow" forState:UIControlStateNormal];
+        }else
+        {
+             [[UserManager sharedUserManager] performUnFollow:user.user_id];
+             user.following=@"0";
+             [button setTitle:@"Follow" forState:UIControlStateNormal];
+        }
+     
+        
+    }else if (type==8)
+    {
+        CreatedByCommunity *comu= [_searchArrayCommunitiess objectAtIndex:index];
+         [[UserManager sharedUserManager] performFollow:comu.created_by_community_id];
+    }
+    
+  
 
+
+}
 
 - (IBAction)searchButtonClick:(id)sender {
     _searchArrayPeople= [[NSMutableArray alloc] init];
     _searchArrayCommunitiess= [[NSMutableArray alloc] init];
     
     if ([_Category isEqualToString:@"People"]) {
-        [self getSearchItemForPeople];
+     //   [self getSearchItemForPeople];
+        [self getdiscoverItemForPeople];
         _category=@"people";
     }else if ([_Category isEqualToString:@"Communities"])
     {
@@ -464,7 +568,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         _searchArrayCommunitiess= [[NSMutableArray alloc] init];
         
         if ([_Category isEqualToString:@"People"]) {
-            [self getSearchItemForPeople];
+            [self getdiscoverItemForPeople];
         }else if ([_Category isEqualToString:@"Communities"])
         {
             [self getSearchItemForCommunity];

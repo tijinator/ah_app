@@ -270,8 +270,8 @@
         homeFeed.event.name= [event objectForKey:@"name"];
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
-        homeFeed.event.theme= [event objectForKey:@"theme"];
-        if([homeFeed.event.theme isEqualToString:@""])
+        homeFeed.event.theme= [dic objectForKey:@"theme"];
+        if([homeFeed.event.theme isEqual:[NSNull null ]])
         {
             homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
         }

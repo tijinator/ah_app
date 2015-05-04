@@ -274,26 +274,29 @@
 //        }
 //    }
    // UIFont *font= [UIFont fontWithName:@"BentonSans-ExtraLight" size:(CGFloat)(14)];
-    UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];
-    UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(14)];
+    UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
+    UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(13)];
     NSString *string1=_homeFeed.comments.full_name;
     NSString *string2=_homeFeed.comments.text;
-
+    UIColor *fontColor= [UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.7];
     
     NSString *string= [NSString stringWithFormat:@"%@ %@",string1,string2];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
     attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font1 range:string1 newString:string1];
+    NSRange range= [string rangeOfString:string2];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:fontColor range:range];
+    
     
     
     if (index==0) {
-     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 15, 15)];
+     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12, 16, 11, 9)];
      _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
-     _commentImage.image= [UIImage imageNamed:@"comment.png"];
+     _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
    
     _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30, 15, 270,20)];
     [_commentDetail setAttributedText:attributedString];
         _commentDetail.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail];
-    _commentDetail.lineBreakMode=  NSLineBreakByCharWrapping;
+    _commentDetail.lineBreakMode=  NSLineBreakByWordWrapping;
     _commentDetail.numberOfLines=30;
     _commentDetail.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentDetail respectToSuperFrame:nil];
     [_commentView addSubview:_commentImage];

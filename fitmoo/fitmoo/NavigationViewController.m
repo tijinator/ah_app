@@ -9,6 +9,9 @@
 #import "NavigationViewController.h"
 
 @implementation NavigationViewController
+{
+    int currentPage;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +38,9 @@
     _allowRotation=false;
    
     [self createObservers];
+    
+    [[UINavigationBar appearance]  setBarTintColor:[UIColor blackColor]];
+    currentPage=0;
 // [self addfootButtonsForThree];
 }
 
@@ -73,7 +79,9 @@
             
     }
 }
-
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 -(void)leftSideMenuAction:(NSNotification*)note{
     
@@ -81,31 +89,39 @@
 
 
     if ([key isEqualToString:@"0"]) {
-       HomePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
-        [[self nav] pushViewController:homePage animated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-     //   [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+        if (currentPage!=0) {
+            HomePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+            [[self nav] pushViewController:homePage animated:YES];
+
+        }
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        currentPage=0;
     }else  if ([key isEqualToString:@"5"]) {
+       
        
         [[self nav] popToRootViewControllerAnimated:YES];
 //        _baseView = [[self storyboard] instantiateViewControllerWithIdentifier:@"ViewController"];
 //        [[self nav] pushViewController:_baseView animated:YES];
   //      [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+         currentPage=5;
     }else  if ([key isEqualToString:@"1"]) {
         
-        
-        PeoplePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
-        [[self nav] pushViewController:homePage animated:YES];
+        if (currentPage!=1) {
+            PeoplePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+            [[self nav] pushViewController:homePage animated:YES];
+
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-      //  [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
-    }else  if ([key isEqualToString:@"3"]) {
+        currentPage=1;
+    }else  if ([key isEqualToString:@"2"]) {
+          if (currentPage!=2) {
         
-        
-        SearchViewController *searchPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SearchViewController"];
-        [[self nav] pushViewController:searchPage animated:YES];
+              SearchViewController *searchPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SearchViewController"];
+              [[self nav] pushViewController:searchPage animated:YES];
+          }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-     //   [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
+        currentPage=2;
     }
     
     
@@ -116,6 +132,7 @@
 
 - (void) initFrames
 {
+   // _nav.view.frame= CGRectMake(0, 0, 320, 568);
     _nav.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nav.view respectToSuperFrame:self.view];
 
     

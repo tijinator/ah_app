@@ -37,9 +37,9 @@
     _bottomView= [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio)];
     
   
-    _leftButton1= [[UIButton alloc] initWithFrame:CGRectMake(16, 0, 45,45)];
-    _middleButton1= [[UIButton alloc] initWithFrame:CGRectMake(138, 0, 45,45)];
-    _rightButton1= [[UIButton alloc] initWithFrame:CGRectMake(270, 0, 45,45)];
+    _leftButton1= [[UIButton alloc] initWithFrame:CGRectMake(16, 7, 38,38)];
+    _middleButton1= [[UIButton alloc] initWithFrame:CGRectMake(138, 0, 50,50)];
+    _rightButton1= [[UIButton alloc] initWithFrame:CGRectMake(270, 7, 38,38)];
     
 
     _leftButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton1 respectToSuperFrame:self.view];
@@ -55,11 +55,11 @@
     [_middleButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_rightButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *im= [UIImage imageNamed:@"like.png"];
+    UIImage *im= [UIImage imageNamed:@"leftmenuicon.png"];
     [_leftButton1 setBackgroundImage:im forState:UIControlStateNormal];
-    UIImage *im1= [UIImage imageNamed:@"home.png"];
+    UIImage *im1= [UIImage imageNamed:@"postmenuicon.png"];
     [_middleButton1 setBackgroundImage:im1 forState:UIControlStateNormal];
-    UIImage *im2= [UIImage imageNamed:@"share.png"];
+    UIImage *im2= [UIImage imageNamed:@"rightpeopleicon.png"];
     [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.bottomView addSubview:_leftButton1];
@@ -94,11 +94,11 @@
     [_videoButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_pictureButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    im= [UIImage imageNamed:@"like.png"];
+    im= [UIImage imageNamed:@"posticon.png"];
     [_postButton setBackgroundImage:im forState:UIControlStateNormal];
-    im1= [UIImage imageNamed:@"home.png"];
+    im1= [UIImage imageNamed:@"cameraicon.png"];
     [_videoButton setBackgroundImage:im1 forState:UIControlStateNormal];
-    im2= [UIImage imageNamed:@"share.png"];
+    im2= [UIImage imageNamed:@"runningicon.png"];
     [_pictureButton setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.subBottomView addSubview:_postButton];
@@ -117,7 +117,7 @@
     
     
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDuration:0.2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
     _subBottomView.frame= CGRectMake(0, _subBottomView.frame.origin.y+Radio*100, 320*Radio, 60*Radio);
@@ -141,14 +141,14 @@
     
     
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDuration:0.2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
  //   [UIView setAnimationDidStopSelector:@selector(deletePatientInfoWithListView)];
     _subBottomView.frame= CGRectMake(0, _subBottomView.frame.origin.y-Radio*100, 320*Radio, 160*Radio);
-    _postButton.frame= CGRectMake(140, 0, 45,45);
-    _videoButton.frame= CGRectMake(218, 50, 45,45);
-    _pictureButton.frame= CGRectMake(66, 50, 45,45);
+    _postButton.frame= CGRectMake(140, 0, 43,43);
+    _videoButton.frame= CGRectMake(218, 50, 43,43);
+    _pictureButton.frame= CGRectMake(66, 50, 43,43);
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
     _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
     _pictureButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pictureButton respectToSuperFrame:self.view];
@@ -199,7 +199,7 @@
             
             break;
         case 13:
-        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
             
             break;
         case 14:
