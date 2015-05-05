@@ -340,7 +340,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"resultCell"];
         }
         
-        UIImageView *imageview=(UIImageView *) [cell viewWithTag:5];
+        UIButton *imageview=(UIButton *) [cell viewWithTag:5];
         imageview.frame= CGRectMake(15, 15, 30, 30);
         imageview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageview respectToSuperFrame:self.view];
         UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
@@ -349,15 +349,21 @@
         
         UIButton * followButton= (UIButton *) [cell viewWithTag:7];
         followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
+        
+        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
+        view.clipsToBounds=YES;
+        view.layer.cornerRadius=view.frame.size.width/2;
 
         if (indexPath.section==1) {
             if ([_Category isEqualToString:@"People"]||[_Category isEqualToString:@"All"]) {
                 User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row];
                 nameLabel.text= temUser.name;
-                AsyncImageView *userImage = [[AsyncImageView alloc] init];
+                AsyncImageView *userImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
                 [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:userImage];
                 userImage.imageURL =[NSURL URLWithString:temUser.profile_avatar_thumb];
-                imageview.image= userImage.image;
+              //  imageview.image= userImage.image;
+                [view addSubview:userImage];
+                [imageview addSubview:view];
                 
                 [followButton setTag:indexPath.row*100+7];
                 if ([temUser.following isEqualToString:@"0"]) {
@@ -373,7 +379,8 @@
                 AsyncImageView *comImage = [[AsyncImageView alloc] init];
                 [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:comImage];
                 comImage.imageURL =[NSURL URLWithString:temCom.cover_photo_url];
-                imageview.image= comImage.image;
+                [imageview setBackgroundImage:comImage.image forState:UIControlStateNormal];
+              //  imageview.image= comImage.image;
                 [followButton setTag:indexPath.row*100+8];
             }
             
@@ -386,7 +393,8 @@
             AsyncImageView *comImage = [[AsyncImageView alloc] init];
             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:comImage];
             comImage.imageURL =[NSURL URLWithString:temCom.cover_photo_url];
-            imageview.image= comImage.image;
+          //  imageview.image= comImage.image;
+              [imageview setBackgroundImage:comImage.image forState:UIControlStateNormal];
               [followButton setTag:indexPath.row*100+8];
         }
          [followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];

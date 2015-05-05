@@ -91,6 +91,7 @@
     if ([key isEqualToString:@"0"]) {
         if (currentPage!=0) {
             HomePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+       //      [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:homePage animated:YES];
 
         }
@@ -105,23 +106,43 @@
   //      [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
          currentPage=5;
-    }else  if ([key isEqualToString:@"1"]) {
+    }else  if ([key isEqualToString:@"6"]) {
         
-        if (currentPage!=1) {
+        if (currentPage!=6) {
             PeoplePageViewController *homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+       //     [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:homePage animated:YES];
-
+        //    currentPage=6;
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-        currentPage=1;
+        currentPage=6;
     }else  if ([key isEqualToString:@"2"]) {
           if (currentPage!=2) {
         
               SearchViewController *searchPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SearchViewController"];
+           //    [[self nav] popViewControllerAnimated:NO];
               [[self nav] pushViewController:searchPage animated:YES];
           }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         currentPage=2;
+    }else  if ([key isEqualToString:@"1"]) {
+        if (currentPage!=1) {
+            
+            ShopViewController *shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
+            //    [[self nav] popViewControllerAnimated:NO];
+            [[self nav] pushViewController:shopPage animated:YES];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        currentPage=1;
+    }else  if ([key isEqualToString:@"3"]) {
+        if (currentPage!=3) {
+            
+            SettingViewController *settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
+            //    [[self nav] popViewControllerAnimated:NO];
+            [[self nav] pushViewController:settingPage animated:YES];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        currentPage=3;
     }
     
     

@@ -487,7 +487,7 @@
                 
             }else if ([imageUrl isEqualToString:@""]) {
                 photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-                feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photoArray, @"photos_attributes", nil];
+                feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photos_attributes, @"photos_attributes", nil];
             }else
             {
                 
@@ -516,20 +516,44 @@
                 [alert show ];
             }else
             {
+
                 NSArray *photoArray;
+                NSArray *videoArray;
                 NSDictionary *photos_attributes;
-                if ([imageUrl isEqualToString:@""]) {
+                NSDictionary *video_attributes;
+                NSDictionary *feed;
+                
+                if (![videoUrl isEqualToString:@""]) {
+                    video_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"Fitmoo",@"title",videoUrl, @"video_url",@"alternate", @"rel",@"Fitmoo Channel", @"description", nil];
+                    videoArray=[[NSArray alloc] initWithObjects:video_attributes, nil];
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                    
+                    NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
+                    
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photos_attributes, @"photos_attributes",videoArray, @"videos_attributes",@"", @"text", nil];
+                   
+                }else if ([imageUrl isEqualToString:@""]) {
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                    NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photos_attributes, @"photos_attributes",@"", @"text", nil];
+                 
                 }else
                 {
                     
+                    
+                    
+                    
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
                     photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
+                    NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photoArray, @"photos_attributes",@"", @"text", nil];
+              
                 }
                 
-                NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
-                NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photoArray, @"photos_attributes",@"", @"text", nil];
-                [ [UserManager sharedUserManager] performPost:feed];
+
+                 [ [UserManager sharedUserManager] performPost:feed];
+                
+                
             }
         }
         
@@ -550,17 +574,32 @@
             {
                 
                 NSArray *photoArray;
+                NSArray *videoArray;
                 NSDictionary *photos_attributes;
-                if ([imageUrl isEqualToString:@""]) {
+                NSDictionary *video_attributes;
+                NSDictionary *feed;
+                
+                if (![videoUrl isEqualToString:@""]) {
+                    video_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"Fitmoo",@"title",videoUrl, @"video_url",@"alternate", @"rel",@"Fitmoo Channel", @"description", nil];
+                    videoArray=[[NSArray alloc] initWithObjects:video_attributes, nil];
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                    
+                     feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes",videoArray, @"videos_attributes", nil];
+
+                    
+                }
+               else if ([imageUrl isEqualToString:@""]) {
+                    photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
+                     feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes", nil];
                 }else
                 {
                     
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
                     photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
+                     feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photoArray, @"photos_attributes", nil];
                 }
                 
-                NSDictionary *feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photoArray, @"photos_attributes", nil];
+               
                 
                 [ [UserManager sharedUserManager] performPost:feed];
             }

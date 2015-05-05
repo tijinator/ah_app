@@ -199,7 +199,7 @@
             
             break;
         case 13:
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
             
             break;
         case 14:

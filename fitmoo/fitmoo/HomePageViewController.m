@@ -219,7 +219,11 @@
     
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
-    NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
+    NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
+    NSString * timestring= [tempHomefeed.created_at substringWithRange:range];
+   
+  
+    NSTimeInterval time=(NSTimeInterval ) timestring.intValue;
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
@@ -422,13 +426,18 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)likeButtonClick:(id)sender {
      UIButton *button = (UIButton *)sender;
      NSInteger index=(NSInteger) button.tag/100;
-    int totalLike=1+(int) [button.titleLabel.text integerValue];
-    NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
-    [button setTitle:newLikeString forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
-   
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
-    [[UserManager sharedUserManager] performLike:feed.feed_id];
+    
+    if ([feed.is_liked isEqualToString:@"0"]) {
+        int totalLike=1+(int) [button.titleLabel.text integerValue];
+        NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
+        [button setTitle:newLikeString forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [[UserManager sharedUserManager] performLike:feed.feed_id];
+        feed.is_liked=@"1";
+    }
+    
+    
 }
 - (IBAction)optionButtonClick:(id)sender {
      UIButton *button = (UIButton *)sender;

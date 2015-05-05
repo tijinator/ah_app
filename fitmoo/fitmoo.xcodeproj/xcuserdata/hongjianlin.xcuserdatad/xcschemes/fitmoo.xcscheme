@@ -107,6 +107,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "fitmoo"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -164,6 +164,7 @@
         crossView.backgroundColor=[UIColor blackColor];
         [_bodyLabel3 addSubview:crossView];
     }
+    [_bodyCastView removeFromSuperview];
 }
 
 - (void) setBodyFrameForEvent
@@ -207,7 +208,7 @@
     _bodyDetailLabel.text= _homeFeed.text;
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
     _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
-    
+    [_bodyCastView removeFromSuperview];
 }
 - (void) setBodyFrameForWorkout
 {
@@ -221,6 +222,13 @@
     _scrollViewWidth=260;
     _scrollViewHeight=260;
     _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(_bodyDetailLabel.frame.origin.x-3, _bodyDetailLabel.frame.origin.y+_bodyDetailLabel.frame.size.height, _scrollViewWidth, _scrollViewHeight)];
+    
+    if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
+    {
+    _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
+                                   , _bodyCastView.frame.size.width, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3);
+    }
+  //  [_bodyCastView removeFromSuperview];
    // _scrollbelowFrame= [[UIView alloc] initWithFrame:_bodyDetailLabel.frame];
 }
 
@@ -236,7 +244,13 @@
     _bodyTitle.textAlignment = NSTextAlignmentCenter;
     _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
     
-    _bodyLabel2.frame= CGRectMake(30, 309, 260, _bodyLabel2.frame.size.height);
+    double Originy= 309;
+     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
+     {
+         Originy=50;
+     }
+    
+    _bodyLabel2.frame= CGRectMake(30, Originy, 260, _bodyLabel2.frame.size.height);
     _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
     
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
@@ -244,12 +258,12 @@
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
     _bodyDetailLabel.frame= CGRectMake(_bodyDetailLabel.frame.origin.x, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
     
-    _bodyLabel3.frame= CGRectMake(30, 309, 260, _bodyLabel3.frame.size.height);
+    _bodyLabel3.frame= CGRectMake(30, Originy, 260, _bodyLabel3.frame.size.height);
     _bodyLabel3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel3 respectToSuperFrame:nil];
     _bodyLabel3.frame= CGRectMake(_bodyLabel3.frame.origin.x, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3, _bodyLabel3.frame.size.width, _bodyLabel3.frame.size.height);
     
     _bodyLabel1.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyLabel1];
-    _bodyLabel1.frame= CGRectMake(30, 309, 260, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= CGRectMake(30, Originy, 260, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
     _bodyLabel1.frame= CGRectMake(_bodyLabel1.frame.origin.x, _bodyLabel3.frame.size.height+_bodyLabel3.frame.origin.y+3, _bodyLabel1.frame.size.width, _bodyLabel1.frame.size.height);
     
@@ -354,7 +368,7 @@
 {
     int frameHeight=_bodyView.frame.size.height-removeView.frame.size.height;
     self.bodyView.frame= CGRectMake(self.bodyView.frame.origin.x, self.bodyView.frame.origin.y, self.bodyView.frame.size.width, frameHeight);
-    self.bodyCastView.frame= CGRectMake(self.bodyCastView.frame.origin.x, self.bodyCastView.frame.origin.y, self.bodyCastView.frame.size.width, frameHeight);
+  //  self.bodyCastView.frame= CGRectMake(self.bodyCastView.frame.origin.x, self.bodyCastView.frame.origin.y, self.bodyCastView.frame.size.width, self.bodyCastView.frame.size.height);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, self.commentView.frame.origin.y-removeView.frame.size.height, self.commentView.frame.size.width, self.commentView.frame.size.height);
 //    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView1.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
 //    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView2.frame.origin.y-removeView.frame.size.height, self.commentView1.frame.size.width, self.commentView2.frame.size.height);

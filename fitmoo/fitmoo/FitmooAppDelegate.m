@@ -95,7 +95,7 @@
 -(void)openPopup:(NSNotification*)note{
     
     _popupView= [note object];
-    [_deckController.view addSubview:_popupView.view];
+    [_sideMenuViewController.view addSubview:_popupView.view];
     
 }
 
@@ -215,14 +215,14 @@
     }
 }
 
-#pragma mark - IIViewDeckControllerDelegate
-- (void)viewDeckController:(IIViewDeckController *)viewDeckController applyShadow:(CALayer *)shadowLayer withBounds:(CGRect)rect {
-    shadowLayer.masksToBounds = NO;
-    shadowLayer.shadowRadius = 0;
-    shadowLayer.shadowOpacity = 0;
-    shadowLayer.shadowColor = nil;
-    shadowLayer.shadowOffset = CGSizeZero;
-    shadowLayer.shadowPath = nil;
-}
+//#pragma mark - IIViewDeckControllerDelegate
+//- (void)viewDeckController:(IIViewDeckController *)viewDeckController applyShadow:(CALayer *)shadowLayer withBounds:(CGRect)rect {
+//    shadowLayer.masksToBounds = NO;
+//    shadowLayer.shadowRadius = 0;
+//    shadowLayer.shadowOpacity = 0;
+//    shadowLayer.shadowColor = nil;
+//    shadowLayer.shadowOffset = CGSizeZero;
+//    shadowLayer.shadowPath = nil;
+//}
 
 @end

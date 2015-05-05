@@ -82,6 +82,8 @@
 		272098421AEA9088007577B7 /* vimeo.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2720983F1AEA9088007577B7 /* vimeo.js.txt */; };
 		272098431AEA9088007577B7 /* VimeoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098411AEA9088007577B7 /* VimeoHelper.m */; };
 		272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098461AEA960B007577B7 /* YTVimeoExtractor.m */; };
+		27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27250CF51AF9007C005FC4C5 /* ShopViewController.m */; };
+		27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27250CF81AF902D7005FC4C5 /* SettingViewController.m */; };
 		272581FB1AD562A60059F43C /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F61AD562A60059F43C /* IISideController.m */; };
 		272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581F81AD562A60059F43C /* IIViewDeckController.m */; };
 		272581FD1AD562A60059F43C /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272581FA1AD562A60059F43C /* IIWrapController.m */; };
@@ -310,6 +312,10 @@
 		272098411AEA9088007577B7 /* VimeoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VimeoHelper.m; sourceTree = "<group>"; };
 		272098451AEA960B007577B7 /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
 		272098461AEA960B007577B7 /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
+		27250CF41AF9007C005FC4C5 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
+		27250CF51AF9007C005FC4C5 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
+		27250CF71AF902D7005FC4C5 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		27250CF81AF902D7005FC4C5 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		272581F51AD562A60059F43C /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		272581F61AD562A60059F43C /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		272581F71AD562A60059F43C /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -886,6 +892,10 @@
 				2719EBDD1AE1970000019079 /* SearchViewController.m */,
 				273FF5801AF7B5F500B82DB3 /* CommentViewController.h */,
 				273FF5811AF7B5F500B82DB3 /* CommentViewController.m */,
+				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
+				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
+				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
+				27250CF81AF902D7005FC4C5 /* SettingViewController.m */,
 			);
 			name = MainPages;
 			sourceTree = "<group>";
@@ -1355,6 +1365,7 @@
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				272582451AD57F070059F43C /* UIAlertView+AFNetworking.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
+				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
 				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
 				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
 				273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */,
@@ -1381,6 +1392,7 @@
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
 				27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */,
+				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
 				2725822E1AD57EFD0059F43C /* AFURLRequestSerialization.m in Sources */,
 				2725822B1AD57EFD0059F43C /* AFNetworkReachabilityManager.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,

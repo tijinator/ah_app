@@ -17,6 +17,8 @@
 #import "HomeFeed.h"
 #import "SearchViewController.h"
 #import "RESideMenu.h"
+#import "ShopViewController.h"
+#import "SettingViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;

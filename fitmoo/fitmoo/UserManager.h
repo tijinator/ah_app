@@ -41,7 +41,7 @@
 -(void) performFollow:(NSString *) postId;
 -(void) performUnFollow:(NSString *) postId;
 -(void) performPostToAmazon:(NSDictionary *)feed;
-
+-(void) performUpdate:(User *) user;
 -(void) checkEmailExistFromFitmoo:(User *) user;
 -(void) createAccountFromFacebook:(User *) user;
 -(void) getUserProfile:(User *) user;

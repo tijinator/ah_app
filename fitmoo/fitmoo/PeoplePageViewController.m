@@ -437,13 +437,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)likeButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
-    int totalLike=1+(int) [button.titleLabel.text integerValue];
-    NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
-    [button setTitle:newLikeString forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
-    
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
-    [[UserManager sharedUserManager] performLike:feed.feed_id];
+    
+    if ([feed.is_liked isEqualToString:@"0"]) {
+        int totalLike=1+(int) [button.titleLabel.text integerValue];
+        NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
+        [button setTitle:newLikeString forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [[UserManager sharedUserManager] performLike:feed.feed_id];
+        feed.is_liked=@"1";
+    }
 }
 - (IBAction)optionButtonClick:(id)sender {
     

@@ -18,7 +18,7 @@
 #import "RESideMenu.h"
 
 
-@interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, IIViewDeckControllerDelegate,RESideMenuDelegate>
+@interface FitmooAppDelegate : UIResponder <UIApplicationDelegate, RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

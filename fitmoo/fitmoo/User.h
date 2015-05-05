@@ -31,6 +31,25 @@
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *day_of_birth;
 @property (nonatomic, strong) NSString *facebook_uid;
+@property (nonatomic, strong) NSString *bio;
+@property (nonatomic, strong) NSString *geolocation;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *website;
+
+@property (nonatomic, strong) NSString *hide_global_privacy;
+@property (nonatomic, strong) NSString *hide_location;
+@property (nonatomic, strong) NSString *hide_email;
+@property (nonatomic, strong) NSString *hide_phone;
+@property (nonatomic, strong) NSString *hide_website;
+@property (nonatomic, strong) NSString *hide_facebook;
+@property (nonatomic, strong) NSString *hide_twitter;
+@property (nonatomic, strong) NSString *hide_linkedin;
+@property (nonatomic, strong) NSString *hide_google;
+@property (nonatomic, strong) NSString *hide_instagram;
+
+
+
 -(id)init;
 
 
