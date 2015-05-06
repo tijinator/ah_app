@@ -7,7 +7,8 @@
 //
 
 #import "CameraViewController.h"
-
+#import "UIImage+Filters.h"
+#import "ImageFilter.h"
 @interface CameraViewController ()
 {
     bool takePhoto;
@@ -23,8 +24,15 @@
     takePhoto= true;
     startCapture= false;
     _mediaType=@"camera";
+    
+    if (self.chosenImage!=nil) {
+        [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+        [self.imageButton setImage:_playImage forState:UIControlStateNormal];
+    }
     // Do any additional setup after loading the view.
 }
+
+
 
 -(void) initFrames
 {
@@ -38,6 +46,19 @@
     _screenShotButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_screenShotButton respectToSuperFrame:self.view];
     _changeToCameraButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_changeToCameraButton respectToSuperFrame:self.view];
     
+    _nutritionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionButton respectToSuperFrame:self.view];
+    _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
+    _workoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutButton respectToSuperFrame:self.view];
+    _writePostTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_writePostTextField respectToSuperFrame:self.view];
+    
+    _filterView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterView respectToSuperFrame:self.view];
+    _filterfootView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterfootView respectToSuperFrame:self.view];
+    _filterIcon.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterIcon respectToSuperFrame:self.view];
+    _filterScrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterScrollView respectToSuperFrame:self.view];
+    
+    _filterTopView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterTopView respectToSuperFrame:self.view];
+    _filterBackButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterBackButton respectToSuperFrame:self.view];
+    _filterOkButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterOkButton respectToSuperFrame:self.view];
 }
 
 
@@ -96,10 +117,12 @@
         if (startCapture==false) {
             [_picker startVideoCapture];
             startCapture=true;
+              [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordingbtn.png"] forState:UIControlStateNormal];
         }else
         {
             [_picker stopVideoCapture];
             startCapture=false;
+              [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
         }
         
         
@@ -109,19 +132,11 @@
 }
 
 - (IBAction)changeCameraButtonClick:(id)sender {
-    //    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-    //
-    //        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    //        picker.delegate = self;
-    //        picker.allowsEditing = YES;
-    //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    //        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-    //
-    //        [self presentViewController:picker animated:YES completion:NULL];
-    //    }
+
     if ([_mediaType isEqualToString:@"camera"]) {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         _mediaType=@"video";
+        [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
         //  _picker.allowsEditing = YES;
         //   self.picker.navigationBarHidden = NO;
         //   self.picker.toolbarHidden = NO;
@@ -130,6 +145,7 @@
     {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         _mediaType=@"camera";
+         [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"cameracircleicon.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -168,11 +184,126 @@
     return image;
 }
 
-- (void) showFliterImages
+-(void) addScrollView
 {
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
+     UIView *scrollFrame= [[UIView alloc] initWithFrame:_filterScrollView.frame];
+    if (_filterScrollView!=nil) {
+        [_filterScrollView removeFromSuperview];
+        _filterScrollView=nil;
+    }
+    
+    _filterScrollView= [[UIScrollView alloc] initWithFrame:scrollFrame.frame];
+    _filterScrollView.delegate = self;
+    UIImageView *imageview=[[UIImageView alloc] initWithImage:self.selectedImageview.image];                      //original
+    UIImageView *imageview1=[[UIImageView alloc] initWithImage:[self.selectedImageview.image saturateImage:1.7 withContrast:1]];        //Saturation
+    UIImageView *imageview2=[[UIImageView alloc] initWithImage:[self.selectedImageview.image saturateImage:0 withContrast:1.05]];        //B&W
+    UIImageView *imageview4=[[UIImageView alloc] initWithImage:[self.selectedImageview.image vignetteWithRadius:0 andIntensity:18]];       //Vignette
+    UIImageView *imageview3=[[UIImageView alloc] initWithImage:[self.selectedImageview.image greyscale]];      //greyscale
+    UIImageView *imageview5=[[UIImageView alloc] initWithImage:[self.selectedImageview.image curveFilter]];        //Curve
+    UIImageView *imageview6=[[UIImageView alloc] initWithImage:[self.selectedImageview.image invert]];        //Invert
+    UIImageView *imageview7=[[UIImageView alloc] initWithImage:[self.selectedImageview.image polaroidish]];        //polaroidish
+    UIImageView *imageview8=[[UIImageView alloc] initWithImage:[self.selectedImageview.image sepia]];        //sepia
+    _selectedFilterImageArray= [[NSArray alloc] initWithObjects:imageview,imageview1,imageview2,imageview3,imageview4,imageview5,imageview6,imageview7,imageview8, nil];
+    _selectedFilterNameArray= [[NSArray alloc] initWithObjects:@"Original",@"Saturation",@"B&W",@"Greyscale",@"Vignette",@"Curve",@"Invert",@"Polaroidish",@"Sepia", nil];
+    
+    
+    
+    int x =0;
+    for (int i=0; i<[_selectedFilterImageArray count]; i++) {
+        UIImageView *imageview= (UIImageView *)[_selectedFilterImageArray objectAtIndex:i];
+        UIButton *b= [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 60*radio, 60*radio)];
+        [b setTag:i];
+        [b addTarget:self action:@selector(filterButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [b setBackgroundImage:imageview.image forState:UIControlStateNormal];
+        [_filterScrollView addSubview:b];
+         _filterScrollView.contentSize= CGSizeMake(b.frame.size.width+x, _filterScrollView.frame.size.height);
+        
+        
+        
+        UIFont * customFont = [UIFont fontWithName:@"BentonSans" size:11]; //custom font
+        UILabel *fromLabel = [[UILabel alloc]initWithFrame:CGRectMake(x, 65, 60*radio, 18*radio)];
+        fromLabel.text = [_selectedFilterNameArray objectAtIndex:i];
+        fromLabel.font = customFont;
+        fromLabel.textAlignment = NSTextAlignmentCenter;
+        fromLabel.adjustsFontSizeToFitWidth = YES;
+        fromLabel.minimumScaleFactor = 10.0f/12.0f;
+        fromLabel.backgroundColor = [UIColor clearColor];
+        fromLabel.textColor = [UIColor whiteColor];
+        [_filterScrollView addSubview:fromLabel];
+        
+        x= x+b.frame.size.width+5;
+        
+    }
+    
+    [_filterView addSubview:_filterScrollView];
+
+}
+
+- (IBAction)filterButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    UIImageView *im= [_selectedFilterImageArray objectAtIndex:button.tag];
+    [_imageButton setBackgroundImage:im.image forState:UIControlStateNormal];
+    _selectedImageview.image=im.image;
     
 }
 
+- (void) addfilterView
+{
+    _selectedImageview= [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:_selectedImageview respectToSuperFrame:self.view];
+    _selectedImageview.image=_chosenImage;
+   // [self.view addSubview:selectedImageview];
+    [self.view insertSubview:_selectedImageview belowSubview:_filterView];
+    [self addScrollView];
+    
+    [self showFilterViewAnimation];
+    
+    
+    
+}
+
+
+-(void) hideFilterViewAnimation
+{
+  
+    [self.selectedImageview removeFromSuperview];
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+    }completion:^(BOOL finished){}];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0];
+    
+    self.filterView.frame = CGRectMake(0,self.view.frame.size.height+self.filterView.frame.size.height, self.filterView.frame.size.width, self.filterView.frame.size.height);
+    self.filterView.hidden=false;
+    
+    self.filterTopView.frame = CGRectMake(self.filterTopView.frame.size.width,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
+    self.filterTopView.hidden=false;
+    
+    self.topView.frame = CGRectMake(0,0, self.topView.frame.size.width, self.topView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+-(void) showFilterViewAnimation
+{
+    
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.3];
+            [UIView setAnimationDelay:0];
+         //   [UIView setAnimationDidStopSelector:@selector(closeView)];
+         //   [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+            self.filterView.frame = CGRectMake(0, self.buttomView.frame.origin.y, self.filterView.frame.size.width, self.filterView.frame.size.height);
+            self.filterView.hidden=false;
+    
+        self.filterTopView.frame = CGRectMake(0,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
+        self.filterTopView.hidden=false;
+    
+        self.topView.frame = CGRectMake(0-self.topView.frame.size.width,0, self.topView.frame.size.width, self.topView.frame.size.height);
+            [UIView commitAnimations];
+}
 
 //-(void) openPostView
 //{
@@ -202,8 +333,9 @@
             _chosenImage= [self squareImageFromImage:_chosenImage scaledToSize:320*radio];
             
             [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
-            [picker dismissViewControllerAnimated:YES completion:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+            [self addfilterView];
+        //    [picker dismissViewControllerAnimated:YES completion:nil];
+       //     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
             NSParameterAssert(_chosenImage);
             UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
         }else
@@ -211,8 +343,9 @@
             _chosenImage = info[UIImagePickerControllerEditedImage];
             [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
             [_picker1 dismissViewControllerAnimated:YES completion:nil];
-            [_picker dismissViewControllerAnimated:YES completion:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
+            [self addfilterView];
+        //    [_picker dismissViewControllerAnimated:YES completion:nil];
+        //    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
             
         }
         
@@ -231,4 +364,36 @@
 }
 
 
+- (IBAction)postsButtonClick:(id)sender {
+    UIButton * b= (UIButton *)sender;
+    
+    switch (b.tag) {
+        case 1:
+            
+            
+            
+            break;
+        case 2:
+            
+            
+            
+            break;
+        case 3:
+            
+            
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (IBAction)filterBackButtonClick:(id)sender {
+    [self hideFilterViewAnimation];
+}
+
+- (IBAction)filterOkButtonClick:(id)sender {
+}
 @end

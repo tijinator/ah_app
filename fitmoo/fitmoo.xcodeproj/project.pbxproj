@@ -206,6 +206,15 @@
 		273FF57E1AF7AA2C00B82DB3 /* whitexicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF54C1AF7AA2C00B82DB3 /* whitexicon.png */; };
 		273FF57F1AF7AA2C00B82DB3 /* workouttag.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF54D1AF7AA2C00B82DB3 /* workouttag.png */; };
 		273FF5821AF7B5F500B82DB3 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273FF5811AF7B5F500B82DB3 /* CommentViewController.m */; };
+		27410DD51AFA9AEA00CF230C /* UIImage+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */; };
+		27410DDE1AFAB21800CF230C /* ImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DDD1AFAB21800CF230C /* ImageFilter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DEF1AFAB34200CF230C /* BezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DE11AFAB34100CF230C /* BezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DE31AFAB34100CF230C /* CatmullRomSpline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DE61AFAB34100CF230C /* CubicBezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF21AFAB34200CF230C /* LinearBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DE81AFAB34100CF230C /* LinearBezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEA1AFAB34100CF230C /* NSArray_PointArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27410DF51AFAB34200CF230C /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEE1AFAB34100CF230C /* Spline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */; };
 		274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
 		274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
@@ -494,6 +503,25 @@
 		273FF54D1AF7AA2C00B82DB3 /* workouttag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workouttag.png; sourceTree = "<group>"; };
 		273FF5801AF7B5F500B82DB3 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		273FF5811AF7B5F500B82DB3 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Filters.h"; sourceTree = "<group>"; };
+		27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Filters.m"; sourceTree = "<group>"; };
+		27410DDC1AFAB21800CF230C /* ImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilter.h; sourceTree = "<group>"; };
+		27410DDD1AFAB21800CF230C /* ImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilter.m; sourceTree = "<group>"; };
+		27410DE01AFAB34100CF230C /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BezierCurve.h; path = Curve/BezierCurve.h; sourceTree = "<group>"; };
+		27410DE11AFAB34100CF230C /* BezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BezierCurve.m; path = Curve/BezierCurve.m; sourceTree = "<group>"; };
+		27410DE21AFAB34100CF230C /* CatmullRomSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatmullRomSpline.h; path = Curve/CatmullRomSpline.h; sourceTree = "<group>"; };
+		27410DE31AFAB34100CF230C /* CatmullRomSpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatmullRomSpline.m; path = Curve/CatmullRomSpline.m; sourceTree = "<group>"; };
+		27410DE41AFAB34100CF230C /* CGPointArithmetic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGPointArithmetic.h; path = Curve/CGPointArithmetic.h; sourceTree = "<group>"; };
+		27410DE51AFAB34100CF230C /* CubicBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubicBezierCurve.h; path = Curve/CubicBezierCurve.h; sourceTree = "<group>"; };
+		27410DE61AFAB34100CF230C /* CubicBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubicBezierCurve.m; path = Curve/CubicBezierCurve.m; sourceTree = "<group>"; };
+		27410DE71AFAB34100CF230C /* LinearBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinearBezierCurve.h; path = Curve/LinearBezierCurve.h; sourceTree = "<group>"; };
+		27410DE81AFAB34100CF230C /* LinearBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinearBezierCurve.m; path = Curve/LinearBezierCurve.m; sourceTree = "<group>"; };
+		27410DE91AFAB34100CF230C /* NSArray_PointArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArray_PointArray.h; path = Curve/NSArray_PointArray.h; sourceTree = "<group>"; };
+		27410DEA1AFAB34100CF230C /* NSArray_PointArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArray_PointArray.m; path = Curve/NSArray_PointArray.m; sourceTree = "<group>"; };
+		27410DEB1AFAB34100CF230C /* QuadraticBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuadraticBezierCurve.h; path = Curve/QuadraticBezierCurve.h; sourceTree = "<group>"; };
+		27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuadraticBezierCurve.m; path = Curve/QuadraticBezierCurve.m; sourceTree = "<group>"; };
+		27410DED1AFAB34100CF230C /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spline.h; path = Curve/Spline.h; sourceTree = "<group>"; };
+		27410DEE1AFAB34100CF230C /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Spline.m; path = Curve/Spline.m; sourceTree = "<group>"; };
 		274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
 		274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = "<group>"; };
 		274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = "<group>"; };
@@ -924,6 +952,11 @@
 			children = (
 				2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */,
 				2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */,
+				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
+				27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */,
+				27410DDC1AFAB21800CF230C /* ImageFilter.h */,
+				27410DDD1AFAB21800CF230C /* ImageFilter.m */,
+				27410DDF1AFAB32F00CF230C /* Curve */,
 				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
 				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
 			);
@@ -998,6 +1031,28 @@
 				273FF54D1AF7AA2C00B82DB3 /* workouttag.png */,
 			);
 			name = newDesign;
+			sourceTree = "<group>";
+		};
+		27410DDF1AFAB32F00CF230C /* Curve */ = {
+			isa = PBXGroup;
+			children = (
+				27410DE01AFAB34100CF230C /* BezierCurve.h */,
+				27410DE11AFAB34100CF230C /* BezierCurve.m */,
+				27410DE21AFAB34100CF230C /* CatmullRomSpline.h */,
+				27410DE31AFAB34100CF230C /* CatmullRomSpline.m */,
+				27410DE41AFAB34100CF230C /* CGPointArithmetic.h */,
+				27410DE51AFAB34100CF230C /* CubicBezierCurve.h */,
+				27410DE61AFAB34100CF230C /* CubicBezierCurve.m */,
+				27410DE71AFAB34100CF230C /* LinearBezierCurve.h */,
+				27410DE81AFAB34100CF230C /* LinearBezierCurve.m */,
+				27410DE91AFAB34100CF230C /* NSArray_PointArray.h */,
+				27410DEA1AFAB34100CF230C /* NSArray_PointArray.m */,
+				27410DEB1AFAB34100CF230C /* QuadraticBezierCurve.h */,
+				27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */,
+				27410DED1AFAB34100CF230C /* Spline.h */,
+				27410DEE1AFAB34100CF230C /* Spline.m */,
+			);
+			name = Curve;
 			sourceTree = "<group>";
 		};
 		276094121AD708AD00A769CE /* Semplicita Pro */ = {
@@ -1347,12 +1402,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				272581FB1AD562A60059F43C /* IISideController.m in Sources */,
+				27410DD51AFA9AEA00CF230C /* UIImage+Filters.m in Sources */,
 				273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */,
 				272582441AD57F070059F43C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
+				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
 				2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
@@ -1365,6 +1422,7 @@
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				272582451AD57F070059F43C /* UIAlertView+AFNetworking.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
+				27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */,
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
 				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
 				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
@@ -1372,10 +1430,12 @@
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
 				2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */,
 				2732B7481AD84EF200610821 /* Videos.m in Sources */,
+				27410DDE1AFAB21800CF230C /* ImageFilter.m in Sources */,
 				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,
 				2725822F1AD57EFD0059F43C /* AFURLResponseSerialization.m in Sources */,
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
 				2725822D1AD57EFD0059F43C /* AFURLConnectionOperation.m in Sources */,
+				27410DF51AFAB34200CF230C /* Spline.m in Sources */,
 				272582121AD579080059F43C /* LoginViewController.m in Sources */,
 				273FF5821AF7B5F500B82DB3 /* CommentViewController.m in Sources */,
 				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,
@@ -1390,8 +1450,10 @@
 				2725822C1AD57EFD0059F43C /* AFSecurityPolicy.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
+				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
 				27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */,
+				27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */,
 				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
 				2725822E1AD57EFD0059F43C /* AFURLRequestSerialization.m in Sources */,
 				2725822B1AD57EFD0059F43C /* AFNetworkReachabilityManager.m in Sources */,
@@ -1403,6 +1465,7 @@
 				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
 				272582281AD57EFD0059F43C /* AFHTTPRequestOperation.m in Sources */,
+				27410DF21AFAB34200CF230C /* LinearBezierCurve.m in Sources */,
 				27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */,
 				272582431AD57F070059F43C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2725822A1AD57EFD0059F43C /* AFHTTPSessionManager.m in Sources */,
@@ -1412,6 +1475,7 @@
 				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,
 				272582301AD57EFD0059F43C /* AFURLSessionManager.m in Sources */,
+				27410DEF1AFAB34200CF230C /* BezierCurve.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,
 				2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */,
 			);

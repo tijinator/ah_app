@@ -10,7 +10,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "FitmooHelper.h"
 #import "RESideMenu.h"
-
+#import "CameraViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import "BasePostViewController.h"
 
 @interface BaseViewController : UIViewController
@@ -26,7 +27,7 @@
 @property (nonatomic, strong) UIButton *pictureButton;
 @property (strong, nonatomic)  UIView *subBottomView;
 
-//@property (strong, nonatomic)  CameraViewController *overlay;
-//@property (strong, nonatomic)  UIImagePickerController *picker;
+@property (strong, nonatomic)  CameraViewController *overlay;
+@property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  BasePostViewController *postView;
 @end

@@ -168,14 +168,29 @@
 -(void) presentCameraView
 {
     
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
+//    _postView.postType= @"post";
+//    [self presentViewController:_postView animated:YES completion:nil];
+//    [self hideThreeSubButtons];
+//    showButton=false;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
-    _postView.postType= @"post";
-    [self presentViewController:_postView animated:YES completion:nil];
-    [self hideThreeSubButtons];
-    showButton=false;
+    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
+    
+    _picker = [[UIImagePickerController alloc] init];
+    _picker.allowsEditing = YES;
+    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    self.picker.navigationBarHidden = YES;
+    self.picker.toolbarHidden = YES;
 
-  
+    self.overlay.picker = self.picker;
+    self.picker.cameraOverlayView = self.overlay.view;
+    self.picker.delegate = self.overlay;
+    
+    [self presentViewController:_picker animated:YES completion:NULL];
+    [self hideThreeSubButtons];
+     showButton=false;
 }
 
 - (IBAction)footbuttonClick:(id)sender {

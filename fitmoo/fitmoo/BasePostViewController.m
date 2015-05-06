@@ -24,7 +24,7 @@
     [super viewDidLoad];
     [self initFrames];
     [self defineTypeOfPost];
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
     [self createObservers];
     _postActionType=@"text";
     
@@ -297,11 +297,50 @@
 -(void) updateVideo: (NSNotification * ) note
 {
     self.videoURL=(NSURL *)[note object];
+//    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc]
+//                                            initWithContentURL:self.videoURL];
+//    moviePlayer.shouldAutoplay = NO;
+//    UIImage *thumbnail = [moviePlayer thumbnailImageAtTime:1
+//                                                timeOption:MPMovieTimeOptionNearestKeyFrame];
+    UIImage *thumbnail =[self thumbnailImageForVideo:self.videoURL atTime:1];
     
+    [_normalPostImage setBackgroundImage:thumbnail forState:UIControlStateNormal];
+    [_normalPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    [_workoutPostImage setBackgroundImage:thumbnail forState:UIControlStateNormal];
+    [_workoutPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    [_nutritionPostImage setBackgroundImage:thumbnail forState:UIControlStateNormal];
+    [_nutritionPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     _postActionType=@"video";
     
 }
-
+- (UIImage *)thumbnailImageForVideo:(NSURL *)videoURL
+                             atTime:(NSTimeInterval)time
+{
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetIG =
+    [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetIG.appliesPreferredTrackTransform = YES;
+    assetIG.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = time;
+    NSError *igError = nil;
+    thumbnailImageRef =
+    [assetIG copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)
+                    actualTime:NULL
+                         error:&igError];
+    
+    if (!thumbnailImageRef)
+        NSLog(@"thumbnailImageGenerationError %@", igError );
+    
+    UIImage *thumbnailImage = thumbnailImageRef
+    ? [[UIImage alloc] initWithCGImage:thumbnailImageRef]
+    : nil;
+    
+    return thumbnailImage;
+}
 
 -(void) makePostFinished: (NSNotification * ) note
 {
@@ -312,8 +351,11 @@
 {
     _PostImage= (UIImage * ) [note object];
     [_normalPostImage setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    [_normalPostImage setImage:nil forState:UIControlStateNormal];
     [_workoutPostImage setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    [_workoutPostImage setImage:nil forState:UIControlStateNormal];
     [_nutritionPostImage setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    [_nutritionPostImage setImage:nil forState:UIControlStateNormal];
     _postActionType=@"image";
 }
 
@@ -335,7 +377,7 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-    
+  
     _picker = [[UIImagePickerController alloc] init];
     _picker.allowsEditing = YES;
     _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -344,6 +386,10 @@
     self.picker.toolbarHidden = YES;
     
     self.overlay.picker = self.picker;
+    self.overlay.chosenImage= self.PostImage;
+    if ([self.postActionType isEqualToString:@"video"]) {
+        self.overlay.playImage= [UIImage imageNamed:@"play.png"];
+    }
     self.picker.cameraOverlayView = self.overlay.view;
     self.picker.delegate = self.overlay;
     
@@ -370,7 +416,6 @@
     _workoutView.frame= CGRectMake(0, 127, _workoutView.frame.size.width, _workoutView.frame.size.height);
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
-    //   _workoutPostImage.image= self.PostImage;
     _normalPostView.hidden=true;
     _workoutView.hidden=false;
     _nutritionView.hidden=true;
@@ -384,7 +429,7 @@
     _workoutView.hidden=true;
     _nutritionView.hidden=false;
     [_nutritionPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
-    //  _nutritionPostImage.image= self.PostImage;
+
 }
 
 -(void) initFrames
