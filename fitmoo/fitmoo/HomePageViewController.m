@@ -485,12 +485,19 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)shareButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
+    HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-    specialPage.action=@"Share";
-    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    ActionSheet.action= @"share";
+    ActionSheet.postId= tempFeed.feed_id;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     
-    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+//    specialPage.action=@"Share";
+//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+//    
+//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
 }
 

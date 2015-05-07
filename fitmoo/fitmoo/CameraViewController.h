@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) NSString *postActionType;
+@property (strong, nonatomic) NSTimer *timer;
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)cameraDirectionButtonClick:(id)sender;
 - (IBAction)imageButtonClick:(id)sender;
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) IBOutlet UIView *filterfootView;
 @property (strong, nonatomic) IBOutlet UIScrollView *filterScrollView;
 @property (strong, nonatomic) IBOutlet UIButton *filterIcon;
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *filterTopView;
 @property (strong, nonatomic) IBOutlet UIButton *filterBackButton;

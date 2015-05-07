@@ -13,6 +13,7 @@
 {
     bool takePhoto;
     bool startCapture;
+    double ticks;
 }
 @end
 
@@ -45,12 +46,8 @@
 -(void) makePostFinished: (NSNotification * ) note
 {
     [_picker dismissViewControllerAnimated:YES completion:nil];
-    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Post Sucess"
-                                                      message : @"" delegate : nil cancelButtonTitle : @"OK"
-                                            otherButtonTitles : nil ];
-    [alert show ];
-
    
+
 }
 
 -(void) hidePostView: (NSNotification * ) note
@@ -87,6 +84,8 @@
     
     _postTopView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postTopView respectToSuperFrame:self.view];
     _postCloseButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postCloseButton respectToSuperFrame:self.view];
+    
+    _timerLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_timerLabel respectToSuperFrame:self.view];
 }
 
 
@@ -107,6 +106,7 @@
 
 - (IBAction)closeButtonClick:(id)sender {
     [_picker dismissViewControllerAnimated:YES completion:nil];
+    [_timer invalidate];
 }
 
 - (IBAction)cameraDirectionButtonClick:(id)sender {
@@ -146,6 +146,17 @@
     
 }
 
+- (void)timerTick:(NSTimer *)timer
+{
+    // Timers are not guaranteed to tick at the nominal rate specified, so this isn't technically accurate.
+    // However, this is just an example to demonstrate how to stop some ongoing activity, so we can live with that inaccuracy.
+    ticks += 0.1;
+    double seconds = fmod(ticks, 60.0);
+    double minutes = fmod(trunc(ticks / 60.0), 60.0);
+    double hours = trunc(ticks / 3600.0);
+    self.timerLabel.text = [NSString stringWithFormat:@"%02.0f : %02.0f : %02.0f", hours, minutes, seconds];
+}
+
 - (IBAction)screenShotButtonClick:(id)sender {
     
     if ([_mediaType isEqualToString:@"camera"]) {
@@ -154,15 +165,21 @@
         
     }else
     {
+    
         if (startCapture==false) {
             [_picker startVideoCapture];
             startCapture=true;
-              [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordingbtn.png"] forState:UIControlStateNormal];
+            [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordingbtn.png"] forState:UIControlStateNormal];
+            ticks=0;
+            _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+            _buttomView.userInteractionEnabled=false;
         }else
         {
             [_picker stopVideoCapture];
             startCapture=false;
-              [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
+            [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
+            [_timer invalidate];
+            _buttomView.userInteractionEnabled=true;
         }
         
         
@@ -172,11 +189,13 @@
 }
 
 - (IBAction)changeCameraButtonClick:(id)sender {
-
+    [_timer invalidate];
     if ([_mediaType isEqualToString:@"camera"]) {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         _mediaType=@"video";
         [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
+        self.timerLabel.hidden=false;
+        self.timerLabel.text=@"00 : 00 : 00";
         //  _picker.allowsEditing = YES;
         //   self.picker.navigationBarHidden = NO;
         //   self.picker.toolbarHidden = NO;
@@ -186,6 +205,8 @@
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         _mediaType=@"camera";
          [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"cameracircleicon.png"] forState:UIControlStateNormal];
+         self.timerLabel.hidden=true;
+    
     }
 }
 

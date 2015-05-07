@@ -265,11 +265,16 @@ int contentHight2=50;
     
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
-    NSTimeInterval time=(NSTimeInterval ) ([tempHomefeed.created_at integerValue]/1000);
+    NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
+    NSString * timestring= [tempHomefeed.created_at substringWithRange:range];
+    
+    
+    NSTimeInterval time=(NSTimeInterval ) timestring.intValue;
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
+
     
     if ([tempHomefeed.type isEqualToString:@"regular"]) {
         [cell setBodyFrameForRegular];

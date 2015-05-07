@@ -18,17 +18,25 @@
     [super viewDidLoad];
     [self initFrames];
     
+    if ([_action isEqualToString:@"share"]) {
+        [self showShareViews];
+    }else
     if ([_action isEqualToString:@"delete"]) {
     [_reportButton setTitle:@"Delete" forState:UIControlStateNormal];
      [_endorseButton setHidden:true];
+        [self showViews];
     }else if ([_action isEqualToString:@"report"])
     {
     [_reportButton setTitle:@"Report" forState:UIControlStateNormal];
        [_endorseButton setHidden:true];
+        [self showViews];
     }else
     {
         [_endorseButton setHidden:false];
+        [self showViews];
     }
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -41,6 +49,10 @@
     _reportButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_reportButton respectToSuperFrame:self.view];
     _blackView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_blackView respectToSuperFrame:self.view];
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
+    
+    _shareCancelButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareCancelButton respectToSuperFrame:self.view];
+    _shareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButton respectToSuperFrame:self.view];
+    _shareButtomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButtomView respectToSuperFrame:self.view];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -52,25 +64,33 @@
          }
 }
 
-- (void) disableViews
+- (void) showShareViews
 {
     
     
-//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-//        
-//        
-//        
-//    }completion:^(BOOL finished){}];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDelay:0];
     
-//        [UIView beginAnimations:nil context:nil];
-//        [UIView setAnimationDuration:0.5];
-//        [UIView setAnimationDelay:0];
-//     //   [UIView setAnimationDidStopSelector:@selector(closeView)];
-//     //   [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-//        
-//   //     self.buttomView.frame = CGRectMake(0, 0-self.buttomView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
-//    
-//        [UIView commitAnimations];
+    
+    self.shareButtomView.frame = CGRectMake(0, self.view.frame.size.height-self.shareButtomView.frame.size.height, self.shareButtomView.frame.size.width, self.shareButtomView.frame.size.height);
+    
+    [UIView commitAnimations];
+    
+}
+
+- (void) showViews
+{
+    
+
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDelay:0];
+    
+        
+        self.buttomView.frame = CGRectMake(0, self.view.frame.size.height-self.buttomView.frame.size.height, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+    
+        [UIView commitAnimations];
     
 }
 
@@ -119,4 +139,13 @@
 }
 */
 
+- (IBAction)shareClick:(id)sender {
+    
+     [[UserManager sharedUserManager] performShare:@"" withId:_postId];
+     [self.view removeFromSuperview];
+}
+
+- (IBAction)shareCancelClick:(id)sender {
+    [self.view removeFromSuperview];
+}
 @end

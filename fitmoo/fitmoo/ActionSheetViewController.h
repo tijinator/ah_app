@@ -22,5 +22,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *reportButton;
 @property (strong, nonatomic) IBOutlet UIView *blackView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
+@property (strong, nonatomic) IBOutlet UIView *shareButtomView;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *shareCancelButton;
+- (IBAction)shareClick:(id)sender;
+
+- (IBAction)shareCancelClick:(id)sender;
 
 @end

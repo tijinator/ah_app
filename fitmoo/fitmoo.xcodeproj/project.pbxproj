@@ -952,13 +952,13 @@
 			children = (
 				2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */,
 				2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */,
+				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
+				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
 				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
 				27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */,
 				27410DDC1AFAB21800CF230C /* ImageFilter.h */,
 				27410DDD1AFAB21800CF230C /* ImageFilter.m */,
 				27410DDF1AFAB32F00CF230C /* Curve */,
-				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
-				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
 			);
 			name = posts;
 			sourceTree = "<group>";

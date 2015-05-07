@@ -58,7 +58,7 @@
                                 <color key="backgroundColor" red="0.84965214416058399" green="0.84865419708029199" blue="0.84557481751824815" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5KS-NR-9qu">
-                                <rect key="frame" x="14" y="8" width="290" height="22"/>
+                                <rect key="frame" x="15" y="8" width="290" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

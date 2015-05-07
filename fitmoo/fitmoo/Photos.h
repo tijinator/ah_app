@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *photo_id;
 @property (nonatomic, strong) NSString *originalUrl;      // -----get photo_url  (not used)
 @property (nonatomic, strong) NSString *stylesUrl;        //----styles ---photo_url  (use for table home feed)
-
+@property (nonatomic, strong) NSString *stylesUrlWidth;
+@property (nonatomic, strong) NSString *stylesUrlHeight;
 @end

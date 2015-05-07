@@ -264,8 +264,12 @@
         
         _responseDic= responseObject;
         
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"postFinished" object:nil];
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Share Sucess"
+                                                          message : @"" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+
+     //   [[NSNotificationCenter defaultCenter] postNotificationName:@"postFinished" object:nil];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -376,7 +380,10 @@
         
         _responseDic= responseObject;
         
-      
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Post Sucess"
+                                                          message : @"" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
         
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];

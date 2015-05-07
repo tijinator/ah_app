@@ -11,5 +11,6 @@
 @interface Videos : NSObject
 @property (nonatomic, strong) NSString *video_url;
 @property (nonatomic, strong) NSString *thumbnail_url;   //picture
-
+@property (nonatomic, strong) NSString *thumbnail_url_width;
+@property (nonatomic, strong) NSString *thumbnail_url_height;
 @end

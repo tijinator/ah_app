@@ -361,9 +361,23 @@
 {
     if ([self.postType isEqualToString:@"post"]) {
         [self setPostFrame];
+        
+        
+        [_NormalPostButton setTitleColor:[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1] forState:UIControlStateNormal];
+        [_NutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_WorkoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }else  if ([self.postType isEqualToString:@"nutrition"]) {
         [self setNutritionFrame];
+        [_NutritionButton setTitleColor:[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1] forState:UIControlStateNormal];
+        [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_WorkoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+      
     }else  if ([self.postType isEqualToString:@"workout"]) {
+        
+        [_WorkoutButton setTitleColor:[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1] forState:UIControlStateNormal];
+        [_NutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self setWorkoutFrame];
     }
 }
@@ -534,12 +548,14 @@
             }else if ([imageUrl isEqualToString:@""]) {
                 photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
                 feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photos_attributes, @"photos_attributes", nil];
+              
             }else
             {
                 
                 photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
                 photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
                 feed= [[NSDictionary alloc] initWithObjectsAndKeys: _normalPostText.text, @"text",photoArray, @"photos_attributes", nil];
+              
             }
             
            
@@ -582,7 +598,7 @@
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
                     NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
                     feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photos_attributes, @"photos_attributes",@"", @"text", nil];
-                 
+                   
                 }else
                 {
                     
@@ -593,7 +609,7 @@
                     photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
                     NSDictionary *nutrition_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: _nutritionTitle.text, @"title",_nutritionIngedients.text, @"ingredients",_nutritionPreparation.text, @"preparation", nil];
                     feed= [[NSDictionary alloc] initWithObjectsAndKeys: nutrition_attributes, @"nutrition_attributes",photoArray, @"photos_attributes",@"", @"text", nil];
-              
+                   
                 }
                 
 
@@ -637,12 +653,14 @@
                else if ([imageUrl isEqualToString:@""]) {
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
                      feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes", nil];
+                 
                 }else
                 {
                     
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
                     photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
                      feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photoArray, @"photos_attributes", nil];
+                    [self addActivityIndicator];
                 }
                 
                
@@ -655,35 +673,111 @@
     
 }
 
+- (void) addActivityIndicator
+{
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:activityIndicator respectToSuperFrame:nil];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 240*[[FitmooHelper sharedInstance] frameRadio]);
+    activityIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+}
 
+-(bool) validate
+{
+    
+    if ([self.postType isEqualToString:@"post"]) {
+        if ([_normalPostText.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"text can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            return false;
+        }
+        
+    }else  if ([self.postType isEqualToString:@"nutrition"]) {
+        if ([_nutritionTitle.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            return false;
+        }else
+        {
+            if ([_nutritionPreparation.text isEqualToString:@""]&&[_nutritionIngedients.text isEqualToString:@""]) {
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                                  message : @"Ingrediens and Preparation can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+                return false;
+            }
+        }
+        
+    }else  if ([self.postType isEqualToString:@"workout"]) {
+        if ([_workoutTitle.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            return false;
+        }else
+        {
+            if ([_workoutInstruction.text isEqualToString:@""]) {
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                                  message : @"Instruction can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+                return false;
+            }
+        }
+    
+    }
+
+
+
+    return true;
+}
 
 - (IBAction)postButtonClick:(id)sender {
     
-    if ([_postActionType isEqualToString:@"video"]) {
-        [self getAuth];
-    }else
-    if ([_postActionType isEqualToString:@"image"]) {
-      
-        [self uploadToS3];
-    }else
-    {
-        [self makePost:@"" withVideoUrl:@""];
+    if ([self validate] ==true) {
+        if ([_postActionType isEqualToString:@"video"]) {
+            [self getAuth];
+            
+        }else if ([_postActionType isEqualToString:@"image"]) {
+                
+            [self uploadToS3];
+        }else
+        {
+            [self makePost:@"" withVideoUrl:@""];
+        }
+     
+        [self addActivityIndicator];
     }
     
     
 }
 - (IBAction)nutritionButtonClick:(id)sender {
+ 
+    
+
     _postType=@"nutrition";
+    
     [self defineTypeOfPost];
 }
 
 - (IBAction)normalPostButtonClick:(id)sender {
+    
+  
     
     _postType=@"post";
     [self defineTypeOfPost];
 }
 
 - (IBAction)workoutButtonClick:(id)sender {
+ 
+    
     _postType=@"workout";
     [self defineTypeOfPost];
 }

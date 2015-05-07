@@ -124,6 +124,13 @@
                                             <action selector="cameraDirectionButtonClick:" destination="oHk-Ra-HON" eventType="touchUpInside" id="JvM-C4-yMg"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ogo-gZ-M9K">
+                                        <rect key="frame" x="79" y="14" width="163" height="33.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -223,6 +230,7 @@
                         <outlet property="postCloseButton" destination="KyH-zW-n8Z" id="PNI-Cu-Z1S"/>
                         <outlet property="postTopView" destination="365-wa-ONh" id="2SO-bY-AUP"/>
                         <outlet property="screenShotButton" destination="oju-Gm-WT3" id="vNS-EL-et9"/>
+                        <outlet property="timerLabel" destination="Ogo-gZ-M9K" id="TAX-NE-bdD"/>
                         <outlet property="topView" destination="W6u-D8-Cxi" id="9kL-ro-h0F"/>
                         <outlet property="workoutButton" destination="RQa-Vf-oMm" id="C8q-vA-cDe"/>
                         <outlet property="writePostTextField" destination="tyu-GH-MED" id="v91-Wn-gux"/>
@@ -315,6 +323,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ixC-pO-AbG">
                                         <rect key="frame" x="15" y="10" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" backgroundImage="play.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -426,10 +435,10 @@
                         <color key="backgroundColor" red="0.92156862745098034" green="0.93333333333333335" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="NormalPostButton" destination="nCm-dI-MjH" id="3h0-dW-Qep"/>
-                        <outlet property="NutritionButton" destination="qNp-yJ-XZa" id="RJH-5d-sOF"/>
+                        <outlet property="NormalPostButton" destination="lB3-E6-nbH" id="IXC-hl-inq"/>
+                        <outlet property="NutritionButton" destination="nCm-dI-MjH" id="M5W-gX-PJI"/>
                         <outlet property="SubmitButton" destination="K2t-51-h5v" id="E76-0Q-QGJ"/>
-                        <outlet property="WorkoutButton" destination="lB3-E6-nbH" id="E2L-1E-esu"/>
+                        <outlet property="WorkoutButton" destination="qNp-yJ-XZa" id="zMX-3K-zNy"/>
                         <outlet property="buttonView" destination="tzq-A1-hee" id="ovV-d1-9Io"/>
                         <outlet property="normalEditButton" destination="APX-Ni-WvP" id="5rg-kT-7j7"/>
                         <outlet property="normalPostImage" destination="1gt-UT-bsA" id="zfu-id-qmT"/>
@@ -1278,8 +1287,34 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="KDE-00-l4l">
+                                <rect key="frame" x="0.0" y="568" width="320" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k6H-cB-QGT">
+                                        <rect key="frame" x="16" y="58" width="288" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="shareClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="xeU-Sc-vHO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w7Y-ZV-u5U">
+                                        <rect key="frame" x="16" y="102" width="288" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="JKa-Dq-EKP"/>
+                                            <action selector="shareCancelClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="eAq-7w-aXF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="JrN-iI-iKO">
-                                <rect key="frame" x="0.0" y="414" width="320" height="310"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lvt-Qx-2WG">
@@ -1321,6 +1356,9 @@
                         <outlet property="cancelButton" destination="PPy-NB-Zbs" id="XQ9-x8-dqs"/>
                         <outlet property="endorseButton" destination="Lvt-Qx-2WG" id="IQY-X8-40I"/>
                         <outlet property="reportButton" destination="CX3-mj-xXj" id="ftX-mh-5Ed"/>
+                        <outlet property="shareButtomView" destination="KDE-00-l4l" id="NJW-NF-IJu"/>
+                        <outlet property="shareButton" destination="k6H-cB-QGT" id="7Pt-WS-NPB"/>
+                        <outlet property="shareCancelButton" destination="w7Y-ZV-u5U" id="vd8-RV-10p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDG-zH-fah" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1411,9 +1449,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WZh-J5-OcD">
-                                        <rect key="frame" x="14" y="40" width="10" height="17"/>
+                                        <rect key="frame" x="0.0" y="37" width="32" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="whitearrowicon.png">
+                                        <state key="normal" image="whitearrowicon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
