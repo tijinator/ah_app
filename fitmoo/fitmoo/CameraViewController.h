@@ -11,15 +11,15 @@
 #import "FitmooHelper.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-//#import "BasePostViewController.h"
-
+#import "BasePostViewController.h"
+#import <AVFoundation/AVFoundation.h>
 //@interface CameraViewController : UIImagePickerController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  UIImagePickerController *picker1;
-//@property (strong, nonatomic)  BasePostViewController *postView;
+@property (strong, nonatomic)  BasePostViewController *postView;
 @property (strong, nonatomic)  UIImage *chosenImage;
 @property (strong, nonatomic)  UIImage *playImage;
 @property (strong, nonatomic) UIImageView *selectedImageview;
@@ -28,7 +28,8 @@
 @property (strong, nonatomic)  NSString *chosenMediaType;
 @property (strong, nonatomic)  NSString *mediaType;
 @property (strong, nonatomic) NSURL *videoURL;
-
+@property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic) NSString *postActionType;
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)cameraDirectionButtonClick:(id)sender;
 - (IBAction)imageButtonClick:(id)sender;
@@ -66,6 +67,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *filterOkButton;
 
 
+@property (strong, nonatomic) IBOutlet UIView *postTopView;
+@property (strong, nonatomic) IBOutlet UIButton *postCloseButton;
 
 
 @end

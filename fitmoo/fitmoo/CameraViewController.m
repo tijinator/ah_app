@@ -24,15 +24,40 @@
     takePhoto= true;
     startCapture= false;
     _mediaType=@"camera";
+    _postActionType=@"text";
     
     if (self.chosenImage!=nil) {
         [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
         [self.imageButton setImage:_playImage forState:UIControlStateNormal];
     }
+    [self createObservers];
     // Do any additional setup after loading the view.
 }
 
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hidePostView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidePostView:) name:@"hidePostView" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"makePostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makePostFinished:) name:@"makePostFinished" object:nil];
+   
+}
+-(void) makePostFinished: (NSNotification * ) note
+{
+    [_picker dismissViewControllerAnimated:YES completion:nil];
+    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Post Sucess"
+                                                      message : @"" delegate : nil cancelButtonTitle : @"OK"
+                                            otherButtonTitles : nil ];
+    [alert show ];
 
+   
+}
+
+-(void) hidePostView: (NSNotification * ) note
+{
+    [self hidePostViewAnimation];
+
+}
 
 -(void) initFrames
 {
@@ -59,6 +84,9 @@
     _filterTopView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterTopView respectToSuperFrame:self.view];
     _filterBackButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterBackButton respectToSuperFrame:self.view];
     _filterOkButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterOkButton respectToSuperFrame:self.view];
+    
+    _postTopView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postTopView respectToSuperFrame:self.view];
+    _postCloseButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postCloseButton respectToSuperFrame:self.view];
 }
 
 
@@ -98,12 +126,24 @@
 
 - (IBAction)imageButtonClick:(id)sender {
     
-    _picker1 = [[UIImagePickerController alloc] init];
-    _picker1.delegate = self;
-    _picker1.allowsEditing = YES;
-    _picker1.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    takePhoto= false;
-    [self presentViewController:_picker1 animated:YES completion:NULL];
+    if ([_mediaType isEqualToString:@"camera"]) {
+        _picker1 = [[UIImagePickerController alloc] init];
+        _picker1.delegate = self;
+        _picker1.allowsEditing = YES;
+        _picker1.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        takePhoto= false;
+        [self presentViewController:_picker1 animated:YES completion:NULL];
+    }else if ([_mediaType isEqualToString:@"video"])
+    {
+        _picker1 = [[UIImagePickerController alloc] init];
+        _picker1.delegate = self;
+        _picker1.allowsEditing = NO;
+        _picker1.sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+        _picker1.mediaTypes = @[(NSString *)kUTTypeMovie];
+        takePhoto= false;
+        [self presentViewController:_picker1 animated:YES completion:NULL];
+    }
+    
 }
 
 - (IBAction)screenShotButtonClick:(id)sender {
@@ -289,31 +329,105 @@
 -(void) showFilterViewAnimation
 {
     
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:0.3];
-            [UIView setAnimationDelay:0];
-         //   [UIView setAnimationDidStopSelector:@selector(closeView)];
-         //   [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0];
+    //   [UIView setAnimationDidStopSelector:@selector(closeView)];
+    //   [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     
-            self.filterView.frame = CGRectMake(0, self.buttomView.frame.origin.y, self.filterView.frame.size.width, self.filterView.frame.size.height);
-            self.filterView.hidden=false;
+    self.filterView.frame = CGRectMake(0, self.buttomView.frame.origin.y, self.filterView.frame.size.width, self.filterView.frame.size.height);
+    self.filterView.hidden=false;
     
-        self.filterTopView.frame = CGRectMake(0,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
-        self.filterTopView.hidden=false;
+    self.filterTopView.frame = CGRectMake(0,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
+    self.filterTopView.hidden=false;
     
-        self.topView.frame = CGRectMake(0-self.topView.frame.size.width,0, self.topView.frame.size.width, self.topView.frame.size.height);
-            [UIView commitAnimations];
+    self.topView.frame = CGRectMake(0-self.topView.frame.size.width,0, self.topView.frame.size.width, self.topView.frame.size.height);
+    
+    
+    [UIView commitAnimations];
+}
+-(void) hidePostViewAnimation
+{
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0];
+    self.postTopView.frame = CGRectMake(self.postTopView.frame.size.width,0, self.postTopView.frame.size.width, self.postTopView.frame.size.height);
+    self.postTopView.hidden=true;
+    
+    self.filterTopView.frame = CGRectMake(self.filterTopView.frame.size.width,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
+    self.filterTopView.hidden=true;
+    
+    self.topView.frame = CGRectMake(0,0, self.topView.frame.size.width, self.topView.frame.size.height);
+    
+    self.filterView.frame = CGRectMake(0,self.view.frame.size.height+self.filterView.frame.size.height, self.filterView.frame.size.width, self.filterView.frame.size.height);
+    self.filterView.hidden=false;
+    [UIView commitAnimations];
+
+    [_selectedImageview removeFromSuperview];
 }
 
-//-(void) openPostView
-//{
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
-//    _postView.PostImage= self.chosenImage;
-//    _postView.postType= @"post";
-//    [self presentViewController:_postView animated:YES completion:nil];
-//
-//}
+-(void) showPostViewAnimation
+{
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0];
+    self.postTopView.frame = CGRectMake(0,0, self.postTopView.frame.size.width, self.postTopView.frame.size.height);
+    self.postTopView.hidden=false;
+    self.filterTopView.frame = CGRectMake(0-self.filterTopView.frame.size.width,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
+  //  self.filterTopView.hidden=true;
+    
+    
+    [UIView commitAnimations];
+}
+
+-(void) openPostView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
+    _postView.PostImage= self.selectedImageview.image;
+    _postView.postType= _postType;
+    _postView.postActionType=_postActionType;
+    _postView.view.frame= CGRectMake(0, 50, _postView.view.frame.size.width, _postView.view.frame.size.height);
+    _postView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postView.view respectToSuperFrame:self.view];
+    
+   // [self presentViewController:_postView animated:YES completion:nil];
+   // [self.view insertSubview:_postView.view belowSubview:self.postTopView];
+    [self.view addSubview:_postView.view];
+}
+
+- (UIImage *)thumbnailImageForVideo:(NSURL *)videoURL
+                             atTime:(NSTimeInterval)time
+{
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetIG =
+    [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetIG.appliesPreferredTrackTransform = YES;
+    assetIG.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = time;
+    NSError *igError = nil;
+    thumbnailImageRef =
+    [assetIG copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)
+                    actualTime:NULL
+                         error:&igError];
+    
+    if (!thumbnailImageRef)
+        NSLog(@"thumbnailImageGenerationError %@", igError );
+    
+    UIImage *thumbnailImage = thumbnailImageRef
+    ? [[UIImage alloc] initWithCGImage:thumbnailImageRef]
+    : nil;
+    
+    return thumbnailImage;
+}
+
+
+
 
 #pragma mark - Image Picker Controller delegate methods
 
@@ -323,7 +437,13 @@
     if ([_mediaType isEqualToString:@"video"]) {
         self.videoURL = info[UIImagePickerControllerMediaURL];
         UISaveVideoAtPathToSavedPhotosAlbum([self.videoURL path], nil, nil, nil);
-        [_picker dismissViewControllerAnimated:YES completion:nil];
+        [_picker1 dismissViewControllerAnimated:YES completion:nil];
+        self.postType=@"post";
+       //  _chosenImage =[self thumbnailImageForVideo:self.videoURL atTime:1];
+        [self.imageButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [self.imageButton setBackgroundImage:[self thumbnailImageForVideo:self.videoURL atTime:1] forState:UIControlStateNormal];
+        [self showPostViewAnimation];
+        [self openPostView];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateVideo" object:self.videoURL];
         
     }else
@@ -336,17 +456,16 @@
             [self addfilterView];
         //    [picker dismissViewControllerAnimated:YES completion:nil];
        //     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
-            NSParameterAssert(_chosenImage);
-            UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
+        
         }else
         {
-            _chosenImage = info[UIImagePickerControllerEditedImage];
-            [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
-            [_picker1 dismissViewControllerAnimated:YES completion:nil];
-            [self addfilterView];
-        //    [_picker dismissViewControllerAnimated:YES completion:nil];
-        //    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
             
+                _chosenImage = info[UIImagePickerControllerEditedImage];
+                [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+                [_picker1 dismissViewControllerAnimated:YES completion:nil];
+                [self addfilterView];
+            
+ 
         }
         
     }
@@ -366,21 +485,28 @@
 
 - (IBAction)postsButtonClick:(id)sender {
     UIButton * b= (UIButton *)sender;
-    
+    if(_selectedImageview.image!=nil)
+    {
+        NSParameterAssert(_selectedImageview.image);
+        UIImageWriteToSavedPhotosAlbum(_selectedImageview.image, nil, nil, nil);
+    }
     switch (b.tag) {
         case 1:
-            
-            
+           self.postType=@"nutrition";
+            [self showPostViewAnimation];
+            [self openPostView];
             
             break;
         case 2:
-            
-            
+            self.postType=@"post";
+            [self showPostViewAnimation];
+            [self openPostView];
             
             break;
         case 3:
-            
-            
+            self.postType=@"workout";
+            [self showPostViewAnimation];
+            [self openPostView];
             
             break;
             
@@ -395,5 +521,14 @@
 }
 
 - (IBAction)filterOkButtonClick:(id)sender {
+    
+    NSParameterAssert(_selectedImageview.image);
+    UIImageWriteToSavedPhotosAlbum(_selectedImageview.image, nil, nil, nil);
+    self.postType=@"post";
+    _postActionType=@"image";
+    [self showPostViewAnimation];
+    [self openPostView];
+    
+    
 }
 @end

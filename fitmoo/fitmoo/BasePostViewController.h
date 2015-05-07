@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "UserManager.h"
-#import "CameraViewController.h"
+//#import "CameraViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
+@property (strong, nonatomic) IBOutlet UIButton *normalEditButton;
 
 @property (strong, nonatomic) IBOutlet UIView *normalPostView;
 
@@ -29,6 +30,7 @@
 
 
 @property (strong, nonatomic) IBOutlet UITextView *normalPostText;
+@property (strong, nonatomic) IBOutlet UIButton *workoutEditButton;
 
 @property (strong, nonatomic) IBOutlet UIView *workoutView;
 @property (strong, nonatomic) IBOutlet UITextView *workoutTitle;
@@ -38,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *nutritionTitle;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionIngedients;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionPreparation;
+@property (strong, nonatomic) IBOutlet UIButton *nutritionEditButton;
 
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UIButton *NormalPostButton;
@@ -56,11 +59,12 @@
 @property (strong, nonatomic)  BasePostViewController *postView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 
-@property (strong, nonatomic)  CameraViewController *overlay;
+//@property (strong, nonatomic)  CameraViewController *overlay;
 //@property (strong, nonatomic)  UIImagePickerController *picker;
 - (IBAction)nutritionButtonClick:(id)sender;
 - (IBAction)normalPostButtonClick:(id)sender;
 - (IBAction)workoutButtonClick:(id)sender;
+- (IBAction)editClick:(id)sender;
 
 
 @end

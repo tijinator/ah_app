@@ -24,9 +24,9 @@
     [super viewDidLoad];
     [self initFrames];
     [self defineTypeOfPost];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
+  //  [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
     [self createObservers];
-    _postActionType=@"text";
+   // _postActionType=@"text";
     
     //    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
     //                                                          credentialsWithRegionType:AWSRegionUSEast1
@@ -131,8 +131,7 @@
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateImages" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateImages:) name:@"updateImages" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"makePostFinished" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makePostFinished:) name:@"makePostFinished" object:nil];
+ 
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateVideo" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateVideo:) name:@"updateVideo" object:nil];
@@ -310,6 +309,7 @@
     [_workoutPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     [_nutritionPostImage setBackgroundImage:thumbnail forState:UIControlStateNormal];
     [_nutritionPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+    _PostImage= thumbnail;
     _postActionType=@"video";
     
 }
@@ -342,10 +342,7 @@
     return thumbnailImage;
 }
 
--(void) makePostFinished: (NSNotification * ) note
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 - (void) updateImages: (NSNotification * ) note
 {
@@ -371,36 +368,36 @@
     }
 }
 
--(void) presentCameraView
-{
-    
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-  
-    _picker = [[UIImagePickerController alloc] init];
-    _picker.allowsEditing = YES;
-    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.picker.showsCameraControls = NO;
-    self.picker.navigationBarHidden = YES;
-    self.picker.toolbarHidden = YES;
-    
-    self.overlay.picker = self.picker;
-    self.overlay.chosenImage= self.PostImage;
-    if ([self.postActionType isEqualToString:@"video"]) {
-        self.overlay.playImage= [UIImage imageNamed:@"play.png"];
-    }
-    self.picker.cameraOverlayView = self.overlay.view;
-    self.picker.delegate = self.overlay;
-    
-    [self presentViewController:_picker animated:YES completion:NULL];
-    
-    
-}
+//-(void) presentCameraView
+//{
+//    
+//    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
+//  
+//    _picker = [[UIImagePickerController alloc] init];
+//    _picker.allowsEditing = YES;
+//    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    self.picker.showsCameraControls = NO;
+//    self.picker.navigationBarHidden = YES;
+//    self.picker.toolbarHidden = YES;
+//    
+//    self.overlay.picker = self.picker;
+//    self.overlay.chosenImage= self.PostImage;
+//    if ([self.postActionType isEqualToString:@"video"]) {
+//        self.overlay.playImage= [UIImage imageNamed:@"play.png"];
+//    }
+//    self.picker.cameraOverlayView = self.overlay.view;
+//    self.picker.delegate = self.overlay;
+//    
+//    [self presentViewController:_picker animated:YES completion:NULL];
+//    
+//    
+//}
 
 -(void) setPostFrame
 {
-    _normalPostView.frame= CGRectMake(0, 127, _normalPostView.frame.size.width, _normalPostView.frame.size.height);
+    _normalPostView.frame= CGRectMake(0, 55, _normalPostView.frame.size.width, _normalPostView.frame.size.height);
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
     _normalPostView.hidden=false;
     _workoutView.hidden=true;
@@ -413,7 +410,7 @@
 
 -(void) setWorkoutFrame
 {
-    _workoutView.frame= CGRectMake(0, 127, _workoutView.frame.size.width, _workoutView.frame.size.height);
+    _workoutView.frame= CGRectMake(0, 55, _workoutView.frame.size.width, _workoutView.frame.size.height);
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     _normalPostView.hidden=true;
@@ -423,7 +420,7 @@
 
 -(void) setNutritionFrame
 {
-    _nutritionView.frame= CGRectMake(0, 127, _nutritionView.frame.size.width, _nutritionView.frame.size.height);
+    _nutritionView.frame= CGRectMake(0, 55, _nutritionView.frame.size.width, _nutritionView.frame.size.height);
     _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
     _normalPostView.hidden=true;
     _workoutView.hidden=true;
@@ -437,14 +434,18 @@
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
     _normalPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostImage respectToSuperFrame:self.view];
     _normalPostText.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostText respectToSuperFrame:self.view];
+    _normalEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalEditButton respectToSuperFrame:self.view];
+    
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
     _workoutTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTitle respectToSuperFrame:self.view];
+    _workoutEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutEditButton respectToSuperFrame:self.view];
     
     _workoutInstruction.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutInstruction respectToSuperFrame:self.view];
     _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
     _nutritionTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionTitle respectToSuperFrame:self.view];
     _nutritionIngedients.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionIngedients respectToSuperFrame:self.view];
     _nutritionPreparation.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPreparation respectToSuperFrame:self.view];
+    _nutritionEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionEditButton respectToSuperFrame:self.view];
     
     _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:self.view];
     _NormalPostButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NormalPostButton respectToSuperFrame:self.view];
@@ -497,7 +498,7 @@
 
 - (IBAction)postImageButtonClick:(id)sender {
     
-    [self presentCameraView];
+  //  [self presentCameraView];
     
 }
 
@@ -685,6 +686,13 @@
 - (IBAction)workoutButtonClick:(id)sender {
     _postType=@"workout";
     [self defineTypeOfPost];
+}
+
+- (IBAction)editClick:(id)sender {
+    
+    [self.view removeFromSuperview];
+    
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"hidePostView" object:Nil];
 }
 
 
