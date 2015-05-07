@@ -53,6 +53,7 @@
     
     [_leftButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_middleButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_middleButton1 addTarget:self action:@selector(doubleClick:) forControlEvents:UIControlEventTouchDownRepeat];
     [_rightButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage *im= [UIImage imageNamed:@"leftmenuicon.png"];
@@ -191,6 +192,12 @@
     [self presentViewController:_picker animated:YES completion:NULL];
     [self hideThreeSubButtons];
      showButton=false;
+}
+
+- (IBAction)doubleClick:(id)sender {
+    [self presentCameraView];
+   
+
 }
 
 - (IBAction)footbuttonClick:(id)sender {
