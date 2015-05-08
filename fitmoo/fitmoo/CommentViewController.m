@@ -125,15 +125,21 @@
     NSRange range= [string rangeOfString:string2];
     [attributedString addAttribute:NSForegroundColorAttributeName value:fontColor range:range];
     
-    
+   
     
     nameLabel.lineBreakMode= NSLineBreakByWordWrapping;
-    nameLabel.numberOfLines=30;
+
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:8];
+    [attributedString addAttribute:NSParagraphStyleAttributeName
+                             value:style
+                             range:NSMakeRange(0, string.length)];
     [nameLabel setAttributedText:attributedString];
   //  nameLabel.textColor=fontColor;
     
-    nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
-    
+  //  nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
+    nameLabel.numberOfLines=0;
+    [nameLabel sizeToFit];
     cellHeight= nameLabel.frame.size.height+10;
     
     return cell;

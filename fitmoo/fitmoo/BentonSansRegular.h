@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FitmooHelper.h"
 @interface BentonSansRegular : UILabel
-
+-(CGSize)sizeOfMultiLineLabel;
 @end

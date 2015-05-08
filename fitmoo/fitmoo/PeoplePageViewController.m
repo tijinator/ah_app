@@ -265,16 +265,24 @@ int contentHight2=50;
     
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
+    [cell setTitleLabelForHeader];
+    
+    cell.dayLabel.frame= CGRectMake(cell.dayLabel.frame.origin.x, cell.titleLabel.frame.size.height+cell.titleLabel.frame.origin.y+3, cell.dayLabel.frame.size.width, cell.dayLabel.frame.size.height);
     NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
     NSString * timestring= [tempHomefeed.created_at substringWithRange:range];
-    
-    
     NSTimeInterval time=(NSTimeInterval ) timestring.intValue;
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-
+    
+    if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
+        [cell addScrollView];
+        [cell setBodyShadowFrameForImagePost];
+    }else
+    {
+        [cell removeViewsFromBodyView:cell.scrollbelowFrame];
+    }
     
     if ([tempHomefeed.type isEqualToString:@"regular"]) {
         [cell setBodyFrameForRegular];
@@ -292,12 +300,7 @@ int contentHight2=50;
     {
         [cell setBodyFrameForEvent];
     }
-    if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
-        [cell addScrollView];
-    }else
-    {
-        [cell removeViewsFromBodyView:cell.scrollbelowFrame];
-    }
+    
     [cell rebuiltBodyViewFrame];
     
     
@@ -361,7 +364,10 @@ int contentHight2=50;
     }else
     {
         [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-    }    return cell;
+    }
+    //  NSLog(@"%ld",(long)contentHight.integerValue);
+    return cell;
+
 }
 
 - (void)tableView:(UITableView *)tableView

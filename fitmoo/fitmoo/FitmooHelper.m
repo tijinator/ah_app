@@ -55,8 +55,14 @@
     CGSize maximumLabelSize = CGSizeMake(label.frame.size.width*_frameRadio, FLT_MAX);
     
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
+    
     CGRect newFrame = label.frame;
-    newFrame.size.height = expectedLabelSize.height;
+ //   newFrame.size.height = expectedLabelSize.height;
+    
+    int lines = expectedLabelSize.height/label.font.pointSize;
+    
+    newFrame.size.height = expectedLabelSize.height+10*(lines-1);
+    
     return  newFrame;
 }
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView

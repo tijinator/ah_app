@@ -32,14 +32,57 @@
     
 }
 
+-(CGSize)sizeOfMultiLineLabel{
+    
+    NSAssert(self, @"UILabel was nil");
+    
+    //Label text
+    NSString *aLabelTextString = [self text];
+    
+    //Label font
+    UIFont *aLabelFont = [self font];
+    
+    //Width of the Label
+    CGFloat aLabelSizeWidth = self.frame.size.width;
+    
+    
+ 
+  
+    
+    return [aLabelTextString boundingRectWithSize:CGSizeMake(aLabelSizeWidth, MAXFLOAT)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{
+                                                        NSFontAttributeName : aLabelFont
+                                                        }
+                                              context:nil].size;
+        
+    
+    
+    return [self bounds].size;
+    
+}
+
+
 - (void)drawRect:(CGRect)rect
 {
-    UIFont *font = [UIFont fontWithName:@"BentonSans-Regular" size:self.font.pointSize];
+    UIFont *font = [UIFont fontWithName:@"BentonSans" size:self.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     
-    [self setAttributedText:attributedString];
-    [super drawRect:rect];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:8];
+    [attributedString addAttribute:NSParagraphStyleAttributeName
+                       value:style
+                       range:NSMakeRange(0, self.text.length)];
     
+   
+    [self setAttributedText:attributedString];
+
+  
+   //  self.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:self];
+  //  self.frame= CGRectMake(self.frame.origin.x, 20, self.frame.size.width, 80);
+    [super drawRect:rect];
+  //   self.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:self];
+  
 }
 
 

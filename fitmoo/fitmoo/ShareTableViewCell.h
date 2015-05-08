@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *headerImage2;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dayLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *headerTag;
 
 @property (strong, nonatomic) IBOutlet UIView *bodyView;
 @property (strong, nonatomic) IBOutlet UILabel *bodyDetailLabel;
@@ -46,6 +47,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentDetail1;
 @property (strong, nonatomic) IBOutlet UILabel *commentDetail2;
 
+
+@property (strong, nonatomic) IBOutlet UIView *bodyShadowView;
+@property (strong, nonatomic) IBOutlet UIButton *bodyLikeButton;
+@property (strong, nonatomic) IBOutlet UIButton *bodyCommentButton;
+@property (strong, nonatomic) IBOutlet UIButton *bodyShareButton;
+
+
 @property (strong, nonatomic)  NSMutableArray *viewArray;
 @property (strong, nonatomic)  IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) HomeFeed *homeFeed;
@@ -72,5 +80,8 @@
 - (void) setBodyFrameForNutrition;
 - (void) setBodyFrameForEvent;
 - (void) setBodyFrameForProduct;
+- (void) setBodyShadowFrameForTextPost;
+- (void) setBodyShadowFrameForImagePost;
+- (void) setTitleLabelForHeader;
 
 @end
