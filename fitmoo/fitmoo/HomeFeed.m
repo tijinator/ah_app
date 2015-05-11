@@ -36,11 +36,15 @@
 {
     _comments= [[Comments alloc] init];
 }
+-(void) resetPhotoArray
+{
+    _photoArray= [[NSMutableArray alloc] init];
+}
 
 -(void) resetPhotos
 {
     _photos= [[Photos alloc] init];
-    _photoArray= [[NSMutableArray alloc] init];
+  //  _photoArray= [[NSMutableArray alloc] init];
 }
 
 @end

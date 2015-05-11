@@ -20,6 +20,11 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
 #import "CommentViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "VimeoHelper.h"
+#import "YTVimeoExtractor.h"
+
 
 @interface HomePageViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -35,8 +40,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 
-
-
+@property (strong, nonatomic) NSURL *videoURL;
+@property (strong, nonatomic) MPMoviePlayerViewController *playerView;
 
 
 @end

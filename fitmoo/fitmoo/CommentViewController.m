@@ -165,7 +165,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) postFinished: (NSNotification * ) note
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
+    User *temuser= [[UserManager sharedUserManager] localUser];
+    [_homeFeed resetComments];
+    _homeFeed.comments.text= _textField.text;
+    _homeFeed.comments.created_by_id= temuser.user_id;
+    _homeFeed.comments.thumb= temuser.profile_avatar_thumb;
+    _homeFeed.comments.full_name= temuser.name;
+    NSNumber *total_comment=[NSNumber numberWithInt:_homeFeed.total_comment.intValue+1];
+    _homeFeed.total_comment= total_comment.stringValue;
+    [_homeFeed.commentsArray addObject:_homeFeed.comments];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:_homeFeed];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

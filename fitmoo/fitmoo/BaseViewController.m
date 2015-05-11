@@ -56,11 +56,11 @@
     [_middleButton1 addTarget:self action:@selector(doubleClick:) forControlEvents:UIControlEventTouchDownRepeat];
     [_rightButton1 addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *im= [UIImage imageNamed:@"leftmenuicon.png"];
+    UIImage *im= [UIImage imageNamed:@"sidemenu_icon.png"];
     [_leftButton1 setBackgroundImage:im forState:UIControlStateNormal];
-    UIImage *im1= [UIImage imageNamed:@"postmenuicon.png"];
+    UIImage *im1= [UIImage imageNamed:@"menu_plus_icon.png"];
     [_middleButton1 setBackgroundImage:im1 forState:UIControlStateNormal];
-    UIImage *im2= [UIImage imageNamed:@"rightpeopleicon.png"];
+    UIImage *im2= [UIImage imageNamed:@"home_icon.png"];
     [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.bottomView addSubview:_leftButton1];
@@ -97,9 +97,9 @@
     
     im= [UIImage imageNamed:@"posticon.png"];
     [_postButton setBackgroundImage:im forState:UIControlStateNormal];
-    im1= [UIImage imageNamed:@"cameraicon.png"];
+    im1= [UIImage imageNamed:@"calendar.png"];
     [_videoButton setBackgroundImage:im1 forState:UIControlStateNormal];
-    im2= [UIImage imageNamed:@"runningicon.png"];
+    im2= [UIImage imageNamed:@"location.png"];
     [_pictureButton setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.subBottomView addSubview:_postButton];

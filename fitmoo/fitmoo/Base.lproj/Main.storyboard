@@ -1674,7 +1674,7 @@
         <image name="whitecamerareverse.png" width="23" height="20"/>
         <image name="whitevideoicon.png" width="33" height="33"/>
         <image name="whitexicon.png" width="13" height="13"/>
-        <image name="x.png" width="21" height="21"/>
+        <image name="x.png" width="66" height="66"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

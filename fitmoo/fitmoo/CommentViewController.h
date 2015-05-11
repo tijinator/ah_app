@@ -11,6 +11,7 @@
 #import "FitmooHelper.h"
 #import "UserManager.h"
 #import "AsyncImageView.h"
+#import "User.h"
 @interface CommentViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *topView;

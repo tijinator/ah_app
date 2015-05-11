@@ -17,4 +17,8 @@
 @property (nonatomic, strong) NSString *stylesUrl;        //----styles ---photo_url  (use for table home feed)
 @property (nonatomic, strong) NSString *stylesUrlWidth;
 @property (nonatomic, strong) NSString *stylesUrlHeight;
+
+
+
+
 @end

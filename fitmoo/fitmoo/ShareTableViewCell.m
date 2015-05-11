@@ -51,9 +51,6 @@
     }
     _bodyView.frame= CGRectMake(0, _bodyView.frame.origin.y, _bodyView.frame.size.width, maxHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
-//    self.commentView1.frame= CGRectMake(self.commentView1.frame.origin.x, self.commentView.frame.origin.y+self.commentView.frame.size.height+2, self.commentView1.frame.size.width, self.commentView1.frame.size.height);
-//    self.commentView2.frame= CGRectMake(self.commentView2.frame.origin.x, self.commentView1.frame.origin.y+self.commentView1.frame.size.height+2, self.commentView1.frame.size.width, self.commentView2.frame.size.height);
-//    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView2.frame.size.height+self.commentView2.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
 
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     
@@ -107,7 +104,9 @@
     for (int i=0; i<[_homeFeed.photoArray count]; i++) {
          AsyncImageView *scrollImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(x, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:scrollImage];
+        [_homeFeed resetPhotos];
         _homeFeed.photos= [_homeFeed.photoArray objectAtIndex:i];
+        
         if (![_homeFeed.photos.stylesUrl isEqual:@""]) {
              scrollImage.imageURL =[NSURL URLWithString:_homeFeed.photos.stylesUrl];
         }else
@@ -179,6 +178,7 @@
     _bodyLabel1.text= _homeFeed.event.begin_time;
     _bodyLabel2.text=_homeFeed.event.end_time;
     [_homeFeed resetPhotos];
+    [_homeFeed resetPhotoArray];
     _homeFeed.photos.originalUrl=_homeFeed.event.theme;
     _homeFeed.photos.stylesUrl=_homeFeed.event.theme;
     [_homeFeed.photoArray addObject:_homeFeed.photos];
@@ -186,9 +186,7 @@
  
 
     _bodyCastView.hidden=false;
-    _scrollViewWidth=260;
-    _scrollViewHeight=60;
-    _scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, _scrollViewWidth, _scrollViewHeight)];
+    
     
     _bodyTitle.frame= CGRectMake(36, 95, 290, _bodyTitle.frame.size.height);
     _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
@@ -209,6 +207,19 @@
                                    , _bodyCastView.frame.size.width, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3);
     [_bodyShadowView removeFromSuperview];
 }
+
+- (void) resetShawdowElement
+{
+    [_bodyLikeButton setImage:[UIImage imageNamed:@"greyhearticon.png"] forState:UIControlStateNormal];
+    [_bodyCommentButton setImage:[UIImage imageNamed:@"greycommenticon2.png"] forState:UIControlStateNormal];
+    [_bodyShareButton setImage:[UIImage imageNamed:@"greyendorseicon.png"] forState:UIControlStateNormal];
+    [_bodyLikeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_bodyCommentButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_bodyShareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
+    [_bodyShadowView setBackgroundColor:[UIColor clearColor] ];
+}
+
 - (void) setBodyFrameForRegular
 {
     _bodyDetailLabel.text= _homeFeed.text;
@@ -219,6 +230,8 @@
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
     {
     _bodyShadowView.frame=CGRectMake(0,_bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y , _bodyShadowView.frame.size.width, _bodyShadowView.frame.size.height);
+
+        [self resetShawdowElement];
     }
     [_bodyCastView removeFromSuperview];
 }
@@ -237,6 +250,7 @@
     {
 
     _bodyShadowView.frame=CGRectMake(0,_bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y , _bodyShadowView.frame.size.width, _bodyShadowView.frame.size.height);
+        [self resetShawdowElement];
     }
     [_bodyCastView removeFromSuperview];
     
@@ -272,6 +286,7 @@
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
     {
         _bodyShadowView.frame=CGRectMake(0,_bodyLabel1.frame.size.height+_bodyLabel1.frame.origin.y , _bodyShadowView.frame.size.width, _bodyShadowView.frame.size.height);
+          [self resetShawdowElement];
     }
 
     [_bodyCastView removeFromSuperview];
@@ -369,7 +384,7 @@
 //
 - (void) removeCommentView
 {
-     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     [_commentView removeFromSuperview];
 }
 

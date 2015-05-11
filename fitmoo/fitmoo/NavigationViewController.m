@@ -80,7 +80,7 @@
     }
 }
 - (UIStatusBarStyle) preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 -(void)leftSideMenuAction:(NSNotification*)note{

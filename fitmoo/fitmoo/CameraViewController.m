@@ -388,6 +388,7 @@
     [_selectedImageview removeFromSuperview];
 }
 
+
 -(void) showPostViewAnimation
 {
     
@@ -471,9 +472,12 @@
     {
         if (takePhoto==true) {
             _chosenImage = info[UIImagePickerControllerOriginalImage];
+            NSParameterAssert(_chosenImage);
+            UIImageWriteToSavedPhotosAlbum(_chosenImage, nil, nil, nil);
             _chosenImage= [self squareImageFromImage:_chosenImage scaledToSize:320*radio];
             
             [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
+           
             [self addfilterView];
         //    [picker dismissViewControllerAnimated:YES completion:nil];
        //     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:_chosenImage];
@@ -543,8 +547,8 @@
 
 - (IBAction)filterOkButtonClick:(id)sender {
     
-    NSParameterAssert(_selectedImageview.image);
-    UIImageWriteToSavedPhotosAlbum(_selectedImageview.image, nil, nil, nil);
+//    NSParameterAssert(_selectedImageview.image);
+//    UIImageWriteToSavedPhotosAlbum(_selectedImageview.image, nil, nil, nil);
     self.postType=@"post";
     _postActionType=@"image";
     [self showPostViewAnimation];

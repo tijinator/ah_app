@@ -136,13 +136,19 @@
     NSDictionary * photoArray= [dic objectForKey:@"photos"];
      if (![photoArray isEqual:[NSNull null ]]) {
         for (NSDictionary *photoDic in photoArray) {
+            [homeFeed resetPhotos];
             homeFeed.photos.photo_id= [photoDic objectForKey:@"id"];
             NSDictionary *orignal=[photoDic objectForKey:@"original"];
             homeFeed.photos.originalUrl= [orignal objectForKey:@"photo_url"];
             
             NSDictionary *styles=[photoDic objectForKey:@"styles"];
             NSDictionary *slider=[styles objectForKey:@"slider"];
+            
+            homeFeed.photos.stylesUrlWidth=[slider objectForKey:@"width"];
+            homeFeed.photos.stylesUrlHeight=[slider objectForKey:@"height"];
             homeFeed.photos.stylesUrl=[slider objectForKey:@"photo_url"];
+            
+            
             [homeFeed.photoArray addObject:homeFeed.photos];
         }
     }

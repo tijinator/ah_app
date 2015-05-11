@@ -55,6 +55,7 @@
 
 
 -(id)init;
+-(void) resetPhotoArray;
 -(void) resetComments;
 -(void) resetPhotos;
 -(void) resetVideos;
