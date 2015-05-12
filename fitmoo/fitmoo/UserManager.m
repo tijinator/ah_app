@@ -167,7 +167,12 @@
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         _localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
         NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        _localUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+        _localUser.profile_avatar_thumb=[avatar objectForKey:@"original"];
+        _localUser.profile_avatar_original=[avatar objectForKey:@"thumb"];
+        _localUser.bio=[profile objectForKey:@"bio"];
+        if ([_localUser.bio isEqual:[NSNull null]]) {
+            _localUser.bio=@"";
+        }
         
         
         [self saveLocalUser:_localUser];

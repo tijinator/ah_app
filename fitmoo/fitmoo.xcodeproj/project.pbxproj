@@ -46,6 +46,7 @@
 		271114711ADF12C80056EB13 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732B7441AD84D1000610821 /* Event.m */; };
 		271114721ADF12D90056EB13 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
 		271114731ADF12E70056EB13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F7A1AD4646300C34372 /* LaunchScreen.xib */; };
+		2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 2714AF611B028F5E003339A0 /* BentonSansBold.m */; };
 		27163D961ADAF733005B95D5 /* SpecialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27163D951ADAF733005B95D5 /* SpecialPageViewController.m */; };
 		27188F6B1AD4646300C34372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6A1AD4646300C34372 /* main.m */; };
 		27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
@@ -148,6 +149,34 @@
 		2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */; };
 		2736B2301AF003540013B4B9 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736B22F1AF003540013B4B9 /* CameraViewController.m */; };
 		2736B2321AF004E40013B4B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2736B2311AF004E40013B4B9 /* CoreGraphics.framework */; };
+		2738D9041B023E7F00F5087E /* greyendorseicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D8FF1B023E7F00F5087E /* greyendorseicon.png */; };
+		2738D9051B023E7F00F5087E /* greyendorseicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9001B023E7F00F5087E /* greyendorseicon@2x.png */; };
+		2738D9061B023E7F00F5087E /* black_gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9011B023E7F00F5087E /* black_gradient.png */; };
+		2738D9071B023E7F00F5087E /* black_gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9021B023E7F00F5087E /* black_gradient@2x.png */; };
+		2738D9081B023E7F00F5087E /* black_gradient@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9031B023E7F00F5087E /* black_gradient@3x.png */; };
+		2738D90A1B023E9900F5087E /* greyendorseicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9091B023E9900F5087E /* greyendorseicon@3x.png */; };
+		2738D90E1B023ED400F5087E /* dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D90B1B023ED400F5087E /* dots.png */; };
+		2738D90F1B023ED400F5087E /* dots@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D90C1B023ED400F5087E /* dots@2x.png */; };
+		2738D9101B023ED400F5087E /* dots@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D90D1B023ED400F5087E /* dots@3x.png */; };
+		2738D91A1B023EE700F5087E /* editprofile_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9111B023EE600F5087E /* editprofile_btn.png */; };
+		2738D91B1B023EE700F5087E /* editprofile_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9121B023EE600F5087E /* editprofile_btn@2x.png */; };
+		2738D91C1B023EE700F5087E /* editprofile_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9131B023EE600F5087E /* editprofile_btn@3x.png */; };
+		2738D91D1B023EE700F5087E /* follow_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9141B023EE700F5087E /* follow_btn.png */; };
+		2738D91E1B023EE700F5087E /* follow_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9151B023EE700F5087E /* follow_btn@2x.png */; };
+		2738D91F1B023EE700F5087E /* follow_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9161B023EE700F5087E /* follow_btn@3x.png */; };
+		2738D9201B023EE700F5087E /* following_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9171B023EE700F5087E /* following_btn.png */; };
+		2738D9211B023EE700F5087E /* following_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9181B023EE700F5087E /* following_btn@2x.png */; };
+		2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9191B023EE700F5087E /* following_btn@3x.png */; };
+		2738D9291B02456800F5087E /* selectedbars.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9231B02456800F5087E /* selectedbars.png */; };
+		2738D92A1B02456800F5087E /* selectedbars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9241B02456800F5087E /* selectedbars@2x.png */; };
+		2738D92B1B02456800F5087E /* selectedbars@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9251B02456800F5087E /* selectedbars@3x.png */; };
+		2738D92C1B02456800F5087E /* selectedsquares.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9261B02456800F5087E /* selectedsquares.png */; };
+		2738D92D1B02456800F5087E /* selectedsquares@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9271B02456800F5087E /* selectedsquares@2x.png */; };
+		2738D92E1B02456800F5087E /* selectedsquares@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9281B02456800F5087E /* selectedsquares@3x.png */; };
+		2738D9321B024E6100F5087E /* BentonSansExtraComp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738D9311B024E6100F5087E /* BentonSansExtraComp.m */; };
+		2738D9351B026E5000F5087E /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738D9341B026E5000F5087E /* BioViewController.m */; };
+		2738D9391B02850300F5087E /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738D9371B02850300F5087E /* PhotoCell.m */; };
+		2738D93A1B02850300F5087E /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2738D9381B02850300F5087E /* PhotoCell.xib */; };
 		273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */; };
 		273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE59E1AEE6FE000BCC66F /* RESideMenu.m */; };
 		273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5A01AEE6FE000BCC66F /* UIViewController+RESideMenu.m */; };
@@ -349,6 +378,8 @@
 /* Begin PBXFileReference section */
 		0CC700DB5F9343FBFFA1E76D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
+		2714AF601B028F5E003339A0 /* BentonSansBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansBold.h; sourceTree = "<group>"; };
+		2714AF611B028F5E003339A0 /* BentonSansBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansBold.m; sourceTree = "<group>"; };
 		27163D941ADAF733005B95D5 /* SpecialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialPageViewController.h; sourceTree = "<group>"; };
 		27163D951ADAF733005B95D5 /* SpecialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialPageViewController.m; sourceTree = "<group>"; };
 		27188F651AD4646300C34372 /* fitmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -515,6 +546,37 @@
 		2736B22E1AF003540013B4B9 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		2736B22F1AF003540013B4B9 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		2736B2311AF004E40013B4B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2738D8FF1B023E7F00F5087E /* greyendorseicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyendorseicon.png; sourceTree = "<group>"; };
+		2738D9001B023E7F00F5087E /* greyendorseicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyendorseicon@2x.png"; sourceTree = "<group>"; };
+		2738D9011B023E7F00F5087E /* black_gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_gradient.png; sourceTree = "<group>"; };
+		2738D9021B023E7F00F5087E /* black_gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_gradient@2x.png"; sourceTree = "<group>"; };
+		2738D9031B023E7F00F5087E /* black_gradient@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_gradient@3x.png"; sourceTree = "<group>"; };
+		2738D9091B023E9900F5087E /* greyendorseicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyendorseicon@3x.png"; sourceTree = "<group>"; };
+		2738D90B1B023ED400F5087E /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
+		2738D90C1B023ED400F5087E /* dots@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dots@2x.png"; sourceTree = "<group>"; };
+		2738D90D1B023ED400F5087E /* dots@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dots@3x.png"; sourceTree = "<group>"; };
+		2738D9111B023EE600F5087E /* editprofile_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editprofile_btn.png; sourceTree = "<group>"; };
+		2738D9121B023EE600F5087E /* editprofile_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editprofile_btn@2x.png"; sourceTree = "<group>"; };
+		2738D9131B023EE600F5087E /* editprofile_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editprofile_btn@3x.png"; sourceTree = "<group>"; };
+		2738D9141B023EE700F5087E /* follow_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = follow_btn.png; sourceTree = "<group>"; };
+		2738D9151B023EE700F5087E /* follow_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow_btn@2x.png"; sourceTree = "<group>"; };
+		2738D9161B023EE700F5087E /* follow_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow_btn@3x.png"; sourceTree = "<group>"; };
+		2738D9171B023EE700F5087E /* following_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = following_btn.png; sourceTree = "<group>"; };
+		2738D9181B023EE700F5087E /* following_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "following_btn@2x.png"; sourceTree = "<group>"; };
+		2738D9191B023EE700F5087E /* following_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "following_btn@3x.png"; sourceTree = "<group>"; };
+		2738D9231B02456800F5087E /* selectedbars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedbars.png; sourceTree = "<group>"; };
+		2738D9241B02456800F5087E /* selectedbars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedbars@2x.png"; sourceTree = "<group>"; };
+		2738D9251B02456800F5087E /* selectedbars@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedbars@3x.png"; sourceTree = "<group>"; };
+		2738D9261B02456800F5087E /* selectedsquares.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedsquares.png; sourceTree = "<group>"; };
+		2738D9271B02456800F5087E /* selectedsquares@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedsquares@2x.png"; sourceTree = "<group>"; };
+		2738D9281B02456800F5087E /* selectedsquares@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectedsquares@3x.png"; sourceTree = "<group>"; };
+		2738D9301B024E6100F5087E /* BentonSansExtraComp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansExtraComp.h; sourceTree = "<group>"; };
+		2738D9311B024E6100F5087E /* BentonSansExtraComp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansExtraComp.m; sourceTree = "<group>"; };
+		2738D9331B026E5000F5087E /* BioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BioViewController.h; sourceTree = "<group>"; };
+		2738D9341B026E5000F5087E /* BioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BioViewController.m; sourceTree = "<group>"; };
+		2738D9361B02850300F5087E /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		2738D9371B02850300F5087E /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		2738D9381B02850300F5087E /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		273CE59B1AEE6FE000BCC66F /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		273CE59C1AEE6FE000BCC66F /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		273CE59D1AEE6FE000BCC66F /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
@@ -861,6 +923,9 @@
 				274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */,
 				274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */,
 				274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */,
+				2738D9361B02850300F5087E /* PhotoCell.h */,
+				2738D9371B02850300F5087E /* PhotoCell.m */,
+				2738D9381B02850300F5087E /* PhotoCell.xib */,
 				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
 				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
 				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
@@ -871,8 +936,12 @@
 				273CE5A71AEE863600BCC66F /* BentonSansMedium.m */,
 				273CE5A91AEEB24900BCC66F /* BentonSansRegular.h */,
 				273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */,
+				2714AF601B028F5E003339A0 /* BentonSansBold.h */,
+				2714AF611B028F5E003339A0 /* BentonSansBold.m */,
 				273CE5AC1AEEC13A00BCC66F /* BentonSansBook.h */,
 				273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */,
+				2738D9301B024E6100F5087E /* BentonSansExtraComp.h */,
+				2738D9311B024E6100F5087E /* BentonSansExtraComp.m */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -1035,6 +1104,8 @@
 				2731C6391ADDAAD000788181 /* ActionSheetViewController.m */,
 				2731C62C1ADD55D300788181 /* PeoplePageViewController.h */,
 				2731C62D1ADD55D300788181 /* PeoplePageViewController.m */,
+				2738D9331B026E5000F5087E /* BioViewController.h */,
+				2738D9341B026E5000F5087E /* BioViewController.m */,
 				27163D941ADAF733005B95D5 /* SpecialPageViewController.h */,
 				27163D951ADAF733005B95D5 /* SpecialPageViewController.m */,
 				2719EBDC1AE1970000019079 /* SearchViewController.h */,
@@ -1211,6 +1282,30 @@
 				2752E9941B015CBC003841DC /* calendar.png */,
 				2752E9951B015CBC003841DC /* calendar@2x.png */,
 				2752E9961B015CBC003841DC /* calendar@3x.png */,
+				2738D9231B02456800F5087E /* selectedbars.png */,
+				2738D9241B02456800F5087E /* selectedbars@2x.png */,
+				2738D9251B02456800F5087E /* selectedbars@3x.png */,
+				2738D9261B02456800F5087E /* selectedsquares.png */,
+				2738D9271B02456800F5087E /* selectedsquares@2x.png */,
+				2738D9281B02456800F5087E /* selectedsquares@3x.png */,
+				2738D8FF1B023E7F00F5087E /* greyendorseicon.png */,
+				2738D9001B023E7F00F5087E /* greyendorseicon@2x.png */,
+				2738D9091B023E9900F5087E /* greyendorseicon@3x.png */,
+				2738D9111B023EE600F5087E /* editprofile_btn.png */,
+				2738D9121B023EE600F5087E /* editprofile_btn@2x.png */,
+				2738D9131B023EE600F5087E /* editprofile_btn@3x.png */,
+				2738D9141B023EE700F5087E /* follow_btn.png */,
+				2738D9151B023EE700F5087E /* follow_btn@2x.png */,
+				2738D9161B023EE700F5087E /* follow_btn@3x.png */,
+				2738D9171B023EE700F5087E /* following_btn.png */,
+				2738D9181B023EE700F5087E /* following_btn@2x.png */,
+				2738D9191B023EE700F5087E /* following_btn@3x.png */,
+				2738D90B1B023ED400F5087E /* dots.png */,
+				2738D90C1B023ED400F5087E /* dots@2x.png */,
+				2738D90D1B023ED400F5087E /* dots@3x.png */,
+				2738D9011B023E7F00F5087E /* black_gradient.png */,
+				2738D9021B023E7F00F5087E /* black_gradient@2x.png */,
+				2738D9031B023E7F00F5087E /* black_gradient@3x.png */,
 				2752E9971B015CBC003841DC /* commenticon.png */,
 				2752E9981B015CBC003841DC /* commenticon@2x.png */,
 				2752E9991B015CBC003841DC /* commenticon@3x.png */,
@@ -1459,6 +1554,7 @@
 				2752E9FE1B015CBC003841DC /* home_icon@3x.png in Resources */,
 				273CE5A51AEE7E3400BCC66F /* Stars@2x.png in Resources */,
 				2752EA1E1B015CBC003841DC /* bluewhitecamera@2x.png in Resources */,
+				2738D91B1B023EE700F5087E /* editprofile_btn@2x.png in Resources */,
 				2752EA1D1B015CBC003841DC /* bluewhitecamera.png in Resources */,
 				273FF5631AF7AA2C00B82DB3 /* leftmenuicon.png in Resources */,
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
@@ -1471,9 +1567,11 @@
 				2752EA241B015CBC003841DC /* video_icon@2x.png in Resources */,
 				2752E9EC1B015CBC003841DC /* dots.png in Resources */,
 				27188FAC1AD4695000C34372 /* fitmoo-favicon.png in Resources */,
+				2738D92E1B02456800F5087E /* selectedsquares@3x.png in Resources */,
 				273FF57E1AF7AA2C00B82DB3 /* whitexicon.png in Resources */,
 				2752EA011B015CBC003841DC /* location@3x.png in Resources */,
 				273FF5501AF7AA2C00B82DB3 /* bluehighlightsquare.png in Resources */,
+				2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */,
 				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
 				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,
 				273FF55B1AF7AA2C00B82DB3 /* greycommenticon2.png in Resources */,
@@ -1488,6 +1586,7 @@
 				2752E9FC1B015CBC003841DC /* home_icon.png in Resources */,
 				2752EA1C1B015CBC003841DC /* whitehearticon@3x.png in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
+				2738D9041B023E7F00F5087E /* greyendorseicon.png in Resources */,
 				2752E9F71B015CBC003841DC /* following_btn@3x.png in Resources */,
 				272098421AEA9088007577B7 /* vimeo.js.txt in Resources */,
 				273FF5561AF7AA2C00B82DB3 /* endorsedicon.png in Resources */,
@@ -1503,6 +1602,7 @@
 				2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */,
 				273FF5601AF7AA2C00B82DB3 /* hearticon.png in Resources */,
 				2752E9E31B015CBC003841DC /* commenticon.png in Resources */,
+				2738D91D1B023EE700F5087E /* follow_btn.png in Resources */,
 				27188FB51AD4695000C34372 /* mobilelogin_slogan.png in Resources */,
 				2752E9F31B015CBC003841DC /* follow_btn@2x.png in Resources */,
 				2752E9EF1B015CBC003841DC /* editprofile_btn.png in Resources */,
@@ -1512,12 +1612,15 @@
 				27188FB21AD4695000C34372 /* logo_only.png in Resources */,
 				276094251AD708AD00A769CE /* SemplicitaPro-SemiBold.otf in Resources */,
 				2752E9E01B015CBC003841DC /* calendar.png in Resources */,
+				2738D92A1B02456800F5087E /* selectedbars@2x.png in Resources */,
 				2752E9EA1B015CBC003841DC /* deselectedsquares.png in Resources */,
 				271114621ADF11A10056EB13 /* Info.plist in Resources */,
 				2752EA031B015CBC003841DC /* menu_plus_icon@2x.png in Resources */,
 				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
+				2738D91A1B023EE700F5087E /* editprofile_btn.png in Resources */,
 				27188FBC1AD4695000C34372 /* play.png in Resources */,
 				276094521AD708C100A769CE /* BentonSansCond-Bold.otf in Resources */,
+				2738D91C1B023EE700F5087E /* editprofile_btn@3x.png in Resources */,
 				2732B7231AD820FB00610821 /* profile.png in Resources */,
 				27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */,
 				2732B7121AD809E900610821 /* like.png in Resources */,
@@ -1528,6 +1631,7 @@
 				273FF5761AF7AA2C00B82DB3 /* whitecamerareverse.png in Resources */,
 				2752EA141B015CBC003841DC /* whitecommenticon.png in Resources */,
 				2752EA1F1B015CBC003841DC /* bluewhitecamera@3x.png in Resources */,
+				2738D9061B023E7F00F5087E /* black_gradient.png in Resources */,
 				27188FAD1AD4695000C34372 /* fitmoo_logo_white.png in Resources */,
 				2760941F1AD708AD00A769CE /* SemplicitaPro-Italic.otf in Resources */,
 				2752E9F01B015CBC003841DC /* editprofile_btn@2x.png in Resources */,
@@ -1542,15 +1646,20 @@
 				273FF5581AF7AA2C00B82DB3 /* endorsetouchicon.png in Resources */,
 				2732B7111AD809E900610821 /* comment.png in Resources */,
 				273FF5711AF7AA2C00B82DB3 /* shopicon.png in Resources */,
+				2738D91F1B023EE700F5087E /* follow_btn@3x.png in Resources */,
+				2738D9211B023EE700F5087E /* following_btn@2x.png in Resources */,
 				273FF56B1AF7AA2C00B82DB3 /* recordingbtn.png in Resources */,
 				27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */,
 				2752E9ED1B015CBC003841DC /* dots@2x.png in Resources */,
 				2760941D1AD708AD00A769CE /* SemplicitaPro-Bold.otf in Resources */,
+				2738D90E1B023ED400F5087E /* dots.png in Resources */,
 				273FF54F1AF7AA2C00B82DB3 /* bluecheckbtn.png in Resources */,
 				2752E9FD1B015CBC003841DC /* home_icon@2x.png in Resources */,
 				273FF55C1AF7AA2C00B82DB3 /* greyendorseicon.png in Resources */,
 				2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */,
+				2738D90F1B023ED400F5087E /* dots@2x.png in Resources */,
 				276094201AD708AD00A769CE /* SemplicitaPro-Light.otf in Resources */,
+				2738D92D1B02456800F5087E /* selectedsquares@2x.png in Resources */,
 				27188FB11AD4695000C34372 /* ionic.png in Resources */,
 				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
 				273FF5691AF7AA2C00B82DB3 /* postmenuicon.png in Resources */,
@@ -1558,9 +1667,11 @@
 				276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */,
 				273FF57B1AF7AA2C00B82DB3 /* whitelargecameraicon.png in Resources */,
 				273FF5671AF7AA2C00B82DB3 /* playbtn.png in Resources */,
+				2738D9201B023EE700F5087E /* following_btn.png in Resources */,
 				2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */,
 				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
 				276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */,
+				2738D9051B023E7F00F5087E /* greyendorseicon@2x.png in Resources */,
 				273FF5721AF7AA2C00B82DB3 /* unendorseicon.png in Resources */,
 				2752E9F81B015CBC003841DC /* greyarrow@2x.png in Resources */,
 				2732B7251AD820FB00610821 /* settings.png in Resources */,
@@ -1585,6 +1696,7 @@
 				2752E9F21B015CBC003841DC /* follow_btn.png in Resources */,
 				27188FAF1AD4695000C34372 /* fitmoologo_top.png in Resources */,
 				276094431AD708C100A769CE /* BentonSans-Black.otf in Resources */,
+				2738D93A1B02850300F5087E /* PhotoCell.xib in Resources */,
 				2752EA171B015CBC003841DC /* whiteendorseicon_small.png in Resources */,
 				2752EA211B015CBC003841DC /* reversecamera@2x.png in Resources */,
 				2752EA151B015CBC003841DC /* whitecommenticon@2x.png in Resources */,
@@ -1598,6 +1710,7 @@
 				273FF57F1AF7AA2C00B82DB3 /* workouttag.png in Resources */,
 				273FF5791AF7AA2C00B82DB3 /* whiteendorseicon_small.psd in Resources */,
 				2752EA071B015CBC003841DC /* posticon@3x.png in Resources */,
+				2738D9081B023E7F00F5087E /* black_gradient@3x.png in Resources */,
 				2752EA281B015CBC003841DC /* whitearrow@3x.png in Resources */,
 				27188FAE1AD4695000C34372 /* fitmoologo_mobile.png in Resources */,
 				273FF55D1AF7AA2C00B82DB3 /* greyhearticon.png in Resources */,
@@ -1609,6 +1722,7 @@
 				2732B7261AD820FB00610821 /* share.png in Resources */,
 				273FF57C1AF7AA2C00B82DB3 /* whiteusericon.png in Resources */,
 				2752E9E41B015CBC003841DC /* commenticon@2x.png in Resources */,
+				2738D90A1B023E9900F5087E /* greyendorseicon@3x.png in Resources */,
 				273FF5781AF7AA2C00B82DB3 /* whiteendorseicon_small.png in Resources */,
 				2752E9F11B015CBC003841DC /* editprofile_btn@3x.png in Resources */,
 				2752EA021B015CBC003841DC /* menu_plus_icon.png in Resources */,
@@ -1620,6 +1734,7 @@
 				2752EA161B015CBC003841DC /* whitecommenticon@3x.png in Resources */,
 				273FF5661AF7AA2C00B82DB3 /* pausebtn.png in Resources */,
 				276094461AD708C100A769CE /* BentonSans-ExtraLight.otf in Resources */,
+				2738D9071B023E7F00F5087E /* black_gradient@2x.png in Resources */,
 				274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */,
 				2760944D1AD708C100A769CE /* BentonSansComp-Book.otf in Resources */,
 				2752E9F51B015CBC003841DC /* following_btn.png in Resources */,
@@ -1629,6 +1744,7 @@
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
 				276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */,
 				2752EA091B015CBC003841DC /* selectedbars@2x.png in Resources */,
+				2738D92B1B02456800F5087E /* selectedbars@3x.png in Resources */,
 				2752EA001B015CBC003841DC /* location@2x.png in Resources */,
 				2752EA261B015CBC003841DC /* whitearrow.png in Resources */,
 				273FF5541AF7AA2C00B82DB3 /* commenticon.png in Resources */,
@@ -1640,9 +1756,11 @@
 				2752E9EE1B015CBC003841DC /* dots@3x.png in Resources */,
 				2752EA221B015CBC003841DC /* reversecamera@3x.png in Resources */,
 				276094571AD708C100A769CE /* BentonSansExtraComp-Black.otf in Resources */,
+				2738D9291B02456800F5087E /* selectedbars.png in Resources */,
 				276094111AD7085500A769CE /* ss-symbolicons-line.ttf in Resources */,
 				2752E9FA1B015CBC003841DC /* hearticon@2x.png in Resources */,
 				273FF57D1AF7AA2C00B82DB3 /* whitevideoicon.png in Resources */,
+				2738D92C1B02456800F5087E /* selectedsquares.png in Resources */,
 				2752EA081B015CBC003841DC /* selectedbars.png in Resources */,
 				276094511AD708C100A769CE /* BentonSansCond-Black.otf in Resources */,
 				27188FBB1AD4695000C34372 /* mobile_splash.png in Resources */,
@@ -1652,8 +1770,10 @@
 				273FF55A1AF7AA2C00B82DB3 /* greycommenticon.png in Resources */,
 				2752EA111B015CBC003841DC /* sidemenu_icon.png in Resources */,
 				27188FB81AD4695000C34372 /* x2.png in Resources */,
+				2738D9101B023ED400F5087E /* dots@3x.png in Resources */,
 				2732B7141AD809E900610821 /* report.png in Resources */,
 				2752EA271B015CBC003841DC /* whitearrow@2x.png in Resources */,
+				2738D91E1B023EE700F5087E /* follow_btn@2x.png in Resources */,
 				2732B7211AD820FB00610821 /* logout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1757,12 +1877,14 @@
 				2732B73F1AD849D000610821 /* Product.m in Sources */,
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
 				273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */,
+				2738D9321B024E6100F5087E /* BentonSansExtraComp.m in Sources */,
 				2725822C1AD57EFD0059F43C /* AFSecurityPolicy.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
 				27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */,
+				2738D9391B02850300F5087E /* PhotoCell.m in Sources */,
 				27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */,
 				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
 				2725822E1AD57EFD0059F43C /* AFURLRequestSerialization.m in Sources */,
@@ -1771,6 +1893,7 @@
 				272582471AD57F070059F43C /* UIImageView+AFNetworking.m in Sources */,
 				274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */,
 				272582081AD5673F0059F43C /* NavigationViewController.m in Sources */,
+				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
@@ -1780,6 +1903,7 @@
 				272582431AD57F070059F43C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2725822A1AD57EFD0059F43C /* AFHTTPSessionManager.m in Sources */,
 				2732B7171AD81C1600610821 /* BaseViewController.m in Sources */,
+				2738D9351B026E5000F5087E /* BioViewController.m in Sources */,
 				2725824A1AD57F070059F43C /* UIWebView+AFNetworking.m in Sources */,
 				272582811AD5AAA40059F43C /* HomePageViewController.m in Sources */,
 				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,

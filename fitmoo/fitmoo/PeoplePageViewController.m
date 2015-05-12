@@ -11,7 +11,7 @@
 @interface PeoplePageViewController ()
 {
     NSNumber * contentHight;
-    
+    NSString *bioText;
 }
 @end
 
@@ -20,16 +20,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    contentHight=[NSNumber numberWithInteger:0];
+    contentHight=[NSNumber numberWithInteger:400];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-    
+     self.tableView.tableFooterView = [[UIView alloc] init];
     [self initFrames];
     [self initValuable];
     [self postNotifications];
     [self getHomePageItems];
-    [self getGalary];
+ //   [self getGalary];
     [self createObservers];
 }
+
 
 
 -(void)createObservers{
@@ -63,46 +64,46 @@
     _limit=10;
     _count=1;
     
-    _photoOffset=0;
-    _photoLimit=30;
-    _photoCount=1;
+//    _photoOffset=0;
+//    _photoLimit=30;
+//    _photoCount=1;
  //   _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
 
--(void) getGalary
-{
-   
-    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSString *lim= [NSString stringWithFormat:@"%i", _photoLimit];
-    NSString *ofs= [NSString stringWithFormat:@"%i", _photoOffset];
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
-                              ofs, @"offset", lim , @"limit",nil];
-    NSString * url;
- 
-    url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/photos"];
-    
-    
-    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        _responseDic= responseObject;
-        
-        [self definePhotoObjects];
-
-        
-      //  NSLog(@"Submit response data: %@", responseObject);
-    } // success callback block
-     
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             _tableView.userInteractionEnabled=true;
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-}
+//-(void) getGalary
+//{
+//   
+//    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.securityPolicy.allowInvalidCertificates = YES;
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    NSString *lim= [NSString stringWithFormat:@"%i", _photoLimit];
+//    NSString *ofs= [NSString stringWithFormat:@"%i", _photoOffset];
+//    
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
+//                              ofs, @"offset", lim , @"limit",nil];
+//    NSString * url;
+// 
+//    url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/photos"];
+//    
+//    
+//    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        _responseDic= responseObject;
+//        
+//        [self definePhotoObjects];
+//
+//        
+//      //  NSLog(@"Submit response data: %@", responseObject);
+//    } // success callback block
+//     
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+//             _tableView.userInteractionEnabled=true;
+//             NSLog(@"Error: %@", error);} // failure callback block
+//     ];
+//}
 
 
 -(void) getHomePageItems
@@ -149,36 +150,36 @@
 }
 
 
-- (void) definePhotoObjects
-{
-    if (_photoOffset==0) {
-        _homePhotoArray= [[NSMutableArray alloc]init];
-    }
-    
-    NSDictionary *result= [_responseDic objectForKey:@"results"];
-    for (NSDictionary *dic in result) {
-        PhotoGalary *photo= [[PhotoGalary alloc] init];
-        NSNumber *photo_id= [dic objectForKey:@"id"];
-        photo.photo_id= photo_id.stringValue;
-        NSNumber *imageable_id= [dic objectForKey:@"imageable_id"];
-        photo.imageable_id= imageable_id.stringValue;
-        photo.imageable_type= [dic objectForKey:@"imageable_type"];
-        NSDictionary *styles= [dic objectForKey:@"styles"];
-        NSDictionary *slider= [styles objectForKey:@"slider"];
-        NSNumber *height=[slider objectForKey:@"height"];
-        photo.stylesUrlHeight= height.stringValue;
-        NSNumber *width=[slider objectForKey:@"width"];
-        photo.stylesUrlWidth= width.stringValue;
-        photo.stylesUrl= [slider objectForKey:@"photo_url"];
-        NSNumber *total_comment=[dic objectForKey:@"total_comment"];
-        photo.total_comment= total_comment.stringValue;
-        NSNumber *total_like= [dic objectForKey:@"total_like"];
-        photo.total_like= total_like.stringValue;
-        
-        [_homePhotoArray addObject:photo];
-    }
-    
-}
+//- (void) definePhotoObjects
+//{
+//    if (_photoOffset==0) {
+//        _homePhotoArray= [[NSMutableArray alloc]init];
+//    }
+//    
+//    NSDictionary *result= [_responseDic objectForKey:@"results"];
+//    for (NSDictionary *dic in result) {
+//        PhotoGalary *photo= [[PhotoGalary alloc] init];
+//        NSNumber *photo_id= [dic objectForKey:@"id"];
+//        photo.photo_id= photo_id.stringValue;
+//        NSNumber *imageable_id= [dic objectForKey:@"imageable_id"];
+//        photo.imageable_id= imageable_id.stringValue;
+//        photo.imageable_type= [dic objectForKey:@"imageable_type"];
+//        NSDictionary *styles= [dic objectForKey:@"styles"];
+//        NSDictionary *slider= [styles objectForKey:@"slider"];
+//        NSNumber *height=[slider objectForKey:@"height"];
+//        photo.stylesUrlHeight= height.stringValue;
+//        NSNumber *width=[slider objectForKey:@"width"];
+//        photo.stylesUrlWidth= width.stringValue;
+//        photo.stylesUrl= [slider objectForKey:@"photo_url"];
+//        NSNumber *total_comment=[dic objectForKey:@"total_comment"];
+//        photo.total_comment= total_comment.stringValue;
+//        NSNumber *total_like= [dic objectForKey:@"total_like"];
+//        photo.total_like= total_like.stringValue;
+//        
+//        [_homePhotoArray addObject:photo];
+//    }
+//    
+//}
 
 - (void) defineFeedObjects
 {
@@ -219,6 +220,14 @@
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.tableType isEqualToString:@"photo"]) {
+        
+        return 105*[[FitmooHelper sharedInstance] frameRadio];
+
+    }else
+    {
+    
+    
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -229,6 +238,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -240,9 +250,20 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    
+    if ([self.tableType isEqualToString:@"photo"]) {
+        
+        int count=(int)[_homeFeedArray count]/3;
+        if ([_homeFeedArray count]%3!=0) {
+            count=count+1;
+        }
+        
+        return count+1;
+        
+        
+        
+    }else{
     return ([_homeFeedArray count]+1);
-    
+    }
 }
 
 
@@ -277,17 +298,83 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
         cell.communityCountLabel.text=temUser.communities;
-        
+        bioText=temUser.bio;
         
         [cell loadHeaderImage:imageUrl];
-        [cell loadHeader1Image:temUser.profile_avatar_thumb];
+        [cell loadHeader1Image:temUser.profile_avatar_original];
+  
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:temUser.bio attributes:@{NSFontAttributeName: font}  ];
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineSpacing:6];
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:style
+                                 range:NSMakeRange(0, temUser.bio.length)];
         
-      //  [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.bioLabel setAttributedText:attributedString];
+
+        cell.bioLabel.userInteractionEnabled = NO;
+        cell.bioLabel.exclusiveTouch = NO;
+        [cell.bioButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.bioButton addSubview:cell.bioLabel];
         
+        [cell.editProfileButton addTarget:self action:@selector(editProfileButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.bioButton addTarget:self action:@selector(BioButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.feedButton addTarget:self action:@selector(FeedButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.scheduleButton addTarget:self action:@selector(PhotoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10] ;
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         return cell;
     }
+    
+    //  end of first cell
+    
+    if ([self.tableType isEqualToString:@"photo"]) {
+        
+        PhotoCell *cell =(PhotoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PhotoCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }else
+        {
+            return cell;
+        }
+        int current=(int) (indexPath.row-1)*3;
+        if (current<[_homeFeedArray count]) {
+             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
+             cell.homeFeed1= temfeed;
+            [cell setView1Item];
+        }else
+        {
+            cell.view1.hidden=true;
+        }
+       
+        if (current+1<[_homeFeedArray count]) {
+             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
+             cell.homeFeed2= temfeed;
+             [cell setView2Item];
+        }else
+        {
+            cell.view2.hidden=true;
+        }
+        
+        if (current+2<[_homeFeedArray count]) {
+            HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+2];
+            cell.homeFeed3= temfeed;
+            [cell setView3Item];
+        }else
+        {
+            cell.view3.hidden=true;
+        }
+        
+        return cell;
+        
+    } //  end of photo type table
+    else
+    {
     
     
     ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -497,8 +584,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //  NSLog(@"%ld",(long)contentHight.integerValue);
     return cell;
-
-
+    }
+    //  end of feed type table
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -510,10 +597,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    if (indexPath.row==0) {
-        return contentHight.integerValue;
-    }
-    
+//    if (indexPath.row==0) {
+//        return contentHight.integerValue;
+//    }
+    if ([self.tableType isEqualToString:@"photo"]) {
+        if (indexPath.row==0) {
+            NSNumber *height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+            return  height.intValue;
+        }
+        
+          return 105*[[FitmooHelper sharedInstance] frameRadio];
+    }else
+    {
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -524,6 +619,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
+    }
 }
 
 
@@ -689,10 +785,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     
 }
+- (IBAction)FeedButtonClick:(id)sender {
+    self.tableType=@"feed";
+    [self.tableView reloadData];
+}
+- (IBAction)PhotoButtonClick:(id)sender {
+   self.tableType=@"photo";
+    [self.tableView reloadData];
+    
+}
 
-- (IBAction)leftButtonClick:(id)sender {
+- (IBAction)editProfileButtonClick:(id)sender {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"3"];
     
-    
+}
+
+- (IBAction)BioButtonClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BioViewController *bioPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"BioViewController"];
+    bioPage.bioText=bioText;
+    [self.navigationController pushViewController:bioPage animated:YES];
+   // [self.navigationController presentViewController:bioPage animated:YES completion:nil];
+   // [self.tableView reloadData];
 }
 
 @end

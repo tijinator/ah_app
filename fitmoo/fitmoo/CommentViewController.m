@@ -197,6 +197,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)backButtonClick:(id)sender {
       [self.navigationController popViewControllerAnimated:YES];
+ 
 }
 - (IBAction)postButtonClick:(id)sender {
     [[UserManager sharedUserManager] performComment:_textField.text withId:_homeFeed.feed_id];

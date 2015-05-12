@@ -24,6 +24,8 @@
 #import "YTVimeoExtractor.h"
 #import "CommentViewController.h"
 #import "PhotoGalary.h"
+#import "BioViewController.h"
+#import "PhotoCell.h"
 @interface PeoplePageViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

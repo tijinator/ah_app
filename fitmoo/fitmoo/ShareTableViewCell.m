@@ -84,6 +84,7 @@
         
         
         [_scrollView addSubview:scrollImage];
+        _scrollView.backgroundColor= [UIColor blackColor];
         
         _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         
@@ -216,8 +217,8 @@
     [_bodyLikeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [_bodyCommentButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [_bodyShareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    
-    [_bodyShadowView setBackgroundColor:[UIColor clearColor] ];
+    _bodyGradian.hidden=true;
+  //  [_bodyShadowView setBackgroundColor:[UIColor clearColor] ];
 }
 
 - (void) setBodyFrameForRegular
@@ -504,7 +505,7 @@
     _bodyLikeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLikeButton respectToSuperFrame:nil];
     _bodyCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyCommentButton respectToSuperFrame:nil];
     _bodyShareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyShareButton respectToSuperFrame:nil];
-    
+    _bodyGradian.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyGradian respectToSuperFrame:nil];
   //  _viewArray=[[NSMutableArray alloc] initWithObjects:_headerView,_bodyView,_commentView,_commentView1,_commentView2, nil];
     
 }

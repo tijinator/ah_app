@@ -63,8 +63,14 @@
     _feedButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_feedButton respectToSuperFrame:nil];
     _scheduleButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scheduleButton respectToSuperFrame:nil];
    
-    _headerImage1.layer.cornerRadius=_headerImage1.frame.size.width/2;
-    _headerImage1.layer.masksToBounds = YES;
+    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
+    _bioButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bioButton respectToSuperFrame:nil];
+    _editProfileButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_editProfileButton respectToSuperFrame:nil];
+    _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
+    
+    _bioLabel.frame= CGRectMake(0, 0, _bioButton.frame.size.width, _bioButton.frame.size.height);
+ //   _headerImage1.layer.cornerRadius=_headerImage1.frame.size.width/2;
+ //   _headerImage1.layer.masksToBounds = YES;
 }
 
 

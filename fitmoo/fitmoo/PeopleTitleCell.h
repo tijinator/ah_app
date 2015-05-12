@@ -13,6 +13,14 @@
 #import <QuartzCore/QuartzCore.h>
 @interface PeopleTitleCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage;
+
+@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UIButton *editProfileButton;
+@property (strong, nonatomic) IBOutlet UIView *buttonView;
+@property (strong, nonatomic) IBOutlet UIButton *bioButton;
+@property (strong, nonatomic) IBOutlet UILabel *bioLabel;
+
+
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage1;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *followCountLabel;
