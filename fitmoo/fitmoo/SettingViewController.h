@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) NSArray *heightArray;
 @property (strong, nonatomic) NSArray *privacyArray;
-@property (strong, nonatomic) NSArray *privacyBoolArray;
+@property (strong, nonatomic) NSMutableArray *privacyBoolArray;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSString * tabletype;
 @property (strong, nonatomic)  User * tempUser;

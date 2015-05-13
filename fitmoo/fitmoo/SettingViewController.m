@@ -27,6 +27,7 @@
     [self getSettingPageItems];
     
     [self addfootButtonsForSetting];
+     self.tableview.tableFooterView = [[UIView alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -123,6 +124,55 @@
 - (void)switchValueChanged:(UISwitch *)theSwitch
 {
     BOOL flag = theSwitch.on;
+    int index= theSwitch.tag-20;
+    NSString *value;
+    if (flag==true) {
+        value=@"1";
+    }else
+    {
+         value=@"0";
+    }
+    
+    [_privacyBoolArray replaceObjectAtIndex:index withObject:value];
+    
+    switch (index) {
+        case 0:
+            _tempUser.hide_global_privacy=value;
+            break;
+        case 1:
+             _tempUser.hide_location=value;
+            break;
+        case 2:
+             _tempUser.hide_email=value;
+            break;
+        case 3:
+             _tempUser.hide_phone=value;
+            break;
+        case 4:
+             _tempUser.hide_website=value;
+            break;
+        case 5:
+             _tempUser.hide_facebook=value;
+            break;
+        case 6:
+             _tempUser.hide_twitter=value;
+            break;
+        case 7:
+             _tempUser.hide_linkedin=value;
+            break;
+        case 8:
+            _tempUser.hide_google=value;
+            break;
+        case 9:
+             _tempUser.hide_instagram=value;
+            break;
+
+
+            
+        default:
+            break;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

@@ -578,6 +578,38 @@
     return user;
 }
 
+
+-(void) performUpdatePrivacy:(User *) user
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@",_clientUrl, @"/api/users/update_privacy" ];
+ //   NSDictionary *privacy = [[NSDictionary alloc] initWithObjectsAndKeys:user.bio, @"bio", user.location, @"location", user.phone, @"phone",user.website, @"website",nil];
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", user.hide_global_privacy, @"global_privacy", user.hide_location, @"location", user.hide_global_privacy, @"global_privacy", user.hide_location, @"location",nil];
+    
+    [manager PUT: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"makeUpdateFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
 -(void) performUpdate:(User *) user
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -587,6 +619,7 @@
     
     NSString *url= [NSString stringWithFormat:@"%@%@%@",_clientUrl, @"/api/users/",user.user_id ];
     NSDictionary *profile = [[NSDictionary alloc] initWithObjectsAndKeys:user.bio, @"bio", user.location, @"location", user.phone, @"phone",user.website, @"website",nil];
+    
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", profile, @"profile_attributes", user.name, @"full_name",@"true", @"mobile",nil];
     
