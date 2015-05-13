@@ -30,6 +30,7 @@
     
 }
 
+
 -(void) addfootButtonsForThree
 {
      double Radio= self.view.frame.size.width / 320;

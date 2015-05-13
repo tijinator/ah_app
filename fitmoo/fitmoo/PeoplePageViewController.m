@@ -23,6 +23,7 @@
     contentHight=[NSNumber numberWithInteger:400];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
      self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableType=@"photo";
     [self initFrames];
     [self initValuable];
     [self postNotifications];
@@ -117,7 +118,7 @@
     NSString *lim= [NSString stringWithFormat:@"%i", _limit];
     NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",
                               ofs, @"offset", lim , @"limit",nil];
     NSString * url;
     if (_searchId!=nil) {
@@ -294,6 +295,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             imageUrl=temUser.cover_photo_url;
         }
        
+         if ([self.tableType isEqualToString:@"photo"]) {
+             [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedsquares.png"] forState:UIControlStateNormal];
+             [cell.feedButton setImage:[UIImage imageNamed:@"deselectedbars.png"] forState:UIControlStateNormal];
+         }else
+         {
+             [cell.scheduleButton setImage:[UIImage imageNamed:@"deselectedsquares.png"] forState:UIControlStateNormal];
+             [cell.feedButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
+         }
      
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
@@ -346,6 +355,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (current<[_homeFeedArray count]) {
              HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
              cell.homeFeed1= temfeed;
+            cell.view1Button.tag=temfeed.feed_id.integerValue;
+            [cell.view1Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView1Item];
         }else
         {
@@ -355,6 +366,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (current+1<[_homeFeedArray count]) {
              HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
              cell.homeFeed2= temfeed;
+             cell.view2Button.tag=temfeed.feed_id.integerValue;
+             [cell.view2Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
              [cell setView2Item];
         }else
         {
@@ -364,6 +377,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (current+2<[_homeFeedArray count]) {
             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+2];
             cell.homeFeed3= temfeed;
+             cell.view3Button.tag=temfeed.feed_id.integerValue;
+             [cell.view3Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView3Item];
         }else
         {
@@ -575,7 +590,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     
     
-    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15] ;
+    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else
@@ -795,6 +810,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (IBAction)photoImageButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger feed_id=(NSInteger) button.tag;
+    HomeFeed *tempFeed= [[HomeFeed alloc] init];
+    for (int i=0; i<[_homeFeedArray count]; i++) {
+        HomeFeed *temp=[_homeFeedArray objectAtIndex:i];
+        if (feed_id==temp.feed_id.integerValue) {
+            tempFeed=temp;
+        }
+    }
+    
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+   
+        specialPage.homeFeed=tempFeed;
+    
+        [self.navigationController pushViewController:specialPage animated:YES];
+    
+}
 - (IBAction)editProfileButtonClick:(id)sender {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"3"];
     

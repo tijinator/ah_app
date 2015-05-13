@@ -9,7 +9,10 @@
 #import "SpecialPageViewController.h"
 
 @interface SpecialPageViewController ()
-
+{
+    NSNumber * contentHight;
+    
+}
 @end
 
 @implementation SpecialPageViewController
@@ -31,8 +34,25 @@
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
+  //  _topview.frame=CGRectMake(0, 0, 320, 73);
+    _topview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topview respectToSuperFrame:self.view];
 }
 
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
+}
+
+
+- (void) didPostFinished: (NSNotification * ) note
+{
+
+    _homeFeed= (HomeFeed *)[note object];
+    
+    [self.tableView reloadData];
+    
+    
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -51,7 +71,7 @@
 }
 
 
-int contentHight1=50;
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -62,142 +82,197 @@ int contentHight1=50;
         cell = [nib objectAtIndex:0];
     }
     
-   
+    HomeFeed * tempHomefeed=_homeFeed;
     cell.homeFeed=_homeFeed;
     
-    if ([_homeFeed.feed_action.action isEqualToString:@"post"]) {
+    //case for headerview
+    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]) {
         cell.heanderImage1.hidden=true;
         [cell reDefineHearderViewsFrame];
     }else
     {
         cell.heanderImage1.hidden=false;
+        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        view.layer.cornerRadius=view.frame.size.width/2;
+        view.clipsToBounds=YES;
         AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
+        
+        
         headerImage1.userInteractionEnabled = NO;
         headerImage1.exclusiveTouch = NO;
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
-        if ([_homeFeed.feed_action.community_id isEqual:[NSNull null]])
+        if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
         {
-            headerImage1.imageURL =[NSURL URLWithString:_homeFeed.feed_action.created_by.thumb];
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by.thumb];
         }else
         {
-            headerImage1.imageURL =[NSURL URLWithString:_homeFeed.feed_action.created_by_community.cover_photo_url];
+            headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
         }
         [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.heanderImage1 addSubview:headerImage1];
+        [view addSubview:headerImage1];
+        [cell.heanderImage1 addSubview:view];
         
     }
     
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
+    view.clipsToBounds=YES;
+    view.layer.cornerRadius=view.frame.size.width/2;
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     headerImage2.userInteractionEnabled = NO;
     headerImage2.exclusiveTouch = NO;
+    headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
-    if ([_homeFeed.community_id isEqual:[NSNull null]])
+    if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
-        headerImage2.imageURL =[NSURL URLWithString:_homeFeed.created_by.thumb];
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
     }else
     {
-        headerImage2.imageURL =[NSURL URLWithString:_homeFeed.created_by_community.cover_photo_url];
+        headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    [cell.headerImage2 addSubview:headerImage2];
+    [view addSubview:headerImage2];
+    [cell.headerImage2 addSubview:view];
     
     
-    cell.titleLabel.text= _homeFeed.title_info.avatar_title;
-    NSTimeInterval time=(NSTimeInterval ) ([_homeFeed.created_at integerValue]/1000);
+    cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
+    [cell setTitleLabelForHeader];
+    
+    cell.dayLabel.frame= CGRectMake(cell.dayLabel.frame.origin.x, cell.titleLabel.frame.size.height+cell.titleLabel.frame.origin.y+3, cell.dayLabel.frame.size.width, cell.dayLabel.frame.size.height);
+    NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
+    NSString * timestring= [tempHomefeed.created_at substringWithRange:range];
+    NSTimeInterval time=(NSTimeInterval ) timestring.intValue;
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-    
-    if ([_homeFeed.type isEqualToString:@"regular"]) {
-        [cell setBodyFrameForRegular];
-    }else if ([_homeFeed.type isEqualToString:@"workout"])
-    {
-        [cell setBodyFrameForWorkout];
-    }else if ([_homeFeed.type isEqualToString:@"nutrition"])
-    {
-        [cell setBodyFrameForNutrition];
-    }else if ([_homeFeed.type isEqualToString:@"product"])
-    {
-        [cell setBodyFrameForProduct];
-    }
-    else if ([_homeFeed.type isEqualToString:@"event"])
-    {
-        [cell setBodyFrameForEvent];
-    }
-    if ([_homeFeed.photoArray count]!=0||[_homeFeed.videosArray count]!=0) {
-        [cell addScrollView];
+    //case for photo and video exits
+    if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
+        if ([tempHomefeed.type isEqualToString:@"event"])
+        {
+            cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, 60)];
+        }
         
-        NSString * url= _homeFeed.videos.video_url;
-        if ([url rangeOfString:@"youtube.com"].location != NSNotFound){
-            NSRange range= [url rangeOfString:@"v="];
-            double ran=range.length+range.location;
-            NSRange range1=NSMakeRange(ran, url.length-ran);
-            NSString *video_id= [url substringWithRange:range1];
-            NSString *videoString=[NSString stringWithFormat:@"%@%@%@", @"http://www.youtube.com/embed/", video_id, @"?showinfo=0&fs=0&rel=0"];
-            self.videoURL =[NSURL URLWithString:videoString];
-            cell.scrollbelowFrame.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:cell.scrollbelowFrame respectToSuperFrame:nil];
-            UIWebView *  videoView = [[UIWebView alloc] initWithFrame:cell.scrollbelowFrame.frame];
-            [cell.bodyView addSubview:videoView];
-            NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
-            [videoView loadRequest:request];
+        if ([tempHomefeed.photoArray count]!=0) {
+            double maxHeightIndex=0;
+            double radioBetweenWandH=0;
+            for (int i=0; i<[tempHomefeed.photoArray count]; i++) {
+                [tempHomefeed resetPhotos];
+                tempHomefeed.photos= [tempHomefeed.photoArray objectAtIndex:i];
+                double width= tempHomefeed.photos.stylesUrlWidth.doubleValue;
+                double height= tempHomefeed.photos.stylesUrlHeight.doubleValue;
+                if (width>height) {
+                    if (radioBetweenWandH<(height/width)) {
+                        radioBetweenWandH=height/width;
+                        maxHeightIndex=i;
+                    }
+                }else
+                {
+                    radioBetweenWandH=1;
+                    maxHeightIndex=i;
+                }
+            }
+            [tempHomefeed resetPhotos];
+            tempHomefeed.photos=[tempHomefeed.photoArray objectAtIndex:maxHeightIndex];
+            if (radioBetweenWandH<1) {
+                double width= 320;
+                double height= tempHomefeed.photos.stylesUrlHeight.doubleValue*(320/tempHomefeed.photos.stylesUrlWidth.doubleValue);
+                
+                cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+            }
             
         }
+        
+        [cell addScrollView];
+        if (![tempHomefeed.type isEqualToString:@"event"])
+        {
+            [cell setBodyShadowFrameForImagePost];
+        }
+        //special case for youtube
+        if ([tempHomefeed.videosArray count]!=0) {
+            NSString * url= tempHomefeed.videos.video_url;
+            if ([url rangeOfString:@"youtube.com"].location != NSNotFound){
+                NSRange range= [url rangeOfString:@"v="];
+                double ran=range.length+range.location;
+                NSRange range1=NSMakeRange(ran, url.length-ran);
+                NSString *video_id= [url substringWithRange:range1];
+                NSString *videoString=[NSString stringWithFormat:@"%@%@%@", @"http://www.youtube.com/embed/", video_id, @"?showinfo=0&fs=0&rel=0"];
+                self.videoURL =[NSURL URLWithString:videoString];
+                cell.scrollbelowFrame.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:cell.scrollbelowFrame respectToSuperFrame:nil];
+                UIWebView *  videoView = [[UIWebView alloc] initWithFrame:cell.scrollbelowFrame.frame];
+                [cell.bodyView addSubview:videoView];
+                NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
+                [videoView loadRequest:request];
+            }
+        }
+        
+        
         
     }else
     {
         [cell removeViewsFromBodyView:cell.scrollbelowFrame];
     }
+    
+    if ([tempHomefeed.type isEqualToString:@"regular"]) {
+        [cell setBodyFrameForRegular];
+    }else if ([tempHomefeed.type isEqualToString:@"workout"])
+    {
+        [cell setBodyFrameForWorkout];
+    }else if ([tempHomefeed.type isEqualToString:@"nutrition"])
+    {
+        [cell setBodyFrameForNutrition];
+    }else if ([tempHomefeed.type isEqualToString:@"product"])
+    {
+        [cell setBodyFrameForProduct];
+    }
+    else if ([tempHomefeed.type isEqualToString:@"event"])
+    {
+        [cell setBodyFrameForEvent];
+    }
+    
     [cell rebuiltBodyViewFrame];
     
     
     
-//    if ([_homeFeed.commentsArray count]!=0) {
-//        [cell.commentButton setTitle:_homeFeed.total_comment  forState:UIControlStateNormal];
-//        for (int i=0; i<[_homeFeed.commentsArray count]; i++) {
-//            cell.homeFeed=_homeFeed;
-//            [cell addCommentView:cell.commentView Atindex:i];
-//        }
-//        if ([_homeFeed.commentsArray count]==1) {
-//            [cell removeCommentView2];
-//            [cell removeCommentView1];
-//        }
-//        if ([_homeFeed.commentsArray count]==2) {
-//            [cell removeCommentView2];
-//        }
-//    }else
-//    {
-//        [cell removeCommentView2];
-//        [cell removeCommentView1];
-//        [cell removeCommentView];
-//    }
     
-    
-    if ([_action isEqualToString:@"playVideo"]) {
-        
-         contentHight1=  cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10;
-        [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    //built comment view
+    if ([tempHomefeed.commentsArray count]!=0) {
+        [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.bodyCommentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
+        for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
+            cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
+            [cell addCommentView:cell.commentView Atindex:i];
+        }
+        [cell rebuiltCommentViewFrame];
     }else
     {
-    
-     _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, cell.buttomView.frame.origin.y+20, self.view.frame.size.width-20, 80)];
-    [_textView setDelegate:self];
-    cell.contentView.frame=CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, cell.contentView.frame.size.width, _textView.frame.size.height+_textView.frame.origin.y+150);
-    
-    [cell.contentView addSubview:_textView ];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self action:@selector(postButtonClick:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setBackgroundColor:[UIColor blueColor]];
-    [button setTintColor:[UIColor whiteColor]];
-    [button setTitle:_action forState:UIControlStateNormal];
-    button.frame = CGRectMake(self.view.frame.size.width-80,_textView.frame.size.height+30+_textView.frame.origin.y , 60.0, 48.0);
-    [cell.contentView addSubview:button];
-     contentHight1=button.frame.size.height+ button.frame.origin.y+30 ;
-    [cell.buttomView removeFromSuperview];
+        [cell removeCommentView];
     }
-   
+    
+    
+    //built bottom view
+    [cell.likeButton setTag:indexPath.row*100+4];
+    [cell.commentButton setTag:indexPath.row*100+5];
+    [cell.shareButton setTag:indexPath.row*100+6];
+    [cell.optionButton setTag:indexPath.row*100+7];
+    [cell.bodyImage setTag:indexPath.row*100+8];
+    [cell.bodyLikeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
+    if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
+        [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+    }else
+    {
+        [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
+ 
+
     
     return cell;
 }
@@ -217,7 +292,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    return contentHight1;
+    return contentHight.intValue;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -247,18 +322,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
--(void)createObservers{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"postFinished" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postFinished:) name:@"postFinished" object:nil];
-}
+//-(void)createObservers{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"postFinished" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postFinished:) name:@"postFinished" object:nil];
+//}
 
 
-- (void) postFinished: (NSNotification * ) note
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void) postFinished: (NSNotification * ) note
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 /*
 #pragma mark - Navigation
@@ -269,16 +344,72 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark -buttomButton functions
+- (IBAction)commentButtonClick:(id)sender {
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CommentViewController *commentPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommentViewController"];
+    commentPage.homeFeed= _homeFeed;
+ 
+    [self.navigationController pushViewController:commentPage animated:YES];
+    
+}
+- (IBAction)likeButtonClick:(id)sender {
+
+    UIButton *button = (UIButton *)sender;
+    if ([_homeFeed.is_liked isEqualToString:@"0"]) {
+        NSNumber *totalLike=[NSNumber numberWithInt:1+_homeFeed.total_like.intValue];
+
+        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [[UserManager sharedUserManager] performLike:_homeFeed.feed_id];
+        _homeFeed.is_liked=@"1";
+        _homeFeed.total_like=totalLike.stringValue;
+        
+        
+        [self.tableView reloadData];
+        
+    }
+    
+    
+}
+- (IBAction)optionButtonClick:(id)sender {
+
+    HomeFeed *feed= _homeFeed;
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    
+    if ([feed.action_sheet isEqualToString:@"endorse"]) {
+        ActionSheet.action= @"endorse";
+        
+    }else if ([feed.action_sheet isEqualToString:@"report"]) {
+        ActionSheet.action= @"report";
+        
+    }else if ([feed.action_sheet isEqualToString:@"delete"]) {
+        ActionSheet.action= @"delete";
+        [ActionSheet.reportButton setTitle:@"Delete" forState:UIControlStateNormal];
+        
+    }
+    ActionSheet.postId= feed.feed_id;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    
+}
+
 - (IBAction)bodyImageButtonClick:(id)sender{
 
     NSString * url= _homeFeed.videos.video_url;
     
     if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
-
-       
+        
+        
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not play"
+                                                                  message : @"This video cannot play at this moment." delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+                
             } else if (videoURL) {
                 NSLog(@"Extracted url : %@", [videoURL absoluteString]);
                 
@@ -290,7 +421,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }
         }];
         
-
+        
     } else
     {
         self.videoURL= [NSURL URLWithString:url];
@@ -299,31 +430,32 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [movieController.moviePlayer play];
     }
     
-
-}
-
-- (void)finishedGetVimeoURL:(NSString *)url
-{
-   MPMoviePlayerViewController * _moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:url]];
-    [self presentViewController:_moviePlayerController animated:NO completion:nil];
-}
-
-
-- (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    MPMoviePlayerController *player = [notification object];
-    [[NSNotificationCenter defaultCenter]
-     removeObserver:self
-     name:MPMoviePlayerPlaybackDidFinishNotification
-     object:player];
     
-    if ([player
-         respondsToSelector:@selector(setFullscreen:animated:)])
-    {
-        [player.view removeFromSuperview];
-    }
+    
 }
+
+
+
+- (IBAction)shareButtonClick:(id)sender {
+
+    HomeFeed *tempFeed= _homeFeed;
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    ActionSheet.action= @"share";
+    ActionSheet.postId= tempFeed.feed_id;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    
+    //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    //    specialPage.action=@"Share";
+    //    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+    //
+    //    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+    
+}
+
 
 - (IBAction)backButtonClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

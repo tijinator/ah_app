@@ -81,7 +81,7 @@
     NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
-                              ofs, @"offset", lim , @"limit",nil];
+                              ofs, @"offset", lim , @"limit",@"true", @"ios_app",nil];
     
     NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
     
@@ -579,13 +579,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
-- (IBAction)cancelButtonClick:(id)sender{
-    
-}
 
-- (IBAction)endorseButtonClick:(id)sender{
-    
-}
 
 - (IBAction)shareButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;

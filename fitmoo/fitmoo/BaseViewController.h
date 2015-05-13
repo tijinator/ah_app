@@ -17,10 +17,14 @@
 @interface BaseViewController : UIViewController
 
 - (IBAction)openSideMenu:(id)sender;
+- (void) addfootButtonsForSetting;
 @property (nonatomic, strong) UIButton *leftButton1;
 @property (nonatomic, strong) UIButton *middleButton1;
 @property (nonatomic, strong) UIButton *rightButton1;
 @property (strong, nonatomic)  UIView *bottomView;
+
+
+
 
 @property (nonatomic, strong) UIButton *postButton;
 @property (nonatomic, strong) UIButton *videoButton;

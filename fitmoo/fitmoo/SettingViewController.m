@@ -18,13 +18,76 @@
     [super viewDidLoad];
     [self initFrames];
     [self createObservers];
+    self.tabletype=@"setting";
     [self.bottomView setHidden:true];
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     
      _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:69*radio],[NSNumber numberWithDouble:143*radio],[NSNumber numberWithDouble:139*radio],[NSNumber numberWithDouble:68*radio],[NSNumber numberWithDouble:74*radio],[NSNumber numberWithDouble:66*radio],[NSNumber numberWithDouble:148*radio], nil];
+    _privacyArray= [[NSMutableArray alloc] initWithObjects:@"Global Privacy",@"Hide Location",@"Hide Email",@"Hide Phone Info",@"Hide Website",@"Hide Facebook Info",@"Hide Twitter Info",@"Hide Linkedln Info",@"Hide Google Plus Info",@"Hide Instagram Info", nil];
     [self getSettingPageItems];
+    
+    [self addfootButtonsForSetting];
     // Do any additional setup after loading the view.
 }
+
+- (void) addfootButtonsForSetting
+{
+    double Radio= self.view.frame.size.width / 320;
+    
+    _settingBottomView= [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio)];
+    
+    
+    _settingButton= [[UIButton alloc] initWithFrame:CGRectMake(16, 7, 38,38)];
+   
+    _privacyButton= [[UIButton alloc] initWithFrame:CGRectMake(270, 7, 38,38)];
+    
+    
+    _settingButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_settingButton respectToSuperFrame:self.view];
+
+    _privacyButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_privacyButton respectToSuperFrame:self.view];
+    
+    
+    _settingButton.tag=21;
+    _privacyButton.tag=22;
+    
+    [_settingButton addTarget:self action:@selector(settingFootbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_privacyButton addTarget:self action:@selector(settingFootbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *im= [UIImage imageNamed:@"sidemenu_icon.png"];
+    [_settingButton setBackgroundImage:im forState:UIControlStateNormal];
+
+    UIImage *im2= [UIImage imageNamed:@"home_icon.png"];
+    [_privacyButton setBackgroundImage:im2 forState:UIControlStateNormal];
+    
+    [self.settingBottomView addSubview:_settingButton];
+    [self.settingBottomView addSubview:_privacyButton];
+    
+    [self.view addSubview:_settingBottomView];
+    [self.view bringSubviewToFront:_settingBottomView];
+    
+    
+    
+}
+
+- (IBAction)settingFootbuttonClick:(id)sender {
+       UIButton *button = (UIButton *)sender;
+
+    switch (button.tag) {
+        case 21:
+            self.tabletype=@"setting";
+            [self.tableview reloadData];
+            break;
+        case 22:
+            self.tabletype=@"privacy";
+            [self.tableview reloadData];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 
 - (void) initFrames
 {
@@ -52,13 +115,48 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+    if ([self.tabletype isEqualToString:@"privacy"]) {
+        return 10;
+    }
     return 7;
 }
-
+- (void)switchValueChanged:(UISwitch *)theSwitch
+{
+    BOOL flag = theSwitch.on;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if ([self.tabletype isEqualToString:@"privacy"]) {
+         UITableViewCell * cell=  [self.tableview cellForRowAtIndexPath:indexPath];
+        if (cell == nil)
+        {
+             cell=[tableView dequeueReusableCellWithIdentifier:@"privacyCell"];
+             UILabel *label= (UILabel *)[cell viewWithTag:20];
+            label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+            label.text= [_privacyArray objectAtIndex:indexPath.row];
+            UISwitch *sw= (UISwitch *) [cell viewWithTag:21];
+            double frameradio= [[FitmooHelper sharedInstance] frameRadio];
+            sw.frame= CGRectMake(sw.frame.origin.x*frameradio, sw.frame.origin.y*frameradio, sw.frame.size.width, sw.frame.size.height);
+            sw.tag=indexPath.row+20;
+            [sw addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
+            NSString *on= [_privacyBoolArray objectAtIndex:indexPath.row];
+            if ([on isEqualToString:@"0"]) {
+                  [sw setOn:NO animated:YES];
+            }else
+            {
+                [sw setOn:YES animated:YES];
+            }
+            
+        }
+        
+        
+        return cell;
+    }
+    
+    
     UITableViewCell * cell=  [self.tableview cellForRowAtIndexPath:indexPath];
     
     if (indexPath.row==0) {
@@ -100,7 +198,8 @@
          
             [view addSubview:userImage];
             [imageview addSubview:view];
-
+            
+            [imageview addTarget:self action:@selector(imageviewButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
             UILabel *changeLabel= (UILabel *)[cell viewWithTag:5];
             changeLabel.frame=CGRectMake(29, 111, 161, 21);
@@ -209,6 +308,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
   //  double Radio= self.view.frame.size.width / 320;
+    if ([self.tabletype isEqualToString:@"privacy"]) {
+        return 50*[[FitmooHelper sharedInstance] frameRadio];
+    }
     NSNumber * height=(NSNumber *) [_heightArray objectAtIndex:indexPath.row];
     return  height.integerValue;
 }
@@ -242,21 +344,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     NSDictionary *privacy= [_responseDic objectForKey:@"user_privacy"];
-    _tempUser.hide_global_privacy=[privacy objectForKey:@"global_privacy"];
-    _tempUser.hide_location=[privacy objectForKey:@"location"];
-    _tempUser.hide_email=[privacy objectForKey:@"email"];
-    _tempUser.hide_phone=[privacy objectForKey:@"phone"];
-    _tempUser.hide_website=[privacy objectForKey:@"website"];
-    _tempUser.hide_facebook=[privacy objectForKey:@"facebook"];
-    _tempUser.hide_twitter=[privacy objectForKey:@"twitter"];
-    _tempUser.hide_linkedin=[privacy objectForKey:@"linkedin"];
-    _tempUser.hide_google=[privacy objectForKey:@"google"];
-    _tempUser.hide_instagram=[privacy objectForKey:@"instagram"];
     
+    NSNumber * num=[privacy objectForKey:@"global_privacy"];
+    _tempUser.hide_global_privacy=num.stringValue;
+   
+    
+    num=[privacy objectForKey:@"location"];
+    _tempUser.hide_location=num.stringValue;
+    num=[privacy objectForKey:@"email"];
+    _tempUser.hide_email=num.stringValue;
+    num=[privacy objectForKey:@"phone"];
+    _tempUser.hide_phone=num.stringValue;
+    num=[privacy objectForKey:@"website"];
+    _tempUser.hide_website=num.stringValue;
+    num=[privacy objectForKey:@"facebook"];
+    _tempUser.hide_facebook=num.stringValue;
+    num=[privacy objectForKey:@"twitter"];
+    _tempUser.hide_twitter=num.stringValue;
+    num=[privacy objectForKey:@"linkedin"];
+    _tempUser.hide_linkedin=num.stringValue;
+    num=[privacy objectForKey:@"google"];
+    _tempUser.hide_google=num.stringValue;
+    num=[privacy objectForKey:@"instagram"];
+    _tempUser.hide_instagram=num.stringValue;
+   
+     _privacyBoolArray= [[NSMutableArray alloc] initWithObjects:_tempUser.hide_global_privacy,_tempUser.hide_location,_tempUser.hide_email,_tempUser.hide_phone,_tempUser.hide_website,_tempUser.hide_facebook,_tempUser.hide_twitter,_tempUser.hide_linkedin, _tempUser.hide_google,_tempUser.hide_instagram, nil];
     
     [_tableview reloadData];
 }
 
+
+- (IBAction)imageviewButtonClick:(id)sender {
+    
+    
+}
 - (IBAction)saveButtonClick:(id)sender {
  //   UIButton *button = (UIButton *)sender;
     

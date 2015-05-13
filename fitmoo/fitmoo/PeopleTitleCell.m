@@ -35,10 +35,11 @@
 
 - (void) loadHeader1Image: (NSString *)url
 {
-    AsyncImageView *headerImage1 = [[AsyncImageView alloc] init];
+    AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _headerImage1.frame.size.width, _headerImage1.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
     headerImage1.imageURL =[NSURL URLWithString:url];
-    self.headerImage1.image=headerImage1.image;
+   // self.headerImage1.image=headerImage1.image;
+    [self.headerImage1 addSubview:headerImage1];
     
 }
 

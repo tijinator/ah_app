@@ -24,6 +24,7 @@
 @interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIView *topview;
 
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
