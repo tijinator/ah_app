@@ -133,10 +133,13 @@
         _responseDic= responseObject;
         
         
- 
+        NSInteger count=0;
+        if (_homeFeedArray!=nil ) {
+            count=[_homeFeedArray count];
+        }
         [self defineFeedObjects];
   
-        if ([_responseDic count]>0) {
+        if ([_responseDic count]>0&& count!=[_homeFeedArray count]) {
             [self.tableView reloadData];
         }
         
@@ -190,7 +193,17 @@
     for (NSDictionary *dic in _responseDic) {
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        [_homeFeedArray addObject:feed];
+        bool samefeed=false;
+        for (int i=0; i<[_homeFeedArray count]; i++) {
+            HomeFeed *tempfeed= [_homeFeedArray objectAtIndex:i];
+            if ([feed.feed_id isEqual:tempfeed.feed_id]) {
+                samefeed=true;
+            }
+        }
+        if (samefeed==false) {
+            [_homeFeedArray addObject:feed];
+        }
+        
         
     }
     
@@ -332,7 +345,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.feedButton addTarget:self action:@selector(FeedButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.scheduleButton addTarget:self action:@selector(PhotoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
+        if ([temUser.bio isEqualToString:@""]) {
+            cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.buttonView.frame.size.height+cell.buttonView.frame.origin.y);
+            [cell.bioButton removeFromSuperview];
+            contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
+        }else
+        {
         contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10] ;
+        }
         [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         return cell;
     }

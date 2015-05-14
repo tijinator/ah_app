@@ -77,6 +77,9 @@
         case 21:
             self.tabletype=@"setting";
             [self.tableview reloadData];
+            
+            [[UserManager sharedUserManager] performUpdatePrivacy:_tempUser];
+            
             break;
         case 22:
             self.tabletype=@"privacy";
