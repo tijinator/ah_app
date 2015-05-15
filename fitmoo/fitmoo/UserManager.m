@@ -590,7 +590,7 @@
  //   NSDictionary *privacy = [[NSDictionary alloc] initWithObjectsAndKeys:user.bio, @"bio", user.location, @"location", user.phone, @"phone",user.website, @"website",nil];
     
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", user.hide_email, @"email", user.hide_phone, @"phone", user.hide_website, @"website", user.hide_facebook, @"facebook",user.hide_twitter, @"twitter", user.hide_linkedin, @"linkedin",user.hide_google, @"google", user.hide_instagram, @"instagram",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", user.hide_global_privacy, @"global_privacy", user.hide_location, @"location", user.hide_email, @"email", user.hide_phone, @"phone", user.hide_website, @"website", user.hide_facebook, @"facebook",user.hide_twitter, @"twitter", user.hide_linkedin, @"linkedin",user.hide_google, @"google", user.hide_instagram, @"instagram",nil];
     
     [manager PUT: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -621,7 +621,7 @@
     NSDictionary *profile = [[NSDictionary alloc] initWithObjectsAndKeys:user.bio, @"bio", user.location, @"location", user.phone, @"phone",user.website, @"website",nil];
     
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", profile, @"profile_attributes", user.name, @"full_name",@"true", @"mobile",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", profile, @"profile_attributes", user.name, @"full_name",user.email, @"email",@"true", @"mobile",nil];
     
     [manager PUT: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         

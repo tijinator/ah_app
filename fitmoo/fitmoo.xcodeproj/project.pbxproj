@@ -367,6 +367,16 @@
 		27757E101B039C7C006FCF27 /* selectedsquares_brand.png in Resources */ = {isa = PBXBuildFile; fileRef = 27757E0A1B039C7C006FCF27 /* selectedsquares_brand.png */; };
 		27757E111B039C7C006FCF27 /* selectedsquares_brand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27757E0B1B039C7C006FCF27 /* selectedsquares_brand@2x.png */; };
 		27757E121B039C7C006FCF27 /* selectedsquares_brand@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27757E0C1B039C7C006FCF27 /* selectedsquares_brand@3x.png */; };
+		27AC92BB1B06292E00BB7A0E /* settings_bioicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B21B06292D00BB7A0E /* settings_bioicon.png */; };
+		27AC92BC1B06292E00BB7A0E /* settings_bioicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B31B06292D00BB7A0E /* settings_bioicon@2x.png */; };
+		27AC92BD1B06292E00BB7A0E /* settings_bioicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B41B06292E00BB7A0E /* settings_bioicon@3x.png */; };
+		27AC92BE1B06292E00BB7A0E /* settings_emailicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B51B06292E00BB7A0E /* settings_emailicon.png */; };
+		27AC92BF1B06292E00BB7A0E /* settings_emailicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B61B06292E00BB7A0E /* settings_emailicon@2x.png */; };
+		27AC92C01B06292E00BB7A0E /* settings_emailicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B71B06292E00BB7A0E /* settings_emailicon@3x.png */; };
+		27AC92C11B06292E00BB7A0E /* settings_profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B81B06292E00BB7A0E /* settings_profileicon.png */; };
+		27AC92C21B06292E00BB7A0E /* settings_profileicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B91B06292E00BB7A0E /* settings_profileicon@2x.png */; };
+		27AC92C31B06292E00BB7A0E /* settings_profileicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92BA1B06292E00BB7A0E /* settings_profileicon@3x.png */; };
+		27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AC92C51B062AAF00BB7A0E /* AcountViewController.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -791,6 +801,17 @@
 		27757E0A1B039C7C006FCF27 /* selectedsquares_brand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectedsquares_brand.png; path = "../../../../../../Downloads/app icons/selectedsquares_brand.png"; sourceTree = "<group>"; };
 		27757E0B1B039C7C006FCF27 /* selectedsquares_brand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedsquares_brand@2x.png"; path = "../../../../../../Downloads/app icons/selectedsquares_brand@2x.png"; sourceTree = "<group>"; };
 		27757E0C1B039C7C006FCF27 /* selectedsquares_brand@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedsquares_brand@3x.png"; path = "../../../../../../Downloads/app icons/selectedsquares_brand@3x.png"; sourceTree = "<group>"; };
+		27AC92B21B06292D00BB7A0E /* settings_bioicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_bioicon.png; sourceTree = "<group>"; };
+		27AC92B31B06292D00BB7A0E /* settings_bioicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bioicon@2x.png"; sourceTree = "<group>"; };
+		27AC92B41B06292E00BB7A0E /* settings_bioicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bioicon@3x.png"; sourceTree = "<group>"; };
+		27AC92B51B06292E00BB7A0E /* settings_emailicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_emailicon.png; sourceTree = "<group>"; };
+		27AC92B61B06292E00BB7A0E /* settings_emailicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_emailicon@2x.png"; sourceTree = "<group>"; };
+		27AC92B71B06292E00BB7A0E /* settings_emailicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_emailicon@3x.png"; sourceTree = "<group>"; };
+		27AC92B81B06292E00BB7A0E /* settings_profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_profileicon.png; sourceTree = "<group>"; };
+		27AC92B91B06292E00BB7A0E /* settings_profileicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_profileicon@2x.png"; sourceTree = "<group>"; };
+		27AC92BA1B06292E00BB7A0E /* settings_profileicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_profileicon@3x.png"; sourceTree = "<group>"; };
+		27AC92C41B062AAF00BB7A0E /* AcountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcountViewController.h; sourceTree = "<group>"; };
+		27AC92C51B062AAF00BB7A0E /* AcountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcountViewController.m; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1126,6 +1147,9 @@
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
 				27250CF81AF902D7005FC4C5 /* SettingViewController.m */,
+				27AC92C41B062AAF00BB7A0E /* AcountViewController.h */,
+				27AC92C51B062AAF00BB7A0E /* AcountViewController.m */,
+				27AC92C71B063AD100BB7A0E /* setting */,
 			);
 			name = MainPages;
 			sourceTree = "<group>";
@@ -1291,6 +1315,15 @@
 				2752E9941B015CBC003841DC /* calendar.png */,
 				2752E9951B015CBC003841DC /* calendar@2x.png */,
 				2752E9961B015CBC003841DC /* calendar@3x.png */,
+				27AC92B21B06292D00BB7A0E /* settings_bioicon.png */,
+				27AC92B31B06292D00BB7A0E /* settings_bioicon@2x.png */,
+				27AC92B41B06292E00BB7A0E /* settings_bioicon@3x.png */,
+				27AC92B51B06292E00BB7A0E /* settings_emailicon.png */,
+				27AC92B61B06292E00BB7A0E /* settings_emailicon@2x.png */,
+				27AC92B71B06292E00BB7A0E /* settings_emailicon@3x.png */,
+				27AC92B81B06292E00BB7A0E /* settings_profileicon.png */,
+				27AC92B91B06292E00BB7A0E /* settings_profileicon@2x.png */,
+				27AC92BA1B06292E00BB7A0E /* settings_profileicon@3x.png */,
 				2738D9231B02456800F5087E /* selectedbars.png */,
 				2738D9241B02456800F5087E /* selectedbars@2x.png */,
 				2738D9251B02456800F5087E /* selectedbars@3x.png */,
@@ -1455,6 +1488,13 @@
 				276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */,
 			);
 			path = "Benton Sans";
+			sourceTree = "<group>";
+		};
+		27AC92C71B063AD100BB7A0E /* setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = setting;
 			sourceTree = "<group>";
 		};
 		9EFAD12DB94C2C1F8BB2FB70 /* Pods */ = {
@@ -1635,14 +1675,17 @@
 				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
 				2738D91A1B023EE700F5087E /* editprofile_btn.png in Resources */,
 				27188FBC1AD4695000C34372 /* play.png in Resources */,
+				27AC92BF1B06292E00BB7A0E /* settings_emailicon@2x.png in Resources */,
 				276094521AD708C100A769CE /* BentonSansCond-Bold.otf in Resources */,
 				2738D91C1B023EE700F5087E /* editprofile_btn@3x.png in Resources */,
 				2732B7231AD820FB00610821 /* profile.png in Resources */,
+				27AC92BB1B06292E00BB7A0E /* settings_bioicon.png in Resources */,
 				27188FB41AD4695000C34372 /* mobilelogin_screen2.png in Resources */,
 				2732B7121AD809E900610821 /* like.png in Resources */,
 				2752EA0D1B015CBC003841DC /* selectedsquares@3x.png in Resources */,
 				272F27721AE6BE2B00C9EADC /* CommunityTableViewCell.xib in Resources */,
 				273FF5511AF7AA2C00B82DB3 /* cameracircleicon.png in Resources */,
+				27AC92C21B06292E00BB7A0E /* settings_profileicon@2x.png in Resources */,
 				27188FB91AD4695000C34372 /* logo-lg.png in Resources */,
 				273FF5761AF7AA2C00B82DB3 /* whitecamerareverse.png in Resources */,
 				2752EA141B015CBC003841DC /* whitecommenticon.png in Resources */,
@@ -1675,16 +1718,20 @@
 				2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */,
 				2738D90F1B023ED400F5087E /* dots@2x.png in Resources */,
 				276094201AD708AD00A769CE /* SemplicitaPro-Light.otf in Resources */,
+				27AC92BC1B06292E00BB7A0E /* settings_bioicon@2x.png in Resources */,
 				2738D92D1B02456800F5087E /* selectedsquares@2x.png in Resources */,
 				27188FB11AD4695000C34372 /* ionic.png in Resources */,
+				27AC92BE1B06292E00BB7A0E /* settings_emailicon.png in Resources */,
 				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
 				273FF5691AF7AA2C00B82DB3 /* postmenuicon.png in Resources */,
 				2752E9E81B015CBC003841DC /* deselectedbars@3x.png in Resources */,
 				276094101AD7085500A769CE /* ss-symbolicons-block.ttf in Resources */,
+				27AC92C31B06292E00BB7A0E /* settings_profileicon@3x.png in Resources */,
 				273FF57B1AF7AA2C00B82DB3 /* whitelargecameraicon.png in Resources */,
 				273FF5671AF7AA2C00B82DB3 /* playbtn.png in Resources */,
 				2738D9201B023EE700F5087E /* following_btn.png in Resources */,
 				2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */,
+				27AC92C01B06292E00BB7A0E /* settings_emailicon@3x.png in Resources */,
 				27757E121B039C7C006FCF27 /* selectedsquares_brand@3x.png in Resources */,
 				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
 				276094211AD708AD00A769CE /* SemplicitaPro-LightItalic.otf in Resources */,
@@ -1703,6 +1750,7 @@
 				2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */,
 				273FF5591AF7AA2C00B82DB3 /* followicon.png in Resources */,
 				2736B2231AEFC9920013B4B9 /* BentonSans-Regular.otf in Resources */,
+				27AC92BD1B06292E00BB7A0E /* settings_bioicon@3x.png in Resources */,
 				273FF5531AF7AA2C00B82DB3 /* carticon.png in Resources */,
 				2752E9F41B015CBC003841DC /* follow_btn@3x.png in Resources */,
 				273FF57A1AF7AA2C00B82DB3 /* whitehearticon.png in Resources */,
@@ -1766,6 +1814,7 @@
 				2752EA091B015CBC003841DC /* selectedbars@2x.png in Resources */,
 				2738D92B1B02456800F5087E /* selectedbars@3x.png in Resources */,
 				2752EA001B015CBC003841DC /* location@2x.png in Resources */,
+				27AC92C11B06292E00BB7A0E /* settings_profileicon.png in Resources */,
 				2752EA261B015CBC003841DC /* whitearrow.png in Resources */,
 				273FF5541AF7AA2C00B82DB3 /* commenticon.png in Resources */,
 				2752E9FF1B015CBC003841DC /* location.png in Resources */,
@@ -1865,6 +1914,7 @@
 				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
+				27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */,
 				27163D961ADAF733005B95D5 /* SpecialPageViewController.m in Sources */,
 				272582491AD57F070059F43C /* UIRefreshControl+AFNetworking.m in Sources */,
 				272582461AD57F070059F43C /* UIButton+AFNetworking.m in Sources */,

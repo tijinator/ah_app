@@ -12,8 +12,13 @@
 #import "User.h"
 #import "BaseViewController.h"
 #import "AsyncImageView.h"
-@interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+#import "AcountViewController.h"
+@interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UILabel *settingLabel;
+- (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) NSArray *heightArray;
 @property (strong, nonatomic) NSArray *privacyArray;
 @property (strong, nonatomic) NSMutableArray *privacyBoolArray;
@@ -23,13 +28,8 @@
 
 @property (strong, nonatomic)  UIView *settingBottomView;
 
-@property (strong, nonatomic)  UITextField * nameTextfield;
-@property (strong, nonatomic)  UITextView * bioTextview;
-@property (strong, nonatomic)  UITextField * locationTextfield;
-@property (strong, nonatomic)  UITextField * phoneTextfield;
-@property (strong, nonatomic)  UITextField * websiteTextfield;
 
-@property (nonatomic, strong) UIButton *settingButton;
-@property (nonatomic, strong) UIButton *privacyButton;
+
+
 
 @end
