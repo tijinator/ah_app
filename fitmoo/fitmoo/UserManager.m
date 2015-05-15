@@ -597,11 +597,14 @@
         _responseDic= responseObject;
         
         
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Save Sucess"
+                                                          message : @"Update privacy sucess" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
         
+
         
-     //   [[NSNotificationCenter defaultCenter] postNotificationName:@"makeUpdateFinished" object:nil];
-        
-        //      NSLog(@"Submit response data: %@", responseObject);
+     
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -621,7 +624,7 @@
     NSDictionary *profile = [[NSDictionary alloc] initWithObjectsAndKeys:user.bio, @"bio", user.location, @"location", user.phone, @"phone",user.website, @"website",nil];
     
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", profile, @"profile_attributes", user.name, @"full_name",user.email, @"email",@"true", @"mobile",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", profile, @"profile_attributes", user.name, @"full_name",user.email, @"email",@"", @"password",user.profile_avatar_original, @"profile_photo_url",@"true", @"mobile",@"true", @"ios_app",nil];
     
     [manager PUT: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         

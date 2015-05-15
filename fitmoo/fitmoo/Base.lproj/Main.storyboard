@@ -55,6 +55,10 @@
                                 <rect key="frame" x="0.0" y="368" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_toggle.png" id="w0V-99-yvW">
+                                        <rect key="frame" x="150" y="30" width="20" height="10"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="         Write a post..." minimumFontSize="17" id="tyu-GH-MED">
                                         <rect key="frame" x="0.0" y="40" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,6 +66,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P2v-gA-uQA">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postsButtonClick:" destination="oHk-Ra-HON" eventType="touchUpInside" id="ayP-oT-Xjp"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VCs-91-5KC">
                                         <rect key="frame" x="17" y="0.0" width="90" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,8 +244,10 @@
                         <outlet property="postCloseButton" destination="KyH-zW-n8Z" id="PNI-Cu-Z1S"/>
                         <outlet property="postTopView" destination="365-wa-ONh" id="2SO-bY-AUP"/>
                         <outlet property="screenShotButton" destination="oju-Gm-WT3" id="vNS-EL-et9"/>
+                        <outlet property="textFieldButton" destination="P2v-gA-uQA" id="AGo-vi-XKg"/>
                         <outlet property="timerLabel" destination="Ogo-gZ-M9K" id="TAX-NE-bdD"/>
                         <outlet property="topView" destination="W6u-D8-Cxi" id="9kL-ro-h0F"/>
+                        <outlet property="wihteArrawImage" destination="w0V-99-yvW" id="jQW-cv-JzY"/>
                         <outlet property="workoutButton" destination="RQa-Vf-oMm" id="C8q-vA-cDe"/>
                         <outlet property="writePostTextField" destination="tyu-GH-MED" id="v91-Wn-gux"/>
                     </connections>
@@ -1992,6 +2008,7 @@
         <image name="settings_bioicon.png" width="15" height="15"/>
         <image name="settings_emailicon.png" width="15" height="15"/>
         <image name="settings_profileicon.png" width="15" height="15"/>
+        <image name="white_toggle.png" width="16" height="9"/>
         <image name="whitearrowicon.png" width="10" height="17"/>
         <image name="whitecamerareverse.png" width="23" height="20"/>
         <image name="whitevideoicon.png" width="33" height="33"/>

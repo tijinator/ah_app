@@ -86,6 +86,9 @@
     _postCloseButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postCloseButton respectToSuperFrame:self.view];
     
     _timerLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_timerLabel respectToSuperFrame:self.view];
+    
+    _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+    _textFieldButton.frame=_writePostTextField.frame;
 }
 
 
@@ -518,18 +521,33 @@
     switch (b.tag) {
         case 1:
            self.postType=@"nutrition";
-            [self showPostViewAnimation];
-            [self openPostView];
+            _wihteArrawImage.frame= CGRectMake(50, 30, 20, 10);
+            _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+            _writePostTextField.placeholder=@"         Write a nutrition...";
+       //     [self showPostViewAnimation];
+       //     [self openPostView];
             
             break;
         case 2:
             self.postType=@"post";
-            [self showPostViewAnimation];
-            [self openPostView];
+            _wihteArrawImage.frame= CGRectMake(150, 30, 20, 10);
+            _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+            _writePostTextField.placeholder=@"         Write a post...";
+        //    [self showPostViewAnimation];
+        //    [self openPostView];
             
             break;
         case 3:
             self.postType=@"workout";
+            _wihteArrawImage.frame= CGRectMake(250, 30, 20, 10);
+            _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+            _writePostTextField.placeholder=@"         Write a workout...";
+         //   [self showPostViewAnimation];
+        //    [self openPostView];
+            
+            break;
+        case 4:
+        
             [self showPostViewAnimation];
             [self openPostView];
             

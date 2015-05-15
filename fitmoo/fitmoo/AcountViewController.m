@@ -128,7 +128,8 @@
             NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
             //   NSString *uploadImage= @"https://fitmoo-staging.s3.amazonaws.com/photos%2F39528c839944-4b8a-457f-a5fe-ec9f386cae8e.jpg";
       
-            _tempUser.profile_avatar_thumb=uploadImage;
+            _tempUser.profile_avatar_original=uploadImage;
+            [[UserManager sharedUserManager] performUpdate:_tempUser ];
         }
         
         return nil;
@@ -319,7 +320,7 @@
             emailTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:emailTextfield respectToSuperFrame:self.view];
             emailTextfield.text=_tempUser.email;
             
-            _emailTextfield=emailTextfield;
+            _mailTextfield=emailTextfield;
           
         }
         
@@ -410,6 +411,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+
+
+
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
@@ -466,7 +470,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _tempUser.location=_locationTextfield.text;
     _tempUser.phone=_phoneTextfield.text;
     _tempUser.website=_websiteTextfield.text;
-    _tempUser.email=_emailTextfield.text;
+    _tempUser.email=_mailTextfield.text;
     [[UserManager sharedUserManager] performUpdate:_tempUser ];
     }
     
@@ -497,6 +501,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController popViewControllerAnimated:YES];
     
+    
+}
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableview.contentOffset.y<-75){
+        if (_count==0) {
+            [self.tableview reloadData];
+       
+        }
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else
+    {
+        _count=0;
+    }
     
 }
 

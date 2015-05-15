@@ -26,8 +26,6 @@
 
 - (IBAction)openSideMenu:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
-    
-    
 }
 
 
@@ -122,7 +120,7 @@
     [UIView setAnimationDuration:0.2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
-    _subBottomView.frame= CGRectMake(0, _subBottomView.frame.origin.y+Radio*100, 320*Radio, 60*Radio);
+    _subBottomView.frame= CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio);
     _postButton.frame= CGRectMake(160, 10, 0,0);
     _videoButton.frame= CGRectMake(160, 10, 0,0);
     _pictureButton.frame= CGRectMake(160, 10, 0,0);
@@ -161,6 +159,18 @@
     
     
 }
+
+-(void)hideButtonsAction:(NSNotification*)note{
+    if (_postButton!=nil) {
+        [self hideThreeSubButtons];
+    }
+}
+
+-(void)createObservers{
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hideButtonsAction" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
+}
+
 
 -(void)swipeHandler:(UISwipeGestureRecognizer *)recognizer {
    

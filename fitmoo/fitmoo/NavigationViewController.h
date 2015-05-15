@@ -25,6 +25,10 @@
 @property (strong, nonatomic) UINavigationController *nav;
 @property (nonatomic, assign) BOOL allowRotation;
 
-
+@property (strong, nonatomic) HomePageViewController *homePage;
+@property (strong, nonatomic) PeoplePageViewController *peoplePage;
+@property (strong, nonatomic) SearchViewController *searchPage;
+@property (strong, nonatomic) SettingViewController *settingPage;
+@property (strong, nonatomic)  ShopViewController *shopPage;
 
 @end

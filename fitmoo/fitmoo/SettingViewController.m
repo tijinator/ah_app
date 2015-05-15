@@ -197,6 +197,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSDictionary *avatars= [profile objectForKey:@"avatars"];
     _tempUser.profile_avatar_thumb=[avatars objectForKey:@"thumb"];
+    _tempUser.profile_avatar_original=[avatars objectForKey:@"original"];
     _tempUser.bio= [profile objectForKey:@"bio"];
     if ([_tempUser.bio isEqual:[NSNull null]]) {
         _tempUser.bio=@"";

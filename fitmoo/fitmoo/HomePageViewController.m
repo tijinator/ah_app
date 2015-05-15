@@ -354,7 +354,7 @@
     [cell.bodyImage setTag:indexPath.row*100+8];
     [cell.bodyLikeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-     [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+     [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
     }else
     {
     [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -491,7 +491,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
       //  NSString *newLikeString= totalLike.stringValue;
       //  [button setTitle:newLikeString forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:feed.feed_id];
         feed.is_liked=@"1";
         feed.total_like=totalLike.stringValue;

@@ -20,9 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    contentHight=[NSNumber numberWithInteger:400];
+    contentHight=[NSNumber numberWithInteger:500];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
      self.tableView.tableFooterView = [[UIView alloc] init];
+ 
     self.tableType=@"photo";
     [self initFrames];
     [self initValuable];
@@ -62,7 +63,7 @@
 -(void) initValuable
 {
     _offset=0;
-    _limit=10;
+    _limit=12;
     _count=1;
     
 //    _photoOffset=0;
@@ -353,7 +354,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
         contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+10] ;
         }
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
     }
     
@@ -597,7 +598,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     [cell.bodyImage setTag:indexPath.row*100+8];
     [cell.bodyLikeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-        [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
     }else
     {
         [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -682,7 +683,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                   _offset =0;
             }else
             {
-            _offset +=10;
+            _offset +=12;
             }
             [self getHomePageItems];
         }
@@ -727,7 +728,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
         //  NSString *newLikeString= totalLike.stringValue;
         //  [button setTitle:newLikeString forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:feed.feed_id];
         feed.is_liked=@"1";
         feed.total_like=totalLike.stringValue;

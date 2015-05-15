@@ -27,14 +27,14 @@
 @property (strong, nonatomic)  UIView *settingBottomView;
 
 @property (strong, nonatomic)  UITextField * nameTextfield;
-@property (strong, nonatomic)  UITextField * emailTextfield;
+@property (strong, nonatomic)  UITextField * mailTextfield;
 @property (strong, nonatomic)  UITextView * bioTextview;
 @property (strong, nonatomic)  UITextField * locationTextfield;
 @property (strong, nonatomic)  UITextField * phoneTextfield;
 @property (strong, nonatomic)  UITextField * websiteTextfield;
 @property (nonatomic, strong) UIButton *imageButton;
 @property (strong, nonatomic)  UIImage *chosenImage;
-
+@property (assign, nonatomic)  int count;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property (strong, nonatomic)  UIImagePickerController *picker;
 
