@@ -149,6 +149,15 @@
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         currentPage=3;
+    }else  if (key.intValue>10) {
+
+     
+            _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+            _peoplePage.searchId=key;
+            [[self nav] pushViewController:_peoplePage animated:YES];
+            currentPage=6;
+
+    
     }
     
     

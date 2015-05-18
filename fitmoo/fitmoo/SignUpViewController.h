@@ -14,6 +14,7 @@
 #import "HomePageViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 
+
 @interface SignUpViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
@@ -39,6 +40,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *genderButton;
 @property (strong, nonatomic) IBOutlet UIButton *DateOfBirthButton;
 @property (strong, nonatomic) IBOutlet UIView *dateBirthView;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+
+
 
 - (IBAction)signUpButtonClick:(id)sender;
 - (IBAction)dateBirthButtonClick:(id)sender;
@@ -47,5 +51,6 @@
 - (IBAction)clearButtonClick:(id)sender;
 - (IBAction)closeButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;
+- (IBAction)backButtonClick:(id)sender;
 
 @end

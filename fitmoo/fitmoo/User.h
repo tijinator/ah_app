@@ -37,6 +37,8 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *website;
+@property (nonatomic, strong) NSString *current_user_can_view_profile;
+@property (nonatomic, strong) NSString *is_following;
 
 @property (nonatomic, strong) NSString *hide_global_privacy;
 @property (nonatomic, strong) NSString *hide_location;
@@ -48,6 +50,8 @@
 @property (nonatomic, strong) NSString *hide_linkedin;
 @property (nonatomic, strong) NSString *hide_google;
 @property (nonatomic, strong) NSString *hide_instagram;
+
+
 
 
 

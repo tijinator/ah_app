@@ -46,6 +46,7 @@
 -(void) createAccountFromFacebook:(User *) user;
 -(void) getUserProfile:(User *) user;
 -(void) performUpdatePrivacy:(User *) user;
+-(void) getUserProfileForOtherPeople:(NSString *) other_people_id;
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;

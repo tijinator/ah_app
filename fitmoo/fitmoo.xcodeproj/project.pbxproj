@@ -380,6 +380,13 @@
 		27AC92E11B067E9500BB7A0E /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92DE1B067E9500BB7A0E /* redheart.png */; };
 		27AC92E21B067E9500BB7A0E /* redheart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92DF1B067E9500BB7A0E /* redheart@2x.png */; };
 		27AC92E31B067E9500BB7A0E /* redheart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92E01B067E9500BB7A0E /* redheart@3x.png */; };
+		27ACD0F91B0A708C00322ED5 /* nutritiontag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0F51B0A708C00322ED5 /* nutritiontag@2x.png */; };
+		27ACD0FA1B0A708C00322ED5 /* nutritiontag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0F61B0A708C00322ED5 /* nutritiontag@3x.png */; };
+		27ACD0FB1B0A708C00322ED5 /* workouttag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0F71B0A708C00322ED5 /* workouttag@2x.png */; };
+		27ACD0FC1B0A708C00322ED5 /* workouttag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0F81B0A708C00322ED5 /* workouttag@3x.png */; };
+		27ACD1001B0A74E900322ED5 /* thumbnail_playbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FD1B0A74E900322ED5 /* thumbnail_playbtn.png */; };
+		27ACD1011B0A74E900322ED5 /* thumbnail_playbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FE1B0A74E900322ED5 /* thumbnail_playbtn@2x.png */; };
+		27ACD1021B0A74E900322ED5 /* thumbnail_playbtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FF1B0A74E900322ED5 /* thumbnail_playbtn@3x.png */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -818,6 +825,13 @@
 		27AC92DE1B067E9500BB7A0E /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart.png; sourceTree = "<group>"; };
 		27AC92DF1B067E9500BB7A0E /* redheart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redheart@2x.png"; sourceTree = "<group>"; };
 		27AC92E01B067E9500BB7A0E /* redheart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redheart@3x.png"; sourceTree = "<group>"; };
+		27ACD0F51B0A708C00322ED5 /* nutritiontag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nutritiontag@2x.png"; sourceTree = "<group>"; };
+		27ACD0F61B0A708C00322ED5 /* nutritiontag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nutritiontag@3x.png"; sourceTree = "<group>"; };
+		27ACD0F71B0A708C00322ED5 /* workouttag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workouttag@2x.png"; sourceTree = "<group>"; };
+		27ACD0F81B0A708C00322ED5 /* workouttag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workouttag@3x.png"; sourceTree = "<group>"; };
+		27ACD0FD1B0A74E900322ED5 /* thumbnail_playbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail_playbtn.png; sourceTree = "<group>"; };
+		27ACD0FE1B0A74E900322ED5 /* thumbnail_playbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_playbtn@2x.png"; sourceTree = "<group>"; };
+		27ACD0FF1B0A74E900322ED5 /* thumbnail_playbtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_playbtn@3x.png"; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1321,6 +1335,13 @@
 				2752E9941B015CBC003841DC /* calendar.png */,
 				2752E9951B015CBC003841DC /* calendar@2x.png */,
 				2752E9961B015CBC003841DC /* calendar@3x.png */,
+				27ACD0F51B0A708C00322ED5 /* nutritiontag@2x.png */,
+				27ACD0F61B0A708C00322ED5 /* nutritiontag@3x.png */,
+				27ACD0F71B0A708C00322ED5 /* workouttag@2x.png */,
+				27ACD0F81B0A708C00322ED5 /* workouttag@3x.png */,
+				27ACD0FD1B0A74E900322ED5 /* thumbnail_playbtn.png */,
+				27ACD0FE1B0A74E900322ED5 /* thumbnail_playbtn@2x.png */,
+				27ACD0FF1B0A74E900322ED5 /* thumbnail_playbtn@3x.png */,
 				27AC92DE1B067E9500BB7A0E /* redheart.png */,
 				27AC92DF1B067E9500BB7A0E /* redheart@2x.png */,
 				27AC92E01B067E9500BB7A0E /* redheart@3x.png */,
@@ -1610,6 +1631,7 @@
 				2752EA201B015CBC003841DC /* reversecamera.png in Resources */,
 				27AC92D71B066DF700BB7A0E /* selectedbars@3x.png in Resources */,
 				27AC92CF1B066DF000BB7A0E /* selectedbars_brand.png in Resources */,
+				27ACD0FC1B0A708C00322ED5 /* workouttag@3x.png in Resources */,
 				2752E9E71B015CBC003841DC /* deselectedbars@2x.png in Resources */,
 				2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */,
 				273FF5741AF7AA2C00B82DB3 /* Untitled-2.psd in Resources */,
@@ -1642,6 +1664,7 @@
 				2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */,
 				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
 				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,
+				27ACD1001B0A74E900322ED5 /* thumbnail_playbtn.png in Resources */,
 				273FF55B1AF7AA2C00B82DB3 /* greycommenticon2.png in Resources */,
 				273FF5551AF7AA2C00B82DB3 /* dots.png in Resources */,
 				2752EA0C1B015CBC003841DC /* selectedsquares@2x.png in Resources */,
@@ -1651,6 +1674,7 @@
 				2752E9E51B015CBC003841DC /* commenticon@3x.png in Resources */,
 				273FF5611AF7AA2C00B82DB3 /* homeicon.png in Resources */,
 				2752EA041B015CBC003841DC /* menu_plus_icon@3x.png in Resources */,
+				27ACD0F91B0A708C00322ED5 /* nutritiontag@2x.png in Resources */,
 				2752E9FC1B015CBC003841DC /* home_icon.png in Resources */,
 				2752EA1C1B015CBC003841DC /* whitehearticon@3x.png in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
@@ -1669,6 +1693,7 @@
 				273FF5751AF7AA2C00B82DB3 /* whitearrowicon.png in Resources */,
 				27188FB31AD4695000C34372 /* mobilelogin_screen1.png in Resources */,
 				27188FBA1AD4695000C34372 /* mobile_logo.png in Resources */,
+				27ACD0FB1B0A708C00322ED5 /* workouttag@2x.png in Resources */,
 				2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */,
 				273FF5601AF7AA2C00B82DB3 /* hearticon.png in Resources */,
 				2752E9E31B015CBC003841DC /* commenticon.png in Resources */,
@@ -1722,6 +1747,7 @@
 				27AC92DB1B066E0300BB7A0E /* selectedsquares_brand.png in Resources */,
 				2738D91F1B023EE700F5087E /* follow_btn@3x.png in Resources */,
 				27AC92DD1B066E0300BB7A0E /* selectedsquares_brand@3x.png in Resources */,
+				27ACD0FA1B0A708C00322ED5 /* nutritiontag@3x.png in Resources */,
 				2738D9211B023EE700F5087E /* following_btn@2x.png in Resources */,
 				273FF56B1AF7AA2C00B82DB3 /* recordingbtn.png in Resources */,
 				27188FB61AD4695000C34372 /* mobilescreen3_blur.png in Resources */,
@@ -1747,6 +1773,7 @@
 				273FF57B1AF7AA2C00B82DB3 /* whitelargecameraicon.png in Resources */,
 				273FF5671AF7AA2C00B82DB3 /* playbtn.png in Resources */,
 				2738D9201B023EE700F5087E /* following_btn.png in Resources */,
+				27ACD1011B0A74E900322ED5 /* thumbnail_playbtn@2x.png in Resources */,
 				2731C6371ADD6FD800788181 /* PeopleTitleCell.xib in Resources */,
 				27AC92C01B06292E00BB7A0E /* settings_emailicon@3x.png in Resources */,
 				276094541AD708C100A769CE /* BentonSansCond-Light.otf in Resources */,
@@ -1847,6 +1874,7 @@
 				27188FBB1AD4695000C34372 /* mobile_splash.png in Resources */,
 				2752EA0F1B015CBC003841DC /* shareicon@2x.png in Resources */,
 				2752EA051B015CBC003841DC /* posticon.png in Resources */,
+				27ACD1021B0A74E900322ED5 /* thumbnail_playbtn@3x.png in Resources */,
 				276094501AD708C100A769CE /* BentonSansComp-Regular.otf in Resources */,
 				273FF55A1AF7AA2C00B82DB3 /* greycommenticon.png in Resources */,
 				2752EA111B015CBC003841DC /* sidemenu_icon.png in Resources */,

@@ -22,7 +22,7 @@
     [self.bottomView setHidden:true];
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     
-     _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio], nil];
+     _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio], nil];
 
     [self getSettingPageItems];
     
@@ -56,7 +56,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
 
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -121,7 +121,7 @@
             cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width*[[FitmooHelper sharedInstance] frameRadio], 0.f, 0.f);
         }
         
-    }else if (indexPath.row==4) {
+    }else if (indexPath.row==5) {
         if (cell == nil)
         {
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell5"];
@@ -135,7 +135,7 @@
             Image.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:Image respectToSuperFrame:self.view];
         }
         
-    }else if (indexPath.row==5) {
+    }else if (indexPath.row==6) {
         if (cell == nil)
         {
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell6"];
@@ -144,6 +144,20 @@
             label.frame=CGRectMake(20, 10, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width*[[FitmooHelper sharedInstance] frameRadio], 0.f, 0.f);
+            
+            UIImageView *Image= (UIImageView *)[cell viewWithTag:10];
+            Image.frame=CGRectMake(285, 20, 11, 17);
+            Image.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:Image respectToSuperFrame:self.view];
+        }
+        
+    }else if (indexPath.row==4) {
+        if (cell == nil)
+        {
+            cell=[tableView dequeueReusableCellWithIdentifier:@"cell7"];
+            
+            UILabel *label= (UILabel *)[cell viewWithTag:5];
+            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             
             UIImageView *Image= (UIImageView *)[cell viewWithTag:10];
             Image.frame=CGRectMake(285, 20, 11, 17);
@@ -174,6 +188,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         acountPage.tabletype=@"privacy";
         [self.navigationController pushViewController:acountPage animated:YES];
         
+    }else if (indexPath.row==4) {
+       
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/privacy-policy"]];
+    }
+    else if (indexPath.row==5) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/terms-and-conditions"]];
+    }else if (indexPath.row==6) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com"]];
     }
     
 }

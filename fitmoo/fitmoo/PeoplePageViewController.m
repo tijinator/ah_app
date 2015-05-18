@@ -28,7 +28,14 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
+    
+    if (_searchId!=nil) {
+        [self getUserProfile];
+    }else
+    {
+    
     [self getHomePageItems];
+    }
  //   [self getGalary];
     [self createObservers];
 }
@@ -38,8 +45,26 @@
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
 }
 
+- (void) getUserProfile
+{
+    [[UserManager sharedUserManager] getUserProfileForOtherPeople:_searchId];
+}
+
+- (void) didGetProfileFinished: (NSNotification * ) note
+{
+    _temSearchUser= (User *) [note object];
+    if (_temSearchUser.current_user_can_view_profile.intValue==1) {
+        [self getHomePageItems];
+    }else
+    {
+        [_tableView reloadData];
+    }
+    
+}
 
 - (void) didPostFinished: (NSNotification * ) note
 {
@@ -66,46 +91,9 @@
     _limit=12;
     _count=1;
     
-//    _photoOffset=0;
-//    _photoLimit=30;
-//    _photoCount=1;
- //   _homeFeedArray= [[NSMutableArray alloc]init];
+
 }
 
-
-//-(void) getGalary
-//{
-//   
-//    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.securityPolicy.allowInvalidCertificates = YES;
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    
-//    NSString *lim= [NSString stringWithFormat:@"%i", _photoLimit];
-//    NSString *ofs= [NSString stringWithFormat:@"%i", _photoOffset];
-//    
-//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",
-//                              ofs, @"offset", lim , @"limit",nil];
-//    NSString * url;
-// 
-//    url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/photos"];
-//    
-//    
-//    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-//        
-//        _responseDic= responseObject;
-//        
-//        [self definePhotoObjects];
-//
-//        
-//      //  NSLog(@"Submit response data: %@", responseObject);
-//    } // success callback block
-//     
-//         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-//             _tableView.userInteractionEnabled=true;
-//             NSLog(@"Error: %@", error);} // failure callback block
-//     ];
-//}
 
 
 -(void) getHomePageItems
@@ -298,6 +286,17 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         if (_temSearchUser !=nil) {
             temUser=_temSearchUser;
+            
+            if (temUser.is_following.intValue==1) {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
+                [cell.editProfileButton setTag:11];
+                
+            }else if(temUser.is_following.intValue==0)
+            {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
+                  [cell.editProfileButton setTag:12];
+            }
+            
         }else
         {
         temUser= [[UserManager sharedUserManager] localUser];
@@ -851,7 +850,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 - (IBAction)editProfileButtonClick:(id)sender {
+      UIButton *button = (UIButton *)sender;
+    
+
+    if (button.tag==11) {
+         [[UserManager sharedUserManager] performUnFollow:_searchId];
+        [button setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
+        button.tag=12;
+    }else if (button.tag==12) //follow
+    {
+        [[UserManager sharedUserManager] performFollow:_searchId];
+        [button setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
+        button.tag=11;
+    }else
+    {
+
      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"3"];
+    }
     
 }
 

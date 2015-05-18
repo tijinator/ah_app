@@ -141,7 +141,56 @@
 }
 
 
--(void) getUserProfile:(User *) user;
+-(void) getUserProfileForOtherPeople:(NSString *) other_people_id
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[User alloc] init];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",_homeFeedUrl, other_people_id];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        localUser.name=[_responseDic objectForKey:@"full_name"];
+        
+        NSNumber * following=[_responseDic objectForKey:@"following"];
+        localUser.following= [following stringValue];
+        NSNumber * followers=[_responseDic objectForKey:@"followers"];
+        localUser.followers= [followers stringValue];
+        NSNumber * communities=[_responseDic objectForKey:@"communities"];
+        localUser.communities= [communities stringValue];
+        
+        NSDictionary * profile=[_responseDic objectForKey:@"profile"];
+        localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+        NSDictionary *avatar=[profile objectForKey:@"avatars"];
+        localUser.profile_avatar_thumb=[avatar objectForKey:@"original"];
+        localUser.profile_avatar_original=[avatar objectForKey:@"thumb"];
+        localUser.bio=[profile objectForKey:@"bio"];
+        if ([localUser.bio isEqual:[NSNull null]]) {
+            localUser.bio=@"";
+        }
+        localUser.is_following=[_responseDic objectForKey:@"is_following"];
+        localUser.current_user_can_view_profile=[_responseDic objectForKey:@"current_user_can_view_profile"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didGetProfileFinished" object:localUser];
+       
+     
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
+
+
+-(void) getUserProfile:(User *) user
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

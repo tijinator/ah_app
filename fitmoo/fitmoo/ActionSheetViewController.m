@@ -118,10 +118,28 @@
     if ([_action isEqualToString:@"delete"]) {
         [[UserManager sharedUserManager] performDelete:_postId];
     }else if([_action isEqualToString:@"report"]) {
+      
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Question"
+                                                           message:@"Do you want to report?"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"No"
+                                                 otherButtonTitles:@"Yes",nil];
+            [alert show];
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
         
-        [[UserManager sharedUserManager] performReport:_postId];
+        
+      
     }
       [self.view removeFromSuperview];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // 0 = Tapped yes
+    if (buttonIndex == 1)
+    {
+        [[UserManager sharedUserManager] performReport:_postId];
+    }
 }
 
 - (IBAction)cancelButtonClick:(id)sender {

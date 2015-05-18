@@ -21,13 +21,16 @@
     _valEmail=false;
     self.facebookLoginView.delegate = self;
     self.facebookLoginView.readPermissions = @[@"public_profile", @"email"];
+    
+   
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 
+
 - (void) initFrames
 {
-    
+    _backgroundView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundView respectToSuperFrame:self.view];
     _nameField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nameField respectToSuperFrame:self.view];
     _passwordField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_passwordField respectToSuperFrame:self.view];
     _dateBirthView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_dateBirthView respectToSuperFrame:self.view];
@@ -36,22 +39,28 @@
     
     _pickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerView respectToSuperFrame:self.view];
     _pickerView2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerView2 respectToSuperFrame:self.view];
-    _datePicker.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_datePicker respectToSuperFrame:self.view];
-    _datePicker.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_datePicker respectToSuperFrame:self.view];
-    
-    _genderPickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_genderPickerView respectToSuperFrame:self.view];
+    double x=(self.view.frame.size.width-_datePicker.frame.size.width)/2;
+    _datePicker.frame= CGRectMake(_datePicker.frame.origin.x+x, _datePicker.frame.origin.y*[[FitmooHelper sharedInstance] frameRadio], _datePicker.frame.size.width, _datePicker.frame.size.height);
+
+     double x1=(self.view.frame.size.width-_genderPickerView.frame.size.width)/2;
+    _genderPickerView.frame= CGRectMake(_genderPickerView.frame.origin.x+x1, _genderPickerView.frame.origin.y*[[FitmooHelper sharedInstance] frameRadio], _genderPickerView.frame.size.width, _genderPickerView.frame.size.height);
     _doneButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton respectToSuperFrame:self.view];
     _doneButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton1 respectToSuperFrame:self.view];
     _clearButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_clearButton respectToSuperFrame:self.view];
 
     
-    _loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
+   // _loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
     _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:self.view];
     _emailTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_emailTextField respectToSuperFrame:self.view];
-    _sighUpButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
+  //  _sighUpButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
     _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
     [_emailTextField setDelegate:self];
      [_datePicker setDatePickerMode:UIDatePickerModeDate];
+    
+    _sighUpButton.frame=CGRectMake(33, 197, 255, 44);
+    _sighUpButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
+    _loginButton.frame=CGRectMake(25, 261, 270, 23);
+    _loginButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
 }
 
 
@@ -59,7 +68,7 @@
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     
-    loginView.frame = CGRectMake(24, 68, 270, 37);
+    loginView.frame = CGRectMake(33, 70, 255, 39);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     for (id obj in loginView.subviews)
     {
@@ -122,7 +131,7 @@
 
 
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
-    loginView.frame = CGRectMake(24, 68, 270, 37);
+    loginView.frame = CGRectMake(33, 70, 255, 39);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     for (id obj in loginView.subviews)
     {
@@ -149,11 +158,6 @@
     return YES;
 }
 
--(void) showRestOfViews
-{
-    _emailTextField.userInteractionEnabled=false;
-    
-}
 
 - (IBAction)signUpButtonClick:(id)sender {
     
@@ -313,7 +317,7 @@
     NSRange range2 = NSMakeRange(6,4);
     NSString *year= [date substringWithRange:range2];
     
-    if ([thisYear integerValue]-[year integerValue]<12) {
+    if ([thisYear integerValue]-[year integerValue]<=12) {
         
           empty=true;
         
@@ -415,4 +419,41 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openNextpage" object:@"login"];
     
 }
+
+- (IBAction)backButtonClick:(id)sender {
+    
+    _emailTextField.userInteractionEnabled=true;
+    _backgroundView.hidden=true;
+    _nameField.hidden=true;
+    _passwordField.hidden=true;
+    _dateBirthView.hidden=true;
+    _genderView.hidden=true;
+    _backButton.hidden=true;
+    [_sighUpButton setTitle:@"SIGH UP" forState:UIControlStateNormal];
+    
+    _sighUpButton.frame=CGRectMake(33, 197, 255, 44);
+    _sighUpButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
+    _loginButton.frame=CGRectMake(25, 261, 270, 23);
+    _loginButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
+    _valEmail=false;
+}
+
+-(void) showRestOfViews
+{
+    _emailTextField.userInteractionEnabled=false;
+    _backgroundView.hidden=false;
+    _nameField.hidden=false;
+    _passwordField.hidden=false;
+    _dateBirthView.hidden=false;
+    _genderView.hidden=false;
+    _backButton.hidden=false;
+    [_sighUpButton setTitle:@"GET STARTED" forState:UIControlStateNormal];
+    
+    _sighUpButton.frame=CGRectMake(33, 390, 255, 44);
+    _sighUpButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_sighUpButton respectToSuperFrame:self.view];
+    _loginButton.frame=CGRectMake(25, 495, 270, 23);
+    _loginButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
+    
+}
+
 @end

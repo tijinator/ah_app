@@ -192,6 +192,8 @@
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
         view.layer.cornerRadius=view.frame.size.width/2;
         view.clipsToBounds=YES;
+        view.userInteractionEnabled = NO;
+        view.exclusiveTouch = NO;
         AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
         
         
@@ -201,19 +203,25 @@
         if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
         {
             headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by.thumb];
+            [cell.heanderImage1 setTag:tempHomefeed.feed_action.user_id.intValue];
         }else
         {
             headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
+            [cell.heanderImage1 setTag:tempHomefeed.feed_action.community_id.intValue];
         }
         [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [view addSubview:headerImage1];
         [cell.heanderImage1 addSubview:view];
+        
+        [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
    
     }
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     view.clipsToBounds=YES;
     view.layer.cornerRadius=view.frame.size.width/2;
+    view.userInteractionEnabled = NO;
+    view.exclusiveTouch = NO;
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     headerImage2.userInteractionEnabled = NO;
     headerImage2.exclusiveTouch = NO;
@@ -222,14 +230,16 @@
     if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
+        [cell.headerImage2 setTag:tempHomefeed.feed_action.user_id.intValue];
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
+        [cell.headerImage2 setTag:tempHomefeed.feed_action.community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
     [cell.headerImage2 addSubview:view];
-    
+    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
@@ -480,6 +490,26 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 //    specialPage.action=@"Post";
 //    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
 //    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+    
+}
+
+
+- (IBAction)headerImageButtonClick:(id)sender {
+        UIButton *button = (UIButton *)sender;
+        NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+    User *tempUser= [[UserManager sharedUserManager] localUser];
+    
+    if ([key isEqualToString:tempUser.user_id]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+    }else
+    {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        PeoplePageViewController *peoplePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+//        peoplePage.searchId= [NSString stringWithFormat:@"%ld", (long)button.tag];
+//        [self.navigationController pushViewController:peoplePage animated:YES];
+    
     
 }
 - (IBAction)likeButtonClick:(id)sender {
