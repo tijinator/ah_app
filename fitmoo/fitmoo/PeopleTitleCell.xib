@@ -136,6 +136,7 @@
                 <outlet property="headerImage1" destination="eAd-xH-NVO" id="7zp-Kt-ajz"/>
                 <outlet property="nameLabel" destination="qn4-J5-YhC" id="xIb-IN-V4a"/>
                 <outlet property="scheduleButton" destination="W7b-HI-RRa" id="q2C-ZG-tnf"/>
+                <outlet property="shadowImageView" destination="60T-wi-7di" id="uhk-hS-SqL"/>
                 <outlet property="topView" destination="HK1-cI-jiG" id="eIm-7Q-TIG"/>
             </connections>
             <point key="canvasLocation" x="216" y="456.5"/>

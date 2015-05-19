@@ -59,6 +59,7 @@
     _temSearchUser= (User *) [note object];
     if (_temSearchUser.current_user_can_view_profile.intValue==1) {
         [self getHomePageItems];
+         [_tableView reloadData];
     }else
     {
         [_tableView reloadData];

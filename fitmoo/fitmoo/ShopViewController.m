@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-     [self.bottomView setHidden:true];
+   //  [self.bottomView setHidden:true];
     // Do any additional setup after loading the view.
 }
 

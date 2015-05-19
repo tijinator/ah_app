@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *bioButton;
 @property (strong, nonatomic) IBOutlet UILabel *bioLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *shadowImageView;
 
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage1;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;

@@ -21,24 +21,32 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "PeoplePageViewController.h"
 #import "CreatedByCommunity.h"
-@interface SearchViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *tableview;
+#import "FollowCollectionViewCell.h"
+#import "SecondFollowViewController.h"
+
+@interface SearchViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UIButton *rightButton;
-@property (strong, nonatomic) IBOutlet UIView *headerView;
-@property (strong, nonatomic) IBOutlet UIView *pickerView;
-- (IBAction)doneButtonClick:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *doneButton;
-@property (strong, nonatomic) IBOutlet UIPickerView *pickerview;
+@property (strong, nonatomic) IBOutlet UILabel *featerLabel;
 
-@property (strong, nonatomic)  NSString * category;
-@property (strong, nonatomic)  NSString * Category;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UIView *bodyView;
+
+- (IBAction)backButtonClick:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIView *buttomView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) IBOutlet UILabel *lifestytleLabel;
+
 @property (strong, nonatomic)  NSString * searchterm;
 @property (strong, nonatomic)  UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSDictionary * responseDic1;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
-@property (strong, nonatomic)  NSMutableArray * searchArrayCommunitiess;
+@property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
 
 @end
