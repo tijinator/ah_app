@@ -120,7 +120,7 @@
     [UIView setAnimationDuration:0.2];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelegate:self];
-    _subBottomView.frame= CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio);
+    _subBottomView.frame= CGRectMake(0, self.bottomView.frame.origin.y, 320*Radio, 60*Radio);
     _postButton.frame= CGRectMake(160, 10, 0,0);
     _videoButton.frame= CGRectMake(160, 10, 0,0);
     _pictureButton.frame= CGRectMake(160, 10, 0,0);

@@ -42,6 +42,11 @@
     _followButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_followButton1 respectToSuperFrame:nil];
     _followButton2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_followButton2 respectToSuperFrame:nil];
     
+    _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:nil];
+    _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:nil];
+    
+    
+    
 }
 
 @end

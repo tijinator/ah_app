@@ -9,7 +9,10 @@
 #import "SecondFollowViewController.h"
 
 @interface SecondFollowViewController ()
-
+{
+    NSNumber * contentHight;
+    
+}
 @end
 
 @implementation SecondFollowViewController
@@ -19,6 +22,8 @@
     
     [self initFrames];
     [self getdiscoverItemForPeople];
+    
+     self.tableView.tableFooterView = [[UIView alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -37,8 +42,14 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+   
+  int count=(int)[_searchArrayPeople count]/2+1;
+    if ([_searchArrayPeople count]%2>0) {
+        count=count+1;
+    }
     
-    return [_searchArrayPeople count];
+    
+    return count;
     
 }
 
@@ -47,19 +58,124 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
 
+    
+    if (indexPath.row==0) {
+        UITableViewCell *cell=  [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+        
+        UIImageView *image=(UIImageView *) [cell viewWithTag:1];
+        image.frame= CGRectMake(0, 0, 320, 200);
+        image.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:image respectToSuperFrame:nil];
+        
+        AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,image.frame.size.width, image.frame.size.height)];
+        headerImage2.userInteractionEnabled = NO;
+        headerImage2.exclusiveTouch = NO;
+        headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+        
+        headerImage2.imageURL =[NSURL URLWithString:_keyword_photo_url];
+        
+        [image.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [image addSubview:headerImage2];
+        
+
+      
+        UILabel *label= (UILabel *) [cell viewWithTag:2];
+        label.frame= CGRectMake(100, 55, 120, 90);
+        label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
+        NSString *string= [NSString stringWithFormat:@"%@",_keyword_text];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string.uppercaseString attributes:@{NSFontAttributeName: font}  ];
+
+        [label setAttributedText:attributedString];
+
+        UILabel *label1= (UILabel *) [cell viewWithTag:3];
+        label1.frame= CGRectMake(16, 225, 248, 21);
+        label1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label1 respectToSuperFrame:nil];
+        
+        
+        contentHight=[NSNumber numberWithDouble:260* [[FitmooHelper sharedInstance] frameRadio]];
+        
+        return cell;
+    }
+    
     FollowCell *cell =(FollowCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-    }else
-    {
-        return cell;
+        int index=(int) (indexPath.row-1)*2;
+        
+        User *user= [_searchArrayPeople objectAtIndex:index];
+       
+        cell.nameLabel1.text= user.name;
+        cell.followLabel1.text=user.followers;
+      
+        AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image1.frame.size.width, cell.image1.frame.size.height)];
+        headerImage1.userInteractionEnabled = NO;
+        headerImage1.exclusiveTouch = NO;
+        headerImage1.layer.cornerRadius=headerImage1.frame.size.width/2;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
+        
+        headerImage1.imageURL =[NSURL URLWithString:user.cover_photo_url];
+        
+        [cell.image1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [cell.image1 addSubview:headerImage1];
+        
+        if ([user.is_following isEqualToString:@"0"]) {
+            [cell.followButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+            
+        }else
+        {
+            [cell.followButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
+        }
+        
+        cell.followButton1.tag= index+100;
+        [cell.followButton1 addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+        
+        if ([_searchArrayPeople count]%2==0) {
+            User *user1= [_searchArrayPeople objectAtIndex:index+1];
+            cell.nameLabel2.text=user1.name;
+            cell.followLabel2.text=user1.followers;
+            AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image2.frame.size.width, cell.image2.frame.size.height)];
+            headerImage2.userInteractionEnabled = NO;
+            headerImage2.exclusiveTouch = NO;
+            headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+            
+            headerImage2.imageURL =[NSURL URLWithString:user1.cover_photo_url];
+            
+            [cell.image2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+            [cell.image2 addSubview:headerImage2];
+            
+            if ([user1.is_following isEqualToString:@"0"]) {
+                [cell.followButton2 setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+                
+            }else
+            {
+                [cell.followButton2 setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
+            }
+            cell.followButton2.tag= index+1+100;
+            [cell.followButton2 addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+
+        }else
+        {
+            cell.view2.hidden=true;
+        }
+        
+        
+       
+     
+        
+        contentHight=[NSNumber numberWithDouble:cell.view1.frame.size.height];
     }
     
- 
+    
+    
+    
     return cell;
 }
 
@@ -77,14 +193,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 // 
 //    return height.integerValue;
 //}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-//{
-//    
-//    NSNumber *height;
-//
-//    return height.integerValue;
-//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    NSNumber *height=contentHight;
+
+    return height.integerValue;
+}
 
 
 - (void) getdiscoverItemForPeople
@@ -117,25 +233,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     _searchArrayPeople= [[NSMutableArray alloc] init];
     
-    for (NSDictionary * result in _responseDic) {
-        User *tempUser= [[User alloc]  init];
-        NSNumber * following=[result objectForKey:@"is_following"];
-        tempUser.is_following= [following stringValue];
-        //  NSNumber * followers=[result objectForKey:@"followers"];
-        tempUser.followers= [result objectForKey:@"followers"];
-        
-        
-        NSDictionary * profile=[result objectForKey:@"profile"];
-        NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-        
-        tempUser.name= [result objectForKey:@"full_name"];
-        NSNumber * user_id=[result objectForKey:@"id"];
-        tempUser.user_id= [user_id stringValue];
-        
-        [_searchArrayPeople addObject:tempUser];
-    }
-    [self.tableView reloadData];
+      for (NSDictionary * result in _responseDic) {
+          
+          if ([result objectForKey:@"keyword_photo_url"]==nil ) {
+              User *user= [[User alloc] init];
+              NSNumber * follower=[result objectForKey:@"follower_count"];
+              user.followers= [follower stringValue];
+              NSNumber * user_id=[result objectForKey:@"id"];
+              user.user_id= [user_id stringValue];
+              user.name= [result objectForKey:@"name"];
+              user.cover_photo_url=[result objectForKey:@"photo_url"];
+              user.is_following=@"0";
+              
+              [_searchArrayPeople addObject:user];
+
+          }else
+          {
+              _keyword_photo_url=[result objectForKey:@"keyword_photo_url"];
+              _keyword_text=[result objectForKey:@"keyword_text"];
+          }
+          
+      }
+    
+       [self.tableView reloadData];
     
 }
 - (void) initFrames
@@ -154,6 +274,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
 
+    
+}
+
+- (IBAction)followButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag-100;
+    
+    User *user= [_searchArrayPeople objectAtIndex:index];
+    
+    if ([user.is_following isEqualToString:@"0"]) {
+        [[UserManager sharedUserManager] performFollow:user.user_id];
+        user.is_following=@"1";
+        [button setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
+    }else
+    {
+        [[UserManager sharedUserManager] performUnFollow:user.user_id];
+        user.is_following=@"0";
+        [button setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+    }
+    
     
 }
 

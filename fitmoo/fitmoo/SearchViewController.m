@@ -123,7 +123,7 @@
             
             NSDictionary * profile=[result objectForKey:@"profile"];
             NSDictionary *avatar=[profile objectForKey:@"avatars"];
-            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+            tempUser.profile_avatar_thumb=[avatar objectForKey:@"medium"];
             
             tempUser.name= [result objectForKey:@"full_name"];
             NSNumber * user_id=[result objectForKey:@"id"];
@@ -233,7 +233,8 @@
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
     
     headerImage2.imageURL =[NSURL URLWithString:tempUser.profile_avatar_thumb];
-    
+    [cell.image.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+
     [cell.image addSubview:headerImage2];
     
     if ([tempUser.is_following isEqualToString:@"0"]) {
@@ -264,7 +265,11 @@
 
 - (IBAction)categoryButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+    NSInteger index= button.tag-10;
+    User *user= [_searchArrayCategory objectAtIndex:index];
+    
+    
+    NSString *key=user.user_id;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SecondFollowViewController *secondFollowPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SecondFollowViewController"];
     secondFollowPage.searchId= key;
