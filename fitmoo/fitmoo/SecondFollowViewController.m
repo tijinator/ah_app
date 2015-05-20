@@ -64,7 +64,7 @@
         UITableViewCell *cell=  [tableView dequeueReusableCellWithIdentifier:@"cell1"];
         
         UIImageView *image=(UIImageView *) [cell viewWithTag:1];
-        image.frame= CGRectMake(0, 0, 320, 200);
+        image.frame= CGRectMake(0, 0, 320, 320);
         image.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:image respectToSuperFrame:nil];
         
         AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,image.frame.size.width, image.frame.size.height)];
@@ -81,7 +81,7 @@
 
       
         UILabel *label= (UILabel *) [cell viewWithTag:2];
-        label.frame= CGRectMake(100, 55, 120, 90);
+        label.frame= CGRectMake(90, 115, 120, 90);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
         UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
         NSString *string= [NSString stringWithFormat:@"%@",_keyword_text];
@@ -90,11 +90,11 @@
         [label setAttributedText:attributedString];
 
         UILabel *label1= (UILabel *) [cell viewWithTag:3];
-        label1.frame= CGRectMake(16, 225, 248, 21);
+        label1.frame= CGRectMake(16, 345, 300, 21);
         label1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label1 respectToSuperFrame:nil];
         
         
-        contentHight=[NSNumber numberWithDouble:260* [[FitmooHelper sharedInstance] frameRadio]];
+        contentHight=[NSNumber numberWithDouble:380* [[FitmooHelper sharedInstance] frameRadio]];
         
         return cell;
     }
@@ -133,7 +133,16 @@
         
         cell.followButton1.tag= index+100;
         [cell.followButton1 addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-
+        
+        cell.clickbutton1.tag=user.user_id.intValue;
+        [cell.clickbutton1 addTarget:self action:@selector(cellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        int count=(int)[_searchArrayPeople count]/2+1;
+        if ([_searchArrayPeople count]%2>0) {
+            count=count+1;
+        }
+        
+      
         
         if ([_searchArrayPeople count]%2==0) {
             User *user1= [_searchArrayPeople objectAtIndex:index+1];
@@ -160,12 +169,47 @@
             cell.followButton2.tag= index+1+100;
             [cell.followButton2 addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
-
+            cell.clickbutton2.tag=user1.user_id.intValue;
+            [cell.clickbutton2 addTarget:self action:@selector(cellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }else
         {
-            cell.view2.hidden=true;
+            if (indexPath.row!=(count-1)) {
+            
+            User *user1= [_searchArrayPeople objectAtIndex:index+1];
+            cell.nameLabel2.text=user1.name;
+            cell.followLabel2.text=user1.followers;
+            AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image2.frame.size.width, cell.image2.frame.size.height)];
+            headerImage2.userInteractionEnabled = NO;
+            headerImage2.exclusiveTouch = NO;
+            headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+            
+            headerImage2.imageURL =[NSURL URLWithString:user1.cover_photo_url];
+            
+            [cell.image2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+            [cell.image2 addSubview:headerImage2];
+            
+            if ([user1.is_following isEqualToString:@"0"]) {
+                [cell.followButton2 setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+                
+            }else
+            {
+                [cell.followButton2 setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
+            }
+            cell.followButton2.tag= index+1+100;
+            [cell.followButton2 addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            cell.clickbutton2.tag=user1.user_id.intValue;
+            [cell.clickbutton2 addTarget:self action:@selector(cellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else
+            {
+                cell.view2.hidden=true;
+            }
+
+            
         }
         
+            
         
        
      
@@ -174,7 +218,7 @@
     }
     
     
-    
+ 
     
     return cell;
 }
@@ -274,6 +318,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
 
+    
+}
+
+- (IBAction)cellButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key= [NSString stringWithFormat:@"%d",button.tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
 }
 

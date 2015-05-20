@@ -203,7 +203,6 @@
 		273FF5651AF7AA2C00B82DB3 /* nutritiontag.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5331AF7AA2C00B82DB3 /* nutritiontag.png */; };
 		273FF5661AF7AA2C00B82DB3 /* pausebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5341AF7AA2C00B82DB3 /* pausebtn.png */; };
 		273FF5671AF7AA2C00B82DB3 /* playbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5351AF7AA2C00B82DB3 /* playbtn.png */; };
-		273FF5681AF7AA2C00B82DB3 /* posticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5361AF7AA2C00B82DB3 /* posticon.png */; };
 		273FF5691AF7AA2C00B82DB3 /* postmenuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5371AF7AA2C00B82DB3 /* postmenuicon.png */; };
 		273FF56A1AF7AA2C00B82DB3 /* recordbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5381AF7AA2C00B82DB3 /* recordbtn.png */; };
 		273FF56B1AF7AA2C00B82DB3 /* recordingbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5391AF7AA2C00B82DB3 /* recordingbtn.png */; };
@@ -349,6 +348,8 @@
 		2760945B1AD708C100A769CE /* BentonSansExtraComp-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */; };
 		2760945C1AD708C100A769CE /* BentonSansExtraComp-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */; };
 		2760945E1AD717E700A769CE /* fontello.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760945D1AD717E700A769CE /* fontello.ttf */; };
+		276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */; };
+		276F44261B0CFB6700342DC9 /* FollowHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */; };
 		278818AD1B06972500FE8A4C /* white_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AA1B06972500FE8A4C /* white_toggle.png */; };
 		278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AB1B06972500FE8A4C /* white_toggle@2x.png */; };
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
@@ -669,7 +670,6 @@
 		273FF5331AF7AA2C00B82DB3 /* nutritiontag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nutritiontag.png; sourceTree = "<group>"; };
 		273FF5341AF7AA2C00B82DB3 /* pausebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pausebtn.png; sourceTree = "<group>"; };
 		273FF5351AF7AA2C00B82DB3 /* playbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbtn.png; sourceTree = "<group>"; };
-		273FF5361AF7AA2C00B82DB3 /* posticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = posticon.png; sourceTree = "<group>"; };
 		273FF5371AF7AA2C00B82DB3 /* postmenuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postmenuicon.png; sourceTree = "<group>"; };
 		273FF5381AF7AA2C00B82DB3 /* recordbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordbtn.png; sourceTree = "<group>"; };
 		273FF5391AF7AA2C00B82DB3 /* recordingbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordingbtn.png; sourceTree = "<group>"; };
@@ -828,6 +828,9 @@
 		276094411AD708C100A769CE /* BentonSansExtraComp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Medium.otf"; sourceTree = "<group>"; };
 		276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BentonSansExtraComp-Regular.otf"; sourceTree = "<group>"; };
 		2760945D1AD717E700A769CE /* fontello.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontello.ttf; sourceTree = "<group>"; };
+		276F44221B0CFB6700342DC9 /* FollowHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowHeaderCell.h; sourceTree = "<group>"; };
+		276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowHeaderCell.m; sourceTree = "<group>"; };
+		276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowHeaderCell.xib; sourceTree = "<group>"; };
 		278818AA1B06972500FE8A4C /* white_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_toggle.png; sourceTree = "<group>"; };
 		278818AB1B06972500FE8A4C /* white_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@2x.png"; sourceTree = "<group>"; };
 		278818AC1B06972500FE8A4C /* white_toggle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@3x.png"; sourceTree = "<group>"; };
@@ -1062,6 +1065,9 @@
 				27988CBE1B0BC69A00BDE8EB /* FollowCell.h */,
 				27988CBF1B0BC69A00BDE8EB /* FollowCell.m */,
 				27988CC01B0BC69A00BDE8EB /* FollowCell.xib */,
+				276F44221B0CFB6700342DC9 /* FollowHeaderCell.h */,
+				276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */,
+				276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */,
 				273CE5A61AEE863600BCC66F /* BentonSansMedium.h */,
 				273CE5A71AEE863600BCC66F /* BentonSansMedium.m */,
 				273CE5A91AEEB24900BCC66F /* BentonSansRegular.h */,
@@ -1333,7 +1339,6 @@
 				273FF5331AF7AA2C00B82DB3 /* nutritiontag.png */,
 				273FF5341AF7AA2C00B82DB3 /* pausebtn.png */,
 				273FF5351AF7AA2C00B82DB3 /* playbtn.png */,
-				273FF5361AF7AA2C00B82DB3 /* posticon.png */,
 				273FF5371AF7AA2C00B82DB3 /* postmenuicon.png */,
 				273FF5381AF7AA2C00B82DB3 /* recordbtn.png */,
 				273FF5391AF7AA2C00B82DB3 /* recordingbtn.png */,
@@ -1995,7 +2000,6 @@
 				27988C831B0B7C7400BDE8EB /* mainmenu_followicon.png in Resources */,
 				2752E9F51B015CBC003841DC /* following_btn.png in Resources */,
 				2752E9FB1B015CBC003841DC /* hearticon@3x.png in Resources */,
-				273FF5681AF7AA2C00B82DB3 /* posticon.png in Resources */,
 				27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */,
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
 				276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */,
@@ -2031,6 +2035,7 @@
 				2732B7141AD809E900610821 /* report.png in Resources */,
 				27988CB11B0BB12500BDE8EB /* followsection_seeallbrandsbtn@3x.png in Resources */,
 				2752EA271B015CBC003841DC /* whitearrow@2x.png in Resources */,
+				276F44261B0CFB6700342DC9 /* FollowHeaderCell.xib in Resources */,
 				2738D91E1B023EE700F5087E /* follow_btn@2x.png in Resources */,
 				2732B7211AD820FB00610821 /* logout.png in Resources */,
 				27988CB91B0BB12500BDE8EB /* followsection_smallfollowingbtn@2x.png in Resources */,
@@ -2100,6 +2105,7 @@
 				2731C62E1ADD55D300788181 /* PeoplePageViewController.m in Sources */,
 				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
 				2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */,
+				276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */,
 				272582741AD591ED0059F43C /* UserManager.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,

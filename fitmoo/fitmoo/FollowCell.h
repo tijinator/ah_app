@@ -21,5 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *followButton2;
 @property (strong, nonatomic) IBOutlet UIView *view1;
 @property (strong, nonatomic) IBOutlet UIView *view2;
+@property (strong, nonatomic) IBOutlet UIButton *clickbutton1;
+@property (strong, nonatomic) IBOutlet UIButton *clickbutton2;
 
 @end

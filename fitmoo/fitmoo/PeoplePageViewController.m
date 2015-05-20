@@ -224,13 +224,13 @@
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.tableType isEqualToString:@"photo"]) {
-        
-        return 105*[[FitmooHelper sharedInstance] frameRadio];
-
-    }else
-    {
-    
+//    if ([self.tableType isEqualToString:@"photo"]) {
+//        
+//        return 105*[[FitmooHelper sharedInstance] frameRadio];
+//
+//    }else
+//    {
+//    
     
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
@@ -242,7 +242,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
-    }
+ //   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -405,6 +405,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             cell.view3.hidden=true;
         }
+        
+        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]] ;
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+
         
         return cell;
         
@@ -636,15 +645,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    if (indexPath.row==0) {
 //        return contentHight.integerValue;
 //    }
-    if ([self.tableType isEqualToString:@"photo"]) {
-        if (indexPath.row==0) {
-            NSNumber *height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-            return  height.intValue;
-        }
-        
-          return 105*[[FitmooHelper sharedInstance] frameRadio];
-    }else
-    {
+//    if ([self.tableType isEqualToString:@"photo"]) {
+//        if (indexPath.row==0) {
+//            NSNumber *height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+//            return  height.intValue;
+//        }
+//        
+//          return 105*[[FitmooHelper sharedInstance] frameRadio];
+//    }else
+//    {
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -655,7 +664,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
-    }
+  //  }
 }
 
 

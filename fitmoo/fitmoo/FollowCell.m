@@ -46,7 +46,8 @@
     _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:nil];
     
     
-    
+    _clickbutton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_clickbutton1 respectToSuperFrame:nil];
+    _clickbutton2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_clickbutton2 respectToSuperFrame:nil];
 }
 
 @end

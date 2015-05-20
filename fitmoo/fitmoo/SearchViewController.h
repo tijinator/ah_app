@@ -23,6 +23,7 @@
 #import "CreatedByCommunity.h"
 #import "FollowCollectionViewCell.h"
 #import "SecondFollowViewController.h"
+#import "FollowHeaderCell.h"
 
 @interface SearchViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
@@ -33,15 +34,18 @@
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *bodyView;
-
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 - (IBAction)backButtonClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UILabel *lifestytleLabel;
-
+@property (assign, nonatomic)  int count;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
 @property (strong, nonatomic)  NSString * searchterm;
 @property (strong, nonatomic)  UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;

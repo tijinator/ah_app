@@ -10,7 +10,7 @@
 
 @interface SearchViewController ()
 {
-    
+        NSNumber * contentHight;
 }
 @end
 
@@ -20,13 +20,15 @@
     [super viewDidLoad];
     [self initFrames];
 
+    contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
+    _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _searchterm=@"";
     UINib *cellNib = [UINib nibWithNibName:@"FollowCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FollowCollectionViewCell"];
     [self.bottomView setHidden:true];
     
-
-    _searchArrayCategory= [[NSMutableArray alloc] initWithObjects:@"carticon.png",@"carticon.png",@"carticon.png",@"carticon.png", nil];
+    
+    _searchArrayCategory= [[NSMutableArray alloc] init];
  
     [self getdiscoverItemForPeople];
     [self getCategoryAndLife];
@@ -105,14 +107,16 @@
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
     _bodyView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyView respectToSuperFrame:self.view];
     _scrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scrollView respectToSuperFrame:self.view];
+    _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     _lifestytleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_lifestytleLabel respectToSuperFrame:self.view];
 
 }
 
 -(void) parseResponseDicDiscover
 {
+     if (_offset==0) {
      _searchArrayPeople= [[NSMutableArray alloc] init];
-
+     }
         for (NSDictionary * result in _responseDic) {
             User *tempUser= [[User alloc]  init];
             NSNumber * following=[result objectForKey:@"is_following"];
@@ -152,8 +156,8 @@
             
               [_searchArrayCategory addObject:tempUser];
         }
-    [self addScrollView];
-    
+ //   [self addScrollView];
+    [self.tableview reloadData];
 }
 
 - (void) getCategoryAndLife
@@ -190,9 +194,9 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",_searchTermField.text, @"keyword",@"10", @"limit",@"any", @"gender",@"18", @"min",@"102", @"max",@"", @"lat",@"", @"lng",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/recommended_users"];
+      NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",@"10", @"limit",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/recommended_users_mobile"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
@@ -207,6 +211,146 @@
      ];
 
 }
+
+#pragma mark - UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    
+    int count=(int)[_searchArrayCategory count]/2+1;
+    if ([_searchArrayCategory count]%2>0) {
+        count=count+1;
+    }
+    
+    
+    return count;
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.row==0) {
+        
+         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+        [_bodyView removeFromSuperview];
+        [cell.contentView addSubview:_bodyView];
+        
+        
+        contentHight=[NSNumber numberWithDouble:_bodyView.frame.size.height];
+         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
+        return cell;
+    }
+    
+    FollowHeaderCell *cell =(FollowHeaderCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+    
+    if (cell==nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowHeaderCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    int index=(int) (indexPath.row-1)*2;
+    
+    User *user= [_searchArrayCategory objectAtIndex:index];
+    
+    cell.label1.text= user.name.uppercaseString;
+    
+    cell.button1.tag= index+10;
+    [cell.button1 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    int count=(int)[_searchArrayCategory count]/2+1;
+    if ([_searchArrayCategory count]%2>0) {
+        count=count+1;
+    }
+    if ([_searchArrayPeople count]%2==0||indexPath.row!=count) {
+        User *user1= [_searchArrayCategory objectAtIndex:index+1];
+        cell.label2.text= user1.name.uppercaseString;
+        
+        cell.button2.tag= index+1+10;
+        [cell.button2 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+    }else
+    {
+       
+        
+        cell.button2.hidden=true;
+        cell.label2.hidden=true;
+        
+    }
+    
+
+    
+    contentHight=[NSNumber numberWithDouble:cell.button1.frame.size.height+2];
+    if (indexPath.row>=[_heighArray count]) {
+        [_heighArray addObject:contentHight];
+    }else
+    {
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+    }
+
+    
+  
+    
+    return cell;
+
+}
+
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+        
+        NSNumber *height;
+        if (indexPath.row<[_heighArray count]) {
+            height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+            
+        }else
+        {
+            height=[NSNumber numberWithDouble:270*[[FitmooHelper sharedInstance] frameRadio]];
+        }
+        NSLog(@"%ld",(long)height.integerValue);
+        return height.integerValue;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    
+
+        NSNumber *height;
+        if (indexPath.row<[_heighArray count]) {
+            height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+            
+        }else
+        {
+            height=[NSNumber numberWithInt:contentHight.intValue];
+        }
+        NSLog(@"%ld",(long)height.integerValue);
+        return height.integerValue;
+    
+
+    
+
+}
+
 
 
 #pragma mark - UICollectionCellDelegate
@@ -249,6 +393,8 @@
     cell.followButton.tag= indexPath.row+100;
     [cell.followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
+
+    
     return cell;
     
 }
@@ -262,6 +408,10 @@
     
   //  [collectionView reloadData];
 }
+
+
+
+
 
 - (IBAction)categoryButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -306,7 +456,51 @@
     return YES;
 }
 
-
+-(void) initValuable
+{
+    _offset=0;
+    _limit=10;
+    _count=1;
+    
+    //   _homeFeedArray= [[NSMutableArray alloc]init];
+}
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.collectionView.contentOffset.x<-75){
+        if (_count==0) {
+            [self initValuable];
+            [self getdiscoverItemForPeople];
+        }
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.collectionView.contentOffset.x >= (self.collectionView.contentSize.width - self.collectionView.bounds.size.width+20)) {
+        //   NSLog(@"bottom!");
+        //   NSLog(@"%f",self.tableView.contentOffset.y );
+        //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+        
+        if (_count==0) {
+            if (self.collectionView.contentOffset.x<0) {
+                _offset =0;
+            }else
+            {
+                _offset +=10;
+                
+            }
+            [self getdiscoverItemForPeople];
+            
+        }
+        _count++;
+        
+        
+    }else
+    {
+        _count=0;
+    }
+    
+}
 
 
 
