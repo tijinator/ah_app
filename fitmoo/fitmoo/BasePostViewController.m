@@ -411,7 +411,7 @@
 
 -(void) setPostFrame
 {
-    _normalPostView.frame= CGRectMake(0, 55, _normalPostView.frame.size.width, _normalPostView.frame.size.height);
+    _normalPostView.frame= CGRectMake(0, 55, 320, 142);
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
     _normalPostView.hidden=false;
     _workoutView.hidden=true;
@@ -424,7 +424,7 @@
 
 -(void) setWorkoutFrame
 {
-    _workoutView.frame= CGRectMake(0, 55, _workoutView.frame.size.width, _workoutView.frame.size.height);
+    _workoutView.frame= CGRectMake(0, 55, 320, 172);
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     _normalPostView.hidden=true;
@@ -434,7 +434,7 @@
 
 -(void) setNutritionFrame
 {
-    _nutritionView.frame= CGRectMake(0, 55, _nutritionView.frame.size.width, _nutritionView.frame.size.height);
+    _nutritionView.frame= CGRectMake(0, 55, 320, 245);
     _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
     _normalPostView.hidden=true;
     _workoutView.hidden=true;
@@ -445,26 +445,35 @@
 
 -(void) initFrames
 {
+
+    double framradio= [[FitmooHelper sharedInstance] frameRadio];
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
     _normalPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostImage respectToSuperFrame:self.view];
-    _normalPostText.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostText respectToSuperFrame:self.view];
+ //   _normalPostText.frame= CGRectMake(96*framradio, 10*framradio, 216, 112);
+    _normalPostBackView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostBackView respectToSuperFrame:self.view];
+ 
+   
     _normalEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalEditButton respectToSuperFrame:self.view];
     
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
-    _workoutTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTitle respectToSuperFrame:self.view];
+    _workoutTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTitleView respectToSuperFrame:self.view];
     _workoutEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutEditButton respectToSuperFrame:self.view];
     
-    _workoutInstruction.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutInstruction respectToSuperFrame:self.view];
+    _workoutInstructionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutInstructionView respectToSuperFrame:self.view];
     _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
-    _nutritionTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionTitle respectToSuperFrame:self.view];
-    _nutritionIngedients.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionIngedients respectToSuperFrame:self.view];
-    _nutritionPreparation.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPreparation respectToSuperFrame:self.view];
+    _nutritionTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionTitleView respectToSuperFrame:self.view];
+    _nutritionIngedientsView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionIngedientsView respectToSuperFrame:self.view];
+    _nutritionPreparationView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPreparationView respectToSuperFrame:self.view];
     _nutritionEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionEditButton respectToSuperFrame:self.view];
     
+  //  _buttonView.frame= CGRectMake(0, 0, 320, 55);
     _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:self.view];
     _NormalPostButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NormalPostButton respectToSuperFrame:self.view];
     _WorkoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_WorkoutButton respectToSuperFrame:self.view];
     _NutritionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NutritionButton respectToSuperFrame:self.view];
+    
+    _nutritionPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPostImage respectToSuperFrame:self.view];
+    _workoutPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutPostImage respectToSuperFrame:self.view];
     
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];

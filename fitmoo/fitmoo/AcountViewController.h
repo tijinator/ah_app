@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *privacyBoolArray;
 @property (strong, nonatomic)  NSString * tabletype;
 @property (strong, nonatomic)  User * tempUser;
-
+@property (assign, nonatomic)  int count;
 @property (strong, nonatomic)  UIView *settingBottomView;
 
 @property (strong, nonatomic)  UITextField * nameTextfield;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic)  UITextField * websiteTextfield;
 @property (nonatomic, strong) UIButton *imageButton;
 @property (strong, nonatomic)  UIImage *chosenImage;
-@property (assign, nonatomic)  int count;
+
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property (strong, nonatomic)  UIImagePickerController *picker;
 

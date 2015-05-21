@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    _imageArray= [[NSArray alloc] initWithObjects: @"homeicon.png",@"shopicon.png",@"followicon.png",@"settingsicon.png",@"logouticon.png", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"mainmenu_houseicon.png",@"mainmenu_storeicon.png",@"mainmenu_followicon.png",@"mainmenu_settingsicon.png",@"logouticon.png", nil];
     _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
  //   [_leftTableView reloadData];

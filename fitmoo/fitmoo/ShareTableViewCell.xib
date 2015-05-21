@@ -149,7 +149,7 @@
                                 <rect key="frame" x="80" y="0.0" width="79" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="comment.png">
+                                <state key="normal" image="commenticon.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -158,7 +158,7 @@
                                 <rect key="frame" x="160" y="0.0" width="79" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="share.png">
+                                <state key="normal" image="shareicon.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -167,7 +167,7 @@
                                 <rect key="frame" x="240" y="0.0" width="80" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="options.png">
+                                <state key="normal" image="dots.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -177,7 +177,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="like.png">
+                                <state key="normal" image="hearticon.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -225,10 +225,10 @@
     </objects>
     <resources>
         <image name="black_gradient.png" width="322" height="54"/>
-        <image name="comment.png" width="40" height="40"/>
-        <image name="like.png" width="41" height="41"/>
-        <image name="options.png" width="40" height="40"/>
-        <image name="share.png" width="40" height="40"/>
+        <image name="commenticon.png" width="13" height="10"/>
+        <image name="dots.png" width="3" height="16"/>
+        <image name="hearticon.png" width="12" height="11"/>
+        <image name="shareicon.png" width="16" height="11"/>
         <image name="whitecommenticon.png" width="13" height="10"/>
         <image name="whiteendorseicon_small.png" width="13" height="13"/>
         <image name="whitehearticon.png" width="12" height="11"/>

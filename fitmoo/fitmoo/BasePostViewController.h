@@ -35,12 +35,21 @@
 @property (strong, nonatomic) IBOutlet UIView *workoutView;
 @property (strong, nonatomic) IBOutlet UITextView *workoutTitle;
 @property (strong, nonatomic) IBOutlet UITextView *workoutInstruction;
+@property (strong, nonatomic) IBOutlet UIView *workoutTitleView;
+@property (strong, nonatomic) IBOutlet UIView *workoutInstructionView;
 
 @property (strong, nonatomic) IBOutlet UIView *nutritionView;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionTitle;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionIngedients;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionPreparation;
+@property (strong, nonatomic) IBOutlet UIView *nutritionTitleView;
+@property (strong, nonatomic) IBOutlet UIView *nutritionPreparationView;
+@property (strong, nonatomic) IBOutlet UIView *nutritionIngedientsView;
+
+
+
 @property (strong, nonatomic) IBOutlet UIButton *nutritionEditButton;
+@property (strong, nonatomic) IBOutlet UIView *normalPostBackView;
 
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UIButton *NormalPostButton;

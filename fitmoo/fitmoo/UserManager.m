@@ -167,8 +167,8 @@
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
         NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        localUser.profile_avatar_thumb=[avatar objectForKey:@"original"];
-        localUser.profile_avatar_original=[avatar objectForKey:@"thumb"];
+        localUser.profile_avatar_thumb=[avatar objectForKey:@"small"];
+        localUser.profile_avatar_original=[avatar objectForKey:@"original"];
         localUser.bio=[profile objectForKey:@"bio"];
         if ([localUser.bio isEqual:[NSNull null]]) {
             localUser.bio=@"";
@@ -216,8 +216,8 @@
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         _localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
         NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        _localUser.profile_avatar_thumb=[avatar objectForKey:@"original"];
-        _localUser.profile_avatar_original=[avatar objectForKey:@"thumb"];
+        _localUser.profile_avatar_thumb=[avatar objectForKey:@"small"];
+        _localUser.profile_avatar_original=[avatar objectForKey:@"original"];
         _localUser.bio=[profile objectForKey:@"bio"];
         if ([_localUser.bio isEqual:[NSNull null]]) {
             _localUser.bio=@"";
@@ -680,11 +680,11 @@
         _responseDic= responseObject;
         
         
-        
-        
+        _localUser.profile_avatar_original=user.profile_avatar_original;
+        _localUser.profile_avatar_thumb=user.profile_avatar_original;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"makeUpdateFinished" object:nil];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      

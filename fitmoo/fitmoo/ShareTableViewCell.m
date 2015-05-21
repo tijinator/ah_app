@@ -46,8 +46,14 @@
 {
     int maxHeight=0;
     for (UIView * subview in _bodyView.subviews) {
-        int temHeight= (subview.frame.size.height+subview.frame.origin.y+5);
+        if ([_bodyDetailLabel.text isEqualToString:@""]) {
+            int temHeight= (subview.frame.size.height+subview.frame.origin.y);
+            maxHeight= MAX(maxHeight, temHeight);
+        }else
+        {
+        int temHeight= (subview.frame.size.height+subview.frame.origin.y+15);
         maxHeight= MAX(maxHeight, temHeight);
+        }
     }
     _bodyView.frame= CGRectMake(0, _bodyView.frame.origin.y, _bodyView.frame.size.width, maxHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
@@ -189,19 +195,21 @@
     _bodyCastView.hidden=false;
     
     
-    _bodyTitle.frame= CGRectMake(36, 95, 290, _bodyTitle.frame.size.height);
+    _bodyTitle.frame= CGRectMake(38, 95, 290, _bodyTitle.frame.size.height);
     _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
     
-    _bodyLabel1.frame= CGRectMake(37, 115, 260, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= CGRectMake(39, 115, 260, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
     
-    _bodyLabel2.frame= CGRectMake(37,135, 260, _bodyLabel2.frame.size.height);
+  
+    _bodyLabel2.text=_homeFeed.event.end_time;
+    _bodyLabel2.frame= CGRectMake(39,135, 260, _bodyLabel2.frame.size.height);
     _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
     [_bodyLabel2 setFont:_bodyLabel1.font];
-    [_bodyLabel2 setTextColor:_bodyLabel1.textColor];
-
+    [_bodyLabel2 setTextColor:[UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.4]];
+   
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    _bodyDetailLabel.frame=CGRectMake(38, 155, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
+    _bodyDetailLabel.frame=CGRectMake(40, 155, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
     
     _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
@@ -212,7 +220,7 @@
 - (void) resetShawdowElement
 {
     [_bodyLikeButton setImage:[UIImage imageNamed:@"greyhearticon.png"] forState:UIControlStateNormal];
-    [_bodyCommentButton setImage:[UIImage imageNamed:@"greycommenticon2.png"] forState:UIControlStateNormal];
+    [_bodyCommentButton setImage:[UIImage imageNamed:@"greycommenticon.png"] forState:UIControlStateNormal];
     [_bodyShareButton setImage:[UIImage imageNamed:@"greyendorseicon.png"] forState:UIControlStateNormal];
     [_bodyLikeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [_bodyCommentButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -234,6 +242,11 @@
 
         [self resetShawdowElement];
     }
+    
+    if ([_bodyDetailLabel.text isEqualToString:@""]) {
+        [_bodyDetailLabel removeFromSuperview];
+    }
+    
     [_bodyCastView removeFromSuperview];
 }
 - (void) setBodyFrameForWorkout

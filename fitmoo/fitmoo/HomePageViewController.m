@@ -252,14 +252,14 @@
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-      //case for photo and video exits
+    //case for photo and video exits, bodyview
     if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
         if ([tempHomefeed.type isEqualToString:@"event"])
         {
             cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, 60)];
         }
         
-        if ([tempHomefeed.photoArray count]!=0) {
+        if ([tempHomefeed.photoArray count]!=0&&[tempHomefeed.videosArray count]==0) {
             double maxHeightIndex=0;
             double radioBetweenWandH=0;
             for (int i=0; i<[tempHomefeed.photoArray count]; i++) {
@@ -344,7 +344,8 @@
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.bodyCommentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
+        NSString *totalCommment= [NSString stringWithFormat:@" %@",tempHomefeed.total_comment ];
+        [cell.bodyCommentButton setTitle:totalCommment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
             [cell addCommentView:cell.commentView Atindex:i];
@@ -362,7 +363,8 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
-    [cell.bodyLikeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
+    NSString *totalLike= [NSString stringWithFormat:@" %@",tempHomefeed.total_like];
+    [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
      [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
     }else

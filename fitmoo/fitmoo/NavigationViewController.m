@@ -11,6 +11,7 @@
 @implementation NavigationViewController
 {
     int currentPage;
+    bool blackStatusbar;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,15 +42,28 @@
     
     [[UINavigationBar appearance]  setBarTintColor:[UIColor blackColor]];
     currentPage=0;
+     blackStatusbar=false;
 // [self addfootButtonsForThree];
 }
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSideMenuAction:) name:@"leftSideMenuAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swipeHandler:) name:@"swipeHandler" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBlackStatusBarHandler:) name:@"showBlackStatusBarHandler" object:nil];
+   
 }
-
-
+-(void)showBlackStatusBarHandler:(NSNotification*)note{
+    
+    NSString *key = [note object];
+    if ([key isEqualToString:@"1"]) {
+         blackStatusbar=true;
+    }else
+    {
+          blackStatusbar=false;
+    }
+   
+    [self setNeedsStatusBarAppearanceUpdate];
+}
 
 -(void)swipeHandler:(UISwipeGestureRecognizer *)recognizer {
     
@@ -79,9 +93,30 @@
             
     }
 }
+
+-(void)viewDidLayoutSubviews
+{
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+}
+
 - (UIStatusBarStyle) preferredStatusBarStyle {
+    
+    
+    if(currentPage ==3||currentPage ==2||currentPage ==6)
+    {
+        if (blackStatusbar==true) {
+     
+            return UIStatusBarStyleDefault;
+            
+        }
+        return UIStatusBarStyleLightContent;
+    }
     return UIStatusBarStyleDefault;
 }
+
+
 
 -(void)leftSideMenuAction:(NSNotification*)note{
     
@@ -149,6 +184,9 @@
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         currentPage=3;
+
+    
+    
     }else  if (key.intValue>10) {
 
      
@@ -159,7 +197,7 @@
 
     
     }
-    
+    [self setNeedsStatusBarAppearanceUpdate];
     
 }
 

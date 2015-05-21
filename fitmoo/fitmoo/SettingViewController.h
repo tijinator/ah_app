@@ -13,6 +13,7 @@
 #import "BaseViewController.h"
 #import "AsyncImageView.h"
 #import "AcountViewController.h"
+#import "SettingWebViewController.h"
 @interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *topView;

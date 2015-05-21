@@ -32,8 +32,12 @@
         [self.imageButton setImage:_playImage forState:UIControlStateNormal];
     }
     [self createObservers];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"1"];
     // Do any additional setup after loading the view.
 }
+
+
+
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hidePostView" object:nil];
@@ -59,6 +63,7 @@
 -(void) initFrames
 {
     _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:self.view];
+    _topView.frame= CGRectMake(0, 0, 320, 50);
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _cameraDirectionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cameraDirectionButton respectToSuperFrame:self.view];
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
@@ -73,8 +78,11 @@
     _workoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutButton respectToSuperFrame:self.view];
     _writePostTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_writePostTextField respectToSuperFrame:self.view];
     
+  //  _filterView.frame= CGRectMake(0, 568, 320, 200);
     _filterView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterView respectToSuperFrame:self.view];
+    _filterfootView.frame= CGRectMake(0, 123, 320, 53);
     _filterfootView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterfootView respectToSuperFrame:self.view];
+    
     _filterIcon.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterIcon respectToSuperFrame:self.view];
     _filterScrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_filterScrollView respectToSuperFrame:self.view];
     
@@ -89,6 +97,8 @@
     
     _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
     _textFieldButton.frame=_writePostTextField.frame;
+    [self.view bringSubviewToFront:_footButtomView];
+    [self.view bringSubviewToFront:_filterView];
 }
 
 
@@ -109,6 +119,7 @@
 
 - (IBAction)closeButtonClick:(id)sender {
     [_picker dismissViewControllerAnimated:YES completion:nil];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"0"];
     [_timer invalidate];
 }
 
@@ -286,7 +297,7 @@
         
         
         UIFont * customFont = [UIFont fontWithName:@"BentonSans" size:11]; //custom font
-        UILabel *fromLabel = [[UILabel alloc]initWithFrame:CGRectMake(x, 65, 60*radio, 18*radio)];
+        UILabel *fromLabel = [[UILabel alloc]initWithFrame:CGRectMake(x, 65*radio, 60*radio, 18*radio)];
         fromLabel.text = [_selectedFilterNameArray objectAtIndex:i];
         fromLabel.font = customFont;
         fromLabel.textAlignment = NSTextAlignmentCenter;

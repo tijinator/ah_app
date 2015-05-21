@@ -34,6 +34,28 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableview.contentOffset.y<-75){
+        
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height+80)) {
+        
+        [_tableview reloadData];
+        
+        _count++;
+        
+        
+    }else
+    {
+        _count=0;
+    }
+    
+}
 
 
 
@@ -504,24 +526,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void)scrollViewDidScroll: (UIScrollView*)scroll {
-    
-    
-    if(self.tableview.contentOffset.y<-75){
-        if (_count==0) {
-            [self.tableview reloadData];
-       
-        }
-        _count++;
-        //it means table view is pulled down like refresh
-        return;
-    }
-    else
-    {
-        _count=0;
-    }
-    
-}
+
 
 /*
 #pragma mark - Navigation

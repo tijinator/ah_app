@@ -31,19 +31,36 @@
     int months = (int)[conversionInfo month];
     int days =(int) [conversionInfo day];
     int hours = (int)[conversionInfo hour];
-    int minutes = (int)[conversionInfo minute];
+    int minutes = (int)[conversionInfo minute]+6;
     int year = (int)[conversionInfo year];
     if (year!=0) {
+        if (year==1) {
+            return @"about a year ago";
+        }
         return [NSString stringWithFormat:@"%d%@",year, @" years ago"];
     }
     else if (months!=0) {
+        if (months==1) {
+            return @"about a month ago";
+        }
         return [NSString stringWithFormat:@"%d%@",months, @" months ago"];
     }else if (days!=0) {
+        if (days==1) {
+            return @"about a day ago";
+        }
         return [NSString stringWithFormat:@"%d%@",days, @" days ago"];
     }else if (hours!=0) {
+        if (hours==1) {
+            return @"about a hour ago";
+        }
+        
         return [NSString stringWithFormat:@"%d%@",hours, @" hours ago"];
     }else if (minutes!=0) {
-        return [NSString stringWithFormat:@"%d%@",ABS(minutes), @" minutes ago"];
+        if (minutes==1) {
+             return @"about a minute ago";
+        }
+        
+        return [NSString stringWithFormat:@"%d%@",minutes, @" minutes ago"];
     }
     
     
@@ -282,12 +299,19 @@
         homeFeed.event.name= [event objectForKey:@"name"];
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
-        homeFeed.event.theme= [event  objectForKey:@"theme"];
-        if([homeFeed.event.theme isEqual:[NSNull null ]])
+        
+        NSDictionary *theme= [dic  objectForKey:@"theme"];
+        NSDictionary *styles= [theme  objectForKey:@"styles"];
+        NSDictionary *medium= [styles  objectForKey:@"medium"];
+        homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
+        if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
         {
             homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
         }
        
+        homeFeed.photos.originalUrl=homeFeed.event.theme;
+        homeFeed.photos.stylesUrl=homeFeed.event.theme;
+        [homeFeed.photoArray addObject:homeFeed.photos];
     }
     
     

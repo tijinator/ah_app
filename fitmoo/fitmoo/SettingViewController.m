@@ -190,17 +190,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
     }else if (indexPath.row==4) {
        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/privacy-policy"]];
+        SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        webPage.webviewLink=@"http://about.fitmoo.com/privacy-policy";
+        webPage.settingType= @"PRIVACY POLICY";
+        [self.navigationController pushViewController:webPage animated:YES];
+        
+    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/privacy-policy"]];
     }
     else if (indexPath.row==5) {
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/terms-and-conditions"]];
+        SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        webPage.webviewLink=@"http://about.fitmoo.com/terms-and-conditions";
+        webPage.settingType= @"TERMS";
+        [self.navigationController pushViewController:webPage animated:YES];
+   //     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/terms-and-conditions"]];
     }else if (indexPath.row==6) {
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com"]];
+        SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        webPage.webviewLink=@"http://about.fitmoo.com";
+        webPage.settingType= @"ABOUT";
+        [self.navigationController pushViewController:webPage animated:YES];
+    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com"]];
     }
     
 }
+
+
 
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -315,6 +328,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
              NSLog(@"Error: %@", error);} // failure callback block
      ];
 }
+
 
 
 - (void)didReceiveMemoryWarning {

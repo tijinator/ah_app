@@ -30,17 +30,7 @@
     _navigateView = [mainStoryboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
     _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
-//    _deckController =  [[IIViewDeckController alloc] initWithCenterViewController:_navigateView                                                           leftViewController:_leftView                                                                rightViewController:_rightView];
-//    _deckController.delegate = self;
-//    [_deckController setLeftSize:60.0f];
-//    [_deckController setRightSize:110.0f];
-//    
-//    [_deckController setEnabled:NO];
-//    
-//    [_deckController shouldAutorotate];
-//    [_deckController preferredInterfaceOrientationForPresentation];
-//    [_deckController supportedInterfaceOrientations];
-//    self.window.rootViewController = _deckController;
+
 
     _sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:_navigateView
                                                                     leftMenuViewController:_leftView
@@ -55,6 +45,8 @@
     _sideMenuViewController.contentViewShadowRadius = 12;
     _sideMenuViewController.contentViewShadowEnabled = YES;
     _sideMenuViewController.contentViewInPortraitOffsetCenterX=-20;
+  //  [_sideMenuViewController supportedInterfaceOrientations];
+   
     self.window.rootViewController = _sideMenuViewController;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
@@ -133,10 +125,10 @@
                   sourceApplication:sourceApplication];
 }
 
-//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-//{
-//    return (UIInterfaceOrientationMaskPortrait);
-//}
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return (UIInterfaceOrientationMaskPortrait);
+}
 
 #pragma mark - Core Data stack
 
