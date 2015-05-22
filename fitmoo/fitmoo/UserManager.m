@@ -702,21 +702,21 @@
     if (self) {
 
     }
-//    _clientUrl= @"http://staging.fitmoo.com";
-//    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-//    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
-//    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
-//    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
-//    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
-//    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
-    
-    _clientUrl= @"http://uat.fitmoo.com";
-    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
-    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
-    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
-    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
-    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
+    _clientUrl= @"http://staging.fitmoo.com";
+    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
+    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
+    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
+    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
     _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    
+//    _clientUrl= @"http://uat.fitmoo.com";
+//    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
+//    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
+//    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
+//    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
+//    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
+//    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
     
     return self;
 }

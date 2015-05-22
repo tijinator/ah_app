@@ -53,6 +53,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *bodyCommentButton;
 @property (strong, nonatomic) IBOutlet UIButton *bodyShareButton;
 @property (strong, nonatomic) IBOutlet UIImageView *bodyGradian;
+@property (strong, nonatomic) IBOutlet UIButton *bodyYesButton;
+@property (strong, nonatomic) IBOutlet UIButton *bodyMaybeButton;
+@property (strong, nonatomic) IBOutlet UIImageView *bodyDateImage;
+@property (strong, nonatomic) IBOutlet UIImageView *bodyBluePeopleImage;
+@property (strong, nonatomic) IBOutlet UILabel *bodyMonthLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bodyDayLabel;
 
 
 @property (strong, nonatomic)  NSMutableArray *viewArray;

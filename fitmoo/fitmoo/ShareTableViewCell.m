@@ -46,7 +46,7 @@
 {
     int maxHeight=0;
     for (UIView * subview in _bodyView.subviews) {
-        if ([_bodyDetailLabel.text isEqualToString:@""]) {
+        if ([_bodyDetailLabel.text isEqualToString:@""]||[_homeFeed.type isEqualToString:@"event"]) {
             int temHeight= (subview.frame.size.height+subview.frame.origin.y);
             maxHeight= MAX(maxHeight, temHeight);
         }else
@@ -59,7 +59,7 @@
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
 
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
-    
+  
 }
 
 - (void) addScrollView
@@ -181,40 +181,76 @@
 - (void) setBodyFrameForEvent
 {
     _bodyTitle.text= _homeFeed.event.name;
-    _bodyDetailLabel.text= _homeFeed.text;
+  //  _bodyDetailLabel.text= _homeFeed.text;
+    _bodyDetailLabel.text= _homeFeed.event.end_time;
     _bodyLabel1.text= _homeFeed.event.begin_time;
-    _bodyLabel2.text=_homeFeed.event.end_time;
-    [_homeFeed resetPhotos];
-    [_homeFeed resetPhotoArray];
-    _homeFeed.photos.originalUrl=_homeFeed.event.theme;
-    _homeFeed.photos.stylesUrl=_homeFeed.event.theme;
-    [_homeFeed.photoArray addObject:_homeFeed.photos];
-    
- 
+  //  _bodyLabel2.text=_homeFeed.event.end_time;
 
-    _bodyCastView.hidden=false;
     
-    
-    _bodyTitle.frame= CGRectMake(38, 95, 290, _bodyTitle.frame.size.height);
+
+    _bodyTitle.frame= CGRectMake(90, 95, 200, _bodyTitle.frame.size.height);
     _bodyTitle.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyTitle respectToSuperFrame:nil];
     
-    _bodyLabel1.frame= CGRectMake(39, 115, 260, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= CGRectMake(90, 120, 200, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel1 respectToSuperFrame:nil];
     
-  
-    _bodyLabel2.text=_homeFeed.event.end_time;
-    _bodyLabel2.frame= CGRectMake(39,135, 260, _bodyLabel2.frame.size.height);
-    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
-    [_bodyLabel2 setFont:_bodyLabel1.font];
-    [_bodyLabel2 setTextColor:[UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.4]];
-   
-    _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    _bodyDetailLabel.frame=CGRectMake(40, 155, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
-    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
     
-    _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
-                                   , _bodyCastView.frame.size.width, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3);
-    [_bodyShadowView removeFromSuperview];
+    _bodyDetailLabel.frame= CGRectMake(90,135, 200, _bodyDetailLabel.frame.size.height);
+    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
+   
+    [_bodyLabel1 setTextColor:[UIColor blackColor]];
+    [_bodyDetailLabel setTextColor:[UIColor blackColor]];
+    
+    _bodyLabel2.text=@"people going";
+    _bodyLabel2.frame= CGRectMake(115,170, 200, _bodyLabel2.frame.size.height);
+    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
+    [_bodyLabel2 setTextColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1]];
+    
+    _bodyYesButton.frame=CGRectMake(90,210, 105, 33);
+    _bodyYesButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyYesButton respectToSuperFrame:nil];
+    _bodyYesButton.layer.cornerRadius=5;
+
+    _bodyMaybeButton.frame=CGRectMake(200,210, 105, 33);
+    _bodyMaybeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyMaybeButton respectToSuperFrame:nil];
+    _bodyMaybeButton.layer.cornerRadius=5;
+    
+    _bodyYesButton.hidden=false;
+    _bodyMaybeButton.hidden=false;
+    _bodyBluePeopleImage.hidden=false;
+    _bodyDateImage.hidden=false;
+    _bodyMonthLabel.hidden=false;
+    _bodyDayLabel.hidden=false;
+    
+    _bodyDateImage.frame=CGRectMake(20,95, 47, 65);
+    _bodyDateImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDateImage respectToSuperFrame:nil];
+    
+    _bodyBluePeopleImage.frame=CGRectMake(90,170, 15, 15);
+    _bodyBluePeopleImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyBluePeopleImage respectToSuperFrame:nil];
+    
+    _bodyMonthLabel.frame=CGRectMake(18,105, 50, 20);
+    _bodyMonthLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyMonthLabel respectToSuperFrame:nil];
+    
+    _bodyDayLabel.frame=CGRectMake(19,125, 50, 20);
+    _bodyDayLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDayLabel respectToSuperFrame:nil];
+    
+    _bodyShadowView.frame=CGRectMake(0,_bodyYesButton.frame.size.height+_bodyYesButton.frame.origin.y , _bodyShadowView.frame.size.width, _bodyShadowView.frame.size.height);
+    
+    [self resetShawdowElement];
+    
+    
+    [_bodyCastView removeFromSuperview];
+
+//    _bodyLabel2.frame= CGRectMake(90,135, 200, _bodyLabel2.frame.size.height);
+//    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
+//    [_bodyLabel2 setFont:_bodyLabel1.font];
+//    [_bodyLabel2 setTextColor:[UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.4]];
+//   
+//    _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
+//    _bodyDetailLabel.frame=CGRectMake(40, 155, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
+//    _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyDetailLabel respectToSuperFrame:nil];
+//    _bodyCastView.frame=CGRectMake(_bodyCastView.frame.origin.x, _bodyCastView.frame.origin.y
+//                                   , _bodyCastView.frame.size.width, _bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+3);
+// [_bodyShadowView removeFromSuperview];
 }
 
 - (void) resetShawdowElement

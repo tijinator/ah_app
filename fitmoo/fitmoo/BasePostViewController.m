@@ -24,7 +24,7 @@
     [super viewDidLoad];
     [self initFrames];
     [self defineTypeOfPost];
-  //  [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(presentCameraView) userInfo:nil repeats:NO];
+
     [self createObservers];
    // _postActionType=@"text";
     
@@ -43,6 +43,14 @@
     //
     //    AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
     //                                                                          credentialsProvider:credentialsProvider];
+   
+    
+}
+
+
+#pragma mark S3 stuff
+- (void)uploadToS3{
+    
     AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
                                                           credentialsWithRegionType:AWSRegionUSEast1
                                                           accountId:@"074088242106"
@@ -53,12 +61,6 @@
     AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
                                                                           credentialsProvider:credentialsProvider];
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-    
-}
-
-
-#pragma mark S3 stuff
-- (void)uploadToS3{
     // get the image
     UIImage *img = _PostImage;
     // UIImage *img = [UIImage imageNamed:@"like.png"];
@@ -136,7 +138,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateVideo" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateVideo:) name:@"updateVideo" object:nil];
 }
-
+#pragma mark viemo stuff
 - (void)deleteCheck
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -292,7 +294,7 @@
      ];
 
 }
-
+#pragma mark end of viemo stuff
 -(void) updateVideo: (NSNotification * ) note
 {
     self.videoURL=(NSURL *)[note object];
@@ -748,18 +750,36 @@
     return true;
 }
 
+- (void) generateVideoPost
+{
+    
+}
+
+- (void) generateImagePost
+{
+    
+}
+
+- (void) generateTextPost
+{
+    
+}
+
 - (IBAction)postButtonClick:(id)sender {
     
     if ([self validate] ==true) {
         if ([_postActionType isEqualToString:@"video"]) {
             [self getAuth];
+            [self generateVideoPost];
             
         }else if ([_postActionType isEqualToString:@"image"]) {
                 
             [self uploadToS3];
+            [self generateImagePost];
         }else
         {
             [self makePost:@"" withVideoUrl:@""];
+            [self generateTextPost];
         }
      
         [self addActivityIndicator];

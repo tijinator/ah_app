@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "UserManager.h"
+#import "HomeFeed.h"
 //#import "CameraViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -26,7 +27,7 @@
 - (IBAction)postButtonClick:(id)sender;
 
 @property (strong, nonatomic)  UIImage *PostImage;
-
+@property (strong, nonatomic)  HomeFeed *homeFeed;
 
 
 @property (strong, nonatomic) IBOutlet UITextView *normalPostText;

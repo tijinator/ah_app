@@ -1290,7 +1290,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ugf-es-A24">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ugf-es-A24">
                                 <rect key="frame" x="0.0" y="-20" width="320" height="588"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1300,7 +1300,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nvv-2L-hg1" id="b3J-Qg-NAV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2250,7 +2250,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z4W-d3-UTz">
-                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="506"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2355,10 +2355,34 @@
             </objects>
             <point key="canvasLocation" x="-1613" y="985"/>
         </scene>
+        <!--Location View Controller-->
+        <scene sceneID="UzE-nu-4VC">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9JF-hP-Mxu" customClass="LocationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qiq-64-t27">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkinscreen.png" id="oj7-Ba-reG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="commingSoonImage" destination="oj7-Ba-reG" id="Wp0-GE-0af"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="why-f2-2PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1613" y="341"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cameracircleicon.png" width="53" height="53"/>
         <image name="cameraicon.png" width="43" height="44"/>
+        <image name="checkinscreen.png" width="319" height="565"/>
         <image name="comment.png" width="40" height="40"/>
         <image name="greyrightarrow.png" width="11" height="17"/>
         <image name="home.png" width="41" height="41"/>
@@ -2371,7 +2395,7 @@
         <image name="settings_bioicon.png" width="15" height="15"/>
         <image name="settings_emailicon.png" width="15" height="15"/>
         <image name="settings_profileicon.png" width="15" height="15"/>
-        <image name="shopscreen.png" width="320" height="565"/>
+        <image name="shopscreen.png" width="319" height="565"/>
         <image name="white_toggle.png" width="16" height="9"/>
         <image name="whitearrowicon.png" width="10" height="17"/>
         <image name="whitecamerareverse.png" width="23" height="20"/>

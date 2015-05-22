@@ -15,5 +15,7 @@
 @property (nonatomic, strong) NSString *begin_time;
 @property (nonatomic, strong) NSString *end_time;
 @property (nonatomic, strong) NSString *theme;   //picture for event
+@property (nonatomic, strong) NSString *peopleAttending;
+
 
 @end

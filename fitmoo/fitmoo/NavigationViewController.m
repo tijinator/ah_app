@@ -187,6 +187,18 @@
 
     
     
+    }else  if ([key isEqualToString:@"7"]) {
+        if (currentPage!=3) {
+            
+            _locationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"LocationViewController"];
+            //    [[self nav] popViewControllerAnimated:NO];
+            [[self nav] pushViewController:_locationPage animated:YES];
+        }
+       // [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        currentPage=7;
+        
+        
+        
     }else  if (key.intValue>10) {
 
      

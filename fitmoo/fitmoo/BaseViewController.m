@@ -82,7 +82,7 @@
     
     
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
-    _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
+ //   _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
     _pictureButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pictureButton respectToSuperFrame:self.view];
     
     
@@ -91,18 +91,18 @@
     _pictureButton.tag=16;
     
     [_postButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_videoButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
+ //   [_videoButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_pictureButton addTarget:self action:@selector(footbuttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     im= [UIImage imageNamed:@"posticon.png"];
     [_postButton setBackgroundImage:im forState:UIControlStateNormal];
-    im1= [UIImage imageNamed:@"calendar.png"];
-    [_videoButton setBackgroundImage:im1 forState:UIControlStateNormal];
+ //   im1= [UIImage imageNamed:@"calendar.png"];
+ //   [_videoButton setBackgroundImage:im1 forState:UIControlStateNormal];
     im2= [UIImage imageNamed:@"location.png"];
     [_pictureButton setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.subBottomView addSubview:_postButton];
-    [self.subBottomView addSubview:_videoButton];
+ //   [self.subBottomView addSubview:_videoButton];
     [self.subBottomView addSubview:_pictureButton];
 
     [self.view insertSubview:_subBottomView belowSubview:_bottomView];
@@ -146,11 +146,11 @@
     [UIView setAnimationDelegate:self];
  //   [UIView setAnimationDidStopSelector:@selector(deletePatientInfoWithListView)];
     _subBottomView.frame= CGRectMake(0, _subBottomView.frame.origin.y-Radio*100, 320*Radio, 160*Radio);
-    _postButton.frame= CGRectMake(140, 0, 43,43);
-    _videoButton.frame= CGRectMake(218, 50, 43,43);
-    _pictureButton.frame= CGRectMake(66, 50, 43,43);
+    _postButton.frame= CGRectMake(192, 25, 43,43);
+  //  _videoButton.frame= CGRectMake(218, 50, 43,43);
+    _pictureButton.frame= CGRectMake(97, 25, 43,43);
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
-    _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
+ //   _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
     _pictureButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pictureButton respectToSuperFrame:self.view];
    
     
@@ -247,7 +247,7 @@
             
             break;
         case 16:
-            
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"7"];
             
             break;
         default:

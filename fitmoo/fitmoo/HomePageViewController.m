@@ -117,7 +117,12 @@
     for (NSDictionary *dic in _responseDic) {
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        [_homeFeedArray addObject:feed];
+        
+        if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+            [_homeFeedArray addObject:feed];
+        }
+        
+        
         
     }
     
@@ -256,7 +261,7 @@
     if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
         if ([tempHomefeed.type isEqualToString:@"event"])
         {
-            cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, 60)];
+            cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
         }
         
         if ([tempHomefeed.photoArray count]!=0&&[tempHomefeed.videosArray count]==0) {
@@ -309,6 +314,8 @@
                 [cell.bodyView addSubview:videoView];
                 NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
                 [videoView loadRequest:request];
+                
+                [cell.bodyView bringSubviewToFront:cell.bodyShadowView];
             }
         }
       

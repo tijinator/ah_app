@@ -95,6 +95,8 @@
         UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
         view.layer.cornerRadius=view.frame.size.width/2;
         view.clipsToBounds=YES;
+        view.userInteractionEnabled = NO;
+        view.exclusiveTouch = NO;
         AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.heanderImage1.frame.size.width, cell.heanderImage1.frame.size.height)];
         
         
@@ -104,19 +106,25 @@
         if ([tempHomefeed.feed_action.community_id isEqual:[NSNull null]])
         {
             headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by.thumb];
+            [cell.heanderImage1 setTag:tempHomefeed.feed_action.user_id.intValue];
         }else
         {
             headerImage1.imageURL =[NSURL URLWithString:tempHomefeed.feed_action.created_by_community.cover_photo_url];
+            [cell.heanderImage1 setTag:tempHomefeed.feed_action.community_id.intValue];
         }
         [cell.heanderImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [view addSubview:headerImage1];
         [cell.heanderImage1 addSubview:view];
+        
+        [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     view.clipsToBounds=YES;
     view.layer.cornerRadius=view.frame.size.width/2;
+    view.userInteractionEnabled = NO;
+    view.exclusiveTouch = NO;
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
     headerImage2.userInteractionEnabled = NO;
     headerImage2.exclusiveTouch = NO;
@@ -125,14 +133,16 @@
     if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
+        [cell.headerImage2 setTag:tempHomefeed.feed_action.user_id.intValue];
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
+        [cell.headerImage2 setTag:tempHomefeed.feed_action.community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
     [cell.headerImage2 addSubview:view];
-    
+    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
@@ -145,14 +155,14 @@
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
     
-    //case for photo and video exits
+    //case for photo and video exits, bodyview
     if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
         if ([tempHomefeed.type isEqualToString:@"event"])
         {
-            cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, 60)];
+            cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
         }
         
-        if ([tempHomefeed.photoArray count]!=0) {
+        if ([tempHomefeed.photoArray count]!=0&&[tempHomefeed.videosArray count]==0) {
             double maxHeightIndex=0;
             double radioBetweenWandH=0;
             for (int i=0; i<[tempHomefeed.photoArray count]; i++) {
@@ -202,6 +212,8 @@
                 [cell.bodyView addSubview:videoView];
                 NSURLRequest *request= [[NSURLRequest alloc] initWithURL:self.videoURL];
                 [videoView loadRequest:request];
+                
+                [cell.bodyView bringSubviewToFront:cell.bodyShadowView];
             }
         }
         
@@ -237,7 +249,8 @@
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        [cell.bodyCommentButton setTitle:tempHomefeed.total_comment  forState:UIControlStateNormal];
+        NSString *totalCommment= [NSString stringWithFormat:@" %@",tempHomefeed.total_comment ];
+        [cell.bodyCommentButton setTitle:totalCommment  forState:UIControlStateNormal];
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
             [cell addCommentView:cell.commentView Atindex:i];
@@ -255,9 +268,10 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
-    [cell.bodyLikeButton setTitle:tempHomefeed.total_like forState:UIControlStateNormal];
+    NSString *totalLike= [NSString stringWithFormat:@" %@",tempHomefeed.total_like];
+    [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-        [cell.likeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
     }else
     {
         [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -267,6 +281,7 @@
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     
     
@@ -360,7 +375,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([_homeFeed.is_liked isEqualToString:@"0"]) {
         NSNumber *totalLike=[NSNumber numberWithInt:1+_homeFeed.total_like.intValue];
 
-        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:_homeFeed.feed_id];
         _homeFeed.is_liked=@"1";
         _homeFeed.total_like=totalLike.stringValue;

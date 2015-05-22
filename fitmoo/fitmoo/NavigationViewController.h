@@ -19,6 +19,7 @@
 #import "RESideMenu.h"
 #import "ShopViewController.h"
 #import "SettingViewController.h"
+#import "LocationViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
@@ -30,5 +31,6 @@
 @property (strong, nonatomic) SearchViewController *searchPage;
 @property (strong, nonatomic) SettingViewController *settingPage;
 @property (strong, nonatomic)  ShopViewController *shopPage;
+@property (strong, nonatomic)  LocationViewController *locationPage;
 
 @end

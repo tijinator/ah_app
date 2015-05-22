@@ -262,6 +262,16 @@
     
     User *user= [_searchArrayCategory objectAtIndex:index];
     
+    AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.button1.frame.size.width, cell.button1.frame.size.height)];
+    headerImage2.userInteractionEnabled = NO;
+    headerImage2.exclusiveTouch = NO;
+    headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+    
+    headerImage2.imageURL =[NSURL URLWithString:user.cover_photo_url];
+    
+    [cell.button1 addSubview:headerImage2];
+    
     cell.label1.text= user.name.uppercaseString;
     
     cell.button1.tag= index+10;
@@ -278,6 +288,17 @@
         
         cell.button2.tag= index+1+10;
         [cell.button2 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.button2.frame.size.width, cell.button2.frame.size.height)];
+        headerImage2.userInteractionEnabled = NO;
+        headerImage2.exclusiveTouch = NO;
+        headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+        
+        headerImage2.imageURL =[NSURL URLWithString:user1.cover_photo_url];
+        
+        [cell.button2 addSubview:headerImage2];
+
         
     }else
     {
@@ -341,10 +362,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             
         }else
         {
-            height=[NSNumber numberWithInt:contentHight.intValue];
+            height=[NSNumber numberWithInt:contentHight.doubleValue];
         }
-        NSLog(@"%ld",(long)height.integerValue);
-        return height.integerValue;
+   //     NSLog(@"%ld",(long)height.integerValue);
+        return height.doubleValue;
     
 
     

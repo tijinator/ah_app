@@ -35,6 +35,13 @@
 - (void)drawRect:(CGRect)rect
 {
     
+//    for(NSString* family in [UIFont familyNames]) {
+//        NSLog(@"%@", family);
+//        for(NSString* name in [UIFont fontNamesForFamilyName: family]) {
+//            NSLog(@"  %@", name);
+//        }
+//    }
+    
     UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:self.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     

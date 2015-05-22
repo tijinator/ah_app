@@ -27,12 +27,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-//    for(NSString* family in [UIFont familyNames]) {
-//        NSLog(@"%@", family);
-//        for(NSString* name in [UIFont fontNamesForFamilyName: family]) {
-//            NSLog(@"  %@", name);
-//        }
-//    }
+   
     UIFont *font = [UIFont fontWithName:@"BentonSans-ExtraCondensedBold" size:self.font.pointSize];
     
     

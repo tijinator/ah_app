@@ -56,7 +56,7 @@
         
         return [NSString stringWithFormat:@"%d%@",hours, @" hours ago"];
     }else if (minutes!=0) {
-        if (minutes==1) {
+        if (minutes<=1) {
              return @"about a minute ago";
         }
         
