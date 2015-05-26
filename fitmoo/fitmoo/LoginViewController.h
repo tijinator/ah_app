@@ -13,35 +13,24 @@
 #import "User.h"
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-@interface LoginViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
+#import <QuartzCore/QuartzCore.h>
+
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
-@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
-@property (strong, nonatomic) IBOutlet UITextField *emailTextField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (strong, nonatomic) IBOutlet UIButton *sighUpButton;
-@property (strong, nonatomic) IBOutlet UIButton *loginButton;
-@property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic)  NSDictionary * responseDic;
-@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (strong, nonatomic) IBOutlet UIView *forgetPasswordView;
-@property (strong, nonatomic) IBOutlet UIView *forgetPdView;
 @property (strong, nonatomic) IBOutlet UILabel *dontWorryLabel;
-@property (strong, nonatomic) IBOutlet UITextField *emailLabel;
 @property (strong, nonatomic) IBOutlet UIButton *requestButton;
-@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UILabel *forgotPdlabel;
 
 
 - (IBAction)closeButtonClick:(id)sender;
-- (IBAction)loginButtonClick:(id)sender;
-- (IBAction)signUoButtonClick:(id)sender;
-- (IBAction)forgotPasswordbuttonClick:(id)sender;
+
+- (IBAction)editingChanged;
 @property (strong, nonatomic) IBOutlet UITextField *forgotPasswordEmail;
 - (IBAction)requestButtonClick:(id)sender;
 
-@property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
-@property (strong, nonatomic)  id<FBGraphUser> cachedUser;
+
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
+
 @interface SettingWebViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

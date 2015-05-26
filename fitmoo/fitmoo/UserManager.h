@@ -57,6 +57,13 @@
 @property (strong, nonatomic) NSString * clientUrl;
 @property (strong, nonatomic) NSString * feedsUrl;
 
+@property (strong, nonatomic) NSString * s3_accountId;
+@property (strong, nonatomic) NSString * s3_identityPoolId;
+@property (strong, nonatomic) NSString * s3_unauthRoleArn;
+@property (strong, nonatomic) NSString * s3_authRoleArn;
+
+
+
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;
 

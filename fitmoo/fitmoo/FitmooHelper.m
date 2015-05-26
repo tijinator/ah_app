@@ -20,6 +20,34 @@
     
 }
 
+-(void) showViewWithAnimation: (NSString *) text withPareView: (UIView *)parentView
+{
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
+    UILabel *v= [[UILabel alloc] initWithFrame:CGRectMake(10*radio, -80*radio, 300*radio, 40*radio)];
+    v.alpha=1;
+    v.backgroundColor=[UIColor blackColor];
+    v.textColor= [UIColor whiteColor];
+    v.text=text;
+    v.textAlignment=NSTextAlignmentCenter;
+    UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+    [v setFont:font];
+    
+    [parentView addSubview:v];
+    
+    
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        v.frame=CGRectMake(10*radio, 20*radio, 300*radio, 40*radio);
+    }completion:^(BOOL finished){
+        [UIView animateWithDuration:1 delay:0.7 options:UIViewAnimationOptionTransitionNone animations:^{
+            v.alpha=0;
+        }completion:^(BOOL finished){}];
+        
+        
+    }];
+    
+    
+}
+
 - (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     

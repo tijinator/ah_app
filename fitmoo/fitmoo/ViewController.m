@@ -32,7 +32,14 @@
     [self checkLogin];
   // [self showImagesWithDelay];
     
+    _cachedUser= nil;
+    self.facebookLoginView.delegate = self;
+    
+    self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
+    
     [self createObservers];
+    
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -45,6 +52,11 @@
         [[UserManager sharedUserManager] getUserProfile:localUser];
     }
 
+}
+
+- (IBAction)forgotPasswordButtonClick:(id)sender {
+    
+        [self openLogingView];
 }
 
 
@@ -132,6 +144,25 @@ int count=0;
     }
 }
 
+-(BOOL) checkValidEmail: (UITextField *)textfield
+{
+    
+    BOOL valid=true;
+    
+    if ([textfield.text isEqualToString:@""]) {
+        return false;
+    }
+    
+    if (![textfield.text containsString:@"@"]) {
+        return false;
+    }
+    if (![textfield.text containsString:@".com"]) {
+        return false;
+    }
+    
+    return valid;
+}
+
 - (void) initFrames
 {
     _loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
@@ -139,11 +170,112 @@ int count=0;
     _fitmooNameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_fitmooNameImage respectToSuperFrame:self.view];
     _allRightImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_allRightImage respectToSuperFrame:self.view];
     _backgroundImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backgroundImage respectToSuperFrame:self.view];
+   
+   
+    _emailTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_emailTextField respectToSuperFrame:self.view];
+    _passwordTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_passwordTextField respectToSuperFrame:self.view];
+    _forgotPasswordButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgotPasswordButton respectToSuperFrame:self.view];
     
-//    self.view.frame= CGRectMake(0, 0, 320, 568);
-//    self.view.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.view respectToSuperFrame:nil];
+    _orImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_orImage respectToSuperFrame:self.view];
+    
+    _backView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backView respectToSuperFrame:self.view];
     
 }
+
+
+#pragma mark - FBLoginView Delegate method implementation
+
+-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+    
+    loginView.frame = CGRectMake(30, 135, 270, 48);
+    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+    for (id obj in loginView.subviews)
+    {
+        
+        
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+    
+    
+}
+
+- (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
+    
+    NSString *user_id1=firstUser[@"id"];
+    NSString *user_id2=secondUser[@"id"];
+    
+    if (![user_id1 isEqual:user_id2]) {
+        return false;
+    }
+    
+    if (![firstUser.name isEqual:secondUser.name]) {
+        return false;
+    }
+    
+    if (![firstUser.name isEqual:secondUser.name]) {
+        return false;
+    }
+    
+    return true;
+}
+
+-(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
+    NSLog(@"%@", user);
+    
+    if (![self isUser:_cachedUser equalToUser:user]) {
+        
+        User *localUser= [[User alloc] init];
+        
+        localUser.email= user[@"email"];
+        localUser.gender=user[@"gender"];
+        localUser.name= user[@"name"];
+        localUser.day_of_birth= user[@"birthday"];
+        localUser.facebook_uid=user[@"id"];
+        
+        [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
+        _cachedUser = user;
+        
+    }
+    
+    
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+    loginView.frame = CGRectMake(30, 135, 270, 48);
+    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+    for (id obj in loginView.subviews)
+    {
+        
+        
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
+        }
+    }
+    
+}
+
+
+-(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
+    NSLog(@"%@", [error localizedDescription]);
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -161,6 +293,8 @@ int count=0;
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _sighUpView = [mainStoryboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    _sighUpView.Email= _emailTextField.text;
+    _sighUpView.Password= _passwordTextField.text;
     [self.navigationController pushViewController:_sighUpView animated:YES];
 }
 
@@ -170,6 +304,23 @@ int count=0;
 }
 
 - (IBAction)loginButtonClick:(id)sender {
-    [self openLogingView];
+    User *localUser= [[User alloc] init];
+      bool valiEmail= [self checkValidEmail:_emailTextField];
+    if (!((valiEmail==false)||[_passwordTextField.text length]<6)) {
+      
+            localUser.email= _emailTextField.text;
+            localUser.password=_passwordTextField.text;
+            [[UserManager sharedUserManager] performLogin:localUser];
+
+    }else
+    {
+//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
+//                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
+//                                                otherButtonTitles : nil ];
+//        [alert show ];
+        [[FitmooHelper sharedInstance] showViewWithAnimation:@"Invalid username/password." withPareView:self.view];
+    }
+    
+
 }
 @end

@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import <FacebookSDK/FacebookSDK.h>
+
 @implementation UserManager
 
 + (id)sharedUserManager;
@@ -499,11 +500,34 @@
     failure:^(AFHTTPRequestOperation *operation, NSError *error){
         self.localUser=tempUser;
               NSLog(@"Error: %@", error);
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
-                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
-                                                otherButtonTitles : nil ];
-        [alert show ];
-    
+
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:user.email, @"email",@"true", @"mobile",nil];
+        NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] homeFeedUrl], @"unique_email"];
+        [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            NSDictionary * responseDic= responseObject;
+            NSNumber *unique= [responseDic objectForKey:@"is_unique"];
+       
+            if ([[unique stringValue] isEqualToString:@"1"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"openNextpage" object:@"signUp"];
+            
+            }else
+            {
+         
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
+                                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
+                                                                otherButtonTitles : nil ];
+            [alert show ];
+            }
+
+            
+        } // success callback block
+             failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                 NSLog(@"Error: %@", error);} // failure callback block
+         ];
+
+        
+     //   [self performva]
     } // failure callback block
      
      ];
@@ -702,21 +726,27 @@
     if (self) {
 
     }
-    _clientUrl= @"http://staging.fitmoo.com";
-    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
-    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
-    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
-    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
+//    _clientUrl= @"http://staging.fitmoo.com";
+//    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
+//    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+//    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
+//    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
+//    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
+//    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    
+    _clientUrl= @"http://uat.fitmoo.com";
+    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
+    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
+    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
+    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
+    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
     _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
     
-//    _clientUrl= @"http://uat.fitmoo.com";
-//    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
-//    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
-//    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
-//    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
-//    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
-//    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    
+    _s3_accountId=@"074088242106";
+    _s3_identityPoolId=@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc";
+    _s3_unauthRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role";
+    _s3_authRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role";
     
     return self;
 }

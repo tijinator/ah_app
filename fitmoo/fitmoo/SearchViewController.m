@@ -282,7 +282,7 @@
     if ([_searchArrayCategory count]%2>0) {
         count=count+1;
     }
-    if ([_searchArrayPeople count]%2==0||indexPath.row!=count) {
+    if ([_searchArrayCategory count]%2==0||indexPath.row!=count) {
         User *user1= [_searchArrayCategory objectAtIndex:index+1];
         cell.label2.text= user1.name.uppercaseString;
         
