@@ -18,7 +18,6 @@
 		271114551ADF11690056EB13 /* ActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6391ADDAAD000788181 /* ActionSheetViewController.m */; };
 		271114561ADF116B0056EB13 /* PeoplePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C62D1ADD55D300788181 /* PeoplePageViewController.m */; };
 		271114571ADF116E0056EB13 /* SpecialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27163D951ADAF733005B95D5 /* SpecialPageViewController.m */; };
-		271114581ADF11710056EB13 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC81AD48DD000C34372 /* SignUpViewController.m */; };
 		271114591ADF11730056EB13 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582111AD579080059F43C /* LoginViewController.m */; };
 		2711145A1ADF11780056EB13 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582041AD5633F0059F43C /* RightViewController.m */; };
 		2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582001AD5631D0059F43C /* LeftViewController.m */; };
@@ -76,7 +75,6 @@
 		27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */; };
 		27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */; };
 		27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
-		27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC81AD48DD000C34372 /* SignUpViewController.m */; };
 		2719EBDE1AE1970000019079 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719EBDD1AE1970000019079 /* SearchViewController.m */; };
 		2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
 		272098421AEA9088007577B7 /* vimeo.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2720983F1AEA9088007577B7 /* vimeo.js.txt */; };
@@ -474,7 +472,7 @@
 		27ADF1F71B14B1D8003A0A83 /* skipbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF1C11B14B1D8003A0A83 /* skipbar@2x.png */; };
 		27ADF1F81B14B1D8003A0A83 /* skipbar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF1C21B14B1D8003A0A83 /* skipbar@3x.png */; };
 		27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */; };
-		27ADF1FC1B151798003A0A83 /* SignUpViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC71AD48DD000C34372 /* SignUpViewController.h */; };
+		27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */; };
 		27B4FC351B0E262600CBEA83 /* SettingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */; };
 		27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */; };
 		27CBC0D51B0F84DB00699E1E /* bluepeopleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */; };
@@ -546,8 +544,6 @@
 		27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_fitmoo_logo_white.png; sourceTree = "<group>"; };
 		27188FC21AD4775200C34372 /* FitmooHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitmooHelper.m; sourceTree = "<group>"; };
 		27188FC41AD4776700C34372 /* FitmooHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooHelper.h; sourceTree = "<group>"; };
-		27188FC71AD48DD000C34372 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
-		27188FC81AD48DD000C34372 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		2719EBDC1AE1970000019079 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		2719EBDD1AE1970000019079 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		2720091A1ADAB59400CC3070 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
@@ -1028,6 +1024,8 @@
 		27ADF1C21B14B1D8003A0A83 /* skipbar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skipbar@3x.png"; sourceTree = "<group>"; };
 		27ADF1F91B14F7A1003A0A83 /* InterestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestViewController.h; sourceTree = "<group>"; };
 		27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestViewController.m; sourceTree = "<group>"; };
+		27ADF1FD1B1519AD003A0A83 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		27B4FC331B0E262600CBEA83 /* SettingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingWebViewController.h; sourceTree = "<group>"; };
 		27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingWebViewController.m; sourceTree = "<group>"; };
 		27CBC0C61B0F7A8000699E1E /* BentonSansCondensedMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansCondensedMedium.h; sourceTree = "<group>"; };
@@ -1281,8 +1279,8 @@
 			children = (
 				272582101AD579080059F43C /* LoginViewController.h */,
 				272582111AD579080059F43C /* LoginViewController.m */,
-				27188FC71AD48DD000C34372 /* SignUpViewController.h */,
-				27188FC81AD48DD000C34372 /* SignUpViewController.m */,
+				27ADF1FD1B1519AD003A0A83 /* SignUpViewController.h */,
+				27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */,
 				27ADF1F91B14F7A1003A0A83 /* InterestViewController.h */,
 				27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */,
 				272582501AD590180059F43C /* UserManager */,
@@ -2377,7 +2375,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27ADF1FC1B151798003A0A83 /* SignUpViewController.h in Sources */,
 				272581FB1AD562A60059F43C /* IISideController.m in Sources */,
 				27410DD51AFA9AEA00CF230C /* UIImage+Filters.m in Sources */,
 				273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */,
@@ -2396,6 +2393,7 @@
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */,
+				27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */,
 				27163D961ADAF733005B95D5 /* SpecialPageViewController.m in Sources */,
 				272582491AD57F070059F43C /* UIRefreshControl+AFNetworking.m in Sources */,
 				272582461AD57F070059F43C /* UIButton+AFNetworking.m in Sources */,
@@ -2438,7 +2436,6 @@
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
-				27188FC91AD48DD000C34372 /* SignUpViewController.m in Sources */,
 				2738D9391B02850300F5087E /* PhotoCell.m in Sources */,
 				27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */,
 				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
@@ -2508,7 +2505,6 @@
 				2711146A1ADF12B80056EB13 /* CreatedBy.m in Sources */,
 				27188F881AD4646300C34372 /* fitmooTests.m in Sources */,
 				271114611ADF11920056EB13 /* fitmoo.xcdatamodeld in Sources */,
-				271114581ADF11710056EB13 /* SignUpViewController.m in Sources */,
 				271114571ADF116E0056EB13 /* SpecialPageViewController.m in Sources */,
 				2711146D1ADF12BF0056EB13 /* TitleInfo.m in Sources */,
 			);

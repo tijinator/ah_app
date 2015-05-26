@@ -228,7 +228,7 @@ int count=0;
 -(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
     NSLog(@"%@", user);
     
-    if (![self isUser:_cachedUser equalToUser:user]) {
+   // if (![self isUser:_cachedUser equalToUser:user]) {
         
         User *localUser= [[User alloc] init];
         
@@ -241,14 +241,30 @@ int count=0;
         [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
         _cachedUser = user;
         
-    }
+  //  }
     
     
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _backView.frame=CGRectMake(_backView.frame.origin.x, 0, _backView.frame.size.width, _backView.frame.size.height);
+    }completion:^(BOOL finished){
+
+    }];
     
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
     [textField resignFirstResponder];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _backView.frame=CGRectMake(_backView.frame.origin.x, 168*radio, _backView.frame.size.width, _backView.frame.size.height);
+    }completion:^(BOOL finished){
+        
+    }];
     return YES;
 }
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
