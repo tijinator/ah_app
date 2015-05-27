@@ -535,6 +535,9 @@
             _wihteArrawImage.frame= CGRectMake(50, 30, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a nutrition...";
+            [_nutritionButton setTitleColor:[UIColor colorWithRed:146.0/255.0 green:204.0/255.0 blue:70.0/255.0 alpha:1] forState:UIControlStateNormal];
+            [_postButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_workoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
        //     [self showPostViewAnimation];
        //     [self openPostView];
             
@@ -544,6 +547,11 @@
             _wihteArrawImage.frame= CGRectMake(150, 30, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a post...";
+            [_nutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_postButton setTitleColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1] forState:UIControlStateNormal];
+            [_workoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            
         //    [self showPostViewAnimation];
         //    [self openPostView];
             
@@ -553,6 +561,10 @@
             _wihteArrawImage.frame= CGRectMake(250, 30, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a workout...";
+            
+            [_nutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_postButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_workoutButton setTitleColor:[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1] forState:UIControlStateNormal];
          //   [self showPostViewAnimation];
         //    [self openPostView];
             
