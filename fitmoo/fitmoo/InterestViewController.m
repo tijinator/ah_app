@@ -22,6 +22,7 @@
     contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _searchArrayCategory= [[NSMutableArray alloc] init];
+    _interestArray= [[NSMutableArray alloc] init];
     [self getCategoryAndLife];
     // Do any additional setup after loading the view.
 }
@@ -35,6 +36,13 @@
 {
     _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     _skipButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_skipButton respectToSuperFrame:self.view];
+    
+     //case iphone 4s
+    if (self.view.frame.size.height<500) {
+
+        _skipButton.frame= CGRectMake(_skipButton.frame.origin.x, self.view.frame.size.height-_skipButton.frame.size.height, _skipButton.frame.size.width, _skipButton.frame.size.height);
+    }
+    
 
 }
 
@@ -118,12 +126,12 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
 
         UILabel *label1= (UILabel *)[cell viewWithTag:1];
-        label1.frame= CGRectMake(36, 8, 253, 82);
+        label1.frame= CGRectMake(36, 29, 253, 51);
         label1.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:label1 respectToSuperFrame:self.view];
         
         
         UILabel *label2= (UILabel *)[cell viewWithTag:2];
-        label2.frame= CGRectMake(36, 98, 248, 21);
+        label2.frame= CGRectMake(36, 88, 248, 21);
         label2.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:label2 respectToSuperFrame:self.view];
         
         
@@ -136,7 +144,7 @@
         [label2 setAttributedText:attributedString1];
         
         
-        contentHight=[NSNumber numberWithDouble:145* [[FitmooHelper sharedInstance] frameRadio]];
+        contentHight=[NSNumber numberWithDouble:130* [[FitmooHelper sharedInstance] frameRadio]];
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
     }
@@ -159,13 +167,24 @@
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
     
     headerImage2.imageURL =[NSURL URLWithString:user.cover_photo_url];
-    
+    [cell.button1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [cell.button1 addSubview:headerImage2];
     
     cell.label1.text= user.name.uppercaseString;
     
     cell.button1.tag= index+10;
     [cell.button1 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([self checkExistInterest:user.user_id]) {
+        cell.checkImage1.hidden=false;
+    }
+    
+//    UIButton *b= [[UIButton alloc] initWithFrame:CGRectMake(57, 48, 44, 44)];
+//    b.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:b respectToSuperFrame:nil];
+//    [b setBackgroundImage:[UIImage imageNamed:@"checkmark.png"] forState:UIControlStateNormal];
+//    b.exclusiveTouch=NO;
+//    b.userInteractionEnabled=NO;
+//    [cell.button1 addSubview:b];
     
     
     int count=(int)[_searchArrayCategory count]/2+1;
@@ -186,9 +205,12 @@
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
         
         headerImage2.imageURL =[NSURL URLWithString:user1.cover_photo_url];
-        
+        [cell.button2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.button2 addSubview:headerImage2];
-        
+        if ([self checkExistInterest:user1.user_id]) {
+            cell.checkImage2.hidden=false;
+        }
+      //  [cell.button2 addSubview:b];
         
     }else
     {
@@ -259,7 +281,44 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
+- (void) MakeExistInterest: (NSString *) interest_id
+{
+    if ([self checkExistInterest:interest_id]==false) {
+         [_interestArray addObject:interest_id];
+    }else
+    {
+        for (int i=0; i<[_interestArray count]; i++) {
+            NSString *tem_id=[_interestArray objectAtIndex:i];
+            if ([interest_id isEqualToString:tem_id]) {
+                [_interestArray removeObjectAtIndex:i];
+                
+            }
+        }
 
+    }
+}
+
+- (BOOL) checkExistInterest: (NSString *) interest_id
+{
+    if ([_interestArray count]==0) {
+       // [_interestArray addObject:interest_id];
+        
+        return false;
+    }else
+    {
+        for (int i=0; i<[_interestArray count]; i++) {
+            NSString *tem_id=[_interestArray objectAtIndex:i];
+            if ([interest_id isEqualToString:tem_id]) {
+          //      [_interestArray removeObjectAtIndex:i];
+                return true;
+            }
+        }
+ 
+    }
+
+    
+    return false;
+}
 
 
 /*
@@ -275,10 +334,73 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIButton *button = (UIButton *)sender;
     NSInteger index= button.tag-10;
     User *user= [_searchArrayCategory objectAtIndex:index];
+    [self MakeExistInterest:user.user_id];
+    
+    if ([_interestArray count]==0) {
+        [_skipButton setTitle:@"SKIP" forState:UIControlStateNormal];
+      //  [_skipButton setTintColor:[UIColor colorWithRed:74.0/255.0 green:80.0/255.0 blue:86.0/255.0 alpha:1]];
+
+        [_skipButton setTitleColor:[UIColor colorWithRed:74.0/255.0 green:80.0/255.0 blue:86.0/255.0 alpha:1] forState:UIControlStateNormal];
+
+        [_skipButton setBackgroundColor:[UIColor colorWithRed:192.0/255.0 green:200.0/255.0 blue:204.0/255.0 alpha:1]];
+    }else
+    {
+
+        [_skipButton setTitle:@"GET STARTED" forState:UIControlStateNormal];
+        [_skipButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+        [_skipButton setBackgroundColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1]];
+    }
+    
+    
+    [self.tableview reloadData];
+    
     
     
 }
 - (IBAction)skipButtonClick:(id)sender {
-      [[UserManager sharedUserManager] getUserProfile:_localUser];
+    
+    if ([_interestArray count]==0) {
+        [[UserManager sharedUserManager] getUserProfile:_localUser];
+    }else
+    {
+        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        NSString *interestKey=@"";
+        for (int i=0; i<[_interestArray count]; i++) {
+            NSString *s=[_interestArray objectAtIndex:i];
+            
+            if (i==0) {
+                interestKey=s;
+            }else
+            {
+                interestKey= [NSString stringWithFormat:@"%@,%@",interestKey, s];
+            }
+        }
+        
+    
+        
+        
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",interestKey, @"keywords",nil];
+        NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/interests"];
+        [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            _responseDic1= responseObject;
+            
+            
+            [self parseResponseDic];
+            
+        } // success callback block
+         
+             failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                 NSLog(@"Error: %@", error);} // failure callback block
+         ];
+
+     
+    }
 }
 @end

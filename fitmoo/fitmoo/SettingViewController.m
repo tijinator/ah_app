@@ -43,6 +43,9 @@
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     
+    
+    
+    
 }
 
 #pragma mark - UITableViewDelegate

@@ -35,6 +35,14 @@
     _forgotPasswordEmail.layer.borderColor=[[UIColor lightGrayColor] CGColor];
     _forgotPasswordEmail.layer.borderWidth = 0.8;
     _forgotPasswordEmail.layer.masksToBounds = true;
+    
+    
+    //case iphone 4s
+    if (self.view.frame.size.height<500) {
+        
+        _requestButton.frame= CGRectMake(_requestButton.frame.origin.x, self.view.frame.size.height-_requestButton.frame.size.height, _requestButton.frame.size.width, _requestButton.frame.size.height);
+    }
+    
 }
 
 

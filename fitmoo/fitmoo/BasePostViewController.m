@@ -53,10 +53,10 @@
     
     AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
                                                           credentialsWithRegionType:AWSRegionUSEast1
-                                                          accountId:@"074088242106"
-                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
-                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"
-                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"];
+                                                          accountId:[[UserManager sharedUserManager] s3_accountId]
+                                                          identityPoolId:[[UserManager sharedUserManager] s3_identityPoolId]
+                                                          unauthRoleArn:[[UserManager sharedUserManager] s3_unauthRoleArn]
+                                                          authRoleArn:[[UserManager sharedUserManager] s3_authRoleArn]];
     
     AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
                                                                           credentialsProvider:credentialsProvider];

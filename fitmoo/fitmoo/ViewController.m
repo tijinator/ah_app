@@ -9,7 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+{
+    double constentUp;
+    double constentdown;
+    bool loginExists;
+}
 @end
 
 @implementation ViewController
@@ -29,13 +33,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    [self checkLogin];
-  // [self showImagesWithDelay];
+    loginExists=false;
+     [self checkLogin];
     
     _cachedUser= nil;
     self.facebookLoginView.delegate = self;
-    
     self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
+
+    
+   
+  // [self showImagesWithDelay];
+
     
     [self createObservers];
     
@@ -46,10 +54,30 @@
 
 -(void) checkLogin
 {
+    
+    self.facebookLoginView.frame = CGRectMake(25, 135, 270, 48);
+    self.facebookLoginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:self.facebookLoginView respectToSuperFrame:self.view];
+    for (id obj in self.facebookLoginView.subviews)
+    {
+        
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+            loginLabel.textAlignment = NSTextAlignmentCenter;
+        }
+    }
+
+    
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
     
     if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
         [[UserManager sharedUserManager] getUserProfile:localUser];
+        loginExists=true;
+    }else
+    {
+
+     
     }
 
 }
@@ -78,6 +106,7 @@
 
 - (void) openHomePage
 {
+    loginExists=false;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
     [self.navigationController pushViewController:homepage animated:YES];
@@ -165,6 +194,8 @@ int count=0;
 
 - (void) initFrames
 {
+    
+  
     _loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_loginButton respectToSuperFrame:self.view];
     _signUpButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_signUpButton respectToSuperFrame:self.view];
     _fitmooNameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_fitmooNameImage respectToSuperFrame:self.view];
@@ -178,7 +209,19 @@ int count=0;
     
     _orImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_orImage respectToSuperFrame:self.view];
     
+
     _backView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backView respectToSuperFrame:self.view];
+    
+    constentUp=0;
+    constentdown=168;
+    
+    //case iphone 4s
+    if (self.view.frame.size.height<500) {
+        constentUp=-100;
+        constentdown=80;
+        _backView.frame= CGRectMake(_backView.frame.origin.x,self.view.frame.size.height-_backView.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
+
+    }
     
 }
 
@@ -187,12 +230,11 @@ int count=0;
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     
-    loginView.frame = CGRectMake(30, 135, 270, 48);
+    loginView.frame = CGRectMake(25, 135, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     for (id obj in loginView.subviews)
     {
-        
-        
+
         if ([obj isKindOfClass:[UILabel class]])
         {
             UILabel * loginLabel =  obj;
@@ -228,7 +270,7 @@ int count=0;
 -(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
     NSLog(@"%@", user);
     
-   // if (![self isUser:_cachedUser equalToUser:user]) {
+    //if (![self isUser:_cachedUser equalToUser:user]) {
         
         User *localUser= [[User alloc] init];
         
@@ -237,9 +279,13 @@ int count=0;
         localUser.name= user[@"name"];
         localUser.day_of_birth= user[@"birthday"];
         localUser.facebook_uid=user[@"id"];
-        
+    
+    
+    if (loginExists ==false) {
         [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
         _cachedUser = user;
+    }
+    
         
   //  }
     
@@ -248,9 +294,9 @@ int count=0;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    double radio= [[FitmooHelper sharedInstance] frameRadio];
+  //  double radio= [[FitmooHelper sharedInstance] frameRadio];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        _backView.frame=CGRectMake(_backView.frame.origin.x, 0, _backView.frame.size.width, _backView.frame.size.height);
+        _backView.frame=CGRectMake(_backView.frame.origin.x, constentUp, _backView.frame.size.width, _backView.frame.size.height);
     }completion:^(BOOL finished){
 
     }];
@@ -261,14 +307,14 @@ int count=0;
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     [textField resignFirstResponder];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        _backView.frame=CGRectMake(_backView.frame.origin.x, 168*radio, _backView.frame.size.width, _backView.frame.size.height);
+        _backView.frame=CGRectMake(_backView.frame.origin.x, constentdown*radio, _backView.frame.size.width, _backView.frame.size.height);
     }completion:^(BOOL finished){
         
     }];
     return YES;
 }
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
-    loginView.frame = CGRectMake(30, 135, 270, 48);
+    loginView.frame = CGRectMake(25, 135, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     for (id obj in loginView.subviews)
     {

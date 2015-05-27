@@ -23,5 +23,6 @@
 @property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  NSDictionary * responseDic1;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
+@property (strong, nonatomic)  NSMutableArray * interestArray;
 @property (strong, nonatomic)  User *localUser;
 @end

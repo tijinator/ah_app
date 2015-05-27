@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button2;
 @property (strong, nonatomic) IBOutlet UILabel *label1;
 @property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (strong, nonatomic) IBOutlet UIImageView *checkImage1;
+@property (strong, nonatomic) IBOutlet UIImageView *checkImage2;
 
 @end

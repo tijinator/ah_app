@@ -123,11 +123,12 @@
         view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
     }
    
-    
-   
-    
     return view.frame;
 }
+
+
+
+
 
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic
 {

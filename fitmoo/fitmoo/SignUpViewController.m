@@ -40,10 +40,10 @@
 - (void)uploadToS3{
     AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
                                                           credentialsWithRegionType:AWSRegionUSEast1
-                                                          accountId:@"074088242106"
-                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
-                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"
-                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"];
+                                                          accountId:[[UserManager sharedUserManager] s3_accountId]
+                                                          identityPoolId:[[UserManager sharedUserManager] s3_identityPoolId]
+                                                          unauthRoleArn:[[UserManager sharedUserManager] s3_unauthRoleArn]
+                                                          authRoleArn:[[UserManager sharedUserManager] s3_authRoleArn]];
     
     AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
                                                                           credentialsProvider:credentialsProvider];
@@ -175,16 +175,23 @@
     _userImage.exclusiveTouch=NO;
     _changeprofileLabel.userInteractionEnabled=NO;
     _changeprofileLabel.exclusiveTouch=NO;
-}
-
-
-
-
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
-    [textField resignFirstResponder];
-    return YES;
+    
+    //case iphone 4s
+    if (self.view.frame.size.height<500) {
+        _nameLabel.frame= CGRectMake(33, 320, 288, 40);
+        _nameField.frame= CGRectMake(33, 320, 288, 40);
+        _dateBirthLabel.frame= CGRectMake(33, 360, 288, 40);
+        _genderLabel.frame= CGRectMake(33, 400, 288, 40);
+        _sighUpButton.frame= CGRectMake(0, 440, 320, 40);
+        
+        _pickerView.frame= CGRectMake(_pickerView.frame.origin.x,self.view.frame.size.height-_pickerView.frame.size.height, _pickerView.frame.size.width, _pickerView.frame.size.height);
+        _pickerView2.frame= CGRectMake(_pickerView2.frame.origin.x, self.view.frame.size.height-_pickerView2.frame.size.height, _pickerView2.frame.size.width, _pickerView2.frame.size.height);
+    }
+    
 }
+
+
 - (IBAction)nameLabelClick:(id)sender {
     
     _nameLabel.hidden=true;
@@ -393,16 +400,60 @@
     return sectionWidth;
 }
 
+- (void) moveUpView
+{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _backgroundView.frame=CGRectMake(0, -200*[[FitmooHelper sharedInstance] frameRadio], _backgroundView.frame.size.width, _backgroundView.frame.size.height);
+    }completion:^(BOOL finished){}];
+    
+ 
+}
+
+- (void) movedownView
+{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _backgroundView.frame=CGRectMake(0, 0, _backgroundView.frame.size.width, _backgroundView.frame.size.height);
+    }completion:^(BOOL finished){}];
+
+}
+
+#pragma mark - textfield functions
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self moveUpView];
+    _genderLabel.userInteractionEnabled=false;
+    _dateBirthLabel.userInteractionEnabled=false;
+    
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+    [self movedownView];
+    _genderLabel.userInteractionEnabled=true;
+    _dateBirthLabel.userInteractionEnabled=true;
+    return YES;
+}
 
 #pragma mark - UIbutton functions
 - (IBAction)dateBirthButtonClick:(id)sender {
     _pickerView.hidden=false;
+    
+    [self moveUpView];
+    _genderLabel.userInteractionEnabled=false;
+    _nameField.userInteractionEnabled=false;
+    
+    
+    
 }
 
 - (IBAction)genderButtonClick:(id)sender {
     _pickerView2.hidden=false;
     _genderLabel.textColor=[UIColor blackColor];
     _genderLabel.text=@"Male";
+    _dateBirthLabel.userInteractionEnabled=false;
+    _nameField.userInteractionEnabled=false;
+    [self moveUpView];
 }
 
 - (IBAction)doneButtonClick:(id)sender {
@@ -414,10 +465,16 @@
         _dateBirthLabel.text =  [format stringFromDate:pickerDate];
         _dateBirthLabel.textColor= [UIColor blackColor];
         _pickerView.hidden=true;
+
+        [self movedownView];
+        _genderLabel.userInteractionEnabled=true;
+        _nameField.userInteractionEnabled=true;
     }else if (b.tag==2)
     {
         _pickerView2.hidden=true;
-        
+        _dateBirthLabel.userInteractionEnabled=true;
+        _nameField.userInteractionEnabled=true;
+         [self movedownView];
     }else if (b.tag==3)
     {
      //   _emailTextField.userInteractionEnabled=true;

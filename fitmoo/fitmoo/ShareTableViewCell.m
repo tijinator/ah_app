@@ -176,6 +176,9 @@
         [_bodyLabel3 addSubview:crossView];
     }
     [_bodyCastView removeFromSuperview];
+    
+    _headerTag.hidden=false;
+    _headerTag.image= [UIImage imageNamed:@"buyicon.png"];
 }
 
 - (void) setBodyFrameForEvent

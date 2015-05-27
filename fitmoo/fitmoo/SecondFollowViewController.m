@@ -318,12 +318,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
 
-    
+    if (self.view.frame.size.height<500) {
+        
+        _tableView.frame= CGRectMake(_tableView.frame.origin.x,_tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height-88);
+        
+    }
 }
 
 - (IBAction)cellButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSString *key= [NSString stringWithFormat:@"%d",button.tag];
+    NSString *key= [NSString stringWithFormat:@"%ld",(long)button.tag];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
 }

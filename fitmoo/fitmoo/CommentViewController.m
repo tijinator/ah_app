@@ -11,6 +11,10 @@
 @interface CommentViewController ()
 {
     double cellHeight;
+    CGRect keyboardFrame;
+    double constentUp;
+    double constentdown;
+    double frameRadio;
 }
 @end
 
@@ -26,13 +30,7 @@
     // Do any additional setup after loading the view.
 }
 
-#pragma mark - UItextFieldDelegate
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
-    
-    [textField resignFirstResponder];
-    return YES;
-}
 
 //#define kOFFSET_FOR_KEYBOARD 80.0
 //
@@ -164,6 +162,29 @@
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
     
+
+     constentdown=519;
+     constentUp=300;
+     frameRadio=[[FitmooHelper sharedInstance] frameRadio];
+    //case iphone 4s
+    if (self.view.frame.size.height<500) {
+        
+        _buttomView.frame= CGRectMake(_buttomView.frame.origin.x, self.view.frame.size.height-_buttomView.frame.size.height, _buttomView.frame.size.width, _buttomView.frame.size.height);
+        
+        constentdown=430;
+        constentUp=222;
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardDidHide:)
+//                                                 name:UIKeyboardDidHideNotification
+//                                               object:nil];
+    
 }
 
 
@@ -276,6 +297,60 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
+#pragma mark - textfield functions
+- (void) moveUpView: (UIView *) moveView
+{
+
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
+    }completion:^(BOOL finished){}];
+    
+    
+}
+
+- (void) movedownView:(UIView *) moveView
+{
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
+    }completion:^(BOOL finished){}];
+    
+}
+-(void)keyboardDidShow:(NSNotification*)notification
+{
+    CGFloat height = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height;
+    
+    constentUp = height;
+    [self moveUpView:_buttomView];
+   // [self.view layoutIfNeeded];
+}
+
+//- (void)keyboardWillChange:(NSNotification *)notification {
+//    NSDictionary* keyboardInfo = [notification userInfo];
+//    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
+//    keyboardFrame = [keyboardFrameBegin CGRectValue];
+//    
+//}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+   // [self moveUpView:_buttomView];
+
+    
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    [self movedownView:_buttomView];
+
+    return YES;
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {

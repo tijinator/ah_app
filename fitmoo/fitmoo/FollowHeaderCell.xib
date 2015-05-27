@@ -29,30 +29,43 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL TRAINING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xcx-KJ-vP7" customClass="BentonSansBold">
-                        <rect key="frame" x="31" y="35" width="95" height="69"/>
+                        <rect key="frame" x="0.0" y="100" width="159" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL TRAINING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d70-wY-0Px" customClass="BentonSansBold">
-                        <rect key="frame" x="193" y="35" width="95" height="69"/>
+                        <rect key="frame" x="161" y="100" width="159" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" id="OAt-bI-6ci">
+                        <rect key="frame" x="57" y="48" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" id="2Dp-1e-enx">
+                        <rect key="frame" x="218" y="48" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="button1" destination="iqM-XB-7hZ" id="Bpx-hx-H5x"/>
                 <outlet property="button2" destination="kBj-iU-hPd" id="Q0v-St-p4O"/>
+                <outlet property="checkImage1" destination="OAt-bI-6ci" id="S0T-CA-a6m"/>
+                <outlet property="checkImage2" destination="2Dp-1e-enx" id="7XX-Tw-5zj"/>
                 <outlet property="label1" destination="Xcx-KJ-vP7" id="YSd-bE-Cnk"/>
                 <outlet property="label2" destination="d70-wY-0Px" id="Q2b-CI-toa"/>
             </connections>
             <point key="canvasLocation" x="258" y="262"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checkmark.png" width="44" height="44"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -9,7 +9,16 @@
 #import "AcountViewController.h"
 #import "AWSCore.h"
 #import "AWSS3.h"
+
+
+
+
 @interface AcountViewController ()
+{
+    double constentUp;
+    double constentdown;
+    double frameRadio;
+}
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
 @property (nonatomic) uint64_t amountUploaded;
@@ -68,6 +77,20 @@
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _saveButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_saveButton respectToSuperFrame:self.view];
+    
+    frameRadio= [[FitmooHelper sharedInstance] frameRadio];
+    constentdown= 60;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    if (self.view.frame.size.height<500) {
+
+        _tableview.frame= CGRectMake(_tableview.frame.origin.x,_tableview.frame.origin.y, _tableview.frame.size.width, _tableview.frame.size.height-88);
+        
+    }
 
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -84,10 +107,10 @@
 - (void)uploadToS3{
     AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
                                                           credentialsWithRegionType:AWSRegionUSEast1
-                                                          accountId:@"074088242106"
-                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
-                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"
-                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"];
+                                                          accountId:[[UserManager sharedUserManager] s3_accountId]
+                                                          identityPoolId:[[UserManager sharedUserManager] s3_identityPoolId]
+                                                          unauthRoleArn:[[UserManager sharedUserManager] s3_unauthRoleArn]
+                                                          authRoleArn:[[UserManager sharedUserManager] s3_authRoleArn]];
     
     AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
                                                                           credentialsProvider:credentialsProvider];
@@ -421,11 +444,6 @@
     return cell;
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
-    
-    [textField resignFirstResponder];
-    return YES;
-}
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -525,6 +543,57 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
 }
+
+
+#pragma mark - textfield functions
+- (void) moveUpView: (UIView *) moveView
+{
+    moveView=_tableview;
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
+    }completion:^(BOOL finished){}];
+    
+    
+}
+
+- (void) movedownView:(UIView *) moveView
+{
+    
+    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
+    }completion:^(BOOL finished){}];
+    
+}
+-(void)keyboardDidShow:(NSNotification*)notification
+{
+    CGFloat height = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height;
+    
+    constentUp = height;
+  //  [self moveUpView:_tableview];
+   
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    // [self moveUpView:_buttomView];
+    if ([textField isEqual:_locationTextfield]||[textField isEqual:_phoneTextfield]||[textField isEqual:_websiteTextfield]) {
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(moveUpView:) userInfo:nil repeats:NO];
+    }
+    
+    
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    [self movedownView:_tableview];
+    
+    return YES;
+}
+
+
 
 
 

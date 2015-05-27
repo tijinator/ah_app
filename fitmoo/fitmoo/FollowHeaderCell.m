@@ -27,8 +27,14 @@
     
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
 
-    
+    _checkImage1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_checkImage1 respectToSuperFrame:nil];
+    _checkImage2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_checkImage2 respectToSuperFrame:nil];
    
+    _checkImage1.userInteractionEnabled=NO;
+    _checkImage2.userInteractionEnabled=NO;
+    _checkImage1.exclusiveTouch=NO;
+    _checkImage2.exclusiveTouch=NO;
+    
     _button1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_button1 respectToSuperFrame:nil];
     _button2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_button2 respectToSuperFrame:nil];
     
