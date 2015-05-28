@@ -11,6 +11,7 @@
 @implementation HomePageViewController
 {
     NSNumber * contentHight;
+    bool pullDown;
   
 }
 - (void)viewDidLoad
@@ -65,12 +66,20 @@
     _offset=0;
     _limit=10;
     _count=1;
-    
+    pullDown=false;
  //   _homeFeedArray= [[NSMutableArray alloc]init];
 }
 
 -(void) getHomePageItems
 {
+//     [_activityIndicator startAnimating];
+//    if (pullDown==true) {
+//        [UIView animateWithDuration:0.3 delay:2 options:UIViewAnimationOptionTransitionNone animations:^{
+//            [_tableView setContentOffset:CGPointMake(0, 50) animated:YES];
+//        }completion:^(BOOL finished){}];
+//    }
+
+
  
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -95,13 +104,23 @@
             [self.tableView reloadData];
         }
      
-      
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
+
+       [_activityIndicator stopAnimating];
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
+     failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        
+        [_activityIndicator stopAnimating];
+             NSLog(@"Error: %@", error);
+         } // failure callback block
      
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             _tableView.userInteractionEnabled=true;
-             NSLog(@"Error: %@", error);} // failure callback block
      ];
 }
 
@@ -152,6 +171,35 @@
 
 
 #pragma mark - UITableViewDelegate
+//- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//
+//    return 18.0f;
+//}
+//
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//   
+//    
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -28, tableView.frame.size.width, 18)];
+//    /* Create custom view to display section header... */
+//    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+//    _activityIndicator.alpha = 1.0;
+//    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 0);
+//    _activityIndicator.hidesWhenStopped = YES;
+//    [view addSubview:_activityIndicator];
+//   
+//    
+//    
+//    /* Section header is in 0th index... */
+//
+//    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+//    return view;
+//}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
@@ -183,6 +231,16 @@
     {
         return cell;
     }
+    
+    if (indexPath.row==0) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+        _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+        _activityIndicator.hidesWhenStopped = YES;
+        [cell.contentView addSubview:_activityIndicator];
+        cell.clipsToBounds=false;
+    }
+    
     
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row];
     cell.homeFeed=tempHomefeed;
@@ -415,7 +473,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:600];
     }
-    NSLog(@"%ld",(long)height.integerValue);
+  //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }
 
@@ -430,24 +488,49 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:contentHight.integerValue];
     }
-    NSLog(@"%ld",(long)height.integerValue);
+  //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }
 
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (pullDown==true) {
+        [_tableView setContentOffset:CGPointMake(0, -50) animated:YES];
+    }
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if(self.tableView.contentOffset.y<-75){
+    
+        [_activityIndicator startAnimating];
+      
+     
+        
+            [self initValuable];
+            pullDown=true;
+            [self getHomePageItems];
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+   
+}
 
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
     if(self.tableView.contentOffset.y<-75){
         if (_count==0) {
-            [self initValuable];
-            [self getHomePageItems];
+       //     [self initValuable];
+      //      [self getHomePageItems];
+            _activityIndicator.hidden=false;
         }
         _count++;
         //it means table view is pulled down like refresh
         return;
     }
-    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height+20)) {
+    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height-1300)) {
      //   NSLog(@"bottom!");
      //   NSLog(@"%f",self.tableView.contentOffset.y );
      //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
@@ -574,12 +657,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)bodyImageButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-//    specialPage.action=@"playVideo";
-//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-//    
-//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
     NSString * url= homefeed.videos.video_url;
     

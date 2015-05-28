@@ -257,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mkz-G4-3Zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1261" y="-309"/>
+            <point key="canvasLocation" x="-1613" y="-301"/>
         </scene>
         <!--Base Post View Controller-->
         <scene sceneID="6od-9S-gFN">
@@ -346,6 +346,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="79z-Xz-AxX"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -360,6 +363,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="MRw-vk-HGu"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -401,8 +407,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="216" height="112"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="eBf-CF-Q7e"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -457,6 +466,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="X0c-2R-DON"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -471,6 +483,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="Jr6-yT-BjW"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -485,6 +500,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="iiI-ot-5UJ"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -526,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6j-Pr-klb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-870" y="-309"/>
+            <point key="canvasLocation" x="-1252" y="-301"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="Uox-Sx-26S">
@@ -560,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pk-bu-lFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439" y="-309"/>
+            <point key="canvasLocation" x="-876" y="-293"/>
         </scene>
         <!--Right View Controller-->
         <scene sceneID="Czx-o6-E0E">
@@ -574,7 +592,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJM-tK-aLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="-309"/>
+            <point key="canvasLocation" x="-439" y="-301"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="owU-SP-NRy">
@@ -722,7 +740,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDi-R1-2fu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="-309"/>
+            <point key="canvasLocation" x="-33" y="-293"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="VAL-Kb-6Ei">
@@ -870,7 +888,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="67" y="367"/>
+            <point key="canvasLocation" x="-33" y="341"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="wkQ-tp-cKB">
@@ -1048,12 +1066,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8f-N1-JEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="381"/>
+            <point key="canvasLocation" x="754" y="341"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Forgot Pd View Controller-->
         <scene sceneID="adQ-pf-XV5">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cYW-n1-1EP" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPdViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cYW-n1-1EP" customClass="ForgotPdViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pyb-xd-s4a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1100,9 +1118,12 @@
                                 <color key="textColor" red="0.49803921569999998" green="0.51764705879999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.49803921568627452" green="0.51764705882352935" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We’ve got you covered! Just enter your email below and we’ll resend instructions to reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHv-Fd-Ya6" customClass="BentonSansRegular">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHv-Fd-Ya6" customClass="BentonSansRegular">
                                 <rect key="frame" x="25" y="115" width="260" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">We’ve got you covered! Just enter
+your email below and we’ll resend
+instructions to reset your password</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1120,7 +1141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M7-4B-wEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411" y="392"/>
+            <point key="canvasLocation" x="363" y="341"/>
         </scene>
         <!--Special Page View Controller-->
         <scene sceneID="n7s-2L-rkA">
@@ -1186,7 +1207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmw-Jz-wtu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="979"/>
+            <point key="canvasLocation" x="-93" y="985"/>
         </scene>
         <!--People Page View Controller-->
         <scene sceneID="WTc-rk-RfO">
@@ -1225,7 +1246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aZ-HR-BxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419" y="1037"/>
+            <point key="canvasLocation" x="311" y="985"/>
         </scene>
         <!--Action Sheet View Controller-->
         <scene sceneID="3L6-8N-nhu">
@@ -1316,7 +1337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDG-zH-fah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="1037"/>
+            <point key="canvasLocation" x="710" y="985"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="H8l-N4-AeX">
@@ -1355,7 +1376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEK-XG-1a6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439" y="985"/>
+            <point key="canvasLocation" x="-485" y="985"/>
         </scene>
         <!--Interest View Controller-->
         <scene sceneID="HBK-Oy-FhK">
@@ -1424,7 +1445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vwg-Sh-y5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="384"/>
+            <point key="canvasLocation" x="1151" y="341"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="taY-fs-KW5">
@@ -1529,7 +1550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqK-kE-38f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="1037"/>
+            <point key="canvasLocation" x="1121" y="985"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="Ah3-iu-h2o">
@@ -1782,7 +1803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XK2-bP-Evp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="997"/>
+            <point key="canvasLocation" x="1517" y="985"/>
         </scene>
         <!--Acount View Controller-->
         <scene sceneID="VmA-F9-9kO">
@@ -2275,7 +2296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPf-yn-bVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="-309"/>
+            <point key="canvasLocation" x="363" y="-293"/>
         </scene>
         <!--Setting Web View Controller-->
         <scene sceneID="RnG-eO-3HW">

@@ -20,6 +20,17 @@
     
 }
 
+- (void) addActivityIndicator:(UIView *)view
+{
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:activityIndicator respectToSuperFrame:nil];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 240*[[FitmooHelper sharedInstance] frameRadio]);
+    activityIndicator.hidesWhenStopped = YES;
+    [view addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+}
+
 -(void) showViewWithAnimation: (NSString *) text withPareView: (UIView *)parentView
 {
     double radio= [[FitmooHelper sharedInstance] frameRadio];

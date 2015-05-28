@@ -45,6 +45,11 @@
     _sideMenuViewController.contentViewShadowRadius = 12;
     _sideMenuViewController.contentViewShadowEnabled = YES;
     _sideMenuViewController.contentViewInPortraitOffsetCenterX=-20;
+    
+    _sideMenuViewController.panGestureEnabled=false;
+
+    
+
   //  [_sideMenuViewController supportedInterfaceOrientations];
    
     self.window.rootViewController = _sideMenuViewController;

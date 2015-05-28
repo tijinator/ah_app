@@ -168,11 +168,7 @@
             NSLog(@"%@", task.error);
         }else{// if there aren't any then the image is uploaded!
             // this is the url of the image we just uploaded
-            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png"];
-            NSLog(@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
-            NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
-            //   NSString *uploadImage= @"https://fitmoo-staging.s3.amazonaws.com/photos%2F39528c839944-4b8a-457f-a5fe-ec9f386cae8e.jpg";
-      
+            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",[[UserManager sharedUserManager] amazonUploadUrl],uuid,@".png"];
             _tempUser.profile_avatar_original=uploadImage;
             [[UserManager sharedUserManager] performUpdate:_tempUser ];
         }

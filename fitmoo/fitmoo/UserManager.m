@@ -741,6 +741,7 @@
     _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
     _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
     _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-staging-test/photos/";
     
     
     _s3_accountId=@"074088242106";

@@ -12,10 +12,36 @@
 
 
 #import "AFNetworking.h"
+
+
+@interface TestView1 : UIView
+@end
+
+@implementation TestView1
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (!self.clipsToBounds && !self.hidden && self.alpha > 0) {
+        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
+            CGPoint subPoint = [subview convertPoint:point fromView:self];
+            UIView *result = [subview hitTest:subPoint withEvent:event];
+            if (result != nil) {
+                return result;
+            }
+        }
+    }
+    
+    return nil;
+}
+
+@end
+
 @interface BasePostViewController ()
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
 @property (nonatomic) uint64_t amountUploaded;
+
+@property (strong, nonatomic)  TestView1 *textViewBackgroundView;
 @end
 
 @implementation BasePostViewController
@@ -114,9 +140,9 @@
             NSLog(@"%@", task.error);
         }else{// if there aren't any then the image is uploaded!
             // this is the url of the image we just uploaded
-            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png"];
-            NSLog(@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
-            NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
+            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",[[UserManager sharedUserManager] amazonUploadUrl],uuid,@".png"];
+         //   NSLog(@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
+       //     NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
             //   NSString *uploadImage= @"https://fitmoo-staging.s3.amazonaws.com/photos%2F39528c839944-4b8a-457f-a5fe-ec9f386cae8e.jpg";
             [self makePost:uploadImage withVideoUrl:@""];
             
@@ -172,23 +198,7 @@
 
 - (void) verifyCheck
 {
-    //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //    manager.securityPolicy.allowInvalidCertificates = YES;
-    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //   // NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%i", 0], @"Content-Length", nil];
-    //    NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
-    //
-    //    [manager.requestSerializer setValue:[NSString stringWithFormat:@"%i", 0] forHTTPHeaderField:@"Content-Length"];
-    //    [manager.requestSerializer setValue:@"bytes */*" forHTTPHeaderField:@"Content-Range"];
-    //
-    //    [manager PUT:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
-    //        [self deleteCheck];
-    //        //      NSLog(@"Submit response data: %@", responseObject);
-    //    } // success callback block
-    //
-    //          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-    //              NSLog(@"Error: %@", error);} // failure callback block
-    //     ];
+
     
     
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
@@ -216,34 +226,7 @@
 - (void) uploadVideo
 {
     
-    
-    //    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.videoURL.path error:nil];
-    //        NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
-    //        long long fileSize = [fileSizeNumber longLongValue];
-    //        NSData *videoData = [NSData dataWithContentsOfFile:self.videoURL.path];
-    //        NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
-    //     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"video/mp4", @"Content-Type",[NSString stringWithFormat:@"%lld", fileSize], @"Content-Length", nil];
-    //    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"PUT" URLString:url parameters:jsonDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-    //
-    // //       [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"file://path/to/image.jpg"] name:@"file" fileName:@"filename.jpg" mimeType:@"video/mp4" error:nil];
-    //        [formData appendPartWithHeaders:jsonDict body:videoData];
-    //    } error:nil];
-    //
-    //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    //    NSProgress *progress = nil;
-    //
-    //    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-    //        if (error) {
-    //            NSLog(@"Error: %@", error);
-    //        } else {
-    //            NSLog(@"%@ %@", response, responseObject);
-    //            [self verifyCheck];
-    //
-    //        }
-    //    }];
-    //
-    //    [uploadTask resume];
-    //
+
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.videoURL.path error:nil];
     NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
     long long fileSize = [fileSizeNumber longLongValue];
@@ -298,11 +281,7 @@
 -(void) updateVideo: (NSNotification * ) note
 {
     self.videoURL=(NSURL *)[note object];
-//    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc]
-//                                            initWithContentURL:self.videoURL];
-//    moviePlayer.shouldAutoplay = NO;
-//    UIImage *thumbnail = [moviePlayer thumbnailImageAtTime:1
-//                                                timeOption:MPMovieTimeOptionNearestKeyFrame];
+
     UIImage *thumbnail =[self thumbnailImageForVideo:self.videoURL atTime:1];
     
     [_normalPostImage setBackgroundImage:thumbnail forState:UIControlStateNormal];
@@ -384,32 +363,7 @@
     }
 }
 
-//-(void) presentCameraView
-//{
-//    
-//    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-//  
-//    _picker = [[UIImagePickerController alloc] init];
-//    _picker.allowsEditing = YES;
-//    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    self.picker.showsCameraControls = NO;
-//    self.picker.navigationBarHidden = YES;
-//    self.picker.toolbarHidden = YES;
-//    
-//    self.overlay.picker = self.picker;
-//    self.overlay.chosenImage= self.PostImage;
-//    if ([self.postActionType isEqualToString:@"video"]) {
-//        self.overlay.playImage= [UIImage imageNamed:@"play.png"];
-//    }
-//    self.picker.cameraOverlayView = self.overlay.view;
-//    self.picker.delegate = self.overlay;
-//    
-//    [self presentViewController:_picker animated:YES completion:NULL];
-//    
-//    
-//}
+
 
 -(void) setPostFrame
 {
@@ -489,15 +443,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 
 
@@ -818,5 +763,52 @@
      [[NSNotificationCenter defaultCenter] postNotificationName:@"hidePostView" object:Nil];
 }
 
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    if (CGRectContainsPoint(button.frame, point)) {
+//        return button;
+//    }
+//    return [super hitTest:point withEvent:event];
+//}
+
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -100, self.view.frame.size.width, self.view.frame.size.height+100)];
+    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+    _textViewBackgroundView.alpha=0.7;
+    [self.view addSubview:_textViewBackgroundView];
+    
+    UIButton *b= [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width-40, 40, 40)];
+    
+    
+    [self.view bringSubviewToFront:_normalPostView];
+    [self.view bringSubviewToFront:_workoutView];
+    [self.view bringSubviewToFront:_nutritionView];
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _normalPostView.frame=CGRectMake(0, 0, _normalPostView.frame.size.width, _normalPostView.frame.size.height);
+        _workoutView.frame=CGRectMake(0, 0, _workoutView.frame.size.width, _workoutView.frame.size.height);
+        _nutritionView.frame=CGRectMake(0, 0, _nutritionView.frame.size.width, _nutritionView.frame.size.height);
+        
+    }completion:^(BOOL finished){}];
+
+
+    
+    
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [_textViewBackgroundView removeFromSuperview];
+    _textViewBackgroundView=nil;
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _normalPostView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _normalPostView.frame.size.width, _normalPostView.frame.size.height);
+        _workoutView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _workoutView.frame.size.width, _workoutView.frame.size.height);
+        _nutritionView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _nutritionView.frame.size.width, _nutritionView.frame.size.height);
+        
+    }completion:^(BOOL finished){}];
+    
+}
 
 @end

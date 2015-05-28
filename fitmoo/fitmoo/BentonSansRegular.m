@@ -70,11 +70,17 @@
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:8];
+    if (self.tag==1000) {
+        style.alignment=NSTextAlignmentCenter;
+    }
+    
+    
     [attributedString addAttribute:NSParagraphStyleAttributeName
                        value:style
                        range:NSMakeRange(0, self.text.length)];
     
-   
+    
+    
     [self setAttributedText:attributedString];
 
   

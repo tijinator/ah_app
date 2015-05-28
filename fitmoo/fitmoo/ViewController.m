@@ -125,12 +125,27 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [_activityIndicator stopAnimating];
     if (_sighUpView!=nil) {
           _sighUpView=nil;
     }
-    if (_loginView!=nil) {
-        _loginView=nil;
+    if (_forgotPdView!=nil) {
+        _forgotPdView=nil;
     }
+    
+    FBSession* session = [FBSession activeSession];
+    [session closeAndClearTokenInformation];
+    [session close];
+    [FBSession setActiveSession:nil];
+    
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+    
+    for (NSHTTPCookie* cookie in facebookCookies) {
+        [cookies deleteCookie:cookie];
+    }
+
+  //  loginExists =false;
 }
 
 int count=0;
@@ -336,7 +351,14 @@ int count=0;
     NSLog(@"%@", [error localizedDescription]);
 }
 
-
+- (void) addActivityIndicator
+{
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+    _activityIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:_activityIndicator];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -347,8 +369,8 @@ int count=0;
 -(void) openLogingView
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    _loginView = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self.navigationController pushViewController:_loginView animated:YES];
+    _forgotPdView = [mainStoryboard instantiateViewControllerWithIdentifier:@"ForgotPdViewController"];
+    [self.navigationController pushViewController:_forgotPdView animated:YES];
 }
 
 -(void) openSignUpView
@@ -365,6 +387,8 @@ int count=0;
 
 }
 
+
+
 - (IBAction)loginButtonClick:(id)sender {
     User *localUser= [[User alloc] init];
       bool valiEmail= [self checkValidEmail:_emailTextField];
@@ -373,13 +397,11 @@ int count=0;
             localUser.email= _emailTextField.text;
             localUser.password=_passwordTextField.text;
             [[UserManager sharedUserManager] performLogin:localUser];
+        [self addActivityIndicator];
 
     }else
     {
-//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
-//                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
-//                                                otherButtonTitles : nil ];
-//        [alert show ];
+
         [[FitmooHelper sharedInstance] showViewWithAnimation:@"Invalid username/password." withPareView:self.view];
     }
     

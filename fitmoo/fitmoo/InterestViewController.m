@@ -358,7 +358,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     
 }
+
 - (IBAction)skipButtonClick:(id)sender {
+    
+     [[FitmooHelper sharedInstance] addActivityIndicator:self.view];
     
     if ([_interestArray count]==0) {
         [[UserManager sharedUserManager] getUserProfile:_localUser];
@@ -390,13 +393,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
             
             _responseDic1= responseObject;
+            [[UserManager sharedUserManager] getUserProfile:_localUser];
             
-            
-            [self parseResponseDic];
+         
             
         } // success callback block
          
              failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            [[UserManager sharedUserManager] getUserProfile:_localUser];
                  NSLog(@"Error: %@", error);} // failure callback block
          ];
 

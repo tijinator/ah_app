@@ -20,6 +20,7 @@
 #import "ShopViewController.h"
 #import "SettingViewController.h"
 #import "LocationViewController.h"
+
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;

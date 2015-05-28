@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "Reachability.h"
 @interface BaseViewController ()
 {
  bool showButton;
@@ -22,6 +22,30 @@
     [self addfootButtonsForThree];
     showButton=false;
    
+}
+
+
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Internet"
+                                                          message : @"There IS NO internet connection" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    } else {
+        NSLog(@"There IS internet connection");
+        
+    }
+    
+    
 }
 
 - (IBAction)openSideMenu:(id)sender {
@@ -169,7 +193,11 @@
 -(void)createObservers{
    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hideButtonsAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
+
 }
+
+
+
 
 
 -(void)swipeHandler:(UISwipeGestureRecognizer *)recognizer {

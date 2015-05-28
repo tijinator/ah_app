@@ -7,7 +7,7 @@
 //
 
 #import "NavigationViewController.h"
-
+#import "Reachability.h"
 @implementation NavigationViewController
 {
     int currentPage;
@@ -23,6 +23,10 @@
     return self;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+
+}
 
 - (void)viewDidLoad
 {
@@ -50,8 +54,30 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSideMenuAction:) name:@"leftSideMenuAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swipeHandler:) name:@"swipeHandler" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBlackStatusBarHandler:) name:@"showBlackStatusBarHandler" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
    
 }
+
+- (void)appWillEnterForeground:(NSNotification *)notification {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Internet"
+                                                          message : @"There IS NO internet connection" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        
+        [self.nav popToRootViewControllerAnimated:YES];
+    
+        
+    } else {
+        NSLog(@"There IS internet connection");
+        
+    }
+}
+
 -(void)showBlackStatusBarHandler:(NSNotification*)note{
     
     NSString *key = [note object];

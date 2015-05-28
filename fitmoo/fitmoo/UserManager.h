@@ -53,6 +53,7 @@
 @property (strong, nonatomic) NSString * homeFeedUrl;
 @property (strong, nonatomic) NSString * postUrl;
 @property (strong, nonatomic) NSString * amazonUrl;
+@property (strong, nonatomic) NSString * amazonUploadUrl;
 
 @property (strong, nonatomic) NSString * clientUrl;
 @property (strong, nonatomic) NSString * feedsUrl;

@@ -1,8 +1,8 @@
 //
-//  LoginViewController.h
+//  ForgotPdViewController.h
 //  fitmoo
 //
-//  Created by hongjian lin on 4/8/15.
+//  Created by hongjian lin on 5/28/15.
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 #import "HomePageViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+@interface ForgotPdViewController : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic)  NSDictionary * responseDic;
@@ -29,8 +29,6 @@
 - (IBAction)editingChanged;
 @property (strong, nonatomic) IBOutlet UITextField *forgotPasswordEmail;
 - (IBAction)requestButtonClick:(id)sender;
-
-
 
 
 @end

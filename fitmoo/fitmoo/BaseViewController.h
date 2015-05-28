@@ -14,7 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BasePostViewController.h"
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : UIViewController<UIApplicationDelegate>
 
 - (IBAction)openSideMenu:(id)sender;
 - (void) addfootButtonsForSetting;

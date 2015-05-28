@@ -21,6 +21,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *workoutPostImage;
 @property (strong, nonatomic) IBOutlet UIButton *nutritionPostImage;
+
+
 - (IBAction)postImageButtonClick:(id)sender;
 
 - (IBAction)cancelButtonClick:(id)sender;

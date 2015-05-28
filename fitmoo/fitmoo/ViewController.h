@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "SignUpViewController.h"
-#import "LoginViewController.h"
+#import "ForgotPdViewController.h"
 #import "UserManager.h"
 
 #import "User.h"
@@ -29,9 +29,10 @@
 @property (strong, nonatomic) IBOutlet UIView *backView;
 @property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic)  SignUpViewController *sighUpView;
-@property (strong, nonatomic)  LoginViewController *loginView;
+@property (strong, nonatomic)  ForgotPdViewController *forgotPdView;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 - (IBAction)signupButtonClick:(id)sender;
 - (IBAction)loginButtonClick:(id)sender;
 -(void) checkLogin;

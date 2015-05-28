@@ -101,10 +101,7 @@
             NSLog(@"%@", task.error);
         }else{// if there aren't any then the image is uploaded!
             // this is the url of the image we just uploaded
-            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png"];
-            NSLog(@"%@%@%@",@"https://s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
-            NSLog(@"%@%@%@",@"https://fitmoo-staging.s3.amazonaws.com/fitmoo-staging-test/photos/",uuid,@".png");
-            //   NSString *uploadImage= @"https://fitmoo-staging.s3.amazonaws.com/photos%2F39528c839944-4b8a-457f-a5fe-ec9f386cae8e.jpg";
+            NSString *uploadImage= [NSString stringWithFormat:@"%@%@%@",[[UserManager sharedUserManager] amazonUploadUrl],uuid,@".png"];
             _localUser= [[User alloc] init];
             _localUser.profile_avatar_original=uploadImage;
           //  [[UserManager sharedUserManager] performUpdate:_tempUser ];
@@ -251,21 +248,25 @@
 
 }
 
+
 - (IBAction)signUpButtonClick:(id)sender {
 
-    
-    if (_chosenImage!=nil) {
         _checkEmpty=[self checkEmpty];
         if (_checkEmpty==false ) {
+            _localUser= [[User alloc] init];
+            if (_chosenImage!=nil) {
+                [self uploadToS3];
+            }else
+            {
+                
+                [self requestSignUp];
+            }
             
-            [self uploadToS3];
-            
+            [[FitmooHelper sharedInstance] addActivityIndicator:self.view];
         }
-    }else
-    {
-        [[FitmooHelper sharedInstance] showViewWithAnimation:@"Chose your profile picture." withPareView:self.view];
-    }
     
+  
+        
 }
 
 
@@ -421,8 +422,10 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self moveUpView];
-    _genderLabel.userInteractionEnabled=false;
-    _dateBirthLabel.userInteractionEnabled=false;
+    _pickerView.hidden=true;
+    _pickerView2.hidden=true;
+//    _genderLabel.userInteractionEnabled=false;
+//    _dateBirthLabel.userInteractionEnabled=false;
     
 }
 
@@ -430,18 +433,19 @@
 
     [textField resignFirstResponder];
     [self movedownView];
-    _genderLabel.userInteractionEnabled=true;
-    _dateBirthLabel.userInteractionEnabled=true;
+//    _genderLabel.userInteractionEnabled=true;
+//    _dateBirthLabel.userInteractionEnabled=true;
     return YES;
 }
 
 #pragma mark - UIbutton functions
 - (IBAction)dateBirthButtonClick:(id)sender {
     _pickerView.hidden=false;
-    
+    _pickerView2.hidden=true;
+    [_nameField resignFirstResponder];
     [self moveUpView];
-    _genderLabel.userInteractionEnabled=false;
-    _nameField.userInteractionEnabled=false;
+//    _genderLabel.userInteractionEnabled=false;
+//    _nameField.userInteractionEnabled=false;
     
     
     
@@ -449,10 +453,12 @@
 
 - (IBAction)genderButtonClick:(id)sender {
     _pickerView2.hidden=false;
+    _pickerView.hidden=true;
     _genderLabel.textColor=[UIColor blackColor];
     _genderLabel.text=@"Male";
-    _dateBirthLabel.userInteractionEnabled=false;
-    _nameField.userInteractionEnabled=false;
+    [_nameField resignFirstResponder];
+//    _dateBirthLabel.userInteractionEnabled=false;
+//    _nameField.userInteractionEnabled=false;
     [self moveUpView];
 }
 
@@ -465,15 +471,16 @@
         _dateBirthLabel.text =  [format stringFromDate:pickerDate];
         _dateBirthLabel.textColor= [UIColor blackColor];
         _pickerView.hidden=true;
-
+        
+    
         [self movedownView];
-        _genderLabel.userInteractionEnabled=true;
-        _nameField.userInteractionEnabled=true;
+//        _genderLabel.userInteractionEnabled=true;
+//        _nameField.userInteractionEnabled=true;
     }else if (b.tag==2)
     {
         _pickerView2.hidden=true;
-        _dateBirthLabel.userInteractionEnabled=true;
-        _nameField.userInteractionEnabled=true;
+//        _dateBirthLabel.userInteractionEnabled=true;
+//        _nameField.userInteractionEnabled=true;
          [self movedownView];
     }else if (b.tag==3)
     {
