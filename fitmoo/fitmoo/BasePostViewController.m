@@ -9,8 +9,9 @@
 #import "BasePostViewController.h"
 #import "AWSCore.h"
 #import "AWSS3.h"
-
-
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
+#import "FSImageViewerViewController.h"
 #import "AFNetworking.h"
 
 
@@ -230,7 +231,7 @@
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.videoURL.path error:nil];
     NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
     long long fileSize = [fileSizeNumber longLongValue];
-    NSData *videoData = [NSData dataWithContentsOfFile:self.videoURL.path];
+ //   NSData *videoData = [NSData dataWithContentsOfFile:self.videoURL.path];
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"video/mp4", @"Content-Type",[NSString stringWithFormat:@"%lld", fileSize], @"Content-Length", nil];
     
@@ -373,6 +374,10 @@
     _workoutView.hidden=true;
     _nutritionView.hidden=true;
     [_normalPostImage setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    if (self.PostImage==nil) {
+        [_normalPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+    }
+    
     //   _normalPostImage.image= self.PostImage;
     //  [_normalPostText setp]
     
@@ -383,6 +388,9 @@
     _workoutView.frame= CGRectMake(0, 55, 320, 172);
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    if (self.PostImage==nil) {
+        [_workoutPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+    }
     _normalPostView.hidden=true;
     _workoutView.hidden=false;
     _nutritionView.hidden=true;
@@ -396,6 +404,9 @@
     _workoutView.hidden=true;
     _nutritionView.hidden=false;
     [_nutritionPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
+    if (self.PostImage==nil) {
+        [_nutritionPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+    }
 
 }
 
@@ -474,6 +485,9 @@
 - (IBAction)postImageButtonClick:(id)sender {
     
   //  [self presentCameraView];
+    if (_PostImage !=nil) {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"showImageViewer" object:_PostImage];
+    }
     
 }
 

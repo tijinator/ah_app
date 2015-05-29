@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "FitmooHelper.h"
-#import "AFNetworking.h"
+
 #import "User.h"
 #import "ShareTableViewCell.h"
 #import "BaseViewController.h"

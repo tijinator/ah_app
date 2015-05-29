@@ -9,7 +9,7 @@
 #import "SignUpViewController.h"
 #import "AWSCore.h"
 #import "AWSS3.h"
-
+#import "AFNetworking.h"
 @interface SignUpViewController()
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;

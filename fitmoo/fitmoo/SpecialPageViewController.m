@@ -7,7 +7,7 @@
 //
 
 #import "SpecialPageViewController.h"
-
+#import "AFNetworking.h"
 @interface SpecialPageViewController ()
 {
     NSNumber * contentHight;

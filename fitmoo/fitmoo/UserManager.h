@@ -11,7 +11,7 @@
 #import "User.h"
 #import "LocalUser.h"
 #import <CoreData/CoreData.h>
-#import "AFNetworking.h"
+
 
 
 

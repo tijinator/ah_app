@@ -7,7 +7,8 @@
 //
 
 #import "SearchViewController.h"
-
+#import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 @interface SearchViewController ()
 {
         NSNumber * contentHight;

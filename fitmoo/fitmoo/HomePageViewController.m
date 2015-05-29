@@ -7,7 +7,8 @@
 //
 
 #import "HomePageViewController.h"
-
+#import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 @implementation HomePageViewController
 {
     NSNumber * contentHight;

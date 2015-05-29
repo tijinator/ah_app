@@ -7,7 +7,7 @@
 //
 
 #import "InterestViewController.h"
-
+#import "AFNetworking.h"
 @interface InterestViewController ()
 {
     NSNumber * contentHight;

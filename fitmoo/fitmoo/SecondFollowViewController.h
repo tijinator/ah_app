@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "FitmooHelper.h"
-#import "AFNetworking.h"
+
 #import "User.h"
 #import "ShareTableViewCell.h"
 #import "BaseViewController.h"
@@ -17,10 +17,10 @@
 #import "AsyncImageView.h"
 #import "SpecialPageViewController.h"
 #import "ActionSheetViewController.h"
-#import "AFNetworkActivityIndicatorManager.h"
+
 #import "PeoplePageViewController.h"
 #import "CreatedByCommunity.h"
-#import "AFNetworkActivityIndicatorManager.h"
+
 #import "FollowCell.h"
 
 @interface SecondFollowViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>

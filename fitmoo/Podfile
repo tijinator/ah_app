@@ -1,5 +1,8 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
+inhibit_all_warnings!
+
 pod 'AWSiOSSDKv2'
 pod 'Facebook-iOS-SDK', '~> 3.0'
 #pod 'google-plus-ios-sdk'
+pod 'FSImageViewer', '~> 3.2'

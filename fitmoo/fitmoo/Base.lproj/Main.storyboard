@@ -41,7 +41,7 @@
                                         <rect key="frame" x="36" y="43" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
+                                        <state key="normal" backgroundImage="defaultprofilepic.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -394,7 +394,7 @@
                                         <rect key="frame" x="15" y="10" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
+                                        <state key="normal" backgroundImage="defaultprofilepic.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -832,7 +832,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.12941176470588234" green="0.37647058823529411" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2407,6 +2407,7 @@ instructions to reset your password</string>
         <image name="comment.png" width="40" height="40"/>
         <image name="continuebluebar.png" width="322" height="55"/>
         <image name="continuegreybar.png" width="322" height="55"/>
+        <image name="defaultprofilepic.png" width="69" height="69"/>
         <image name="defaultprofilepicture.png" width="320" height="320"/>
         <image name="greyrightarrow.png" width="11" height="17"/>
         <image name="greyx.png" width="14" height="14"/>

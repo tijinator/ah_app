@@ -9,6 +9,9 @@
 #import "CameraViewController.h"
 #import "UIImage+Filters.h"
 #import "ImageFilter.h"
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
+#import "FSImageViewerViewController.h"
 @interface CameraViewController ()
 {
     bool takePhoto;
@@ -49,7 +52,23 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showOKButton" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOKButton:) name:@"showOKButton" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showImageViewer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImageViewer:) name:@"showImageViewer" object:nil];
    
+}
+
+- (void) showImageViewer: (NSNotification * ) note
+{
+    UIImage *image= (UIImage *)[note object];
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImage:image];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    imageViewController.backgroundColorVisible=[UIColor blackColor];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
 }
 
 -(void) showOKButton: (NSNotification * ) note
@@ -57,7 +76,7 @@
     NSString *flag= (NSString *) [note object];
     if ([flag isEqualToString:@"yes"]) {
         _okButton.hidden=false;
-    }else
+    }else 
     {
         _okButton.hidden=true;
     }
@@ -68,6 +87,7 @@
 -(void) makePostFinished: (NSNotification * ) note
 {
     [_picker dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"0"];
    
 
 }
@@ -198,6 +218,18 @@
     if ([_mediaType isEqualToString:@"camera"]) {
         [_picker takePicture];
         takePhoto=true;
+        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        v.backgroundColor=[UIColor blackColor];
+        v.alpha=1;
+        [self.view addSubview:v];
+        
+        [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+       
+            v.alpha=0;
+        }completion:^(BOOL finished){
+            [v removeFromSuperview];
+                }];
+        
         
     }else
     {
@@ -348,6 +380,8 @@
 - (void) addfilterView
 {
     _selectedImageview= [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 320, 320)];
+    _selectedImageview.backgroundColor=[UIColor blackColor];
+    _selectedImageview.contentMode=UIViewContentModeScaleAspectFit;
     [[FitmooHelper sharedInstance] resizeFrameWithFrame:_selectedImageview respectToSuperFrame:self.view];
     _selectedImageview.image=_chosenImage;
    // [self.view addSubview:selectedImageview];

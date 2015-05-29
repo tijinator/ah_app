@@ -7,7 +7,7 @@
 //
 
 #import "SettingViewController.h"
-
+#import "AFNetworking.h"
 @interface SettingViewController ()
 
 @end

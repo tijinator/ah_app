@@ -7,6 +7,8 @@
 //
 
 #import "SecondFollowViewController.h"
+#import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface SecondFollowViewController ()
 {

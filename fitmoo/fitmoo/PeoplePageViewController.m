@@ -7,7 +7,7 @@
 //
 
 #import "PeoplePageViewController.h"
-
+#import "AFNetworking.h"
 @interface PeoplePageViewController ()
 {
     NSNumber * contentHight;

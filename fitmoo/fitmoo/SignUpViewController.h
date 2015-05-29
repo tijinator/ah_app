@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-#import "AFNetworking.h"
+
 #import "User.h"
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"

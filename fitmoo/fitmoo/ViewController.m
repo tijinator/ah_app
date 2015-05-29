@@ -235,7 +235,13 @@ int count=0;
 
     }
     
-    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    _emailTextField.leftView = paddingView;
+    _emailTextField.leftViewMode = UITextFieldViewModeAlways;
+    UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    _passwordTextField.leftView = paddingView1;
+    _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
+
     
 }
 

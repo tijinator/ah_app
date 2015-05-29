@@ -72,6 +72,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "AWSSNS/AWSSNS/Resources/sns-2010-03-31.json"
   install_resource "AWSSQS/AWSSQS/Resources/sqs-2012-11-05.json"
   install_resource "AWSSimpleDB/AWSSimpleDB/Resources/sdb-2009-04-15.json"
+  install_resource "FSImageViewer/FSImageViewer.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AWSAutoScaling/AWSAutoScaling/Resources/autoscaling-2011-01-01.json"
@@ -88,6 +89,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AWSSNS/AWSSNS/Resources/sns-2010-03-31.json"
   install_resource "AWSSQS/AWSSQS/Resources/sqs-2012-11-05.json"
   install_resource "AWSSimpleDB/AWSSimpleDB/Resources/sdb-2009-04-15.json"
+  install_resource "FSImageViewer/FSImageViewer.bundle"
 fi
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
