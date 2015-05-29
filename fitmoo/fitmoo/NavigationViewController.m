@@ -11,7 +11,7 @@
 @implementation NavigationViewController
 {
     int currentPage;
-    bool blackStatusbar;
+    int blackStatusbar;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,7 +46,7 @@
     
     [[UINavigationBar appearance]  setBarTintColor:[UIColor blackColor]];
     currentPage=0;
-     blackStatusbar=false;
+     blackStatusbar=0;
 // [self addfootButtonsForThree];
 }
 
@@ -82,10 +82,13 @@
     
     NSString *key = [note object];
     if ([key isEqualToString:@"1"]) {
-         blackStatusbar=true;
-    }else
+         blackStatusbar=1;
+    }else if([key isEqualToString:@"0"])
     {
-          blackStatusbar=false;
+          blackStatusbar=0;
+    }else  if([key isEqualToString:@"2"])
+    {
+        blackStatusbar=2;
     }
    
     [self setNeedsStatusBarAppearanceUpdate];
@@ -127,17 +130,30 @@
     }
 }
 
+-(BOOL)prefersStatusBarHidden{
+    if (blackStatusbar!=2) {
+        return NO;
+    }
+    return YES;
+}
+
 - (UIStatusBarStyle) preferredStatusBarStyle {
     
     
     if(currentPage ==3||currentPage ==2||currentPage ==6)
     {
-        if (blackStatusbar==true) {
+        if (blackStatusbar==1) {
      
             return UIStatusBarStyleDefault;
             
+        }else if (blackStatusbar==0)
+        {
+             return UIStatusBarStyleLightContent;
+        }else if (blackStatusbar==2)
+        {
+         
         }
-        return UIStatusBarStyleLightContent;
+       
     }
     return UIStatusBarStyleDefault;
 }

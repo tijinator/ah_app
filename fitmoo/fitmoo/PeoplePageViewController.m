@@ -469,7 +469,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             [view addSubview:headerImage1];
             [cell.heanderImage1 addSubview:view];
             
-            [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+         //   [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }
         
@@ -495,7 +495,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [view addSubview:headerImage2];
         [cell.headerImage2 addSubview:view];
-        [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    //    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
         [cell setTitleLabelForHeader];
@@ -901,6 +901,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
 }
+//- (IBAction)headerImageButtonClick:(id)sender {
+//    UIButton *button = (UIButton *)sender;
+//    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+//    User *tempUser= [[UserManager sharedUserManager] localUser];
+//    
+//    if ([key isEqualToString:tempUser.user_id]) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+//    }else
+//    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+//    }
+//
+//}
 
 - (IBAction)BioButtonClick:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -39,10 +39,13 @@
 - (IBAction)postsButtonClick:(id)sender;
 - (IBAction)filterBackButtonClick:(id)sender;
 - (IBAction)filterOkButtonClick:(id)sender;
+- (IBAction)okButtonClick:(id)sender;
+
 
 @property (strong, nonatomic) IBOutlet UIImageView *wihteArrawImage;
 @property (strong, nonatomic) IBOutlet UIButton *textFieldButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *okButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;

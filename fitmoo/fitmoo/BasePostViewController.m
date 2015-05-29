@@ -435,7 +435,12 @@
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
     
-    
+    _normalPostText.placeholder=@"   Write a post...";
+    _workoutTitle.placeholder=@"   Workout Title";
+    _workoutInstruction.placeholder=@"   Instruction";
+    _nutritionTitle.placeholder=@"   Nutrition Title";
+    _nutritionIngedients.placeholder=@"   Ingedients";
+    _nutritionPreparation.placeholder=@"   Preparation";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -773,12 +778,13 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -100, self.view.frame.size.width, self.view.frame.size.height+100)];
+    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
     _textViewBackgroundView.backgroundColor=[UIColor blackColor];
     _textViewBackgroundView.alpha=0.7;
     [self.view addSubview:_textViewBackgroundView];
     
-    UIButton *b= [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width-40, 40, 40)];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
+
     
     
     [self.view bringSubviewToFront:_normalPostView];
@@ -792,13 +798,17 @@
         
     }completion:^(BOOL finished){}];
 
-
-    
-    
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView
+- (void)hideTextViewBackgroundView
 {
+    
+    [_workoutTitle resignFirstResponder];
+    [_workoutInstruction resignFirstResponder];
+    [_normalPostText resignFirstResponder];
+    [_nutritionTitle resignFirstResponder];
+    [_nutritionIngedients resignFirstResponder];
+    [_nutritionPreparation resignFirstResponder];
     [_textViewBackgroundView removeFromSuperview];
     _textViewBackgroundView=nil;
     
@@ -807,8 +817,15 @@
         _workoutView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _workoutView.frame.size.width, _workoutView.frame.size.height);
         _nutritionView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _nutritionView.frame.size.width, _nutritionView.frame.size.height);
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
+        
     }completion:^(BOOL finished){}];
-    
+
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self hideTextViewBackgroundView];
 }
 
 @end

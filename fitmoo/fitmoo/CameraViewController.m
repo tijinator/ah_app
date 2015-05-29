@@ -33,7 +33,7 @@
         [self.imageButton setImage:_playImage forState:UIControlStateNormal];
     }
     [self createObservers];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"1"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"2"];
     // Do any additional setup after loading the view.
 }
 
@@ -46,8 +46,25 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"makePostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makePostFinished:) name:@"makePostFinished" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showOKButton" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOKButton:) name:@"showOKButton" object:nil];
    
 }
+
+-(void) showOKButton: (NSNotification * ) note
+{
+    NSString *flag= (NSString *) [note object];
+    if ([flag isEqualToString:@"yes"]) {
+        _okButton.hidden=false;
+    }else
+    {
+        _okButton.hidden=true;
+    }
+    [self.view bringSubviewToFront:_okButton];
+    
+}
+
 -(void) makePostFinished: (NSNotification * ) note
 {
     [_picker dismissViewControllerAnimated:YES completion:nil];
@@ -97,6 +114,10 @@
     _timerLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_timerLabel respectToSuperFrame:self.view];
     
     _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+    
+    _okButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_okButton respectToSuperFrame:self.view];
+    _okButton.layer.cornerRadius=5;
+    
     _textFieldButton.frame=_writePostTextField.frame;
     [self.view bringSubviewToFront:_footButtomView];
     [self.view bringSubviewToFront:_filterView];
@@ -596,6 +617,11 @@
     [self showPostViewAnimation];
     [self openPostView];
     
+    
+}
+
+- (IBAction)okButtonClick:(id)sender {
+    [self.postView hideTextViewBackgroundView];
     
 }
 @end

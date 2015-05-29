@@ -57,16 +57,8 @@
     
     self.facebookLoginView.frame = CGRectMake(25, 135, 270, 48);
     self.facebookLoginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:self.facebookLoginView respectToSuperFrame:self.view];
-    for (id obj in self.facebookLoginView.subviews)
-    {
-        
-        if ([obj isKindOfClass:[UILabel class]])
-        {
-            UILabel * loginLabel =  obj;
-            loginLabel.text = @"CONTINUE WITH FACEBOOK";
-            loginLabel.textAlignment = NSTextAlignmentCenter;
-        }
-    }
+    
+
 
     
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
@@ -230,6 +222,11 @@ int count=0;
     constentUp=0;
     constentdown=168;
     
+    _FacebookLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_FacebookLabel respectToSuperFrame:self.view];
+    _FacebookLabel.userInteractionEnabled=NO;
+    _FacebookLabel.exclusiveTouch=NO;
+    [_facebookLoginView bringSubviewToFront:_FacebookLabel];
+    
     //case iphone 4s
     if (self.view.frame.size.height<500) {
         constentUp=-100;
@@ -237,6 +234,8 @@ int count=0;
         _backView.frame= CGRectMake(_backView.frame.origin.x,self.view.frame.size.height-_backView.frame.size.height, _backView.frame.size.width, _backView.frame.size.height);
 
     }
+    
+    
     
 }
 
@@ -247,17 +246,6 @@ int count=0;
     
     loginView.frame = CGRectMake(25, 135, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
-    for (id obj in loginView.subviews)
-    {
-
-        if ([obj isKindOfClass:[UILabel class]])
-        {
-            UILabel * loginLabel =  obj;
-            loginLabel.text = @"CONTINUE WITH FACEBOOK";
-            loginLabel.textAlignment = NSTextAlignmentCenter;
-            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
-        }
-    }
     
     
 }

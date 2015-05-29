@@ -411,6 +411,7 @@
 		27ACD1001B0A74E900322ED5 /* thumbnail_playbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FD1B0A74E900322ED5 /* thumbnail_playbtn.png */; };
 		27ACD1011B0A74E900322ED5 /* thumbnail_playbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FE1B0A74E900322ED5 /* thumbnail_playbtn@2x.png */; };
 		27ACD1021B0A74E900322ED5 /* thumbnail_playbtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ACD0FF1B0A74E900322ED5 /* thumbnail_playbtn@3x.png */; };
+		27AD26651B18BACC008D338D /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD26641B18BACC008D338D /* UITextView+Placeholder.m */; };
 		27ADF1C31B14B1D8003A0A83 /* addprofilepicturebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18D1B14B1D7003A0A83 /* addprofilepicturebtn.png */; };
 		27ADF1C41B14B1D8003A0A83 /* addprofilepicturebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18E1B14B1D8003A0A83 /* addprofilepicturebtn@2x.png */; };
 		27ADF1C51B14B1D8003A0A83 /* addprofilepicturebtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18F1B14B1D8003A0A83 /* addprofilepicturebtn@3x.png */; };
@@ -962,6 +963,8 @@
 		27ACD0FD1B0A74E900322ED5 /* thumbnail_playbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail_playbtn.png; sourceTree = "<group>"; };
 		27ACD0FE1B0A74E900322ED5 /* thumbnail_playbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_playbtn@2x.png"; sourceTree = "<group>"; };
 		27ACD0FF1B0A74E900322ED5 /* thumbnail_playbtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_playbtn@3x.png"; sourceTree = "<group>"; };
+		27AD26631B18BACC008D338D /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		27AD26641B18BACC008D338D /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		27ADF18D1B14B1D7003A0A83 /* addprofilepicturebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addprofilepicturebtn.png; sourceTree = "<group>"; };
 		27ADF18E1B14B1D8003A0A83 /* addprofilepicturebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addprofilepicturebtn@2x.png"; sourceTree = "<group>"; };
 		27ADF18F1B14B1D8003A0A83 /* addprofilepicturebtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addprofilepicturebtn@3x.png"; sourceTree = "<group>"; };
@@ -1436,6 +1439,8 @@
 			children = (
 				2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */,
 				2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */,
+				27AD26631B18BACC008D338D /* UITextView+Placeholder.h */,
+				27AD26641B18BACC008D338D /* UITextView+Placeholder.m */,
 				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
 				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
 				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
@@ -2442,6 +2447,7 @@
 				27988CC51B0BCE9A00BDE8EB /* SecondFollowViewController.m in Sources */,
 				2725822C1AD57EFD0059F43C /* AFSecurityPolicy.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,
+				27AD26651B18BACC008D338D /* UITextView+Placeholder.m in Sources */,
 				27988C921B0B7E7D00BDE8EB /* FollowCollectionViewCell.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,

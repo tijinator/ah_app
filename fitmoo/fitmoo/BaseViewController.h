@@ -17,7 +17,7 @@
 @interface BaseViewController : UIViewController<UIApplicationDelegate>
 
 - (IBAction)openSideMenu:(id)sender;
-- (void) addfootButtonsForSetting;
+//- (void) addfootButtonsForSetting;
 @property (nonatomic, strong) UIButton *leftButton1;
 @property (nonatomic, strong) UIButton *middleButton1;
 @property (nonatomic, strong) UIButton *rightButton1;

@@ -26,9 +26,9 @@
     // set to same colour as text
     CGContextSetStrokeColorWithColor(contextRef, self.titleLabel.textColor.CGColor);
     
-    CGContextMoveToPoint(contextRef, textRect.origin.x, textRect.origin.y + textRect.size.height + descender);
+    CGContextMoveToPoint(contextRef, textRect.origin.x, textRect.origin.y+3 + textRect.size.height + descender);
     
-    CGContextAddLineToPoint(contextRef, textRect.origin.x + textRect.size.width, textRect.origin.y+1 + textRect.size.height + descender);
+    CGContextAddLineToPoint(contextRef, textRect.origin.x + textRect.size.width, textRect.origin.y+3+ textRect.size.height + descender);
     
     CGContextClosePath(contextRef);
     

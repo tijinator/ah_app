@@ -10,6 +10,7 @@
 #import "FitmooHelper.h"
 #import "UserManager.h"
 #import "HomeFeed.h"
+#import "UITextView+Placeholder.h"
 //#import "CameraViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -27,7 +28,7 @@
 
 - (IBAction)cancelButtonClick:(id)sender;
 - (IBAction)postButtonClick:(id)sender;
-
+- (void)hideTextViewBackgroundView;
 @property (strong, nonatomic)  UIImage *PostImage;
 @property (strong, nonatomic)  HomeFeed *homeFeed;
 

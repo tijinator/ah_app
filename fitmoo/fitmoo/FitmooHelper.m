@@ -108,6 +108,11 @@
 
 -(CGRect) caculateLabelHeight: (UILabel *) label
 {
+//    if ([label isEqual:[NSNull null]]) {
+//        CGRect newFrame =CGRectMake(0, 0, 1, 1);
+//        return newFrame;
+//    }
+    
     CGSize maximumLabelSize = CGSizeMake(label.frame.size.width*_frameRadio, FLT_MAX);
     
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
@@ -317,7 +322,15 @@
         homeFeed.nutrition.nutrition_id= [nutrition objectForKey:@"id"];
         homeFeed.nutrition.title= [nutrition objectForKey:@"title"];
         homeFeed.nutrition.ingredients= [nutrition objectForKey:@"ingredients"];
+        if ([homeFeed.nutrition.ingredients isEqual:[NSNull null]]) {
+            homeFeed.nutrition.ingredients=@"";
+        }
+        
         homeFeed.nutrition.preparation= [nutrition objectForKey:@"preparation"];
+        
+        if ([homeFeed.nutrition.preparation isEqual:[NSNull null]]) {
+            homeFeed.nutrition.preparation=@"";
+        }
     }
     
     NSDictionary * videosArray= [dic objectForKey:@"videos"];

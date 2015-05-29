@@ -222,6 +222,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gyh-Az-BuJ">
+                                <rect key="frame" x="270" y="11" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonClick:" destination="oHk-Ra-HON" eventType="touchUpInside" id="K5L-5s-iq7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -243,6 +255,7 @@
                         <outlet property="footButtomView" destination="Yot-hu-O32" id="SHy-cA-sq9"/>
                         <outlet property="imageButton" destination="5h9-Ry-o2P" id="Auy-68-9do"/>
                         <outlet property="nutritionButton" destination="VCs-91-5KC" id="oKF-jA-Dws"/>
+                        <outlet property="okButton" destination="Gyh-Az-BuJ" id="AJ8-Ga-Uop"/>
                         <outlet property="postButton" destination="HLc-HU-74u" id="8b6-Zt-CbQ"/>
                         <outlet property="postCloseButton" destination="KyH-zW-n8Z" id="PNI-Cu-Z1S"/>
                         <outlet property="postTopView" destination="365-wa-ONh" id="2SO-bY-AUP"/>
@@ -407,7 +420,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="216" height="112"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="T1U-eV-qk7" id="eBf-CF-Q7e"/>
@@ -634,14 +647,14 @@
                                         <rect key="frame" x="15" y="25" width="226" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORIES &amp; LIFESTYLES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Yw-su-LM0" customClass="BentonSansBold">
                                         <rect key="frame" x="15" y="305" width="226" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gVe-QY-vJI">
@@ -670,7 +683,7 @@
                                                             <rect key="frame" x="8" y="132" width="105" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainmenu_followicon.png" id="2n5-c0-3QC">
@@ -682,7 +695,7 @@
                                                             <rect key="frame" x="39" y="156" width="42" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fk2-Co-ZvU">
@@ -814,6 +827,16 @@
                                     <view contentMode="scaleToFill" id="Cpf-A0-Iu4" customClass="FBLoginView">
                                         <rect key="frame" x="25" y="135" width="270" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE WITH FACEBOOK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWv-4g-tBF" customClass="BentonSansBold">
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.12941176470588234" green="0.37647058823529411" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="or.png" id="Ior-ze-lTx">
@@ -875,6 +898,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="J35-Bj-eah"/>
                     <connections>
+                        <outlet property="FacebookLabel" destination="SWv-4g-tBF" id="PjL-mb-MJm"/>
                         <outlet property="backView" destination="zgn-Tb-kci" id="npH-mh-sMt"/>
                         <outlet property="backgroundImage" destination="1DG-uo-uUj" id="ZGV-oB-pXe"/>
                         <outlet property="emailTextField" destination="phk-LX-3fK" id="9jg-bN-O4X"/>
@@ -906,7 +930,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.63921568630000003" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal">
+                                        <state key="normal" backgroundImage="defaultprofilepicture.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1404,14 +1428,14 @@ instructions to reset your password</string>
                                                     <string key="text">How would you describe your
  health and fitness?</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select all that might interest you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgL-Q7-htq">
                                                     <rect key="frame" x="36" y="88" width="248" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2265,7 +2289,7 @@ instructions to reset your password</string>
                                                     <rect key="frame" x="20" y="345" width="248" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL TRAINING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OVR-sL-xAE">
@@ -2383,6 +2407,7 @@ instructions to reset your password</string>
         <image name="comment.png" width="40" height="40"/>
         <image name="continuebluebar.png" width="322" height="55"/>
         <image name="continuegreybar.png" width="322" height="55"/>
+        <image name="defaultprofilepicture.png" width="320" height="320"/>
         <image name="greyrightarrow.png" width="11" height="17"/>
         <image name="greyx.png" width="14" height="14"/>
         <image name="home.png" width="41" height="41"/>
