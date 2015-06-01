@@ -176,6 +176,7 @@
     _changeProfileGradient.userInteractionEnabled=NO;
     _changeProfileGradient.exclusiveTouch=NO;
     
+     [self.datePicker addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     
     //case iphone 4s
     if (self.view.frame.size.height<500) {
@@ -191,6 +192,14 @@
     
 }
 
+- (IBAction)valueChanged:(id)sender {
+    
+    NSDate *pickerDate = [_datePicker date];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"MM-dd-yyyy";
+    _dateBirthLabel.text =  [format stringFromDate:pickerDate];
+    _dateBirthLabel.textColor= [UIColor blackColor];
+}
 
 - (IBAction)nameLabelClick:(id)sender {
     

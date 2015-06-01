@@ -350,10 +350,11 @@ int count=0;
 - (void) addActivityIndicator
 {
     _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
-    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio],  240*[[FitmooHelper sharedInstance] frameRadio]);
     _activityIndicator.hidesWhenStopped = YES;
     [self.view addSubview:_activityIndicator];
+    [_activityIndicator startAnimating];
+   // [self.view bringSubviewToFront:_activityIndicator];
 }
 
 
@@ -394,6 +395,7 @@ int count=0;
             localUser.password=_passwordTextField.text;
             [[UserManager sharedUserManager] performLogin:localUser];
         [self addActivityIndicator];
+        [self textFieldShouldReturn:_passwordTextField];
 
     }else
     {

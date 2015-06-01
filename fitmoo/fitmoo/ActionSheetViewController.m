@@ -117,6 +117,7 @@
 - (IBAction)reportButtonClick:(id)sender {
     if ([_action isEqualToString:@"delete"]) {
         [[UserManager sharedUserManager] performDelete:_postId];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTable" object:_postId];
     }else if([_action isEqualToString:@"report"]) {
       
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Question"

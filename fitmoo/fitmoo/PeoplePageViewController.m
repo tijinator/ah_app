@@ -47,7 +47,25 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
 }
+- (void) updateTable: (NSNotification * ) note
+{
+    
+    NSString *key= (NSString *)[note object];
+    
+    
+    for (int i=0; i<[_homeFeedArray count]; i++) {
+        HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+        if (key==tempFeed.feed_id) {
+            [_homeFeedArray removeObjectAtIndex:i];
+        }
+    }
+    [self.tableView reloadData];
+    
+}
+
 
 - (void) getUserProfile
 {
@@ -74,7 +92,7 @@
     
     HomeFeed *feed= (HomeFeed *)[note object];
     
-    if (![feed isEqual:[NSNull null]]) {
+    if (feed!=nil) {
         for (int i=0; i<[_homeFeedArray count]; i++) {
             HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
             if (feed.feed_id==tempFeed.feed_id) {
@@ -82,6 +100,10 @@
             }
         }
         [self.tableView reloadData];
+    }else
+    {
+        [self initValuable];
+        [self getHomePageItems];
     }
 
 }
@@ -323,10 +345,22 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
      
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
+        
+        if (temUser.following.intValue>999) {
+            CGFloat following=temUser.following.floatValue/1000.0f;
+            
+            cell.followCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",following,@"K"];
+        }
+        
+        if (temUser.followers.intValue>999) {
+            CGFloat follower= temUser.followers.floatValue/1000.0f;
+            cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
+        }
+        
         cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
-        [cell loadHeaderImage:imageUrl];
+   //     [cell loadHeaderImage:imageUrl];
         [cell loadHeader1Image:temUser.profile_avatar_original];
   
         UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
@@ -348,7 +382,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.bioButton addTarget:self action:@selector(BioButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.feedButton addTarget:self action:@selector(FeedButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.scheduleButton addTarget:self action:@selector(PhotoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [cell.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         if ([temUser.bio isEqualToString:@""]) {
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.buttonView.frame.size.height+cell.buttonView.frame.origin.y);
             [cell.bioButton removeFromSuperview];
@@ -790,6 +824,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         ActionSheet.action= @"delete";
      
     }
+    ActionSheet.postId= feed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
 }
 - (IBAction)shareButtonClick:(id)sender {
@@ -861,6 +896,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
     
 }
+- (IBAction)backButtonClick:(id)sender {
+
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 
 - (IBAction)photoImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -888,11 +928,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (button.tag==11) {
          [[UserManager sharedUserManager] performUnFollow:_searchId];
         [button setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
+        _temSearchUser.is_following=@"0";
         button.tag=12;
     }else if (button.tag==12) //follow
     {
         [[UserManager sharedUserManager] performFollow:_searchId];
-        [button setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState: UIControlStateNormal];
+         _temSearchUser.is_following=@"1";
+        
+        
         button.tag=11;
     }else
     {

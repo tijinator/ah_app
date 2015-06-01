@@ -11,6 +11,7 @@
 @implementation NavigationViewController
 {
     int currentPage;
+    int prePage;
     int blackStatusbar;
 }
 
@@ -164,7 +165,7 @@
     
     NSString *key = [note object];
 
-
+    
     if ([key isEqualToString:@"0"]) {
         if (currentPage!=0) {
             _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
@@ -173,10 +174,12 @@
 
         }
              [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+       prePage=currentPage;
         currentPage=0;
     }else  if ([key isEqualToString:@"5"]) {
         [[self nav] popToRootViewControllerAnimated:YES];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        prePage=currentPage;
          currentPage=5;
     }else  if ([key isEqualToString:@"6"]) {
         
@@ -185,6 +188,7 @@
        
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
             [[self nav] pushViewController:_peoplePage animated:YES];
+            prePage=currentPage;
             currentPage=6;
             
          
@@ -192,10 +196,12 @@
         }else
         {
            
-            _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
-            [[self nav] pushViewController:_homePage animated:YES];
-
-            currentPage=0;
+//            _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+//            [[self nav] pushViewController:_homePage animated:YES];
+          
+                [[self nav] popViewControllerAnimated:YES];
+                currentPage=prePage;
+        
             
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
@@ -207,6 +213,7 @@
               [[self nav] pushViewController:_searchPage animated:YES];
           }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        prePage=currentPage;
         currentPage=2;
     }else  if ([key isEqualToString:@"1"]) {
         if (currentPage!=1) {
@@ -216,6 +223,7 @@
             [[self nav] pushViewController:_shopPage animated:YES];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        prePage=currentPage;
         currentPage=1;
     }else  if ([key isEqualToString:@"3"]) {
         if (currentPage!=3) {
@@ -225,6 +233,7 @@
             [[self nav] pushViewController:_settingPage animated:YES];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        prePage=currentPage;
         currentPage=3;
 
     
@@ -237,6 +246,7 @@
             [[self nav] pushViewController:_locationPage animated:YES];
         }
        // [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        prePage=currentPage;
         currentPage=7;
         
         
@@ -247,6 +257,7 @@
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
             _peoplePage.searchId=key;
             [[self nav] pushViewController:_peoplePage animated:YES];
+            prePage=currentPage;
             currentPage=6;
 
     

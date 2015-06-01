@@ -35,6 +35,8 @@
 
 - (void) loadHeader1Image: (NSString *)url
 {
+    [self.headerImage1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    
     AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _headerImage1.frame.size.width, _headerImage1.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
     headerImage1.imageURL =[NSURL URLWithString:url];
@@ -68,6 +70,8 @@
     _bioButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bioButton respectToSuperFrame:nil];
     _editProfileButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_editProfileButton respectToSuperFrame:nil];
     _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
+    
+    _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:nil];
     
     _shadowImageView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shadowImageView respectToSuperFrame:nil];
     _bioLabel.frame= CGRectMake(0, 0, _bioButton.frame.size.width, _bioButton.frame.size.height);

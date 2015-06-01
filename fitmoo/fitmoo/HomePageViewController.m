@@ -41,8 +41,24 @@
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
 }
-
+- (void) updateTable: (NSNotification * ) note
+{
+  
+    NSString *key= (NSString *)[note object];
+    
+   
+        for (int i=0; i<[_homeFeedArray count]; i++) {
+            HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+            if (key==tempFeed.feed_id) {
+                [_homeFeedArray removeObjectAtIndex:i];
+            }
+        }
+        [self.tableView reloadData];
+       
+}
 
 - (void) didPostFinished: (NSNotification * ) note
 {
@@ -50,7 +66,7 @@
   //  [self getHomePageItems];
     HomeFeed *feed= (HomeFeed *)[note object];
     
-    if (![feed isEqual:[NSNull null]]) {
+    if (feed!=nil) {
         for (int i=0; i<[_homeFeedArray count]; i++) {
             HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
             if (feed.feed_id==tempFeed.feed_id) {
@@ -58,6 +74,10 @@
             }
         }
         [self.tableView reloadData];
+    }else
+    {
+          [self initValuable];
+          [self getHomePageItems];
     }
     
 }
@@ -114,7 +134,7 @@
         }
 
        [_activityIndicator stopAnimating];
-        NSLog(@"Submit response data: %@", responseObject);
+     //   NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
@@ -166,7 +186,8 @@
     _rightButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
     
-
+ //   _tableView.estimatedRowHeight = 300.0;
+ //   _tableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
@@ -294,11 +315,11 @@
     if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
-        [cell.headerImage2 setTag:tempHomefeed.feed_action.user_id.intValue];
+        [cell.headerImage2 setTag:tempHomefeed.created_by.created_by_id.intValue];
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
-        [cell.headerImage2 setTag:tempHomefeed.feed_action.community_id.intValue];
+        [cell.headerImage2 setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
@@ -469,11 +490,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-     
+            NSLog(@"%@%ld",@"estimatedHeight: ",(long)height.integerValue);
+        return height.integerValue;
     }else
     {
-        height=[NSNumber numberWithInt:600];
+        height=[NSNumber numberWithInt:300];
+            NSLog(@"%@%d",@"estimatedHeight: ",0);
+        return height.integerValue;
     }
+   
   //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }
@@ -489,6 +514,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:contentHight.integerValue];
     }
+    NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
   //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }

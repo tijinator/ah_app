@@ -55,7 +55,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showImageViewer" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImageViewer:) name:@"showImageViewer" object:nil];
-   
+  
 }
 
 - (void) showImageViewer: (NSNotification * ) note
@@ -88,7 +88,7 @@
 {
     [_picker dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"0"];
-   
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
 
 }
 
