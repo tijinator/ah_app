@@ -35,6 +35,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *clearButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton1;
+@property (strong, nonatomic) IBOutlet UIImageView *changeProfileGradient;
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIImageView *userImage;

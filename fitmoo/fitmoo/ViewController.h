@@ -37,6 +37,9 @@
 - (IBAction)loginButtonClick:(id)sender;
 -(void) checkLogin;
 - (IBAction)forgotPasswordButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *separateView;
+@property (strong, nonatomic) IBOutlet UIView *separateView1;
+@property (strong, nonatomic) IBOutlet UILabel *orLabel;
 @property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
 @property (strong, nonatomic) IBOutlet UILabel *FacebookLabel;
 @property (strong, nonatomic)  id<FBGraphUser> cachedUser;

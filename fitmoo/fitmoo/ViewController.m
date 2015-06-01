@@ -215,9 +215,11 @@ int count=0;
     _forgotPasswordButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgotPasswordButton respectToSuperFrame:self.view];
     
     _orImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_orImage respectToSuperFrame:self.view];
-    
-
     _backView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backView respectToSuperFrame:self.view];
+    
+    _orLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_orLabel respectToSuperFrame:self.view];
+    _separateView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_separateView respectToSuperFrame:self.view];
+    _separateView1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_separateView1 respectToSuperFrame:self.view];
     
     constentUp=0;
     constentdown=168;

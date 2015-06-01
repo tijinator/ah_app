@@ -146,8 +146,9 @@
     
     _userImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_userImage respectToSuperFrame:self.view];
     _changeprofileLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_changeprofileLabel respectToSuperFrame:self.view];
+    _changeProfileGradient.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_changeProfileGradient respectToSuperFrame:self.view];
 
-     [_datePicker setDatePickerMode:UIDatePickerModeDate];
+    [_datePicker setDatePickerMode:UIDatePickerModeDate];
     
     
     
@@ -172,6 +173,8 @@
     _userImage.exclusiveTouch=NO;
     _changeprofileLabel.userInteractionEnabled=NO;
     _changeprofileLabel.exclusiveTouch=NO;
+    _changeProfileGradient.userInteractionEnabled=NO;
+    _changeProfileGradient.exclusiveTouch=NO;
     
     
     //case iphone 4s
@@ -404,7 +407,9 @@
 - (void) moveUpView
 {
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        _backgroundView.frame=CGRectMake(0, -200*[[FitmooHelper sharedInstance] frameRadio], _backgroundView.frame.size.width, _backgroundView.frame.size.height);
+        _backgroundView.frame=CGRectMake(0, -240*[[FitmooHelper sharedInstance] frameRadio], _backgroundView.frame.size.width, _backgroundView.frame.size.height);
+        _userImage.frame=CGRectMake(0, 250*[[FitmooHelper sharedInstance] frameRadio], _userImage.frame.size.width, _userImage.frame.size.height);
+        _closeButton.frame=CGRectMake(_closeButton.frame.origin.x, 265*[[FitmooHelper sharedInstance] frameRadio], _closeButton.frame.size.width, _closeButton.frame.size.height);
     }completion:^(BOOL finished){}];
     
  
@@ -414,6 +419,8 @@
 {
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _backgroundView.frame=CGRectMake(0, 0, _backgroundView.frame.size.width, _backgroundView.frame.size.height);
+        _userImage.frame=CGRectMake(0, 129*[[FitmooHelper sharedInstance] frameRadio], _userImage.frame.size.width, _userImage.frame.size.height);
+        _closeButton.frame=CGRectMake(_closeButton.frame.origin.x, 20*[[FitmooHelper sharedInstance] frameRadio], _closeButton.frame.size.width, _closeButton.frame.size.height);
     }completion:^(BOOL finished){}];
 
 }
@@ -527,6 +534,7 @@
     [_picker dismissViewControllerAnimated:YES completion:nil];
     _userImage.hidden=true;
     _changeprofileLabel.hidden=false;
+    _changeProfileGradient.hidden=false;
    
     
 }
