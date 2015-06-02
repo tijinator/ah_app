@@ -125,7 +125,7 @@
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
 
-        UILabel *label1= (UILabel *)[cell viewWithTag:1];
+        UILabel *label1= (UILabel *)[cell viewWithTag:1000];
         label1.frame= CGRectMake(19, 29, 282, 51);
         label1.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:label1 respectToSuperFrame:self.view];
         
@@ -170,7 +170,7 @@
     [cell.button1.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [cell.button1 addSubview:headerImage2];
     
-    cell.label1.text= user.name.uppercaseString;
+     cell.label1.text= user.name;
     
     cell.button1.tag= index+10;
     [cell.button1 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -193,7 +193,7 @@
     }
     if ([_searchArrayCategory count]%2==0||indexPath.row!=count) {
         User *user1= [_searchArrayCategory objectAtIndex:index+1];
-        cell.label2.text= user1.name.uppercaseString;
+        cell.label2.text= user1.name;
         
         cell.button2.tag= index+1+10;
         [cell.button2 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -207,6 +207,8 @@
         headerImage2.imageURL =[NSURL URLWithString:user1.cover_photo_url];
         [cell.button2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [cell.button2 addSubview:headerImage2];
+         cell.blackGradient2.hidden=false;
+         cell.blackGradient1.hidden=false;
         if ([self checkExistInterest:user1.user_id]) {
             cell.checkImage2.hidden=false;
         }
@@ -218,12 +220,13 @@
         
         cell.button2.hidden=true;
         cell.label2.hidden=true;
+        cell.blackGradient2.hidden=true;
         
     }
     
     
     
-    contentHight=[NSNumber numberWithDouble:cell.button1.frame.size.height+2];
+    contentHight=[NSNumber numberWithDouble:cell.button1.frame.size.height+3];
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else

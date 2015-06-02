@@ -368,6 +368,33 @@
     
 }
 
+-(void) performUnLike:(NSString *) postId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",nil];
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@%@",_feedsUrl, postId ,@"/unlike" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        
+        
+        // [[NSNotificationCenter defaultCenter] postNotificationName:@"likeFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+
 -(void) performLike:(NSString *) postId
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

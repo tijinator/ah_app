@@ -261,9 +261,9 @@
     [_bodyLikeButton setImage:[UIImage imageNamed:@"greyhearticon.png"] forState:UIControlStateNormal];
     [_bodyCommentButton setImage:[UIImage imageNamed:@"greycommenticon.png"] forState:UIControlStateNormal];
     [_bodyShareButton setImage:[UIImage imageNamed:@"greyendorseicon.png"] forState:UIControlStateNormal];
-    [_bodyLikeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_bodyCommentButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_bodyShareButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_bodyLikeButton setTitleColor:[UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:153.0/255.0 alpha:1] forState:UIControlStateNormal];
+    [_bodyCommentButton setTitleColor:[UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:153.0/255.0 alpha:1] forState:UIControlStateNormal];
+    [_bodyShareButton setTitleColor:[UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:153.0/255.0 alpha:1] forState:UIControlStateNormal];
     _bodyGradian.hidden=true;
   //  [_bodyShadowView setBackgroundColor:[UIColor clearColor] ];
 }
@@ -376,7 +376,7 @@
                              range:NSMakeRange(0, string.length)];
     
     if (index==0) {
-     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12, 17, 11, 9)];
+     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, 11, 9)];
      _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
      _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
 

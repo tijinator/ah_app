@@ -47,6 +47,7 @@
 -(void) getUserProfile:(User *) user;
 -(void) performUpdatePrivacy:(User *) user;
 -(void) getUserProfileForOtherPeople:(NSString *) other_people_id;
+-(void) performUnLike:(NSString *) postId;
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;

@@ -271,7 +271,8 @@
     NSString *totalLike= [NSString stringWithFormat:@" %@",tempHomefeed.total_like];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-        [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
+        [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+        [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }else
     {
         [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
@@ -375,7 +376,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([_homeFeed.is_liked isEqualToString:@"0"]) {
         NSNumber *totalLike=[NSNumber numberWithInt:1+_homeFeed.total_like.intValue];
 
-        [button setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:_homeFeed.feed_id];
         _homeFeed.is_liked=@"1";
         _homeFeed.total_like=totalLike.stringValue;
@@ -383,7 +384,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         [self.tableView reloadData];
         
+    }else if ([_homeFeed.is_liked isEqualToString:@"1"])
+    {
+        NSNumber *totalLike=[NSNumber numberWithInt:_homeFeed.total_like.intValue-1];
+        [button setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
+        [[UserManager sharedUserManager] performUnLike:_homeFeed.feed_id];
+        _homeFeed.is_liked=@"0";
+        _homeFeed.total_like=totalLike.stringValue;
+        
+            [self.tableView reloadData];
+        
     }
+
     
     
 }

@@ -234,7 +234,7 @@ int count=0;
     constentUp=0;
     constentdown=168;
     
-    _FacebookLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_FacebookLabel respectToSuperFrame:self.view];
+   // _FacebookLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_FacebookLabel respectToSuperFrame:self.view];
     _FacebookLabel.userInteractionEnabled=NO;
     _FacebookLabel.exclusiveTouch=NO;
     [_facebookLoginView bringSubviewToFront:_FacebookLabel];

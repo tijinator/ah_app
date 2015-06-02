@@ -121,7 +121,7 @@
                                         <rect key="frame" x="0.0" y="5" width="44" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" image="whitexicon.png">
+                                        <state key="normal" image="whitex.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -818,14 +818,10 @@
                                         <rect key="frame" x="25" y="127" width="270" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE WITH FACEBOOK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SWv-4g-tBF" customClass="BentonSansBold">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebookbtn.png" id="724-fV-D2C">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.12941176470588234" green="0.37647058823529411" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -901,7 +897,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="J35-Bj-eah"/>
                     <connections>
-                        <outlet property="FacebookLabel" destination="SWv-4g-tBF" id="PjL-mb-MJm"/>
+                        <outlet property="FacebookLabel" destination="724-fV-D2C" id="63D-hA-Qvl"/>
                         <outlet property="backView" destination="zgn-Tb-kci" id="npH-mh-sMt"/>
                         <outlet property="backgroundImage" destination="1DG-uo-uUj" id="ZGV-oB-pXe"/>
                         <outlet property="emailTextField" destination="phk-LX-3fK" id="9jg-bN-O4X"/>
@@ -1421,7 +1417,7 @@ instructions to reset your password.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4df-Pq-9dL" customClass="BentonSansBook">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4df-Pq-9dL" customClass="BentonSansBook">
                                                     <rect key="frame" x="19" y="29" width="282" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <string key="text">How would you describe your
@@ -2409,6 +2405,7 @@ instructions to reset your password.</string>
         <image name="continuegreybar.png" width="322" height="55"/>
         <image name="defaultprofilepic.png" width="69" height="69"/>
         <image name="defaultprofilepicture.png" width="320" height="320"/>
+        <image name="facebookbtn.png" width="268" height="46"/>
         <image name="greyrightarrow.png" width="11" height="17"/>
         <image name="greyx.png" width="14" height="14"/>
         <image name="home.png" width="41" height="41"/>
@@ -2426,6 +2423,7 @@ instructions to reset your password.</string>
         <image name="white_toggle.png" width="16" height="9"/>
         <image name="whitearrow.png" width="11" height="17"/>
         <image name="whitearrowicon.png" width="10" height="17"/>
+        <image name="whitex.png" width="16" height="16"/>
         <image name="whitexicon.png" width="13" height="13"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

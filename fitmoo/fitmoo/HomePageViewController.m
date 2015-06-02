@@ -453,7 +453,8 @@
     NSString *totalLike= [NSString stringWithFormat:@"  %@",tempHomefeed.total_like];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-     [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
+     [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+    [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }else
     {
     [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
@@ -640,9 +641,25 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
       //  NSString *newLikeString= totalLike.stringValue;
       //  [button setTitle:newLikeString forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:feed.feed_id];
         feed.is_liked=@"1";
+        feed.total_like=totalLike.stringValue;
+        
+        for (int i=0; i<[_homeFeedArray count]; i++) {
+            HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+            if (feed.feed_id==tempFeed.feed_id) {
+                [_homeFeedArray replaceObjectAtIndex:i withObject:feed];
+            }
+        }
+        [self.tableView reloadData];
+
+    }else if ([feed.is_liked isEqualToString:@"1"])
+    {
+        NSNumber *totalLike=[NSNumber numberWithInt:feed.total_like.intValue-1];
+        [button setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
+        [[UserManager sharedUserManager] performUnLike:feed.feed_id];
+        feed.is_liked=@"0";
         feed.total_like=totalLike.stringValue;
         
         for (int i=0; i<[_homeFeedArray count]; i++) {

@@ -36,7 +36,20 @@
 {
     UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:self.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
+   
     
+    if (self.tag==1000) {
+         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineSpacing:8];
+        style.alignment=NSTextAlignmentCenter;
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:style
+                                 range:NSMakeRange(0, self.text.length)];
+    }
+    
+    
+   
+
     [self setAttributedText:attributedString];
     [super drawRect:rect];
     

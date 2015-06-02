@@ -278,7 +278,7 @@
     
     [cell.button1 addSubview:headerImage2];
     
-    cell.label1.text= user.name.uppercaseString;
+    cell.label1.text= user.name;
     
     cell.button1.tag= index+10;
     [cell.button1 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -290,7 +290,7 @@
     }
     if ([_searchArrayCategory count]%2==0||indexPath.row!=count) {
         User *user1= [_searchArrayCategory objectAtIndex:index+1];
-        cell.label2.text= user1.name.uppercaseString;
+        cell.label2.text= user1.name;
         
         cell.button2.tag= index+1+10;
         [cell.button2 addTarget:self action:@selector(categoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -317,7 +317,7 @@
     
 
     
-    contentHight=[NSNumber numberWithDouble:cell.button1.frame.size.height+2];
+    contentHight=[NSNumber numberWithDouble:cell.button1.frame.size.height+3];
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else
