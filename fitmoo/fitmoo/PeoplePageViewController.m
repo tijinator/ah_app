@@ -265,7 +265,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:600];
     }
-    NSLog(@"%ld",(long)height.integerValue);
+  //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
  //   }
 }
@@ -655,13 +655,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.shareButton setTag:indexPath.row*100+6];
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
-        NSString *totalLike= [NSString stringWithFormat:@" %@",tempHomefeed.total_like];
+        NSString *totalLike= [NSString stringWithFormat:@"  %@",tempHomefeed.total_like];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
             [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
         }else
         {
-            [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+            [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
             [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
         [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -714,7 +714,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         height=[NSNumber numberWithInt:contentHight.intValue];
     }
-    NSLog(@"%ld",(long)height.integerValue);
+  //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
   //  }
 }
@@ -724,7 +724,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     if(self.tableView.contentOffset.y<-75){
-         NSLog(@"%f",self.tableView.contentOffset.y );
+    //     NSLog(@"%f",self.tableView.contentOffset.y );
         if (_count==0) {
             [self initValuable];
             

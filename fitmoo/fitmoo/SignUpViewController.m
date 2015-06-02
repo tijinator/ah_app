@@ -93,10 +93,8 @@
         
         // once the uploadmanager finishes check if there were any errors
         if (task.error) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"Upload Image Failed" delegate : nil cancelButtonTitle : @"OK"
-                                                    otherButtonTitles : nil ];
-            [alert show ];
+
+            [[FitmooHelper sharedInstance] showViewWithAnimation:@"Upload Image Failed." withPareView:self.view];
             
             NSLog(@"%@", task.error);
         }else{// if there aren't any then the image is uploaded!
@@ -151,7 +149,7 @@
     [_datePicker setDatePickerMode:UIDatePickerModeDate];
     
     
-    
+    [_userPicture setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dateBirthButtonClick:)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -421,7 +419,8 @@
         _closeButton.frame=CGRectMake(_closeButton.frame.origin.x, 265*[[FitmooHelper sharedInstance] frameRadio], _closeButton.frame.size.width, _closeButton.frame.size.height);
     }completion:^(BOOL finished){}];
     
- 
+    _sighUpButton.hidden=true;
+    
 }
 
 - (void) movedownView
@@ -431,7 +430,9 @@
         _userImage.frame=CGRectMake(0, 129*[[FitmooHelper sharedInstance] frameRadio], _userImage.frame.size.width, _userImage.frame.size.height);
         _closeButton.frame=CGRectMake(_closeButton.frame.origin.x, 20*[[FitmooHelper sharedInstance] frameRadio], _closeButton.frame.size.width, _closeButton.frame.size.height);
     }completion:^(BOOL finished){}];
-
+    _sighUpButton.hidden=false;
+    
+    [self.shadowView removeFromSuperview];
 }
 
 #pragma mark - textfield functions
@@ -460,6 +461,11 @@
     _pickerView2.hidden=true;
     [_nameField resignFirstResponder];
     [self moveUpView];
+    _shadowView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _shadowView.backgroundColor= [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.7];
+    
+    [self.view insertSubview:_shadowView aboveSubview:_backgroundView];
+
 //    _genderLabel.userInteractionEnabled=false;
 //    _nameField.userInteractionEnabled=false;
     
@@ -476,6 +482,11 @@
 //    _dateBirthLabel.userInteractionEnabled=false;
 //    _nameField.userInteractionEnabled=false;
     [self moveUpView];
+    _shadowView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _shadowView.backgroundColor= [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.7];
+    
+    [self.view insertSubview:_shadowView aboveSubview:_backgroundView];
+
 }
 
 - (IBAction)doneButtonClick:(id)sender {

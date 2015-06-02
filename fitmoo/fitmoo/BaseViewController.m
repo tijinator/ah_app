@@ -170,9 +170,9 @@
     [UIView setAnimationDelegate:self];
  //   [UIView setAnimationDidStopSelector:@selector(deletePatientInfoWithListView)];
     _subBottomView.frame= CGRectMake(0, _subBottomView.frame.origin.y-Radio*100, 320*Radio, 160*Radio);
-    _postButton.frame= CGRectMake(192, 25, 43,43);
+    _postButton.frame= CGRectMake(185, 25, 43,43);
   //  _videoButton.frame= CGRectMake(218, 50, 43,43);
-    _pictureButton.frame= CGRectMake(97, 25, 43,43);
+    _pictureButton.frame= CGRectMake(95, 25, 43,43);
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
  //   _videoButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_videoButton respectToSuperFrame:self.view];
     _pictureButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pictureButton respectToSuperFrame:self.view];

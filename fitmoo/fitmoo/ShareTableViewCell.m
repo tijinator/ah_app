@@ -38,7 +38,7 @@
     }
     _commentView.frame= CGRectMake(0, _commentView.frame.origin.y, _commentView.frame.size.width, maxHeight+15*_frameRadio);
 
-    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
 
 }
 
@@ -58,7 +58,7 @@
     _bodyView.frame= CGRectMake(0, _bodyView.frame.origin.y, _bodyView.frame.size.width, maxHeight);
     self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
 
-    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
   
 }
 
@@ -160,7 +160,7 @@
     
     
     _bodyLabel1.text= [NSString stringWithFormat:@"%@%@%@",_homeFeed.product.type_product,@" | ", _homeFeed.product.gender];
-    _bodyLabel1.frame= CGRectMake(30*_frameRadio, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y+10, 200*_frameRadio, _bodyLabel1.frame.size.height);
+    _bodyLabel1.frame= CGRectMake(30*_frameRadio, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y-2, 200*_frameRadio, _bodyLabel1.frame.size.height);
 
    
     _bodyLabel2.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.selling_price];
@@ -169,7 +169,7 @@
     
     if (![_homeFeed.product.original_price isEqualToString:@"0"]) {
         _bodyLabel3.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.original_price];
-        _bodyLabel3.frame= CGRectMake(260*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, 40*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
+        _bodyLabel3.frame= CGRectMake(260*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y-2, 40*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
 
         UIView *crossView= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyLabel3.frame.size.height/2, 30, 1)];
         crossView.backgroundColor=[UIColor blackColor];
@@ -357,13 +357,13 @@
 //        }
 //    }
    // UIFont *font= [UIFont fontWithName:@"BentonSans-ExtraLight" size:(CGFloat)(14)];
-    UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
-    UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(13)];
+    UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];
+    UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(14)];
     NSString *string1=_homeFeed.comments.full_name;
     NSString *string2=_homeFeed.comments.text;
-    UIColor *fontColor= [UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.7];
+    UIColor *fontColor= [UIColor colorWithRed:87.0/255.0 green:93.0/255.0 blue:96.0/255.0 alpha:1];
     
-    NSString *string= [NSString stringWithFormat:@"%@ %@",string1,string2];
+    NSString *string= [NSString stringWithFormat:@"%@  %@",string1,string2];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
     attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font1 range:string1 newString:string1];
     NSRange range= [string rangeOfString:string2];
@@ -395,7 +395,7 @@
    
     if (index==1) {
        
-        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
+        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
      //   [_commentDetail1 setText:string];
      //   _commentDetail1.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail1];
         [_commentDetail1 setAttributedText:attributedString];
@@ -408,7 +408,7 @@
     
     if (index==2) {
        
-        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
+        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
      //   [_commentDetail2 setText:string];
       //  _commentDetail2.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail2];
         [_commentDetail2 setAttributedText:attributedString];
@@ -437,7 +437,7 @@
 //
 - (void) removeCommentView
 {
-     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y+2, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
     [_commentView removeFromSuperview];
 }
 
@@ -464,7 +464,7 @@
 
 - (void) setTitleLabelForHeader
 {
-    UIFont *font = [UIFont fontWithName:@"BentonSans" size:self.titleLabel.font.pointSize];
+    UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.titleLabel.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text attributes:@{NSFontAttributeName: font}  ];
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];

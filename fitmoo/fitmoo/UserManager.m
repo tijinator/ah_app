@@ -514,11 +514,8 @@
             
             }else
             {
-         
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not log in"
-                                                                          message : @"Invalid username/password." delegate : nil cancelButtonTitle : @"OK"
-                                                                otherButtonTitles : nil ];
-            [alert show ];
+
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"loginFailure" object: @"Invalid username/password."];
             }
 
             

@@ -37,10 +37,13 @@
     _forgotPdlabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_forgotPdlabel respectToSuperFrame:self.view];
     
     _dontWorryLabel.textAlignment=NSTextAlignmentCenter;
-    _forgotPasswordEmail.layer.borderColor=[[UIColor lightGrayColor] CGColor];
+    _forgotPasswordEmail.layer.borderColor=[[UIColor colorWithRed:221.0/255.0
+                                                            green:221.0/255.0
+                                                             blue:221.0/255.0
+                                                            alpha:1.0] CGColor];
     _forgotPasswordEmail.layer.borderWidth = 0.8;
     _forgotPasswordEmail.layer.masksToBounds = true;
-    
+    [_forgotPasswordEmail setValue:[UIColor colorWithRed:153.0/255.0 green:154.0/255.0 blue:158.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     
     //case iphone 4s
     if (self.view.frame.size.height<500) {

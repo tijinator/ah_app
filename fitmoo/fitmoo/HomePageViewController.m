@@ -450,13 +450,13 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
-    NSString *totalLike= [NSString stringWithFormat:@" %@",tempHomefeed.total_like];
+    NSString *totalLike= [NSString stringWithFormat:@"  %@",tempHomefeed.total_like];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
      [cell.likeButton setImage:[UIImage imageNamed:@"redheart.png"] forState:UIControlStateNormal];
     }else
     {
-    [cell.likeButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+    [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
     [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -490,12 +490,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-            NSLog(@"%@%ld",@"estimatedHeight: ",(long)height.integerValue);
+        //    NSLog(@"%@%ld",@"estimatedHeight: ",(long)height.integerValue);
         return height.integerValue;
     }else
     {
         height=[NSNumber numberWithInt:300];
-            NSLog(@"%@%d",@"estimatedHeight: ",0);
+        //    NSLog(@"%@%d",@"estimatedHeight: ",0);
         return height.integerValue;
     }
    
@@ -514,7 +514,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:contentHight.integerValue];
     }
-    NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
+  //  NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
   //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }

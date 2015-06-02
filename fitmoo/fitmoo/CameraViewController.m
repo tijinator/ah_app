@@ -138,6 +138,13 @@
     _okButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_okButton respectToSuperFrame:self.view];
     _okButton.layer.cornerRadius=5;
     
+    
+    _postButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_postButton.titleLabel.font.pointSize];
+    _nutritionButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_nutritionButton.titleLabel.font.pointSize];
+    _workoutButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_workoutButton.titleLabel.font.pointSize];
+    
+    [_writePostTextField setValue:[UIColor colorWithRed:153.0/255.0 green:154.0/255.0 blue:158.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    
     _textFieldButton.frame=_writePostTextField.frame;
     [self.view bringSubviewToFront:_footButtomView];
     [self.view bringSubviewToFront:_filterView];
@@ -272,7 +279,7 @@
     {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         _mediaType=@"camera";
-         [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"cameracircleicon.png"] forState:UIControlStateNormal];
+         [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"bluewhitecamera.png"] forState:UIControlStateNormal];
          self.timerLabel.hidden=true;
     
     }
@@ -588,7 +595,7 @@
     switch (b.tag) {
         case 1:
            self.postType=@"nutrition";
-            _wihteArrawImage.frame= CGRectMake(50, 30, 20, 10);
+            _wihteArrawImage.frame= CGRectMake(50, 33, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a nutrition...";
             [_nutritionButton setTitleColor:[UIColor colorWithRed:146.0/255.0 green:204.0/255.0 blue:70.0/255.0 alpha:1] forState:UIControlStateNormal];
@@ -600,7 +607,7 @@
             break;
         case 2:
             self.postType=@"post";
-            _wihteArrawImage.frame= CGRectMake(150, 30, 20, 10);
+            _wihteArrawImage.frame= CGRectMake(150, 33, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a post...";
             [_nutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -614,7 +621,7 @@
             break;
         case 3:
             self.postType=@"workout";
-            _wihteArrawImage.frame= CGRectMake(250, 30, 20, 10);
+            _wihteArrawImage.frame= CGRectMake(250, 33, 20, 10);
             _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
             _writePostTextField.placeholder=@"         Write a workout...";
             

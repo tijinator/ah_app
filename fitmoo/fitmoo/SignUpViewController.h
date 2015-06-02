@@ -54,5 +54,6 @@
 
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  UIImage *chosenImage;
+@property (strong, nonatomic)  UIView *shadowView;
 
 @end

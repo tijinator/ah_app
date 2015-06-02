@@ -55,7 +55,7 @@
 -(void) checkLogin
 {
     
-    self.facebookLoginView.frame = CGRectMake(25, 135, 270, 48);
+    self.facebookLoginView.frame = CGRectMake(25, 127, 270, 48);
     self.facebookLoginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:self.facebookLoginView respectToSuperFrame:self.view];
     
 
@@ -85,8 +85,15 @@
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkLogin:) name:@"checkLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openNextpage:) name:@"openNextpage" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailure:) name:@"loginFailure" object:nil];
 }
-
+-(void)loginFailure:(NSNotification * )note
+{
+    NSString *message= (NSString *)[note object];
+    
+    [[FitmooHelper sharedInstance] showViewWithAnimation:message withPareView:self.view];
+    [_activityIndicator stopAnimating];
+}
 
 -(void)checkLogin:(NSNotification * )note
 {
@@ -221,6 +228,9 @@ int count=0;
     _separateView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_separateView respectToSuperFrame:self.view];
     _separateView1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_separateView1 respectToSuperFrame:self.view];
     
+    [_emailTextField setValue:[UIColor colorWithRed:153.0/255.0 green:154.0/255.0 blue:158.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    [_passwordTextField setValue:[UIColor colorWithRed:153.0/255.0 green:154.0/255.0 blue:158.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    
     constentUp=0;
     constentdown=168;
     
@@ -228,6 +238,7 @@ int count=0;
     _FacebookLabel.userInteractionEnabled=NO;
     _FacebookLabel.exclusiveTouch=NO;
     [_facebookLoginView bringSubviewToFront:_FacebookLabel];
+    _facebookLoginView.layer.cornerRadius=3;
     
     //case iphone 4s
     if (self.view.frame.size.height<500) {
@@ -252,7 +263,7 @@ int count=0;
 
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     
-    loginView.frame = CGRectMake(25, 135, 270, 48);
+    loginView.frame = CGRectMake(25, 127, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     
     
@@ -325,7 +336,7 @@ int count=0;
     return YES;
 }
 -(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
-    loginView.frame = CGRectMake(25, 135, 270, 48);
+    loginView.frame = CGRectMake(25, 127, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
     for (id obj in loginView.subviews)
     {

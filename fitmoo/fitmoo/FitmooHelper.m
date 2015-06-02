@@ -56,7 +56,9 @@
     }completion:^(BOOL finished){
         [UIView animateWithDuration:1 delay:0.7 options:UIViewAnimationOptionTransitionNone animations:^{
             v.alpha=0;
-        }completion:^(BOOL finished){}];
+        }completion:^(BOOL finished){
+            [v removeFromSuperview];
+        }];
         
         
     }];

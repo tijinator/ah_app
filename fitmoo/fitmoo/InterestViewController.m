@@ -126,12 +126,12 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
 
         UILabel *label1= (UILabel *)[cell viewWithTag:1];
-        label1.frame= CGRectMake(36, 29, 253, 51);
+        label1.frame= CGRectMake(19, 29, 282, 51);
         label1.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:label1 respectToSuperFrame:self.view];
         
         
         UILabel *label2= (UILabel *)[cell viewWithTag:2];
-        label2.frame= CGRectMake(36, 88, 248, 21);
+        label2.frame= CGRectMake(26, 88, 268, 21);
         label2.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:label2 respectToSuperFrame:self.view];
         
         

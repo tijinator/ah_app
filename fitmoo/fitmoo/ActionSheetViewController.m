@@ -69,7 +69,7 @@
     
     
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDuration:0.3];
     [UIView setAnimationDelay:0];
     
     
@@ -84,7 +84,7 @@
     
 
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
+        [UIView setAnimationDuration:0.3];
         [UIView setAnimationDelay:0];
     
         
@@ -126,6 +126,8 @@
                                                  cancelButtonTitle:@"No"
                                                  otherButtonTitles:@"Yes",nil];
             [alert show];
+        
+        
             [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
         
         
