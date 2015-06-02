@@ -40,5 +40,7 @@
     
     _label1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label1 respectToSuperFrame:nil];
     _label2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label2 respectToSuperFrame:nil];
+    _blackGradient1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_blackGradient1 respectToSuperFrame:nil];
+    _blackGradient2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_blackGradient2 respectToSuperFrame:nil];
 }
 @end

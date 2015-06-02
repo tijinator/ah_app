@@ -15,5 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *label2;
 @property (strong, nonatomic) IBOutlet UIImageView *checkImage1;
 @property (strong, nonatomic) IBOutlet UIImageView *checkImage2;
+@property (strong, nonatomic) IBOutlet UIImageView *blackGradient1;
+@property (strong, nonatomic) IBOutlet UIImageView *blackGradient2;
 
 @end
