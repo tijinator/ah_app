@@ -121,7 +121,11 @@
              scrollImage.imageURL =[NSURL URLWithString:_homeFeed.photos.originalUrl];
         }
         scrollImage.contentMode = UIViewContentModeScaleAspectFit;
+      //  _bodyImage.frame= CGRectMake(scrollImage.frame.origin.x,scrollImage.frame.origin.y, scrollImage.frame.size.width, scrollImage.frame.size.height);
+
+        
         [_scrollView addSubview:scrollImage];
+      //  [_scrollView addSubview:_bodyImage];
         
          _scrollView.contentSize= CGSizeMake(_scrollView.frame.size.width+x, _scrollView.frame.size.height);
         x= x+ _scrollView.frame.size.width;
@@ -322,7 +326,7 @@
     _bodyLabel1.text= _homeFeed.nutrition.preparation;
     
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, 260*_frameRadio, _bodyTitle.frame.size.height);
-    _bodyTitle.textAlignment = NSTextAlignmentCenter;
+   // _bodyTitle.textAlignment = NSTextAlignmentCenter;
 
     
     _bodyLabel2.frame= CGRectMake(30*_frameRadio, _bodyTitle.frame.origin.y+_bodyTitle.frame.size.height+15, 260, _bodyLabel2.frame.size.height);

@@ -457,6 +457,9 @@
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
     
+    _normalEditButton.layer.cornerRadius=3;
+    _workoutEditButton.layer.cornerRadius=3;
+    _nutritionEditButton.layer.cornerRadius=3;
     
 //    _NormalPostButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NormalPostButton.titleLabel.font.pointSize];
 //    _NutritionButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NutritionButton.titleLabel.font.pointSize];

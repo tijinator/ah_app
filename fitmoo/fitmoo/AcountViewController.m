@@ -77,6 +77,7 @@
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _saveButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_saveButton respectToSuperFrame:self.view];
+    _saveButton.layer.cornerRadius=3;
     
     frameRadio= [[FitmooHelper sharedInstance] frameRadio];
     constentdown= 60;

@@ -327,7 +327,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
         temUser= [[UserManager sharedUserManager] localUser];
         }
-        cell.nameLabel.text= temUser.name;
+        cell.nameLabel.text= temUser.name.uppercaseString;
         self.titleLabel.text= temUser.name;
         NSString * imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
         if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
@@ -389,7 +389,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }else
         {
-        contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+8] ;
+        contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
@@ -443,7 +443,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.view3.hidden=true;
         }
         
-        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]] ;
+        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
         if (indexPath.row>=[_heighArray count]) {
             [_heighArray addObject:contentHight];
         }else

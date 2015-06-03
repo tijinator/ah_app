@@ -23,7 +23,31 @@
 
 - (void) setView1Item
 {
-    _view1Label.text= _homeFeed1.type;
+    _view1Label.text= _homeFeed1.type.uppercaseString;
+    
+    if ([_homeFeed1.type isEqualToString:@"regular"]) {
+       
+        _view1Label.text=@"POST";
+    }else if ([_homeFeed1.type isEqualToString:@"workout"])
+    {
+     
+        _view1Label.text=@"WORKOUT";
+    }else if ([_homeFeed1.type isEqualToString:@"nutrition"])
+    {
+   
+        _view1Label.text=@"NUTRITION";
+    }else if ([_homeFeed1.type isEqualToString:@"product"])
+    {
+       
+        _view1Label.text=@"PRODUCT";
+    }
+    else if ([_homeFeed1.type isEqualToString:@"event"])
+    {
+        _view1Label.text=@"EVENT";
+      
+    }
+    
+    
     if ([_homeFeed1.photoArray count]==0&&[_homeFeed1.videosArray count]==0)
     {
         UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(20,20,_view1Button.frame.size.width-40 , _view1Button.frame.size.height-40)];
@@ -34,21 +58,30 @@
        // [label sizeToFit];
         if ([_homeFeed1.type isEqualToString:@"regular"]) {
             label.text= _homeFeed1.text;
+        
         }else if ([_homeFeed1.type isEqualToString:@"workout"])
         {
             label.text= _homeFeed1.workout_title;
-            
+           
         }else if ([_homeFeed1.type isEqualToString:@"nutrition"])
         {
             label.text=_homeFeed1.nutrition.title;
+          
         }else if ([_homeFeed1.type isEqualToString:@"product"])
         {
            label.text=_homeFeed1.product.title;
+           
         }
         else if ([_homeFeed1.type isEqualToString:@"event"])
         {
+         
             label.text=_homeFeed1.event.name;
         }
+        
+        UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
+        
+        [label setAttributedText:attributedString];
       
         [_view1Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [_view1Button addSubview:label];
@@ -79,7 +112,31 @@
 }
 - (void) setView2Item
 {
-     _view2Label.text= _homeFeed2.type;
+     _view2Label.text= _homeFeed2.type.uppercaseString;
+    
+    if ([_homeFeed2.type isEqualToString:@"regular"]) {
+        
+        _view2Label.text=@"POST";
+    }else if ([_homeFeed2.type isEqualToString:@"workout"])
+    {
+        
+        _view2Label.text=@"WORKOUT";
+    }else if ([_homeFeed2.type isEqualToString:@"nutrition"])
+    {
+        
+        _view2Label.text=@"NUTRITION";
+    }else if ([_homeFeed2.type isEqualToString:@"product"])
+    {
+        
+        _view2Label.text=@"PRODUCT";
+    }
+    else if ([_homeFeed2.type isEqualToString:@"event"])
+    {
+        _view2Label.text=@"EVENT";
+        
+    }
+    
+    
      if ([_homeFeed2.photoArray count]==0&&[_homeFeed2.videosArray count]==0)
      {
          UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(20,20,_view2Button.frame.size.width-40 , _view2Button.frame.size.height-40)];
@@ -87,6 +144,9 @@
          label.exclusiveTouch = NO;
          label.textAlignment= NSTextAlignmentCenter;
          label.numberOfLines=3;
+         
+      
+         
          // [label sizeToFit];
          if ([_homeFeed2.type isEqualToString:@"regular"]) {
              label.text= _homeFeed2.text;
@@ -105,6 +165,11 @@
          {
              label.text=_homeFeed2.event.name;
          }
+         
+         UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
+
+         [label setAttributedText:attributedString];
          
          [_view2Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
          [_view2Button addSubview:label];
@@ -137,7 +202,31 @@
 }
 - (void) setView3Item
 {
-     _view3Label.text= _homeFeed3.type;
+     _view3Label.text= _homeFeed3.type.uppercaseString;
+    
+    if ([_homeFeed3.type isEqualToString:@"regular"]) {
+        
+        _view3Label.text=@"POST";
+    }else if ([_homeFeed3.type isEqualToString:@"workout"])
+    {
+        
+        _view3Label.text=@"WORKOUT";
+    }else if ([_homeFeed3.type isEqualToString:@"nutrition"])
+    {
+        
+        _view3Label.text=@"NUTRITION";
+    }else if ([_homeFeed3.type isEqualToString:@"product"])
+    {
+        
+        _view3Label.text=@"PRODUCT";
+    }
+    else if ([_homeFeed3.type isEqualToString:@"event"])
+    {
+        _view3Label.text=@"EVENT";
+        
+    }
+    
+    
     if ([_homeFeed3.photoArray count]==0&&[_homeFeed3.videosArray count]==0)
     {
         UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(20,20,_view3Button.frame.size.width-40 , _view3Button.frame.size.height-40)];
@@ -163,6 +252,11 @@
         {
             label.text=_homeFeed3.event.name;
         }
+        
+        UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
+        
+        [label setAttributedText:attributedString];
         
         [_view3Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [_view3Button addSubview:label];
