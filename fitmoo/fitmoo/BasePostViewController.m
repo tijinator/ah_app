@@ -341,6 +341,9 @@
 
 - (void) defineTypeOfPost
 {
+    [_normalPostImage setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_workoutPostImage setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_nutritionPostImage setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     if ([self.postType isEqualToString:@"post"]) {
         [self setPostFrame];
         
@@ -351,13 +354,15 @@
         
         _wihteArrawImage.frame= CGRectMake(150, 45, 20, 10);
         _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+        
     }else  if ([self.postType isEqualToString:@"nutrition"]) {
         [self setNutritionFrame];
         [_NutritionButton setTitleColor:[UIColor colorWithRed:146.0/255.0 green:204.0/255.0 blue:70.0/255.0 alpha:1] forState:UIControlStateNormal];
         [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_WorkoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _wihteArrawImage.frame= CGRectMake(60, 45, 20, 10);
+        _wihteArrawImage.frame= CGRectMake(55, 45, 20, 10);
         _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+       
       
     }else  if ([self.postType isEqualToString:@"workout"]) {
         
@@ -365,7 +370,7 @@
         [_NutritionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self setWorkoutFrame];
-        _wihteArrawImage.frame= CGRectMake(240, 45, 20, 10);
+        _wihteArrawImage.frame= CGRectMake(245, 45, 20, 10);
         _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
     }
 }
@@ -453,9 +458,9 @@
     _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
     
     
-    _NormalPostButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NormalPostButton.titleLabel.font.pointSize];
-    _NutritionButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NutritionButton.titleLabel.font.pointSize];
-    _WorkoutButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_WorkoutButton.titleLabel.font.pointSize];
+//    _NormalPostButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NormalPostButton.titleLabel.font.pointSize];
+//    _NutritionButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NutritionButton.titleLabel.font.pointSize];
+//    _WorkoutButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_WorkoutButton.titleLabel.font.pointSize];
     
     _normalPostText.placeholder=@"   Write a post...";
     _workoutTitle.placeholder=@"   Workout Title";
@@ -670,6 +675,7 @@
     activityIndicator.hidesWhenStopped = YES;
     [self.view addSubview:activityIndicator];
     [activityIndicator startAnimating];
+    self.view.userInteractionEnabled=NO;
 }
 
 -(bool) validate

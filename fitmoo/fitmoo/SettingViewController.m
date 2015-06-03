@@ -19,7 +19,7 @@
     [self initFrames];
    // [self createObservers];
 
-    [self.bottomView setHidden:true];
+   // [self.bottomView setHidden:true];
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     
      _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio], nil];

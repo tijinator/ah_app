@@ -95,7 +95,15 @@
 -(void) hidePostView: (NSNotification * ) note
 {
     [self hidePostViewAnimation];
-
+    if (self.videoURL==nil) {
+        [self.imageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+    
+    if(self.chosenImage!=nil&&self.videoURL==nil)
+    {
+    [self addfilterView];
+   
+    }
 }
 
 -(void) initFrames
@@ -236,7 +244,7 @@
         }completion:^(BOOL finished){
             [v removeFromSuperview];
                 }];
-        
+        self.videoURL=nil;
         
     }else
     {
@@ -484,10 +492,16 @@
 -(void) openPostView
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    if (_postView==nil) {
     _postView = [mainStoryboard instantiateViewControllerWithIdentifier:@"BasePostViewController"];
+    }
+  
     _postView.PostImage= self.selectedImageview.image;
     _postView.postType= _postType;
     _postView.postActionType=_postActionType;
+    
+    [_postView defineTypeOfPost];
     _postView.view.frame= CGRectMake(0, 50, _postView.view.frame.size.width, _postView.view.frame.size.height);
     _postView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postView.view respectToSuperFrame:self.view];
     
@@ -566,6 +580,7 @@
                 [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];
                 [_picker1 dismissViewControllerAnimated:YES completion:nil];
                 [self addfilterView];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"2"];
             
  
         }

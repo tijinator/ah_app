@@ -40,6 +40,16 @@
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     
+   
+    if (self.tag==1000) {
+         UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.font.pointSize-3];
+        attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
+
+    }
+    
+    
+    
+    
     [self setAttributedText:attributedString];
     [super drawRect:rect];
     

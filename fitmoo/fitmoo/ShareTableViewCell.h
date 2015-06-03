@@ -81,6 +81,7 @@
 - (void) deleteViews:(UIView *)view;
 - (void) addScrollView;
 - (void) rebuiltBodyViewFrame;
+- (void) rebuiltHeaderViewFrame;
 - (void) rebuiltCommentViewFrame;
 - (void) setBodyFrameForWorkout;
 - (void) setBodyFrameForRegular;
@@ -90,5 +91,6 @@
 - (void) setBodyShadowFrameForTextPost;
 - (void) setBodyShadowFrameForImagePost;
 - (void) setTitleLabelForHeader;
+@property (strong, nonatomic) IBOutlet UIButton *viewAllCommentButton;
 
 @end

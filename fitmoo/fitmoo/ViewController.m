@@ -316,6 +316,9 @@ int count=0;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
   //  double radio= [[FitmooHelper sharedInstance] frameRadio];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _backView.frame=CGRectMake(_backView.frame.origin.x, constentUp, _backView.frame.size.width, _backView.frame.size.height);

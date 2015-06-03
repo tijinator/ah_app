@@ -370,7 +370,7 @@
         {
             cell=[tableView dequeueReusableCellWithIdentifier:@"bioCell"];
             UIImageView *nameImage=(UIImageView *) [cell viewWithTag:1];
-            nameImage.frame=CGRectMake(20, 18, 15, 15);
+            nameImage.frame=CGRectMake(20, 23, 15, 15);
             nameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameImage respectToSuperFrame:self.view];
             
             
@@ -408,7 +408,7 @@
             UILabel *phoneLabel= (UILabel *)[cell viewWithTag:8];
             phoneLabel.frame=CGRectMake(29, 8, 270, 21);
             phoneLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:phoneLabel respectToSuperFrame:self.view];
-            phoneLabel.text=@"phone:";
+            phoneLabel.text=@"Phone:";
             
             UITextField *phoneTextfield= (UITextField *)[cell viewWithTag:9];
             phoneTextfield.frame=CGRectMake(29, 30, 270, 30);
@@ -475,6 +475,42 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     
 }
+-(BOOL) checkValidInfo
+{
+    
+    BOOL valid=true;
+    NSString *email= _mailTextfield.text;
+    
+    if ([email isEqualToString:@""]||![email containsString:@"@"]||![email containsString:@".com"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Save"
+                                                          message : @"Enter valid email." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    NSString *website=_websiteTextfield.text;
+    if (![self validateUrl:website]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Save"
+                                                          message : @"Enter valid Website." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    return valid;
+}
+
+- (BOOL) validateUrl: (NSString *) candidate {
+    if ([candidate isEqual:@""]) {
+        return true;
+    }
+    
+    NSString *urlRegEx =
+    @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    return [urlTest evaluateWithObject:candidate];
+}
 
 #pragma mark - Image Picker Controller delegate methods
 
@@ -501,13 +537,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [[UserManager sharedUserManager] performUpdatePrivacy:_tempUser ];
     }else
     {
-    _tempUser.bio= _bioTextview.text;
-    _tempUser.name=_nameTextfield.text;
-    _tempUser.location=_locationTextfield.text;
-    _tempUser.phone=_phoneTextfield.text;
-    _tempUser.website=_websiteTextfield.text;
-    _tempUser.email=_mailTextfield.text;
-    [[UserManager sharedUserManager] performUpdate:_tempUser ];
+        if ([self checkValidInfo]==true) {
+            _tempUser.bio= _bioTextview.text;
+            _tempUser.name=_nameTextfield.text;
+            _tempUser.location=_locationTextfield.text;
+            _tempUser.phone=_phoneTextfield.text;
+            _tempUser.website=_websiteTextfield.text;
+            _tempUser.email=_mailTextfield.text;
+            [[UserManager sharedUserManager] performUpdate:_tempUser ];
+        }
+        
+    
     }
     
 }
@@ -572,6 +612,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
     // [self moveUpView:_buttomView];
     if ([textField isEqual:_locationTextfield]||[textField isEqual:_phoneTextfield]||[textField isEqual:_websiteTextfield]) {
         

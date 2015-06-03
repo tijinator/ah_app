@@ -338,7 +338,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
    // [self moveUpView:_buttomView];
-
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
 }
 
@@ -373,7 +375,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
 }
 - (IBAction)postButtonClick:(id)sender {
+    if ([_textField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
+                                                          message : @"Please say something." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    }else
+    {
     [[UserManager sharedUserManager] performComment:_textField.text withId:_homeFeed.feed_id];
+    self.postButton.userInteractionEnabled=NO;
+    }
     
 }
 @end

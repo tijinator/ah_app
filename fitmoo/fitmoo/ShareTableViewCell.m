@@ -36,7 +36,7 @@
         int temHeight= (subview.frame.size.height+subview.frame.origin.y+5);
         maxHeight= MAX(maxHeight, temHeight);
     }
-    _commentView.frame= CGRectMake(0, _commentView.frame.origin.y, _commentView.frame.size.width, maxHeight+15*_frameRadio);
+    _commentView.frame= CGRectMake(0, _commentView.frame.origin.y, _commentView.frame.size.width, maxHeight+5*_frameRadio);
 
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
 
@@ -122,6 +122,7 @@
         }
         scrollImage.contentMode = UIViewContentModeScaleAspectFit;
         [_scrollView addSubview:scrollImage];
+        
          _scrollView.contentSize= CGSizeMake(_scrollView.frame.size.width+x, _scrollView.frame.size.height);
         x= x+ _scrollView.frame.size.width;
     }
@@ -169,9 +170,10 @@
     
     if (![_homeFeed.product.original_price isEqualToString:@"0"]) {
         _bodyLabel3.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.original_price];
-        _bodyLabel3.frame= CGRectMake(260*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y-2, 40*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
+        _bodyLabel3.tag=1000;
+        _bodyLabel3.frame= CGRectMake(263*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y-2, 40*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
 
-        UIView *crossView= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyLabel3.frame.size.height/2, 30, 1)];
+        UIView *crossView= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyLabel3.frame.size.height/2, 28*_frameRadio, 1)];
         crossView.backgroundColor=[UIColor blackColor];
         [_bodyLabel3 addSubview:crossView];
     }
@@ -380,7 +382,7 @@
      _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
      _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
 
-    _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,20*_frameRadio)];
+    _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,22*_frameRadio)];
   //  [_commentDetail setText:string];
    
   //  _commentDetail.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail];
@@ -389,13 +391,17 @@
     _commentDetail.lineBreakMode= NSLineBreakByWordWrapping;
     _commentDetail.numberOfLines=0;
     [_commentDetail sizeToFit];
-      [_commentView addSubview:_commentImage];
+    [_commentView addSubview:_commentImage];
     [_commentView addSubview:_commentDetail];
+        
+    _viewAllCommentButton.frame= CGRectMake(_commentDetail.frame.origin.x, _commentDetail.frame.origin.y+_commentDetail.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+    [_commentView addSubview:_viewAllCommentButton];
     }
+   
    
     if (index==1) {
        
-        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
+        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
      //   [_commentDetail1 setText:string];
      //   _commentDetail1.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail1];
         [_commentDetail1 setAttributedText:attributedString];
@@ -404,11 +410,13 @@
         [_commentDetail1 sizeToFit];
         
         [_commentView addSubview:_commentDetail1];
+        
+         _viewAllCommentButton.frame= CGRectMake(_commentDetail1.frame.origin.x, _commentDetail1.frame.origin.y+_commentDetail1.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
     }
     
     if (index==2) {
        
-        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,20*_frameRadio)];
+        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
      //   [_commentDetail2 setText:string];
       //  _commentDetail2.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_commentDetail2];
         [_commentDetail2 setAttributedText:attributedString];
@@ -417,6 +425,7 @@
         [_commentDetail2 sizeToFit];
         
         [_commentView addSubview:_commentDetail2];
+        _viewAllCommentButton.frame= CGRectMake(_commentDetail2.frame.origin.x, _commentDetail2.frame.origin.y+_commentDetail2.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
         
         }
     
@@ -495,6 +504,22 @@
     _titleLabel.frame=CGRectMake(_titleLabel.frame.origin.x-40*_frameRadio, _titleLabel.frame.origin.y, _titleLabel.frame.size.width, _titleLabel.frame.size.height);
     _dayLabel.frame=CGRectMake(_dayLabel.frame.origin.x-40*_frameRadio, _dayLabel.frame.origin.y, _dayLabel.frame.size.width, _dayLabel.frame.size.height);
 }
+- (void) rebuiltHeaderViewFrame
+{
+    int maxHeight=0;
+    for (UIView * subview in _headerView.subviews) {
+        
+            int temHeight= (subview.frame.size.height+subview.frame.origin.y+5);
+            maxHeight= MAX(maxHeight, temHeight);
+        
+    }
+    _headerView.frame=CGRectMake(0, _headerView.frame.origin.y, _headerView.frame.size.width, maxHeight);
+    _bodyView.frame= CGRectMake(0, _headerView.frame.origin.y+_headerView.frame.size.height, _bodyView.frame.size.width, _bodyView.frame.size.height);
+    self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _bodyView.frame.size.height+_bodyView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
+    
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+
+}
 
 - (void) setBodyShadowFrameForTextPost
 {
@@ -558,6 +583,8 @@
     _bodyCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyCommentButton respectToSuperFrame:nil];
     _bodyShareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyShareButton respectToSuperFrame:nil];
     _bodyGradian.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyGradian respectToSuperFrame:nil];
+    
+    _viewAllCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_viewAllCommentButton respectToSuperFrame:nil];
   //  _viewArray=[[NSMutableArray alloc] initWithObjects:_headerView,_bodyView,_commentView,_commentView1,_commentView2, nil];
     
 }

@@ -266,10 +266,12 @@
             _localUser= [[User alloc] init];
             if (_chosenImage!=nil) {
                 [self uploadToS3];
+                self.sighUpButton.userInteractionEnabled=false;
             }else
             {
                 
                 [self requestSignUp];
+                self.sighUpButton.userInteractionEnabled=false;
             }
             
             [[FitmooHelper sharedInstance] addActivityIndicator:self.view];
@@ -438,6 +440,9 @@
 #pragma mark - textfield functions
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self moveUpView];
     _pickerView.hidden=true;
     _pickerView2.hidden=true;

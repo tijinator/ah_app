@@ -29,6 +29,8 @@
 - (IBAction)cancelButtonClick:(id)sender;
 - (IBAction)postButtonClick:(id)sender;
 - (void)hideTextViewBackgroundView;
+- (void) defineTypeOfPost;
+
 @property (strong, nonatomic)  UIImage *PostImage;
 @property (strong, nonatomic)  HomeFeed *homeFeed;
 

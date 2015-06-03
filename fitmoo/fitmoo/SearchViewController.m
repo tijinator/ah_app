@@ -26,7 +26,7 @@
     _searchterm=@"";
     UINib *cellNib = [UINib nibWithNibName:@"FollowCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FollowCollectionViewCell"];
-    [self.bottomView setHidden:true];
+  //  [self.bottomView setHidden:true];
     
     
     _searchArrayCategory= [[NSMutableArray alloc] init];
