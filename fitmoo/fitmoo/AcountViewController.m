@@ -161,8 +161,8 @@
         
         // once the uploadmanager finishes check if there were any errors
         if (task.error) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"Upload Image Failed" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"The image didn't upload." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             
@@ -483,8 +483,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *email= _mailTextfield.text;
     
     if ([email isEqualToString:@""]||![email containsString:@"@"]||![email containsString:@".com"]) {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Save"
-                                                          message : @"Enter valid email." delegate : nil cancelButtonTitle : @"OK"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"This email is invalid." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
         return false;
@@ -492,8 +492,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *website=_websiteTextfield.text;
     if (![self validateUrl:website]) {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Save"
-                                                          message : @"Enter valid Website." delegate : nil cancelButtonTitle : @"OK"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"This website is invalid." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
         return false;
@@ -555,8 +555,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) makeUpdateFinished: (NSNotification * ) note
 {
-    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Update account."
-                                                      message : @"Information saved." delegate : nil cancelButtonTitle : @"OK"
+    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Saved"
+                                                      message : @"Your profile is now updated." delegate : nil cancelButtonTitle : @"OK"
                                             otherButtonTitles : nil ];
     [alert show ];
 }

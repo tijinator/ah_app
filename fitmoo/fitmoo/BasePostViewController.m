@@ -133,8 +133,8 @@
         
         // once the uploadmanager finishes check if there were any errors
         if (task.error) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"Upload Image Failed" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"The image didn't upload." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             
@@ -465,12 +465,12 @@
 //    _NutritionButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_NutritionButton.titleLabel.font.pointSize];
 //    _WorkoutButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_WorkoutButton.titleLabel.font.pointSize];
     
-    _normalPostText.placeholder=@"   Write a post...";
-    _workoutTitle.placeholder=@"   Workout Title";
-    _workoutInstruction.placeholder=@"   Instruction";
-    _nutritionTitle.placeholder=@"   Nutrition Title";
-    _nutritionIngedients.placeholder=@"   Ingedients";
-    _nutritionPreparation.placeholder=@"   Preparation";
+    _normalPostText.placeholder=@"Write a post...";
+    _workoutTitle.placeholder=@"Title";
+    _workoutInstruction.placeholder=@"Workout";
+    _nutritionTitle.placeholder=@"Title";
+    _nutritionIngedients.placeholder=@"Ingredients";
+    _nutritionPreparation.placeholder=@"Preparation";
     
 
 }
@@ -522,8 +522,8 @@
 {
     if ([self.postType isEqualToString:@"post"]) {
         if ([_normalPostText.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"text can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please write something." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
         }else
@@ -561,15 +561,15 @@
         
     }else  if ([self.postType isEqualToString:@"nutrition"]) {
         if ([_nutritionTitle.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please write a title." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
         }else
         {
             if ([_nutritionPreparation.text isEqualToString:@""]&&[_nutritionIngedients.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"Ingrediens and Preparation can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"Please fill out Ingredients or Preparation." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
             }else
@@ -617,15 +617,15 @@
         
     }else  if ([self.postType isEqualToString:@"workout"]) {
         if ([_workoutTitle.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please write a title." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
         }else
         {
             if ([_workoutInstruction.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"Instruction can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"Please fill out your workout." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
             }else
@@ -686,8 +686,8 @@
     
     if ([self.postType isEqualToString:@"post"]) {
         if ([_normalPostText.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"text can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please write something." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             return false;
@@ -695,16 +695,16 @@
         
     }else  if ([self.postType isEqualToString:@"nutrition"]) {
         if ([_nutritionTitle.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please write a title." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             return false;
         }else
         {
             if ([_nutritionPreparation.text isEqualToString:@""]&&[_nutritionIngedients.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"Ingrediens and Preparation can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"Please fill out Ingredients or Preparation." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
                 return false;
@@ -713,16 +713,16 @@
         
     }else  if ([self.postType isEqualToString:@"workout"]) {
         if ([_workoutTitle.text isEqualToString:@""]) {
-            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                              message : @"title can not be empty" delegate : nil cancelButtonTitle : @"OK"
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please fill out a title." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             return false;
         }else
         {
             if ([_workoutInstruction.text isEqualToString:@""]) {
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                                  message : @"Instruction can not be both empty" delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"Please fill out your workout." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
                 return false;

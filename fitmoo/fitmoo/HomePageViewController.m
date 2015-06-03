@@ -716,8 +716,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not play"
-                                                                  message : @"This video cannot play at this moment." delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"The video cannot play right now." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
 

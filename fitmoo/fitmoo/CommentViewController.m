@@ -376,8 +376,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)postButtonClick:(id)sender {
     if ([_textField.text isEqualToString:@""]) {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not Post"
-                                                          message : @"Please say something." delegate : nil cancelButtonTitle : @"OK"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please write something." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
     }else

@@ -26,11 +26,11 @@
 - (void) drawRect:(CGRect)rect {
     UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:self.titleLabel.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text attributes:@{NSFontAttributeName: font}  ];
-   // if (self.tag==1000) {
+    if (self.tag==1000||self.tag==1||self.tag==2||self.tag==3) {
         float spacing = 1.5f;
         [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.titleLabel.text length])];
         
-   // }
+    }
     
     
     [self.titleLabel setAttributedText:attributedString];

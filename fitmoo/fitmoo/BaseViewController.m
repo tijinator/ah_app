@@ -33,8 +33,8 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
         NSLog(@"There IS NO internet connection");
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Internet"
-                                                          message : @"There IS NO internet connection" delegate : nil cancelButtonTitle : @"OK"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Offline"
+                                                          message : @"You appear to be offline. Please connect to the internet to continue." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
         
@@ -83,7 +83,7 @@
     [_leftButton1 setBackgroundImage:im forState:UIControlStateNormal];
     UIImage *im1= [UIImage imageNamed:@"menu_plus_icon.png"];
     [_middleButton1 setBackgroundImage:im1 forState:UIControlStateNormal];
-    UIImage *im2= [UIImage imageNamed:@"home_icon.png"];
+    UIImage *im2= [UIImage imageNamed:@"profile.png"];
     [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
     
     [self.bottomView addSubview:_leftButton1];

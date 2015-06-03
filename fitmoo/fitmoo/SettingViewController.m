@@ -90,7 +90,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell2"];
             
             UILabel *label= (UILabel *)[cell viewWithTag:2];
-            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame=CGRectMake(20, 12, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             
             UIImageView *Image= (UIImageView *)[cell viewWithTag:10];
@@ -104,7 +104,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell3"];
             
             UILabel *label= (UILabel *)[cell viewWithTag:3];
-            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame=CGRectMake(20, 12, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width*[[FitmooHelper sharedInstance] frameRadio], 0.f, 0.f);
             
@@ -130,7 +130,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell5"];
             
             UILabel *label= (UILabel *)[cell viewWithTag:5];
-            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame=CGRectMake(20, 12, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             
             UIImageView *Image= (UIImageView *)[cell viewWithTag:10];
@@ -144,7 +144,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell6"];
             
             UILabel *label= (UILabel *)[cell viewWithTag:6];
-            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame=CGRectMake(20, 12, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width*[[FitmooHelper sharedInstance] frameRadio], 0.f, 0.f);
             
@@ -159,7 +159,7 @@
             cell=[tableView dequeueReusableCellWithIdentifier:@"cell7"];
             
             UILabel *label= (UILabel *)[cell viewWithTag:5];
-            label.frame=CGRectMake(20, 10, 200, 30);
+            label.frame=CGRectMake(20, 12, 200, 30);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             
             UIImageView *Image= (UIImageView *)[cell viewWithTag:10];

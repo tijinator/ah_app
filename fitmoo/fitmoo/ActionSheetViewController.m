@@ -120,8 +120,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTable" object:_postId];
     }else if([_action isEqualToString:@"report"]) {
       
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Question"
-                                                           message:@"Do you want to report?"
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Report"
+                                                           message:@"Are you sure you want to send a report?"
                                                           delegate:self
                                                  cancelButtonTitle:@"No"
                                                  otherButtonTitles:@"Yes",nil];
