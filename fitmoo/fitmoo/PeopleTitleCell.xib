@@ -103,6 +103,11 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <view contentMode="scaleToFill" id="8o5-Tn-0at">
+                                        <rect key="frame" x="160" y="5" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -145,6 +150,7 @@
                 <outlet property="scheduleButton" destination="W7b-HI-RRa" id="q2C-ZG-tnf"/>
                 <outlet property="shadowImageView" destination="60T-wi-7di" id="uhk-hS-SqL"/>
                 <outlet property="topView" destination="HK1-cI-jiG" id="eIm-7Q-TIG"/>
+                <outlet property="view1" destination="8o5-Tn-0at" id="DuT-Rg-lvn"/>
             </connections>
             <point key="canvasLocation" x="216" y="456.5"/>
         </tableViewCell>

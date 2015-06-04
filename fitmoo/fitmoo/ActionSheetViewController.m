@@ -33,6 +33,7 @@
     }else
     {
         [_endorseButton setHidden:false];
+        [_view2 setHidden:false];
         [self showViews];
     }
     
@@ -53,6 +54,10 @@
     _shareCancelButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareCancelButton respectToSuperFrame:self.view];
     _shareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButton respectToSuperFrame:self.view];
     _shareButtomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButtomView respectToSuperFrame:self.view];
+    
+    _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:self.view];
+    _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:self.view];
+    _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:self.view];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

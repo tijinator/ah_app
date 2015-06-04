@@ -72,6 +72,7 @@
     _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
     
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:nil];
+    _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:nil];
     
     _shadowImageView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shadowImageView respectToSuperFrame:nil];
     _bioLabel.frame= CGRectMake(0, 0, _bioButton.frame.size.width, _bioButton.frame.size.height);

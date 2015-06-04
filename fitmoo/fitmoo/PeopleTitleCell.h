@@ -34,6 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIView *view1;
 
 - (void) loadHeaderImage: (NSString *)url;
 - (void) loadHeader1Image: (NSString *)url;
