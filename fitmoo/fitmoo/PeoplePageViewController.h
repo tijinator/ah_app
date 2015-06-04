@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)backButtonClick:(id)sender;
 
 @property (strong, nonatomic)  NSString * searchId;
 @property (strong, nonatomic)  User * temSearchUser;

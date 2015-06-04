@@ -64,8 +64,10 @@
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
     
     if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
+        [self addActivityIndicator];
         [[UserManager sharedUserManager] getUserProfile:localUser];
         loginExists=true;
+        
     }else
     {
 
@@ -92,7 +94,8 @@
     NSString *message= (NSString *)[note object];
     
     [[FitmooHelper sharedInstance] showViewWithAnimation:message withPareView:self.view];
-    [_activityIndicator stopAnimating];
+ //   [_activityIndicator stopAnimating];
+    [_lanchScreen.view removeFromSuperview];
 }
 
 -(void)checkLogin:(NSNotification * )note
@@ -125,6 +128,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [_activityIndicator stopAnimating];
+    [_lanchScreen.view removeFromSuperview];
     if (_sighUpView!=nil) {
           _sighUpView=nil;
     }
@@ -143,8 +147,12 @@
     for (NSHTTPCookie* cookie in facebookCookies) {
         [cookies deleteCookie:cookie];
     }
+    if ([[FBSession activeSession] isOpen])
+    {
+        [[FBSession activeSession] close];
+        [FBSession.activeSession closeAndClearTokenInformation];
+    }
 
-  //  loginExists =false;
 }
 
 int count=0;
@@ -304,6 +312,7 @@ int count=0;
     
     
     if (loginExists ==false) {
+        [self addActivityIndicator];
         [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
         _cachedUser = user;
     }
@@ -363,11 +372,24 @@ int count=0;
 
 - (void) addActivityIndicator
 {
-    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio],  240*[[FitmooHelper sharedInstance] frameRadio]);
-    _activityIndicator.hidesWhenStopped = YES;
-    [self.view addSubview:_activityIndicator];
-    [_activityIndicator startAnimating];
+//    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio],  240*[[FitmooHelper sharedInstance] frameRadio]);
+//    _activityIndicator.hidesWhenStopped = YES;
+//    [self.view addSubview:_activityIndicator];
+//    [_activityIndicator startAnimating];
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
+    _lanchScreen.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], 569*[[FitmooHelper sharedInstance] frameRadio]);
+    [self.view addSubview:_lanchScreen.view];
+    [self.view bringSubviewToFront:_lanchScreen.view];
+    _lanchScreen.view.alpha=0;
+    
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _lanchScreen.view.alpha=1;
+    }completion:^(BOOL finished){}];
+
+    
    // [self.view bringSubviewToFront:_activityIndicator];
 }
 
@@ -409,6 +431,7 @@ int count=0;
             localUser.password=_passwordTextField.text;
             [[UserManager sharedUserManager] performLogin:localUser];
         [self addActivityIndicator];
+        
         [self textFieldShouldReturn:_passwordTextField];
 
     }else

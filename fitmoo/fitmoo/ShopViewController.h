@@ -11,5 +11,7 @@
 #import "BaseViewController.h"
 @interface ShopViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UIImageView *commingSoonImage;
+@property (strong, nonatomic) IBOutlet UIButton *shopButton;
+- (IBAction)shopButtonClick:(id)sender;
 
 @end

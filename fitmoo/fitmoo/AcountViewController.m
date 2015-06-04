@@ -34,7 +34,7 @@
 
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     
-    _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:140*radio],[NSNumber numberWithDouble:74*radio],[NSNumber numberWithDouble:66*radio],[NSNumber numberWithDouble:66*radio], nil];
+    _heightArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble:50*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:140*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio],[NSNumber numberWithDouble:55*radio], nil];
     _privacyArray= [[NSMutableArray alloc] initWithObjects:@"Global Privacy",@"Hide Location",@"Hide Email",@"Hide Phone Info",@"Hide Website",@"Hide Facebook Info",@"Hide Twitter Info",@"Hide Linkedln Info",@"Hide Google Plus Info",@"Hide Instagram Info", nil];
   
      _privacyBoolArray= [[NSMutableArray alloc] initWithObjects:_tempUser.hide_global_privacy,_tempUser.hide_location,_tempUser.hide_email,_tempUser.hide_phone,_tempUser.hide_website,_tempUser.hide_facebook,_tempUser.hide_twitter,_tempUser.hide_linkedin, _tempUser.hide_google,_tempUser.hide_instagram, nil];
@@ -132,7 +132,7 @@
     // set the bucket
     //   _uploadRequest.bucket = @"s3-demo-objectivec";
     //    _uploadRequest.bucket = @"fitmoo-staging";
-    _uploadRequest.bucket = @"fitmoo-staging-test";
+    _uploadRequest.bucket =[[UserManager sharedUserManager] s3_bucket];
     // I want this image to be public to anyone to view it so I'm setting it to Public Read
     _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     // set the image's name that will be used on the s3 server. I am also creating a folder to place the image in
@@ -310,11 +310,11 @@
             nameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameImage respectToSuperFrame:self.view];
             
             UILabel *label= (UILabel *)[cell viewWithTag:3];
-            label.frame=CGRectMake(241, 79, 40, 20);
+            label.frame=CGRectMake(250, 79, 40, 20);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
             
             UIButton *imageview=(UIButton *) [cell viewWithTag:4];
-            imageview.frame= CGRectMake(231, 14,60, 60);
+            imageview.frame= CGRectMake(240, 14,60, 60);
             imageview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageview respectToSuperFrame:self.view];
             
             UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
@@ -386,55 +386,52 @@
     }else if (indexPath.row==4) {
         if (cell == nil)
         {
-            cell=[tableView dequeueReusableCellWithIdentifier:@"locationCell"];
+            cell=[tableView dequeueReusableCellWithIdentifier:@"emailCell"];
+            UIImageView *nameImage=(UIImageView *) [cell viewWithTag:1];
+            nameImage.image=[UIImage imageNamed:@"greylocation.png"];
+            nameImage.frame=CGRectMake(20, 18, 20, 20);
+            nameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameImage respectToSuperFrame:self.view];
             
-            UILabel *locationLabel= (UILabel *)[cell viewWithTag:8];
-            locationLabel.frame=CGRectMake(29, 8, 270, 21);
-            locationLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:locationLabel respectToSuperFrame:self.view];
+            UITextField *emailTextfield= (UITextField *)[cell viewWithTag:2];
+            emailTextfield.frame=CGRectMake(50, 12, 200, 30);
+            emailTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:emailTextfield respectToSuperFrame:self.view];
+            emailTextfield.text=_tempUser.location;
             
-            UITextField *locationTextfield= (UITextField *)[cell viewWithTag:9];
-            locationTextfield.frame=CGRectMake(29, 30, 270, 30);
-            locationTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:locationTextfield respectToSuperFrame:self.view];
-            locationTextfield.text=_tempUser.location;
-            
-            _locationTextfield=locationTextfield;
+            _locationTextfield=emailTextfield;
         }
         
     }else if (indexPath.row==5) {
         if (cell == nil)
         {
-            cell=[tableView dequeueReusableCellWithIdentifier:@"locationCell"];
+            cell=[tableView dequeueReusableCellWithIdentifier:@"emailCell"];
+            UIImageView *nameImage=(UIImageView *) [cell viewWithTag:1];
+            nameImage.image=[UIImage imageNamed:@"greyphone.png"];
+            nameImage.frame=CGRectMake(20, 20, 15, 15);
+            nameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameImage respectToSuperFrame:self.view];
             
+            UITextField *emailTextfield= (UITextField *)[cell viewWithTag:2];
+            emailTextfield.frame=CGRectMake(50, 12, 200, 30);
+            emailTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:emailTextfield respectToSuperFrame:self.view];
+            emailTextfield.text=_tempUser.phone;
             
-            UILabel *phoneLabel= (UILabel *)[cell viewWithTag:8];
-            phoneLabel.frame=CGRectMake(29, 8, 270, 21);
-            phoneLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:phoneLabel respectToSuperFrame:self.view];
-            phoneLabel.text=@"Phone:";
-            
-            UITextField *phoneTextfield= (UITextField *)[cell viewWithTag:9];
-            phoneTextfield.frame=CGRectMake(29, 30, 270, 30);
-            phoneTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:phoneTextfield respectToSuperFrame:self.view];
-            phoneTextfield.text=_tempUser.phone;
-            
-            _phoneTextfield=phoneTextfield;
-            
+            _phoneTextfield=emailTextfield;
         }
         
     }else if (indexPath.row==6) {
         if (cell == nil)
         {
-            cell=[tableView dequeueReusableCellWithIdentifier:@"locationCell"];
-            UILabel *websiteLabel= (UILabel *)[cell viewWithTag:8];
-            websiteLabel.frame=CGRectMake(29, 8, 270, 21);
-            websiteLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:websiteLabel respectToSuperFrame:self.view];
-            websiteLabel.text= @"Website:";
+            cell=[tableView dequeueReusableCellWithIdentifier:@"emailCell"];
+            UIImageView *nameImage=(UIImageView *) [cell viewWithTag:1];
+            nameImage.image=[UIImage imageNamed:@"greywebsite.png"];
+            nameImage.frame=CGRectMake(20, 20, 15, 15);
+            nameImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameImage respectToSuperFrame:self.view];
             
-            UITextField *websiteTextfield= (UITextField *)[cell viewWithTag:9];
-            websiteTextfield.frame=CGRectMake(29, 30, 270, 30);
-            websiteTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:websiteTextfield respectToSuperFrame:self.view];
-            websiteTextfield.text=_tempUser.website;
+            UITextField *emailTextfield= (UITextField *)[cell viewWithTag:2];
+            emailTextfield.frame=CGRectMake(50, 12, 200, 30);
+            emailTextfield.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:emailTextfield respectToSuperFrame:self.view];
+            emailTextfield.text=_tempUser.website;
             
-            _websiteTextfield=websiteTextfield;
+            _websiteTextfield=emailTextfield;
         }
         
     }

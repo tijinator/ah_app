@@ -104,7 +104,7 @@
     // set the bucket
     //   _uploadRequest.bucket = @"s3-demo-objectivec";
     //    _uploadRequest.bucket = @"fitmoo-staging";
-    _uploadRequest.bucket = @"fitmoo-staging-test";
+    _uploadRequest.bucket = [[UserManager sharedUserManager] s3_bucket];
     // I want this image to be public to anyone to view it so I'm setting it to Public Read
     _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     // set the image's name that will be used on the s3 server. I am also creating a folder to place the image in
@@ -671,13 +671,32 @@
 
 - (void) addActivityIndicator
 {
+    UIView *view= [[UIView alloc] initWithFrame:CGRectMake(110*[[FitmooHelper sharedInstance] frameRadio], 200*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
+    view.backgroundColor=[UIColor colorWithRed:174.0/255.0 green:182.0/255.0 blue:186.0/255.0 alpha:1];
+  //  view.backgroundColor=[UIColor whiteColor];
+    view.layer.cornerRadius=5;
+    
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [[FitmooHelper sharedInstance] resizeFrameWithFrame:activityIndicator respectToSuperFrame:nil];
     activityIndicator.alpha = 1.0;
-    activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 240*[[FitmooHelper sharedInstance] frameRadio]);
+    activityIndicator.center = CGPointMake(50, 40);
     activityIndicator.hidesWhenStopped = YES;
-    [self.view addSubview:activityIndicator];
+    [activityIndicator setBackgroundColor:[UIColor clearColor]];
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
     [activityIndicator startAnimating];
+    
+    UILabel * postingLabel= [[UILabel alloc] initWithFrame: CGRectMake(0,60, 100, 30)];
+    postingLabel.text= @"POSTING...";
+  //  postingLabel.textColor=[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
+    postingLabel.textColor=[UIColor whiteColor];
+    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:13];
+    [postingLabel setFont:font];
+    postingLabel.textAlignment=NSTextAlignmentCenter;
+    
+    [view addSubview:activityIndicator];
+    [view addSubview:postingLabel];
+    [self.view addSubview:view];
+    
     self.view.userInteractionEnabled=NO;
 }
 

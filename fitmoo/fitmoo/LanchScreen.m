@@ -1,30 +1,24 @@
 //
-//  ShopViewController.m
+//  LanchScreen.m
 //  fitmoo
 //
-//  Created by hongjian lin on 5/5/15.
+//  Created by hongjian lin on 6/4/15.
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#import "ShopViewController.h"
+#import "LanchScreen.h"
 
-@interface ShopViewController ()
+@interface LanchScreen ()
 
 @end
 
-@implementation ShopViewController
+@implementation LanchScreen
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initFrames];
-   //  [self.bottomView setHidden:true];
+//    _Indicator.frame= CGRectMake(_Indicator.frame.origin.x*[[FitmooHelper sharedInstance] frameRadio], _Indicator.frame.origin.y*[[FitmooHelper sharedInstance] frameRadio], _Indicator.frame.size.width, _Indicator.frame.size.height);
+//    [_Indicator startAnimating];
     // Do any additional setup after loading the view.
-}
-
-- (void) initFrames
-{
-   // _commingSoonImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commingSoonImage respectToSuperFrame:self.view];
-     _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,9 +36,4 @@
 }
 */
 
-- (IBAction)shopButtonClick:(id)sender {
-    
-     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
-    
-}
 @end

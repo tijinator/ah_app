@@ -106,7 +106,7 @@
         
     }else
     {
-    
+   
     int x =0;
     for (int i=0; i<[_homeFeed.photoArray count]; i++) {
          AsyncImageView *scrollImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(x, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
@@ -121,19 +121,20 @@
              scrollImage.imageURL =[NSURL URLWithString:_homeFeed.photos.originalUrl];
         }
         scrollImage.contentMode = UIViewContentModeScaleAspectFit;
-      //  _bodyImage.frame= CGRectMake(scrollImage.frame.origin.x,scrollImage.frame.origin.y, scrollImage.frame.size.width, scrollImage.frame.size.height);
+       
 
         
         [_scrollView addSubview:scrollImage];
-      //  [_scrollView addSubview:_bodyImage];
         
          _scrollView.contentSize= CGSizeMake(_scrollView.frame.size.width+x, _scrollView.frame.size.height);
         x= x+ _scrollView.frame.size.width;
+        
+       
     }
-    if ([_homeFeed.photoArray count]==1) {
-        _scrollView.userInteractionEnabled=NO;
-        _scrollView.exclusiveTouch=NO;
-    }
+    //    _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
+   //     [_scrollView addSubview:_bodyImage];
+
+ 
     }
    
     [_bodyView insertSubview:_scrollView belowSubview:_bodyShadowView];

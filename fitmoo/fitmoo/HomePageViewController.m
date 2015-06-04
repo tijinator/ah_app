@@ -9,6 +9,9 @@
 #import "HomePageViewController.h"
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
+#import "FSImageViewerViewController.h"
 @implementation HomePageViewController
 {
     NSNumber * contentHight;
@@ -528,7 +531,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     if (pullDown==true) {
-        [_tableView setContentOffset:CGPointMake(0, -50) animated:YES];
+        [_tableView setContentOffset:CGPointMake(0, -60) animated:YES];
     }
 }
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
@@ -709,15 +712,36 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
     NSString * url= homefeed.videos.video_url;
-    
-    if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+    if(url==nil)
+    {
+    //    UIImage *image= (UIImage *)[note object];
+        NSMutableArray *imageArray= [[NSMutableArray alloc] init];
+        for (int i=0; i<[homefeed.photoArray count]; i++) {
+            [homefeed resetPhotos];
+            homefeed.photos= [homefeed.photoArray objectAtIndex:i];
+            NSURL *imageUrl= [NSURL URLWithString:homefeed.photos.stylesUrl];
+           FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:imageUrl];
+            
+            [imageArray addObject:firstPhoto];
+           
+        }
+        
+      
+        FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
+        FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+        imageViewController.backgroundColorVisible=[UIColor blackColor];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+    }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
         
         
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                                  message : @"The video cannot play right now." delegate : nil cancelButtonTitle : @"OK"
+                                                                  message : @"This video cannot be played right now." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
 

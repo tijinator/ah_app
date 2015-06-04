@@ -16,6 +16,7 @@
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "LanchScreen.h"
 
 @interface ViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
 //@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic)  SignUpViewController *sighUpView;
 @property (strong, nonatomic)  ForgotPdViewController *forgotPdView;
+@property (strong, nonatomic)  LanchScreen *lanchScreen;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;

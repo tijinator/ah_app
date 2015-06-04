@@ -28,16 +28,17 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-    
+    [self createObservers];
     if (_searchId!=nil) {
-        [self getUserProfile];
+        [self getUserProfile:_searchId];
     }else
     {
-    
-    [self getHomePageItems];
+        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+        [self getUserProfile:localUser.user_id];
+  //  [self getHomePageItems];
     }
  //   [self getGalary];
-    [self createObservers];
+    
 }
 
 
@@ -67,9 +68,9 @@
 }
 
 
-- (void) getUserProfile
+- (void) getUserProfile: (NSString *) profile_id;
 {
-    [[UserManager sharedUserManager] getUserProfileForOtherPeople:_searchId];
+    [[UserManager sharedUserManager] getUserProfileForOtherPeople:profile_id];
 }
 
 - (void) didGetProfileFinished: (NSNotification * ) note
@@ -235,7 +236,7 @@
 - (void) initFrames
 {
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
-    _topView.frame= CGRectMake(0, 0, 320, 50);
+    _topView.frame= CGRectMake(0, 0, 320, 60);
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:self.view];
     _rightButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:self.view];
@@ -310,9 +311,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         User *temUser;
         
-        if (_temSearchUser !=nil) {
+        if (_temSearchUser !=nil&&_searchId !=nil) {
             temUser=_temSearchUser;
-            
+          
             if (temUser.is_following.intValue==1) {
                 [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
                 [cell.editProfileButton setTag:11];
@@ -323,12 +324,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                   [cell.editProfileButton setTag:12];
             }
             
+            
         }else
         {
         temUser= [[UserManager sharedUserManager] localUser];
         }
         cell.nameLabel.text= temUser.name.uppercaseString;
-        self.titleLabel.text= temUser.name;
+        self.titleLabel.text= temUser.name.uppercaseString;
         NSString * imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
         if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
             imageUrl=temUser.cover_photo_url;
@@ -370,13 +372,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [attributedString addAttribute:NSParagraphStyleAttributeName
                                  value:style
                                  range:NSMakeRange(0, temUser.bio.length)];
-        
+        cell.bioLabel.text=temUser.bio;
+        cell.bioLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:cell.bioLabel];
         [cell.bioLabel setAttributedText:attributedString];
-
         cell.bioLabel.userInteractionEnabled = NO;
         cell.bioLabel.exclusiveTouch = NO;
         [cell.bioButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        cell.bioButton.frame=CGRectMake(cell.bioButton.frame.origin.x, cell.bioButton.frame.origin.y, cell.bioLabel.frame.size.width, cell.bioLabel.frame.size.height);
         [cell.bioButton addSubview:cell.bioLabel];
+        
         
         [cell.editProfileButton addTarget:self action:@selector(editProfileButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.bioButton addTarget:self action:@selector(BioButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -389,6 +393,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }else
         {
+            cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.bioButton.frame.size.height+cell.bioButton.frame.origin.y+15);
         contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
@@ -880,8 +885,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not play"
-                                                                  message : @"This video cannot play at this moment." delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"This video cannot be played right now." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
             } else if (videoURL) {

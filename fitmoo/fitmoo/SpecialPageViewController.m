@@ -288,7 +288,7 @@
     
     
     
-    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
+    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+3] ;
  
 
     
@@ -434,8 +434,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
-                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Could not play"
-                                                                  message : @"This video cannot play at this moment." delegate : nil cancelButtonTitle : @"OK"
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"This video cannot be played right now." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
                 

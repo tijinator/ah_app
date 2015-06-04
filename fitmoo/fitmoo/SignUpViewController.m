@@ -64,7 +64,7 @@
     // set the bucket
     //   _uploadRequest.bucket = @"s3-demo-objectivec";
     //    _uploadRequest.bucket = @"fitmoo-staging";
-    _uploadRequest.bucket = @"fitmoo-staging-test";
+    _uploadRequest.bucket = [[UserManager sharedUserManager] s3_bucket];
     // I want this image to be public to anyone to view it so I'm setting it to Public Read
     _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     // set the image's name that will be used on the s3 server. I am also creating a folder to place the image in

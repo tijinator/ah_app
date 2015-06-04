@@ -279,6 +279,7 @@
         [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"recordbtn.png"] forState:UIControlStateNormal];
         self.timerLabel.hidden=false;
         self.timerLabel.text=@"00 : 00 : 00";
+        [_changeToCameraButton setBackgroundImage:[UIImage imageNamed:@"greycamera.png"] forState:UIControlStateNormal];
         //  _picker.allowsEditing = YES;
         //   self.picker.navigationBarHidden = NO;
         //   self.picker.toolbarHidden = NO;
@@ -287,6 +288,7 @@
     {
         _picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         _mediaType=@"camera";
+         [_changeToCameraButton setBackgroundImage:[UIImage imageNamed:@"video_icon.png"] forState:UIControlStateNormal];
          [_screenShotButton setBackgroundImage:[UIImage imageNamed:@"bluewhitecamera.png"] forState:UIControlStateNormal];
          self.timerLabel.hidden=true;
     

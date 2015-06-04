@@ -273,7 +273,7 @@
     [manager DELETE: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Delete Sucess"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Deleted"
                                                           message : @"" delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
@@ -324,7 +324,7 @@
         
         _responseDic= responseObject;
         
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Share Sucess"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Shared"
                                                           message : @"" delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
@@ -467,7 +467,7 @@
         
         _responseDic= responseObject;
         
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Post Sucess"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Posted"
                                                           message : @"" delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
@@ -695,8 +695,8 @@
         _responseDic= responseObject;
         
         
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Save Sucess"
-                                                          message : @"Update privacy sucess" delegate : nil cancelButtonTitle : @"OK"
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Saved"
+                                                          message : @"" delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
         
@@ -758,6 +758,12 @@
 //    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
 //    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
 //    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+//    _s3_accountId=@"074088242106";
+//    _s3_identityPoolId=@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc";
+//    _s3_unauthRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role";
+//    _s3_authRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role";
+//    _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-staging-test/photos/";
+    
     
     _clientUrl= @"http://uat.fitmoo.com";
     _loginUrl= @"http://uat.fitmoo.com/api/tokens";
@@ -765,16 +771,35 @@
     _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
     _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
     _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
-    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    _amazonUploadUrl= @"https://d1cpiexk3lbp6h.cloudfront.net/photos/";
+    _s3_accountId=@"271404364214";
+    _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
+    _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
+    _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
+    _s3_bucket=@"fitmoo-uat";
+    
+
+    
+ //   _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-uat/photos/";
+
     
     
-    _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-staging-test/photos/";
+//live urls
     
+//        _clientUrl= @"https://fitmoo.com";
+//        _loginUrl= @"https://fitmoo.com/api/tokens";
+//        _homeFeedUrl= @"https://fitmoo.com/api/users/";
+//        _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
+//        _postUrl=@"https://fitmoo.com/api/users/feeds";
+//        _feedsUrl=@"https://fitmoo.com/api/feeds/";
+//
+//        _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
+//        _s3_accountId=@"271404364214";
+//        _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
+//        _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
+//        _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
+//        _s3_bucket=@"webapp-beta";
     
-    _s3_accountId=@"074088242106";
-    _s3_identityPoolId=@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc";
-    _s3_unauthRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role";
-    _s3_authRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role";
     
     return self;
 }

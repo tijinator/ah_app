@@ -63,7 +63,7 @@
     [view addSubview:imageview];
     [_humanImage addSubview:view];
     
-    _nameLabel.text= localuser.name;
+    _nameLabel.text= localuser.name.uppercaseString;
     
 }
 //Making an AsynchronousRequest to get the image download

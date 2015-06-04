@@ -63,6 +63,7 @@
 @property (strong, nonatomic) NSString * s3_identityPoolId;
 @property (strong, nonatomic) NSString * s3_unauthRoleArn;
 @property (strong, nonatomic) NSString * s3_authRoleArn;
+@property (strong, nonatomic) NSString * s3_bucket;
 
 
 

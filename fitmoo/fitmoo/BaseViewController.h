@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UIButton *rightButton1;
 @property (strong, nonatomic)  UIView *bottomView;
 
-
+@property (strong, nonatomic)  UIImageView *bottomImageView;
 
 
 @property (nonatomic, strong) UIButton *postButton;

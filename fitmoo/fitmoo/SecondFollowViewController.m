@@ -81,14 +81,19 @@
         [image addSubview:headerImage2];
         
 
+        UIView *view=(UIView *) [cell viewWithTag:4];
+        view.frame=CGRectMake(0, 0, 320, 320);
+        view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:view respectToSuperFrame:nil];
       
         UILabel *label= (UILabel *) [cell viewWithTag:2];
-        label.frame= CGRectMake(90, 115, 120, 90);
+        label.text=_keyword_text;
+        label.frame= CGRectMake(85, 115, 160, 90);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
         UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
         NSString *string= [NSString stringWithFormat:@"%@",_keyword_text];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string.uppercaseString attributes:@{NSFontAttributeName: font}  ];
-
+        float spacing = 1.5f;
+        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [label.text length])];
         [label setAttributedText:attributedString];
 
         UILabel *label1= (UILabel *) [cell viewWithTag:3];
