@@ -374,6 +374,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                                  range:NSMakeRange(0, temUser.bio.length)];
         cell.bioLabel.text=temUser.bio;
         cell.bioLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:cell.bioLabel];
+        if (cell.bioLabel.frame.size.height>(130*[[FitmooHelper sharedInstance] frameRadio])) {
+            cell.bioLabel.frame=CGRectMake(cell.bioLabel.frame.origin.x, cell.bioLabel.frame.origin.y, cell.bioLabel.frame.size.width, 130*[[FitmooHelper sharedInstance] frameRadio]);
+       
+        }
+        
         [cell.bioLabel setAttributedText:attributedString];
         cell.bioLabel.userInteractionEnabled = NO;
         cell.bioLabel.exclusiveTouch = NO;
