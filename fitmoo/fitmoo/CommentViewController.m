@@ -259,7 +259,7 @@
   //  nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
-    cellHeight= nameLabel.frame.size.height+10;
+    cellHeight= nameLabel.frame.size.height+20;
     
     return cell;
 }

@@ -47,9 +47,25 @@
     
     [self createObservers];
     
-    
-    
+  //  [self addEffectView];
+    [self showImagesWithDelay];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)addEffectView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
+    _lanchScreen.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], 569*[[FitmooHelper sharedInstance] frameRadio]);
+    [self.view addSubview:_lanchScreen.view];
+    [self.view bringSubviewToFront:_lanchScreen.view];
+    _lanchScreen.view.alpha=1;
+    
+    [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _lanchScreen.view.alpha=0;
+    }completion:^(BOOL finished){
+        [_lanchScreen.view removeFromSuperview];
+    }];
 }
 
 -(void) checkLogin
@@ -58,19 +74,19 @@
     self.facebookLoginView.frame = CGRectMake(25, 127, 270, 48);
     self.facebookLoginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:self.facebookLoginView respectToSuperFrame:self.view];
     
-
+   
 
     
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
     
     if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
-        [self addActivityIndicator];
+        
         [[UserManager sharedUserManager] getUserProfile:localUser];
         loginExists=true;
         
     }else
     {
-
+     //   [self.lanchScreen.view removeFromSuperview];
      
     }
 
@@ -159,40 +175,27 @@ int count=0;
 - (void) showImagesWithDelay
 {
     count=0;
-    _loginButton.alpha=0;
-    _signUpButton.alpha=0;
-    _fitmooNameImage.alpha=0;
-    _allRightImage.alpha=0;
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(displayPic:) userInfo:nil repeats:YES];
+ _backView.alpha=0;
+    [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(displayPic:) userInfo:nil repeats:NO];
 }
 
 
 - (void) displayPic: (NSTimer *)timer {
     
+ 
+    //_backgroundImage.alpha=0;
+   
+   
+            
     if (count==0) {
-    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-    _fitmooNameImage.alpha=1;
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+  //      _backgroundImage.alpha=1;
+        _backView.alpha=1;
     }completion:^(BOOL finished){}];
     }
-            
-    if (count==1) {
-    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-    _allRightImage.alpha=1;
-    }completion:^(BOOL finished){}];
-    }
-            
-    if (count==2) {
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-    _loginButton.alpha=1;
-    _signUpButton.alpha=1;
-    _backgroundImage.image= [UIImage imageNamed:@"mobilelogin_screen2.png"];
-    }completion:^(BOOL finished){}];
-    }
+
     
-    count++;
-    if (count==3) {
-        [timer invalidate];
-    }
+
 }
 
 -(BOOL) checkValidEmail: (UITextField *)textfield

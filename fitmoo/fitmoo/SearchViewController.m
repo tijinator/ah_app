@@ -549,6 +549,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 - (IBAction)backButtonClick:(id)sender {
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
+    //  [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
 }
 @end

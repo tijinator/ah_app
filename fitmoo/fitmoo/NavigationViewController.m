@@ -180,7 +180,7 @@
         [[self nav] popToRootViewControllerAnimated:YES];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         prePage=currentPage;
-         currentPage=5;
+         currentPage=0;
     }else  if ([key isEqualToString:@"6"]) {
         
         if (currentPage!=6) {

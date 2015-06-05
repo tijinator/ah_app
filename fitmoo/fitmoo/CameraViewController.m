@@ -89,7 +89,7 @@
     [_picker dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"0"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:nil];
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"0"];
 }
 
 -(void) hidePostView: (NSNotification * ) note

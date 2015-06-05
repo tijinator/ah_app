@@ -23,7 +23,14 @@
 
 - (void) initFrames
 {
-   // _commingSoonImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commingSoonImage respectToSuperFrame:self.view];
+    
+    _commingSoonImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+    
+    _commingSoonImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commingSoonImage respectToSuperFrame:self.view];
+    
+    _commingSoonImage.image=[UIImage imageNamed:@"shopscreen.png"];
+    [self.view insertSubview:_commingSoonImage atIndex:0];
+
      _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
 }
 

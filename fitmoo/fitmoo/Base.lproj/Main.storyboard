@@ -757,10 +757,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopscreen.png" id="8Fl-JU-kdY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="onp-8i-dGb">
                                 <rect key="frame" x="26" y="415" width="268" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -775,7 +771,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="commingSoonImage" destination="8Fl-JU-kdY" id="IeK-BA-Pwk"/>
                         <outlet property="shopButton" destination="onp-8i-dGb" id="Frl-IT-xVt"/>
                     </connections>
                 </viewController>
@@ -1333,7 +1328,7 @@ instructions to reset your password.</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Share"/>
+                                        <state key="normal" title="Repost"/>
                                         <connections>
                                             <action selector="shareClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="xeU-Sc-vHO"/>
                                         </connections>
@@ -2471,17 +2466,8 @@ instructions to reset your password.</string>
                     <view key="view" contentMode="scaleToFill" id="Qiq-64-t27">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkinscreen.png" id="oj7-Ba-reG">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="commingSoonImage" destination="oj7-Ba-reG" id="Wp0-GE-0af"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="why-f2-2PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2492,7 +2478,6 @@ instructions to reset your password.</string>
         <image name="addprofilepicturebtn.png" width="211" height="44"/>
         <image name="bluewhitecamera.png" width="72" height="72"/>
         <image name="changeprofilepicture.png" width="323" height="43"/>
-        <image name="checkinscreen.png" width="319" height="565"/>
         <image name="comment.png" width="40" height="40"/>
         <image name="continuebluebar.png" width="322" height="55"/>
         <image name="continuegreybar.png" width="322" height="55"/>
@@ -2511,7 +2496,6 @@ instructions to reset your password.</string>
         <image name="settings_bioicon.png" width="15" height="15"/>
         <image name="settings_emailicon.png" width="15" height="15"/>
         <image name="settings_profileicon.png" width="15" height="15"/>
-        <image name="shopscreen.png" width="319" height="565"/>
         <image name="splashscreen.png" width="320" height="565"/>
         <image name="startshopping.png" width="268" height="46"/>
         <image name="video_icon.png" width="31" height="31"/>

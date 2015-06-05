@@ -77,9 +77,13 @@
             }
         }
         [self.tableView reloadData];
+       // [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+     
     }else
     {
           [self initValuable];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        //   pullDown=true;
           [self getHomePageItems];
     }
     
@@ -137,7 +141,7 @@
         }
 
        [_activityIndicator stopAnimating];
-     //   NSLog(@"Submit response data: %@", responseObject);
+        NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
