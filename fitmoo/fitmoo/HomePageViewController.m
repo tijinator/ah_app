@@ -667,7 +667,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([key isEqualToString:tempUser.user_id]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
-    }else //if(![key isEqualToString:@"7901"])
+    }else
     {
       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
