@@ -171,7 +171,7 @@
         }
         [indicatorView removeFromSuperview];
        [_activityIndicator stopAnimating];
-    //    NSLog(@"Submit response data: %@", responseObject);
+        NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
@@ -305,7 +305,7 @@
     cell.homeFeed=tempHomefeed;
     
       //case for headerview
-    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]) {
+    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]||tempHomefeed.feed_action.action==nil) {
         cell.heanderImage1.hidden=true;
         [cell reDefineHearderViewsFrame];
     }else
@@ -667,7 +667,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([key isEqualToString:tempUser.user_id]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
-    }else
+    }else //if(![key isEqualToString:@"7901"])
     {
       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }

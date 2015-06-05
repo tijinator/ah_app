@@ -494,8 +494,13 @@
 
 - (void) setTitleLabelForHeader
 {
+    NSString *titletext=self.titleLabel.text;
+    if (titletext==nil) {
+        titletext=@"Fitmoo";
+    }
+    
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.titleLabel.font.pointSize];
-    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text attributes:@{NSFontAttributeName: font}  ];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:titletext attributes:@{NSFontAttributeName: font}  ];
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:3];

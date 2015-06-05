@@ -160,10 +160,21 @@
         
         NSNumber * following=[_responseDic objectForKey:@"following"];
         localUser.following= [following stringValue];
+        
+        NSString * followerString=[_responseDic objectForKey:@"followers"];
+        if ([followerString isKindOfClass:[NSString class]]) {
+             localUser.followers= followerString;
+        }else
+        {
+        
         NSNumber * followers=[_responseDic objectForKey:@"followers"];
         localUser.followers= [followers stringValue];
+        }
+        
         NSNumber * communities=[_responseDic objectForKey:@"communities"];
         localUser.communities= [communities stringValue];
+        
+        
         
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
