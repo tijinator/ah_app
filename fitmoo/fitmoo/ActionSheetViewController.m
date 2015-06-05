@@ -27,7 +27,8 @@
         [self showViews];
     }else if ([_action isEqualToString:@"report"])
     {
-    [_reportButton setTitle:@"Report" forState:UIControlStateNormal];
+    [_reportButton setTitle:@"Report Inappropriate" forState:UIControlStateNormal];
+    [_reportButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
        [_endorseButton setHidden:true];
         [self showViews];
     }else
@@ -126,7 +127,7 @@
     }else if([_action isEqualToString:@"report"]) {
       
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Report"
-                                                           message:@"Are you sure you want to send a report?"
+                                                           message:@"Are you sure you want to flag this post?"
                                                           delegate:self
                                                  cancelButtonTitle:@"No"
                                                  otherButtonTitles:@"Yes",nil];

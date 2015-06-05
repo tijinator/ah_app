@@ -149,6 +149,17 @@
   
 }
 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // 0 = Tapped yes
+    if (buttonIndex == 1)
+    {
+       
+        User *localUser= [[UserManager sharedUserManager] getUserLocally];
+        [[UserManager sharedUserManager] performLogout:localUser];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -156,8 +167,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * key= [NSString stringWithFormat:@"%li",indexPath.row];
     
     if (indexPath.row==4) {
-        User *localUser= [[UserManager sharedUserManager] getUserLocally];
-        [[UserManager sharedUserManager] performLogout:localUser];
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
+                                                       message:@"Are you sure you want to logout?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",nil];
+        [alert show];
+        
+         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+       
     }
     else
     {

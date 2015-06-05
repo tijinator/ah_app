@@ -670,7 +670,9 @@
     
 //    NSParameterAssert(_selectedImageview.image);
 //    UIImageWriteToSavedPhotosAlbum(_selectedImageview.image, nil, nil, nil);
-    self.postType=@"post";
+
+
+  //  self.postType=@"post";
     _postActionType=@"image";
     [self showPostViewAnimation];
     [self openPostView];
