@@ -277,11 +277,12 @@
 
 - (void) setBodyFrameForRegular
 {
-    _bodyDetailLabel.text= _homeFeed.text;
+  //  _bodyDetailLabel.text= _homeFeed.text;
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.text];
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
  
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-  //  [_bodyDetailLabel sizeToFit];
+    [_bodyDetailLabel sizeToFit];
 
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
     {
@@ -298,14 +299,17 @@
 }
 - (void) setBodyFrameForWorkout
 {
-    _bodyDetailLabel.text= _homeFeed.text;
+  //  _bodyDetailLabel.text= _homeFeed.text;
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.text];
     _bodyTitle.text= _homeFeed.workout_title;
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyTitle.frame.size.width, _bodyTitle.frame.size.height);
   //  [_bodyTitle sizeToFit];
     
     _bodyDetailLabel.frame=CGRectMake(30*_frameRadio, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y+5, _bodyDetailLabel.frame.size.width, _bodyTitle.frame.size.height);
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-   // [_bodyDetailLabel sizeToFit];
+    [_bodyDetailLabel setNumberOfLines:0];
+    [_bodyDetailLabel sizeToFit];
+   
     
     
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
@@ -324,26 +328,30 @@
 {
     _bodyTitle.text= _homeFeed.nutrition.title;
     _bodyLabel2.text=@"Ingredients";
-    _bodyDetailLabel.text= _homeFeed.nutrition.ingredients;
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.nutrition.ingredients];
     _bodyLabel3.text=@"Preparation";
-    _bodyLabel1.text= _homeFeed.nutrition.preparation;
+    _bodyLabel1.text= [NSString stringWithFormat:@"%@\n\n",_homeFeed.nutrition.preparation];
+  //  _bodyLabel1.text= _homeFeed.nutrition.preparation;
     
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, 260*_frameRadio, _bodyTitle.frame.size.height);
    // _bodyTitle.textAlignment = NSTextAlignmentCenter;
-   // [_bodyTitle sizeToFit];
+    //[_bodyTitle sizeToFit];
     
     _bodyLabel2.frame= CGRectMake(30*_frameRadio, _bodyTitle.frame.origin.y+_bodyTitle.frame.size.height+15, 260, _bodyLabel2.frame.size.height);
   
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, 260*_frameRadio, _bodyDetailLabel.frame.size.height);
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-  //  [_bodyDetailLabel sizeToFit];
+    [_bodyDetailLabel setNumberOfLines:0];
+    [_bodyDetailLabel sizeToFit];
 
     _bodyLabel3.frame= CGRectMake(30*_frameRadio,_bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+15 , 260*_frameRadio, _bodyLabel3.frame.size.height);
  //   [_bodyLabel3 sizeToFit];
     
     _bodyLabel1.frame= CGRectMake(30*_frameRadio, _bodyLabel3.frame.size.height+_bodyLabel3.frame.origin.y+5, 260*_frameRadio, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyLabel1];
-  //  [_bodyLabel1 sizeToFit];
+    
+    [_bodyLabel1 setNumberOfLines:0];
+    [_bodyLabel1 sizeToFit];
 
     
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
@@ -386,9 +394,7 @@
                              range:NSMakeRange(0, string.length)];
     
     if (index==0) {
-     _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12, 20, 11, 9)];
-     _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
-     _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
+  
 
     _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,22*_frameRadio)];
   //  [_commentDetail setText:string];
@@ -399,6 +405,12 @@
     _commentDetail.lineBreakMode= NSLineBreakByWordWrapping;
     _commentDetail.numberOfLines=0;
     [_commentDetail sizeToFit];
+        
+        
+    _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12*_frameRadio, _commentDetail.frame.origin.y+1*_frameRadio, 11*_frameRadio, 9*_frameRadio)];
+  //  _commentImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commentImage respectToSuperFrame:nil];
+    _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
+        
     [_commentView addSubview:_commentImage];
     [_commentView addSubview:_commentDetail];
         
