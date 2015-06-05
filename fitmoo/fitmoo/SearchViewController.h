@@ -53,4 +53,5 @@
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
 
+
 @end
