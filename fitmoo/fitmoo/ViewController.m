@@ -206,11 +206,11 @@ int count=0;
     if ([textfield.text isEqualToString:@""]) {
         return false;
     }
-    
-    if (![textfield.text containsString:@"@"]) {
+ //   [path rangeOfString:@"User"].location != NSNotFound
+    if ([textfield.text rangeOfString:@"@"].location == NSNotFound) {
         return false;
     }
-    if (![textfield.text containsString:@".com"]) {
+    if ([textfield.text rangeOfString:@".com"].location == NSNotFound) {
         return false;
     }
     

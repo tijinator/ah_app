@@ -475,11 +475,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 -(BOOL) checkValidInfo
 {
-    
+ 
     BOOL valid=true;
     NSString *email= _mailTextfield.text;
     
-    if ([email isEqualToString:@""]||![email containsString:@"@"]||![email containsString:@".com"]) {
+    if ([email isEqualToString:@""]||[email rangeOfString:@"@"].location == NSNotFound||[email rangeOfString:@".com"].location == NSNotFound) {
         UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
                                                           message : @"This email is invalid." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];

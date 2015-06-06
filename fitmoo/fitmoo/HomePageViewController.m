@@ -534,6 +534,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    {
+        return UITableViewAutomaticDimension;
+        // Load resources for iOS 7 or later
+    }
+    
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -552,6 +559,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+
+
 
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {

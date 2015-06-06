@@ -72,12 +72,13 @@
         return false;
     }
     
-    if (![textfield.text containsString:@"@"]) {
+    if ([textfield.text rangeOfString:@"@"].location == NSNotFound) {
         return false;
     }
-    if (![textfield.text containsString:@".com"]) {
+    if ([textfield.text rangeOfString:@".com"].location == NSNotFound) {
         return false;
     }
+    
     
     return valid;
 }
