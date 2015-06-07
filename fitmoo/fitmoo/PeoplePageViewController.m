@@ -701,7 +701,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row];
     
+    if ([feed.type isEqualToString:@"product"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+    }
+
     
 }
 

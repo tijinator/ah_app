@@ -303,7 +303,11 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+   
     
+    if ([_homeFeed.type isEqualToString:@"product"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+    }
 }
 
 // multy high table cell

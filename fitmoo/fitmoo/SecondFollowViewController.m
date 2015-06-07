@@ -117,7 +117,14 @@
         User *user= [_searchArrayPeople objectAtIndex:index];
        
         cell.nameLabel1.text= user.name;
+        
+        
         cell.followLabel1.text=user.followers;
+        
+        if (user.followers.intValue>999) {
+            CGFloat follower= user.followers.floatValue/1000.0f;
+            cell.followLabel1.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
+        }
       
         AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image1.frame.size.width, cell.image1.frame.size.height)];
         headerImage1.userInteractionEnabled = NO;
@@ -155,6 +162,13 @@
             User *user1= [_searchArrayPeople objectAtIndex:index+1];
             cell.nameLabel2.text=user1.name;
             cell.followLabel2.text=user1.followers;
+            
+            if (user1.followers.intValue>999) {
+                CGFloat follower= user1.followers.floatValue/1000.0f;
+                cell.followLabel2.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
+            }
+            
+            
             AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image2.frame.size.width, cell.image2.frame.size.height)];
             headerImage2.userInteractionEnabled = NO;
             headerImage2.exclusiveTouch = NO;
@@ -185,6 +199,12 @@
             User *user1= [_searchArrayPeople objectAtIndex:index+1];
             cell.nameLabel2.text=user1.name;
             cell.followLabel2.text=user1.followers;
+                
+                if (user1.followers.intValue>999) {
+                    CGFloat follower= user1.followers.floatValue/1000.0f;
+                    cell.followLabel2.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
+                }
+                
             AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image2.frame.size.width, cell.image2.frame.size.height)];
             headerImage2.userInteractionEnabled = NO;
             headerImage2.exclusiveTouch = NO;

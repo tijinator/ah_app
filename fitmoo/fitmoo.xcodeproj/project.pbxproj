@@ -277,6 +277,7 @@
 		278818AD1B06972500FE8A4C /* white_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AA1B06972500FE8A4C /* white_toggle.png */; };
 		278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AB1B06972500FE8A4C /* white_toggle@2x.png */; };
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
+		278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278DF8DD1B2336A600ABF918 /* Images-2.xcassets */; };
 		279738711B1F3763005FE32B /* BSBoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 279738701B1F3763005FE32B /* BSBoldButton.m */; };
 		27988C831B0B7C7400BDE8EB /* mainmenu_followicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C771B0B7C7400BDE8EB /* mainmenu_followicon.png */; };
 		27988C841B0B7C7400BDE8EB /* mainmenu_followicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C781B0B7C7400BDE8EB /* mainmenu_followicon@2x.png */; };
@@ -795,6 +796,7 @@
 		278818AA1B06972500FE8A4C /* white_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_toggle.png; sourceTree = "<group>"; };
 		278818AB1B06972500FE8A4C /* white_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@2x.png"; sourceTree = "<group>"; };
 		278818AC1B06972500FE8A4C /* white_toggle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@3x.png"; sourceTree = "<group>"; };
+		278DF8DD1B2336A600ABF918 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		2797386F1B1F3763005FE32B /* BSBoldButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSBoldButton.h; sourceTree = "<group>"; };
 		279738701B1F3763005FE32B /* BSBoldButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSBoldButton.m; sourceTree = "<group>"; };
 		27988C771B0B7C7400BDE8EB /* mainmenu_followicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu_followicon.png; sourceTree = "<group>"; };
@@ -1090,6 +1092,7 @@
 				27188F781AD4646300C34372 /* Images.xcassets */,
 				27188F7A1AD4646300C34372 /* LaunchScreen.xib */,
 				27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */,
+				278DF8DD1B2336A600ABF918 /* Images-2.xcassets */,
 				27188F681AD4646300C34372 /* Supporting Files */,
 			);
 			path = fitmoo;
@@ -2233,6 +2236,7 @@
 				27CBC0DE1B0F84DB00699E1E /* eventsscreen.png in Resources */,
 				27988C8E1B0B7C7400BDE8EB /* mainmenu_storeicon@3x.png in Resources */,
 				2752EA221B015CBC003841DC /* reversecamera@3x.png in Resources */,
+				278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */,
 				276094571AD708C100A769CE /* BentonSansExtraComp-Black.otf in Resources */,
 				27AC92D51B066DF700BB7A0E /* selectedbars.png in Resources */,
 				276094111AD7085500A769CE /* ss-symbolicons-line.ttf in Resources */,
@@ -2539,6 +2543,7 @@
 			baseConfigurationReference = B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2559,6 +2564,7 @@
 			baseConfigurationReference = F81E84D967E00EE3E569149A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
