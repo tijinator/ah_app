@@ -84,7 +84,7 @@
     [activityIndicator startAnimating];
     
     UILabel * postingLabel= [[UILabel alloc] initWithFrame: CGRectMake(0,60, 100, 30)];
-    postingLabel.text= @"LOADING...";
+    postingLabel.text= @"SAVING...";
     //  postingLabel.textColor=[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
     postingLabel.textColor=[UIColor whiteColor];
     UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:13];
