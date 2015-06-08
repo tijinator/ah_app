@@ -236,8 +236,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *profile= [_responseDic objectForKey:@"profile"];
     
     NSDictionary *avatars= [profile objectForKey:@"avatars"];
-    _tempUser.profile_avatar_thumb=[avatars objectForKey:@"thumb"];
-    _tempUser.profile_avatar_original=[avatars objectForKey:@"original"];
+    _tempUser.profile_avatar_thumb=[avatars objectForKey:@"medium"];
+    _tempUser.profile_avatar_original=[profile objectForKey:@"profile_photo_url"];
     _tempUser.bio= [profile objectForKey:@"bio"];
     if ([_tempUser.bio isEqual:[NSNull null]]) {
         _tempUser.bio=@"";

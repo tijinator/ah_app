@@ -282,8 +282,12 @@
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
  
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    _bodyDetailLabel.numberOfLines=0;
-    [_bodyDetailLabel sizeToFit];
+    
+    if (_bodyDetailLabel.frame.size.height>80) {
+        _bodyDetailLabel.numberOfLines=0;
+        [_bodyDetailLabel sizeToFit];
+    }
+   
 
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
     {
