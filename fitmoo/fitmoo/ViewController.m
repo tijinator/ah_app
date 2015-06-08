@@ -207,12 +207,12 @@ int count=0;
         return false;
     }
  //   [path rangeOfString:@"User"].location != NSNotFound
-    if ([textfield.text rangeOfString:@"@"].location == NSNotFound) {
-        return false;
-    }
-    if ([textfield.text rangeOfString:@".com"].location == NSNotFound) {
-        return false;
-    }
+//    if ([textfield.text rangeOfString:@"@"].location == NSNotFound) {
+//        return false;
+//    }
+//    if ([textfield.text rangeOfString:@".com"].location == NSNotFound) {
+//        return false;
+//    }
     
     return valid;
 }

@@ -55,7 +55,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSideMenuAction:) name:@"leftSideMenuAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swipeHandler:) name:@"swipeHandler" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBlackStatusBarHandler:) name:@"showBlackStatusBarHandler" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopAction:) name:@"shopAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
    
 }
@@ -78,6 +78,23 @@
         
     }
 }
+
+-(void)shopAction:(NSNotification*)note{
+    
+    NSString *key = [note object];
+    if (currentPage!=1) {
+        
+        _shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
+        _shopPage.shoplink=key;
+        [[self nav] pushViewController:_shopPage animated:YES];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+    prePage=currentPage;
+    currentPage=1;
+
+    
+}
+
 
 -(void)showBlackStatusBarHandler:(NSNotification*)note{
     

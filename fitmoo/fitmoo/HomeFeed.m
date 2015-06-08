@@ -39,6 +39,13 @@
 -(void) resetPhotoArray
 {
     _photoArray= [[NSMutableArray alloc] init];
+   
+}
+
+-(void) resetAsycImageViewArray
+{
+   
+    _AsycImageViewArray=[[NSMutableArray alloc] init];
 }
 
 -(void) resetPhotos

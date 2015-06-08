@@ -8,6 +8,9 @@
 
 #import "PeoplePageViewController.h"
 #import "AFNetworking.h"
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
+#import "FSImageViewerViewController.h"
 @interface PeoplePageViewController ()
 {
     NSNumber * contentHight;
@@ -702,9 +705,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
-    
+    NSString *link;
     if ([feed.type isEqualToString:@"product"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+        if (feed.feed_action.feed_action_id!=nil) {
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+        }
+      
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
     }
 
     
@@ -889,7 +897,32 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
     NSString * url= homefeed.videos.video_url;
     
-    if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+    if(url==nil)
+    {
+        //    UIImage *image= (UIImage *)[note object];
+        NSMutableArray *imageArray= [[NSMutableArray alloc] init];
+        for (int i=0; i<[homefeed.photoArray count]; i++) {
+            [homefeed resetPhotos];
+            homefeed.photos= [homefeed.photoArray objectAtIndex:i];
+            //     NSURL *imageUrl= [NSURL URLWithString:homefeed.photos.originalUrl];
+            AsyncImageView *image = [homefeed.AsycImageViewArray objectAtIndex:i];
+            //   image.imageURL=imageUrl;
+            FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImage:image.image];
+            
+            
+            [imageArray addObject:firstPhoto];
+            
+        }
+        
+        
+        FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
+        FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+        imageViewController.backgroundColorVisible=[UIColor blackColor];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+    }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
         
         
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {

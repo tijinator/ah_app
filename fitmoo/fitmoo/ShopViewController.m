@@ -50,8 +50,11 @@
 */
 
 - (IBAction)shopButtonClick:(id)sender {
-    
+    if (_shoplink!=nil) {
+       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
+    }else
+    {
      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
-    
+    }
 }
 @end

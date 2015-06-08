@@ -108,6 +108,7 @@
     {
    
     int x =0;
+        [_homeFeed resetAsycImageViewArray];
     for (int i=0; i<[_homeFeed.photoArray count]; i++) {
          AsyncImageView *scrollImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(x, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:scrollImage];
@@ -129,10 +130,10 @@
          _scrollView.contentSize= CGSizeMake(_scrollView.frame.size.width+x, _scrollView.frame.size.height);
         x= x+ _scrollView.frame.size.width;
         
-       
+        [_homeFeed.AsycImageViewArray addObject:scrollImage];
     }
-    //    _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
-   //     [_scrollView addSubview:_bodyImage];
+        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
+        [_scrollView addSubview:_bodyImage];
 
  
     }

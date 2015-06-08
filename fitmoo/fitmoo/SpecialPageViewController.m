@@ -8,6 +8,9 @@
 
 #import "SpecialPageViewController.h"
 #import "AFNetworking.h"
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
+#import "FSImageViewerViewController.h"
 @interface SpecialPageViewController ()
 {
     NSNumber * contentHight;
@@ -303,11 +306,19 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
-    
+    NSString *link;
     if ([_homeFeed.type isEqualToString:@"product"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+        if (_homeFeed.feed_action.feed_action_id!=nil) {
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",_homeFeed.feed_action.user_id,@"/feed/",_homeFeed.feed_id,@"/fa/",_homeFeed.feed_action.feed_action_id];
+        }
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
     }
+    
+
+    
+   
 }
 
 // multy high table cell
@@ -432,7 +443,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSString * url= _homeFeed.videos.video_url;
     
-    if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+    if(url==nil)
+    {
+        //    UIImage *image= (UIImage *)[note object];
+        NSMutableArray *imageArray= [[NSMutableArray alloc] init];
+        for (int i=0; i<[_homeFeed.photoArray count]; i++) {
+        
+            AsyncImageView *image = [_homeFeed.AsycImageViewArray objectAtIndex:i];
+            FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImage:image.image];
+            
+            
+            [imageArray addObject:firstPhoto];
+            
+        }
+        
+        
+        FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
+        FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+        imageViewController.backgroundColorVisible=[UIColor blackColor];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+        [self presentViewController:navigationController animated:YES completion:nil];
+        
+    }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
         
         
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {

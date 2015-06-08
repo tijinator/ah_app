@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSString *community_name;
 @property (nonatomic, strong) Photos *photos;
 @property (nonatomic, strong) NSMutableArray * photoArray;
+@property (nonatomic, strong) NSMutableArray * AsycImageViewArray;
 
 @property (nonatomic, strong) Comments *comments;
 @property (nonatomic, strong) NSMutableArray * commentsArray;
@@ -53,7 +54,7 @@
 
 @property (nonatomic, strong) Event *event;
 
-
+-(void) resetAsycImageViewArray;
 -(id)init;
 -(void) resetPhotoArray;
 -(void) resetComments;

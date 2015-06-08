@@ -13,5 +13,5 @@
 @property (strong, nonatomic) IBOutlet UIImageView *commingSoonImage;
 @property (strong, nonatomic) IBOutlet UIButton *shopButton;
 - (IBAction)shopButtonClick:(id)sender;
-
+@property (strong, nonatomic)  NSString *shoplink;
 @end

@@ -525,9 +525,16 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
       HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row];
     
+    NSString *link;
     if ([feed.type isEqualToString:@"product"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"1"];
+        if (feed.feed_action.feed_action_id!=nil) {
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+        }
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
     }
+
     
 }
 
@@ -761,13 +768,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSString * url= homefeed.videos.video_url;
     if(url==nil)
     {
-    //    UIImage *image= (UIImage *)[note object];
+
         NSMutableArray *imageArray= [[NSMutableArray alloc] init];
         for (int i=0; i<[homefeed.photoArray count]; i++) {
-            [homefeed resetPhotos];
-            homefeed.photos= [homefeed.photoArray objectAtIndex:i];
-            NSURL *imageUrl= [NSURL URLWithString:homefeed.photos.stylesUrl];
-           FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:imageUrl];
+
+            AsyncImageView *image = [homefeed.AsycImageViewArray objectAtIndex:i];
+            FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImage:image.image];
+           
             
             [imageArray addObject:firstPhoto];
            
