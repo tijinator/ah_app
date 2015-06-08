@@ -34,7 +34,7 @@
     [self addActivityIndicator];
     [self getdiscoverItemForPeople];
     [self getCategoryAndLife];
-    
+     self.tableview.userInteractionEnabled=false;
     // Do any additional setup after loading the view.
 }
 
@@ -171,6 +171,7 @@
 
 - (void) getCategoryAndLife
 {
+    
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -197,7 +198,10 @@
 
 - (void) getdiscoverItemForPeople
 {
-      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    
+   
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -211,12 +215,16 @@
         _responseDic= responseObject;
         
         [self parseResponseDicDiscover];
+        self.tableview.userInteractionEnabled=true;
         [indicatorView removeFromSuperview];
        
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             NSLog(@"Error: %@", error);} // failure callback block
+             NSLog(@"Error: %@", error);
+              self.tableview.userInteractionEnabled=false;
+         } // failure callback block
+     
      ];
 
 }

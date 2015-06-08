@@ -278,7 +278,7 @@
 - (void) setBodyFrameForRegular
 {
   //  _bodyDetailLabel.text= _homeFeed.text;
-    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.text];
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@", _homeFeed.text];
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height);
  
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
@@ -305,7 +305,7 @@
 - (void) setBodyFrameForWorkout
 {
   //  _bodyDetailLabel.text= _homeFeed.text;
-    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.text];
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@", _homeFeed.text];
     _bodyTitle.text= _homeFeed.workout_title;
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyTitle.frame.size.width, _bodyTitle.frame.size.height);
     _bodyTitle.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyTitle];
@@ -313,8 +313,12 @@
     
     _bodyDetailLabel.frame=CGRectMake(30*_frameRadio, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y+5, _bodyDetailLabel.frame.size.width, _bodyTitle.frame.size.height);
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    [_bodyDetailLabel setNumberOfLines:0];
-    [_bodyDetailLabel sizeToFit];
+    
+    if (_bodyDetailLabel.frame.size.height>80) {
+        _bodyDetailLabel.numberOfLines=0;
+        [_bodyDetailLabel sizeToFit];
+    }
+  
    
     
     
@@ -334,9 +338,9 @@
 {
     _bodyTitle.text= _homeFeed.nutrition.title;
     _bodyLabel2.text=@"Ingredients";
-    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.nutrition.ingredients];
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"%@", _homeFeed.nutrition.ingredients];
     _bodyLabel3.text=@"Preparation";
-    _bodyLabel1.text= [NSString stringWithFormat:@"%@\n\n",_homeFeed.nutrition.preparation];
+    _bodyLabel1.text= [NSString stringWithFormat:@"%@",_homeFeed.nutrition.preparation];
   //  _bodyLabel1.text= _homeFeed.nutrition.preparation;
     
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, 260*_frameRadio, _bodyTitle.frame.size.height);
@@ -348,8 +352,11 @@
   
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, 260*_frameRadio, _bodyDetailLabel.frame.size.height);
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    [_bodyDetailLabel setNumberOfLines:0];
-    [_bodyDetailLabel sizeToFit];
+    if (_bodyDetailLabel.frame.size.height>80) {
+        _bodyDetailLabel.numberOfLines=0;
+        [_bodyDetailLabel sizeToFit];
+    }
+
 
     _bodyLabel3.frame= CGRectMake(30*_frameRadio,_bodyDetailLabel.frame.size.height+_bodyDetailLabel.frame.origin.y+15 , 260*_frameRadio, _bodyLabel3.frame.size.height);
  //   [_bodyLabel3 sizeToFit];
@@ -357,9 +364,10 @@
     _bodyLabel1.frame= CGRectMake(30*_frameRadio, _bodyLabel3.frame.size.height+_bodyLabel3.frame.origin.y+5, 260*_frameRadio, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyLabel1];
     
+    if (_bodyLabel1.frame.size.height>80) {
     [_bodyLabel1 setNumberOfLines:0];
     [_bodyLabel1 sizeToFit];
-
+    }
     
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)
     {
