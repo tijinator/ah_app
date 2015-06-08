@@ -706,11 +706,11 @@
         _responseDic= responseObject;
         
         
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Saved"
-                                                          message : @"" delegate : nil cancelButtonTitle : @"OK"
-                                                otherButtonTitles : nil ];
-        [alert show ];
-        
+//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Saved"
+//                                                          message : @"" delegate : nil cancelButtonTitle : @"OK"
+//                                                otherButtonTitles : nil ];
+//        [alert show ];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"makeUpdateFinished" object:nil];
 
         
      

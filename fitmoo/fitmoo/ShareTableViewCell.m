@@ -170,13 +170,13 @@
 
    
     _bodyLabel2.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.selling_price];
-    _bodyLabel2.frame= CGRectMake(260*_frameRadio, _bodyTitle.frame.origin.y, 40*_frameRadio, _bodyLabel2.frame.size.height);
+    _bodyLabel2.frame= CGRectMake(260*_frameRadio, _bodyTitle.frame.origin.y, 50*_frameRadio, _bodyLabel2.frame.size.height);
 
     
     if (![_homeFeed.product.original_price isEqualToString:@"0"]) {
         _bodyLabel3.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.original_price];
         _bodyLabel3.tag=1000;
-        _bodyLabel3.frame= CGRectMake(263*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y-2, 40*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
+        _bodyLabel3.frame= CGRectMake(263*_frameRadio,  _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y-2, 50*_frameRadio, _bodyLabel3.frame.size.height*_frameRadio);
 
         UIView *crossView= [[UIView alloc] initWithFrame:CGRectMake(0, _bodyLabel3.frame.size.height/2, 28*_frameRadio, 1)];
         crossView.backgroundColor=[UIColor blackColor];
@@ -304,6 +304,7 @@
     _bodyDetailLabel.text= [NSString stringWithFormat:@"%@\n\n", _homeFeed.text];
     _bodyTitle.text= _homeFeed.workout_title;
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, _bodyTitle.frame.size.width, _bodyTitle.frame.size.height);
+    _bodyTitle.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyTitle];
   //  [_bodyTitle sizeToFit];
     
     _bodyDetailLabel.frame=CGRectMake(30*_frameRadio, _bodyTitle.frame.size.height+_bodyTitle.frame.origin.y+5, _bodyDetailLabel.frame.size.width, _bodyTitle.frame.size.height);
@@ -335,6 +336,7 @@
   //  _bodyLabel1.text= _homeFeed.nutrition.preparation;
     
     _bodyTitle.frame= CGRectMake(30*_frameRadio, _scrollView.frame.size.height+20, 260*_frameRadio, _bodyTitle.frame.size.height);
+    _bodyTitle.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyTitle];
    // _bodyTitle.textAlignment = NSTextAlignmentCenter;
     //[_bodyTitle sizeToFit];
     

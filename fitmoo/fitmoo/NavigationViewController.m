@@ -193,17 +193,18 @@
             
          
            
-        }else
-        {
-           
-            _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
-            [[self nav] pushViewController:_homePage animated:YES];
-            currentPage=0;
-           //     [[self nav] popViewControllerAnimated:YES];
-           //     currentPage=prePage;
-        
-            
         }
+//        else
+//        {
+//           
+//            _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+//            [[self nav] pushViewController:_homePage animated:YES];
+//            currentPage=0;
+//           //     [[self nav] popViewControllerAnimated:YES];
+//           //     currentPage=prePage;
+//        
+//            
+//        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
     }else  if ([key isEqualToString:@"6.1"]) {

@@ -171,7 +171,7 @@
         }
         [indicatorView removeFromSuperview];
        [_activityIndicator stopAnimating];
-        NSLog(@"Submit response data: %@", responseObject);
+  //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
