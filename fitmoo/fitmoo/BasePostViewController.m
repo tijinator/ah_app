@@ -53,23 +53,7 @@
     [self defineTypeOfPost];
 
     [self createObservers];
-   // _postActionType=@"text";
-    
-    //    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
-    //                                                          credentialsWithRegionType:AWSRegionUSEast1
-    //                                                          accountId:@"271404364214"
-    //                                                          identityPoolId:@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870"
-    //                                                          unauthRoleArn:@"arn:aws:cognito-identity:us-east-1:271404364214:role/Cognito_fitmoo_appAuth_Role"
-    //                                                          authRoleArn:@"arn:aws:cognito-identity:us-east-1:271404364214:role/Cognito_fitmoo_appUnauth_Role"];
-    //    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
-    //                                                          credentialsWithRegionType:AWSRegionUSEast1
-    //                                                          accountId:@"074088242106"
-    //                                                          identityPoolId:@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc"
-    //                                                          unauthRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role"
-    //                                                          authRoleArn:@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role"];
-    //
-    //    AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
-    //                                                                          credentialsProvider:credentialsProvider];
+
    
     
 }
@@ -155,7 +139,7 @@
 }
 
 - (void) update{
-    NSLog(@"%@", [NSString stringWithFormat:@"Uploading:%.0f%%", ((float)self.amountUploaded/ (float)self.filesize) * 100]); ;
+    NSLog(@"%@", [NSString stringWithFormat:@"Uploading:%.0f%%", ((float)self.amountUploaded/ (float)self.filesize) * 100]);
 }
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateImages" object:nil];
@@ -201,26 +185,44 @@
 {
 
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
+    [manager PUT:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        
+        NSDictionary * responseDic= responseObject;
+       
+        NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+            failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                NSLog(@"Error: %@", error);} // failure callback block
+     ];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"PUT"];
-    [request setAllHTTPHeaderFields:jsonDict];
-    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:nil progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
-            
-            NSLog(@"Success: %@ %@", response, responseObject);
-        }
-    }];
-    [uploadTask resume];
+//    NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
+//    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//    
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+//    [request setHTTPMethod:@"PUT"];
+//    [request setAllHTTPHeaderFields:jsonDict];
+//    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:nil progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@", error);
+//        } else {
+//            [self deleteCheck];
+//            NSLog(@"Success: %@ %@", response, responseObject);
+//        }
+//    }];
+//    [uploadTask resume];
     
 }
 

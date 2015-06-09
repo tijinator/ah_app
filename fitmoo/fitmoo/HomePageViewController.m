@@ -34,14 +34,6 @@
    
 }
 
-
-
-
-- (void) displayOneMoreTime: (NSTimer *)timer {
-    
-        [self.tableView reloadData];
-}
-
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];

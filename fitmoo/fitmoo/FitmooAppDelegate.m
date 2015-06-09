@@ -57,6 +57,25 @@
     
     [self createObservers];
 
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
+         UIUserNotificationTypeBadge |
+         UIUserNotificationTypeSound
+                                          categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeAlert |
+         UIRemoteNotificationTypeBadge |
+         UIRemoteNotificationTypeSound];
+    }
+
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     // Override point for customization after application launch.
     return YES;
 }
@@ -67,6 +86,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPopup:) name:@"openPopup" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSideMenu:) name:@"hideSideMenu" object:nil];
 }
+
+
+
 
 -(void)openSideMenu:(NSNotification*)note{
    [_deckController toggleLeftViewAnimated:YES];
@@ -96,6 +118,23 @@
     
 }
 
+- (void) application: (UIApplication *) application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"%@", userInfo);
+    [UIApplication sharedApplication].applicationIconBadgeNumber++;
+   
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
+{
+    // Store the deviceToken.
+    NSLog(@"%@", newDeviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Failed To Register For Remote Notifications With Error: %@", error);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -125,7 +164,12 @@
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    
+    if(!([url.path rangeOfString:@"fitmoo://"].location == NSNotFound))
+    {
+        return YES;
+    }
+        
+ 
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication];
 }

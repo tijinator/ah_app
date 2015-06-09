@@ -34,4 +34,7 @@
 @property (strong, nonatomic)  CameraViewController *overlay;
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  BasePostViewController *postView;
+
+@property (strong, nonatomic)  NSString *PostingValue;
+
 @end
