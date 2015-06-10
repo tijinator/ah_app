@@ -56,6 +56,7 @@
 
 -(void) resetAsycImageViewArray;
 -(id)init;
+-(void) resetCommentsArray;
 -(void) resetPhotoArray;
 -(void) resetComments;
 -(void) resetPhotos;

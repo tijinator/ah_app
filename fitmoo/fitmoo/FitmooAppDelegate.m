@@ -75,7 +75,8 @@
          UIRemoteNotificationTypeSound];
     }
 
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+  
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -116,6 +117,13 @@
     _popupView= [note object];
     [_sideMenuViewController.view addSubview:_popupView.view];
     
+}
+
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"%@", userInfo);
+    [UIApplication sharedApplication].applicationIconBadgeNumber++;
 }
 
 - (void) application: (UIApplication *) application didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -164,14 +172,26 @@
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if(!([url.path rangeOfString:@"fitmoo://"].location == NSNotFound))
+    if(!([url.absoluteString rangeOfString:@"fitmoo://"].location == NSNotFound))
     {
+        [self handleDeeplink:url.absoluteString];
         return YES;
     }
         
  
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication];
+}
+
+-(void)handleDeeplink:(NSString*)url{
+    
+    NSRange firstRange = [url rangeOfString:@"fitmoo://"];
+    NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, url.length-firstRange.length);
+    NSString *key= [url substringWithRange:finalRange];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:key forKey:@"fitmooDeepLinkKey"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"handleDeeplink" object:key];
 }
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window

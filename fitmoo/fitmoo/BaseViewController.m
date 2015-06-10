@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 #import "Reachability.h"
+#import "AFNetworking.h"
+#import "UserManager.h"
 @interface BaseViewController ()
 {
  bool showButton;
@@ -20,10 +22,70 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor clearColor]];
     [self addfootButtonsForThree];
+    [self createObserverszero];
     showButton=false;
    
 }
 
+
+//-(void)createObservers{
+//
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
+//    
+//}
+
+- (void) handleDeeplink: (NSNotification * ) note
+{
+    [self handlelink];
+}
+
+- (void) handlelink
+{
+    // NSString *key= (NSString *) [note object];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *key = [prefs stringForKey:@"fitmooDeepLinkKey"];
+    
+    if (!(key==nil)) {
+        
+        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"179547", @"fa_id", @"true", @"mobile",@"true", @"ios_app",
+                                  nil];
+        
+        NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",key];
+        
+        [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            NSDictionary * resDic= responseObject;
+            
+            HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+            
+            specialPage.homeFeed=feed;
+            
+            [self.navigationController pushViewController:specialPage animated:YES];
+            
+            
+            //      NSLog(@"Submit response data: %@", responseObject);
+        } // success callback block
+             failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                 NSLog(@"Error: %@", error);
+             } // failure callback block
+         
+         ];
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:nil forKey:@"fitmooDeepLinkKey"];
+    }
+    
+    
+}
 
 
 
@@ -45,7 +107,8 @@
         
     }
     
-    
+    [self handlelink];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (IBAction)openSideMenu:(id)sender {
@@ -192,10 +255,11 @@
     }
 }
 
--(void)createObservers{
+-(void)createObserverszero{
    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hideButtonsAction" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
-
+   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
 }
 
 

@@ -13,7 +13,7 @@
 #import "CameraViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "BasePostViewController.h"
-
+#import "SpecialPageViewController.h"
 @interface BaseViewController : UIViewController<UIApplicationDelegate>
 
 - (IBAction)openSideMenu:(id)sender;

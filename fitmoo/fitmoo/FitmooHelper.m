@@ -66,6 +66,18 @@
     
 }
 
+- (NSString *) getTextForNumber: (NSString *) numberString
+{
+    if (numberString.intValue>999) {
+        CGFloat following=numberString.intValue/1000.0f;
+        NSString *result= [NSString stringWithFormat:@"%0.01f%@",following,@"K"];
+        return result;
+    }
+    
+    return numberString;
+}
+
+
 - (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {
     
@@ -77,7 +89,7 @@
     int months = (int)[conversionInfo month];
     int days =(int) [conversionInfo day];
     int hours = (int)[conversionInfo hour];
-    int minutes = (int)[conversionInfo minute]+6;
+    int minutes = (int)[conversionInfo minute];
     int year = (int)[conversionInfo year];
     if (year!=0) {
         if (year==1) {

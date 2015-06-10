@@ -12,6 +12,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "User.h"
+
 @interface CommentViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *topView;
@@ -21,6 +22,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) IBOutlet UIButton *postButton;
 - (IBAction)postButtonClick:(id)sender;
+@property (strong, nonatomic)  NSDictionary * responseDic;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
+@property (assign, nonatomic)  int count;
 
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @end

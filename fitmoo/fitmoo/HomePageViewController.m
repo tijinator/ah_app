@@ -39,7 +39,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
+    
 }
+
+
+
 - (void) updateTable: (NSNotification * ) note
 {
   
@@ -463,8 +470,9 @@
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-        NSString *totalCommment= [NSString stringWithFormat:@" %@",tempHomefeed.total_comment ];
+        NSString *totalCommment= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_comment]];
         [cell.bodyCommentButton setTitle:totalCommment  forState:UIControlStateNormal];
+        
         for (int i=0; i<[tempHomefeed.commentsArray count]; i++) {
             cell.homeFeed.comments=[tempHomefeed.commentsArray objectAtIndex:i];
             [cell addCommentView:cell.commentView Atindex:i];
@@ -483,7 +491,7 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
-    NSString *totalLike= [NSString stringWithFormat:@"  %@",tempHomefeed.total_like];
+    NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
      [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];

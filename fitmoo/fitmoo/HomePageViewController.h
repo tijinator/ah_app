@@ -15,7 +15,7 @@
 #import "BaseViewController.h"
 #import "UserManager.h"
 #import "AsyncImageView.h"
-#import "SpecialPageViewController.h"
+
 #import "ActionSheetViewController.h"
 
 #import "PeoplePageViewController.h"

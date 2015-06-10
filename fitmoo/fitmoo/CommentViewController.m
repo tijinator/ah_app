@@ -7,7 +7,7 @@
 //
 
 #import "CommentViewController.h"
-
+#import "AFNetworking.h"
 @interface CommentViewController ()
 {
     double cellHeight;
@@ -23,109 +23,79 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    [self initValuable];
     self.tableview.tableFooterView = [[UIView alloc] init];
     cellHeight=60;
-    
+    [_homeFeed resetCommentsArray];
+    [self getCommentItem];
     [self createObservers];
     // Do any additional setup after loading the view.
 }
+-(void) initValuable
+{
+    _offset=0;
+    _limit=100;
+    _count=1;
+  
+    //   _homeFeedArray= [[NSMutableArray alloc]init];
+}
 
 
+- (void) parseCommentDic
+{
+    NSDictionary * commentsArray= [_responseDic objectForKey:@"comments"];
+    if (![commentsArray isEqual:[NSNull null ]]) {
+     
+        for (NSDictionary *commentsDic in commentsArray) {
+            [_homeFeed resetComments];
+            _homeFeed.comments.comment_id= [commentsDic objectForKey:@"id"];
+            _homeFeed.comments.text= [commentsDic objectForKey:@"text"];
+            NSDictionary *created_by=[commentsDic objectForKey:@"created_by"];
+            _homeFeed.comments.created_by_id= [created_by objectForKey:@"id"];
+            _homeFeed.comments.full_name= [created_by objectForKey:@"full_name"];
+            _homeFeed.comments.is_following= [created_by objectForKey:@"is_following"];
+            NSDictionary *profile=[created_by objectForKey:@"profile"];
+            NSDictionary *avatars=[profile objectForKey:@"avatars"];
+            _homeFeed.comments.original=[avatars objectForKey:@"original"];
+            _homeFeed.comments.thumb=[avatars objectForKey:@"thumb"];
+            _homeFeed.comments.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+            
+            [_homeFeed.commentsArray addObject:_homeFeed.comments];
+        }
+    }
+    
+    [self.tableview reloadData];
+    
+}
 
-//#define kOFFSET_FOR_KEYBOARD 80.0
-//
-//-(void)keyboardWillShow {
-//    // Animate the current view out of the way
-//    if (self.view.frame.origin.y >= 0)
-//    {
-//        [self setViewMovedUp:YES];
-//    }
-//    else if (self.view.frame.origin.y < 0)
-//    {
-//        [self setViewMovedUp:NO];
-//    }
-//}
-//
-//-(void)keyboardWillHide {
-//    if (self.view.frame.origin.y >= 0)
-//    {
-//        [self setViewMovedUp:YES];
-//    }
-//    else if (self.view.frame.origin.y < 0)
-//    {
-//        [self setViewMovedUp:NO];
-//    }
-//}
-//
-//-(void)textFieldDidBeginEditing:(UITextField *)sender
-//{
-//   
-//            [self setViewMovedUp:YES];
-//    
-//}
-//
-////method to move the view up/down whenever the keyboard is shown/dismissed
-//-(void)setViewMovedUp:(BOOL)movedUp
-//{
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
-//    
-//    CGRect rect = self.view.frame;
-//    if (movedUp)
-//    {
-//        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
-//        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-//        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
-//        rect.size.height += kOFFSET_FOR_KEYBOARD;
-//    }
-//    else
-//    {
-//        // revert back to the normal state.
-//        rect.origin.y += kOFFSET_FOR_KEYBOARD;
-//        rect.size.height -= kOFFSET_FOR_KEYBOARD;
-//    }
-//    self.view.frame = rect;
-//    
-//    [UIView commitAnimations];
-//}
+- (void) getCommentItem
+{
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",ofs, @"offset", lim , @"limit",@"true", @"ios_app",nil];
+    
+    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",_homeFeed.feed_id,@"/comments?"];
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+    
+        [self parseCommentDic];
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);
+         } // failure callback block
+     
+     ];
 
+}
 
-
-//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-//{
-//    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    [v setBackgroundColor:[UIColor colorWithRed:0/255 green:0/255 blue:0/255 alpha:0.7f]];
-//    [self.view addSubview:v];
-//    [self.view bringSubviewToFront:_buttomView];
-//    
-//    
-//    
-//    return true;
-//}
-
-//- (void)textViewDidBeginEditing:(UITextView *)textView
-//{
-//    [self animateTextView: YES];
-//}
-//
-//- (void)textViewDidEndEditing:(UITextView *)textView
-//{
-//    [self animateTextView:NO];
-//}
-//#define kOFFSET_FOR_KEYBOARD 80.0
-//- (void) animateTextView:(BOOL) up
-//{
-//    const int movementDistance =kOFFSET_FOR_KEYBOARD; // tweak as needed
-//    const float movementDuration = 0.3f; // tweak as needed
-//    int movement= movement = (up ? -movementDistance : movementDistance);
-//    NSLog(@"%d",movement);
-//    
-//    [UIView beginAnimations: @"anim" context: nil];
-//    [UIView setAnimationBeginsFromCurrentState: YES];
-//    [UIView setAnimationDuration: movementDuration];
-//    self.view.frame = CGRectOffset(self.inputView.frame, 0, movement);
-//    [UIView commitAnimations];
-//}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch * touch = [touches anyObject];
@@ -353,6 +323,39 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableview.contentOffset.y<-75){
+        if (_count==0) {
+        }
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height-300)) {
+
+        
+        if (_count==0) {
+            if (self.tableview.contentOffset.y<0) {
+                _offset =0;
+            }else
+            {
+                _offset +=100;
+                
+            }
+            [self getCommentItem];
+            
+        }
+        _count++;
+        
+        
+    }else
+    {
+        _count=0;
+    }
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

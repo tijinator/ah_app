@@ -15,7 +15,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "HomeFeed.h"
-#import "PeoplePageViewController.h"
+
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "VimeoHelper.h"
