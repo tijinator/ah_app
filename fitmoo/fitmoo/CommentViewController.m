@@ -178,7 +178,8 @@
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
     view.layer.cornerRadius=view.frame.size.width/2;
     view.clipsToBounds=YES;
-
+    view.userInteractionEnabled = NO;
+    view.exclusiveTouch = NO;
     
     AsyncImageView *imageview=[[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
     imageview.userInteractionEnabled = NO;
@@ -191,6 +192,8 @@
     [imageButton addSubview:view];
 
     
+    [imageButton setTag:_homeFeed.comments.created_by_id.intValue];
+    [imageButton addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
     UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
@@ -372,6 +375,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)headerImageButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+    User *tempUser= [[UserManager sharedUserManager] localUser];
+    
+    if ([key isEqualToString:tempUser.user_id]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
+   
+    
+}
 
 - (IBAction)backButtonClick:(id)sender {
       [self.navigationController popViewControllerAnimated:YES];

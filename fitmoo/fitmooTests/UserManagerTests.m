@@ -11,6 +11,7 @@
 #import "UserManager.h"
 #import "ViewController.h"
 #import "User.h"
+#import "FitmooHelper.h"
 
 @interface UserManagerTests : XCTestCase
 @property (nonatomic) ViewController *vcToTest;
@@ -34,7 +35,7 @@
     User * u= [[User alloc] init];
     
     u.email=@"hongjianlin1989@gmail.com";
-    u.password=@"lin22549010";
+    u.password=@"22549010";
     
     [[UserManager sharedUserManager] performLogin:u];
     u= [[UserManager sharedUserManager] performLogin:u];
@@ -49,7 +50,17 @@
  
 }
 
-- (void)testSignUp {
+- (void)testDate {
+    NSString * s= @"1400";
+    s= [[FitmooHelper sharedInstance]  getTextForNumber:s];
+    
+    if ([s rangeOfString:@"K"].location== NSNotFound) {
+         XCTAssert(NO, @"fail");
+    }else
+    {
+         XCTAssert(YES, @"Pass");
+    }
+    
     
 }
 

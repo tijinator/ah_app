@@ -24,14 +24,14 @@
     [super viewDidLoad];
     contentHight=[NSNumber numberWithInteger:300];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-    
+   
     [self initFrames];
     [self initValuable];
     [self postNotifications];
     [self getHomePageItems];
     [self createObservers];
     [self addActivityIndicator];
-   
+  
 }
 
 -(void)createObservers{
@@ -508,6 +508,13 @@
     [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    {
+        
+        [cell removeConstraints:cell.constraints];
+        [cell.contentView removeConstraints:cell.contentView.constraints];
+    }
+    
     
     contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15] ;
     if (indexPath.row>=[_heighArray count]) {
@@ -544,7 +551,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
     {
-        return UITableViewAutomaticDimension;
+    //    return UITableViewAutomaticDimension;
+        return contentHight.intValue;
         // Load resources for iOS 7 or later
     }
     
