@@ -13,6 +13,8 @@
 {
         NSNumber * contentHight;
         UIView *indicatorView;
+        User * tempUser1;
+        UIButton *tempButton1;
 }
 @end
 
@@ -497,21 +499,44 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
-- (IBAction)followButtonClick:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag-100;
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
  
-        User *user= [_searchArrayPeople objectAtIndex:index];
+
+        if (buttonIndex == 1)
+        {
+            [[UserManager sharedUserManager] performUnFollow:tempUser1.user_id];
+            tempUser1.is_following=@"0";
+            [tempButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_smallfollowbtn.png"] forState:UIControlStateNormal];
+        }
+   
+    
+}
+
+- (IBAction)followButtonClick:(id)sender {
+    tempButton1 = (UIButton *)sender;
+    NSInteger index=(NSInteger) tempButton1.tag-100;
+ 
+        tempUser1= [_searchArrayPeople objectAtIndex:index];
         
-        if ([user.is_following isEqualToString:@"0"]) {
-               [[UserManager sharedUserManager] performFollow:user.user_id];
-                user.is_following=@"1";
-            [button setBackgroundImage:[UIImage imageNamed:@"followsection_smallfollowingbtn.png"] forState:UIControlStateNormal];
+        if ([tempUser1.is_following isEqualToString:@"0"]) {
+               [[UserManager sharedUserManager] performFollow:tempUser1.user_id];
+                tempUser1.is_following=@"1";
+            [tempButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_smallfollowingbtn.png"] forState:UIControlStateNormal];
         }else
         {
-             [[UserManager sharedUserManager] performUnFollow:user.user_id];
-             user.is_following=@"0";
-             [button setBackgroundImage:[UIImage imageNamed:@"followsection_smallfollowbtn.png"] forState:UIControlStateNormal];
+            
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unfollow"
+                                                           message:@"Are you sure you want to Unfollow this person?"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"No"
+                                                 otherButtonTitles:@"Yes",nil];
+            [alert show];
+            
+            
+            [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+            
+            
         }
 
 

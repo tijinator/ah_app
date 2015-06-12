@@ -122,8 +122,18 @@
 
 - (IBAction)reportButtonClick:(id)sender {
     if ([_action isEqualToString:@"delete"]) {
-        [[UserManager sharedUserManager] performDelete:_postId];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTable" object:_postId];
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Delete"
+                                                       message:@"Are you sure you want to delete this post?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",nil];
+        [alert show];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+        
+    
     }else if([_action isEqualToString:@"report"]) {
       
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Report"
@@ -145,9 +155,22 @@
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // 0 = Tapped yes
-    if (buttonIndex == 1)
+    
+     if([_action isEqualToString:@"report"])
+     {
+         if (buttonIndex == 1)
+         {
+             [[UserManager sharedUserManager] performReport:_postId];
+         }
+     }
+    
+    if([_action isEqualToString:@"delete"])
     {
-        [[UserManager sharedUserManager] performReport:_postId];
+        if (buttonIndex == 1)
+        {
+            [[UserManager sharedUserManager] performDelete:_postId];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTable" object:_postId];
+        }
     }
 }
 

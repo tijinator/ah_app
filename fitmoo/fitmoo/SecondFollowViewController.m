@@ -13,7 +13,8 @@
 @interface SecondFollowViewController ()
 {
     NSNumber * contentHight;
-    
+    User * tempUser1;
+    UIButton *tempButton1;
 }
 @end
 
@@ -359,21 +360,44 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+        [[UserManager sharedUserManager] performUnFollow:tempUser1.user_id];
+        tempUser1.is_following=@"0";
+        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+    }
+    
+    
+}
+
 - (IBAction)followButtonClick:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag-100;
+    tempButton1 = (UIButton *)sender;
+    NSInteger index=(NSInteger) tempButton1.tag-100;
     
-    User *user= [_searchArrayPeople objectAtIndex:index];
+    tempUser1= [_searchArrayPeople objectAtIndex:index];
     
-    if ([user.is_following isEqualToString:@"0"]) {
-        [[UserManager sharedUserManager] performFollow:user.user_id];
-        user.is_following=@"1";
-        [button setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
+    if ([tempUser1.is_following isEqualToString:@"0"]) {
+        [[UserManager sharedUserManager] performFollow:tempUser1.user_id];
+        tempUser1.is_following=@"1";
+        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"followsection_followingbtn.png"] forState:UIControlStateNormal];
     }else
     {
-        [[UserManager sharedUserManager] performUnFollow:user.user_id];
-        user.is_following=@"0";
-        [button setBackgroundImage:[UIImage imageNamed:@"followsection_followbtn.png"] forState:UIControlStateNormal];
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unfollow"
+                                                       message:@"Are you sure you want to Unfollow this person?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",nil];
+        [alert show];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+        
+        
     }
     
     

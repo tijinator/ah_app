@@ -171,32 +171,17 @@
 
 }
 
-int count=0;
+
 - (void) showImagesWithDelay
 {
-    count=0;
- _backView.alpha=0;
-    [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(displayPic:) userInfo:nil repeats:NO];
-}
-
-
-- (void) displayPic: (NSTimer *)timer {
-    
- 
-    //_backgroundImage.alpha=0;
-   
-   
-            
-    if (count==0) {
+    _backView.alpha=0;
     [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-  //      _backgroundImage.alpha=1;
+        
         _backView.alpha=1;
     }completion:^(BOOL finished){}];
-    }
-
-    
-
 }
+
+
 
 -(BOOL) checkValidEmail: (UITextField *)textfield
 {
@@ -206,13 +191,7 @@ int count=0;
     if ([textfield.text isEqualToString:@""]) {
         return false;
     }
- //   [path rangeOfString:@"User"].location != NSNotFound
-//    if ([textfield.text rangeOfString:@"@"].location == NSNotFound) {
-//        return false;
-//    }
-//    if ([textfield.text rangeOfString:@".com"].location == NSNotFound) {
-//        return false;
-//    }
+
     
     return valid;
 }

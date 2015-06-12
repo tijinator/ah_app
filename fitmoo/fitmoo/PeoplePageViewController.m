@@ -15,6 +15,7 @@
 {
     NSNumber * contentHight;
     NSString *bioText;
+    UIButton *tempButton1;
 }
 @end
 
@@ -990,23 +991,45 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.navigationController pushViewController:specialPage animated:YES];
     
 }
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+        [[UserManager sharedUserManager] performUnFollow:_searchId];
+        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
+        _temSearchUser.is_following=@"0";
+        tempButton1.tag=12;
+    }
+    
+    
+}
+
 - (IBAction)editProfileButtonClick:(id)sender {
-      UIButton *button = (UIButton *)sender;
+      tempButton1 = (UIButton *)sender;
     
 
-    if (button.tag==11) {
-         [[UserManager sharedUserManager] performUnFollow:_searchId];
-        [button setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
-        _temSearchUser.is_following=@"0";
-        button.tag=12;
-    }else if (button.tag==12) //follow
+    if (tempButton1.tag==11) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unfollow"
+                                                       message:@"Are you sure you want to Unfollow this person?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",nil];
+        [alert show];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+       
+    }else if (tempButton1.tag==12) //follow
     {
         [[UserManager sharedUserManager] performFollow:_searchId];
-        [button setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState: UIControlStateNormal];
+        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState: UIControlStateNormal];
          _temSearchUser.is_following=@"1";
         
         
-        button.tag=11;
+        tempButton1.tag=11;
     }else
     {
 
