@@ -284,14 +284,16 @@
     _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
     
     _picker = [[UIImagePickerController alloc] init];
-    _picker.allowsEditing = YES;
+    _picker.allowsEditing = NO;
+
     _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.picker.showsCameraControls = NO;
     self.picker.navigationBarHidden = YES;
     self.picker.toolbarHidden = YES;
-
+    
     self.overlay.picker = self.picker;
-    self.picker.cameraOverlayView = self.overlay.view;
+   // self.picker.cameraOverlayView = self.overlay.view;
+    [self.picker.view addSubview:self.overlay.view];
     self.picker.delegate = self.overlay;
     
     [self presentViewController:_picker animated:YES completion:NULL];

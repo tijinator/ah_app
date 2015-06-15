@@ -286,7 +286,7 @@
             _peoplePage.searchId=key;
             [[self nav] pushViewController:_peoplePage animated:YES];
             prePage=currentPage;
-            currentPage=6;
+            currentPage=key.intValue;
 
     
     }

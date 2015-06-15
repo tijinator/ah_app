@@ -560,7 +560,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //   UIButton *button = (UIButton *)sender;
     if (_chosenImage!=nil) {
         [self uploadToS3];
-        
+        [self addActivityIndicator];
     }else
     if ([self.tabletype isEqualToString:@"privacy"]) {
         [[UserManager sharedUserManager] performUpdatePrivacy:_tempUser ];

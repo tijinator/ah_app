@@ -141,7 +141,7 @@
     
     int lines = expectedLabelSize.height/label.font.pointSize;
     
-    newFrame.size.height = expectedLabelSize.height+10*(lines-1);
+    newFrame.size.height = expectedLabelSize.height+10*(lines-1)+10;
     
     return  newFrame;
 }

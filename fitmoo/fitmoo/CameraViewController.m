@@ -37,6 +37,7 @@
     }
     [self createObservers];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"2"];
+    
     // Do any additional setup after loading the view.
 }
 
