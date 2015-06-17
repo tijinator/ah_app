@@ -19,6 +19,9 @@
     UIView *indicatorView;
   
 }
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,7 +34,15 @@
     [self getHomePageItems];
     [self createObservers];
     [self addActivityIndicator];
-  
+    [self addtopBarView];
+}
+
+- (void) addtopBarView
+{
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+    v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
+    v.backgroundColor= [UIColor whiteColor];
+    [self.view addSubview:v];
 }
 
 -(void)createObservers{

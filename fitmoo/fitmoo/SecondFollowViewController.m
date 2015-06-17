@@ -87,6 +87,9 @@
         view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:view respectToSuperFrame:nil];
       
         UILabel *label= (UILabel *) [cell viewWithTag:2];
+        if (_keyword_text==nil) {
+            _keyword_text=@"";
+        }
         label.text=_keyword_text;
         label.frame= CGRectMake(85, 115, 160, 90);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];

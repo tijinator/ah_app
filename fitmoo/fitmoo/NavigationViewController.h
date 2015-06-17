@@ -20,6 +20,7 @@
 #import "ShopViewController.h"
 #import "SettingViewController.h"
 #import "LocationViewController.h"
+#import "NotificationViewController.h"
 
 @interface NavigationViewController : UIViewController
 
@@ -33,5 +34,6 @@
 @property (strong, nonatomic) SettingViewController *settingPage;
 @property (strong, nonatomic)  ShopViewController *shopPage;
 @property (strong, nonatomic)  LocationViewController *locationPage;
+@property (strong, nonatomic)  NotificationViewController *notificationPage;
 
 @end

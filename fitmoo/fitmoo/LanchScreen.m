@@ -16,9 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    _Indicator.frame= CGRectMake(_Indicator.frame.origin.x*[[FitmooHelper sharedInstance] frameRadio], _Indicator.frame.origin.y*[[FitmooHelper sharedInstance] frameRadio], _Indicator.frame.size.width, _Indicator.frame.size.height);
-//    [_Indicator startAnimating];
+    [self initFrames];
     // Do any additional setup after loading the view.
+}
+
+- (void) initFrames
+{
+    _commingSoonImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+    
+    _commingSoonImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commingSoonImage respectToSuperFrame:self.view];
+    
+    _commingSoonImage.image=[UIImage imageNamed:@"splashscreen.png"];
+    [self.view insertSubview:_commingSoonImage atIndex:0];
+    
 }
 
 - (void)didReceiveMemoryWarning {

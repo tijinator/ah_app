@@ -40,20 +40,15 @@
     self.facebookLoginView.delegate = self;
     self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
 
-    
-   
-  // [self showImagesWithDelay];
-
-    
     [self createObservers];
-    
-  //  [self addEffectView];
     [self showImagesWithDelay];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)addEffectView
+- (void) addActivityIndicator1
 {
+
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
     _lanchScreen.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], 569*[[FitmooHelper sharedInstance] frameRadio]);
@@ -61,11 +56,12 @@
     [self.view bringSubviewToFront:_lanchScreen.view];
     _lanchScreen.view.alpha=1;
     
-    [UIView animateWithDuration:1.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _lanchScreen.view.alpha=0;
-    }completion:^(BOOL finished){
-        [_lanchScreen.view removeFromSuperview];
-    }];
+    }completion:^(BOOL finished){}];
+    
+    
+   
 }
 
 -(void) checkLogin
@@ -80,13 +76,13 @@
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
     
     if (localUser.secret_id!=nil&&localUser.auth_token!=nil) {
-        
+         [self addActivityIndicator1];
         [[UserManager sharedUserManager] getUserProfile:localUser];
         loginExists=true;
         
     }else
     {
-     //   [self.lanchScreen.view removeFromSuperview];
+      //  [self.lanchScreen.view removeFromSuperview];
      
     }
 
@@ -125,9 +121,10 @@
 - (void) openHomePage
 {
     loginExists=false;
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
-    [self.navigationController pushViewController:homepage animated:YES];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
+//    [self.navigationController pushViewController:homepage animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"0"];
 }
 
 -(void)openNextpage:(NSNotification * )note
@@ -144,7 +141,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [_activityIndicator stopAnimating];
-    [_lanchScreen.view removeFromSuperview];
+  //  [_lanchScreen.view removeFromSuperview];
     if (_sighUpView!=nil) {
           _sighUpView=nil;
     }
@@ -255,7 +252,7 @@
     
     loginView.frame = CGRectMake(25, 127, 270, 48);
     loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
-    
+    [self addActivityIndicator1];
     
 }
 
@@ -369,7 +366,16 @@
     
     [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _lanchScreen.view.alpha=1;
-    }completion:^(BOOL finished){}];
+    }completion:^(BOOL finished){
+        
+        [UIView animateWithDuration:.5 delay:4 options:UIViewAnimationOptionTransitionNone animations:^{
+            _lanchScreen.view.alpha=0;
+        }completion:^(BOOL finished){
+            
+            
+        }];
+        
+    }];
 
     
    // [self.view bringSubviewToFront:_activityIndicator];

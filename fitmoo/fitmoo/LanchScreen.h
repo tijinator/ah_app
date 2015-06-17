@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 @interface LanchScreen : UIViewController
-@property (strong, nonatomic) IBOutlet UIImageView *lanchImage;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *Indicator;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *Indicator;
+@property (strong, nonatomic) IBOutlet UIImageView *commingSoonImage;
 @end
