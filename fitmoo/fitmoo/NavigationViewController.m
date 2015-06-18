@@ -246,10 +246,10 @@
     }else  if ([key isEqualToString:@"1"]) {
         if (currentPage!=1) {
             
-//            _shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
-//            [[self nav] pushViewController:_shopPage animated:YES];
-            _notificationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"NotificationViewController"];
-             [[self nav] pushViewController:_notificationPage animated:YES];
+            _shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
+            [[self nav] pushViewController:_shopPage animated:YES];
+//            _notificationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"NotificationViewController"];
+//             [[self nav] pushViewController:_notificationPage animated:YES];
             
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];

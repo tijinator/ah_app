@@ -405,6 +405,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.bioButton.frame.size.height+cell.bioButton.frame.origin.y+15);
         contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }
+        
+        
+      
+        
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
     }
@@ -458,6 +462,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
+        int count=(int)[_homeFeedArray count]/3;
+        if ([_homeFeedArray count]%3!=0) {
+            count=count+1;
+        }
+        if(indexPath.row==count)
+        {
+            contentHight=[NSNumber numberWithInteger:contentHight.intValue+60];
+        }
+        
         if (indexPath.row>=[_heighArray count]) {
             [_heighArray addObject:contentHight];
         }else
@@ -538,7 +551,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }else
         {
             headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
-            [cell.headerImage2 setTag:tempHomefeed.feed_action.community_id.intValue];
+            [cell.headerImage2 setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
         }
         [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
         [view addSubview:headerImage2];
@@ -688,9 +701,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
     
-    
-    
+    if(indexPath.row==[_homeFeedArray count])
+    {
+        contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
+    }else
+    {
     contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+    }
+    
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else
@@ -705,16 +723,20 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
-    NSString *link;
-    if ([feed.type isEqualToString:@"product"]) {
-        if (feed.feed_action.feed_action_id!=nil) {
-            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+    if (indexPath.row!=0) {
+        HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
+        NSString *link;
+        if ([feed.type isEqualToString:@"product"]) {
+            if (feed.feed_action.feed_action_id!=nil) {
+                link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+            }
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
         }
-      
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
     }
+    
+
 
     
 }
@@ -987,7 +1009,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
    
         specialPage.homeFeed=tempFeed;
-    
+        if(_searchId!=nil)
+        {
+            specialPage.searchId=_searchId;
+        }
         [self.navigationController pushViewController:specialPage animated:YES];
     
 }

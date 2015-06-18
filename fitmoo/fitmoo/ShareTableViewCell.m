@@ -430,8 +430,8 @@
     [_commentView addSubview:_commentImage];
     [_commentView addSubview:_commentDetail];
         
-    _viewAllCommentButton.frame= CGRectMake(_commentDetail.frame.origin.x, _commentDetail.frame.origin.y+_commentDetail.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
-    [_commentView addSubview:_viewAllCommentButton];
+  //  _viewAllCommentButton.frame= CGRectMake(_commentDetail.frame.origin.x, _commentDetail.frame.origin.y+_commentDetail.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+  //  [_commentView addSubview:_viewAllCommentButton];
     }
    
    
@@ -447,7 +447,7 @@
         
         [_commentView addSubview:_commentDetail1];
         
-         _viewAllCommentButton.frame= CGRectMake(_commentDetail1.frame.origin.x, _commentDetail1.frame.origin.y+_commentDetail1.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+     //    _viewAllCommentButton.frame= CGRectMake(_commentDetail1.frame.origin.x, _commentDetail1.frame.origin.y+_commentDetail1.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
     }
     
     if (index==2) {
@@ -461,11 +461,14 @@
         [_commentDetail2 sizeToFit];
         
         [_commentView addSubview:_commentDetail2];
-        _viewAllCommentButton.frame= CGRectMake(_commentDetail2.frame.origin.x, _commentDetail2.frame.origin.y+_commentDetail2.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+
         
         }
     
-    
+    if (_homeFeed.total_comment.intValue>3) {
+        _viewAllCommentButton.frame= CGRectMake(_commentDetail2.frame.origin.x, _commentDetail2.frame.origin.y+_commentDetail2.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+        [_commentView addSubview:_viewAllCommentButton];
+    }
     
 }
 

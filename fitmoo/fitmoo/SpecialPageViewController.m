@@ -138,16 +138,16 @@
     if ([tempHomefeed.community_id isEqual:[NSNull null]])
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
-        [cell.headerImage2 setTag:tempHomefeed.feed_action.user_id.intValue];
+        [cell.headerImage2 setTag:tempHomefeed.created_by.created_by_id.intValue];
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
-        [cell.headerImage2 setTag:tempHomefeed.feed_action.community_id.intValue];
+        [cell.headerImage2 setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
     [cell.headerImage2 addSubview:view];
-    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
@@ -159,6 +159,8 @@
     NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
     NSDate *today= [NSDate date];
     cell.dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    
+    [cell rebuiltHeaderViewFrame];
     
     //case for photo and video exits, bodyview
     if ([tempHomefeed.photoArray count]!=0||[tempHomefeed.videosArray count]!=0) {
@@ -502,7 +504,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (IBAction)headerImageButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+    User *tempUser= [[UserManager sharedUserManager] localUser];
+    
+    if ([key isEqualToString:tempUser.user_id] || [key isEqualToString:_searchId]) {
+      //  [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
 
+}
 
 - (IBAction)shareButtonClick:(id)sender {
 

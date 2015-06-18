@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @property (strong, nonatomic)  NSString * postText;
+@property (strong, nonatomic)  NSString * searchId;
 @property (strong, nonatomic)  UITextView * textView;
 @property (strong, nonatomic)  NSString * action;
 @property (strong, nonatomic) MPMoviePlayerViewController *playerView;

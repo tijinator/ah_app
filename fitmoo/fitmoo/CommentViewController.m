@@ -166,12 +166,17 @@
     
     if (cell == nil)
     {
-        cell=[tableView dequeueReusableCellWithIdentifier:@"cell1"];
+     //   cell=[tableView dequeueReusableCellWithIdentifier:@"cell1"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    }else
+    {
+        return cell;
     }
     
     _homeFeed.comments=[_homeFeed.commentsArray objectAtIndex:indexPath.row];
     
-    UIButton *imageButton= (UIButton *) [cell viewWithTag:5];
+ //   UIButton *imageButton= (UIButton *) [cell viewWithTag:5];
+    UIButton *imageButton= [[UIButton alloc] init];
     imageButton.frame= CGRectMake(15, 15, 30, 30);
     imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
     
@@ -196,7 +201,8 @@
     [imageButton addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
+//    UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
+    UILabel *nameLabel=[[UILabel alloc] init];
     nameLabel.frame= CGRectMake(58, 16, 230, 21);
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     imageview.layer.cornerRadius=imageview.frame.size.width/2;
@@ -233,6 +239,9 @@
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
     cellHeight= nameLabel.frame.size.height+20;
+    
+    [cell.contentView addSubview:imageButton];
+    [cell.contentView addSubview:nameLabel];
     
     return cell;
 }

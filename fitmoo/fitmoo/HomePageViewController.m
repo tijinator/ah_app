@@ -363,10 +363,13 @@
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
         [cell.headerImage2 setTag:tempHomefeed.created_by.created_by_id.intValue];
+        [cell.titleLabel setTag:tempHomefeed.created_by.created_by_id.intValue];
+      
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
         [cell.headerImage2 setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
+        [cell.titleLabel setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
@@ -375,6 +378,11 @@
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TitleLabelClick:)];
+    tapGestureRecognizer1.numberOfTapsRequired = 1;
+    [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
+    cell.titleLabel.userInteractionEnabled=YES;
+
     
     cell.dayLabel.frame= CGRectMake(cell.dayLabel.frame.origin.x, cell.titleLabel.frame.size.height+cell.titleLabel.frame.origin.y+3, cell.dayLabel.frame.size.width, cell.dayLabel.frame.size.height);
     NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
@@ -693,7 +701,19 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 //    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
 }
-
+- (IBAction)TitleLabelClick:(id)sender {
+//    UIButton *button = (UIButton *)sender;
+//    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+//    User *tempUser= [[UserManager sharedUserManager] localUser];
+//    
+//    if ([key isEqualToString:tempUser.user_id]) {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+//    }else
+//    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+//    }
+    
+}
 
 - (IBAction)headerImageButtonClick:(id)sender {
         UIButton *button = (UIButton *)sender;
@@ -706,11 +726,6 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
-//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        PeoplePageViewController *peoplePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
-//        peoplePage.searchId= [NSString stringWithFormat:@"%ld", (long)button.tag];
-//        [self.navigationController pushViewController:peoplePage animated:YES];
-    
     
 }
 - (IBAction)likeButtonClick:(id)sender {
