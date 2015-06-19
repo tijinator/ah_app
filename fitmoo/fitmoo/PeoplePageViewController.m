@@ -1059,7 +1059,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else
     {
 
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"3"];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"4"];
     }
     
 }
