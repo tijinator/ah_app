@@ -72,7 +72,19 @@
 
 - (void) showShareViews
 {
-    
+    if ([_postType isEqualToString:@"workout"]) {
+        [_shareButton setTitle:@"Save to my workouts" forState:UIControlStateNormal];
+    }else if ([_postType isEqualToString:@"nutrition"])
+    {
+        [_shareButton setTitle:@"Save to my nutrition" forState:UIControlStateNormal];
+    }else if ([_postType isEqualToString:@"product"])
+    {
+        [_shareButton setTitle:@"Endorse to my Store" forState:UIControlStateNormal];
+    }else
+    {
+        [_shareButton setTitle:@"Repost" forState:UIControlStateNormal];
+        
+    }
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];

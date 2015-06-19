@@ -11,4 +11,6 @@
 #import "BaseViewController.h"
 @interface LocationViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UIImageView *commingSoonImage;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)backButtonClick:(id)sender;
 @end

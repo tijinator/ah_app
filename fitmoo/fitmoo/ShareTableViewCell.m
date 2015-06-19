@@ -284,9 +284,12 @@
  
     _bodyDetailLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
     
-    if (_bodyDetailLabel.frame.size.height>80) {
+    if (_bodyDetailLabel.frame.size.height>100) {
         _bodyDetailLabel.numberOfLines=0;
         [_bodyDetailLabel sizeToFit];
+        double radio=_bodyDetailLabel.frame.size.height/100;
+        _bodyDetailLabel.frame=CGRectMake(_bodyDetailLabel.frame.origin.x,_bodyDetailLabel.frame.origin.y, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height+30*radio);
+        
     }
    
 
@@ -318,6 +321,8 @@
     if (_bodyDetailLabel.frame.size.height>80) {
         _bodyDetailLabel.numberOfLines=0;
         [_bodyDetailLabel sizeToFit];
+        double radio=_bodyDetailLabel.frame.size.height/100;
+        _bodyDetailLabel.frame=CGRectMake(_bodyDetailLabel.frame.origin.x,_bodyDetailLabel.frame.origin.y, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height+30*radio);
     }
   
    
@@ -356,6 +361,8 @@
     if (_bodyDetailLabel.frame.size.height>80) {
         _bodyDetailLabel.numberOfLines=0;
         [_bodyDetailLabel sizeToFit];
+        double radio=_bodyDetailLabel.frame.size.height/100;
+        _bodyDetailLabel.frame=CGRectMake(_bodyDetailLabel.frame.origin.x,_bodyDetailLabel.frame.origin.y, _bodyDetailLabel.frame.size.width, _bodyDetailLabel.frame.size.height+30*radio);
     }
 
 
@@ -368,6 +375,8 @@
     if (_bodyLabel1.frame.size.height>80) {
     [_bodyLabel1 setNumberOfLines:0];
     [_bodyLabel1 sizeToFit];
+    double radio=_bodyLabel1.frame.size.height/100;
+    _bodyLabel1.frame=CGRectMake(_bodyLabel1.frame.origin.x,_bodyLabel1.frame.origin.y, _bodyLabel1.frame.size.width, _bodyLabel1.frame.size.height+30*radio);
     }
     
     if ([_homeFeed.photoArray count]==0&&[_homeFeed.videosArray count]==0)

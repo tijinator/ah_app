@@ -32,6 +32,7 @@
     [self.view insertSubview:_commingSoonImage atIndex:0];
 
      _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
+    _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,5 +57,8 @@
     {
      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
     }
+}
+- (IBAction)backButtonClick:(id)sender {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
 }
 @end

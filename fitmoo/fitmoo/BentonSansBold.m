@@ -47,6 +47,10 @@
     if (self.tag==1000) {
         float spacing = 1.5f;
         [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
+    }else if (self.tag==1001)
+    {
+        float spacing = 1.0f;
+        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
     }
     
     

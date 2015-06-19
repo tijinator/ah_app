@@ -116,7 +116,7 @@
 -(void) initValuable
 {
     _offset=0;
-    _limit=12;
+    _limit=9;
     _count=1;
     
 
@@ -794,7 +794,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                   _offset =0;
             }else
             {
-            _offset +=12;
+            _offset +=9;
             }
             [self getHomePageItems];
         }
@@ -902,6 +902,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     ActionSheet.action= @"share";
+    ActionSheet.postType=tempFeed.type;
     ActionSheet.postId= tempFeed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     

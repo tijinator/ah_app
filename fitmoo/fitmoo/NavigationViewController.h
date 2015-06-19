@@ -15,13 +15,13 @@
 #import "PeoplePageViewController.h"
 #import "ActionSheetViewController.h"
 #import "HomeFeed.h"
-#import "SearchViewController.h"
+#import "FollowViewController.h"
 #import "RESideMenu.h"
 #import "ShopViewController.h"
 #import "SettingViewController.h"
 #import "LocationViewController.h"
 #import "NotificationViewController.h"
-
+#import "SearchViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
@@ -30,10 +30,11 @@
 
 @property (strong, nonatomic) HomePageViewController *homePage;
 @property (strong, nonatomic) PeoplePageViewController *peoplePage;
-@property (strong, nonatomic) SearchViewController *searchPage;
+@property (strong, nonatomic) FollowViewController *followPage;
 @property (strong, nonatomic) SettingViewController *settingPage;
 @property (strong, nonatomic)  ShopViewController *shopPage;
 @property (strong, nonatomic)  LocationViewController *locationPage;
 @property (strong, nonatomic)  NotificationViewController *notificationPage;
+@property (strong, nonatomic)  SearchViewController *searchPage;
 
 @end

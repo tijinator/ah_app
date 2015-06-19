@@ -36,5 +36,6 @@
 @property (strong, nonatomic)  BasePostViewController *postView;
 
 @property (strong, nonatomic)  NSString *PostingValue;
+@property (assign, nonatomic)  int PrePage;
 
 @end

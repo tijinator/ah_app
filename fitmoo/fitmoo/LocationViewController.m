@@ -27,11 +27,14 @@
     
     _commingSoonImage.image=[UIImage imageNamed:@"checkinscreen.png"];
     [self.view insertSubview:_commingSoonImage atIndex:0];
-    
+      _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)backButtonClick:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
 }
 
 /*

@@ -12,6 +12,7 @@
 
 @interface ActionSheetViewController : UIViewController
 @property (strong, nonatomic) NSString * action;
+@property (strong, nonatomic) NSString * postType;
 @property (strong, nonatomic) NSString * postId;
 -(void) performAnimation: (UIView *)view;
 - (IBAction)endoseButtonClick:(id)sender;

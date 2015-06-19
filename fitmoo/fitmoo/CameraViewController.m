@@ -352,7 +352,7 @@
     UIImageView *imageview7=[[UIImageView alloc] initWithImage:[self.selectedImageview.image polaroidish]];        //polaroidish
     UIImageView *imageview8=[[UIImageView alloc] initWithImage:[self.selectedImageview.image sepia]];        //sepia
     _selectedFilterImageArray= [[NSArray alloc] initWithObjects:imageview,imageview1,imageview2,imageview3,imageview4,imageview5,imageview6,imageview7,imageview8, nil];
-    _selectedFilterNameArray= [[NSArray alloc] initWithObjects:@"Original",@"Saturation",@"B&W",@"Greyscale",@"Vignette",@"Curve",@"Invert",@"Polaroidish",@"Sepia", nil];
+    _selectedFilterNameArray= [[NSArray alloc] initWithObjects:@"Original",@"Saturation",@"B&W",@"Greyscale",@"Vignette",@"Curve",@"Invert",@"Polaroid",@"Sepia", nil];
     
     
     

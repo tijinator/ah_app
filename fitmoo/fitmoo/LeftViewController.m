@@ -14,13 +14,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    _imageArray= [[NSArray alloc] initWithObjects: @"mainmenu_houseicon.png",@"mainmenu_storeicon.png",@"mainmenu_followicon.png",@"mainmenu_settingsicon.png",@"logouticon.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Shop",@"Follow",@"Settings",@"Logout", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"shop.png",@"follow.png",@"settings.png",@"logout.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
  //   [_leftTableView reloadData];
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 6) / 2.0f, self.view.frame.size.width, 54 * 6) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -106,7 +106,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
     
-    return 5;
+    return 6;
     
 }
 
@@ -166,7 +166,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString * key= [NSString stringWithFormat:@"%li",indexPath.row];
     
-    if (indexPath.row==4) {
+    if (indexPath.row==5) {
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
                                                        message:@"Are you sure you want to logout?"

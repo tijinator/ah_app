@@ -525,6 +525,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     ActionSheet.action= @"share";
+    ActionSheet.postType=tempFeed.type;
     ActionSheet.postId= tempFeed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     
