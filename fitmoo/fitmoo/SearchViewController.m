@@ -61,66 +61,66 @@
     
 }
 
--(void) parseResponseDic: (NSString *) category
-{
-    
-    NSDictionary *resultArray= [_responseDic objectForKey:@"results"];
-    
-    
-        for (NSDictionary * result in resultArray) {
-            User *tempUser= [[User alloc]  init];
-            NSNumber * following=[result objectForKey:@"following"];
-            tempUser.following= [following stringValue];
-            NSNumber * followers=[result objectForKey:@"followers"];
-            tempUser.followers= [followers stringValue];
-            NSNumber * communities=[result objectForKey:@"communities"];
-            tempUser.communities= [communities stringValue];
-            
-            NSDictionary * profile=[result objectForKey:@"profile"];
-            tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
-            NSDictionary *avatar=[profile objectForKey:@"avatars"];
-            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-            tempUser.name= [result objectForKey:@"full_name"];
-            NSNumber * user_id=[result objectForKey:@"id"];
-            tempUser.user_id= [user_id stringValue];
-            
-            [_searchArrayPeople addObject:tempUser];
-        }
-        
-        
-    
-    [_tableview reloadData];
-    
-    
-}
-
-
-
-- (void) getSearchItemForPeople
-{
-    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",@"people", @"c",_searchTermField.text, @"q",@"10", @"limit",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/global/search"];
-    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        _responseDic= responseObject;
-        
-        [self parseResponseDic:@"People"];
-        
-   
-    } // success callback block
-     
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-    
-}
+//-(void) parseResponseDic: (NSString *) category
+//{
+//    
+//    NSDictionary *resultArray= [_responseDic objectForKey:@"results"];
+//    
+//    
+//        for (NSDictionary * result in resultArray) {
+//            User *tempUser= [[User alloc]  init];
+//            NSNumber * following=[result objectForKey:@"following"];
+//            tempUser.following= [following stringValue];
+//            NSNumber * followers=[result objectForKey:@"followers"];
+//            tempUser.followers= [followers stringValue];
+//            NSNumber * communities=[result objectForKey:@"communities"];
+//            tempUser.communities= [communities stringValue];
+//            
+//            NSDictionary * profile=[result objectForKey:@"profile"];
+//            tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+//            NSDictionary *avatar=[profile objectForKey:@"avatars"];
+//            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+//            tempUser.name= [result objectForKey:@"full_name"];
+//            NSNumber * user_id=[result objectForKey:@"id"];
+//            tempUser.user_id= [user_id stringValue];
+//            
+//            [_searchArrayPeople addObject:tempUser];
+//        }
+//        
+//        
+//    
+//    [_tableview reloadData];
+//    
+//    
+//}
+//
+//
+//
+//- (void) getSearchItemForPeople
+//{
+//    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+//    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.securityPolicy.allowInvalidCertificates = YES;
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",@"people", @"c",_searchTermField.text, @"q",@"10", @"limit",nil];
+//    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/global/search"];
+//    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        _responseDic= responseObject;
+//        
+//        [self parseResponseDic:@"People"];
+//        
+//   
+//    } // success callback block
+//     
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+//             NSLog(@"Error: %@", error);} // failure callback block
+//     ];
+//    
+//}
 
 
 - (void) getdiscoverItemForPeople
