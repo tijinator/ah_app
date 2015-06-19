@@ -160,7 +160,7 @@
 - (UIStatusBarStyle) preferredStatusBarStyle {
     
     
-    if(currentPage ==3||currentPage ==2||currentPage ==6||currentPage ==1||currentPage ==4)
+    if(currentPage ==3||currentPage ==2||currentPage ==6||currentPage ==1||currentPage ==4||currentPage>10)
     {
         if (blackStatusbar==1) {
      
