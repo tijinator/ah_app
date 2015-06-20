@@ -358,7 +358,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)cellButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-    NSString *key= [NSString stringWithFormat:@"%ld",(long)button.tag];
+    NSString *key= [NSString stringWithFormat:@"%ld",(long)button.tag+100];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
 }

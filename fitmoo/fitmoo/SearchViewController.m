@@ -315,8 +315,8 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
      User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row-1];
-    
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:temUser.user_id];
+      NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
 }
 
 // multy high table cell

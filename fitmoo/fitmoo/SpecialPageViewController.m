@@ -514,6 +514,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
+        key=[NSString stringWithFormat:@"%ld", ((long)button.tag+100)];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
 

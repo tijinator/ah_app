@@ -724,6 +724,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
     }else
     {
+        key=[NSString stringWithFormat:@"%ld", ((long)button.tag+100)];
       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
     

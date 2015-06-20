@@ -474,8 +474,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger  selectedImageIndex = indexPath.row;
     User *tempUser= [_searchArrayPeople objectAtIndex:selectedImageIndex];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:tempUser.user_id];
+      NSString *key=[NSString stringWithFormat:@"%d", tempUser.user_id.intValue+100];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
   //  [collectionView reloadData];
 }

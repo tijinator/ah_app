@@ -297,6 +297,7 @@
 
      
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+        key= [NSString stringWithFormat:@"%d",key.intValue-100];
             _peoplePage.searchId=key;
             [[self nav] pushViewController:_peoplePage animated:YES];
         //    prePage=currentPage;
