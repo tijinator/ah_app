@@ -244,6 +244,7 @@
     
     
      UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    @try {
     UIButton *imageview=[[UIButton alloc] init];
     imageview.frame= CGRectMake(15, 15, 35, 35);
     imageview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageview respectToSuperFrame:self.view];
@@ -298,6 +299,10 @@
     v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
     [cell.contentView addSubview:v];
     v.frame= CGRectMake(v.frame.origin.x, v.frame.origin.y, v.frame.size.width, 1);
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+    }
        return cell;
 }
 
@@ -346,18 +351,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+
 - (void)textFieldDidChange:(UITextField *)textField
 {
     if ([textField.text isEqualToString:@""]) {
-         [self initValuable];
+        [self initValuable];
         [self.tableview reloadData];
     }else
     {
-    
-    [self initValuable];
-    [self getdiscoverItemForPeople];
-     //   [self getSearchItemForPeople];
+        
+        [self initValuable];
+        [self getdiscoverItemForPeople];
+        //   [self getSearchItemForPeople];
     }
+    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{

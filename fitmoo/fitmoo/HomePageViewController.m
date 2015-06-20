@@ -39,7 +39,7 @@
 
 - (void) addtopBarView
 {
-    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
     v.backgroundColor= [UIColor whiteColor];
     [self.view addSubview:v];

@@ -37,4 +37,6 @@
 @property (strong, nonatomic)  NotificationViewController *notificationPage;
 @property (strong, nonatomic)  SearchViewController *searchPage;
 
+@property (strong, nonatomic)  NSMutableArray *Pagestuck;
+
 @end

@@ -895,16 +895,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
 }
 - (IBAction)shareButtonClick:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    NSInteger index=(NSInteger) button.tag/100-1;
-
-    HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
-    ActionSheet.action= @"share";
-    ActionSheet.postType=tempFeed.type;
-    ActionSheet.postId= tempFeed.feed_id;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    if (_searchId!=nil) {
+        UIButton *button = (UIButton *)sender;
+        NSInteger index=(NSInteger) button.tag/100-1;
+        
+        HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+        ActionSheet.action= @"share";
+        ActionSheet.postType=tempFeed.type;
+        ActionSheet.postId= tempFeed.feed_id;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    }
+  
     
 }
 - (IBAction)bodyImageButtonClick:(id)sender{

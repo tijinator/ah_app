@@ -50,6 +50,7 @@
     [[UINavigationBar appearance]  setBarTintColor:[UIColor blackColor]];
     currentPage=1000;
      blackStatusbar=0;
+    _Pagestuck= [[NSMutableArray alloc] init];
 // [self addfootButtonsForThree];
 }
 
@@ -190,8 +191,9 @@
             _searchPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SearchViewController"];
             
             [[self nav] pushViewController:_searchPage animated:YES];
-            prePage=currentPage;
+        //    prePage=currentPage;
             currentPage=1;
+            [_Pagestuck addObject:@"1"];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
        
@@ -199,16 +201,18 @@
         if (currentPage!=0) {
             _homePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"HomePageViewController"];
             [[self nav] pushViewController:_homePage animated:YES];
-            prePage=currentPage;
+         //   prePage=currentPage;
             currentPage=0;
+            [_Pagestuck addObject:@"0"];
         }
              [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
       
     }else  if ([key isEqualToString:@"5"]) {
         [[self nav] popToRootViewControllerAnimated:YES];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-        prePage=currentPage;
+      //  prePage=currentPage;
          currentPage=1000;
+        _Pagestuck=[[NSMutableArray alloc] init];
     }else  if ([key isEqualToString:@"6"]) {
         
         if (currentPage!=6) {
@@ -216,8 +220,9 @@
        
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
             [[self nav] pushViewController:_peoplePage animated:YES];
-            prePage=currentPage;
+        //    prePage=currentPage;
             currentPage=6;
+            [_Pagestuck addObject:@"6"];
 
         }
 
@@ -227,9 +232,10 @@
         
 
         [[self nav] popViewControllerAnimated:YES];
-        currentPage=prePage;
-            
-            
+       
+        [_Pagestuck removeLastObject];
+        NSString *page=[_Pagestuck lastObject];
+        currentPage=page.intValue;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
@@ -238,8 +244,9 @@
         
               _followPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"FollowViewController"];
               [[self nav] pushViewController:_followPage animated:YES];
-              prePage=currentPage;
+           //   prePage=currentPage;
               currentPage=3;
+              [_Pagestuck addObject:@"3"];
           }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
@@ -250,8 +257,9 @@
             [[self nav] pushViewController:_shopPage animated:YES];
 //            _notificationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"NotificationViewController"];
 //             [[self nav] pushViewController:_notificationPage animated:YES];
-            prePage=currentPage;
+          //  prePage=currentPage;
             currentPage=2;
+            [_Pagestuck addObject:@"2"];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
      
@@ -261,8 +269,9 @@
             _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
             //    [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:_settingPage animated:YES];
-            prePage=currentPage;
+         //   prePage=currentPage;
             currentPage=4;
+            [_Pagestuck addObject:@"4"];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
        
@@ -275,8 +284,9 @@
             _locationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"LocationViewController"];
             //    [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:_locationPage animated:YES];
-            prePage=currentPage;
+          //  prePage=currentPage;
             currentPage=7;
+            [_Pagestuck addObject:@"7"];
         }
        // [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
@@ -289,9 +299,9 @@
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
             _peoplePage.searchId=key;
             [[self nav] pushViewController:_peoplePage animated:YES];
-            prePage=currentPage;
+        //    prePage=currentPage;
             currentPage=key.intValue;
-
+            [_Pagestuck addObject:key];
     
     }
     [self setNeedsStatusBarAppearanceUpdate];
