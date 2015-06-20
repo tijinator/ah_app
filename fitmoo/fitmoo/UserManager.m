@@ -809,8 +809,6 @@
 //    _s3_bucket=@"fitmoo-uat";
     
 
-    
- //   _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-uat/photos/";
 
     
     
