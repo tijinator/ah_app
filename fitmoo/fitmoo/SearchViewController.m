@@ -327,7 +327,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
-    
+     [_searchTermField resignFirstResponder];
 }
 
 // multy high table cell
