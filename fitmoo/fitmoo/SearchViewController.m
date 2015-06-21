@@ -235,7 +235,7 @@
         [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [string length])];
         
         [label setAttributedText:attributedString];
-        
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
         
         [view addSubview:label];
         
@@ -310,13 +310,24 @@
        return cell;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = [touches anyObject];
+    if(touch.phase == UITouchPhaseBegan) {
+        //   [self disableViews];
+        
+        [_searchTermField resignFirstResponder];
+       
+    }
+}
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-     User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row-1];
-      NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    if (indexPath.row>0) {
+        User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row-1];
+        NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
+    
 }
 
 // multy high table cell
