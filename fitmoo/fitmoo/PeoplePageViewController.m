@@ -41,7 +41,7 @@
         [self getUserProfile:localUser.user_id];
   //  [self getHomePageItems];
     }
- //   [self getGalary];
+
     
 }
 
@@ -171,36 +171,6 @@
 }
 
 
-//- (void) definePhotoObjects
-//{
-//    if (_photoOffset==0) {
-//        _homePhotoArray= [[NSMutableArray alloc]init];
-//    }
-//    
-//    NSDictionary *result= [_responseDic objectForKey:@"results"];
-//    for (NSDictionary *dic in result) {
-//        PhotoGalary *photo= [[PhotoGalary alloc] init];
-//        NSNumber *photo_id= [dic objectForKey:@"id"];
-//        photo.photo_id= photo_id.stringValue;
-//        NSNumber *imageable_id= [dic objectForKey:@"imageable_id"];
-//        photo.imageable_id= imageable_id.stringValue;
-//        photo.imageable_type= [dic objectForKey:@"imageable_type"];
-//        NSDictionary *styles= [dic objectForKey:@"styles"];
-//        NSDictionary *slider= [styles objectForKey:@"slider"];
-//        NSNumber *height=[slider objectForKey:@"height"];
-//        photo.stylesUrlHeight= height.stringValue;
-//        NSNumber *width=[slider objectForKey:@"width"];
-//        photo.stylesUrlWidth= width.stringValue;
-//        photo.stylesUrl= [slider objectForKey:@"photo_url"];
-//        NSNumber *total_comment=[dic objectForKey:@"total_comment"];
-//        photo.total_comment= total_comment.stringValue;
-//        NSNumber *total_like= [dic objectForKey:@"total_like"];
-//        photo.total_like= total_like.stringValue;
-//        
-//        [_homePhotoArray addObject:photo];
-//    }
-//    
-//}
 
 - (void) defineFeedObjects
 {
@@ -254,13 +224,7 @@
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if ([self.tableType isEqualToString:@"photo"]) {
-//        
-//        return 105*[[FitmooHelper sharedInstance] frameRadio];
-//
-//    }else
-//    {
-//    
+
     
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
@@ -744,18 +708,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-//    if (indexPath.row==0) {
-//        return contentHight.integerValue;
-//    }
-//    if ([self.tableType isEqualToString:@"photo"]) {
-//        if (indexPath.row==0) {
-//            NSNumber *height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-//            return  height.intValue;
-//        }
-//        
-//          return 105*[[FitmooHelper sharedInstance] frameRadio];
-//    }else
-//    {
+
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -766,7 +719,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
   //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
-  //  }
+
 }
 
 
@@ -786,9 +739,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-        //   NSLog(@"bottom!");
-        //   NSLog(@"%f",self.tableView.contentOffset.y );
-        //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+
         if (_count==0) {
             if (self.tableView.contentOffset.y<0) {
                   _offset =0;
@@ -822,23 +773,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)likeButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
-//    HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
-//    
-//    if ([feed.is_liked isEqualToString:@"0"]) {
-//        int totalLike=1+(int) [button.titleLabel.text integerValue];
-//        NSString *newLikeString= [NSString stringWithFormat:@"%i", totalLike];
-//        [button setTitle:newLikeString forState:UIControlStateNormal];
-//        [button setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
-//        [[UserManager sharedUserManager] performLike:feed.feed_id];
-//        feed.is_liked=@"1";
-//    }
+
     
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
     if ([feed.is_liked isEqualToString:@"0"]) {
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
-        //  NSString *newLikeString= totalLike.stringValue;
-        //  [button setTitle:newLikeString forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:feed.feed_id];
         feed.is_liked=@"1";
@@ -913,12 +853,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)bodyImageButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-//    specialPage.action=@"playVideo";
-//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-//    
-//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
     
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
@@ -1086,8 +1020,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BioViewController *bioPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"BioViewController"];
     bioPage.bioText=bioText;
     [self.navigationController pushViewController:bioPage animated:YES];
-   // [self.navigationController presentViewController:bioPage animated:YES completion:nil];
-   // [self.tableView reloadData];
+
 }
 
 @end

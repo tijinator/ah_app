@@ -12,6 +12,9 @@
 {
     User * tempUser1;
     UIButton *tempButton1;
+    double frameRadio;
+    double constentUp;
+    double constentdown;
 }
 @end
 
@@ -171,48 +174,13 @@
         return 0;
     }
 
- return [_searchArrayPeople count]+1;
+ return [_searchArrayPeople count]+2;
        
     
 }
 
 
-//- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//   if([_searchArrayPeople count]==0)
-//   {
-//       return 0;
-//   }
-//    return 60.0f;
-//}
-//
-//
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//   
-//    
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 25, tableView.frame.size.width, 20)];
-//
-//    NSString *string= @"PROFILES + BRANDS";
-//    
-//    [label setBackgroundColor:[UIColor clearColor]];
-//    [label setText:string];
-//    [label setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]];
-//    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12];
-//    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font}  ];
-//  
-//    float spacing = 1.0f;
-//    [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [string length])];
-//
-//    [label setAttributedText:attributedString];
-//    
-//    
-//    [view addSubview:label];
-//    
-//    [view setBackgroundColor:[UIColor whiteColor]]; //your background color...
-//    return view;
-//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -246,6 +214,21 @@
 
     }
     
+    //last cell
+    if (indexPath.row==[_searchArrayPeople count]+1) {
+        UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+        
+        UILabel *text= (UILabel *) [Cell viewWithTag:1001];
+        text.frame=CGRectMake(0, 21, 320, 27);
+        text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
+        
+        UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
+        inviteButton.frame=CGRectMake(81, 56, 157, 30);
+        inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
+        
+        return Cell;
+    }
+    
     
      UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
     @try {
@@ -258,7 +241,7 @@
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     
     UIButton * followButton= [[UIButton alloc] init];
-    followButton.frame= CGRectMake(194, 14, 100, 31);
+    followButton.frame= CGRectMake(210, 14, 100, 31);
     followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
@@ -299,6 +282,10 @@
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     
     UIView *v= [[UIView alloc] initWithFrame:CGRectMake(55, 59, 270, 1)];
+    if (indexPath.row==[_searchArrayPeople count]) {
+          v= [[UIView alloc] initWithFrame:CGRectMake(5, 59, 310, 1)];
+    }
+   
     v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
     v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
     [cell.contentView addSubview:v];
@@ -307,7 +294,14 @@
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
     }
+    
+   
+    
        return cell;
+    
+    
+   
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -322,7 +316,7 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row>0) {
+    if (indexPath.row>0&&indexPath.row<[_searchArrayPeople count]-2) {
         User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row-1];
         NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
@@ -333,7 +327,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+
     double Radio= self.view.frame.size.width / 320;
+    
+    if (indexPath.row==[_searchArrayPeople count]+1) {
+        return 310*Radio;
+    }
     
     return 60*Radio;
 }
@@ -367,6 +366,54 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+//#pragma mark - textfield functions
+//- (void) moveUpView: (UIView *) moveView
+//{
+//    
+//    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+//        moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
+//    }completion:^(BOOL finished){}];
+//    
+//    
+//}
+//
+//- (void) movedownView:(UIView *) moveView
+//{
+//    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+//        moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
+//    }completion:^(BOOL finished){}];
+//    
+//}
+//-(void)keyboardDidShow:(NSNotification*)notification
+//{
+//    CGFloat height = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height;
+//    
+//    constentUp = height;
+//    [self moveUpView:_tableview];
+//    // [self.view layoutIfNeeded];
+//}
+//
+//
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    // [self moveUpView:_buttomView];
+    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+   // [self movedownView:_tableview];
+    [self initValuable];
+    // [self getdiscoverItemForPeople];
+    [self getSearchItemForPeople];
+    return YES;
+}
+
+
 - (void)textFieldDidChange:(UITextField *)textField
 {
     if ([textField.text isEqualToString:@""]) {
@@ -382,11 +429,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
-   
-    [textField resignFirstResponder];
-    return YES;
-}
+
 
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -410,6 +453,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) initFrames
 {
+     frameRadio=[[FitmooHelper sharedInstance] frameRadio];
+     constentdown=40;
+     constentUp=300;
+    
     _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
@@ -446,6 +493,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _searchTermField.leftView = paddingView;
     _searchTermField.leftViewMode = UITextFieldViewModeAlways;
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardDidShow:)
+//                                                 name:UIKeyboardWillShowNotification
+//                                               object:nil];
+    
      //[[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"1"];
 }
 

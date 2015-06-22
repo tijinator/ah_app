@@ -9,6 +9,7 @@
 #import "InviteViewController.h"
 #import "AFNetworking.h"
 #import "UserManager.h"
+
 @interface InviteViewController ()
 
 @end
@@ -18,8 +19,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    [self getAddressBook];
     // Do any additional setup after loading the view.
 }
+
+- (void) getAddressBook
+{
+    ABPeoplePickerNavigationController* peoplePicker = [[ABPeoplePickerNavigationController alloc] init];
+    peoplePicker.peoplePickerDelegate = self;
+  //  [self presentViewController:peoplePicker animated:NO completion:nil];
+  //  [self dismissViewControllerAnimated:NO completion:nil];
+    
+    ABAddressBookRef addressBook = [peoplePicker addressBook];
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
+    CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
+    
+    NSLog(@"start loop");
+    for( int i = 0 ; i < nPeople ; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
+        NSLog(@"inside loop");
+    }
+    
+    NSLog(@"end loop");
+}
+
 - (void) initFrames
 {
     

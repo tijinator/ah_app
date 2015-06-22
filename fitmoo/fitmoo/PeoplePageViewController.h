@@ -40,7 +40,7 @@
 @property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
-@property (strong, nonatomic)  NSMutableArray * homePhotoArray;
+
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;

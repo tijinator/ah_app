@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "UITextView+Placeholder.h"
-@interface InviteViewController : UIViewController
+#import <AddressBookUI/AddressBookUI.h>
+@interface InviteViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UILabel *bioLabel;

@@ -51,8 +51,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
+
     
 }
 
@@ -602,7 +601,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
     }else
     {
-        height=[NSNumber numberWithInt:contentHight.integerValue];
+        height=[NSNumber numberWithInt:contentHight.intValue];
     }
   //  NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
   //  NSLog(@"%ld",(long)height.integerValue);
