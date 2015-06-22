@@ -2557,6 +2557,26 @@ instructions to reset your password.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="gdp-eA-pZY">
+                                <rect key="frame" x="0.0" y="40" width="320" height="485"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="80" id="MOl-7q-FZR" customClass="ShareTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MOl-7q-FZR" id="Phx-43-5Lj">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="g0B-yk-fln" id="sh6-Ty-cfq"/>
+                                    <outlet property="delegate" destination="g0B-yk-fln" id="Nlm-O2-XEs"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="top" id="b8p-54-OlH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2581,47 +2601,6 @@ instructions to reset your password.</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="YJr-mE-gKV">
-                                <rect key="frame" x="0.0" y="60" width="320" height="448"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="zw9-7M-ozI">
-                                        <rect key="frame" x="45" y="50" width="230" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="wDx-RA-Jnt">
-                                                <rect key="frame" x="0.0" y="0.0" width="230" height="80"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="VqW-8i-QtZ"/>
-                                                </connections>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="ses-km-eGF">
-                                        <rect key="frame" x="45" y="150" width="230" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="53F-Zk-Xqq">
-                                                <rect key="frame" x="0.0" y="0.0" width="230" height="200"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="T1U-eV-qk7" id="azH-j7-XEx"/>
-                                                </connections>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nSj-MB-VwZ" customClass="BSBoldButton">
                                 <rect key="frame" x="0.0" y="520" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2632,7 +2611,6 @@ instructions to reset your password.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="postButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="wgH-Q9-CBd"/>
                                     <action selector="sendButtonClick:" destination="g0B-yk-fln" eventType="touchUpInside" id="aRd-Xo-sSH"/>
                                 </connections>
                             </button>
@@ -2642,12 +2620,8 @@ instructions to reset your password.</string>
                     <connections>
                         <outlet property="backButton" destination="hMl-iY-qAr" id="h48-BM-V7F"/>
                         <outlet property="bioLabel" destination="HCM-lO-ram" id="fYu-Ex-Hqn"/>
-                        <outlet property="bodyView" destination="YJr-mE-gKV" id="1fx-I1-TSv"/>
-                        <outlet property="emailTextView" destination="wDx-RA-Jnt" id="5fn-CC-lMd"/>
-                        <outlet property="emailView" destination="zw9-7M-ozI" id="udX-eq-Sfd"/>
-                        <outlet property="messageTextView" destination="53F-Zk-Xqq" id="JyE-N6-RIV"/>
-                        <outlet property="messageView" destination="ses-km-eGF" id="q7E-XV-O8H"/>
                         <outlet property="sendButton" destination="nSj-MB-VwZ" id="tac-yJ-pVA"/>
+                        <outlet property="tableview" destination="gdp-eA-pZY" id="mK0-N6-f7V"/>
                         <outlet property="topview" destination="b8p-54-OlH" id="tM2-tg-s2C"/>
                     </connections>
                 </viewController>

@@ -274,6 +274,7 @@
 		277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F71B1FAB2C00AE4B36 /* profile.png */; };
 		277BE8FB1B1FAB2C00AE4B36 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */; };
 		277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */; };
+		2787C90D1B38AD7700B182FF /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2787C90C1B38AD7700B182FF /* Contacts.m */; };
 		278818AD1B06972500FE8A4C /* white_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AA1B06972500FE8A4C /* white_toggle.png */; };
 		278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AB1B06972500FE8A4C /* white_toggle@2x.png */; };
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
@@ -841,6 +842,8 @@
 		277BE8F71B1FAB2C00AE4B36 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@3x.png"; sourceTree = "<group>"; };
+		2787C90B1B38AD7700B182FF /* Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
+		2787C90C1B38AD7700B182FF /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
 		278818AA1B06972500FE8A4C /* white_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_toggle.png; sourceTree = "<group>"; };
 		278818AB1B06972500FE8A4C /* white_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@2x.png"; sourceTree = "<group>"; };
 		278818AC1B06972500FE8A4C /* white_toggle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@3x.png"; sourceTree = "<group>"; };
@@ -1369,6 +1372,8 @@
 				27AD26671B18DE1C008D338D /* UserManager.m */,
 				272582751AD593150059F43C /* LocalUser.h */,
 				272582761AD593150059F43C /* LocalUser.m */,
+				2787C90B1B38AD7700B182FF /* Contacts.h */,
+				2787C90C1B38AD7700B182FF /* Contacts.m */,
 				272582781AD5A4DE0059F43C /* User.h */,
 				272582791AD5A4DE0059F43C /* User.m */,
 				2732B7281AD83BE300610821 /* HomeFeed.h */,
@@ -2575,6 +2580,7 @@
 				27AD26651B18BACC008D338D /* UITextView+Placeholder.m in Sources */,
 				27988C921B0B7E7D00BDE8EB /* FollowCollectionViewCell.m in Sources */,
 				279E57821B20A5320076C3B5 /* LanchScreen.m in Sources */,
+				2787C90D1B38AD7700B182FF /* Contacts.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,

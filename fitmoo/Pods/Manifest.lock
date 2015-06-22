@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - APAddressBook (0.1.11):
+    - APAddressBook/Core (= 0.1.11)
+  - APAddressBook/Core (0.1.11)
   - AWSAutoScaling (2.1.1):
     - AWSCore (= 2.1.1)
     - Bolts (~> 1.1.0)
@@ -140,12 +143,14 @@ PODS:
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
+  - APAddressBook
   - AWSiOSSDKv2
   - Facebook-iOS-SDK (~> 3.0)
   - FSImageViewer (~> 3.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
   AWSAutoScaling: 7dce9232ff39ba7261879ebee44e99e20ae19ddf
   AWSCloudWatch: a71dec2b429d09e7d5baf2959548accf606b5f4e
   AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300

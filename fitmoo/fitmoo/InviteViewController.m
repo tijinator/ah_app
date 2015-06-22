@@ -9,39 +9,221 @@
 #import "InviteViewController.h"
 #import "AFNetworking.h"
 #import "UserManager.h"
-
+#import "APAddressBook.h"
+#import "APContact.h"
 @interface InviteViewController ()
-
+{
+    NSArray *content;
+    NSArray *indices;
+}
 @end
 
 @implementation InviteViewController
+static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
     [self getAddressBook];
-    // Do any additional setup after loading the view.
+    
+    indices= [self convertToArray];
+    
+ //  [self sendSMS:@"Body of SMS..." recipientList:[NSArray arrayWithObjects:@"+1-111-222-3333", @"111-333-4444", nil]];
 }
 
-- (void) getAddressBook
+-(NSArray *)convertToArray
 {
-    ABPeoplePickerNavigationController* peoplePicker = [[ABPeoplePickerNavigationController alloc] init];
-    peoplePicker.peoplePickerDelegate = self;
-  //  [self presentViewController:peoplePicker animated:NO completion:nil];
-  //  [self dismissViewControllerAnimated:NO completion:nil];
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    for (int i=0; i < letters.length; i++) {
+        NSString *tmp_str = [letters substringWithRange:NSMakeRange(i, 1)];
+        [arr addObject:[tmp_str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    }
+    return arr;
+}
+
+#pragma mark -
+#pragma mark Table view data source
+
+// Customize the number of sections in the table view.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 25;
+}
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[_contactsPymic objectAtIndex:section] count];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if ([[_contactsPymic objectAtIndex:section] count]==0) {
+        return 0;
+    }
+    return 18.0f;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ABAddressBookRef addressBook = [peoplePicker addressBook];
-    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
-    CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
+    UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    APContact *contact;
+    if ([[_contactsPymic objectAtIndex:indexPath.section] count]>0) {
+        contact= [[_contactsPymic objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        }
+        
+        
     
-    NSLog(@"start loop");
-    for( int i = 0 ; i < nPeople ; i++ )
-    {
-        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople, i );
-        NSLog(@"inside loop");
+ //   APContact *contact=[_contacts objectAtIndex:indexPath.row];
+    
+    UILabel *nameLabel=[[UILabel alloc] init];
+    nameLabel.frame= CGRectMake(63, 11, 125, 42);
+    nameLabel.numberOfLines=2;
+    nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
+    NSString *firstname=[NSString stringWithFormat:@"%@ ",contact.firstName];
+    NSString *lastname=contact.lastName;
+    if (contact.firstName==nil) {
+        firstname=@"";
     }
     
-    NSLog(@"end loop");
+    if (contact.lastName==nil) {
+        lastname=@"";
+    }
+    
+    nameLabel.text= [NSString stringWithFormat:@"%@%@",firstname, lastname ];
+    
+    UIFont *font = [UIFont fontWithName:@"BentonSans" size:16];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
+    
+    [nameLabel setAttributedText:attributedString];
+
+    [cell .contentView addSubview:nameLabel];
+    
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
+    return [indices objectAtIndex:section];
+    
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return indices;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [indices indexOfObject:title];
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+
+}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    double Radio= self.view.frame.size.width / 320;
+    return 50*Radio;
+}
+
+
+#pragma mark -
+#pragma mark Send Message
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MessageComposeResultCancelled)
+        NSLog(@"Message cancelled");
+    else if (result == MessageComposeResultSent)
+        NSLog(@"Message sent");
+    else
+        NSLog(@"Message failed");
+}
+
+- (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
+{
+    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        controller.body = bodyOfMessage;
+        controller.recipients = recipients;
+        controller.messageComposeDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+    }    
+}
+
+
+
+#pragma mark -
+#pragma mark getAddressBook
+- (void) getAddressBook
+{
+    APAddressBook *addressBook = [[APAddressBook alloc] init];
+    
+    addressBook.filterBlock = ^BOOL(APContact *contact)
+    {
+        return contact.phones.count > 0;
+    };
+    
+    addressBook.sortDescriptors = @[
+    [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
+    [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]
+                                    ];
+   
+    // don't forget to show some activity
+    [addressBook loadContacts:^(NSArray *contacts, NSError *error)
+    {
+        // hide activity
+        if (!error)
+        {
+            
+            _contacts= contacts;
+            [self convertObjects];
+            [_tableview reloadData];
+            // do something with contacts array
+        }
+        else
+        {
+            // show error
+        }
+    }];
+
+    
+    
+}
+
+
+- (void) convertObjects
+{
+    _contactsPymic=[[NSMutableArray alloc] initWithCapacity:25];
+    
+    for (int i=0; i<25; i++) {
+        NSMutableArray *array= [[NSMutableArray alloc] init];
+        [_contactsPymic addObject:array];
+    }
+    
+    for (APContact *contact in _contacts) {
+        if (contact.firstName==nil) {[[_contactsPymic objectAtIndex:0] addObject:contact];}
+    }
+    
+    for (int i=1; i<25; i++) {
+
+        for (APContact *contact in _contacts) {
+             if ([contact.firstName characterAtIndex:0]==[letters characterAtIndex:i])
+             {
+                 [[_contactsPymic objectAtIndex:i] addObject:contact];
+             }
+        }
+        
+    }
+    
+    
 }
 
 - (void) initFrames
@@ -60,6 +242,7 @@
     
     _sendButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_sendButton respectToSuperFrame:self.view];
     
+    _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     
     UIFont *font = [UIFont fontWithName:@"BentonSans" size:19];
     _emailTextView.font=font;

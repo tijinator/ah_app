@@ -171,9 +171,10 @@
  numberOfRowsInSection:(NSInteger)section
 {
     if ([_searchArrayPeople count]==0) {
+        _buttonView.hidden=false;
         return 0;
     }
-
+        _buttonView.hidden=true;
  return [_searchArrayPeople count]+2;
        
     
@@ -417,11 +418,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)textFieldDidChange:(UITextField *)textField
 {
     if ([textField.text isEqualToString:@""]) {
+     
         [self initValuable];
         [self.tableview reloadData];
     }else
     {
-        
+      
         [self initValuable];
        // [self getdiscoverItemForPeople];
            [self getSearchItemForPeople];
