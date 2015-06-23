@@ -523,7 +523,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)shareButtonClick:(id)sender {
-
+ if (_searchId!=nil) {
     HomeFeed *tempFeed= _homeFeed;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
@@ -531,7 +531,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ActionSheet.postType=tempFeed.type;
     ActionSheet.postId= tempFeed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
-    
+ }
     //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
     //    specialPage.action=@"Share";
