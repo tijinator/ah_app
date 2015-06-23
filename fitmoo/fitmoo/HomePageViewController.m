@@ -862,15 +862,23 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 - (IBAction)shareButtonClick:(id)sender {
+    User *localUser= [[UserManager sharedUserManager] getUserLocally];
+    
+    
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
-    ActionSheet.action= @"share";
-    ActionSheet.postType=tempFeed.type;
-    ActionSheet.postId= tempFeed.feed_id;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    NSString *create_by_id=[NSString stringWithFormat:@"%@", tempFeed.created_by.created_by_id];
+    if (![localUser.user_id isEqualToString:create_by_id]) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+        ActionSheet.action= @"share";
+        ActionSheet.postType=tempFeed.type;
+        ActionSheet.postId= tempFeed.feed_id;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+    }
+    
+   
     
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
