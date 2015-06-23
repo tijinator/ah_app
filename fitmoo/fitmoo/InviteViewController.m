@@ -264,7 +264,10 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (APContact *contact in _contacts) {
         [contact setAccessibilityLabel:@"0"];
         if (!(contact.firstName==nil&&contact.lastName==nil)) {
-            [[_contactsPymic objectAtIndex:0] addObject:contact];
+            if (contact.firstName==nil) {
+                 [[_contactsPymic objectAtIndex:0] addObject:contact];
+            }
+           
         }
     }
     
