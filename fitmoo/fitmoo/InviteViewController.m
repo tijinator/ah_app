@@ -263,7 +263,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     for (APContact *contact in _contacts) {
         [contact setAccessibilityLabel:@"0"];
-        if (contact.firstName==nil) {
+        if (!(contact.firstName==nil&&contact.lastName==nil)) {
             [[_contactsPymic objectAtIndex:0] addObject:contact];
         }
     }
@@ -403,7 +403,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     }
     User *user= [[UserManager sharedUserManager] localUser];
-    NSString * message=[NSString stringWithFormat:@"%@%@",@"HI, I would like to invite you to join me on Fitmoo.com. A new platform for fitness, health and wellness. \n \n Please click this link to follow me: ", user.vanity_url ];
+    NSString * message=[NSString stringWithFormat:@"%@%@",@"Hi,\n \nI would like to invite you to join me on Fitmoo.com. A new platform for everything fitness, health & wellness.\n \nPlease click this link to follow me: ", user.vanity_url ];
     
     [self sendSMS:message recipientList:phoneArray];
     

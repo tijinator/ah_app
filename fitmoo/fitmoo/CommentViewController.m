@@ -242,7 +242,7 @@
     
     [cell.contentView addSubview:imageButton];
     [cell.contentView addSubview:nameLabel];
-    
+     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     return cell;
 }
 

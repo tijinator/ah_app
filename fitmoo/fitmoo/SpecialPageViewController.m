@@ -273,6 +273,7 @@
     [cell.likeButton setTag:indexPath.row*100+4];
     [cell.commentButton setTag:indexPath.row*100+5];
     [cell.viewAllCommentButton setTag:indexPath.row*100+5];
+    [cell.bodyCommentButton setTag:indexPath.row*100+5];
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
@@ -287,6 +288,7 @@
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.bodyCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.viewAllCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
