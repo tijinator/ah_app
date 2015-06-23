@@ -231,6 +231,12 @@
         _localUser.profile_avatar_thumb=[avatar objectForKey:@"small"];
         _localUser.profile_avatar_original=[avatar objectForKey:@"original"];
         _localUser.bio=[profile objectForKey:@"bio"];
+        
+        _localUser.vanity_url=[_responseDic objectForKey:@"vanity_url"];
+        if (_localUser.vanity_url==nil) {
+            _localUser.vanity_url=@"";
+        }
+        
         if ([_localUser.bio isEqual:[NSNull null]]) {
             _localUser.bio=@"";
         }

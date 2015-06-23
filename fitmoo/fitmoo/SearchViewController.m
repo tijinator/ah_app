@@ -15,6 +15,9 @@
     double frameRadio;
     double constentUp;
     double constentdown;
+    NSString *searchPeopleName;
+    BOOL sleep;
+    double ticks;
 }
 @end
 
@@ -25,9 +28,13 @@
     [self initFrames];
     [self initValuable];
     _searchArrayPeople= [[NSMutableArray alloc] init];
+    _searchArrayPeopleName= [[NSMutableArray alloc] init];
+    sleep=false;
     _tableview.separatorStyle= UITableViewCellSeparatorStyleNone;
     [self.bottomView setHidden:true];
     [self.subBottomView setHidden:true];
+    
+     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -112,18 +119,19 @@
     NSString *lim= [NSString stringWithFormat:@"%i", _limit];
     NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",lim, @"limit",@"true", @"mobile",@"people", @"c",_searchTermField.text, @"q",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",lim, @"limit",@"true", @"mobile",@"people", @"c",searchPeopleName, @"q",nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/global/search"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         
         [self parseResponseDic:@"People"];
-        
+        sleep=false;
    
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              sleep=false;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     
@@ -171,6 +179,11 @@
  numberOfRowsInSection:(NSInteger)section
 {
     if ([_searchArrayPeople count]==0) {
+        
+        if (![searchPeopleName isEqualToString:@""]&&searchPeopleName!=nil) {
+            return 1;
+        }
+        
         _buttonView.hidden=false;
         return 0;
     }
@@ -188,6 +201,22 @@
 {
     
     if (indexPath.row==0) {
+        if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople count]==0) {
+            UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell2"];
+            
+            UILabel *text= (UILabel *) [Cell viewWithTag:1001];
+            text.frame=CGRectMake(0, 21, 320, 27);
+            text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
+            
+            UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
+            inviteButton.frame=CGRectMake(81, 56, 157, 30);
+            inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
+            [inviteButton addTarget:self action:@selector(InviteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            return Cell;
+
+        }
+        
+        
         UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, tableView.frame.size.width, 20)];
@@ -226,7 +255,7 @@
         UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
         inviteButton.frame=CGRectMake(81, 56, 157, 30);
         inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
-        
+         [inviteButton addTarget:self action:@selector(InviteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         return Cell;
     }
     
@@ -317,12 +346,19 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row>0&&indexPath.row<[_searchArrayPeople count]-2) {
+    @try {
+   
+    if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople count]) {
         User *temUser= [_searchArrayPeople objectAtIndex:indexPath.row-1];
         NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+    }
      [_searchTermField resignFirstResponder];
+         
 }
 
 // multy high table cell
@@ -335,6 +371,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         return 310*Radio;
     }
     
+    
+    if (indexPath.row==0) {
+        if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople count]==0) {
+        
+             return 310*Radio;
+        }
+    }
     return 60*Radio;
 }
 - (IBAction)followButtonClick:(id)sender {
@@ -367,34 +410,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-//#pragma mark - textfield functions
-//- (void) moveUpView: (UIView *) moveView
-//{
-//    
-//    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-//        moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
-//    }completion:^(BOOL finished){}];
-//    
-//    
-//}
-//
-//- (void) movedownView:(UIView *) moveView
-//{
-//    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-//        moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
-//    }completion:^(BOOL finished){}];
-//    
-//}
-//-(void)keyboardDidShow:(NSNotification*)notification
-//{
-//    CGFloat height = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height;
-//    
-//    constentUp = height;
-//    [self moveUpView:_tableview];
-//    // [self.view layoutIfNeeded];
-//}
-//
-//
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     // [self moveUpView:_buttomView];
@@ -414,20 +430,60 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
+- (void)callQueue
+{
+    if (sleep==false) {
+        if ([_searchArrayPeopleName count]>0) {
+            searchPeopleName= [_searchArrayPeopleName objectAtIndex:0];
+            [_searchArrayPeopleName removeObjectAtIndex:0];
+            
+            if ([searchPeopleName isEqualToString:@""]) {
+                [self initValuable];
+                [self.tableview reloadData];
+               
+            }else
+            {
+                [self initValuable];
+                [self getSearchItemForPeople];
+                 sleep=true;
+            }
+            
+           
+        }
+
+    }
+    
+}
+
+- (void)timerTick:(NSTimer *)timer
+{
+
+    ticks += 0.1;
+    double seconds = fmod(ticks, 60.0);
+
+    if (seconds>=0.5 && seconds<0.6) {
+        [_searchArrayPeopleName addObject:searchPeopleName];
+    }
+}
 
 - (void)textFieldDidChange:(UITextField *)textField
 {
-    if ([textField.text isEqualToString:@""]) {
-     
-        [self initValuable];
-        [self.tableview reloadData];
-    }else
-    {
-      
-        [self initValuable];
-       // [self getdiscoverItemForPeople];
-           [self getSearchItemForPeople];
-    }
+    [_timer invalidate];
+    ticks=0;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+    searchPeopleName=textField.text;
+   
+//    if ([textField.text isEqualToString:@""]) {
+//     
+//        [self initValuable];
+//        [self.tableview reloadData];
+//    }else
+//    {
+//      
+//        [self initValuable];
+//        
+//        [self getSearchItemForPeople];
+//    }
     
 }
 
@@ -515,6 +571,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _count=1;
     
     _searchArrayPeople= [[NSMutableArray alloc]init];
+  //  _searchArrayPeopleName= [[NSMutableArray alloc]init];
 }
 
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {

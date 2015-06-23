@@ -10,6 +10,7 @@
 #import "FitmooHelper.h"
 #import "UITextView+Placeholder.h"
 #import <MessageUI/MFMessageComposeViewController.h>
+#import "User.h"
 @interface InviteViewController : UIViewController<MFMessageComposeViewControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;

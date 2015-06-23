@@ -56,7 +56,7 @@
     [self.view bringSubviewToFront:_lanchScreen.view];
     _lanchScreen.view.alpha=1;
     
-    [UIView animateWithDuration:4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:4 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
         _lanchScreen.view.alpha=0;
     }completion:^(BOOL finished){}];
     

@@ -59,7 +59,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if ([[_contactsPymic objectAtIndex:section] count]==0) {
         return 0;
     }
-    return 18.0f;
+    return 27.0f;
 }
 
 // Customize the appearance of table view cells.
@@ -76,7 +76,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
  //   APContact *contact=[_contacts objectAtIndex:indexPath.row];
     
     UILabel *nameLabel=[[UILabel alloc] init];
-    nameLabel.frame= CGRectMake(63, 11, 125, 42);
+    nameLabel.frame= CGRectMake(25, 5, 200, 42);
     nameLabel.numberOfLines=2;
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     NSString *firstname=[NSString stringWithFormat:@"%@ ",contact.firstName];
@@ -96,16 +96,53 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     [nameLabel setAttributedText:attributedString];
 
+    
+    UIButton * followButton= [[UIButton alloc] init];
+    followButton.frame= CGRectMake(270, 18, 16, 12);
+    followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
+    
+    
+    if ([contact.accessibilityLabel isEqualToString:@"0"]) {
+        
+        [followButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        
+    }else
+    {
+        [followButton setBackgroundImage:[UIImage imageNamed:@"bluecheck.png"] forState:UIControlStateNormal];
+    }
+   
+
+    
     [cell .contentView addSubview:nameLabel];
+    [cell .contentView addSubview:followButton];
     
-    
+    cell.selectionStyle= UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
-    return [indices objectAtIndex:section];
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20)];
+    UILabel *title= [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
+    title.textColor=[UIColor colorWithRed:121.0/255.0 green:134.0/255.0 blue:142.0/255.0 alpha:1.0];
+    title.text=[indices objectAtIndex:section];
     
+    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:14];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:title.text attributes:@{NSFontAttributeName: font}  ];
+    
+    [title setAttributedText:attributedString];
+    
+    [view addSubview:title];
+    [view setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:238.0/255.0 blue:240.0/255.0 alpha:1.0]];
+    return view;
 }
+
+//- (NSString *)tableView:(UITableView *)aTableView titleForHeaderInSection:(NSInteger)section {
+//    return [indices objectAtIndex:section];
+//    
+//}
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return indices;
@@ -119,7 +156,24 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    APContact *contact;
+    if ([[_contactsPymic objectAtIndex:indexPath.section] count]>0) {
+        contact= [[_contactsPymic objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }
 
+    if (contact!=nil) {
+        if ([contact.accessibilityLabel isEqualToString:@"0"]) {
+            
+            [contact setAccessibilityLabel:@"1"];
+            
+        }else
+        {
+             [contact setAccessibilityLabel:@"0"];
+        }
+    }
+    
+    [self.tableview reloadData];
+    
 }
 
 
@@ -157,7 +211,6 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         [self presentViewController:controller animated:YES completion:nil];
     }    
 }
-
 
 
 #pragma mark -
@@ -209,12 +262,16 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     
     for (APContact *contact in _contacts) {
-        if (contact.firstName==nil) {[[_contactsPymic objectAtIndex:0] addObject:contact];}
+        [contact setAccessibilityLabel:@"0"];
+        if (contact.firstName==nil) {
+            [[_contactsPymic objectAtIndex:0] addObject:contact];
+        }
     }
     
     for (int i=1; i<25; i++) {
-
+        
         for (APContact *contact in _contacts) {
+              [contact setAccessibilityLabel:@"0"];
              if ([contact.firstName characterAtIndex:0]==[letters characterAtIndex:i])
              {
                  [[_contactsPymic objectAtIndex:i] addObject:contact];
@@ -328,17 +385,27 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     //      [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)sendButtonClick:(id)sender {
-    if ([self checkValidEmail:_emailTextView.text]==true) {
-        [self getInviteCall];
-    }else
-    {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops!"
-                                                          message : @"Please make sure to enter valid email addresses." delegate : nil cancelButtonTitle : @"OK"
-                                                otherButtonTitles : nil ];
-        [alert show ];
-
-    }
+//    if ([self checkValidEmail:_emailTextView.text]==true) {
+//        [self getInviteCall];
+//    }
+    NSMutableArray *phoneArray=[[NSMutableArray alloc] init];
     
+    for (int i=0; i<25; i++) {
+        NSArray * childContactArray= [_contactsPymic objectAtIndex:i];
+        
+        for (APContact *contact in childContactArray) {
+            if ([contact.accessibilityLabel isEqualToString:@"1"]) {
+                NSString *phone=[contact.phones objectAtIndex:0];
+                [phoneArray addObject:phone];
+            }
+        }
+        
+        
+    }
+    User *user= [[UserManager sharedUserManager] localUser];
+    NSString * message=[NSString stringWithFormat:@"%@%@",@"HI, I would like to invite you to join me on Fitmoo.com. A new platform for fitness, health and wellness. \n \n Please click this link to follow me: ", user.vanity_url ];
+    
+    [self sendSMS:message recipientList:phoneArray];
     
 }
 @end

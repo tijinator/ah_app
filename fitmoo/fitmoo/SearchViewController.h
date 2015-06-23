@@ -31,7 +31,8 @@
 @property (strong, nonatomic) IBOutlet UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
-
+@property (strong, nonatomic)  NSMutableArray * searchArrayPeopleName;
+@property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UILabel *buttomLabel;
 @property (strong, nonatomic) IBOutlet UIButton *inviteButton;
