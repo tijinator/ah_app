@@ -15,15 +15,14 @@
 #import "BaseViewController.h"
 #import "UserManager.h"
 #import "AsyncImageView.h"
-
 #import "ActionSheetViewController.h"
-
 #import "PeoplePageViewController.h"
 #import "CommentViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "VimeoHelper.h"
 #import "YTVimeoExtractor.h"
+#import "ComposeViewController.h"
 
 
 @interface HomePageViewController : BaseViewController

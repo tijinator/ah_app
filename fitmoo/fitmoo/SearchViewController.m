@@ -40,36 +40,36 @@
 
 
 
--(void) parseResponseDicDiscover: (NSString *) category
-{
-    
-  //  NSDictionary *resultArray= [_responseDic objectForKey:@"all"];
-    
-   
-        for (NSDictionary * result in _responseDic) {
-            User *tempUser= [[User alloc]  init];
-            NSNumber * following=[result objectForKey:@"is_following"];
-            tempUser.is_following= [following stringValue];
-            NSNumber * followers=[result objectForKey:@"followers"];
-            tempUser.followers= [followers stringValue];
-           
-            
-            NSDictionary * profile=[result objectForKey:@"profile"];
-            NSDictionary *avatar=[profile objectForKey:@"avatars"];
-            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-            
-            tempUser.name= [result objectForKey:@"full_name"];
-            NSNumber * user_id=[result objectForKey:@"id"];
-            tempUser.user_id= [user_id stringValue];
-            
-            [_searchArrayPeople addObject:tempUser];
-        }
-
-    
-    [_tableview reloadData];
-    
-    
-}
+//-(void) parseResponseDicDiscover: (NSString *) category
+//{
+//    
+//  //  NSDictionary *resultArray= [_responseDic objectForKey:@"all"];
+//    
+//   
+//        for (NSDictionary * result in _responseDic) {
+//            User *tempUser= [[User alloc]  init];
+//            NSNumber * following=[result objectForKey:@"is_following"];
+//            tempUser.is_following= [following stringValue];
+//            NSNumber * followers=[result objectForKey:@"followers"];
+//            tempUser.followers= [followers stringValue];
+//           
+//            
+//            NSDictionary * profile=[result objectForKey:@"profile"];
+//            NSDictionary *avatar=[profile objectForKey:@"avatars"];
+//            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+//            
+//            tempUser.name= [result objectForKey:@"full_name"];
+//            NSNumber * user_id=[result objectForKey:@"id"];
+//            tempUser.user_id= [user_id stringValue];
+//            
+//            [_searchArrayPeople addObject:tempUser];
+//        }
+//
+//    
+//    [_tableview reloadData];
+//    
+//    
+//}
 
 -(void) parseResponseDic: (NSString *) category
 {
@@ -111,6 +111,8 @@
 
 - (void) getSearchItemForPeople
 {
+    [self addActivityIndicator];
+    
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -127,7 +129,7 @@
         
         [self parseResponseDic:@"People"];
         sleep=false;
-   
+        [_activityIndicator stopAnimating];
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -136,34 +138,43 @@
      ];
     
 }
-
-
-- (void) getdiscoverItemForPeople
+- (void) addActivityIndicator
 {
-      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
-    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",_searchTermField.text, @"keyword",ofs, @"offset",lim, @"limit",@"any", @"gender",@"18", @"min",@"102", @"max",@"", @"lat",@"all", @"tab",@"", @"lng",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/discover"];
-    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        _responseDic= responseObject;
-        
-        [self parseResponseDicDiscover:@"People"];
-        
-       
-    } // success callback block
-     
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+    _activityIndicator.alpha = 1.0;
+    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 80*[[FitmooHelper sharedInstance] frameRadio]);
+    _activityIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:_activityIndicator];
+    [_activityIndicator startAnimating];
 }
+
+//- (void) getdiscoverItemForPeople
+//{
+//      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+//    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    manager.securityPolicy.allowInvalidCertificates = YES;
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
+//    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+//    
+//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",_searchTermField.text, @"keyword",ofs, @"offset",lim, @"limit",@"any", @"gender",@"18", @"min",@"102", @"max",@"", @"lat",@"all", @"tab",@"", @"lng",nil];
+//    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/discover"];
+//    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+//        
+//        _responseDic= responseObject;
+//        
+//        [self parseResponseDicDiscover:@"People"];
+//        
+//       
+//    } // success callback block
+//     
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+//             NSLog(@"Error: %@", error);} // failure callback block
+//     ];
+//
+//}
 
 
 
@@ -505,7 +516,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)backButtonClick:(id)sender {
-   
+    [_tableview removeFromSuperview];
+    _tableview=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
 }
 

@@ -351,6 +351,8 @@
 		279E57BC1B20FBDB0076C3B5 /* leftsidemenubackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57B91B20FBDB0076C3B5 /* leftsidemenubackground.png */; };
 		279E57BD1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57BA1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png */; };
 		279E57BE1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57BB1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png */; };
+		27A009AF1B3AE84C0081AD4E /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A009AE1B3AE84C0081AD4E /* Main1.storyboard */; };
+		27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A009B31B3AF0C60081AD4E /* ComposeViewController.m */; };
 		27A101211B3334A7007B7BF3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A101201B3334A7007B7BF3 /* SearchViewController.m */; };
 		27A101501B3342C3007B7BF3 /* greysearch.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A101411B3342C3007B7BF3 /* greysearch.png */; };
 		27A101511B3342C3007B7BF3 /* greysearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A101421B3342C3007B7BF3 /* greysearch@2x.png */; };
@@ -928,6 +930,9 @@
 		279E57B91B20FBDB0076C3B5 /* leftsidemenubackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftsidemenubackground.png; sourceTree = "<group>"; };
 		279E57BA1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftsidemenubackground@2x.png"; sourceTree = "<group>"; };
 		279E57BB1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftsidemenubackground@3x.png"; sourceTree = "<group>"; };
+		27A009AE1B3AE84C0081AD4E /* Main1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
+		27A009B21B3AF0C60081AD4E /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		27A009B31B3AF0C60081AD4E /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		27A1011F1B3334A7007B7BF3 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		27A101201B3334A7007B7BF3 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		27A101411B3342C3007B7BF3 /* greysearch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greysearch.png; sourceTree = "<group>"; };
@@ -1178,6 +1183,7 @@
 				27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */,
 				27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */,
 				27188F751AD4646300C34372 /* Main.storyboard */,
+				27A009AE1B3AE84C0081AD4E /* Main1.storyboard */,
 				274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */,
 				27188FC41AD4776700C34372 /* FitmooHelper.h */,
 				27188FC21AD4775200C34372 /* FitmooHelper.m */,
@@ -1190,10 +1196,10 @@
 				279E57801B20A5320076C3B5 /* LanchScreen.h */,
 				279E57811B20A5320076C3B5 /* LanchScreen.m */,
 				2736B2241AEFD99C0013B4B9 /* posts */,
+				27A009B01B3AEF540081AD4E /* SidePages */,
 				2725827E1AD5AA7D0059F43C /* MainPages */,
 				2725820F1AD578A80059F43C /* UserManagement */,
-				272582021AD563280059F43C /* RightView */,
-				272581FE1AD562F90059F43C /* LeftView */,
+				272582021AD563280059F43C /* SideView */,
 				27188FC61AD47BD700C34372 /* CustomObjects */,
 				27188FC51AD47BC600C34372 /* 3rdParty */,
 				27188F911AD4695000C34372 /* img */,
@@ -1253,6 +1259,11 @@
 			children = (
 				2720091A1ADAB59400CC3070 /* AsyncImageView.h */,
 				2720091B1ADAB59400CC3070 /* AsyncImageView.m */,
+				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
+				27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */,
+				27410DDC1AFAB21800CF230C /* ImageFilter.h */,
+				27410DDD1AFAB21800CF230C /* ImageFilter.m */,
+				27410DDF1AFAB32F00CF230C /* Curve */,
 				273CE59A1AEE6FE000BCC66F /* RESideMenu */,
 				272098441AEA960B007577B7 /* YTVimeoExtractor */,
 				2720983E1AEA9088007577B7 /* VimeoHelper */,
@@ -1339,22 +1350,15 @@
 			name = IIViewDeck;
 			sourceTree = "<group>";
 		};
-		272581FE1AD562F90059F43C /* LeftView */ = {
+		272582021AD563280059F43C /* SideView */ = {
 			isa = PBXGroup;
 			children = (
 				272581FF1AD5631D0059F43C /* LeftViewController.h */,
 				272582001AD5631D0059F43C /* LeftViewController.m */,
-			);
-			name = LeftView;
-			sourceTree = "<group>";
-		};
-		272582021AD563280059F43C /* RightView */ = {
-			isa = PBXGroup;
-			children = (
 				272582031AD5633F0059F43C /* RightViewController.h */,
 				272582041AD5633F0059F43C /* RightViewController.m */,
 			);
-			name = RightView;
+			name = SideView;
 			sourceTree = "<group>";
 		};
 		2725820F1AD578A80059F43C /* UserManagement */ = {
@@ -1366,6 +1370,8 @@
 				27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */,
 				27ADF1F91B14F7A1003A0A83 /* InterestViewController.h */,
 				27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */,
+				27AD26661B18DE1C008D338D /* UserManager.h */,
+				27AD26671B18DE1C008D338D /* UserManager.m */,
 				272582501AD590180059F43C /* UserManager */,
 			);
 			name = UserManagement;
@@ -1374,8 +1380,6 @@
 		272582501AD590180059F43C /* UserManager */ = {
 			isa = PBXGroup;
 			children = (
-				27AD26661B18DE1C008D338D /* UserManager.h */,
-				27AD26671B18DE1C008D338D /* UserManager.m */,
 				272582751AD593150059F43C /* LocalUser.h */,
 				272582761AD593150059F43C /* LocalUser.m */,
 				2787C90B1B38AD7700B182FF /* Contacts.h */,
@@ -1415,37 +1419,22 @@
 			children = (
 				27AD26691B18DF4D008D338D /* HomePageViewController.h */,
 				27AD266A1B18DF4D008D338D /* HomePageViewController.m */,
-				2731C6381ADDAAD000788181 /* ActionSheetViewController.h */,
-				2731C6391ADDAAD000788181 /* ActionSheetViewController.m */,
 				27AD266C1B18DF6C008D338D /* PeoplePageViewController.h */,
 				27AD266D1B18DF6C008D338D /* PeoplePageViewController.m */,
 				27A6E71D1B305EF0000104CB /* NotificationViewController.h */,
 				27A6E71E1B305EF0000104CB /* NotificationViewController.m */,
-				2738D9331B026E5000F5087E /* BioViewController.h */,
-				2738D9341B026E5000F5087E /* BioViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
 				2719EBDC1AE1970000019079 /* FollowViewController.h */,
 				2719EBDD1AE1970000019079 /* FollowViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
 				27A101201B3334A7007B7BF3 /* SearchViewController.m */,
-				27B5F8621B348B5900068D8F /* InviteViewController.h */,
-				27B5F8631B348B5900068D8F /* InviteViewController.m */,
-				27988CC31B0BCE9A00BDE8EB /* SecondFollowViewController.h */,
-				27988CC41B0BCE9A00BDE8EB /* SecondFollowViewController.m */,
-				273FF5801AF7B5F500B82DB3 /* CommentViewController.h */,
-				273FF5811AF7B5F500B82DB3 /* CommentViewController.m */,
 				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27CBC0E41B0FB6A200699E1E /* LocationViewController.h */,
 				27CBC0E51B0FB6A200699E1E /* LocationViewController.m */,
 				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
 				27250CF81AF902D7005FC4C5 /* SettingViewController.m */,
-				27AC92C41B062AAF00BB7A0E /* AcountViewController.h */,
-				27AC92C51B062AAF00BB7A0E /* AcountViewController.m */,
-				27B4FC331B0E262600CBEA83 /* SettingWebViewController.h */,
-				27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */,
-				27AC92C71B063AD100BB7A0E /* setting */,
 			);
 			name = MainPages;
 			sourceTree = "<group>";
@@ -1459,11 +1448,6 @@
 				27AD26641B18BACC008D338D /* UITextView+Placeholder.m */,
 				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
 				2736B22F1AF003540013B4B9 /* CameraViewController.m */,
-				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
-				27410DD41AFA9AEA00CF230C /* UIImage+Filters.m */,
-				27410DDC1AFAB21800CF230C /* ImageFilter.h */,
-				27410DDD1AFAB21800CF230C /* ImageFilter.m */,
-				27410DDF1AFAB32F00CF230C /* Curve */,
 			);
 			name = posts;
 			sourceTree = "<group>";
@@ -1849,6 +1833,29 @@
 			name = follow;
 			sourceTree = "<group>";
 		};
+		27A009B01B3AEF540081AD4E /* SidePages */ = {
+			isa = PBXGroup;
+			children = (
+				2738D9331B026E5000F5087E /* BioViewController.h */,
+				2738D9341B026E5000F5087E /* BioViewController.m */,
+				2731C6381ADDAAD000788181 /* ActionSheetViewController.h */,
+				2731C6391ADDAAD000788181 /* ActionSheetViewController.m */,
+				273FF5801AF7B5F500B82DB3 /* CommentViewController.h */,
+				273FF5811AF7B5F500B82DB3 /* CommentViewController.m */,
+				27B5F8621B348B5900068D8F /* InviteViewController.h */,
+				27B5F8631B348B5900068D8F /* InviteViewController.m */,
+				27988CC31B0BCE9A00BDE8EB /* SecondFollowViewController.h */,
+				27988CC41B0BCE9A00BDE8EB /* SecondFollowViewController.m */,
+				27AC92C41B062AAF00BB7A0E /* AcountViewController.h */,
+				27AC92C51B062AAF00BB7A0E /* AcountViewController.m */,
+				27B4FC331B0E262600CBEA83 /* SettingWebViewController.h */,
+				27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */,
+				27A009B21B3AF0C60081AD4E /* ComposeViewController.h */,
+				27A009B31B3AF0C60081AD4E /* ComposeViewController.m */,
+			);
+			name = SidePages;
+			sourceTree = "<group>";
+		};
 		27A101221B33429B007B7BF3 /* searchLeft */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,13 +1909,6 @@
 				27A101791B334554007B7BF3 /* shop@3x.png */,
 			);
 			name = searchLeft;
-			sourceTree = "<group>";
-		};
-		27AC92C71B063AD100BB7A0E /* setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = setting;
 			sourceTree = "<group>";
 		};
 		27ADF18C1B14B1C4003A0A83 /* login */ = {
@@ -2149,6 +2149,7 @@
 				279E57B11B20F0B40076C3B5 /* greylocation@2x.png in Resources */,
 				27B2598E1B1E44BA00276273 /* greycomment@2x.png in Resources */,
 				273FF56A1AF7AA2C00B82DB3 /* recordbtn.png in Resources */,
+				27A009AF1B3AE84C0081AD4E /* Main1.storyboard in Resources */,
 				273FF56C1AF7AA2C00B82DB3 /* removeusericon.png in Resources */,
 				279E57971B20B4EC0076C3B5 /* greyrightarrow@3x.png in Resources */,
 				27ADF1D51B14B1D8003A0A83 /* defaultprofilepicture.png in Resources */,
@@ -2543,6 +2544,7 @@
 				27410DD51AFA9AEA00CF230C /* UIImage+Filters.m in Sources */,
 				273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */,
 				273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */,
+				27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */,
 				27AD266B1B18DF4D008D338D /* HomePageViewController.m in Sources */,
 				27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,

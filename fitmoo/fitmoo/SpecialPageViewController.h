@@ -20,6 +20,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "VimeoHelper.h"
 #import "YTVimeoExtractor.h"
+#import "ComposeViewController.h"
 
 @interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;

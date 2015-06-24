@@ -288,8 +288,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-  //  ShareTableViewCell *cell = [tableView
-  //                           dequeueReusableCellWithIdentifier:@"ShareTableViewCell"];
+
     ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
@@ -377,10 +376,8 @@
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
-    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TitleLabelClick:)];
-    tapGestureRecognizer1.numberOfTapsRequired = 1;
-    [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
-    cell.titleLabel.userInteractionEnabled=YES;
+
+
 
     
     cell.dayLabel.frame= CGRectMake(cell.dayLabel.frame.origin.x, cell.titleLabel.frame.size.height+cell.titleLabel.frame.origin.y+3, cell.dayLabel.frame.size.width, cell.dayLabel.frame.size.height);
@@ -455,13 +452,11 @@
                 [cell.bodyView bringSubviewToFront:cell.bodyShadowView];
             }
         }
-      
-        
-        
     }else
     {
         [cell removeViewsFromBodyView:cell.scrollbelowFrame];
     }
+    
     
     if ([tempHomefeed.type isEqualToString:@"regular"]) {
         [cell setBodyFrameForRegular];
@@ -510,6 +505,7 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
+    [cell.bodyLikeButton setTag:indexPath.row*100+4];
     NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -520,6 +516,7 @@
     [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
     [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
+    [cell.bodyLikeButton addTarget:self action:@selector(bodyLikeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.viewAllCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -651,7 +648,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height-1300)) {
      //   NSLog(@"bottom!");
      //   NSLog(@"%f",self.tableView.contentOffset.y );
-     //   NSLog(@"%f",self.tableView.contentSize.height - self.tableView.bounds.size.height );
+
         
         if (_count==0) {
             if (self.tableView.contentOffset.y<0) {
@@ -692,29 +689,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CommentViewController *commentPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommentViewController"];
     commentPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-  //  [self.navigationController presentViewController:commentPage animated:YES completion:nil];
-    
     [self.navigationController pushViewController:commentPage animated:YES];
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-//    specialPage.action=@"Post";
-//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+
     
 }
-- (IBAction)TitleLabelClick:(id)sender {
-//    UIButton *button = (UIButton *)sender;
-//    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
-//    User *tempUser= [[UserManager sharedUserManager] localUser];
-//    
-//    if ([key isEqualToString:tempUser.user_id]) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
-//    }else
-//    {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
-//    }
-    
-}
+
 
 - (IBAction)headerImageButtonClick:(id)sender {
         UIButton *button = (UIButton *)sender;
@@ -730,6 +709,21 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
 }
+
+- (IBAction)bodyLikeButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
+    HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= feed.feed_id;
+    composePage.searchType=@"like";
+    [self.navigationController pushViewController:composePage animated:YES];
+    
+    
+}
+
 - (IBAction)likeButtonClick:(id)sender {
      UIButton *button = (UIButton *)sender;
      NSInteger index=(NSInteger) button.tag/100;

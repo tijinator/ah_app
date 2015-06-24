@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 @interface CommentViewController ()
 {
-    double cellHeight;
+     NSNumber * contentHight;
     CGRect keyboardFrame;
     double constentUp;
     double constentdown;
@@ -25,7 +25,8 @@
     [self initFrames];
     [self initValuable];
     self.tableview.tableFooterView = [[UIView alloc] init];
-    cellHeight=60;
+    contentHight=[NSNumber numberWithInteger:60];
+    _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     [_homeFeed resetCommentsArray];
     [self getCommentItem];
     [self createObservers];
@@ -107,18 +108,6 @@
     }
 }
 
-#pragma mark - UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
-{
-        return [_homeFeed.commentsArray count];
-}
 
 - (void) initFrames
 {
@@ -132,10 +121,10 @@
     _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
     
-
-     constentdown=519;
-     constentUp=300;
-     frameRadio=[[FitmooHelper sharedInstance] frameRadio];
+    
+    constentdown=519;
+    constentUp=300;
+    frameRadio=[[FitmooHelper sharedInstance] frameRadio];
     //case iphone 4s
     if (self.view.frame.size.height<500) {
         
@@ -150,12 +139,45 @@
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardDidHide:)
-//                                                 name:UIKeyboardDidHideNotification
-//                                               object:nil];
+
     
 }
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+ 
+     double Radio= self.view.frame.size.width / 320;
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+  
+        return height.integerValue;
+    }else
+    {
+        height=[NSNumber numberWithInt:60*Radio];
+        return height.integerValue;
+    }
+    
+  
+    return height.integerValue;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+        return [_homeFeed.commentsArray count];
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -238,11 +260,20 @@
   //  nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
-    cellHeight= nameLabel.frame.size.height+20;
+    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+20];
+   
     
     [cell.contentView addSubview:imageButton];
     [cell.contentView addSubview:nameLabel];
      cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row>=[_heighArray count]) {
+        [_heighArray addObject:contentHight];
+    }else
+    {
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+    }
+    
     return cell;
 }
 
@@ -257,7 +288,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     double Radio= self.view.frame.size.width / 320;
    
-    return  MAX(60*Radio, cellHeight);
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+    }else
+    {
+        height=[NSNumber numberWithInt:contentHight.intValue];
+    }
+ 
+    return  MAX(60*Radio, height.intValue);
 }
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"postFinished" object:nil];
@@ -310,12 +350,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    // [self.view layoutIfNeeded];
 }
 
-//- (void)keyboardWillChange:(NSNotification *)notification {
-//    NSDictionary* keyboardInfo = [notification userInfo];
-//    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
-//    keyboardFrame = [keyboardFrameBegin CGRectValue];
-//    
-//}
+
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -370,20 +405,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)headerImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -402,6 +430,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)backButtonClick:(id)sender {
+    [self.tableview removeFromSuperview];
+    self.tableview=nil;
       [self.navigationController popViewControllerAnimated:YES];
  
 }

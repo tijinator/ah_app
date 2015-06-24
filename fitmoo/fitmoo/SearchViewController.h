@@ -26,7 +26,7 @@
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;
-
+@property (strong, nonatomic)  UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) InviteViewController *inviteView;
 @property (strong, nonatomic) IBOutlet UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;

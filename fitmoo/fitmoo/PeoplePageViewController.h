@@ -26,6 +26,7 @@
 #import "PhotoGalary.h"
 #import "BioViewController.h"
 #import "PhotoCell.h"
+#import "ComposeViewController.h"
 @interface PeoplePageViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

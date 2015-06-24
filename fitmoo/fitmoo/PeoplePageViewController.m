@@ -161,7 +161,7 @@
         }
         
         
-        NSLog(@"Submit response data: %@", responseObject);
+    //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -315,6 +315,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
      
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followLabelClick:)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.followCountLabel addGestureRecognizer:tapGestureRecognizer];
+        cell.followCountLabel.userInteractionEnabled=YES;
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followerLabelClick:)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
+        cell.followerCountLabel.userInteractionEnabled=YES;
+        
+        
         
         if (temUser.following.intValue>999) {
             CGFloat following=temUser.following.floatValue/1000.0f;
@@ -649,6 +659,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.shareButton setTag:indexPath.row*100+6];
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
+        [cell.bodyLikeButton setTag:indexPath.row*100+4];
          NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -659,6 +670,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
             [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
+        [cell.bodyLikeButton addTarget:self action:@selector(bodyLikeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.viewAllCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.bodyCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -770,6 +782,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //  [self.navigationController presentViewController:commentPage animated:YES completion:nil];
     
     [self.navigationController pushViewController:commentPage animated:YES];
+    
+}
+
+- (IBAction)bodyLikeButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100-1;
+    HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= feed.feed_id;
+    composePage.searchType=@"like";
+    [self.navigationController pushViewController:composePage animated:YES];
+    
     
 }
 - (IBAction)likeButtonClick:(id)sender {
@@ -919,6 +945,45 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     
 }
+
+- (IBAction)followLabelClick:(id)sender {
+    NSString *searchPeopleId;
+    
+    if (_searchId!=nil) {
+        searchPeopleId=_searchId;
+    }else
+    {
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        searchPeopleId=tempUser.user_id;
+    }
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= searchPeopleId;
+    composePage.searchType=@"following";
+    [self.navigationController pushViewController:composePage animated:YES];
+    
+}
+
+- (IBAction)followerLabelClick:(id)sender {
+    NSString *searchPeopleId;
+    if (_searchId!=nil) {
+        searchPeopleId=_searchId;
+    }else
+    {
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        searchPeopleId=tempUser.user_id;
+    }
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= searchPeopleId;
+    composePage.searchType=@"follower";
+    [self.navigationController pushViewController:composePage animated:YES];
+
+    
+}
+
 - (IBAction)FeedButtonClick:(id)sender {
     self.tableType=@"feed";
     [self.tableView reloadData];

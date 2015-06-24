@@ -26,6 +26,6 @@
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;
-
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @end

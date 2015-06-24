@@ -277,6 +277,7 @@
     [cell.shareButton setTag:indexPath.row*100+6];
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
+    [cell.bodyLikeButton setTag:indexPath.row*100+4];
     NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -287,6 +288,7 @@
         [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
+    [cell.bodyLikeButton addTarget:self action:@selector(bodyLikeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.viewAllCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -393,6 +395,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController pushViewController:commentPage animated:YES];
     
 }
+
+- (IBAction)bodyLikeButtonClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= _homeFeed.feed_id;
+    composePage.searchType=@"like";
+    [self.navigationController pushViewController:composePage animated:YES];
+    
+    
+}
+
 - (IBAction)likeButtonClick:(id)sender {
 
     UIButton *button = (UIButton *)sender;
