@@ -106,7 +106,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
     
-    return 6;
+    return [_textArray count];
     
 }
 

@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 @interface NotificationViewController ()
 {
-    double cellHeight;
+    NSNumber * contentHight;
     CGRect keyboardFrame;
     double constentUp;
     double constentdown;
@@ -25,7 +25,8 @@
     [self initFrames];
     [self initValuable];
     self.tableview.tableFooterView = [[UIView alloc] init];
-    cellHeight=60;
+    contentHight=[NSNumber numberWithInteger:60];
+    _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     [self getNotificationItem];
 
     // Do any additional setup after loading the view.
@@ -54,10 +55,13 @@
             
             NSDictionary *sender= [notificationDic objectForKey:@"sender"];
             _homeFeed.created_by.full_name=[sender objectForKey:@"full_name"];
+            
+            NSNumber *created_by_id= [sender objectForKey:@"id"];
+            _homeFeed.created_by.created_by_id=[created_by_id stringValue];
             _homeFeed.type= [notificationDic objectForKey:@"type"];
        
-            
-            _homeFeed.is_liked=[notificationDic objectForKey:@"unread"];
+            NSNumber *unread= [notificationDic objectForKey:@"unread"];
+            _homeFeed.is_liked=[unread stringValue];
             
             
             
@@ -159,6 +163,25 @@
 
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    double Radio= self.view.frame.size.width / 320;
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+        return height.integerValue;
+    }else
+    {
+        height=[NSNumber numberWithInt:60*Radio];
+        return height.integerValue;
+    }
+    
+    
+    return height.integerValue;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
@@ -177,7 +200,7 @@
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
-    
+    _notificationCountLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_notificationCountLabel respectToSuperFrame:self.view];
     
 }
 
@@ -185,21 +208,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell=  [self.tableview cellForRowAtIndexPath:indexPath];
-    
-    
-    if (cell == nil)
-    {
-        //   cell=[tableView dequeueReusableCellWithIdentifier:@"cell1"];
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
-    }else
-    {
-        return cell;
-    }
+    UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
     
     _homeFeed=[_notificArray objectAtIndex:indexPath.row];
     
-  //  UIButton *imageButton= (UIButton *) [cell viewWithTag:5];
+
     UIButton *imageButton= [[UIButton alloc] init];
     imageButton.frame= CGRectMake(15, 15, 30, 30);
     imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
@@ -221,7 +234,7 @@
     [imageButton addSubview:view];
     
     
-    [imageButton setTag:_homeFeed.comments.created_by_id.intValue];
+    [imageButton setTag:_homeFeed.created_by.created_by_id.intValue];
     [imageButton addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -262,18 +275,40 @@
     //  nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
-    cellHeight= nameLabel.frame.size.height+20;
-    
+   
+  //  contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+20];
     [cell.contentView addSubview:imageButton];
     [cell.contentView addSubview:nameLabel];
+     cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    
+    if(indexPath.row==[_notificArray count]-1)
+    {
+        contentHight=[NSNumber numberWithInteger: nameLabel.frame.origin.y + nameLabel.frame.size.height+105];
+    }else
+    {
+        contentHight=[NSNumber numberWithInteger: nameLabel.frame.origin.y + nameLabel.frame.size.height+20];
+    }
+    
+    if (indexPath.row>=[_heighArray count]) {
+        [_heighArray addObject:contentHight];
+    }else
+    {
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+    }
+    
+    // unread = 1, then unread
+    if ([_homeFeed.is_liked isEqualToString:@"1"]) {
+        cell.contentView.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:238.0/255.0 blue:240.0/255.0 alpha:1];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+    _homeFeed= [_notificArray objectAtIndex:indexPath.row];
+    [self openSpecialPage];
+
 }
 
 // multy high table cell
@@ -281,7 +316,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     double Radio= self.view.frame.size.width / 320;
     
-    return  MAX(60*Radio, cellHeight);
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+    }else
+    {
+        height=[NSNumber numberWithInt:contentHight.intValue];
+    }
+    
+    return  MAX(60*Radio, height.intValue);
 }
 
 
@@ -346,6 +390,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
     }else
     {
+        key=[NSString stringWithFormat:@"%ld", (long)button.tag+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
     
@@ -353,6 +398,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)backButtonClick:(id)sender {
+    [_tableview removeFromSuperview];
+    _tableview=nil;
     [self.navigationController popViewControllerAnimated:YES];
     
 }

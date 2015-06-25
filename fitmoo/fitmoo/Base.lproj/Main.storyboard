@@ -2379,6 +2379,14 @@ instructions to reset your password.</string>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfQ-Tl-5fL" customClass="BentonSansBold">
+                                        <rect key="frame" x="226" y="27" width="25" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -2387,6 +2395,7 @@ instructions to reset your password.</string>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="ejt-rS-Efb" id="eqY-U5-KdA"/>
+                        <outlet property="notificationCountLabel" destination="lfQ-Tl-5fL" id="hlF-4Z-Hcb"/>
                         <outlet property="tableview" destination="xFw-d3-yFL" id="s8p-mC-OV7"/>
                         <outlet property="titleLabel" destination="rO5-wg-1MY" id="Kst-l2-XTH"/>
                         <outlet property="topView" destination="fet-pd-5ZJ" id="ntI-LO-zqU"/>

@@ -21,10 +21,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *notificationCountLabel;
+
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;
 @property (strong, nonatomic)  NSMutableArray * notificArray;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
+@property (strong, nonatomic)  NSMutableArray * heighArray;
+@property (strong, nonatomic)  NSString * unread_count;
+
 @end

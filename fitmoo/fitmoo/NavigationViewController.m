@@ -220,7 +220,7 @@
        
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
             [[self nav] pushViewController:_peoplePage animated:YES];
-        //    prePage=currentPage;
+       
             currentPage=6;
             [_Pagestuck addObject:@"6"];
 
@@ -244,7 +244,7 @@
         
               _followPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"FollowViewController"];
               [[self nav] pushViewController:_followPage animated:YES];
-           //   prePage=currentPage;
+        
               currentPage=3;
               [_Pagestuck addObject:@"3"];
           }
@@ -253,11 +253,11 @@
     }else  if ([key isEqualToString:@"2"]) {
         if (currentPage!=2) {
             
-            _shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
-            [[self nav] pushViewController:_shopPage animated:YES];
-//            _notificationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"NotificationViewController"];
-//             [[self nav] pushViewController:_notificationPage animated:YES];
-          //  prePage=currentPage;
+//            _shopPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"ShopViewController"];
+//            [[self nav] pushViewController:_shopPage animated:YES];
+            _notificationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"NotificationViewController"];
+             [[self nav] pushViewController:_notificationPage animated:YES];
+       
             currentPage=2;
             [_Pagestuck addObject:@"2"];
         }
@@ -269,7 +269,7 @@
             _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
             //    [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:_settingPage animated:YES];
-         //   prePage=currentPage;
+
             currentPage=4;
             [_Pagestuck addObject:@"4"];
         }
@@ -284,7 +284,7 @@
             _locationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"LocationViewController"];
             //    [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:_locationPage animated:YES];
-          //  prePage=currentPage;
+    
             currentPage=7;
             [_Pagestuck addObject:@"7"];
         }
@@ -300,7 +300,7 @@
         key= [NSString stringWithFormat:@"%d",key.intValue-100];
             _peoplePage.searchId=key;
             [[self nav] pushViewController:_peoplePage animated:YES];
-        //    prePage=currentPage;
+     
             currentPage=key.intValue;
             [_Pagestuck addObject:key];
     
