@@ -701,7 +701,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     User *tempUser= [[UserManager sharedUserManager] localUser];
     
     if ([key isEqualToString:tempUser.user_id]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
     }else
     {
         key=[NSString stringWithFormat:@"%ld", ((long)button.tag+100)];

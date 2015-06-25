@@ -65,6 +65,38 @@
 }
 
 
+-(void) registerDeviceToken
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    _localUser= [self getUserLocally];
+    
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *device_token = [prefs stringForKey:@"fitmooDeviceToken"];
+    
+    if (device_token!=nil) {
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token", device_token, @"device_token",nil];
+        NSString *url= [NSString stringWithFormat:@"%@%@",_clientUrl, @"/api/users/register_device_token"];
+        
+        [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+            
+            _responseDic= responseObject;
+            
+            
+        } // success callback block
+         
+              failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                  NSLog(@"Error: %@", error);} // failure callback block
+         ];
+
+    }
+    
+
+    
+}
+
 -(void) checkEmailExistFromFitmoo:(User *)user
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -93,6 +125,7 @@
       //      [self performLogin:_localUser];
             [self saveLocalUser:_localUser];
             [self getUserProfile:_localUser];
+            [self registerDeviceToken];
         }else if ([f isEqualToString:@"0"])
         {
             _localUser=user;
@@ -130,7 +163,7 @@
         _localUser.user_id= [user_id stringValue];
          [self saveLocalUser:_localUser];
         [self getUserProfile:_localUser];
-        
+        [self registerDeviceToken];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -537,7 +570,7 @@
         
         
         [self getUserProfile:_localUser];
-        
+        [self registerDeviceToken];
        
         
         //      NSLog(@"Submit response data: %@", responseObject);
@@ -593,7 +626,7 @@
 
         [self deleteDataLocally];
          self.localUser=nil;
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"5"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"login"];
         
         NSLog(@"logout response data: %@", responseObject);
     } // success callback block
@@ -785,34 +818,34 @@
     
 //----------------------- staging
     
-//    _clientUrl= @"http://staging.fitmoo.com";
-//    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
-//    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
-//    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
-//    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
-//    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
-//    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
-//    _s3_accountId=@"074088242106";
-//    _s3_identityPoolId=@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc";
-//    _s3_unauthRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role";
-//    _s3_authRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role";
-//    _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-staging-test/photos/";
-//    _s3_bucket=@"fitmoo-uat";
+    _clientUrl= @"http://staging.fitmoo.com";
+    _loginUrl= @"http://staging.fitmoo.com/api/tokens";
+    _homeFeedUrl= @"http://staging.fitmoo.com/api/users/";
+    _logoutUrl=@"http://staging.fitmoo.com/api/tokens/delete_token?";
+    _postUrl=@"http://staging.fitmoo.com/api/users/feeds";
+    _feedsUrl=@"http://staging.fitmoo.com/api/feeds/";
+    _amazonUrl= @"https://fitmoo-staging.s3.amazonaws.com/";
+    _s3_accountId=@"074088242106";
+    _s3_identityPoolId=@"us-east-1:ac2dffe3-21e1-4c8d-b370-9466c23538dc";
+    _s3_unauthRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appUnauth_Role";
+    _s3_authRoleArn=@"arn:aws:iam::074088242106:role/Cognito_fitmoo_appAuth_Role";
+    _amazonUploadUrl= @"https://s3.amazonaws.com/fitmoo-staging-test/photos/";
+    _s3_bucket=@"fitmoo-uat";
 
 //----------------------- uat
     
-    _clientUrl= @"http://uat.fitmoo.com";
-    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
-    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
-    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
-    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
-    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
-    _amazonUploadUrl= @"https://d1cpiexk3lbp6h.cloudfront.net/photos/";
-    _s3_accountId=@"271404364214";
-    _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
-    _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
-    _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
-    _s3_bucket=@"fitmoo-uat";
+//    _clientUrl= @"http://uat.fitmoo.com";
+//    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
+//    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
+//    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
+//    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
+//    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
+//    _amazonUploadUrl= @"https://d1cpiexk3lbp6h.cloudfront.net/photos/";
+//    _s3_accountId=@"271404364214";
+//    _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
+//    _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
+//    _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
+//    _s3_bucket=@"fitmoo-uat";
     
 
 

@@ -135,8 +135,18 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
 {
+  
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* deviceToken = [[[[newDeviceToken description]
+                                stringByReplacingOccurrencesOfString: @"<" withString: @"<"]
+                               stringByReplacingOccurrencesOfString: @">" withString: @">"]
+                              stringByReplacingOccurrencesOfString: @" " withString: @" "];
+    [prefs setObject:deviceToken forKey:@"fitmooDeviceToken"];
     // Store the deviceToken.
     NSLog(@"%@", newDeviceToken);
+    
+    
+    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

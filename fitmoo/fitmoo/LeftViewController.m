@@ -14,13 +14,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"shop.png",@"follow.png",@"settings.png",@"logout.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Shop",@"Follow",@"Settings",@"Logout", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"settings.png",@"logout.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
  //   [_leftTableView reloadData];
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 6) / 2.0f, self.view.frame.size.width, 54 * 6) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -166,7 +166,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString * key= [NSString stringWithFormat:@"%li",indexPath.row];
     
-    if (indexPath.row==5) {
+    if (indexPath.row==0) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"home"];
+    }else if (indexPath.row==1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"search"];
+    }else if (indexPath.row==2) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
+    }else if (indexPath.row==3) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"shop"];
+    }else if (indexPath.row==4) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
+    }else if (indexPath.row==5) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+    }else if (indexPath.row==6) {
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
                                                        message:@"Are you sure you want to logout?"
@@ -178,11 +190,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
          [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
        
     }
-    else
-    {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
-       
-    }
+//    else
+//    {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+//       
+//    }
     
 }
 

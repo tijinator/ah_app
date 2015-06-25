@@ -8,6 +8,7 @@
 
 #import "NotificationViewController.h"
 #import "AFNetworking.h"
+#import <QuartzCore/QuartzCore.h>
 @interface NotificationViewController ()
 {
     NSNumber * contentHight;
@@ -49,8 +50,8 @@
         for (NSDictionary *notificationDic in notificationArray) {
             _homeFeed= [[HomeFeed alloc] init];
             
-            
-            _homeFeed.created_at= [notificationDic objectForKey:@"created_at"];
+             NSNumber *created_at= [notificationDic objectForKey:@"created_at"];
+            _homeFeed.created_at= [created_at stringValue];
             _homeFeed.feed_id=[notificationDic objectForKey:@"feed_id"];
             
             NSDictionary *sender= [notificationDic objectForKey:@"sender"];
@@ -70,24 +71,33 @@
             NSDictionary *avatars=[profile objectForKey:@"avatars"];
             _homeFeed.photos.stylesUrl=[avatars objectForKey:@"small"];
             
-            if ([_homeFeed.type isEqualToString:@"LikeNotification"]) {
-                _homeFeed.text=@"liked your post";
-                  [_notificArray addObject:_homeFeed];
-            }else if ([_homeFeed.type isEqualToString:@"EndorseFeedNotification"]) {
-                _homeFeed.text=@"endorsed your post";
-                  [_notificArray addObject:_homeFeed];
-            }else if ([_homeFeed.type isEqualToString:@"CommentedFeedNotification"]) {
-                _homeFeed.text=@"commented on your post";
-                  [_notificArray addObject:_homeFeed];
-            }else if ([_homeFeed.type isEqualToString:@"ShareFeedNotification"]) {
-                _homeFeed.text=@"shared your post";
-                  [_notificArray addObject:_homeFeed];
-            }
+            _homeFeed.text=[notificationDic objectForKey:@"text_message"];
+             [_notificArray addObject:_homeFeed];
+//            if ([_homeFeed.type isEqualToString:@"LikeNotification"]) {
+//                _homeFeed.text=@"liked your post";
+//                  [_notificArray addObject:_homeFeed];
+//            }else if ([_homeFeed.type isEqualToString:@"EndorseFeedNotification"]) {
+//                _homeFeed.text=@"endorsed your post";
+//                  [_notificArray addObject:_homeFeed];
+//            }else if ([_homeFeed.type isEqualToString:@"CommentedFeedNotification"]) {
+//                _homeFeed.text=@"commented on your post";
+//                  [_notificArray addObject:_homeFeed];
+//            }else if ([_homeFeed.type isEqualToString:@"ShareFeedNotification"]) {
+//                _homeFeed.text=@"shared your post";
+//                  [_notificArray addObject:_homeFeed];
+//            }
             
           
         }
     }
     
+    NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
+     _unread_count=[unread stringValue];
+    if (unread.intValue>99) {
+        _unread_count=@"99+";
+    }
+   
+    _notificationCountLabel.text=_unread_count;
     [self.tableview reloadData];
     
 }
@@ -201,6 +211,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
     _notificationCountLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_notificationCountLabel respectToSuperFrame:self.view];
+    _notificationCountLabel.layer.cornerRadius= _notificationCountLabel.frame.size.width/2;
+    _notificationCountLabel.clipsToBounds=YES;
     
 }
 
@@ -211,34 +223,28 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
     
     _homeFeed=[_notificArray objectAtIndex:indexPath.row];
-    
 
     UIButton *imageButton= [[UIButton alloc] init];
     imageButton.frame= CGRectMake(15, 15, 30, 30);
     imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
-    
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
     view.layer.cornerRadius=view.frame.size.width/2;
     view.clipsToBounds=YES;
     view.userInteractionEnabled = NO;
     view.exclusiveTouch = NO;
-    
     AsyncImageView *imageview=[[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
     imageview.userInteractionEnabled = NO;
     imageview.exclusiveTouch = NO;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageview];
     imageview.imageURL =[NSURL URLWithString:_homeFeed.photos.stylesUrl];
-    
     [imageButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:imageview];
     [imageButton addSubview:view];
-    
-    
     [imageButton setTag:_homeFeed.created_by.created_by_id.intValue];
     [imageButton addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-   // UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
+
     UILabel *nameLabel=[[UILabel alloc] init];
     nameLabel.frame= CGRectMake(58, 16, 230, 21);
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
@@ -248,45 +254,65 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
     UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(13)];
     NSString *string1=_homeFeed.created_by.full_name;
-    NSString *string2=_homeFeed.text;
+    NSString *string=[_homeFeed.text substringFromIndex:1];
     
+     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
     
+    NSString *string2;
+    NSRange range3=[string rangeOfString:string1];
+    if (range3.length>1) {
+         string2=[string substringFromIndex:[string rangeOfString:string1].length];
+       
+        attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font1 range:string1 newString:string1];
+    }else
+    {
+         string2=string;
+         string1=@"";
+    }
+   
+
     
-    NSString *string= [NSString stringWithFormat:@"%@ %@",string1,string2];
-    
-    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
-    attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font1 range:string1 newString:string1];
     
     NSRange range= [string rangeOfString:string2];
     [attributedString addAttribute:NSForegroundColorAttributeName value:fontColor range:range];
-    
-    
-    
     nameLabel.lineBreakMode= NSLineBreakByWordWrapping;
-    
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:8];
     [attributedString addAttribute:NSParagraphStyleAttributeName
                              value:style
                              range:NSMakeRange(0, string.length)];
     [nameLabel setAttributedText:attributedString];
-    //  nameLabel.textColor=fontColor;
-    
-    //  nameLabel.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
    
-  //  contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+20];
+   
+    UILabel *dayLabel=[[UILabel alloc] initWithFrame:CGRectMake(58, nameLabel.frame.size.height+nameLabel.frame.origin.y+3, 230, 20)];
+    NSRange range1= NSMakeRange(0, _homeFeed.created_at.length-3);
+    NSString * timestring= [_homeFeed.created_at substringWithRange:range1];
+    NSTimeInterval time=(NSTimeInterval ) timestring.intValue;
+    NSDate *dayBegin= [[NSDate alloc] initWithTimeIntervalSince1970:time];
+    NSDate *today= [NSDate date];
+    dayLabel.text= [[FitmooHelper sharedInstance] daysBetweenDate:dayBegin andDate:today];
+    font = [UIFont fontWithName:@"BentonSans-Book" size:12];
+    attributedString= [[NSMutableAttributedString alloc] initWithString:dayLabel.text attributes:@{NSFontAttributeName: font}  ];
+    [dayLabel setAttributedText:attributedString];
+
     [cell.contentView addSubview:imageButton];
     [cell.contentView addSubview:nameLabel];
+    [cell.contentView addSubview:dayLabel];
      cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    
+    
+   
+    
+    
     
     if(indexPath.row==[_notificArray count]-1)
     {
-        contentHight=[NSNumber numberWithInteger: nameLabel.frame.origin.y + nameLabel.frame.size.height+105];
+        contentHight=[NSNumber numberWithInteger: dayLabel.frame.origin.y + dayLabel.frame.size.height+105];
     }else
     {
-        contentHight=[NSNumber numberWithInteger: nameLabel.frame.origin.y + nameLabel.frame.size.height+20];
+        contentHight=[NSNumber numberWithInteger: dayLabel.frame.origin.y + dayLabel.frame.size.height+10];
     }
     
     if (indexPath.row>=[_heighArray count]) {
@@ -387,7 +413,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     User *tempUser= [[UserManager sharedUserManager] localUser];
     
     if ([key isEqualToString:tempUser.user_id]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
     }else
     {
         key=[NSString stringWithFormat:@"%ld", (long)button.tag+100];
@@ -400,7 +426,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
     [_tableview removeFromSuperview];
     _tableview=nil;
-    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
     
 }
 /*

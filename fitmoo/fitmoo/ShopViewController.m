@@ -59,6 +59,6 @@
     }
 }
 - (IBAction)backButtonClick:(id)sender {
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 @end

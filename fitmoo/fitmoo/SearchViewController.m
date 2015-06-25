@@ -518,7 +518,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
     [_tableview removeFromSuperview];
     _tableview=nil;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
 - (void) initFrames

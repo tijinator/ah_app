@@ -247,7 +247,7 @@
         [[UserManager sharedUserManager] setLocalUser:_localUser];
         [[UserManager sharedUserManager] saveLocalUser:_localUser];
         //     [[UserManager sharedUserManager] getUserProfile:localUser];
-        
+        [[UserManager sharedUserManager] registerDeviceToken];
         [self openInterestPage];
         
     } // success callback block

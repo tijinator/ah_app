@@ -65,7 +65,7 @@
 @property (strong, nonatomic) NSString * s3_authRoleArn;
 @property (strong, nonatomic) NSString * s3_bucket;
 
-
+-(void) registerDeviceToken;
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;

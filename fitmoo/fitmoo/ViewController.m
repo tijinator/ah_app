@@ -124,7 +124,7 @@
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    HomePageViewController * homepage = [mainStoryboard instantiateViewControllerWithIdentifier:@"HomePageViewController"];
 //    [self.navigationController pushViewController:homepage animated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"0"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"home"];
 }
 
 -(void)openNextpage:(NSNotification * )note

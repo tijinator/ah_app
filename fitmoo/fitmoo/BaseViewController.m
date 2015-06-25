@@ -328,7 +328,7 @@
             
             break;
         case 13:
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
             
             break;
         case 14:
@@ -343,7 +343,7 @@
             
             break;
         case 16:
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"7"];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"location"];
             
             break;
         default:

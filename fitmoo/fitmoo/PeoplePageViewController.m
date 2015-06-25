@@ -996,7 +996,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
 
   //  [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6.1"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
 - (IBAction)photoImageButtonClick:(id)sender {
@@ -1063,7 +1063,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else
     {
 
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"4"];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
     }
     
 }
