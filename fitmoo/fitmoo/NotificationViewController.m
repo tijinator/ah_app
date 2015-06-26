@@ -332,8 +332,28 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     _homeFeed= [_notificArray objectAtIndex:indexPath.row];
-    [self openSpecialPage];
+    
+    if ((_homeFeed.feed_id!=nil)&&(![_homeFeed.feed_id isEqual:[NSNull null]])) {
+        [self openSpecialPage];
+    }else
+    {
+        NSString *key=_homeFeed.created_by.created_by_id;
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        
+        if ([key isEqualToString:tempUser.user_id]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
+        }else
+        {
+            key=[NSString stringWithFormat:@"%d", key.intValue+100];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+        }
+
+    }
+    
+    
 
 }
 

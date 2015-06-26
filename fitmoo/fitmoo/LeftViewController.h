@@ -23,4 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *humanImage;
 @property (strong, nonatomic) IBOutlet UIImageView *topImage;
 @property (strong, readwrite, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic)  NSString * notifucationStatus;
+@property (strong, nonatomic)  NSString * prenotifucationStatus;
 @end

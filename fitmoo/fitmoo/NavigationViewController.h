@@ -27,7 +27,7 @@
 @property (strong, nonatomic) UIViewController *baseView;
 @property (strong, nonatomic) UINavigationController *nav;
 @property (nonatomic, assign) BOOL allowRotation;
-
+@property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) HomePageViewController *homePage;
 @property (strong, nonatomic) PeoplePageViewController *peoplePage;
 @property (strong, nonatomic) FollowViewController *followPage;
@@ -36,7 +36,7 @@
 @property (strong, nonatomic)  LocationViewController *locationPage;
 @property (strong, nonatomic)  NotificationViewController *notificationPage;
 @property (strong, nonatomic)  SearchViewController *searchPage;
-
+@property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray *Pagestuck;
 
 @end

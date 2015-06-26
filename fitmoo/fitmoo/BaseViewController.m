@@ -24,7 +24,7 @@
     [self addfootButtonsForThree];
     [self createObserverszero];
     showButton=false;
-   
+   [[NSNotificationCenter defaultCenter] postNotificationName:@"checkNotification" object:Nil];
 }
 
 
@@ -151,6 +151,17 @@
     UIImage *im2= [UIImage imageNamed:@"profile.png"];
     [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
     
+    
+    _notificationImageView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"red.png"]];
+    _notificationImageView.frame= CGRectMake(25, -10, 23, 23);
+    _notificationImageView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_notificationImageView respectToSuperFrame:self.view];
+    _notificationImageView.hidden=true;
+    _notificationImageView.userInteractionEnabled=NO;
+    _notificationImageView.exclusiveTouch=NO;
+    _leftButton1.clipsToBounds=NO;
+    [_leftButton1 addSubview:_notificationImageView];
+    [_leftButton1 bringSubviewToFront:_notificationImageView];
+    
     [self.bottomView addSubview:_leftButton1];
     [self.bottomView addSubview:_middleButton1];
     [self.bottomView addSubview:_rightButton1];
@@ -260,9 +271,25 @@
    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationStatus:) name:@"updateNotificationStatus" object:nil];
 }
 
-
+- (void) updateNotificationStatus: (NSNotification * ) note
+{
+    
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    _notifucationStatus=[prefs stringForKey:@"fitmooNotification"];
+    
+    if ([_notifucationStatus isEqualToString:@"1"]) {
+        _notificationImageView.hidden=false;
+    }else
+    {
+        _notificationImageView.hidden=true;
+    }
+    
+}
 
 
 

@@ -8,6 +8,7 @@
 
 #import "NavigationViewController.h"
 #import "Reachability.h"
+#import "AFNetworking.h"
 @implementation NavigationViewController
 {
  //   int currentPage;
@@ -52,7 +53,55 @@
     currentPage=@"login";
      blackStatusbar=0;
     _Pagestuck= [[NSMutableArray alloc] init];
+    
 // [self addfootButtonsForThree];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+      [self createNotificationTimer];
+}
+
+
+
+- (void) createNotificationTimer
+{
+     _timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(checkNotification:) userInfo:nil repeats:YES];
+}
+
+- (void)checkNotification:(NSTimer *)timer
+{
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"0", @"offset", @"30" , @"limit",@"true", @"ios_app",nil];
+    
+    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/",localUser.user_id,@"/notifications"];
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
+        if (unread.intValue>0) {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setObject:@"1" forKey:@"fitmooNotification"];
+
+        }else
+        {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setObject:@"0" forKey:@"fitmooNotification"];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNotificationStatus" object:Nil];
+        } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);
+         } // failure callback block
+     
+     ];
+
+   
 }
 
 -(void)createObservers{
@@ -61,6 +110,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBlackStatusBarHandler:) name:@"showBlackStatusBarHandler" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopAction:) name:@"shopAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNotification:) name:@"checkNotification" object:nil];
    
 }
 

@@ -14,10 +14,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    _notifucationStatus=@"0";
+    _prenotifucationStatus=@"1";
     _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"settings.png",@"logout.png", nil];
     _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Follow",@"Settings",@"Logout", nil];
     
- //   [_leftTableView reloadData];
     
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
@@ -40,8 +41,22 @@
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopImage:) name:@"updateTopImage" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationStatus:) name:@"updateNotificationStatus" object:nil];
 }
-
+- (void) updateNotificationStatus: (NSNotification * ) note
+{
+   
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    _notifucationStatus=[prefs stringForKey:@"fitmooNotification"];
+    
+   // if (![_prenotifucationStatus isEqualToString:_notifucationStatus]) {
+   //     _prenotifucationStatus=_notifucationStatus;
+           [_tableView reloadData];
+   // }
+    
+ 
+}
 
 - (void) updateTopImage: (NSNotification * ) note
 {
@@ -113,18 +128,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView
-//                                dequeueReusableCellWithIdentifier:@"leftCell"];
-//    
-//
-//    UIImageView * imageView=(UIImageView *) [cell viewWithTag:3];
-// //   imageView.frame= CGRectMake(25, 20, 20, 20);
-//    
-//    
-//    imageView.image= [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-//    
-//    UILabel *label= (UILabel *) [cell viewWithTag:2];
-//    label.text=[_textArray objectAtIndex:indexPath.row];
+
     
     static NSString *cellIdentifier = @"Cell";
     
@@ -143,6 +147,15 @@
     
     cell.textLabel.text = _textArray[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
+    
+    if (indexPath.row==2) {
+        if ([_notifucationStatus isEqualToString:@"1"]) {
+          cell.imageView.image = [UIImage imageNamed:@"rednotification.png"];
+        }else
+        {
+          cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
+        }
+    }
     
     return cell;
 

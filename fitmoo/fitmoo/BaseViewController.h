@@ -24,6 +24,7 @@
 @property (strong, nonatomic)  UIView *bottomView;
 
 @property (strong, nonatomic)  UIImageView *bottomImageView;
+@property (strong, nonatomic)  UIImageView *notificationImageView;
 
 
 @property (nonatomic, strong) UIButton *postButton;
@@ -37,5 +38,5 @@
 
 @property (strong, nonatomic)  NSString *PostingValue;
 @property (assign, nonatomic)  int PrePage;
-
+@property (strong, nonatomic)  NSString * notifucationStatus;
 @end
