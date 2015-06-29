@@ -75,9 +75,9 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"0", @"offset", @"30" , @"limit",@"true", @"ios_app",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",nil];
     
-    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/",localUser.user_id,@"/notifications"];
+    NSString * url= [NSString stringWithFormat: @"%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/notifications/unread_count"];
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         

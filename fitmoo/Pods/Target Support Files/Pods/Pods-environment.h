@@ -294,6 +294,12 @@
 #define COCOAPODS_VERSION_MINOR_TMCache 2
 #define COCOAPODS_VERSION_PATCH_TMCache 4
 
+// TTTAttributedLabel
+#define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
+#define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
+#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 10
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 1
+
 // UAProgressView
 #define COCOAPODS_POD_AVAILABLE_UAProgressView
 #define COCOAPODS_VERSION_MAJOR_UAProgressView 0

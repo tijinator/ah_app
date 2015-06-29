@@ -33,6 +33,7 @@
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeopleName;
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer *timerQueue;
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UILabel *buttomLabel;
 @property (strong, nonatomic) IBOutlet UIButton *inviteButton;

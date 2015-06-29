@@ -31,7 +31,7 @@
         _titleLabel.text=@"LIKE";
     }else if ([_searchType isEqualToString:@"follower"])
     {
-         _titleLabel.text=@"FOLLOWER";
+         _titleLabel.text=@"FOLLOWERS";
         [self getLikeItem];
     }else if ([_searchType isEqualToString:@"following"])
     {

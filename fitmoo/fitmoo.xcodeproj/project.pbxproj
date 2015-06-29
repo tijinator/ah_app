@@ -15,8 +15,6 @@
 		2711145A1ADF11780056EB13 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582041AD5633F0059F43C /* RightViewController.m */; };
 		2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582001AD5631D0059F43C /* LeftViewController.m */; };
 		2711145C1ADF117D0056EB13 /* UIUnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */; };
-		2711145D1ADF117F0056EB13 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
-		2711145E1ADF11840056EB13 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
 		2711145F1ADF11880056EB13 /* PeopleTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */; };
 		271114601ADF118B0056EB13 /* PeopleTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6341ADD6FD800788181 /* PeopleTitleCell.m */; };
 		271114611ADF11920056EB13 /* fitmoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */; };
@@ -167,8 +165,6 @@
 		27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		27410DF51AFAB34200CF230C /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEE1AFAB34100CF230C /* Spline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */; };
-		274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */; };
-		274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */; };
 		2752E9931B014FF1003841DC /* PhotoGalary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752E9921B014FF1003841DC /* PhotoGalary.m */; };
 		2752E9E01B015CBC003841DC /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2752E9941B015CBC003841DC /* calendar.png */; };
 		2752E9E11B015CBC003841DC /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2752E9951B015CBC003841DC /* calendar@2x.png */; };
@@ -434,6 +430,8 @@
 		27AD26751B18F9F3008D338D /* defaultprofilepic.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AD26721B18F9F3008D338D /* defaultprofilepic.png */; };
 		27AD26761B18F9F3008D338D /* defaultprofilepic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AD26731B18F9F3008D338D /* defaultprofilepic@2x.png */; };
 		27AD26771B18F9F3008D338D /* defaultprofilepic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AD26741B18F9F3008D338D /* defaultprofilepic@3x.png */; };
+		27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */; };
+		27ADE6461B3DC9FF001B8D99 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */; };
 		27ADF1C31B14B1D8003A0A83 /* addprofilepicturebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18D1B14B1D7003A0A83 /* addprofilepicturebtn.png */; };
 		27ADF1C41B14B1D8003A0A83 /* addprofilepicturebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18E1B14B1D8003A0A83 /* addprofilepicturebtn@2x.png */; };
 		27ADF1C51B14B1D8003A0A83 /* addprofilepicturebtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF18F1B14B1D8003A0A83 /* addprofilepicturebtn@3x.png */; };
@@ -737,9 +735,6 @@
 		27410DED1AFAB34100CF230C /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spline.h; path = Curve/Spline.h; sourceTree = "<group>"; };
 		27410DEE1AFAB34100CF230C /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Spline.m; path = Curve/Spline.m; sourceTree = "<group>"; };
 		274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
-		274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = "<group>"; };
-		274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = "<group>"; };
-		274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTableViewCell.xib; sourceTree = "<group>"; };
 		2752E9911B014FF1003841DC /* PhotoGalary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalary.h; sourceTree = "<group>"; };
 		2752E9921B014FF1003841DC /* PhotoGalary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalary.m; sourceTree = "<group>"; };
 		2752E9941B015CBC003841DC /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
@@ -1022,6 +1017,9 @@
 		27AD26721B18F9F3008D338D /* defaultprofilepic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultprofilepic.png; sourceTree = "<group>"; };
 		27AD26731B18F9F3008D338D /* defaultprofilepic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultprofilepic@2x.png"; sourceTree = "<group>"; };
 		27AD26741B18F9F3008D338D /* defaultprofilepic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultprofilepic@3x.png"; sourceTree = "<group>"; };
+		27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTableViewCell.h; sourceTree = "<group>"; };
+		27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTableViewCell.m; sourceTree = "<group>"; };
+		27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTableViewCell.xib; sourceTree = "<group>"; };
 		27ADF18D1B14B1D7003A0A83 /* addprofilepicturebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addprofilepicturebtn.png; sourceTree = "<group>"; };
 		27ADF18E1B14B1D8003A0A83 /* addprofilepicturebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addprofilepicturebtn@2x.png"; sourceTree = "<group>"; };
 		27ADF18F1B14B1D8003A0A83 /* addprofilepicturebtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addprofilepicturebtn@3x.png"; sourceTree = "<group>"; };
@@ -1277,9 +1275,9 @@
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
-				274CBC9E1AD6E2B300CD6CB7 /* ShareTableViewCell.h */,
-				274CBC9F1AD6E2B300CD6CB7 /* ShareTableViewCell.m */,
-				274CBCA01AD6E2B300CD6CB7 /* ShareTableViewCell.xib */,
+				27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */,
+				27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */,
+				27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */,
 				2738D9361B02850300F5087E /* PhotoCell.h */,
 				2738D9371B02850300F5087E /* PhotoCell.m */,
 				2738D9381B02850300F5087E /* PhotoCell.xib */,
@@ -2077,6 +2075,7 @@
 				2752EA201B015CBC003841DC /* reversecamera.png in Resources */,
 				27ADF1F41B14B1D8003A0A83 /* signupbtn@2x.png in Resources */,
 				27AC92D71B066DF700BB7A0E /* selectedbars@3x.png in Resources */,
+				27ADE6461B3DC9FF001B8D99 /* ShareTableViewCell.xib in Resources */,
 				27AC92CF1B066DF000BB7A0E /* selectedbars_brand.png in Resources */,
 				27B5F8601B3481FE00068D8F /* invitefriends@2x.png in Resources */,
 				27ACD0FC1B0A708C00322ED5 /* workouttag@3x.png in Resources */,
@@ -2422,7 +2421,6 @@
 				279E57B21B20F0B40076C3B5 /* greylocation@3x.png in Resources */,
 				27A101911B334554007B7BF3 /* settings@3x.png in Resources */,
 				2738D9071B023E7F00F5087E /* black_gradient@2x.png in Resources */,
-				274CBCA21AD6E2B300CD6CB7 /* ShareTableViewCell.xib in Resources */,
 				27A1017D1B334554007B7BF3 /* home.png in Resources */,
 				27ADF1E61B14B1D8003A0A83 /* loginbtn@3x.png in Resources */,
 				2760944D1AD708C100A769CE /* BentonSansComp-Book.otf in Resources */,
@@ -2492,7 +2490,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				271114731ADF12E70056EB13 /* LaunchScreen.xib in Resources */,
-				2711145E1ADF11840056EB13 /* ShareTableViewCell.xib in Resources */,
 				2711145F1ADF11880056EB13 /* PeopleTitleCell.xib in Resources */,
 				271114631ADF11A20056EB13 /* Info.plist in Resources */,
 				271114651ADF128C0056EB13 /* Main.storyboard in Resources */,
@@ -2606,10 +2603,10 @@
 				27B1B4691B175FE100F5F812 /* NavigationViewController.m in Sources */,
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,
-				274CBCA11AD6E2B300CD6CB7 /* ShareTableViewCell.m in Sources */,
 				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
 				27AD266E1B18DF6C008D338D /* PeoplePageViewController.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
+				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,
 				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
@@ -2637,7 +2634,6 @@
 				271114661ADF12AE0056EB13 /* User.m in Sources */,
 				2711145A1ADF11780056EB13 /* RightViewController.m in Sources */,
 				271114551ADF11690056EB13 /* ActionSheetViewController.m in Sources */,
-				2711145D1ADF117F0056EB13 /* ShareTableViewCell.m in Sources */,
 				271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */,
 				271114701ADF12C60056EB13 /* Videos.m in Sources */,
 				2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */,

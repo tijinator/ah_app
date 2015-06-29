@@ -49,7 +49,8 @@
         
         for (NSDictionary *notificationDic in notificationArray) {
             _homeFeed= [[HomeFeed alloc] init];
-            
+             NSNumber *notification_id= [notificationDic objectForKey:@"id"];
+            _homeFeed.notification_id= [notification_id stringValue];
              NSNumber *created_at= [notificationDic objectForKey:@"created_at"];
             _homeFeed.created_at= [created_at stringValue];
             _homeFeed.feed_id=[notificationDic objectForKey:@"feed_id"];
@@ -93,13 +94,36 @@
     
     NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
      _unread_count=[unread stringValue];
-    if (unread.intValue>99) {
-        _unread_count=@"99+";
-    }
-   
-    _notificationCountLabel.text=_unread_count;
+    [self updateLocateUnreadCount];
     [self.tableview reloadData];
     
+}
+
+- (void) updateLocateUnreadCount
+{
+     _notificationCountLabel.text=_unread_count;
+    if (_unread_count.intValue>99) {
+        _notificationCountLabel.text=@"99+";
+     
+    }
+    
+    if (_unread_count.intValue<0) {
+        _notificationCountLabel.text=@"0";
+        
+    }
+    
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    if (_unread_count!=nil) {
+        if (_unread_count.intValue==0) {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setObject:@"0" forKey:@"fitmooNotification"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNotificationStatus" object:Nil];
+        }
+    }
+   
 }
 
 - (void) getNotificationItem
@@ -127,6 +151,32 @@
          } // failure callback block
      
      ];
+    
+}
+
+-(void) updateUnreadFeed: (NSString *) feed_id
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
+    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/notifications/",feed_id,@"/read"];
+    
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        
+        
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
     
 }
 
@@ -254,7 +304,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
     UIFont *font1= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(13)];
     NSString *string1=_homeFeed.created_by.full_name;
-    NSString *string=[_homeFeed.text substringFromIndex:1];
+    NSString *string=[_homeFeed.text substringFromIndex:0];
     
      NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
     
@@ -336,6 +386,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _homeFeed= [_notificArray objectAtIndex:indexPath.row];
     
+    if ([_homeFeed.is_liked isEqualToString:@"1"]) {
+        NSNumber * unread=[NSNumber numberWithInt:_unread_count.intValue-1];
+        _unread_count=[unread stringValue];
+        [self updateLocateUnreadCount];
+
+    }
+    
+    
+    
     if ((_homeFeed.feed_id!=nil)&&(![_homeFeed.feed_id isEqual:[NSNull null]])) {
         [self openSpecialPage];
     }else
@@ -353,7 +412,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     }
     
+    _homeFeed.is_liked=@"0";
+    [self.tableview reloadData];
+    [self updateUnreadFeed:_homeFeed.notification_id];
     
+    
+   // [[UserManager sharedUserManager] updateUnreadFeed:_homeFeed.notification_id];
 
 }
 
@@ -384,6 +448,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (_count==0) {
         }
         _count++;
+          [self getNotificationItem];
         //it means table view is pulled down like refresh
         return;
     }

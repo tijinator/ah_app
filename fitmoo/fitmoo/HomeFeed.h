@@ -19,7 +19,7 @@
 #import "Event.h"
 
 @interface HomeFeed : NSObject
-
+@property (nonatomic, strong) NSString *notification_id;
 @property (nonatomic, strong) NSString *feed_id;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *community_id;

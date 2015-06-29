@@ -12,6 +12,15 @@
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
+
+
+
+@interface HomePageViewController ()
+{
+  
+}
+@end
+
 @implementation HomePageViewController
 {
     NSNumber * contentHight;
@@ -523,7 +532,7 @@
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+   // cell.comment
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
     {

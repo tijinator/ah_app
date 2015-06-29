@@ -35,6 +35,24 @@
 //    
 //}
 
+
+- (void) handleNotification: (NSNotification * ) note
+{
+    [self handleNotific];
+}
+
+- (void) handleNotific
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *key = [prefs stringForKey:@"fitmooNotificationStatus"];
+    if (key!=nil) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:nil forKey:@"fitmooNotificationStatus"];
+    }
+    
+}
+
 - (void) handleDeeplink: (NSNotification * ) note
 {
     [self handlelink];
@@ -108,6 +126,7 @@
     }
     
     [self handlelink];
+    [self handleNotific];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
@@ -266,11 +285,15 @@
     }
 }
 
+
+
+
 -(void)createObserverszero{
    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hideButtonsAction" object:nil];
    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideButtonsAction:) name:@"hideButtonsAction" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"handleNotification" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNotificationStatus:) name:@"updateNotificationStatus" object:nil];
 }

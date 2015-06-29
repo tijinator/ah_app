@@ -97,6 +97,9 @@
     
 }
 
+
+
+
 -(void) checkEmailExistFromFitmoo:(User *)user
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

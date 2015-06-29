@@ -123,13 +123,16 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     NSLog(@"%@", userInfo);
-    [UIApplication sharedApplication].applicationIconBadgeNumber++;
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:@"1" forKey:@"fitmooNotificationStatus"];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"handleNotification" object:@"1"];
 }
 
 - (void) application: (UIApplication *) application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"%@", userInfo);
-    [UIApplication sharedApplication].applicationIconBadgeNumber++;
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
    
 }
 

@@ -34,11 +34,22 @@
     [self.bottomView setHidden:true];
     [self.subBottomView setHidden:true];
     
-     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
+  
+      [self addActivityIndicator];
     // Do any additional setup after loading the view.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+   
+   _timerQueue= [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
+}
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [_timerQueue invalidate];
+    [_timer invalidate];
+}
 
 //-(void) parseResponseDicDiscover: (NSString *) category
 //{
@@ -111,7 +122,7 @@
 
 - (void) getSearchItemForPeople
 {
-    [self addActivityIndicator];
+    [_activityIndicator startAnimating];
     
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
@@ -146,7 +157,7 @@
     _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 80*[[FitmooHelper sharedInstance] frameRadio]);
     _activityIndicator.hidesWhenStopped = YES;
     [self.view addSubview:_activityIndicator];
-    [_activityIndicator startAnimating];
+   // [_activityIndicator startAnimating];
 }
 
 //- (void) getdiscoverItemForPeople
@@ -434,10 +445,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
+    [_searchArrayPeopleName addObject:searchPeopleName];
    // [self movedownView:_tableview];
-    [self initValuable];
+   // [self initValuable];
     // [self getdiscoverItemForPeople];
-    [self getSearchItemForPeople];
+   // [self getSearchItemForPeople];
     return YES;
 }
 
