@@ -18,31 +18,31 @@
 @interface TestView1 : UIView
 @end
 
-@implementation TestView1
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-{
-    if (!self.clipsToBounds && !self.hidden && self.alpha > 0) {
-        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
-            CGPoint subPoint = [subview convertPoint:point fromView:self];
-            UIView *result = [subview hitTest:subPoint withEvent:event];
-            if (result != nil) {
-                return result;
-            }
-        }
-    }
-    
-    return nil;
-}
-
-@end
+//@implementation TestView1
+//
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    if (!self.clipsToBounds && !self.hidden && self.alpha > 0) {
+//        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
+//            CGPoint subPoint = [subview convertPoint:point fromView:self];
+//            UIView *result = [subview hitTest:subPoint withEvent:event];
+//            if (result != nil) {
+//                return result;
+//            }
+//        }
+//    }
+//    
+//    return nil;
+//}
+//
+//@end
 
 @interface BasePostViewController ()
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
 @property (nonatomic) uint64_t amountUploaded;
 
-@property (strong, nonatomic)  TestView1 *textViewBackgroundView;
+//@property (strong, nonatomic)  TestView1 *textViewBackgroundView;
 @end
 
 @implementation BasePostViewController
@@ -835,10 +835,10 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
-    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
-    _textViewBackgroundView.alpha=0.7;
-    [self.view addSubview:_textViewBackgroundView];
+//    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+//    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+//    _textViewBackgroundView.alpha=0.7;
+//    [self.view addSubview:_textViewBackgroundView];
     
      [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
 
@@ -866,8 +866,8 @@
     [_nutritionTitle resignFirstResponder];
     [_nutritionIngedients resignFirstResponder];
     [_nutritionPreparation resignFirstResponder];
-    [_textViewBackgroundView removeFromSuperview];
-    _textViewBackgroundView=nil;
+//    [_textViewBackgroundView removeFromSuperview];
+//    _textViewBackgroundView=nil;
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _normalPostView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _normalPostView.frame.size.width, _normalPostView.frame.size.height);

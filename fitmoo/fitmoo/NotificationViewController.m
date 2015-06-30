@@ -90,12 +90,13 @@
             
           
         }
+        NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
+        _unread_count=[unread stringValue];
+        [self updateLocateUnreadCount];
+        [self.tableview reloadData];
     }
     
-    NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
-     _unread_count=[unread stringValue];
-    [self updateLocateUnreadCount];
-    [self.tableview reloadData];
+
     
 }
 
@@ -106,9 +107,10 @@
         _notificationCountLabel.text=@"99+";
      
     }
-    
-    if (_unread_count.intValue<0) {
+    _notificationCountLabel.hidden=false;
+    if (_unread_count.intValue<=0) {
         _notificationCountLabel.text=@"0";
+        _notificationCountLabel.hidden=true;
         
     }
     
@@ -446,9 +448,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.tableview.contentOffset.y<-75){
         if (_count==0) {
+       //      [self initValuable];
+       //      [self getNotificationItem];
         }
         _count++;
-          [self getNotificationItem];
+        
         //it means table view is pulled down like refresh
         return;
     }

@@ -21,7 +21,7 @@
     
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height+30 - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -137,15 +137,26 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.font = [UIFont fontWithName:@"BentonSans-Regular" size:17];
+      //  cell.textLabel.font = [UIFont fontWithName:@"BentonSans" size:12];
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
         cell.selectedBackgroundView = [[UIView alloc] init];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+     NSString *text= [_textArray objectAtIndex:indexPath.row];
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:text.uppercaseString attributes:@{NSFontAttributeName: [UIFont fontWithName:@"BentonSans-Medium" size:12.5]}  ];
+   
+    float spacing = 1.0f;
+    [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, text.length)];
+
     
     
-    cell.textLabel.text = _textArray[indexPath.row];
+    [cell.textLabel setAttributedText:attributedString];
+
+    
+    
+   
+    cell.textLabel.text = text.uppercaseString;
     cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
     
     if (indexPath.row==2) {

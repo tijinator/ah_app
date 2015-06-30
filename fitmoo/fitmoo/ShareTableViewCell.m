@@ -8,9 +8,9 @@
 
 #import "ShareTableViewCell.h"
 #import "FitmooHelper.h"
-#import "TTTAttributedLabel.h"
+//#import "TTTAttributedLabel.h"
 
-@interface ShareTableViewCell ()<TTTAttributedLabelDelegate>
+@interface ShareTableViewCell ()//<TTTAttributedLabelDelegate>
 //@property (strong, nonatomic)  TTTAttributedLabel *commentDetail;
 //@property (strong, nonatomic)  TTTAttributedLabel *commentDetail1;
 //@property (strong, nonatomic)  TTTAttributedLabel *commentDetail2;
@@ -528,14 +528,14 @@
     
 }
 
-#pragma mark - TTTAttributedLabelDelegate
-
-- (void)attributedLabel:(__unused TTTAttributedLabel *)label
-   didSelectLinkWithURL:(NSURL *)url {
-    
-    
-    
-}
+//#pragma mark - TTTAttributedLabelDelegate
+//
+//- (void)attributedLabel:(__unused TTTAttributedLabel *)label
+//   didSelectLinkWithURL:(NSURL *)url {
+//    
+//    
+//    
+//}
 
 
 - (void) removeCommentView

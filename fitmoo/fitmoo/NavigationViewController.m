@@ -66,7 +66,7 @@
 
 - (void) createNotificationTimer
 {
-     _timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(checkNotification:) userInfo:nil repeats:YES];
+ //    _timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(checkNotification:) userInfo:nil repeats:YES];
 }
 
 - (void)checkNotification:(NSTimer *)timer
