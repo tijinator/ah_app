@@ -28,13 +28,6 @@
 }
 
 
-//-(void)createObservers{
-//
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeeplink:) name:@"handleDeeplink" object:nil];
-//    
-//}
-
 
 - (void) handleNotification: (NSNotification * ) note
 {
@@ -65,42 +58,53 @@
     NSString *key = [prefs stringForKey:@"fitmooDeepLinkKey"];
     
     if (!(key==nil)) {
-        
-        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.securityPolicy.allowInvalidCertificates = YES;
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        
-        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"179547", @"fa_id", @"true", @"mobile",@"true", @"ios_app",
-                                  nil];
-        
-        NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",key];
-        
-        [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        if (!([key rangeOfString:@"feed/"].location ==NSNotFound)) {
+            NSRange firstRange = [key rangeOfString:@"feed/"];
+            NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
+            key= [key substringWithRange:finalRange];
+           
             
-            NSDictionary * resDic= responseObject;
-            
-            HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
-            
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-            
-            specialPage.homeFeed=feed;
-            
-            [self.navigationController pushViewController:specialPage animated:YES];
+            User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            manager.securityPolicy.allowInvalidCertificates = YES;
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
             
             
-            //      NSLog(@"Submit response data: %@", responseObject);
-        } // success callback block
-             failure:^(AFHTTPRequestOperation *operation, NSError *error){
-                 NSLog(@"Error: %@", error);
-             } // failure callback block
-         
-         ];
+            NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"179547", @"fa_id", @"true", @"mobile",@"true", @"ios_app",
+                                      nil];
+            
+            NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",key];
+            
+            [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+                
+                NSDictionary * resDic= responseObject;
+                
+                HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+                specialPage.homeFeed=feed;
+                [self.navigationController pushViewController:specialPage animated:YES];
+                
+            } // success callback block
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                     NSLog(@"Error: %@", error);
+                 } // failure callback block
+             
+             ];
+          
+
+        }else if (!([key rangeOfString:@"profile/"].location ==NSNotFound))
+        {
+            NSRange firstRange = [key rangeOfString:@"profile/"];
+            NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
+            key= [key substringWithRange:finalRange];
+            key=[NSString stringWithFormat:@"%d", key.intValue+100];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+            
+        }
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setObject:nil forKey:@"fitmooDeepLinkKey"];
-    }
+      }
     
     
 }

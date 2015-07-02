@@ -29,7 +29,7 @@
 @property (assign, nonatomic)  int count;
 
 @property (strong, nonatomic) NSMutableArray *likerArray;
-
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @property (strong, nonatomic) Comments *comments;
 
