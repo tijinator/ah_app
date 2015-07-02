@@ -16,6 +16,7 @@
     double constentUp;
     double constentdown;
     double frameRadio;
+     UIView *indicatorView;
 }
 @end
 
@@ -29,7 +30,7 @@
     contentHight=[NSNumber numberWithInteger:60];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     [self getNotificationItem];
-
+   indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
     // Do any additional setup after loading the view.
 }
 -(void) initValuable
@@ -65,8 +66,13 @@
             NSNumber *unread= [notificationDic objectForKey:@"unread"];
             _homeFeed.is_liked=[unread stringValue];
             
-            
-            
+            NSNumber *confirmation_id= [notificationDic objectForKey:@"confirmation_id"];
+            if (![confirmation_id isEqual:[NSNull null]]) {
+                 _homeFeed.confirmation_id=[confirmation_id stringValue];
+            }
+           
+
+             _homeFeed.confirmation_token=[notificationDic objectForKey:@"confirmation_token"];
             
             NSDictionary *profile=[sender objectForKey:@"profile"];
             NSDictionary *avatars=[profile objectForKey:@"avatars"];
@@ -130,6 +136,8 @@
 
 - (void) getNotificationItem
 {
+ 
+    
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -146,6 +154,7 @@
         _responseDic= responseObject;
         
         [self parseNotificationDic];
+        [indicatorView removeFromSuperview];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -299,6 +308,26 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
     UILabel *nameLabel=[[UILabel alloc] init];
     nameLabel.frame= CGRectMake(58, 16, 230, 21);
+    
+    if ([_homeFeed.type isEqualToString:@"ConfirmationNotification"]) {
+         nameLabel.frame= CGRectMake(58, 16, 170, 21);
+        UIButton *acceptButton= [[UIButton alloc] init];
+        acceptButton.frame= CGRectMake(240, 16, 70, 30);
+        acceptButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:acceptButton respectToSuperFrame:self.view];
+        
+        UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
+        [acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+        acceptButton.titleLabel.font=font;
+        acceptButton.backgroundColor=[UIColor blackColor];
+        acceptButton.titleLabel.textColor=[UIColor whiteColor];
+        acceptButton.layer.cornerRadius=5;
+        acceptButton.tag= indexPath.row*100;
+        [acceptButton addTarget:self action:@selector(AcceptButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.contentView addSubview:acceptButton];
+        
+    }
+    
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     imageview.layer.cornerRadius=imageview.frame.size.width/2;
     UIColor *fontColor= [UIColor colorWithRed:87/255 green:93/255 blue:96/255 alpha:0.7];
@@ -495,6 +524,41 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  // Pass the selected object to the new view controller.
  }
  */
+
+
+- (IBAction)AcceptButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    int index= button.tag/100;
+   // NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+  //  User *tempUser= [[UserManager sharedUserManager] localUser];
+    HomeFeed *temFeed= [_notificArray objectAtIndex:index];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/follow_request/", temFeed.confirmation_token];
+    
+    [manager GET: url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        button.hidden=true;
+        
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);
+              button.hidden=true;
+          } // failure callback block
+     ];
+
+       
+    
+}
 
 - (IBAction)headerImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;

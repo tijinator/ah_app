@@ -56,18 +56,20 @@
     // NSString *key= (NSString *) [note object];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *key = [prefs stringForKey:@"fitmooDeepLinkKey"];
-    
+   
     if (!(key==nil)) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.securityPolicy.allowInvalidCertificates = YES;
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
         if (!([key rangeOfString:@"feed/"].location ==NSNotFound)) {
             NSRange firstRange = [key rangeOfString:@"feed/"];
             NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
             key= [key substringWithRange:finalRange];
            
-            
-            User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-            manager.securityPolicy.allowInvalidCertificates = YES;
-            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+           
+          
             
             
             NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"179547", @"fa_id", @"true", @"mobile",@"true", @"ios_app",
@@ -98,8 +100,45 @@
             NSRange firstRange = [key rangeOfString:@"profile/"];
             NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
             key= [key substringWithRange:finalRange];
-            key=[NSString stringWithFormat:@"%d", key.intValue+100];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+       
+            
+            NSCharacterSet *_NumericOnly = [NSCharacterSet decimalDigitCharacterSet];
+            NSCharacterSet *myStringSet = [NSCharacterSet characterSetWithCharactersInString:key];
+            
+            if ([_NumericOnly isSupersetOfSet: myStringSet])
+            {
+                //String entirely contains decimal numbers only.
+                key=[NSString stringWithFormat:@"%d", key.intValue+100];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+                
+            }else
+            {
+              
+                NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",nil];
+                NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/find_user_by_vanity_url?vanity_url=",key];
+                
+                [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+                    
+                    NSDictionary * resDic= responseObject;
+                    NSDictionary *user= [resDic objectForKey:@"user"];
+                   NSString * skey= [user objectForKey:@"id"];
+                      skey=[NSString stringWithFormat:@"%d", skey.intValue+100];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:skey];
+                    
+                } // success callback block
+                     failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                         NSLog(@"Error: %@", error);
+                     } // failure callback block
+                 
+                 ];
+
+            }
+            
+           
+            
+           
+            
+           
             
         }
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];

@@ -54,6 +54,10 @@
 
 @property (nonatomic, strong) Event *event;
 
+
+@property (nonatomic, strong) NSString * confirmation_id;
+@property (nonatomic, strong) NSString * confirmation_token;
+
 -(void) resetAsycImageViewArray;
 -(id)init;
 -(void) resetCommentsArray;

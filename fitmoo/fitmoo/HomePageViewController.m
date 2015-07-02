@@ -17,7 +17,7 @@
 
 @interface HomePageViewController ()
 {
-  
+    
 }
 @end
 
@@ -26,7 +26,7 @@
     NSNumber * contentHight;
     bool pullDown;
     UIView *indicatorView;
-  
+    
 }
 
 
@@ -36,13 +36,13 @@
     [super viewDidLoad];
     contentHight=[NSNumber numberWithInteger:300];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-   
+    
     [self initFrames];
     [self initValuable];
     [self postNotifications];
     [self getHomePageItems];
     [self createObservers];
-    [self addActivityIndicator];
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
     [self addtopBarView];
 }
 
@@ -60,7 +60,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
-
+    
     
 }
 
@@ -68,24 +68,24 @@
 
 - (void) updateTable: (NSNotification * ) note
 {
-  
+    
     NSString *key= (NSString *)[note object];
     
-   
-        for (int i=0; i<[_homeFeedArray count]; i++) {
-            HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
-            if (key==tempFeed.feed_id) {
-                [_homeFeedArray removeObjectAtIndex:i];
-            }
+    
+    for (int i=0; i<[_homeFeedArray count]; i++) {
+        HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+        if (key==tempFeed.feed_id) {
+            [_homeFeedArray removeObjectAtIndex:i];
         }
-        [self.tableView reloadData];
-       
+    }
+    [self.tableView reloadData];
+    
 }
 
 - (void) didPostFinished: (NSNotification * ) note
 {
-  //  [self initValuable];
-  //  [self getHomePageItems];
+    //  [self initValuable];
+    //  [self getHomePageItems];
     HomeFeed *feed= (HomeFeed *)[note object];
     
     if (feed!=nil) {
@@ -96,14 +96,14 @@
             }
         }
         [self.tableView reloadData];
-       // [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
-     
+        // [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+        
     }else
     {
-          [self initValuable];
+        [self initValuable];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         //   pullDown=true;
-          [self getHomePageItems];
+        [self getHomePageItems];
     }
     
 }
@@ -114,49 +114,11 @@
     _limit=10;
     _count=1;
     pullDown=false;
- //   _homeFeedArray= [[NSMutableArray alloc]init];
-}
-- (void) addActivityIndicator
-{
-    indicatorView= [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, 200*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
-    indicatorView.backgroundColor=[UIColor colorWithRed:174.0/255.0 green:182.0/255.0 blue:186.0/255.0 alpha:1];
-    //  view.backgroundColor=[UIColor whiteColor];
-    indicatorView.layer.cornerRadius=5;
-    
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [[FitmooHelper sharedInstance] resizeFrameWithFrame:activityIndicator respectToSuperFrame:nil];
-    activityIndicator.alpha = 1.0;
-    activityIndicator.center = CGPointMake(50, 40);
-    activityIndicator.hidesWhenStopped = YES;
-    [activityIndicator setBackgroundColor:[UIColor clearColor]];
-    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
-    [activityIndicator startAnimating];
-    
-    UILabel * postingLabel= [[UILabel alloc] initWithFrame: CGRectMake(0,60, 100, 30)];
-    postingLabel.text= @"LOADING...";
-    //  postingLabel.textColor=[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
-    postingLabel.textColor=[UIColor whiteColor];
-    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:13];
-    [postingLabel setFont:font];
-    postingLabel.textAlignment=NSTextAlignmentCenter;
-    
-    [indicatorView addSubview:activityIndicator];
-    [indicatorView addSubview:postingLabel];
-    [self.view addSubview:indicatorView];
-    
-   // self.view.userInteractionEnabled=NO;
+    //   _homeFeedArray= [[NSMutableArray alloc]init];
 }
 -(void) getHomePageItems
 {
-//     [_activityIndicator startAnimating];
-//    if (pullDown==true) {
-//        [UIView animateWithDuration:0.3 delay:2 options:UIViewAnimationOptionTransitionNone animations:^{
-//            [_tableView setContentOffset:CGPointMake(0, 50) animated:YES];
-//        }completion:^(BOOL finished){}];
-//    }
-
-
- 
+    
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -170,7 +132,7 @@
     
     NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/home_feeds.json"];
     
-
+    
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -179,7 +141,7 @@
         if ([_responseDic count]>0) {
             [self.tableView reloadData];
         }
-     
+        
         if (pullDown==true) {
             [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
                 [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
@@ -188,12 +150,12 @@
             pullDown=false;
         }
         [indicatorView removeFromSuperview];
-       [_activityIndicator stopAnimating];
-  //      NSLog(@"Submit response data: %@", responseObject);
-    } // success callback block
-     failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        
         [_activityIndicator stopAnimating];
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             
+             [_activityIndicator stopAnimating];
              NSLog(@"Error: %@", error);
          } // failure callback block
      
@@ -204,8 +166,8 @@
 {
     if (_offset==0) {
         _homeFeedArray= [[NSMutableArray alloc]init];
-      //  _heighArray=[[NSMutableArray alloc]init];
-      //  _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
+        //  _heighArray=[[NSMutableArray alloc]init];
+        //  _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     }
     
     
@@ -221,7 +183,7 @@
         
     }
     
-
+    
 }
 
 - (void) postNotifications
@@ -241,8 +203,8 @@
     _rightButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
     
- //   _tableView.estimatedRowHeight = 300.0;
- //   _tableView.rowHeight = UITableViewAutomaticDimension;
+    //   _tableView.estimatedRowHeight = 300.0;
+    //   _tableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
@@ -257,8 +219,8 @@
 //
 //-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
-//   
-//    
+//
+//
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -28, tableView.frame.size.width, 18)];
 //    /* Create custom view to display section header... */
 //    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -267,9 +229,9 @@
 //    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], 0);
 //    _activityIndicator.hidesWhenStopped = YES;
 //    [view addSubview:_activityIndicator];
-//   
-//    
-//    
+//
+//
+//
 //    /* Section header is in 0th index... */
 //
 //    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
@@ -297,7 +259,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-
+    
     ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
@@ -321,7 +283,7 @@
     HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row];
     cell.homeFeed=tempHomefeed;
     
-      //case for headerview
+    //case for headerview
     if ([tempHomefeed.feed_action.action isEqualToString:@"post"]||tempHomefeed.feed_action.action==nil) {
         cell.heanderImage1.hidden=true;
         [cell reDefineHearderViewsFrame];
@@ -353,7 +315,7 @@
         [cell.heanderImage1 addSubview:view];
         
         [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-   
+        
     }
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.headerImage2.frame.size.width, cell.headerImage2.frame.size.height)];
@@ -371,7 +333,7 @@
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
         [cell.headerImage2 setTag:tempHomefeed.created_by.created_by_id.intValue];
         [cell.titleLabel setTag:tempHomefeed.created_by.created_by_id.intValue];
-      
+        
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
@@ -385,9 +347,9 @@
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
-
-
-
+    
+    
+    
     
     cell.dayLabel.frame= CGRectMake(cell.dayLabel.frame.origin.x, cell.titleLabel.frame.size.height+cell.titleLabel.frame.origin.y+3, cell.dayLabel.frame.size.width, cell.dayLabel.frame.size.height);
     NSRange range= NSMakeRange(0, tempHomefeed.created_at.length-3);
@@ -429,10 +391,10 @@
             [tempHomefeed resetPhotos];
             tempHomefeed.photos=[tempHomefeed.photoArray objectAtIndex:maxHeightIndex];
             if (radioBetweenWandH<1) {
-                    double width= 320;
-                    double height= tempHomefeed.photos.stylesUrlHeight.doubleValue*(320/tempHomefeed.photos.stylesUrlWidth.doubleValue);
-                    
-                    cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+                double width= 320;
+                double height= tempHomefeed.photos.stylesUrlHeight.doubleValue*(320/tempHomefeed.photos.stylesUrlWidth.doubleValue);
+                
+                cell.scrollbelowFrame= [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
             }
             
         }
@@ -486,9 +448,9 @@
     
     [cell rebuiltBodyViewFrame];
     
-
     
-
+    
+    
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
         [cell.commentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
@@ -502,9 +464,9 @@
         [cell rebuiltCommentViewFrame];
     }else
     {
-         [cell removeCommentView];
+        [cell removeCommentView];
     }
-
+    
     
     //built bottom view
     [cell.likeButton setTag:indexPath.row*100+4];
@@ -518,12 +480,12 @@
     NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
-     [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
-    [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+        [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }else
     {
-    [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
-    [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
+        [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     [cell.bodyLikeButton addTarget:self action:@selector(bodyLikeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -532,7 +494,7 @@
     [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-   // cell.comment
+    // cell.comment
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
     {
@@ -547,16 +509,16 @@
         [_heighArray addObject:contentHight];
     }else
     {
-    [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
     }
-   //  NSLog(@"%ld",(long)contentHight.integerValue);
+    //  NSLog(@"%ld",(long)contentHight.integerValue);
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-      HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row];
+    HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row];
     
     NSString *link;
     if ([feed.type isEqualToString:@"product"]) {
@@ -567,7 +529,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
     }
-
+    
     
 }
 
@@ -577,7 +539,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
     {
-    //    return UITableViewAutomaticDimension;
+        //    return UITableViewAutomaticDimension;
         return contentHight.intValue;
         // Load resources for iOS 7 or later
     }
@@ -593,16 +555,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         //    NSLog(@"%@%d",@"estimatedHeight: ",0);
         return height.integerValue;
     }
-   
-  //  NSLog(@"%ld",(long)height.integerValue);
+    
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-
-
-
+    
+    
+    
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -611,8 +573,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:contentHight.intValue];
     }
-  //  NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
-  //  NSLog(@"%ld",(long)height.integerValue);
+    //  NSLog(@"%@%ld",@"return cell Height: ",(long)height.integerValue);
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
 }
 
@@ -626,19 +588,19 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                   willDecelerate:(BOOL)decelerate
 {
     if(self.tableView.contentOffset.y<-75){
-    
-        [_activityIndicator startAnimating];
-      
-     
         
-            [self initValuable];
-            pullDown=true;
-            [self getHomePageItems];
+        [_activityIndicator startAnimating];
+        
+        
+        
+        [self initValuable];
+        pullDown=true;
+        [self getHomePageItems];
         
         //it means table view is pulled down like refresh
         return;
     }
-   
+    
 }
 
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
@@ -646,8 +608,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     if(self.tableView.contentOffset.y<-75){
         if (_count==0) {
-       //     [self initValuable];
-      //      [self getHomePageItems];
+            //     [self initValuable];
+            //      [self getHomePageItems];
             _activityIndicator.hidden=false;
         }
         _count++;
@@ -655,9 +617,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height-1300)) {
-     //   NSLog(@"bottom!");
-     //   NSLog(@"%f",self.tableView.contentOffset.y );
-
+        //   NSLog(@"bottom!");
+        //   NSLog(@"%f",self.tableView.contentOffset.y );
+        
         
         if (_count==0) {
             if (self.tableView.contentOffset.y<0) {
@@ -665,10 +627,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }else
             {
                 _offset +=10;
-   
+                
             }
             [self getHomePageItems];
-           
+            
         }
         _count++;
         
@@ -677,7 +639,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         _count=0;
     }
-
+    
 }
 
 
@@ -699,14 +661,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     CommentViewController *commentPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommentViewController"];
     commentPage.homeFeed= [_homeFeedArray objectAtIndex:index];
     [self.navigationController pushViewController:commentPage animated:YES];
-
+    
     
 }
 
 
 - (IBAction)headerImageButtonClick:(id)sender {
-        UIButton *button = (UIButton *)sender;
-        NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
+    UIButton *button = (UIButton *)sender;
+    NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
     User *tempUser= [[UserManager sharedUserManager] localUser];
     
     if ([key isEqualToString:tempUser.user_id]) {
@@ -714,7 +676,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }else
     {
         key=[NSString stringWithFormat:@"%ld", ((long)button.tag+100)];
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
     
 }
@@ -734,14 +696,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 - (IBAction)likeButtonClick:(id)sender {
-     UIButton *button = (UIButton *)sender;
-     NSInteger index=(NSInteger) button.tag/100;
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
     if ([feed.is_liked isEqualToString:@"0"]) {
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
-      //  NSString *newLikeString= totalLike.stringValue;
-      //  [button setTitle:newLikeString forState:UIControlStateNormal];
+        //  NSString *newLikeString= totalLike.stringValue;
+        //  [button setTitle:newLikeString forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
         [[UserManager sharedUserManager] performLike:feed.feed_id];
         feed.is_liked=@"1";
@@ -754,7 +716,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }
         }
         [self.tableView reloadData];
-
+        
     }else if ([feed.is_liked isEqualToString:@"1"])
     {
         NSNumber *totalLike=[NSNumber numberWithInt:feed.total_like.intValue-1];
@@ -770,56 +732,56 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }
         }
         [self.tableView reloadData];
-
+        
     }
     
     
 }
 - (IBAction)optionButtonClick:(id)sender {
-     UIButton *button = (UIButton *)sender;
-     NSInteger index=(NSInteger) button.tag/100;
-     HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
-   
+    UIButton *button = (UIButton *)sender;
+    NSInteger index=(NSInteger) button.tag/100;
+    HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
         ActionSheet.action= @"endorse";
-   
+        
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
         ActionSheet.action= @"report";
-  
+        
     }else if ([feed.action_sheet isEqualToString:@"delete"]) {
         ActionSheet.action= @"delete";
         [ActionSheet.reportButton setTitle:@"Delete" forState:UIControlStateNormal];
-      
+        
     }
     ActionSheet.postId= feed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
-
+    
 }
 
 - (IBAction)bodyImageButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
-
+    
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
     NSString * url= homefeed.videos.video_url;
     if(url==nil)
     {
-
+        
         NSMutableArray *imageArray= [[NSMutableArray alloc] init];
         for (int i=0; i<[homefeed.photoArray count]; i++) {
-
+            
             AsyncImageView *image = [homefeed.AsycImageViewArray objectAtIndex:i];
             FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImage:image.image];
-           
+            
             
             [imageArray addObject:firstPhoto];
-           
+            
         }
         
-      
+        
         FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
         FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
         imageViewController.backgroundColorVisible=[UIColor blackColor];
@@ -837,7 +799,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                                   message : @"This video cannot be played right now." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
-
+                
             } else if (videoURL) {
                 NSLog(@"Extracted url : %@", [videoURL absoluteString]);
                 
@@ -857,7 +819,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self presentMoviePlayerViewControllerAnimated:movieController];
         [movieController.moviePlayer play];
     }
-
+    
     
     
 }
@@ -881,14 +843,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
     
-   
     
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-//    specialPage.action=@"Share";
-//    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-//    
-//    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
+    
+    //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    //    specialPage.action=@"Share";
+    //    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
+    //    
+    //    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
     
 }
 
