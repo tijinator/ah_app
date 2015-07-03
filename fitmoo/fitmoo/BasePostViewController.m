@@ -18,31 +18,31 @@
 @interface TestView1 : UIView
 @end
 
-//@implementation TestView1
-//
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-//{
-//    if (!self.clipsToBounds && !self.hidden && self.alpha > 0) {
-//        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
-//            CGPoint subPoint = [subview convertPoint:point fromView:self];
-//            UIView *result = [subview hitTest:subPoint withEvent:event];
-//            if (result != nil) {
-//                return result;
-//            }
-//        }
-//    }
-//    
-//    return nil;
-//}
-//
-//@end
+@implementation TestView1
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (!self.clipsToBounds && !self.hidden && self.alpha > 0) {
+        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
+            CGPoint subPoint = [subview convertPoint:point fromView:self];
+            UIView *result = [subview hitTest:subPoint withEvent:event];
+            if (result != nil) {
+                return result;
+            }
+        }
+    }
+    
+    return nil;
+}
+
+@end
 
 @interface BasePostViewController ()
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
 @property (nonatomic) uint64_t amountUploaded;
 
-//@property (strong, nonatomic)  TestView1 *textViewBackgroundView;
+@property (strong, nonatomic)  TestView1 *textViewBackgroundView;
 @end
 
 @implementation BasePostViewController
@@ -74,7 +74,6 @@
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     // get the image
     UIImage *img = _PostImage;
-    // UIImage *img = [UIImage imageNamed:@"like.png"];
     // create a local image that we can use to upload to s3
     NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"image.png"];
     NSData *imageData = UIImagePNGRepresentation(img);
@@ -86,8 +85,7 @@
     // next we set up the S3 upload request manager
     _uploadRequest = [AWSS3TransferManagerUploadRequest new];
     // set the bucket
-    //   _uploadRequest.bucket = @"s3-demo-objectivec";
-    //    _uploadRequest.bucket = @"fitmoo-staging";
+
     _uploadRequest.bucket = [[UserManager sharedUserManager] s3_bucket];
     // I want this image to be public to anyone to view it so I'm setting it to Public Read
     _uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
@@ -192,9 +190,7 @@
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
     [manager PUT:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        
-        NSDictionary * responseDic= responseObject;
+
        
         NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -204,25 +200,6 @@
      ];
     
     
-//    NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
-//    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
-//    
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-//    
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-//    [request setHTTPMethod:@"PUT"];
-//    [request setAllHTTPHeaderFields:jsonDict];
-//    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:nil progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-//        if (error) {
-//            NSLog(@"Error: %@", error);
-//        } else {
-//            [self deleteCheck];
-//            NSLog(@"Success: %@ %@", response, responseObject);
-//        }
-//    }];
-//    [uploadTask resume];
     
 }
 
@@ -757,36 +734,23 @@
     return true;
 }
 
-- (void) generateVideoPost
-{
-    
-}
 
-- (void) generateImagePost
-{
-    
-}
-
-- (void) generateTextPost
-{
-    
-}
 
 - (IBAction)postButtonClick:(id)sender {
     
     if ([self validate] ==true) {
         if ([_postActionType isEqualToString:@"video"]) {
             [self getAuth];
-            [self generateVideoPost];
+           
             
         }else if ([_postActionType isEqualToString:@"image"]) {
                 
             [self uploadToS3];
-            [self generateImagePost];
+          
         }else
         {
             [self makePost:@"" withVideoUrl:@""];
-            [self generateTextPost];
+           
         }
      
         [self addActivityIndicator];
@@ -795,18 +759,13 @@
     
 }
 - (IBAction)nutritionButtonClick:(id)sender {
- 
-    
-
     _postType=@"nutrition";
     
     [self defineTypeOfPost];
 }
 
 - (IBAction)normalPostButtonClick:(id)sender {
-    
-  
-    
+
     _postType=@"post";
     [self defineTypeOfPost];
 }
@@ -835,10 +794,10 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-//    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
-//    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
-//    _textViewBackgroundView.alpha=0.7;
-//    [self.view addSubview:_textViewBackgroundView];
+    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+    _textViewBackgroundView.alpha=0.7;
+    [self.view addSubview:_textViewBackgroundView];
     
      [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
 
@@ -866,8 +825,8 @@
     [_nutritionTitle resignFirstResponder];
     [_nutritionIngedients resignFirstResponder];
     [_nutritionPreparation resignFirstResponder];
-//    [_textViewBackgroundView removeFromSuperview];
-//    _textViewBackgroundView=nil;
+    [_textViewBackgroundView removeFromSuperview];
+    _textViewBackgroundView=nil;
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         _normalPostView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _normalPostView.frame.size.width, _normalPostView.frame.size.height);
