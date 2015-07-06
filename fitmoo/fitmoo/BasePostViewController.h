@@ -79,6 +79,7 @@
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  User * localUser;
 
+@property (strong, nonatomic)  NSMutableArray *communityArray;
 
 //@property (strong, nonatomic)  CameraViewController *overlay;
 //@property (strong, nonatomic)  UIImagePickerController *picker;

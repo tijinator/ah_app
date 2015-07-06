@@ -42,6 +42,7 @@
      NSNumber * contentHight;
     double frameRadio;
     CGRect originalTableviewFrame;
+    bool tableIsOnTop;
     
 }
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
@@ -56,6 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    tableIsOnTop=false;
     _localUser= [[UserManager sharedUserManager] localUser];
      self.tableview.tableFooterView = [[UIView alloc] init];
 
@@ -71,8 +73,27 @@
 
     [self createObservers];
 
-   
+    [self resetCommunityArray];
     
+}
+
+- (void) resetCommunityArray
+{
+    _communityArray = [[NSMutableArray alloc] init];
+    for (CreatedByCommunity *com in _localUser.communityArray) {
+        [_communityArray addObject:com];
+    }
+}
+
+- (void) resetCommunityArrayWithSelected
+{
+    _communityArray = [[NSMutableArray alloc] init];
+    for (CreatedByCommunity *com in _localUser.communityArray) {
+        if ([com.is_selected isEqualToString:@"1"]) {
+             [_communityArray addObject:com];
+        }
+       
+    }
 }
 
 - (void) moveDownTableView
@@ -83,7 +104,39 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
         
+    }completion:^(BOOL finished){
+        tableIsOnTop=false;
+        [self resetCommunityArrayWithSelected];
+        [_tableview reloadData];
+    
+    }];
+    
+}
+
+- (void) moveUpTableView
+{
+    _saveToCommunity=@"1";
+    
+    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+    _textViewBackgroundView.alpha=0.7;
+    [self.view addSubview:_textViewBackgroundView];
+    
+    originalTableviewFrame=_tableview.frame;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
+    
+    [self.view bringSubviewToFront:_tableview];
+    
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+        _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
+        
     }completion:^(BOOL finished){}];
+    [self resetCommunityArray];
+    
+    tableIsOnTop=true;
+    [self.tableview reloadData];
 
 }
 
@@ -93,26 +146,7 @@
  
  
     if (flag==true) {
-        _saveToCommunity=@"1";
-        
-        _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
-        _textViewBackgroundView.backgroundColor=[UIColor blackColor];
-        _textViewBackgroundView.alpha=0.7;
-        [self.view addSubview:_textViewBackgroundView];
-        
-        originalTableviewFrame=_tableview.frame;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
-        
-        [self.view bringSubviewToFront:_tableview];
-       
-        
-        [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-           
-            _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
-            
-        }completion:^(BOOL finished){}];
-
-        
+        [self moveUpTableView];
     }else
     {
         _saveToCommunity=@"0";
@@ -179,7 +213,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if ([_saveToCommunity isEqualToString:@"1"]) {
         
         if (_localUser.communityArray!=nil) {
-             return [_localUser.communityArray count]+1;
+         
+            if (tableIsOnTop==true) {
+                  return [_localUser.communityArray count]+1;
+            }else
+            {
+                 return [_communityArray count]+1;
+            }
+           
         }
        
     }
@@ -237,8 +278,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
      UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
-    
-    CreatedByCommunity *tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+    CreatedByCommunity *tempCommunity;
+    if (tableIsOnTop==true) {
+         tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+    }else
+    {
+         tempCommunity=[_communityArray objectAtIndex:indexPath.row-1];
+    }
+  
    
     
     UIButton * followButton= [[UIButton alloc] init];
@@ -303,11 +350,21 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
   
     nameLabel.numberOfLines=0;
     [nameLabel sizeToFit];
-    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height];
     
     [cell.contentView addSubview:imageButton];
     [cell.contentView addSubview:nameLabel];
     [cell.contentView addSubview:followButton];
+    
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 50*frameRadio-1, cell.contentView.frame.size.width, 1)];
+    v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:0.9f];
+    [cell addSubview:v];
+    
+  
+    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+nameLabel.frame.origin.y];
+    if (contentHight.intValue<50*frameRadio) {
+            contentHight=[NSNumber numberWithInteger:50*frameRadio];
+        }
+        
 
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
@@ -316,9 +373,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
     }
     
-    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 50*frameRadio-1, cell.contentView.frame.size.width, 1)];
-    v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:0.9f];
-    [cell addSubview:v];
+  
   
     return cell;
 }
@@ -326,8 +381,17 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    
     if (indexPath.row>0) {
-         CreatedByCommunity *tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+        CreatedByCommunity *tempCommunity;
+        if (tableIsOnTop==true) {
+             tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+        }else
+        {
+             tempCommunity=[_communityArray objectAtIndex:indexPath.row-1];
+        }
+        
         if ([tempCommunity.is_selected isEqualToString:@"1"]) {
             tempCommunity.is_selected=@"0";
         }else
@@ -336,6 +400,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
         [_tableview reloadData];
+    }else
+    {
+        if (tableIsOnTop==false&&[_saveToCommunity isEqualToString:@"1"]) {
+            
+            [self moveUpTableView];
+        }
+        
     }
     
 }
@@ -344,24 +415,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-//    double Radio= self.view.frame.size.width / 320;
-//    
-//    NSNumber *height;
-//    if (indexPath.row<[_heighArray count]) {
-//        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-//        
-//    }else
-//    {
-//        height=[NSNumber numberWithInt:contentHight.intValue];
-//    }
-//    
-//    return  MAX(50*Radio, height.intValue);
     double Radio= self.view.frame.size.width / 320;
-    if (indexPath.row==0) {
-        return 60*Radio;
+        if (indexPath.row==0) {
+            return 60*Radio;
+        }
+    
+    NSNumber *height;
+    if (indexPath.row<[_heighArray count]) {
+        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+        
+    }else
+    {
+        height=[NSNumber numberWithInt:contentHight.intValue];
     }
     
-    return 50*Radio;
+    return   height.intValue;
+//    double Radio= self.view.frame.size.width / 320;
+//    if (indexPath.row==0) {
+//        return 60*Radio;
+//    }
+//    
+//    return 50*Radio;
 }
 
 
