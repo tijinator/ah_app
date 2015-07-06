@@ -13,6 +13,9 @@
 #import "UITextView+Placeholder.h"
 //#import "CameraViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "User.h"
+#import "CreatedByCommunity.h"
+#import "AsyncImageView.h"
 
 @interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
@@ -25,7 +28,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *wihteArrawImage;
 - (IBAction)postImageButtonClick:(id)sender;
-
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 - (IBAction)cancelButtonClick:(id)sender;
 - (IBAction)postButtonClick:(id)sender;
 - (void)hideTextViewBackgroundView;
@@ -52,7 +55,8 @@
 @property (strong, nonatomic) IBOutlet UIView *nutritionPreparationView;
 @property (strong, nonatomic) IBOutlet UIView *nutritionIngedientsView;
 
-
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic)  NSString *saveToCommunity;
 
 @property (strong, nonatomic) IBOutlet UIButton *nutritionEditButton;
 @property (strong, nonatomic) IBOutlet UIView *normalPostBackView;
@@ -73,6 +77,8 @@
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  BasePostViewController *postView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  User * localUser;
+
 
 //@property (strong, nonatomic)  CameraViewController *overlay;
 //@property (strong, nonatomic)  UIImagePickerController *picker;

@@ -49,6 +49,7 @@
 -(void) getUserProfileForOtherPeople:(NSString *) other_people_id;
 -(void) performUnLike:(NSString *) postId;
 -(void) updateUnreadFeed: (NSString *) feed_id;
+-(void) getUserCommunity:(User *) user;
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;

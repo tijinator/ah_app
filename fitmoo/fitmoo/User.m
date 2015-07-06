@@ -17,9 +17,14 @@
 
 -(id)init
 {
-   
+    _created_by_community= [[CreatedByCommunity alloc] init];
+     _communityArray= [[NSMutableArray alloc] init];
     return self;
 }
 
-
+-(void) resetCommunity
+{
+    _created_by_community= [[CreatedByCommunity alloc] init];
+    
+}
 @end

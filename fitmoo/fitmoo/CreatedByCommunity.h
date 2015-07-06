@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *joiners_count;
 @property (nonatomic, strong) NSString *is_member;
 @property (nonatomic, strong) NSString *is_owner;
+@property (nonatomic, strong) NSString *is_selected;
 
 @end

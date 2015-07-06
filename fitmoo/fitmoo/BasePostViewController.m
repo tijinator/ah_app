@@ -38,6 +38,12 @@
 @end
 
 @interface BasePostViewController ()
+{
+     NSNumber * contentHight;
+    double frameRadio;
+    CGRect originalTableviewFrame;
+    
+}
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
 @property (nonatomic) uint64_t amountUploaded;
@@ -50,6 +56,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    _localUser= [[UserManager sharedUserManager] localUser];
+     self.tableview.tableFooterView = [[UIView alloc] init];
+
+    UIView* bview = [[UIView alloc] init];
+    bview.backgroundColor =[UIColor colorWithRed:235.0/255.0 green:238.0/255.0 blue:240.0/255.0 alpha:1.0];
+    [_tableview setBackgroundView:bview];
+ 
+   
+    contentHight=[NSNumber numberWithInteger:50];
+    _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
+    _saveToCommunity=@"0";
     [self defineTypeOfPost];
 
     [self createObservers];
@@ -57,6 +74,296 @@
    
     
 }
+
+- (void) moveDownTableView
+{
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+        _tableview.frame=CGRectMake(originalTableviewFrame.origin.x, originalTableviewFrame.origin.y, originalTableviewFrame.size.width, originalTableviewFrame.size.height);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
+        
+    }completion:^(BOOL finished){}];
+
+}
+
+- (void)switchValueChanged:(UISwitch *)theSwitch
+{
+    BOOL flag = theSwitch.on;
+ 
+ 
+    if (flag==true) {
+        _saveToCommunity=@"1";
+        
+        _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+        _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+        _textViewBackgroundView.alpha=0.7;
+        [self.view addSubview:_textViewBackgroundView];
+        
+        originalTableviewFrame=_tableview.frame;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
+        
+        [self.view bringSubviewToFront:_tableview];
+       
+        
+        [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+           
+            _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
+            
+        }completion:^(BOOL finished){}];
+
+        
+    }else
+    {
+        _saveToCommunity=@"0";
+        
+        [_textViewBackgroundView removeFromSuperview];
+        _textViewBackgroundView=nil;
+        
+        for (int i=0; i<[_localUser.communityArray count]; i++) {
+            CreatedByCommunity *tempCom= [_localUser.communityArray objectAtIndex:i];
+            tempCom.is_selected=@"0";
+        }
+        
+        
+        [self moveDownTableView];
+        
+        
+    }
+    
+    [self.tableview reloadData];
+    
+    
+}
+
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+ 
+
+    
+//    double Radio= self.view.frame.size.width / 320;
+//    NSNumber *height;
+//    if (indexPath.row<[_heighArray count]) {
+//        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+//        
+//        return height.integerValue;
+//    }else
+//    {
+//        height=[NSNumber numberWithInt:50*Radio];
+//        return height.integerValue;
+//    }
+//    
+//    
+//    return height.integerValue;
+    
+    
+     double Radio= self.view.frame.size.width / 320;
+    if (indexPath.row==0) {
+        return 60*Radio;
+    }
+    return 50*Radio;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    
+    if ([_saveToCommunity isEqualToString:@"1"]) {
+        
+        if (_localUser.communityArray!=nil) {
+             return [_localUser.communityArray count]+1;
+        }
+       
+    }
+    
+    return 1;
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+
+    if (indexPath.row==0) {
+        
+        
+        UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
+      //  [cell setSeparatorInset:UIEdgeInsetsMake(0, cell.contentView.frame.size.width/2, 0, cell.contentView.frame.size.width/2)];
+        
+        UIView *view= (UIView *) [cell viewWithTag:22];
+        view.frame= CGRectMake(0, 0, 320, 50);
+        view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:view respectToSuperFrame:nil];
+        
+        UILabel *label= (UILabel *)[cell viewWithTag:20];
+        label.frame= CGRectMake(28, 14, 164, 25);
+        label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+        label.text= @"Post to my Communities";
+        
+        
+        UISwitch *sw= (UISwitch *) [cell viewWithTag:21];
+        double frameradio= [[FitmooHelper sharedInstance] frameRadio];
+        sw.frame= CGRectMake(245*frameradio, 10*frameradio, 51, 31);
+        sw.tag=indexPath.row+20;
+        [sw addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        if ([_saveToCommunity isEqualToString:@"0"]) {
+            [sw setOn:NO animated:YES];
+        }else
+        {
+            [sw setOn:YES animated:YES];
+        }
+        
+        
+      //  [cell.contentView addSubview:label];
+     //   [cell.contentView addSubview:sw];
+        
+        return cell;
+        
+        
+        
+    }
+    
+     UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    
+    CreatedByCommunity *tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+   
+    
+    UIButton * followButton= [[UIButton alloc] init];
+    followButton.frame= CGRectMake(290, 15, 16, 12);
+    followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
+    [followButton setTag:indexPath.row*100+7];
+   
+    if ([tempCommunity.is_selected isEqualToString:@"1"]) {
+          [followButton setBackgroundImage:[UIImage imageNamed:@"bluecheck.png"] forState:UIControlStateNormal];
+    }else
+    {
+        [followButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
+  
+  
+  
+    
+    
+    UIButton *imageButton= [[UIButton alloc] init];
+    imageButton.frame= CGRectMake(0, 0, 75, 50);
+    imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
+    
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
+    view.clipsToBounds=YES;
+    view.userInteractionEnabled = NO;
+    view.exclusiveTouch = NO;
+    
+    AsyncImageView *imageview=[[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
+    imageview.userInteractionEnabled = NO;
+    imageview.exclusiveTouch = NO;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageview];
+    imageview.imageURL =[NSURL URLWithString:tempCommunity.cover_photo_url];
+    
+    [imageButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [view addSubview:imageview];
+    [imageButton addSubview:view];
+    imageButton.exclusiveTouch=NO;
+    imageButton.userInteractionEnabled=NO;
+    
+ 
+    UILabel *nameLabel=[[UILabel alloc] init];
+    nameLabel.frame= CGRectMake(90, 18, 190, 41);
+    nameLabel.numberOfLines=2;
+    nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
+    imageview.layer.cornerRadius=imageview.frame.size.width/2;
+  
+    
+  
+    UIFont *font= [UIFont fontWithName:@"BentonSans-Medium" size:(CGFloat)(13)];
+    NSString *string=tempCommunity.name;
+
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font} ];
+
+    nameLabel.lineBreakMode= NSLineBreakByWordWrapping;
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:3];
+    [attributedString addAttribute:NSParagraphStyleAttributeName
+                             value:style
+                             range:NSMakeRange(0, string.length)];
+    [nameLabel setAttributedText:attributedString];
+  
+    nameLabel.numberOfLines=0;
+    [nameLabel sizeToFit];
+    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height];
+    
+    [cell.contentView addSubview:imageButton];
+    [cell.contentView addSubview:nameLabel];
+    [cell.contentView addSubview:followButton];
+
+    if (indexPath.row>=[_heighArray count]) {
+        [_heighArray addObject:contentHight];
+    }else
+    {
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+    }
+    
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 50*frameRadio-1, cell.contentView.frame.size.width, 1)];
+    v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:0.9f];
+    [cell addSubview:v];
+  
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row>0) {
+         CreatedByCommunity *tempCommunity=[_localUser.communityArray objectAtIndex:indexPath.row-1];
+        if ([tempCommunity.is_selected isEqualToString:@"1"]) {
+            tempCommunity.is_selected=@"0";
+        }else
+        {
+            tempCommunity.is_selected=@"1";
+        }
+        
+        [_tableview reloadData];
+    }
+    
+}
+
+// multy high table cell
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+//    double Radio= self.view.frame.size.width / 320;
+//    
+//    NSNumber *height;
+//    if (indexPath.row<[_heighArray count]) {
+//        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+//        
+//    }else
+//    {
+//        height=[NSNumber numberWithInt:contentHight.intValue];
+//    }
+//    
+//    return  MAX(50*Radio, height.intValue);
+    double Radio= self.view.frame.size.width / 320;
+    if (indexPath.row==0) {
+        return 60*Radio;
+    }
+    
+    return 50*Radio;
+}
+
 
 
 #pragma mark S3 stuff
@@ -360,6 +667,9 @@
 {
     _normalPostView.frame= CGRectMake(0, 55, 320, 142);
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
+  
+    _tableview.frame=CGRectMake(0, _normalPostView.frame.size.height+_normalPostView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_normalPostView.frame.size.height-_normalPostView.frame.origin.y-10);
+    originalTableviewFrame=_tableview.frame;
     _normalPostView.hidden=false;
     _workoutView.hidden=true;
     _nutritionView.hidden=true;
@@ -377,6 +687,9 @@
 {
     _workoutView.frame= CGRectMake(0, 55, 320, 172);
     _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
+    
+     _tableview.frame=CGRectMake(0, _workoutView.frame.size.height+_workoutView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_workoutView.frame.size.height-_workoutView.frame.origin.y-10);
+    originalTableviewFrame=_tableview.frame;
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     if (self.PostImage==nil) {
         [_workoutPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
@@ -390,6 +703,9 @@
 {
     _nutritionView.frame= CGRectMake(0, 55, 320, 245);
     _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
+    
+     _tableview.frame=CGRectMake(0, _nutritionView.frame.size.height+_nutritionView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_nutritionView.frame.size.height-_nutritionView.frame.origin.y-10);
+    originalTableviewFrame=_tableview.frame;
     _normalPostView.hidden=true;
     _workoutView.hidden=true;
     _nutritionView.hidden=false;
@@ -403,7 +719,7 @@
 -(void) initFrames
 {
 
-    double framradio= [[FitmooHelper sharedInstance] frameRadio];
+    frameRadio= [[FitmooHelper sharedInstance] frameRadio];
     _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
     _normalPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostImage respectToSuperFrame:self.view];
  //   _normalPostText.frame= CGRectMake(96*framradio, 10*framradio, 216, 112);
@@ -435,6 +751,8 @@
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
+    
+  
     
     _normalEditButton.layer.cornerRadius=3;
     _workoutEditButton.layer.cornerRadius=3;
@@ -760,14 +1078,17 @@
 }
 - (IBAction)nutritionButtonClick:(id)sender {
     _postType=@"nutrition";
-    
     [self defineTypeOfPost];
+
+   
 }
 
 - (IBAction)normalPostButtonClick:(id)sender {
 
     _postType=@"post";
     [self defineTypeOfPost];
+ 
+    
 }
 
 - (IBAction)workoutButtonClick:(id)sender {
@@ -775,6 +1096,8 @@
     
     _postType=@"workout";
     [self defineTypeOfPost];
+ 
+    
 }
 
 - (IBAction)editClick:(id)sender {
@@ -784,12 +1107,6 @@
      [[NSNotificationCenter defaultCenter] postNotificationName:@"hidePostView" object:Nil];
 }
 
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-//    if (CGRectContainsPoint(button.frame, point)) {
-//        return button;
-//    }
-//    return [super hitTest:point withEvent:event];
-//}
 
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -801,8 +1118,6 @@
     
      [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
 
-    
-    
     [self.view bringSubviewToFront:_normalPostView];
     [self.view bringSubviewToFront:_workoutView];
     [self.view bringSubviewToFront:_nutritionView];
@@ -813,7 +1128,7 @@
         _nutritionView.frame=CGRectMake(0, 0, _nutritionView.frame.size.width, _nutritionView.frame.size.height);
         
     }completion:^(BOOL finished){}];
-
+    _tableview.userInteractionEnabled=NO;
 }
 
 - (void)hideTextViewBackgroundView
@@ -836,6 +1151,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
         
     }completion:^(BOOL finished){}];
+    
+    [self moveDownTableView];
+    _tableview.userInteractionEnabled=YES;
 
 }
 

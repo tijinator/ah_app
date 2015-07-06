@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CreatedByCommunity.h"
 
 @interface User : NSObject
 {
@@ -53,9 +54,9 @@
 
 @property (nonatomic, strong) NSString *vanity_url;
 
-
-
+@property (nonatomic, strong) NSMutableArray * communityArray;
+@property (nonatomic, strong) CreatedByCommunity *created_by_community;
 -(id)init;
-
+-(void) resetCommunity;
 
 @end

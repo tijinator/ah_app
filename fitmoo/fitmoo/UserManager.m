@@ -238,6 +238,95 @@
 }
 
 
+-(void) getUserAdminCommunity:(User *) user
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@%@",_clientUrl,@"/api/users/", _localUser.user_id,@"/admin"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSDictionary *  responseDic= responseObject;
+        NSDictionary *result= [responseDic objectForKey:@"results"];
+        if (![result isEqual:[NSNull null ]]) {
+            
+            
+            for (NSDictionary * dic in result) {
+                 [_localUser resetCommunity];
+                _localUser.created_by_community.created_by_community_id= [dic objectForKey:@"id"];
+                _localUser.created_by_community.name= [dic objectForKey:@"name"];
+                
+                NSDictionary *cover_photo= [dic objectForKey:@"cover_photo"];
+                _localUser.created_by_community.cover_photo_url= [cover_photo objectForKey:@"url"];
+                if ([_localUser.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
+                    _localUser.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+                }
+                [_localUser.communityArray addObject:_localUser.created_by_community];
+                
+            }
+        }
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
+
+-(void) getUserCommunity:(User *) user
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@%@",_clientUrl,@"/api/users/", _localUser.user_id,@"/joined"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+      NSDictionary *  responseDic= responseObject;
+        NSDictionary *result= [responseDic objectForKey:@"results"];
+         if (![result isEqual:[NSNull null ]]) {
+             
+             
+        for (NSDictionary * dic in result) {
+            [_localUser resetCommunity];
+            
+            _localUser.created_by_community.created_by_community_id= [dic objectForKey:@"id"];
+            _localUser.created_by_community.name= [dic objectForKey:@"name"];
+            
+            NSDictionary *cover_photo= [dic objectForKey:@"cover_photo"];
+            _localUser.created_by_community.cover_photo_url= [cover_photo objectForKey:@"url"];
+            if ([_localUser.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
+                _localUser.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+            }
+            [_localUser.communityArray addObject:_localUser.created_by_community];
+            
+        }
+        }
+        [self getUserAdminCommunity:_localUser];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
+
+
 -(void) getUserProfile:(User *) user
 {
     
@@ -276,7 +365,7 @@
         if ([_localUser.bio isEqual:[NSNull null]]) {
             _localUser.bio=@"";
         }
-        
+        [self getUserCommunity:_localUser];
         
         [self saveLocalUser:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
@@ -511,15 +600,28 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-
+    NSMutableArray *community_id_array=[[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[_localUser.communityArray count]; i++) {
+        [_localUser resetCommunity];
+        _localUser.created_by_community= [_localUser.communityArray objectAtIndex:i];
+        if ([_localUser.created_by_community.is_selected isEqualToString:@"1"]) {
+            [community_id_array addObject:_localUser.created_by_community.created_by_community_id];
+        }
+    }
+    
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",
-        feed, @"feed",nil];
+        feed, @"feed",community_id_array, @"community_ids",nil];
 
     [manager POST: _postUrl parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
-        
+        for (int i=0; i<[_localUser.communityArray count]; i++) {
+            [_localUser resetCommunity];
+            _localUser.created_by_community= [_localUser.communityArray objectAtIndex:i];
+            _localUser.created_by_community.is_selected=@"0";
+        }
         UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Posted"
                                                           message : @"" delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
