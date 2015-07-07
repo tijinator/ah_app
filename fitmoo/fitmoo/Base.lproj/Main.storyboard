@@ -682,6 +682,16 @@
                                             <action selector="backButtonClick:" destination="hcf-6K-sfu" eventType="touchUpInside" id="hkm-le-p5x"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7XZ-Gy-gUY">
+                                        <rect key="frame" x="291" y="30" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="adduser.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addUserButtonClick:" destination="hcf-6K-sfu" eventType="touchUpInside" id="1Qk-fV-4hR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -787,6 +797,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addUser" destination="7XZ-Gy-gUY" id="x6E-Oe-2Yr"/>
                         <outlet property="bodyView" destination="2zC-0M-YXb" id="QFw-vi-yE4"/>
                         <outlet property="collectionView" destination="gVe-QY-vJI" id="kdb-wm-RK1"/>
                         <outlet property="featerLabel" destination="D0H-lz-Wx5" id="BKX-B0-C9R"/>
@@ -2694,6 +2705,7 @@ instructions to reset your password.</string>
     </scenes>
     <resources>
         <image name="addprofilepicturebtn.png" width="211" height="44"/>
+        <image name="adduser.png" width="16" height="16"/>
         <image name="bluewhitecamera.png" width="72" height="72"/>
         <image name="changeprofilepicture.png" width="323" height="43"/>
         <image name="continuebluebar.png" width="322" height="55"/>

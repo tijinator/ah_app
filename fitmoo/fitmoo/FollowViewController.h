@@ -24,7 +24,7 @@
 #import "FollowCollectionViewCell.h"
 #import "SecondFollowViewController.h"
 #import "FollowHeaderCell.h"
-
+#import "InviteViewController.h"
 @interface FollowViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
 
@@ -52,6 +52,8 @@
 @property (strong, nonatomic)  NSDictionary * responseDic1;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
+@property (strong, nonatomic) IBOutlet UIButton *addUser;
+- (IBAction)addUserButtonClick:(id)sender;
 
 
 @end

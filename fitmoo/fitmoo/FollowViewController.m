@@ -115,7 +115,7 @@
     _scrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scrollView respectToSuperFrame:self.view];
     _tableview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableview respectToSuperFrame:self.view];
     _lifestytleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_lifestytleLabel respectToSuperFrame:self.view];
-
+    _addUser.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_addUser respectToSuperFrame:self.view];
     if (self.view.frame.size.height<500) {
         
         _tableview.frame= CGRectMake(_tableview.frame.origin.x,_tableview.frame.origin.y, _tableview.frame.size.width, _tableview.frame.size.height-88);
@@ -618,5 +618,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)backButtonClick:(id)sender {
     //  [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
+}
+- (IBAction)addUserButtonClick:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    
+    [self.navigationController pushViewController:inviteView animated:YES];
 }
 @end

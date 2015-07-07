@@ -59,7 +59,7 @@
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
-
+    _addUserButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_addUserButton respectToSuperFrame:self.view];
 }
 
 
@@ -374,4 +374,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+- (IBAction)addUserButtonClick:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    
+    [self.navigationController pushViewController:inviteView animated:YES];
+}
 @end

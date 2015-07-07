@@ -12,7 +12,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "User.h"
-
+#import "InviteViewController.h"
 @interface ComposeViewController : UIViewController
 
 
@@ -27,6 +27,8 @@
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 @property (assign, nonatomic)  int count;
+@property (strong, nonatomic) IBOutlet UIButton *addUserButton;
+- (IBAction)addUserButtonClick:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *likerArray;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
