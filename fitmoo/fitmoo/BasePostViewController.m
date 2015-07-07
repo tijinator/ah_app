@@ -564,13 +564,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
 
     
+ 
+    
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
+    
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"%d", 0] forHTTPHeaderField:@"Content-Length"];
+    [manager.requestSerializer setValue:@"bytes */*" forHTTPHeaderField:@"Range"];
+    
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
-    [manager PUT:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+  //  NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
+    [manager PUT:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
 
        
         NSLog(@"Submit response data: %@", responseObject);
@@ -606,6 +613,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
+        //    [self verifyCheck];
             [self deleteCheck];
             NSLog(@"Success: %@ %@", response, responseObject);
         }
