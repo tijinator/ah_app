@@ -29,7 +29,7 @@
     self.tableview.tableFooterView = [[UIView alloc] init];
     if ([_searchType isEqualToString:@"like"]) {
         [self getLikeItem];
-        _titleLabel.text=@"LIKE";
+        _titleLabel.text=@"LIKES";
     }else if ([_searchType isEqualToString:@"follower"])
     {
          _titleLabel.text=@"FOLLOWERS";

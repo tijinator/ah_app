@@ -552,6 +552,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSString *videoUrl= [NSString stringWithFormat:@"%@%@", @"https://vimeo.com/",videoid];
         [self makePost:nil withVideoUrl:videoUrl];
         NSLog(@"Submit response data: %@", responseObject);
+        
+      
     } // success callback block
      
             failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -573,11 +575,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"%d", 0] forHTTPHeaderField:@"Content-Length"];
-    [manager.requestSerializer setValue:@"bytes */*" forHTTPHeaderField:@"Range"];
+    [manager.requestSerializer setValue:@"1001" forHTTPHeaderField:@"Range"];
+     [manager.requestSerializer setValue:@"video/mp4" forHTTPHeaderField:@"Content-Type"];
     
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
-  //  NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length", nil];
-    [manager PUT:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:@"bytes */*", @"Content-Range",[NSString stringWithFormat:@"%d", 0], @"Content-Length",@"video/mp4", @"Content-Type", nil];
+    [manager PUT:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
 
        
         NSLog(@"Submit response data: %@", responseObject);

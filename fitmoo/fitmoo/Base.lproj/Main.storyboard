@@ -1657,6 +1657,13 @@ instructions to reset your password.</string>
                                             <action selector="backButtonClick:" destination="cNq-KB-G9E" eventType="touchUpInside" id="6dA-Ub-q0t"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gG1-c9-XwY" customClass="BentonSansBold">
+                                        <rect key="frame" x="93" y="26" width="135" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1697,6 +1704,7 @@ instructions to reset your password.</string>
                         <outlet property="postButton" destination="1so-te-rEL" id="AgX-Pe-Nr0"/>
                         <outlet property="tableview" destination="FPH-Yb-YKU" id="Vvh-Tn-ISb"/>
                         <outlet property="textField" destination="BLJ-d3-FgD" id="T7H-dW-Pw0"/>
+                        <outlet property="titleLabel" destination="gG1-c9-XwY" id="8de-3m-foy"/>
                         <outlet property="topView" destination="muP-HH-Oly" id="YKO-uS-kLO"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,7 @@
 #import "User.h"
 
 @interface CommentViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 - (IBAction)backButtonClick:(id)sender;
