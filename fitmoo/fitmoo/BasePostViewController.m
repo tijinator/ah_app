@@ -107,10 +107,15 @@
     }completion:^(BOOL finished){
         tableIsOnTop=false;
         [self resetCommunityArrayWithSelected];
-        [_tableview reloadData];
-    
+       
+        if ([_communityArray count]==0) {
+            _saveToCommunity=@"0";
+        }
+         [_tableview reloadData];
+        
     }];
     
+   
 }
 
 - (void) moveUpTableView
@@ -239,36 +244,43 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (indexPath.row==0) {
         
         
-        UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+   //     UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+          UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
         cell.selectionStyle= UITableViewCellSelectionStyleNone;
       //  [cell setSeparatorInset:UIEdgeInsetsMake(0, cell.contentView.frame.size.width/2, 0, cell.contentView.frame.size.width/2)];
         
-        UIView *view= (UIView *) [cell viewWithTag:22];
+    //    UIView *view= (UIView *) [cell viewWithTag:22];
+        UIView *view= [[UIView alloc] init];
         view.frame= CGRectMake(0, 0, 320, 50);
         view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:view respectToSuperFrame:nil];
         
-        UILabel *label= (UILabel *)[cell viewWithTag:20];
+        UILabel *label= [[UILabel alloc] init];
+     //   UILabel *label= (UILabel *)[cell viewWithTag:20];
         label.frame= CGRectMake(28, 14, 164, 25);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+        UIFont *font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];
+        label.font=font;
         label.text= @"Post to my Communities";
         
         
-        UISwitch *sw= (UISwitch *) [cell viewWithTag:21];
+     //   UISwitch *sw= (UISwitch *) [cell viewWithTag:21];
+         UISwitch *sw= [[UISwitch alloc] init];
+        [sw setOnTintColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f]];
         double frameradio= [[FitmooHelper sharedInstance] frameRadio];
         sw.frame= CGRectMake(245*frameradio, 10*frameradio, 51, 31);
         sw.tag=indexPath.row+20;
         [sw addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
         
         if ([_saveToCommunity isEqualToString:@"0"]) {
-            [sw setOn:NO animated:YES];
+            [sw setOn:NO animated:NO];
         }else
         {
-            [sw setOn:YES animated:YES];
+            [sw setOn:YES animated:NO];
         }
         
-        
-      //  [cell.contentView addSubview:label];
-     //   [cell.contentView addSubview:sw];
+        [cell.contentView addSubview:view];
+        [cell.contentView addSubview:label];
+        [cell.contentView addSubview:sw];
         
         return cell;
         
@@ -575,7 +587,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"%d", 0] forHTTPHeaderField:@"Content-Length"];
-    [manager.requestSerializer setValue:@"1001" forHTTPHeaderField:@"Range"];
+    [manager.requestSerializer setValue:@"1001" forHTTPHeaderField:@"Content-Range"];
      [manager.requestSerializer setValue:@"video/mp4" forHTTPHeaderField:@"Content-Type"];
     
     NSString *url= (NSString *)[_responseDic objectForKey:@"upload_link_secure"];
@@ -616,7 +628,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
-        //    [self verifyCheck];
+         //   [self verifyCheck];
             [self deleteCheck];
             NSLog(@"Success: %@ %@", response, responseObject);
         }
