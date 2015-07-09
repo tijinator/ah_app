@@ -41,7 +41,7 @@
         [self getUserProfile:localUser.user_id];
   //  [self getHomePageItems];
     }
-
+   // [self getCommunityPageItems];
     
 }
 
@@ -122,6 +122,48 @@
 
 }
 
+-(void) getCommunityPageItems
+{
+    // _tableView.userInteractionEnabled=false;
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",
+                              ofs, @"offset", lim , @"limit",nil];
+    NSString * url;
+
+    url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/communities/", @"36",@"/feeds.json"];
+   
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        
+        NSInteger count=0;
+        if (_homeFeedArray!=nil ) {
+            count=[_homeFeedArray count];
+        }
+        [self defineFeedObjects];
+        
+        if ([_responseDic count]>0&& count!=[_homeFeedArray count]) {
+            [self.tableView reloadData];
+        }
+        
+        
+        //    NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+}
 
 
 -(void) getHomePageItems

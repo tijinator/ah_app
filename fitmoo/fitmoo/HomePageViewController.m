@@ -314,7 +314,10 @@
         [view addSubview:headerImage1];
         [cell.heanderImage1 addSubview:view];
         
+    
         [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+       
         
     }
     
@@ -343,8 +346,11 @@
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
     [cell.headerImage2 addSubview:view];
-    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
+    if ([tempHomefeed.community_id isEqual:[NSNull null]]) {
+    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+        
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
     
