@@ -50,6 +50,7 @@
 -(void) performUnLike:(NSString *) postId;
 -(void) updateUnreadFeed: (NSString *) feed_id;
 -(void) getUserCommunity:(User *) user;
+-(void) getCommunityProfile:(NSString *) community_id;
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;

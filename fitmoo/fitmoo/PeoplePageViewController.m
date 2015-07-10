@@ -35,7 +35,11 @@
     [self createObservers];
     if (_searchId!=nil) {
         [self getUserProfile:_searchId];
-    }else
+    }else if (_searchCommunityId!=nil)
+    {
+        [self getUserCommunityProfile:_searchCommunityId];
+    }
+    else
     {
         User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
         [self getUserProfile:localUser.user_id];
@@ -54,6 +58,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetCommunityProfileFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetCommunityProfileFinished:) name:@"didGetCommunityProfileFinished" object:nil];
+    
+    
 }
 - (void) updateTable: (NSNotification * ) note
 {
@@ -71,10 +79,23 @@
     
 }
 
-
-- (void) getUserProfile: (NSString *) profile_id;
+- (void) getUserCommunityProfile: (NSString *) community_id
+{
+    [[UserManager sharedUserManager] getCommunityProfile:community_id];
+}
+- (void) getUserProfile: (NSString *) profile_id
 {
     [[UserManager sharedUserManager] getUserProfileForOtherPeople:profile_id];
+}
+
+- (void) didGetCommunityProfileFinished: (NSNotification * ) note
+{
+    _temSearchUser= (User *) [note object];
+   
+    [self getCommunityPageItems];
+    [_tableView reloadData];
+   
+    
 }
 
 - (void) didGetProfileFinished: (NSNotification * ) note
@@ -335,7 +356,21 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }
             
             
-        }else
+        }else if(_searchCommunityId!=nil&&_temSearchUser !=nil)
+        {
+            temUser=_temSearchUser;
+            if (temUser.is_following.intValue==1) {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"leavebtn.png"] forState:UIControlStateNormal];
+                [cell.editProfileButton setTag:11];
+                
+            }else if(temUser.is_following.intValue==0)
+            {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"joinbtn.png"] forState:UIControlStateNormal];
+                [cell.editProfileButton setTag:12];
+            }
+
+        }
+        else
         {
         temUser= [[UserManager sharedUserManager] localUser];
         }
@@ -366,7 +401,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.followerCountLabel.userInteractionEnabled=YES;
         
-        
+        if (_searchCommunityId!=nil) {
+            cell.followCountLabel.hidden=true;
+            cell.followingLabel.hidden=true;
+            cell.followerLabel.text=@"members";
+        }
         
         if (temUser.following.intValue>999) {
             CGFloat following=temUser.following.floatValue/1000.0f;
@@ -379,7 +418,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
         }
         
-        cell.communityCountLabel.text=temUser.communities;
+    //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
    //     [cell loadHeaderImage:imageUrl];
@@ -786,8 +825,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //     NSLog(@"%f",self.tableView.contentOffset.y );
         if (_count==0) {
             [self initValuable];
-            
+            if(_searchCommunityId !=nil)
+            {
+                 [self getCommunityPageItems];
+            }else
+            {
             [self getHomePageItems];
+            }
         }
         _count++;
         
@@ -803,7 +847,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             {
             _offset +=9;
             }
-            [self getHomePageItems];
+            if(_searchCommunityId !=nil)
+            {
+                [self getCommunityPageItems];
+            }else
+            {
+                [self getHomePageItems];
+            }
         }
         _count++;
         

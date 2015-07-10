@@ -40,6 +40,10 @@
     AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _headerImage1.frame.size.width, _headerImage1.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
     headerImage1.imageURL =[NSURL URLWithString:url];
+  //  headerImage1.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth;
+    headerImage1.contentMode = UIViewContentModeScaleAspectFit;
+    headerImage1.backgroundColor=[UIColor blackColor];
+   // headerImage1.contentMode=UIViewContentModeScaleAspectFill;
    // self.headerImage1.image=headerImage1.image;
     [self.headerImage1 addSubview:headerImage1];
     

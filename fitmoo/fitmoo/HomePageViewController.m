@@ -314,10 +314,18 @@
         [view addSubview:headerImage1];
         [cell.heanderImage1 addSubview:view];
         
-    
+        
         [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+        if ([tempHomefeed.feed_action.action isEqualToString:@"share"]) {
+            if (!(tempHomefeed.feed_action.community_id==nil||[tempHomefeed.feed_action.community_id isEqual:[NSNull null]])) {
+                [cell.heanderImage1 removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+                [cell.heanderImage1 addTarget:self action:@selector(CommunityHeaderImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+        
        
+  
+        
         
     }
     
@@ -348,7 +356,12 @@
     [cell.headerImage2 addSubview:view];
     
     if ([tempHomefeed.community_id isEqual:[NSNull null]]) {
-    [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [cell.headerImage2 addTarget:self action:@selector(CommunityHeaderImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
         
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
@@ -671,6 +684,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
+- (IBAction)CommunityHeaderImageButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *key=[NSString stringWithFormat:@"%@%ld",@"com",((long)button.tag)];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    
+    
+}
 
 - (IBAction)headerImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;

@@ -37,6 +37,7 @@
 - (IBAction)backButtonClick:(id)sender;
 
 @property (strong, nonatomic)  NSString * searchId;
+@property (strong, nonatomic)  NSString * searchCommunityId;
 @property (strong, nonatomic)  User * temSearchUser;
 @property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  NSDictionary * responseDic;

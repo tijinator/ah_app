@@ -117,6 +117,12 @@
 		273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5A71AEE863600BCC66F /* BentonSansMedium.m */; };
 		273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */; };
 		273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */; };
+		273D6DF01B505B1300A56CCD /* joinbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DEA1B505B1300A56CCD /* joinbtn.png */; };
+		273D6DF11B505B1300A56CCD /* joinbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DEB1B505B1300A56CCD /* joinbtn@2x.png */; };
+		273D6DF21B505B1300A56CCD /* joinbtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DEC1B505B1300A56CCD /* joinbtn@3x.png */; };
+		273D6DF31B505B1300A56CCD /* leavebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DED1B505B1300A56CCD /* leavebtn.png */; };
+		273D6DF41B505B1300A56CCD /* leavebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DEE1B505B1300A56CCD /* leavebtn@2x.png */; };
+		273D6DF51B505B1300A56CCD /* leavebtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 273D6DEF1B505B1300A56CCD /* leavebtn@3x.png */; };
 		273FF54E1AF7AA2C00B82DB3 /* addusericon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF51C1AF7AA2C00B82DB3 /* addusericon.png */; };
 		273FF54F1AF7AA2C00B82DB3 /* bluecheckbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF51D1AF7AA2C00B82DB3 /* bluecheckbtn.png */; };
 		273FF5501AF7AA2C00B82DB3 /* bluehighlightsquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF51E1AF7AA2C00B82DB3 /* bluehighlightsquare.png */; };
@@ -679,6 +685,12 @@
 		273CE5AA1AEEB24900BCC66F /* BentonSansRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansRegular.m; sourceTree = "<group>"; };
 		273CE5AC1AEEC13A00BCC66F /* BentonSansBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansBook.h; sourceTree = "<group>"; };
 		273CE5AD1AEEC13A00BCC66F /* BentonSansBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansBook.m; sourceTree = "<group>"; };
+		273D6DEA1B505B1300A56CCD /* joinbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joinbtn.png; sourceTree = "<group>"; };
+		273D6DEB1B505B1300A56CCD /* joinbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joinbtn@2x.png"; sourceTree = "<group>"; };
+		273D6DEC1B505B1300A56CCD /* joinbtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joinbtn@3x.png"; sourceTree = "<group>"; };
+		273D6DED1B505B1300A56CCD /* leavebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leavebtn.png; sourceTree = "<group>"; };
+		273D6DEE1B505B1300A56CCD /* leavebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leavebtn@2x.png"; sourceTree = "<group>"; };
+		273D6DEF1B505B1300A56CCD /* leavebtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leavebtn@3x.png"; sourceTree = "<group>"; };
 		273FF51C1AF7AA2C00B82DB3 /* addusericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addusericon.png; sourceTree = "<group>"; };
 		273FF51D1AF7AA2C00B82DB3 /* bluecheckbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluecheckbtn.png; sourceTree = "<group>"; };
 		273FF51E1AF7AA2C00B82DB3 /* bluehighlightsquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluehighlightsquare.png; sourceTree = "<group>"; };
@@ -1555,6 +1567,12 @@
 				279E57831B20B4EC0076C3B5 /* greycamera.png */,
 				279E57841B20B4EC0076C3B5 /* greycamera@2x.png */,
 				279E57851B20B4EC0076C3B5 /* greycamera@3x.png */,
+				273D6DEA1B505B1300A56CCD /* joinbtn.png */,
+				273D6DEB1B505B1300A56CCD /* joinbtn@2x.png */,
+				273D6DEC1B505B1300A56CCD /* joinbtn@3x.png */,
+				273D6DED1B505B1300A56CCD /* leavebtn.png */,
+				273D6DEE1B505B1300A56CCD /* leavebtn@2x.png */,
+				273D6DEF1B505B1300A56CCD /* leavebtn@3x.png */,
 				272E7E291B4C09CD00023D09 /* adduser.png */,
 				272E7E2A1B4C09CD00023D09 /* adduser@2x.png */,
 				272E7E2B1B4C09CD00023D09 /* adduser@3x.png */,
@@ -2113,8 +2131,10 @@
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
 				27988CCB1B0BE4C500BDE8EB /* shopscreen@3x.png in Resources */,
 				2752E9E91B015CBC003841DC /* deselectedsquare@3x.png in Resources */,
+				273D6DF21B505B1300A56CCD /* joinbtn@3x.png in Resources */,
 				27988CAE1B0BB12500BDE8EB /* followsection_followingbtn@3x.png in Resources */,
 				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
+				273D6DF41B505B1300A56CCD /* leavebtn@2x.png in Resources */,
 				273FF5571AF7AA2C00B82DB3 /* endorsetextbackground.png in Resources */,
 				27988CBB1B0BB12500BDE8EB /* followsection_usericon.png in Resources */,
 				2760945E1AD717E700A769CE /* fontello.ttf in Resources */,
@@ -2153,6 +2173,7 @@
 				27ACD1001B0A74E900322ED5 /* thumbnail_playbtn.png in Resources */,
 				27ADF1D01B14B1D8003A0A83 /* continuebluebar@2x.png in Resources */,
 				279E57B01B20F0B40076C3B5 /* greylocation.png in Resources */,
+				273D6DF51B505B1300A56CCD /* leavebtn@3x.png in Resources */,
 				273FF5771AF7AA2C00B82DB3 /* whitecommenticon.png in Resources */,
 				279E57B11B20F0B40076C3B5 /* greylocation@2x.png in Resources */,
 				27B2598E1B1E44BA00276273 /* greycomment@2x.png in Resources */,
@@ -2188,6 +2209,7 @@
 				2752EA0E1B015CBC003841DC /* shareicon.png in Resources */,
 				27AC92D01B066DF000BB7A0E /* selectedbars_brand@2x.png in Resources */,
 				273FF5651AF7AA2C00B82DB3 /* nutritiontag.png in Resources */,
+				273D6DF31B505B1300A56CCD /* leavebtn.png in Resources */,
 				276094581AD708C100A769CE /* BentonSansExtraComp-Bold.otf in Resources */,
 				27ADF1EB1B14B1D8003A0A83 /* loginlogo@2x.png in Resources */,
 				272E7E2D1B4C09CD00023D09 /* adduser@2x.png in Resources */,
@@ -2225,6 +2247,7 @@
 				2752E9E01B015CBC003841DC /* calendar.png in Resources */,
 				2752E9EA1B015CBC003841DC /* deselectedsquares.png in Resources */,
 				27ADF1CE1B14B1D8003A0A83 /* checkmark@3x.png in Resources */,
+				273D6DF01B505B1300A56CCD /* joinbtn.png in Resources */,
 				271114621ADF11A10056EB13 /* Info.plist in Resources */,
 				2752EA031B015CBC003841DC /* menu_plus_icon@2x.png in Resources */,
 				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
@@ -2357,6 +2380,7 @@
 				27A101551B3342C3007B7BF3 /* search_follow@3x.png in Resources */,
 				273FF5591AF7AA2C00B82DB3 /* followicon.png in Resources */,
 				2736B2231AEFC9920013B4B9 /* BentonSans-Regular.otf in Resources */,
+				273D6DF11B505B1300A56CCD /* joinbtn@2x.png in Resources */,
 				27AC92BD1B06292E00BB7A0E /* settings_bioicon@3x.png in Resources */,
 				273FF5531AF7AA2C00B82DB3 /* carticon.png in Resources */,
 				273FF57A1AF7AA2C00B82DB3 /* whitehearticon.png in Resources */,

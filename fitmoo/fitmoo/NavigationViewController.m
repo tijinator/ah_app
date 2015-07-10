@@ -353,7 +353,19 @@
         
         
         
-    }else  if (key.intValue>10) {
+    }else  if ([[key substringWithRange:NSMakeRange(0, 3)] isEqualToString:@"com"]) {
+        
+        NSString *com_id= [key substringFromIndex:3];
+        _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+       
+        _peoplePage.searchCommunityId=com_id;
+        [[self nav] pushViewController:_peoplePage animated:YES];
+        
+        currentPage=key;
+        [_Pagestuck addObject:key];
+        
+    }
+    else  if (key.intValue>10) {
 
      
             _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];

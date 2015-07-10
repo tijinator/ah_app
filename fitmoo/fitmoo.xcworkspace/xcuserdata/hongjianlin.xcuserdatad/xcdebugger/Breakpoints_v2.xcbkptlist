@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457815780.269858"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
-            landmarkName = "-performPost:"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
+            landmarkName = "-performPostToAmazon:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/FitmooHelper.m"
-            timestampString = "457539097.504248"
+            timestampString = "458228231.687999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "-generateHomeFeed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "884"
-            endingLineNumber = "884"
-            landmarkName = "-performUpdate:"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
+            landmarkName = "-performUpdatePrivacy:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,12 +282,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
-            landmarkName = "-performUpdate:"
+            startingLineNumber = "905"
+            endingLineNumber = "905"
+            landmarkName = "-performUpdatePrivacy:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,12 +330,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "880"
-            endingLineNumber = "880"
-            landmarkName = "-performUpdate:"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
+            landmarkName = "-performUpdatePrivacy:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "882"
-            endingLineNumber = "882"
-            landmarkName = "-performUpdate:"
+            startingLineNumber = "891"
+            endingLineNumber = "891"
+            landmarkName = "-performUpdatePrivacy:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,12 +570,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885250.131948"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "614"
-            endingLineNumber = "614"
-            landmarkName = "-performPost:"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
+            landmarkName = "-performPostToAmazon:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,27 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -890,12 +874,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457815780.269858"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-getUserProfile:"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "-getCommunityProfile:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -906,11 +890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1127"
-            endingLineNumber = "1127"
+            startingLineNumber = "1177"
+            endingLineNumber = "1177"
             landmarkName = "-BioButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -938,11 +922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-didPostFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -954,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-initValuable"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-defineFeedObjects"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-postNotifications"
             landmarkType = "5">
          </BreakpointContent>
@@ -1002,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "-initFrames"
             landmarkType = "5">
          </BreakpointContent>
@@ -1018,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "-tableView:estimatedHeightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1034,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1050,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
+            startingLineNumber = "936"
+            endingLineNumber = "936"
             landmarkName = "-optionButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1066,11 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "908"
-            endingLineNumber = "908"
+            startingLineNumber = "958"
+            endingLineNumber = "958"
             landmarkName = "-shareButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1082,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
+            startingLineNumber = "973"
+            endingLineNumber = "973"
             landmarkName = "-bodyImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1098,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1114,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1146,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1162,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1178,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1029"
-            endingLineNumber = "1029"
+            startingLineNumber = "1079"
+            endingLineNumber = "1079"
             landmarkName = "-FeedButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1194,11 +1178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1033"
-            endingLineNumber = "1033"
+            startingLineNumber = "1083"
+            endingLineNumber = "1083"
             landmarkName = "-PhotoButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1242,12 +1226,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "850"
-            endingLineNumber = "850"
-            landmarkName = "-performUpdatePrivacy:"
+            startingLineNumber = "859"
+            endingLineNumber = "859"
+            landmarkName = "-getUserLocally"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1322,12 +1306,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885947.146477"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
-            landmarkName = "-performUpdatePrivacy:"
+            startingLineNumber = "872"
+            endingLineNumber = "872"
+            landmarkName = "-getUserLocally"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1530,11 +1514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1045"
-            endingLineNumber = "1045"
+            startingLineNumber = "1095"
+            endingLineNumber = "1095"
             landmarkName = "-photoImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1546,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1055"
-            endingLineNumber = "1055"
+            startingLineNumber = "1105"
+            endingLineNumber = "1105"
             landmarkName = "-photoImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1562,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1578,11 +1562,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-didPostFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1594,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
             landmarkName = "-likeButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1610,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1031"
-            endingLineNumber = "1031"
+            startingLineNumber = "1081"
+            endingLineNumber = "1081"
             landmarkName = "-FeedButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1626,11 +1610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1035"
-            endingLineNumber = "1035"
+            startingLineNumber = "1085"
+            endingLineNumber = "1085"
             landmarkName = "-PhotoButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1754,11 +1738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "455825471.344196"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-didGetProfileFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2282,11 +2266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2921,22 +2905,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "457540365.019718"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "fitmoo/InterestViewController.m"
             timestampString = "454967026.766976"
             startingColumnNumber = "9223372036854775807"
@@ -3002,11 +2970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
             landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3018,11 +2986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "609"
-            endingLineNumber = "609"
+            startingLineNumber = "622"
+            endingLineNumber = "622"
             landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3242,11 +3210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-didPostFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3258,11 +3226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "455825471.344196"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-updateTable:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3274,11 +3242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "455825471.344196"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-updateTable:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3306,11 +3274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1040"
-            endingLineNumber = "1040"
+            startingLineNumber = "1090"
+            endingLineNumber = "1090"
             landmarkName = "-backButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3322,11 +3290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3338,11 +3306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3402,11 +3370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1096"
-            endingLineNumber = "1096"
+            startingLineNumber = "1146"
+            endingLineNumber = "1146"
             landmarkName = "-editProfileButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3418,11 +3386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1099"
-            endingLineNumber = "1099"
+            startingLineNumber = "1149"
+            endingLineNumber = "1149"
             landmarkName = "-editProfileButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3450,11 +3418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "717"
-            endingLineNumber = "717"
+            startingLineNumber = "737"
+            endingLineNumber = "737"
             landmarkName = "-likeButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3514,11 +3482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "779"
-            endingLineNumber = "779"
+            startingLineNumber = "799"
+            endingLineNumber = "799"
             landmarkName = "-bodyImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3562,11 +3530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "794"
-            endingLineNumber = "794"
+            startingLineNumber = "814"
+            endingLineNumber = "814"
             landmarkName = "-bodyImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3706,27 +3674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "457540365.019718"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "685"
-            endingLineNumber = "685"
+            startingLineNumber = "705"
+            endingLineNumber = "705"
             landmarkName = "-headerImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3754,11 +3706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4010,11 +3962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
             landmarkName = "-tableView:estimatedHeightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4122,11 +4074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457815780.269858"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "-getUserProfile:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4410,11 +4362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1117"
-            endingLineNumber = "1117"
+            startingLineNumber = "1167"
+            endingLineNumber = "1167"
             landmarkName = "-headerImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4666,11 +4618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "839"
-            endingLineNumber = "839"
+            startingLineNumber = "859"
+            endingLineNumber = "859"
             landmarkName = "-shareButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4682,11 +4634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "843"
-            endingLineNumber = "843"
+            startingLineNumber = "863"
+            endingLineNumber = "863"
             landmarkName = "-shareButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4778,11 +4730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "994"
-            endingLineNumber = "994"
+            startingLineNumber = "1044"
+            endingLineNumber = "1044"
             landmarkName = "-followLabelClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4794,11 +4746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458252076.733439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1012"
-            endingLineNumber = "1012"
+            startingLineNumber = "1062"
+            endingLineNumber = "1062"
             landmarkName = "-followerLabelClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4874,27 +4826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "457540365.019718"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "587"
+            endingLineNumber = "587"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4906,11 +4842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -5098,11 +5034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/FitmooHelper.m"
-            timestampString = "457539097.504248"
+            timestampString = "458228231.687999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "570"
+            endingLineNumber = "570"
             landmarkName = "@implementation FitmooHelper"
             landmarkType = "3">
          </BreakpointContent>
@@ -5434,11 +5370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "457296269.76013"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-getUserProfile:"
             landmarkType = "5">
          </BreakpointContent>
@@ -5562,11 +5498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "680"
-            endingLineNumber = "680"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
             landmarkName = "-headerImageButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -5914,12 +5850,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/UserManager.m"
-            timestampString = "457885250.131948"
+            timestampString = "458254851.393853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
-            landmarkName = "-performPost:"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
+            landmarkName = "-performPostToAmazon:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -6106,11 +6042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-getCommunityPageItems"
             landmarkType = "5">
          </BreakpointContent>
@@ -6122,11 +6058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/PeoplePageViewController.m"
-            timestampString = "458171339.632781"
+            timestampString = "458249747.849052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-getCommunityPageItems"
             landmarkType = "5">
          </BreakpointContent>
@@ -6138,11 +6074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173918.399602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -6154,11 +6090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173903.671602"
+            timestampString = "458232096.190689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -6170,12 +6106,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/HomePageViewController.m"
-            timestampString = "458173908.290079"
+            timestampString = "458228045.917709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/HomePageViewController.m"
+            timestampString = "458232096.190689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/FitmooHelper.m"
+            timestampString = "458228152.925969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-generateHomeFeed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/FitmooHelper.m"
+            timestampString = "458228283.447265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "-generateHomeFeed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/HomePageViewController.m"
+            timestampString = "458230385.908434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/HomePageViewController.m"
+            timestampString = "458232096.190689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
+            landmarkName = "-CommunityHeaderImageButtonClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/UserManager.m"
+            timestampString = "458233709.302738"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "-getCommunityProfile:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/UserManager.m"
+            timestampString = "458233907.00669"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "-getCommunityProfile:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/PeoplePageViewController.m"
+            timestampString = "458249770.773702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-getUserCommunityProfile:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

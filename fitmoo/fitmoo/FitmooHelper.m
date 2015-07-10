@@ -306,7 +306,7 @@
         homeFeed.created_by_community.created_by_community_id= [createdByCommunity objectForKey:@"id"];
         homeFeed.created_by_community.name= [createdByCommunity objectForKey:@"name"];
         homeFeed.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
-        if ([homeFeed.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
+        if ([homeFeed.created_by_community.cover_photo_url isEqual:[NSNull null ]]||homeFeed.created_by_community.cover_photo_url==nil) {
             homeFeed.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
         }
     }
@@ -324,6 +324,11 @@
             homeFeed.feed_action.created_by_community.created_by_community_id= [createdByCommunity objectForKey:@"id"];
             homeFeed.feed_action.created_by_community.name= [createdByCommunity objectForKey:@"name"];
             homeFeed.feed_action.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
+            
+            if ([homeFeed.feed_action.created_by_community.cover_photo_url isEqual:[NSNull null ]]||homeFeed.feed_action.created_by_community.cover_photo_url==nil) {
+                homeFeed.feed_action.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+            }
+            
         }
        
         NSDictionary *created_by=[feed_action objectForKey:@"user"];

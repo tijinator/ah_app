@@ -325,7 +325,48 @@
     
     
 }
+-(void) getCommunityProfile:(NSString *) community_id
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+     User *localUser= [[User alloc] init];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:_localUser.secret_id, @"secret_id", _localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@%@",_clientUrl, @"/api/communities/", community_id];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDic= responseObject;
+        
+        localUser.name=[_responseDic objectForKey:@"name"];
+ 
+        NSNumber * followers=[_responseDic objectForKey:@"members_count"];
+        localUser.followers= [followers stringValue];
+        localUser.following= [followers stringValue];
+        
+        localUser.profile_avatar_original=[_responseDic objectForKey:@"cover_photo_url"];
+        if ([localUser.profile_avatar_original isEqual:[NSNull null ]]||localUser.profile_avatar_original==nil) {
+            localUser.profile_avatar_original= @"https://fitmoo.com/assets/group/cover-default.png";
+        }
 
+  
+        localUser.bio=[_responseDic objectForKey:@"description"];
+        if ([localUser.bio isEqual:[NSNull null]]) {
+            localUser.bio=@"";
+        }
+        localUser.is_following=[_responseDic objectForKey:@"is_member"];
+   //     localUser.current_user_can_view_profile=@"1";
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didGetCommunityProfileFinished" object:localUser];
+
+
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
+}
 
 -(void) getUserProfile:(User *) user
 {
