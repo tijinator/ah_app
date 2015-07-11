@@ -91,7 +91,7 @@
     cell.homeFeed=_homeFeed;
     
     //case for headerview
-    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]) {
+    if ([tempHomefeed.feed_action.action isEqualToString:@"post"]||tempHomefeed.feed_action.action==nil) {
         cell.heanderImage1.hidden=true;
         [cell reDefineHearderViewsFrame];
     }else
@@ -121,7 +121,18 @@
         [view addSubview:headerImage1];
         [cell.heanderImage1 addSubview:view];
         
+        
         [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        if ([tempHomefeed.feed_action.action isEqualToString:@"share"]) {
+            if (!(tempHomefeed.feed_action.community_id==nil||[tempHomefeed.feed_action.community_id isEqual:[NSNull null]])) {
+                [cell.heanderImage1 removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+                [cell.heanderImage1 addTarget:self action:@selector(CommunityHeaderImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+        
+        
+        
+        
         
     }
     
@@ -139,15 +150,26 @@
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by.thumb];
         [cell.headerImage2 setTag:tempHomefeed.created_by.created_by_id.intValue];
+        [cell.titleLabel setTag:tempHomefeed.created_by.created_by_id.intValue];
+        
     }else
     {
         headerImage2.imageURL =[NSURL URLWithString:tempHomefeed.created_by_community.cover_photo_url];
         [cell.headerImage2 setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
+        [cell.titleLabel setTag:tempHomefeed.created_by_community.created_by_community_id.intValue];
     }
     [cell.headerImage2.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:headerImage2];
     [cell.headerImage2 addSubview:view];
+    
+    if ([tempHomefeed.community_id isEqual:[NSNull null]]) {
+        
         [cell.headerImage2 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [cell.headerImage2 addTarget:self action:@selector(CommunityHeaderImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
     
     cell.titleLabel.text= tempHomefeed.title_info.avatar_title;
     [cell setTitleLabelForHeader];
@@ -360,6 +382,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
    
+    
+}
+- (IBAction)CommunityHeaderImageButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSString *buttontag=[NSString stringWithFormat:@"%ld",((long)button.tag)];
+    NSString *key=[NSString stringWithFormat:@"%@%ld",@"com",((long)button.tag)];
+    if (![buttontag isEqualToString:_searchCommunityId]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
+    
+    
     
 }
 

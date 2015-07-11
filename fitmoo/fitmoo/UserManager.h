@@ -51,6 +51,9 @@
 -(void) updateUnreadFeed: (NSString *) feed_id;
 -(void) getUserCommunity:(User *) user;
 -(void) getCommunityProfile:(NSString *) community_id;
+-(void) performLeave:(NSString *) postId;
+-(void) performJoin:(NSString *) postId;
+
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
 @property (strong, nonatomic) NSString * homeFeedUrl;

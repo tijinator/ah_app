@@ -37,6 +37,7 @@
 @property (strong, nonatomic)  NSString * action;
 @property (strong, nonatomic) MPMoviePlayerViewController *playerView;
 @property (strong, nonatomic) NSURL *videoURL;
+@property (strong, nonatomic)  NSString * searchCommunityId;
 
 
 @end

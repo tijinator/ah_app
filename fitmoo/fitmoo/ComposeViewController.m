@@ -38,6 +38,10 @@
     {
          _titleLabel.text=@"FOLLOWING";
          [self getLikeItem];
+    }else if ([_searchType isEqualToString:@"members"])
+    {
+        _titleLabel.text=@"MEMBERS";
+        [self getLikeItem];
     }
      indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
 }
@@ -114,6 +118,8 @@
         
     }else if([_searchType isEqualToString:@"following"]) {
         url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/",_searchId,@"/following?"];
+    }else if([_searchType isEqualToString:@"members"]) {
+        url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/communities/",_searchId,@"/members"];
     }
     
  

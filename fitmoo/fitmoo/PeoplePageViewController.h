@@ -27,7 +27,7 @@
 #import "BioViewController.h"
 #import "PhotoCell.h"
 #import "ComposeViewController.h"
-@interface PeoplePageViewController : BaseViewController
+@interface PeoplePageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
