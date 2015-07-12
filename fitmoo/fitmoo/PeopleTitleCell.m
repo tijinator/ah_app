@@ -40,12 +40,23 @@
     AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _headerImage1.frame.size.width, _headerImage1.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
     headerImage1.imageURL =[NSURL URLWithString:url];
-  //  headerImage1.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth;
-    headerImage1.contentMode = UIViewContentModeScaleAspectFit;
-    headerImage1.backgroundColor=[UIColor blackColor];
-   // headerImage1.contentMode=UIViewContentModeScaleAspectFill;
-   // self.headerImage1.image=headerImage1.image;
+   
     [self.headerImage1 addSubview:headerImage1];
+    
+}
+
+
+- (void) setFrameForComunity
+{
+    double differentHeight=105*[[FitmooHelper sharedInstance] frameRadio];
+    _headerImage1.frame=CGRectMake(0, _headerImage1.frame.origin.y, _headerImage1.frame.size.width, _headerImage1.frame.size.height-differentHeight);
+    _shadowImageView.frame=CGRectMake(0, _shadowImageView.frame.origin.y-differentHeight, _shadowImageView.frame.size.width, _shadowImageView.frame.size.height);
+    _followCountLabel.frame=CGRectMake(_followCountLabel.frame.origin.x, _followCountLabel.frame.origin.y-differentHeight, _followCountLabel.frame.size.width, _followCountLabel.frame.size.height);
+    _followerCountLabel.frame=CGRectMake(_followerCountLabel.frame.origin.x, _followerCountLabel.frame.origin.y-differentHeight, _followerCountLabel.frame.size.width, _followerCountLabel.frame.size.height);
+    _followerLabel.frame=CGRectMake(_followerLabel.frame.origin.x, _followerLabel.frame.origin.y-differentHeight, _followerLabel.frame.size.width, _followerLabel.frame.size.height);
+    _followingLabel.frame=CGRectMake(_followingLabel.frame.origin.x, _followingLabel.frame.origin.y-differentHeight, _followingLabel.frame.size.width, _followingLabel.frame.size.height);
+    _editProfileButton.frame=CGRectMake(_editProfileButton.frame.origin.x, _editProfileButton.frame.origin.y-differentHeight, _editProfileButton.frame.size.width, _editProfileButton.frame.size.height);
+    _buttomView.frame=CGRectMake(_buttomView.frame.origin.x, _buttomView.frame.origin.y-differentHeight, _buttomView.frame.size.width, _buttomView.frame.size.height);
     
 }
 

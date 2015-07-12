@@ -26,6 +26,7 @@
     [super viewDidLoad];
     [self initFrames];
     [self initValuable];
+    _notificArray= [[NSMutableArray alloc]init];
     self.tableview.tableFooterView = [[UIView alloc] init];
     contentHight=[NSNumber numberWithInteger:60];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
@@ -39,12 +40,16 @@
     _limit=100;
     _count=1;
     
-    _notificArray= [[NSMutableArray alloc]init];
+  
 }
 
 
 - (void) parseNotificationDic
 {
+    
+    if (_offset==0) {
+        _notificArray= [[NSMutableArray alloc]init];
+    }
     NSDictionary * notificationArray= [_responseDic objectForKey:@"results"];
     if (![notificationArray isEqual:[NSNull null ]]) {
         
@@ -475,10 +480,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
-    if(self.tableview.contentOffset.y<-75){
+    if(self.tableview.contentOffset.y<-55){
         if (_count==0) {
-       //      [self initValuable];
-       //      [self getNotificationItem];
+             [self initValuable];
+             [self getNotificationItem];
         }
         _count++;
         

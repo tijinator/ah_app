@@ -41,24 +41,32 @@
 //            NSLog(@"  %@", name);
 //        }
 //    }
-    
-    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:self.font.pointSize];
-    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
-    if (self.tag==1000) {
-        float spacing = 1.5f;
-        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
-    }else if (self.tag==1001)
-    {
-        float spacing = 1.0f;
-        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
-    }else if (self.tag==1002)
-    {
-         self.layer.cornerRadius=self.frame.size.width/2;
+    @try {
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:self.font.pointSize];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
+        if (self.tag==1000) {
+            float spacing = 1.5f;
+            [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
+        }else if (self.tag==1001)
+        {
+            float spacing = 1.0f;
+            [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
+        }else if (self.tag==1002)
+        {
+            self.layer.cornerRadius=self.frame.size.width/2;
+        }
+        
+        
+        [self setAttributedText:attributedString];
+
     }
-    
-    
-    [self setAttributedText:attributedString];
-    [super drawRect:rect];
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+       
+    }
+       [super drawRect:rect];
     
 }
 

@@ -127,7 +127,7 @@
         
         [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
             
-            _responseDic= responseObject;
+       //     _responseDic= responseObject;
             
             
         } // success callback block
@@ -173,7 +173,7 @@
       //      [self performLogin:_localUser];
             [self saveLocalUser:_localUser];
             [self getUserProfile:_localUser];
-            [self registerDeviceToken];
+       //     [self registerDeviceToken];
         }else if ([f isEqualToString:@"0"])
         {
             _localUser=user;
@@ -211,7 +211,7 @@
         _localUser.user_id= [user_id stringValue];
          [self saveLocalUser:_localUser];
         [self getUserProfile:_localUser];
-        [self registerDeviceToken];
+    //    [self registerDeviceToken];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -415,7 +415,7 @@
 
 -(void) getUserProfile:(User *) user
 {
-    
+  
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -454,6 +454,7 @@
         [self getUserCommunity:_localUser];
         
         [self saveLocalUser:_localUser];
+    //    [self registerDeviceToken];   //remove this after next release
         [[NSNotificationCenter defaultCenter] postNotificationName:@"checkLogin" object:_localUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:_localUser];
         //      NSLog(@"Submit response data: %@", responseObject);
@@ -463,7 +464,7 @@
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     
-    
+       [self registerDeviceToken];
 }
 
 -(void) performReport:(NSString *)postId
@@ -761,7 +762,7 @@
         
         
         [self getUserProfile:_localUser];
-        [self registerDeviceToken];
+    //    [self registerDeviceToken];
        
         
         //      NSLog(@"Submit response data: %@", responseObject);

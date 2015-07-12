@@ -390,6 +390,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *key=[NSString stringWithFormat:@"%@%ld",@"com",((long)button.tag)];
     if (![buttontag isEqualToString:_searchCommunityId]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }else
+    {
+           [self.navigationController popViewControllerAnimated:YES];
     }
     
     

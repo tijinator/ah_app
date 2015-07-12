@@ -32,35 +32,42 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-    [self createObservers];
-//    if (_searchId!=nil) {
-//        [self getUserProfile:_searchId];
-//    }else if (_searchCommunityId!=nil)
-//    {
-//        [self getUserCommunityProfile:_searchCommunityId];
-//    }
-//    else
-//    {
-//        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-//        [self getUserProfile:localUser.user_id];
-//  //  [self getHomePageItems];
-//    }
+    
+    if (_searchId!=nil) {
+        [self getUserProfile:_searchId];
+    }else if (_searchCommunityId!=nil)
+    {
+        [self getUserCommunityProfile:_searchCommunityId];
+    }
+    else
+    {
+        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+        [self getUserProfile:localUser.user_id];
+  //  [self getHomePageItems];
+    }
    // [self getCommunityPageItems];
     
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self removeObservers];
+}
 
+- (void) removeObservers
+{
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetCommunityProfileFinished" object:nil];
+}
 
 -(void)createObservers{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetCommunityProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetCommunityProfileFinished:) name:@"didGetCommunityProfileFinished" object:nil];
-    
     
 }
 - (void) updateTable: (NSNotification * ) note
@@ -407,6 +414,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followCountLabel.hidden=true;
             cell.followingLabel.hidden=true;
             cell.followerLabel.text=@"members";
+            [cell setFrameForComunity];
         }
         
         if (temUser.following.intValue>999) {
@@ -1277,18 +1285,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    if (_searchId!=nil) {
-        [self getUserProfile:_searchId];
-    }else if (_searchCommunityId!=nil)
-    {
-        [self getUserCommunityProfile:_searchCommunityId];
-    }
-    else
-    {
-        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-        [self getUserProfile:localUser.user_id];
- 
-    }
+//    if (_searchId!=nil) {
+//        [self getUserProfile:_searchId];
+//    }else if (_searchCommunityId!=nil)
+//    {
+//        [self getUserCommunityProfile:_searchCommunityId];
+//    }
+//    else
+//    {
+//        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+//        [self getUserProfile:localUser.user_id];
+// 
+//    }
+    
+    [self createObservers];
 
 }
 
