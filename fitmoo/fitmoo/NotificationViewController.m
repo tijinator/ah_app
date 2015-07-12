@@ -453,7 +453,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateUnreadFeed:_homeFeed.notification_id];
     
     
-   // [[UserManager sharedUserManager] updateUnreadFeed:_homeFeed.notification_id];
+  
 
 }
 

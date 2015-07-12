@@ -48,7 +48,7 @@
 -(void) performUpdatePrivacy:(User *) user;
 -(void) getUserProfileForOtherPeople:(NSString *) other_people_id;
 -(void) performUnLike:(NSString *) postId;
--(void) updateUnreadFeed: (NSString *) feed_id;
+
 -(void) getUserCommunity:(User *) user;
 -(void) getCommunityProfile:(NSString *) community_id;
 -(void) performLeave:(NSString *) postId;

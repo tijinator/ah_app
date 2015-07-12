@@ -137,6 +137,17 @@
 
             
         }
+        else if (!([key rangeOfString:@"community/"].location ==NSNotFound))
+        {
+            NSRange firstRange = [key rangeOfString:@"community/"];
+            NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
+            key= [key substringWithRange:finalRange];
+            key= [NSString stringWithFormat:@"%@%@",@"com",key];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+            
+        }
+
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setObject:nil forKey:@"fitmooDeepLinkKey"];
       }

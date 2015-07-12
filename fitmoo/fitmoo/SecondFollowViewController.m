@@ -318,7 +318,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
               user.user_id= [user_id stringValue];
               user.name= [result objectForKey:@"name"];
               user.cover_photo_url=[result objectForKey:@"photo_url"];
-              user.is_following=@"0";
+              
+              NSNumber *is_following=[result objectForKey:@"is_following"];
+              user.is_following=[is_following stringValue];
               
               [_searchArrayPeople addObject:user];
 

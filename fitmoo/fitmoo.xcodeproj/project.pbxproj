@@ -50,7 +50,6 @@
 		27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */; };
 		27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */; };
 		27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
-		2719EBDE1AE1970000019079 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2719EBDD1AE1970000019079 /* FollowViewController.m */; };
 		2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
 		272098421AEA9088007577B7 /* vimeo.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2720983F1AEA9088007577B7 /* vimeo.js.txt */; };
 		272098431AEA9088007577B7 /* VimeoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098411AEA9088007577B7 /* VimeoHelper.m */; };
@@ -326,6 +325,7 @@
 		27988CC91B0BE4C500BDE8EB /* shopscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988CC61B0BE4C500BDE8EB /* shopscreen.png */; };
 		27988CCA1B0BE4C500BDE8EB /* shopscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988CC71B0BE4C500BDE8EB /* shopscreen@2x.png */; };
 		27988CCB1B0BE4C500BDE8EB /* shopscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988CC81B0BE4C500BDE8EB /* shopscreen@3x.png */; };
+		279A3ACB1B52D62D00432168 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
 		279E57821B20A5320076C3B5 /* LanchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E57811B20A5320076C3B5 /* LanchScreen.m */; };
 		279E57921B20B4EC0076C3B5 /* greycamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57831B20B4EC0076C3B5 /* greycamera.png */; };
 		279E57931B20B4EC0076C3B5 /* greycamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57841B20B4EC0076C3B5 /* greycamera@2x.png */; };
@@ -579,8 +579,6 @@
 		27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_fitmoo_logo_white.png; sourceTree = "<group>"; };
 		27188FC21AD4775200C34372 /* FitmooHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitmooHelper.m; sourceTree = "<group>"; };
 		27188FC41AD4776700C34372 /* FitmooHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooHelper.h; sourceTree = "<group>"; };
-		2719EBDC1AE1970000019079 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
-		2719EBDD1AE1970000019079 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
 		2720091A1ADAB59400CC3070 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		2720091B1ADAB59400CC3070 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		2720983F1AEA9088007577B7 /* vimeo.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vimeo.js.txt; sourceTree = "<group>"; };
@@ -912,6 +910,8 @@
 		27988CC61B0BE4C500BDE8EB /* shopscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopscreen.png; sourceTree = "<group>"; };
 		27988CC71B0BE4C500BDE8EB /* shopscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopscreen@2x.png"; sourceTree = "<group>"; };
 		27988CC81B0BE4C500BDE8EB /* shopscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopscreen@3x.png"; sourceTree = "<group>"; };
+		279A3AC91B52D62D00432168 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
+		279A3ACA1B52D62D00432168 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
 		279E57801B20A5320076C3B5 /* LanchScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanchScreen.h; sourceTree = "<group>"; };
 		279E57811B20A5320076C3B5 /* LanchScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanchScreen.m; sourceTree = "<group>"; };
 		279E57831B20B4EC0076C3B5 /* greycamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greycamera.png; sourceTree = "<group>"; };
@@ -1441,14 +1441,14 @@
 				27A6E71E1B305EF0000104CB /* NotificationViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
-				2719EBDC1AE1970000019079 /* FollowViewController.h */,
-				2719EBDD1AE1970000019079 /* FollowViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
 				27A101201B3334A7007B7BF3 /* SearchViewController.m */,
 				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27CBC0E41B0FB6A200699E1E /* LocationViewController.h */,
 				27CBC0E51B0FB6A200699E1E /* LocationViewController.m */,
+				279A3AC91B52D62D00432168 /* FollowViewController.h */,
+				279A3ACA1B52D62D00432168 /* FollowViewController.m */,
 				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
 				27250CF81AF902D7005FC4C5 /* SettingViewController.m */,
 			);
@@ -2583,7 +2583,6 @@
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
-				2719EBDE1AE1970000019079 /* FollowViewController.m in Sources */,
 				276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */,
 				27AD26711B18DFF3008D338D /* SpecialPageViewController.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
@@ -2640,6 +2639,7 @@
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,
 				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
+				279A3ACB1B52D62D00432168 /* FollowViewController.m in Sources */,
 				27AD266E1B18DF6C008D338D /* PeoplePageViewController.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
