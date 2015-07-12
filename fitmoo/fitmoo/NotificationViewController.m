@@ -17,6 +17,7 @@
     double constentdown;
     double frameRadio;
      UIView *indicatorView;
+       bool pullDown;
 }
 @end
 
@@ -39,7 +40,7 @@
     _offset=0;
     _limit=100;
     _count=1;
-    
+    pullDown=false;
   
 }
 
@@ -160,6 +161,15 @@
         
         [self parseNotificationDic];
         [indicatorView removeFromSuperview];
+        
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableview setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
+
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -281,12 +291,43 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     _notificationCountLabel.clipsToBounds=YES;
     
 }
-
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if(self.tableview.contentOffset.y<-75){
+        
+        [_activityIndicator startAnimating];
+        
+        
+        
+        [self initValuable];
+        pullDown=true;
+        [self getNotificationItem];
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+    
+}
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (pullDown==true) {
+        [_tableview setContentOffset:CGPointMake(0, -60) animated:YES];
+    }
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    
+    if (indexPath.row==0) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+        _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+        _activityIndicator.hidesWhenStopped = YES;
+        [cell.contentView addSubview:_activityIndicator];
+        cell.clipsToBounds=false;
+    }
     
     _homeFeed=[_notificArray objectAtIndex:indexPath.row];
 
@@ -482,9 +523,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.tableview.contentOffset.y<-75){
         if (_count==0) {
-             [self initValuable];
-              indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
-             [self getNotificationItem];
+       //      [self initValuable];
+      //        indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+      //       [self getNotificationItem];
            
         }
         _count++;

@@ -22,7 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *notificationCountLabel;
-
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
