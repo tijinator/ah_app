@@ -480,10 +480,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
-    if(self.tableview.contentOffset.y<-55){
+    if(self.tableview.contentOffset.y<-75){
         if (_count==0) {
              [self initValuable];
+              indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
              [self getNotificationItem];
+           
         }
         _count++;
         
@@ -502,6 +504,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 
             }
             [self getNotificationItem];
+            
             
         }
         _count++;
