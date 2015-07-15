@@ -1259,21 +1259,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)WorkoutButtonClick:(id)sender {
-    [self resetOffset];
-    _offset=_WorkoutOffset;
-     self.feedType=@"workout";
-    _homeFeedArray= [_WorkoutFeedArray mutableCopy];
+    if ([_WorkoutFeedArray count]>0) {
+        [self resetOffset];
+        _offset=_WorkoutOffset;
+        self.feedType=@"workout";
+        _homeFeedArray= [_WorkoutFeedArray mutableCopy];
+        [self.tableView reloadData];
+
+    }
     
-    [self.tableView reloadData];
 }
 
 - (IBAction)StoreButtonClick:(id)sender {
+    
+    if ([_StoreFeedArray count]>0) {
     [self resetOffset];
     _offset=_StoreOffset;
      self.feedType=@"store";
      _homeFeedArray= [_StoreFeedArray mutableCopy];
     
      [self.tableView reloadData];
+     }
 }
 
 - (IBAction)PhotoButtonClick:(id)sender {
