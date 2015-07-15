@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#import "PeopleTitleCell.h"
+#import "CommunityTitileCell.h"
 
-@implementation PeopleTitleCell
+@implementation CommunityTitileCell
 
 - (void)awakeFromNib {
-     [self initFrames];
+    [self initFrames];
     
     int frameHeight= self.buttomView.frame.origin.y + self.buttomView.frame.size.height;
     self.contentView.frame= CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, frameHeight);
@@ -20,7 +20,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-   
+    
     // Configure the view for the selected state
 }
 
@@ -30,7 +30,7 @@
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
     headerImage.imageURL =[NSURL URLWithString:url];
     self.headerImage.image=headerImage.image;
-
+    
 }
 
 - (void) loadHeader1Image: (NSString *)url
@@ -40,7 +40,7 @@
     AsyncImageView *headerImage1 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _headerImage1.frame.size.width, _headerImage1.frame.size.height)];
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage1];
     headerImage1.imageURL =[NSURL URLWithString:url];
-   
+    
     [self.headerImage1 addSubview:headerImage1];
     
 }
@@ -58,17 +58,12 @@
     _editProfileButton.frame=CGRectMake(_editProfileButton.frame.origin.x, _editProfileButton.frame.origin.y-differentHeight, _editProfileButton.frame.size.width, _editProfileButton.frame.size.height);
     _buttomView.frame=CGRectMake(_buttomView.frame.origin.x, _buttomView.frame.origin.y-differentHeight, _buttomView.frame.size.width, _buttomView.frame.size.height);
     
-
-    
 }
 
 - (void) initFrames
 {
     
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
-    
-    
-   
     
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:nil];
     
@@ -84,11 +79,8 @@
     _communityLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_communityLabel respectToSuperFrame:nil];
     
     _feedButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_feedButton respectToSuperFrame:nil];
-    
-    _workoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutButton respectToSuperFrame:nil];
-    _storeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_storeButton respectToSuperFrame:nil];
     _scheduleButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scheduleButton respectToSuperFrame:nil];
-   
+    
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
     _bioButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bioButton respectToSuperFrame:nil];
     _editProfileButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_editProfileButton respectToSuperFrame:nil];
@@ -96,14 +88,11 @@
     
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:nil];
     _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:nil];
-    _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:nil];
-    _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:nil];
-    _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:nil];
-    [self.contentView bringSubviewToFront:_view1];
+    
     _shadowImageView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shadowImageView respectToSuperFrame:nil];
     _bioLabel.frame= CGRectMake(0, 0, _bioButton.frame.size.width, _bioButton.frame.size.height);
- //   _headerImage1.layer.cornerRadius=_headerImage1.frame.size.width/2;
- //   _headerImage1.layer.masksToBounds = YES;
+    //   _headerImage1.layer.cornerRadius=_headerImage1.frame.size.width/2;
+    //   _headerImage1.layer.masksToBounds = YES;
 }
 
 

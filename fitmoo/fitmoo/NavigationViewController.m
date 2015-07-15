@@ -54,6 +54,12 @@
      blackStatusbar=0;
     _Pagestuck= [[NSMutableArray alloc] init];
     
+//    self.navigationController.navigationBar.translucent = NO;
+//    self.nav.navigationBar.translucent=NO;
+//    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+//    [self.nav setEdgesForExtendedLayout:UIRectEdgeNone];
+//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
 // [self addfootButtonsForThree];
 }
 
@@ -357,10 +363,11 @@
         
         NSString *com_id= [key substringFromIndex:3];
        
-        _peoplePage = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeoplePageViewController"];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        _communityPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommunityPageViewController"];
        
-        _peoplePage.searchCommunityId=com_id;
-        [[self nav] pushViewController:_peoplePage animated:YES];
+        _communityPage.searchCommunityId=com_id;
+        [[self nav] pushViewController:_communityPage animated:YES];
         
         currentPage=key;
         [_Pagestuck addObject:key];

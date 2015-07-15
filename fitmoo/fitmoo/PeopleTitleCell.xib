@@ -85,31 +85,67 @@
                                 <rect key="frame" x="0.0" y="3" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0GF-ot-CS7">
-                                        <rect key="frame" x="160" y="0.0" width="160" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0GF-ot-CS7" customClass="BSBoldButton">
+                                        <rect key="frame" x="70" y="0.0" width="116" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="WORKOUTS">
+                                            <color key="titleColor" red="0.55294117647058827" green="0.60392156862745094" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8W4-fm-jTU" customClass="BSBoldButton">
+                                        <rect key="frame" x="185" y="0.0" width="80" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="STORE">
+                                            <color key="titleColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rgp-dM-xTd">
+                                        <rect key="frame" x="260" y="0.0" width="60" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="deselectedbars.png">
+                                        <state key="normal" image="selectedbars.png">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W7b-HI-RRa">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W7b-HI-RRa" customClass="BSBoldButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="selectedsquares.png">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="FEED">
+                                            <color key="titleColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <view contentMode="scaleToFill" id="CnU-MK-M8W">
+                                        <rect key="frame" x="186" y="5" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="t84-Nf-E67">
+                                        <rect key="frame" x="260" y="5" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="8o5-Tn-0at">
-                                        <rect key="frame" x="160" y="5" width="1" height="30"/>
+                                        <rect key="frame" x="70" y="5" width="1" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <view contentMode="scaleToFill" id="fS4-mf-BJM">
+                                        <rect key="frame" x="0.0" y="39" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPc-om-Jce">
                                 <rect key="frame" x="19" y="56" width="271" height="62"/>
@@ -141,26 +177,30 @@
                 <outlet property="buttomView" destination="y5S-au-IRh" id="3wo-G8-34x"/>
                 <outlet property="buttonView" destination="eXz-Qy-34g" id="xXb-xt-0eA"/>
                 <outlet property="editProfileButton" destination="PnF-oO-Nuc" id="uKW-Qu-7Wn"/>
-                <outlet property="feedButton" destination="0GF-ot-CS7" id="6FI-N4-LZw"/>
+                <outlet property="feedButton" destination="W7b-HI-RRa" id="1Bp-p8-3ZN"/>
                 <outlet property="followCountLabel" destination="Nq5-nF-6rg" id="2m9-vp-U6K"/>
                 <outlet property="followerCountLabel" destination="npr-NA-Ofe" id="gYQ-gk-cYa"/>
                 <outlet property="followerLabel" destination="srT-lu-wJt" id="0Kx-6Z-vrM"/>
                 <outlet property="followingLabel" destination="Fot-rz-wDE" id="3uq-cB-1gO"/>
                 <outlet property="headerImage1" destination="eAd-xH-NVO" id="7zp-Kt-ajz"/>
                 <outlet property="nameLabel" destination="qn4-J5-YhC" id="xIb-IN-V4a"/>
-                <outlet property="scheduleButton" destination="W7b-HI-RRa" id="q2C-ZG-tnf"/>
+                <outlet property="scheduleButton" destination="Rgp-dM-xTd" id="f9A-qF-Gty"/>
                 <outlet property="shadowImageView" destination="60T-wi-7di" id="uhk-hS-SqL"/>
+                <outlet property="storeButton" destination="8W4-fm-jTU" id="0dc-AZ-yam"/>
                 <outlet property="topView" destination="HK1-cI-jiG" id="eIm-7Q-TIG"/>
                 <outlet property="view1" destination="8o5-Tn-0at" id="DuT-Rg-lvn"/>
+                <outlet property="view2" destination="CnU-MK-M8W" id="MpN-cv-Tve"/>
+                <outlet property="view3" destination="t84-Nf-E67" id="GBY-TK-QvK"/>
+                <outlet property="view4" destination="fS4-mf-BJM" id="ERl-y5-j7x"/>
+                <outlet property="workoutButton" destination="0GF-ot-CS7" id="WwJ-dM-FRI"/>
             </connections>
             <point key="canvasLocation" x="216" y="456.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="black_gradient.png" width="322" height="54"/>
-        <image name="deselectedbars.png" width="33" height="21"/>
         <image name="editprofile_btn.png" width="451" height="113"/>
-        <image name="selectedsquares.png" width="21" height="21"/>
+        <image name="selectedbars.png" width="33" height="21"/>
         <image name="whitearrow.png" width="11" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

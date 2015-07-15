@@ -50,6 +50,9 @@
 		27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA81AD4695000C34372 /* rsz3_fitmoo_logo_white.png */; };
 		27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */; };
 		27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
+		271DA8491B5557BF00D4E075 /* CommunityTitileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */; };
+		271DA84A1B5557BF00D4E075 /* CommunityTitileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */; };
+		271DA84D1B555DDA00D4E075 /* CommunityPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271DA84C1B555DDA00D4E075 /* CommunityPageViewController.m */; };
 		2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720091B1ADAB59400CC3070 /* AsyncImageView.m */; };
 		272098421AEA9088007577B7 /* vimeo.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2720983F1AEA9088007577B7 /* vimeo.js.txt */; };
 		272098431AEA9088007577B7 /* VimeoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 272098411AEA9088007577B7 /* VimeoHelper.m */; };
@@ -579,6 +582,11 @@
 		27188FA91AD4695000C34372 /* rsz_fitmoo_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_fitmoo_logo_white.png; sourceTree = "<group>"; };
 		27188FC21AD4775200C34372 /* FitmooHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitmooHelper.m; sourceTree = "<group>"; };
 		27188FC41AD4776700C34372 /* FitmooHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooHelper.h; sourceTree = "<group>"; };
+		271DA8461B5557BF00D4E075 /* CommunityTitileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityTitileCell.h; sourceTree = "<group>"; };
+		271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityTitileCell.m; sourceTree = "<group>"; };
+		271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTitileCell.xib; sourceTree = "<group>"; };
+		271DA84B1B555DDA00D4E075 /* CommunityPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityPageViewController.h; sourceTree = "<group>"; };
+		271DA84C1B555DDA00D4E075 /* CommunityPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityPageViewController.m; sourceTree = "<group>"; };
 		2720091A1ADAB59400CC3070 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		2720091B1ADAB59400CC3070 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		2720983F1AEA9088007577B7 /* vimeo.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vimeo.js.txt; sourceTree = "<group>"; };
@@ -1302,6 +1310,9 @@
 				27988C8F1B0B7E7D00BDE8EB /* FollowCollectionViewCell.h */,
 				27988C901B0B7E7D00BDE8EB /* FollowCollectionViewCell.m */,
 				27988C911B0B7E7D00BDE8EB /* FollowCollectionViewCell.xib */,
+				271DA8461B5557BF00D4E075 /* CommunityTitileCell.h */,
+				271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */,
+				271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */,
 				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
 				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
 				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
@@ -1437,6 +1448,8 @@
 				27AD266A1B18DF4D008D338D /* HomePageViewController.m */,
 				27AD266C1B18DF6C008D338D /* PeoplePageViewController.h */,
 				27AD266D1B18DF6C008D338D /* PeoplePageViewController.m */,
+				271DA84B1B555DDA00D4E075 /* CommunityPageViewController.h */,
+				271DA84C1B555DDA00D4E075 /* CommunityPageViewController.m */,
 				27A6E71D1B305EF0000104CB /* NotificationViewController.h */,
 				27A6E71E1B305EF0000104CB /* NotificationViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
@@ -2467,6 +2480,7 @@
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
 				279E57A41B20E9530076C3B5 /* Stars.png in Resources */,
 				27B2598F1B1E44BA00276273 /* greycomment@3x.png in Resources */,
+				271DA84A1B5557BF00D4E075 /* CommunityTitileCell.xib in Resources */,
 				276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */,
 				27A1018A1B334554007B7BF3 /* red@2x.png in Resources */,
 				2752EA001B015CBC003841DC /* location@2x.png in Resources */,
@@ -2597,6 +2611,7 @@
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
 				27A101211B3334A7007B7BF3 /* SearchViewController.m in Sources */,
 				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
+				271DA84D1B555DDA00D4E075 /* CommunityPageViewController.m in Sources */,
 				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
 				273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */,
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
@@ -2644,6 +2659,7 @@
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,
+				271DA8491B5557BF00D4E075 /* CommunityTitileCell.m in Sources */,
 				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				27188F741AD4646300C34372 /* ViewController.m in Sources */,
 				27410DF21AFAB34200CF230C /* LinearBezierCurve.m in Sources */,

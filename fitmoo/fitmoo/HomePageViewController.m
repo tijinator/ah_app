@@ -44,6 +44,8 @@
     [self createObservers];
     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
     [self addtopBarView];
+    
+    
 }
 
 - (void) addtopBarView
@@ -316,7 +318,7 @@
         
         
         [cell.heanderImage1 addTarget:self action:@selector(headerImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        if ([tempHomefeed.feed_action.action isEqualToString:@"share"]) {
+        if ([tempHomefeed.feed_action.action isEqualToString:@"share"]||[tempHomefeed.feed_action.action isEqualToString:@"endorse"]) {
             if (!(tempHomefeed.feed_action.community_id==nil||[tempHomefeed.feed_action.community_id isEqual:[NSNull null]])) {
                 [cell.heanderImage1 removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
                 [cell.heanderImage1 addTarget:self action:@selector(CommunityHeaderImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];

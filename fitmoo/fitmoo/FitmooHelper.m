@@ -412,17 +412,17 @@
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
         
-        NSDictionary *theme= [dic  objectForKey:@"theme"];
-        if (![theme isEqual:[NSNull null]]) {
-            NSDictionary *styles= [theme  objectForKey:@"styles"];
-            NSDictionary *medium= [styles  objectForKey:@"medium"];
-            homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
-            if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
-            {
-                homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
-            }
-
-        }
+//        NSDictionary *theme= [dic  objectForKey:@"theme"];
+//        if (![theme isEqual:[NSNull null]]) {
+//            NSDictionary *styles= [theme  objectForKey:@"styles"];
+//            NSDictionary *medium= [styles  objectForKey:@"medium"];
+//            homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
+//            if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
+//            {
+//                homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
+//            }
+//
+//        }
         
         homeFeed.photos.originalUrl=homeFeed.event.theme;
         homeFeed.photos.stylesUrl=homeFeed.event.theme;

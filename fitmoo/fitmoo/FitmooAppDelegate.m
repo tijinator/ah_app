@@ -17,6 +17,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+    
     [FBLoginView class];
     
     NSManagedObjectContext * context = [self managedObjectContext];
@@ -31,6 +33,7 @@
     _popupView = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
 
+  
 
     _sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:_navigateView
                                                                     leftMenuViewController:_leftView
@@ -48,11 +51,12 @@
     
     _sideMenuViewController.panGestureEnabled=false;
 
-    
-
+     
   //  [_sideMenuViewController supportedInterfaceOrientations];
    
     self.window.rootViewController = _sideMenuViewController;
+ 
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
     [self createObservers];
@@ -79,6 +83,32 @@
     
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)application:(UIApplication *)application didChangeStatusBarFrame:(CGRect)oldStatusBarFrame
+{
+
+    @try {
+        CGRect windowFrame = _navigateView.view.frame;
+        if (_sideMenuViewController.view.frame.origin.y>0) {
+            windowFrame.origin.y = 0;
+            windowFrame.size.height=windowFrame.size.height+_sideMenuViewController.view.frame.origin.y;
+        }else
+        {
+            windowFrame.origin.y = 0;
+        }
+     //   _sideMenuViewController.contentViewController.view.frame=windowFrame;
+         _sideMenuViewController.view.frame=windowFrame;
+    }
+    @catch (NSException *exception) {
+         }
+    @finally {
+       
+    }
+    
+    
+
+    
 }
 
 -(void)createObservers{

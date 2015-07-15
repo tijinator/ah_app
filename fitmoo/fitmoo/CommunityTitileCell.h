@@ -1,8 +1,8 @@
 //
-//  PeopleTitleCell.h
+//  CommunityTitileCell.h
 //  fitmoo
 //
-//  Created by hongjian lin on 4/14/15.
+//  Created by hongjian lin on 7/14/15.
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
@@ -11,7 +11,8 @@
 #import "FitmooHelper.h"
 #import "AsyncImageView.h"
 #import <QuartzCore/QuartzCore.h>
-@interface PeopleTitleCell : UITableViewCell
+
+@interface CommunityTitileCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage;
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
@@ -31,16 +32,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *followerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *communityLabel;
 @property (strong, nonatomic) IBOutlet UIButton *feedButton;
-@property (strong, nonatomic) IBOutlet UIButton *workoutButton;
-@property (strong, nonatomic) IBOutlet UIButton *storeButton;
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIView *view1;
-@property (strong, nonatomic) IBOutlet UIView *view2;
-@property (strong, nonatomic) IBOutlet UIView *view3;
-@property (strong, nonatomic) IBOutlet UIView *view4;
-
 
 - (void) setFrameForComunity;
 - (void) loadHeaderImage: (NSString *)url;

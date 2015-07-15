@@ -22,6 +22,7 @@
 #import "LocationViewController.h"
 #import "NotificationViewController.h"
 #import "SearchViewController.h"
+#import "CommunityPageViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic)  LocationViewController *locationPage;
 @property (strong, nonatomic)  NotificationViewController *notificationPage;
 @property (strong, nonatomic)  SearchViewController *searchPage;
+@property (strong, nonatomic)  CommunityPageViewController *communityPage;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray *Pagestuck;
 

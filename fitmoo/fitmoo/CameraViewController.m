@@ -38,6 +38,9 @@
     [self createObservers];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"2"];
     
+//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+//        self.edgesForExtendedLayout = UIRectEdgeAll;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -431,8 +434,10 @@
     self.filterTopView.frame = CGRectMake(self.filterTopView.frame.size.width,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
     self.filterTopView.hidden=false;
     
-    self.topView.frame = CGRectMake(0,0, self.topView.frame.size.width, self.topView.frame.size.height);
+ //   self.topView.frame = CGRectMake(0,0, self.topView.frame.size.width, self.topView.frame.size.height);
     [UIView commitAnimations];
+    _closeButton.hidden=false;
+    _cameraDirectionButton.hidden=false;
 }
 
 -(void) showFilterViewAnimation
@@ -450,10 +455,12 @@
     self.filterTopView.frame = CGRectMake(0,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
     self.filterTopView.hidden=false;
     
-    self.topView.frame = CGRectMake(0-self.topView.frame.size.width,0, self.topView.frame.size.width, self.topView.frame.size.height);
+  //  self.topView.frame = CGRectMake(0-self.topView.frame.size.width,0, self.topView.frame.size.width, self.topView.frame.size.height);
     
     
     [UIView commitAnimations];
+    _closeButton.hidden=true;
+    _cameraDirectionButton.hidden=true;
 }
 -(void) hidePostViewAnimation
 {
@@ -473,7 +480,9 @@
     self.filterView.hidden=false;
     [UIView commitAnimations];
 
+ 
     [_selectedImageview removeFromSuperview];
+    _cameraDirectionButton.hidden=false;
 }
 
 
@@ -488,8 +497,10 @@
     self.filterTopView.frame = CGRectMake(0-self.filterTopView.frame.size.width,0, self.filterTopView.frame.size.width, self.filterTopView.frame.size.height);
   //  self.filterTopView.hidden=true;
     
-    
+   
     [UIView commitAnimations];
+    _cameraDirectionButton.hidden=true;
+    
 }
 
 -(void) openPostView

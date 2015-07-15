@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#import "PeoplePageViewController.h"
+#import "CommunityPageViewController.h"
 #import "AFNetworking.h"
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
-@interface PeoplePageViewController ()
+@interface CommunityPageViewController ()
 {
     NSNumber * contentHight;
     NSString *bioText;
@@ -19,33 +19,34 @@
 }
 @end
 
-@implementation PeoplePageViewController
+@implementation CommunityPageViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     contentHight=[NSNumber numberWithInteger:500];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-     self.tableView.tableFooterView = [[UIView alloc] init];
- 
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
     self.tableType=@"photo";
-    self.feedType=@"feed";
     [self initFrames];
     [self initValuable];
     [self postNotifications];
     
     if (_searchId!=nil) {
         [self getUserProfile:_searchId];
+    }else if (_searchCommunityId!=nil)
+    {
+        [self getUserCommunityProfile:_searchCommunityId];
     }
     else
     {
         User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
         [self getUserProfile:localUser.user_id];
-  //  [self getHomePageItems];
+        //  [self getHomePageItems];
     }
-
-    [self getWorkoutItems];
-    [self getStoreItems];
+    // [self getCommunityPageItems];
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -55,19 +56,18 @@
 
 - (void) removeObservers
 {
-  //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
- //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
-
+ //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
+ //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetCommunityProfileFinished" object:nil];
 }
 
 -(void)createObservers{
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetCommunityProfileFinished:) name:@"didGetCommunityProfileFinished" object:nil];
     
 }
 - (void) updateTable: (NSNotification * ) note
@@ -86,13 +86,25 @@
     
 }
 
-
+- (void) getUserCommunityProfile: (NSString *) community_id
+{
+    [[UserManager sharedUserManager] getCommunityProfile:community_id];
+}
 - (void) getUserProfile: (NSString *) profile_id
 {
     [[UserManager sharedUserManager] getUserProfileForOtherPeople:profile_id];
 }
 
-
+- (void) didGetCommunityProfileFinished: (NSNotification * ) note
+{
+    _temSearchUser=[[User alloc] init];
+    _temSearchUser= (User *) [note object];
+    
+    [self getCommunityPageItems];
+    [_tableView reloadData];
+    
+    
+}
 
 - (void) didGetProfileFinished: (NSNotification * ) note
 {
@@ -100,7 +112,7 @@
     _temSearchUser= (User *) [note object];
     if (_temSearchUser.current_user_can_view_profile.intValue==1) {
         [self getHomePageItems];
-         [_tableView reloadData];
+        [_tableView reloadData];
     }else
     {
         [_tableView reloadData];
@@ -110,8 +122,8 @@
 
 - (void) didPostFinished: (NSNotification * ) note
 {
- //   [self initValuable];
- //   [self getHomePageItems];
+    //   [self initValuable];
+    //   [self getHomePageItems];
     
     HomeFeed *feed= (HomeFeed *)[note object];
     
@@ -128,33 +140,21 @@
         [self initValuable];
         [self getHomePageItems];
     }
-
+    
 }
 
 -(void) initValuable
 {
-    if ([_feedType isEqualToString:@"feed"]) {
-        _FeedOffset=0;
-        _offset=_FeedOffset;
-    }else if ([_feedType isEqualToString:@"workout"]) {
-        _WorkoutOffset=0;
-        _offset=_WorkoutOffset;
-    }else if ([_feedType isEqualToString:@"store"]) {
-        _StoreOffset=0;
-        _offset=_StoreOffset;
-    }
-    
-//    _offset=0;
+    _offset=0;
     _limit=9;
     _count=1;
     
-
+    
 }
 
-
--(void) getStoreItems
+-(void) getCommunityPageItems
 {
-    
+    // _tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -166,72 +166,22 @@
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",
                               ofs, @"offset", lim , @"limit",nil];
     NSString * url;
-    if (_searchId!=nil) {
-        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],_searchId,@"/products"];
-    }else
-    {
-        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/products"];
-    }
+    
+    url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/communities/", _searchCommunityId,@"/feeds.json"];
+    
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        _responseDicStore= responseObject;
+        _responseDic= responseObject;
         
         
         NSInteger count=0;
-        if (_StoreFeedArray!=nil ) {
-            count=[_StoreFeedArray count];
+        if (_homeFeedArray!=nil ) {
+            count=[_homeFeedArray count];
         }
-        [self defineStoreFeedObjects];
+        [self defineFeedObjects];
         
-        if ([_responseDicStore count]>0&& count!=[_StoreFeedArray count]) {
-            [self.tableView reloadData];
-        }
-        
-        
-        //    NSLog(@"Submit response data: %@", responseObject);
-    } // success callback block
-     
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             _tableView.userInteractionEnabled=true;
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-}
-
-
--(void) getWorkoutItems
-{
-  
-    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
-    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",
-                              ofs, @"offset", lim , @"limit",nil];
-    NSString * url;
-    if (_searchId!=nil) {
-        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],_searchId,@"/workouts"];
-    }else
-    {
-        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/workouts"];
-    }
-    
-    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        _responseDicWorkout= responseObject;
-        
-        
-        NSInteger count=0;
-        if (_WorkoutFeedArray!=nil ) {
-            count=[_WorkoutFeedArray count];
-        }
-        [self defineWorkoutFeedObjects];
-        
-        if ([_responseDicWorkout count]>0&& count!=[_WorkoutFeedArray count]) {
+        if ([_responseDic count]>0&& count!=[_homeFeedArray count]) {
             [self.tableView reloadData];
         }
         
@@ -248,7 +198,7 @@
 
 -(void) getHomePageItems
 {
-   // _tableView.userInteractionEnabled=false;
+    // _tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -273,17 +223,17 @@
         
         
         NSInteger count=0;
-        if (_FeedArray!=nil ) {
-            count=[_FeedArray count];
+        if (_homeFeedArray!=nil ) {
+            count=[_homeFeedArray count];
         }
         [self defineFeedObjects];
-  
-        if ([_responseDic count]>0&& count!=[_FeedArray count]) {
+        
+        if ([_responseDic count]>0&& count!=[_homeFeedArray count]) {
             [self.tableView reloadData];
         }
         
         
-    //    NSLog(@"Submit response data: %@", responseObject);
+        //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -292,96 +242,32 @@
      ];
 }
 
-- (void) defineStoreFeedObjects
-{
-    if (_offset==0) {
-        _StoreFeedArray= [[NSMutableArray alloc]init];
-    }
-    for (NSDictionary *dic in _responseDicStore) {
-        
-        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        bool samefeed=false;
-        for (int i=0; i<[_StoreFeedArray count]; i++) {
-            HomeFeed *tempfeed= [_StoreFeedArray objectAtIndex:i];
-            if ([feed.feed_id isEqual:tempfeed.feed_id]) {
-                samefeed=true;
-            }
-        }
-        if (samefeed==false) {
-            if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-                [_StoreFeedArray addObject:feed];
-            }
-            
-        }
-        
-        
-    }
-    
-     if (_offset!=0) {
-         
-         _homeFeedArray=[_StoreFeedArray mutableCopy];
-     }
-    
-    
-}
 
-- (void) defineWorkoutFeedObjects
-{
-    if (_offset==0) {
-        _WorkoutFeedArray= [[NSMutableArray alloc]init];
-    }
-    for (NSDictionary *dic in _responseDicWorkout) {
-        
-        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        bool samefeed=false;
-        for (int i=0; i<[_WorkoutFeedArray count]; i++) {
-            HomeFeed *tempfeed= [_WorkoutFeedArray objectAtIndex:i];
-            if ([feed.feed_id isEqual:tempfeed.feed_id]) {
-                samefeed=true;
-            }
-        }
-        if (samefeed==false) {
-            if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-                [_WorkoutFeedArray addObject:feed];
-            }
-            
-        }
-        
-        
-    }
-    
-    if (_offset!=0) {
-        _homeFeedArray=[_WorkoutFeedArray mutableCopy];
-    }
-    
-}
 
 - (void) defineFeedObjects
 {
     if (_offset==0) {
-        _FeedArray= [[NSMutableArray alloc]init];
+        _homeFeedArray= [[NSMutableArray alloc]init];
     }
     for (NSDictionary *dic in _responseDic) {
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         bool samefeed=false;
-        for (int i=0; i<[_FeedArray count]; i++) {
-            HomeFeed *tempfeed= [_FeedArray objectAtIndex:i];
+        for (int i=0; i<[_homeFeedArray count]; i++) {
+            HomeFeed *tempfeed= [_homeFeedArray objectAtIndex:i];
             if ([feed.feed_id isEqual:tempfeed.feed_id]) {
                 samefeed=true;
             }
         }
         if (samefeed==false) {
             if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-                [_FeedArray addObject:feed];
+                [_homeFeedArray addObject:feed];
             }
-         
+            
         }
         
         
     }
-    
-   _homeFeedArray= [_FeedArray mutableCopy];
     
 }
 
@@ -410,7 +296,7 @@
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
@@ -420,9 +306,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:600];
     }
-  //  NSLog(@"%ld",(long)height.integerValue);
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
- //   }
+    //   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -434,7 +320,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    if(_searchId!=nil)
+    if(_searchId!=nil||_searchCommunityId!=nil)
     {
         if (_temSearchUser==nil) {
             return 0;
@@ -450,11 +336,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         return count+1;
-
+        
     }else{
-
+        
         return ([_homeFeedArray count]+1);
-  
+        
     }
 }
 
@@ -468,14 +354,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         PeopleTitleCell *cell=(PeopleTitleCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         
         if (cell==nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PeopleTitleCell" owner:self options:nil];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CommunityTitileCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
         User *temUser;
         
         if (_temSearchUser !=nil&&_searchId !=nil) {
             temUser=_temSearchUser;
-          
+            
             if (temUser.is_following.intValue==1) {
                 [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
                 [cell.editProfileButton setTag:11];
@@ -483,13 +369,27 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }else if(temUser.is_following.intValue==0)
             {
                 [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
-                  [cell.editProfileButton setTag:12];
+                [cell.editProfileButton setTag:12];
             }
             
             
-        }else
+        }else if(_searchCommunityId!=nil&&_temSearchUser !=nil)
         {
-        temUser= [[UserManager sharedUserManager] localUser];
+            temUser=_temSearchUser;
+            if (temUser.is_following.intValue==1) {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"leavebtn.png"] forState:UIControlStateNormal];
+                [cell.editProfileButton setTag:11];
+                
+            }else if(temUser.is_following.intValue==0)
+            {
+                [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"joinbtn.png"] forState:UIControlStateNormal];
+                [cell.editProfileButton setTag:12];
+            }
+            
+        }
+        else
+        {
+            temUser= [[UserManager sharedUserManager] localUser];
         }
         cell.nameLabel.text= temUser.name.uppercaseString;
         self.titleLabel.text= temUser.name.uppercaseString;
@@ -497,16 +397,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
             imageUrl=temUser.cover_photo_url;
         }
-       
-         if ([self.tableType isEqualToString:@"photo"]) {
-             [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
-      //       [cell.feedButton setImage:[UIImage imageNamed:@"deselectedbars.png"] forState:UIControlStateNormal];
-         }else
-         {
-             [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedsquares.png"] forState:UIControlStateNormal];
-     //        [cell.feedButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
-         }
-     
+        
+        if ([self.tableType isEqualToString:@"photo"]) {
+            [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedsquares.png"] forState:UIControlStateNormal];
+            [cell.feedButton setImage:[UIImage imageNamed:@"deselectedbars.png"] forState:UIControlStateNormal];
+        }else
+        {
+            [cell.scheduleButton setImage:[UIImage imageNamed:@"deselectedsquares.png"] forState:UIControlStateNormal];
+            [cell.feedButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
+        }
+        
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followLabelClick:)];
@@ -518,7 +418,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.followerCountLabel.userInteractionEnabled=YES;
         
-  
+        if (_searchCommunityId!=nil) {
+            cell.followCountLabel.hidden=true;
+            cell.followingLabel.hidden=true;
+            cell.followerLabel.text=@"members";
+            [cell setFrameForComunity];
+        }
         
         if (temUser.following.intValue>999) {
             CGFloat following=temUser.following.floatValue/1000.0f;
@@ -531,13 +436,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
         }
         
-    //    cell.communityCountLabel.text=temUser.communities;
+        //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
-   //     [cell loadHeaderImage:imageUrl];
-      
+        //     [cell loadHeaderImage:imageUrl];
+        
         [cell loadHeader1Image:temUser.profile_avatar_original];
-  
+        
         UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:temUser.bio attributes:@{NSFontAttributeName: font}  ];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -549,20 +454,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         cell.bioLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:cell.bioLabel];
         if (cell.bioLabel.frame.size.height>(70*[[FitmooHelper sharedInstance] frameRadio])) {
             cell.bioLabel.frame=CGRectMake(cell.bioLabel.frame.origin.x, cell.bioLabel.frame.origin.y, cell.bioLabel.frame.size.width, 70*[[FitmooHelper sharedInstance] frameRadio]);
-       
-        }
-        
-        if ([self.feedType isEqualToString:@"feed"]) {
-            [cell.feedButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             
-        }else if ([self.feedType isEqualToString:@"workout"])
-        {
-            [cell.workoutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        }else if ([self.feedType isEqualToString:@"store"])
-        {
-            [cell.storeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
-        
         
         [cell.bioLabel setAttributedText:attributedString];
         cell.bioLabel.userInteractionEnabled = NO;
@@ -571,11 +464,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         cell.bioButton.frame=CGRectMake(cell.bioButton.frame.origin.x, cell.bioButton.frame.origin.y, cell.bioLabel.frame.size.width, cell.bioLabel.frame.size.height);
         [cell.bioButton addSubview:cell.bioLabel];
         
-        [cell.editProfileButton addTarget:self action:@selector(editProfileButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        if (_searchCommunityId!=nil) {
+            [cell.editProfileButton addTarget:self action:@selector(joinButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        }else
+        {
+            [cell.editProfileButton addTarget:self action:@selector(editProfileButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        }
         [cell.bioButton addTarget:self action:@selector(BioButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.feedButton addTarget:self action:@selector(FeedButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.workoutButton addTarget:self action:@selector(WorkoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.storeButton addTarget:self action:@selector(StoreButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.scheduleButton addTarget:self action:@selector(PhotoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         if ([temUser.bio isEqualToString:@""]) {
@@ -585,11 +481,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }else
         {
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.bioButton.frame.size.height+cell.bioButton.frame.origin.y+15);
-        contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
+            contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }
         
         
-      
+        
         
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
@@ -600,7 +496,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if ([self.tableType isEqualToString:@"photo"]) {
         
         PhotoCell *cell =(PhotoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-
+        
         if (cell == nil)
         {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PhotoCell" owner:self options:nil];
@@ -611,8 +507,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         int current=(int) (indexPath.row-1)*3;
         if (current<[_homeFeedArray count]) {
-             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
-             cell.homeFeed1= temfeed;
+            HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
+            cell.homeFeed1= temfeed;
             cell.view1Button.tag=temfeed.feed_id.integerValue;
             [cell.view1Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView1Item];
@@ -620,13 +516,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             cell.view1.hidden=true;
         }
-       
+        
         if (current+1<[_homeFeedArray count]) {
-             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
-             cell.homeFeed2= temfeed;
-             cell.view2Button.tag=temfeed.feed_id.integerValue;
-             [cell.view2Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-             [cell setView2Item];
+            HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
+            cell.homeFeed2= temfeed;
+            cell.view2Button.tag=temfeed.feed_id.integerValue;
+            [cell.view2Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView2Item];
         }else
         {
             cell.view2.hidden=true;
@@ -635,8 +531,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (current+2<[_homeFeedArray count]) {
             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+2];
             cell.homeFeed3= temfeed;
-             cell.view3Button.tag=temfeed.feed_id.integerValue;
-             [cell.view3Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            cell.view3Button.tag=temfeed.feed_id.integerValue;
+            [cell.view3Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView3Item];
         }else
         {
@@ -659,28 +555,28 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         }
-
+        
         
         return cell;
         
     } //  end of photo type table
     else
     {
-    
-    
-    ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil)
-    {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }else
-    {
-        return cell;
-    }
-    
-    HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
-    cell.homeFeed=tempHomefeed;
-    
+        
+        
+        ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }else
+        {
+            return cell;
+        }
+        
+        HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
+        cell.homeFeed=tempHomefeed;
+        
         //case for headerview
         if ([tempHomefeed.feed_action.action isEqualToString:@"post"]||tempHomefeed.feed_action.action==nil) {
             cell.heanderImage1.hidden=true;
@@ -891,7 +787,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
         [cell.bodyLikeButton setTag:indexPath.row*100+4];
-         NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
+        NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
             [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
@@ -909,23 +805,23 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-    
-    if(indexPath.row==[_homeFeedArray count])
-    {
-        contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
-    }else
-    {
-    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
-    }
-    
-    if (indexPath.row>=[_heighArray count]) {
-        [_heighArray addObject:contentHight];
-    }else
-    {
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-    }
-    //  NSLog(@"%ld",(long)contentHight.integerValue);
-    return cell;
+        
+        if(indexPath.row==[_homeFeedArray count])
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
+        }else
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+        }
+        
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+        //  NSLog(@"%ld",(long)contentHight.integerValue);
+        return cell;
     }
     //  end of feed type table
 }
@@ -945,15 +841,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-
-
+    
+    
     
 }
 
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-
+    
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -962,9 +858,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         height=[NSNumber numberWithInt:contentHight.intValue];
     }
-  //  NSLog(@"%ld",(long)height.integerValue);
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
-
+    
 }
 
 
@@ -972,19 +868,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     if(self.tableView.contentOffset.y<-75){
-    //     NSLog(@"%f",self.tableView.contentOffset.y );
+        //     NSLog(@"%f",self.tableView.contentOffset.y );
         if (_count==0) {
             [self initValuable];
-           
-            if ([self.feedType isEqualToString:@"feed"]) {
+            if(_searchCommunityId !=nil)
+            {
+                [self getCommunityPageItems];
+            }else
+            {
                 [self getHomePageItems];
-            }else if([self.feedType isEqualToString:@"workout"]) {
-                [self getWorkoutItems];
-            }else if([self.feedType isEqualToString:@"store"]) {
-                [self getStoreItems];
             }
-            
-            
         }
         _count++;
         
@@ -992,31 +885,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-
+        
         if (_count==0) {
             if (self.tableView.contentOffset.y<0) {
-                  _offset =0;
+                _offset =0;
             }else
             {
-            _offset +=9;
+                _offset +=9;
             }
-          
-            if ([self.feedType isEqualToString:@"feed"]) {
+            if(_searchCommunityId !=nil)
+            {
+                [self getCommunityPageItems];
+            }else
+            {
                 [self getHomePageItems];
-            }else if([self.feedType isEqualToString:@"workout"]) {
-                [self getWorkoutItems];
-            }else if([self.feedType isEqualToString:@"store"]) {
-                [self getStoreItems];
             }
-            
         }
         _count++;
         
         
-        }else
-        {
+    }else
+    {
         _count=0;
-        }
+    }
 }
 
 
@@ -1048,7 +939,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)likeButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
-
+    
     
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
@@ -1084,8 +975,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.tableView reloadData];
         
     }
-
-
+    
+    
 }
 - (IBAction)optionButtonClick:(id)sender {
     
@@ -1098,13 +989,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
         ActionSheet.action= @"endorse";
-       
+        
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
         ActionSheet.action= @"report";
-      
+        
     }else if ([feed.action_sheet isEqualToString:@"delete"]) {
         ActionSheet.action= @"delete";
-     
+        
     }
     ActionSheet.postId= feed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
@@ -1122,7 +1013,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         ActionSheet.postId= tempFeed.feed_id;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
-  
+    
     
 }
 - (IBAction)bodyImageButtonClick:(id)sender{
@@ -1189,34 +1080,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     
-
+    
     
 }
 
 - (IBAction)followLabelClick:(id)sender {
     NSString *searchPeopleId;
     
-   if (_searchId!=nil) {
-        searchPeopleId=_searchId;
-    }else
-    {
-        User *tempUser= [[UserManager sharedUserManager] localUser];
-        searchPeopleId=tempUser.user_id;
-    }
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
-    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
-    composePage.searchId= searchPeopleId;
-  
-    composePage.searchType=@"following";
-    
-    
-    [self.navigationController pushViewController:composePage animated:YES];
-    
-}
-
-- (IBAction)followerLabelClick:(id)sender {
-    NSString *searchPeopleId;
     if (_searchId!=nil) {
         searchPeopleId=_searchId;
     }else
@@ -1228,69 +1098,52 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
     composePage.searchId= searchPeopleId;
-   
-    composePage.searchType=@"follower";
+    
+    composePage.searchType=@"following";
+    
     
     [self.navigationController pushViewController:composePage animated:YES];
-
     
 }
 
-- (void) resetOffset
-{
-    if ([_feedType isEqualToString:@"feed"]) {
-        _FeedOffset=_offset;
-    }else if ([_feedType isEqualToString:@"workout"]) {
-        _WorkoutOffset=_offset;
-    }else if ([_feedType isEqualToString:@"store"]) {
-        _StoreOffset=_offset;
+- (IBAction)followerLabelClick:(id)sender {
+    NSString *searchPeopleId;
+    if (_searchCommunityId!=nil) {
+        searchPeopleId=_searchCommunityId;
+    }else if (_searchId!=nil) {
+        searchPeopleId=_searchId;
+    }else
+    {
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        searchPeopleId=tempUser.user_id;
     }
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+    composePage.searchId= searchPeopleId;
+    if (_searchCommunityId!=nil) {
+        composePage.searchType=@"members";
+    }else
+    {
+        composePage.searchType=@"follower";
+    }
+    [self.navigationController pushViewController:composePage animated:YES];
+    
+    
 }
 
 - (IBAction)FeedButtonClick:(id)sender {
-    [self resetOffset];
-    _offset=_FeedOffset;
-    self.feedType=@"feed";
-      _homeFeedArray= [_FeedArray mutableCopy];
-   
+    self.tableType=@"feed";
     [self.tableView reloadData];
 }
-
-
-
-- (IBAction)WorkoutButtonClick:(id)sender {
-    [self resetOffset];
-    _offset=_WorkoutOffset;
-     self.feedType=@"workout";
-    _homeFeedArray= [_WorkoutFeedArray mutableCopy];
-    
-    [self.tableView reloadData];
-}
-
-- (IBAction)StoreButtonClick:(id)sender {
-    [self resetOffset];
-    _offset=_StoreOffset;
-     self.feedType=@"store";
-     _homeFeedArray= [_StoreFeedArray mutableCopy];
-    
-     [self.tableView reloadData];
-}
-
 - (IBAction)PhotoButtonClick:(id)sender {
-    
-    if ([self.tableType isEqualToString:@"feed"]) {
-        self.tableType=@"photo";
-        [self.tableView reloadData];
-    }else
-    {
-        self.tableType=@"feed";
-        [self.tableView reloadData];
-    }
+    self.tableType=@"photo";
+    [self.tableView reloadData];
     
 }
 - (IBAction)backButtonClick:(id)sender {
- 
-  //  [self.navigationController popViewControllerAnimated:YES];
+    
+    //  [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
@@ -1305,15 +1158,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-   
-        specialPage.homeFeed=tempFeed;
-        if(_searchId!=nil)
-        {
-            specialPage.searchId=_searchId;
-        }
-        [self.navigationController pushViewController:specialPage animated:YES];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    
+    specialPage.homeFeed=tempFeed;
+    if(_searchId!=nil)
+    {
+        specialPage.searchId=_searchId;
+    }else if(_searchCommunityId!=nil)
+    {
+        specialPage.searchCommunityId=_searchCommunityId;
+    }
+    [self.navigationController pushViewController:specialPage animated:YES];
     
 }
 
@@ -1323,24 +1179,58 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (buttonIndex == 1)
     {
-       
-        [[UserManager sharedUserManager] performUnFollow:_searchId];
-        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
-        _temSearchUser.is_following=@"0";
-        tempButton1.tag=12;
-        
+        if (_searchCommunityId!=nil) {
+            
+            [[UserManager sharedUserManager] performLeave:_searchCommunityId];
+            [tempButton1 setBackgroundImage:[UIImage imageNamed:@"joinbtn.png"] forState:UIControlStateNormal];
+            _temSearchUser.is_following=@"0";
+            tempButton1.tag=12;
+            
+        }else
+        {
+            [[UserManager sharedUserManager] performUnFollow:_searchId];
+            [tempButton1 setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
+            _temSearchUser.is_following=@"0";
+            tempButton1.tag=12;
+        }
     }
     
     
 }
 
 
+- (IBAction)joinButtonClick:(id)sender {
+    tempButton1 = (UIButton *)sender;
+    
+    
+    if (tempButton1.tag==11) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Leave"
+                                                       message:@"Are you sure you want to leave this community?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",nil];
+        [alert show];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+        
+    }else if (tempButton1.tag==12) //follow
+    {
+        [[UserManager sharedUserManager] performJoin:_searchCommunityId];
+        [tempButton1 setBackgroundImage:[UIImage imageNamed:@"leavebtn.png"] forState: UIControlStateNormal];
+        _temSearchUser.is_following=@"1";
+        
+        
+        tempButton1.tag=11;
+    }
+    
+}
 
 
 - (IBAction)editProfileButtonClick:(id)sender {
-      tempButton1 = (UIButton *)sender;
+    tempButton1 = (UIButton *)sender;
     
-
+    
     if (tempButton1.tag==11) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unfollow"
                                                        message:@"Are you sure you want to Unfollow this person?"
@@ -1351,19 +1241,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
-       
+        
     }else if (tempButton1.tag==12) //follow
     {
         [[UserManager sharedUserManager] performFollow:_searchId];
         [tempButton1 setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState: UIControlStateNormal];
-         _temSearchUser.is_following=@"1";
+        _temSearchUser.is_following=@"1";
         
         
         tempButton1.tag=11;
     }else
     {
-
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
     }
     
 }
@@ -1373,23 +1263,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     User *tempUser= [[UserManager sharedUserManager] localUser];
     
     if ([key isEqualToString:tempUser.user_id]|| [key isEqualToString:_searchId]) {
-      
+        
     }else
     {
         key=[NSString stringWithFormat:@"%ld", (long)button.tag+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
-
+    
 }
 
 - (IBAction)CommunityHeaderImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-  
+    NSString *buttontag=[NSString stringWithFormat:@"%ld",((long)button.tag)];
     NSString *key=[NSString stringWithFormat:@"%@%ld",@"com",((long)button.tag)];
-   
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    if (![buttontag isEqualToString:_searchCommunityId]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
     
-   
     
     
 }
@@ -1399,26 +1289,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BioViewController *bioPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"BioViewController"];
     bioPage.bioText=bioText;
     [self.navigationController pushViewController:bioPage animated:YES];
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-//    if (_searchId!=nil) {
-//        [self getUserProfile:_searchId];
-//    }else if (_searchCommunityId!=nil)
-//    {
-//        [self getUserCommunityProfile:_searchCommunityId];
-//    }
-//    else
-//    {
-//        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-//        [self getUserProfile:localUser.user_id];
-// 
-//    }
+    //    if (_searchId!=nil) {
+    //        [self getUserProfile:_searchId];
+    //    }else if (_searchCommunityId!=nil)
+    //    {
+    //        [self getUserCommunityProfile:_searchCommunityId];
+    //    }
+    //    else
+    //    {
+    //        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    //        [self getUserProfile:localUser.user_id];
+    // 
+    //    }
     
     [self createObservers];
-
+    
 }
 
 @end

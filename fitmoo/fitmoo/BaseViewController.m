@@ -382,7 +382,7 @@
 //    showButton=false;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-    
+    _overlay.view.frame=CGRectMake(0, 0, _overlay.view.frame.size.width*[[FitmooHelper sharedInstance] frameRadio], _overlay.view.frame.size.height*[[FitmooHelper sharedInstance] frameRadio]);
     _picker = [[UIImagePickerController alloc] init];
     _picker.allowsEditing = NO;
 
@@ -391,11 +391,14 @@
     self.picker.navigationBarHidden = YES;
     self.picker.toolbarHidden = YES;
     
+   
+    
     self.overlay.picker = self.picker;
    // self.picker.cameraOverlayView = self.overlay.view;
     [self.picker.view addSubview:self.overlay.view];
     self.picker.delegate = self.overlay;
-    
+
+
     [self presentViewController:_picker animated:YES completion:NULL];
     [self hideThreeSubButtons];
      showButton=false;
