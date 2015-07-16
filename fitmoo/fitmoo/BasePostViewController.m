@@ -296,6 +296,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
      UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+    cell.contentView.frame=CGRectMake(0, 0, 320*frameRadio, 60*frameRadio);
+    
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     CreatedByCommunity *tempCommunity;
     if (tableIsOnTop==true) {
