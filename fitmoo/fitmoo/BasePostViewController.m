@@ -98,23 +98,30 @@
 
 - (void) moveDownTableView
 {
-    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        
-        _tableview.frame=CGRectMake(originalTableviewFrame.origin.x, originalTableviewFrame.origin.y, originalTableviewFrame.size.width, originalTableviewFrame.size.height);
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
-        
-    }completion:^(BOOL finished){
-        tableIsOnTop=false;
-        [self resetCommunityArrayWithSelected];
-       
-        if ([_communityArray count]==0) {
-            _saveToCommunity=@"0";
-        }
-         [_tableview reloadData];
-        
-    }];
+//    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+//        
+//        _tableview.frame=CGRectMake(originalTableviewFrame.origin.x, originalTableviewFrame.origin.y, originalTableviewFrame.size.width, originalTableviewFrame.size.height);
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
+//        
+//    }completion:^(BOOL finished){
+//        tableIsOnTop=false;
+//        [self resetCommunityArrayWithSelected];
+//       
+//        if ([_communityArray count]==0) {
+//            _saveToCommunity=@"0";
+//        }
+//         [_tableview reloadData];
+//        
+//    }];
+    tableIsOnTop=false;
+    [self resetCommunityArrayWithSelected];
     
+    if ([_communityArray count]==0) {
+        _saveToCommunity=@"0";
+    }
+    [_tableview reloadData];
+
    
 }
 
@@ -122,22 +129,22 @@
 {
     _saveToCommunity=@"1";
     
-    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
-    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
-    _textViewBackgroundView.alpha=0.7;
-    [self.view addSubview:_textViewBackgroundView];
+//    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+//    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+//    _textViewBackgroundView.alpha=0.7;
+//    [self.view addSubview:_textViewBackgroundView];
     
     originalTableviewFrame=_tableview.frame;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
+ //   [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
     
     [self.view bringSubviewToFront:_tableview];
     
     
-    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        
-        _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
-        
-    }completion:^(BOOL finished){}];
+//    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+//        
+//        _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
+//        
+//    }completion:^(BOOL finished){}];
     [self resetCommunityArray];
     
     tableIsOnTop=true;
