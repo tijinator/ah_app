@@ -301,7 +301,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
    
     
     UIButton * followButton= [[UIButton alloc] init];
-    followButton.frame= CGRectMake(290, 15, 16, 12);
+    followButton.frame= CGRectMake(290, 20, 16, 12);
     followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
     [followButton setTag:indexPath.row*100+7];
    
