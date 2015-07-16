@@ -50,6 +50,9 @@
 @property (strong, nonatomic)  NSMutableArray * WorkoutFeedArray;
 @property (strong, nonatomic)  NSMutableArray * StoreFeedArray;
 
+@property (strong, nonatomic) IBOutlet UIButton *feedButton;
+@property (strong, nonatomic) IBOutlet UIButton *workoutButton;
+@property (strong, nonatomic) IBOutlet UIButton *storeButton;
 
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;

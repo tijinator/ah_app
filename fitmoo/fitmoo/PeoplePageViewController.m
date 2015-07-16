@@ -16,6 +16,7 @@
     NSNumber * contentHight;
     NSString *bioText;
     UIButton *tempButton1;
+     UIView *indicatorView;
 }
 @end
 
@@ -26,8 +27,8 @@
     [super viewDidLoad];
     contentHight=[NSNumber numberWithInteger:500];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-     self.tableView.tableFooterView = [[UIView alloc] init];
- 
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
     self.tableType=@"photo";
     self.feedType=@"feed";
     [self initFrames];
@@ -41,9 +42,9 @@
     {
         User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
         [self getUserProfile:localUser.user_id];
-  //  [self getHomePageItems];
+        //  [self getHomePageItems];
     }
-
+    
     [self getWorkoutItems];
     [self getStoreItems];
 }
@@ -55,19 +56,19 @@
 
 - (void) removeObservers
 {
-  //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
- //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
-
+    //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+    
 }
 
 -(void)createObservers{
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostFinished:) name:@"didPostFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
-   
+    
     
 }
 - (void) updateTable: (NSNotification * ) note
@@ -100,7 +101,7 @@
     _temSearchUser= (User *) [note object];
     if (_temSearchUser.current_user_can_view_profile.intValue==1) {
         [self getHomePageItems];
-         [_tableView reloadData];
+        [_tableView reloadData];
     }else
     {
         [_tableView reloadData];
@@ -110,8 +111,8 @@
 
 - (void) didPostFinished: (NSNotification * ) note
 {
- //   [self initValuable];
- //   [self getHomePageItems];
+    //   [self initValuable];
+    //   [self getHomePageItems];
     
     HomeFeed *feed= (HomeFeed *)[note object];
     
@@ -128,7 +129,7 @@
         [self initValuable];
         [self getHomePageItems];
     }
-
+    
 }
 
 -(void) initValuable
@@ -144,11 +145,11 @@
         _offset=_StoreOffset;
     }
     
-//    _offset=0;
+    //    _offset=0;
     _limit=9;
     _count=1;
     
-
+    
 }
 
 
@@ -185,10 +186,14 @@
         [self defineStoreFeedObjects];
         
         if ([_responseDicStore count]>0&& count!=[_StoreFeedArray count]) {
-            [self.tableView reloadData];
+            if ([_feedType isEqualToString:@"store"]) {
+                [self.tableView reloadData];
+            }
+            
         }
-        
-        
+        [self enableFeedButtons];
+         [indicatorView removeFromSuperview];
+         _tableView.userInteractionEnabled=YES;
         //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -201,7 +206,7 @@
 
 -(void) getWorkoutItems
 {
-  
+    
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -232,10 +237,13 @@
         [self defineWorkoutFeedObjects];
         
         if ([_responseDicWorkout count]>0&& count!=[_WorkoutFeedArray count]) {
-            [self.tableView reloadData];
+            if ([_feedType isEqualToString:@"workout"]) {
+                [self.tableView reloadData];
+            }
         }
-        
-        
+           [self enableFeedButtons];
+         [indicatorView removeFromSuperview];
+         _tableView.userInteractionEnabled=YES;
         //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -248,7 +256,7 @@
 
 -(void) getHomePageItems
 {
-   // _tableView.userInteractionEnabled=false;
+    // _tableView.userInteractionEnabled=false;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -277,13 +285,16 @@
             count=[_FeedArray count];
         }
         [self defineFeedObjects];
-  
+        
         if ([_responseDic count]>0&& count!=[_FeedArray count]) {
-            [self.tableView reloadData];
+            if ([_feedType isEqualToString:@"feed"]) {
+                [self.tableView reloadData];
+            }
         }
-        
-        
-    //    NSLog(@"Submit response data: %@", responseObject);
+        [self enableFeedButtons];
+        _tableView.userInteractionEnabled=YES;
+         [indicatorView removeFromSuperview];
+        //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -317,10 +328,10 @@
         
     }
     
-     if (_offset!=0) {
-         
-         _homeFeedArray=[_StoreFeedArray mutableCopy];
-     }
+    if (_offset!=0) {
+        
+        _homeFeedArray=[_StoreFeedArray mutableCopy];
+    }
     
     
 }
@@ -375,13 +386,13 @@
             if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
                 [_FeedArray addObject:feed];
             }
-         
+            
         }
         
         
     }
     
-   _homeFeedArray= [_FeedArray mutableCopy];
+    _homeFeedArray= [_FeedArray mutableCopy];
     
 }
 
@@ -410,7 +421,7 @@
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
@@ -420,9 +431,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         height=[NSNumber numberWithInt:600];
     }
-  //  NSLog(@"%ld",(long)height.integerValue);
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
- //   }
+    //   }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -450,11 +461,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         return count+1;
-
+        
     }else{
-
+        
         return ([_homeFeedArray count]+1);
-  
+        
     }
 }
 
@@ -475,7 +486,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         if (_temSearchUser !=nil&&_searchId !=nil) {
             temUser=_temSearchUser;
-          
+            
             if (temUser.is_following.intValue==1) {
                 [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState:UIControlStateNormal];
                 [cell.editProfileButton setTag:11];
@@ -483,13 +494,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }else if(temUser.is_following.intValue==0)
             {
                 [cell.editProfileButton setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
-                  [cell.editProfileButton setTag:12];
+                [cell.editProfileButton setTag:12];
             }
             
             
         }else
         {
-        temUser= [[UserManager sharedUserManager] localUser];
+            temUser= [[UserManager sharedUserManager] localUser];
         }
         cell.nameLabel.text= temUser.name.uppercaseString;
         self.titleLabel.text= temUser.name.uppercaseString;
@@ -497,16 +508,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
             imageUrl=temUser.cover_photo_url;
         }
-       
-         if ([self.tableType isEqualToString:@"photo"]) {
-             [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
-      //       [cell.feedButton setImage:[UIImage imageNamed:@"deselectedbars.png"] forState:UIControlStateNormal];
-         }else
-         {
-             [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedsquares.png"] forState:UIControlStateNormal];
-     //        [cell.feedButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
-         }
-     
+        
+        if ([self.tableType isEqualToString:@"photo"]) {
+            [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
+            //       [cell.feedButton setImage:[UIImage imageNamed:@"deselectedbars.png"] forState:UIControlStateNormal];
+        }else
+        {
+            [cell.scheduleButton setImage:[UIImage imageNamed:@"selectedsquares.png"] forState:UIControlStateNormal];
+            //        [cell.feedButton setImage:[UIImage imageNamed:@"selectedbars.png"] forState:UIControlStateNormal];
+        }
+        
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followLabelClick:)];
@@ -518,7 +529,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.followerCountLabel.userInteractionEnabled=YES;
         
-  
+        
         
         if (temUser.following.intValue>999) {
             CGFloat following=temUser.following.floatValue/1000.0f;
@@ -531,13 +542,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
         }
         
-    //    cell.communityCountLabel.text=temUser.communities;
+        //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
-   //     [cell loadHeaderImage:imageUrl];
-      
+        //     [cell loadHeaderImage:imageUrl];
+        
         [cell loadHeader1Image:temUser.profile_avatar_original];
-  
+        
         UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:temUser.bio attributes:@{NSFontAttributeName: font}  ];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -549,7 +560,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         cell.bioLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:cell.bioLabel];
         if (cell.bioLabel.frame.size.height>(70*[[FitmooHelper sharedInstance] frameRadio])) {
             cell.bioLabel.frame=CGRectMake(cell.bioLabel.frame.origin.x, cell.bioLabel.frame.origin.y, cell.bioLabel.frame.size.width, 70*[[FitmooHelper sharedInstance] frameRadio]);
-       
+            
         }
         
         if ([self.feedType isEqualToString:@"feed"]) {
@@ -563,6 +574,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             [cell.storeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
         
+        _feedButton=cell.feedButton;
+        _workoutButton=cell.workoutButton;
+        _storeButton=cell.storeButton;
         
         [cell.bioLabel setAttributedText:attributedString];
         cell.bioLabel.userInteractionEnabled = NO;
@@ -585,11 +599,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }else
         {
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.bioButton.frame.size.height+cell.bioButton.frame.origin.y+15);
-        contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
+            contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
         }
         
         
-      
+        
         
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         return cell;
@@ -600,7 +614,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if ([self.tableType isEqualToString:@"photo"]) {
         
         PhotoCell *cell =(PhotoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-
+        
         if (cell == nil)
         {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PhotoCell" owner:self options:nil];
@@ -611,8 +625,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         int current=(int) (indexPath.row-1)*3;
         if (current<[_homeFeedArray count]) {
-             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
-             cell.homeFeed1= temfeed;
+            HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current];
+            cell.homeFeed1= temfeed;
             cell.view1Button.tag=temfeed.feed_id.integerValue;
             [cell.view1Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView1Item];
@@ -620,13 +634,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             cell.view1.hidden=true;
         }
-       
+        
         if (current+1<[_homeFeedArray count]) {
-             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
-             cell.homeFeed2= temfeed;
-             cell.view2Button.tag=temfeed.feed_id.integerValue;
-             [cell.view2Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-             [cell setView2Item];
+            HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+1];
+            cell.homeFeed2= temfeed;
+            cell.view2Button.tag=temfeed.feed_id.integerValue;
+            [cell.view2Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView2Item];
         }else
         {
             cell.view2.hidden=true;
@@ -635,8 +649,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         if (current+2<[_homeFeedArray count]) {
             HomeFeed *temfeed=[_homeFeedArray objectAtIndex:current+2];
             cell.homeFeed3= temfeed;
-             cell.view3Button.tag=temfeed.feed_id.integerValue;
-             [cell.view3Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            cell.view3Button.tag=temfeed.feed_id.integerValue;
+            [cell.view3Button addTarget:self action:@selector(photoImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell setView3Item];
         }else
         {
@@ -659,28 +673,28 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         }
-
+        
         
         return cell;
         
     } //  end of photo type table
     else
     {
-    
-    
-    ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil)
-    {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }else
-    {
-        return cell;
-    }
-    
-    HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
-    cell.homeFeed=tempHomefeed;
-    
+        
+        
+        ShareTableViewCell *cell =(ShareTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShareTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }else
+        {
+            return cell;
+        }
+        
+        HomeFeed * tempHomefeed= [_homeFeedArray objectAtIndex:indexPath.row-1];
+        cell.homeFeed=tempHomefeed;
+        
         //case for headerview
         if ([tempHomefeed.feed_action.action isEqualToString:@"post"]||tempHomefeed.feed_action.action==nil) {
             cell.heanderImage1.hidden=true;
@@ -891,7 +905,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
         [cell.bodyLikeButton setTag:indexPath.row*100+4];
-         NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
+        NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
             [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
@@ -909,23 +923,23 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-    
-    if(indexPath.row==[_homeFeedArray count])
-    {
-        contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
-    }else
-    {
-    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
-    }
-    
-    if (indexPath.row>=[_heighArray count]) {
-        [_heighArray addObject:contentHight];
-    }else
-    {
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-    }
-    //  NSLog(@"%ld",(long)contentHight.integerValue);
-    return cell;
+        
+        if(indexPath.row==[_homeFeedArray count])
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
+        }else
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+        }
+        
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+        //  NSLog(@"%ld",(long)contentHight.integerValue);
+        return cell;
     }
     //  end of feed type table
 }
@@ -945,15 +959,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-
-
+    
+    
     
 }
 
 // multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-
+    
     NSNumber *height;
     if (indexPath.row<[_heighArray count]) {
         height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -962,20 +976,33 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         height=[NSNumber numberWithInt:contentHight.intValue];
     }
-  //  NSLog(@"%ld",(long)height.integerValue);
+    //  NSLog(@"%ld",(long)height.integerValue);
     return height.integerValue;
-
+    
 }
 
+- (void) enableFeedButtons
+{
+    _feedButton.userInteractionEnabled=YES;
+    _workoutButton.userInteractionEnabled=YES;
+    _storeButton.userInteractionEnabled=YES;
+}
+
+- (void) disableFeedButtons
+{
+    _feedButton.userInteractionEnabled=NO;
+    _workoutButton.userInteractionEnabled=NO;
+    _storeButton.userInteractionEnabled=NO;
+}
 
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
     if(self.tableView.contentOffset.y<-75){
-    //     NSLog(@"%f",self.tableView.contentOffset.y );
+        //     NSLog(@"%f",self.tableView.contentOffset.y );
         if (_count==0) {
             [self initValuable];
-           
+            
             if ([self.feedType isEqualToString:@"feed"]) {
                 [self getHomePageItems];
             }else if([self.feedType isEqualToString:@"workout"]) {
@@ -983,24 +1010,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }else if([self.feedType isEqualToString:@"store"]) {
                 [self getStoreItems];
             }
-            
+        //    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+        //    _tableView.userInteractionEnabled=NO;
             
         }
         _count++;
-        
+        [self disableFeedButtons];
         //it means table view is pulled down like refresh
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-
+        
         if (_count==0) {
             if (self.tableView.contentOffset.y<0) {
-                  _offset =0;
+                _offset =0;
             }else
             {
-            _offset +=9;
+                _offset +=9;
             }
-          
+            
             if ([self.feedType isEqualToString:@"feed"]) {
                 [self getHomePageItems];
             }else if([self.feedType isEqualToString:@"workout"]) {
@@ -1009,14 +1037,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 [self getStoreItems];
             }
             
+            [self disableFeedButtons];
+       //     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+       //     _tableView.userInteractionEnabled=NO;
+            
         }
         _count++;
         
         
-        }else
-        {
+    }else
+    {
         _count=0;
-        }
+    }
 }
 
 
@@ -1048,7 +1080,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)likeButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
-
+    
     
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
@@ -1084,8 +1116,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.tableView reloadData];
         
     }
-
-
+    
+    
 }
 - (IBAction)optionButtonClick:(id)sender {
     
@@ -1098,13 +1130,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
         ActionSheet.action= @"endorse";
-       
+        
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
         ActionSheet.action= @"report";
-      
+        
     }else if ([feed.action_sheet isEqualToString:@"delete"]) {
         ActionSheet.action= @"delete";
-     
+        
     }
     ActionSheet.postId= feed.feed_id;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
@@ -1122,7 +1154,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         ActionSheet.postId= tempFeed.feed_id;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
-  
+    
     
 }
 - (IBAction)bodyImageButtonClick:(id)sender{
@@ -1189,14 +1221,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     
-
+    
     
 }
 
 - (IBAction)followLabelClick:(id)sender {
     NSString *searchPeopleId;
     
-   if (_searchId!=nil) {
+    if (_searchId!=nil) {
         searchPeopleId=_searchId;
     }else
     {
@@ -1207,7 +1239,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
     composePage.searchId= searchPeopleId;
-  
+    
     composePage.searchType=@"following";
     
     
@@ -1228,11 +1260,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ComposeViewController *composePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
     composePage.searchId= searchPeopleId;
-   
+    
     composePage.searchType=@"follower";
     
     [self.navigationController pushViewController:composePage animated:YES];
-
+    
     
 }
 
@@ -1251,35 +1283,35 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self resetOffset];
     _offset=_FeedOffset;
     self.feedType=@"feed";
-      _homeFeedArray= [_FeedArray mutableCopy];
-   
+    _homeFeedArray= [_FeedArray mutableCopy];
+    
     [self.tableView reloadData];
 }
 
 
 
 - (IBAction)WorkoutButtonClick:(id)sender {
-    if ([_WorkoutFeedArray count]>0) {
+ //   if ([_WorkoutFeedArray count]>0) {
         [self resetOffset];
         _offset=_WorkoutOffset;
         self.feedType=@"workout";
         _homeFeedArray= [_WorkoutFeedArray mutableCopy];
         [self.tableView reloadData];
-
-    }
+        
+  //  }
     
 }
 
 - (IBAction)StoreButtonClick:(id)sender {
     
-    if ([_StoreFeedArray count]>0) {
-    [self resetOffset];
-    _offset=_StoreOffset;
-     self.feedType=@"store";
-     _homeFeedArray= [_StoreFeedArray mutableCopy];
-    
-     [self.tableView reloadData];
-     }
+  //  if ([_StoreFeedArray count]>0) {
+        [self resetOffset];
+        _offset=_StoreOffset;
+        self.feedType=@"store";
+        _homeFeedArray= [_StoreFeedArray mutableCopy];
+        
+        [self.tableView reloadData];
+ //   }
 }
 
 - (IBAction)PhotoButtonClick:(id)sender {
@@ -1295,8 +1327,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 - (IBAction)backButtonClick:(id)sender {
- 
-  //  [self.navigationController popViewControllerAnimated:YES];
+    
+    //  [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
@@ -1311,15 +1343,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-   
-        specialPage.homeFeed=tempFeed;
-        if(_searchId!=nil)
-        {
-            specialPage.searchId=_searchId;
-        }
-        [self.navigationController pushViewController:specialPage animated:YES];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+    
+    specialPage.homeFeed=tempFeed;
+    if(_searchId!=nil)
+    {
+        specialPage.searchId=_searchId;
+    }
+    [self.navigationController pushViewController:specialPage animated:YES];
     
 }
 
@@ -1329,7 +1361,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (buttonIndex == 1)
     {
-       
+        
         [[UserManager sharedUserManager] performUnFollow:_searchId];
         [tempButton1 setBackgroundImage:[UIImage imageNamed:@"follow_btn.png"] forState:UIControlStateNormal];
         _temSearchUser.is_following=@"0";
@@ -1344,9 +1376,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)editProfileButtonClick:(id)sender {
-      tempButton1 = (UIButton *)sender;
+    tempButton1 = (UIButton *)sender;
     
-
+    
     if (tempButton1.tag==11) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unfollow"
                                                        message:@"Are you sure you want to Unfollow this person?"
@@ -1357,19 +1389,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
-       
+        
     }else if (tempButton1.tag==12) //follow
     {
         [[UserManager sharedUserManager] performFollow:_searchId];
         [tempButton1 setBackgroundImage:[UIImage imageNamed:@"following_btn.png"] forState: UIControlStateNormal];
-         _temSearchUser.is_following=@"1";
+        _temSearchUser.is_following=@"1";
         
         
         tempButton1.tag=11;
     }else
     {
-
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
     }
     
 }
@@ -1379,23 +1411,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     User *tempUser= [[UserManager sharedUserManager] localUser];
     
     if ([key isEqualToString:tempUser.user_id]|| [key isEqualToString:_searchId]) {
-      
+        
     }else
     {
         key=[NSString stringWithFormat:@"%ld", (long)button.tag+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     }
-
+    
 }
 
 - (IBAction)CommunityHeaderImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
-  
+    
     NSString *key=[NSString stringWithFormat:@"%@%ld",@"com",((long)button.tag)];
-   
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
-   
+    
     
     
 }
@@ -1405,26 +1437,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BioViewController *bioPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"BioViewController"];
     bioPage.bioText=bioText;
     [self.navigationController pushViewController:bioPage animated:YES];
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-//    if (_searchId!=nil) {
-//        [self getUserProfile:_searchId];
-//    }else if (_searchCommunityId!=nil)
-//    {
-//        [self getUserCommunityProfile:_searchCommunityId];
-//    }
-//    else
-//    {
-//        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-//        [self getUserProfile:localUser.user_id];
-// 
-//    }
+    //    if (_searchId!=nil) {
+    //        [self getUserProfile:_searchId];
+    //    }else if (_searchCommunityId!=nil)
+    //    {
+    //        [self getUserCommunityProfile:_searchCommunityId];
+    //    }
+    //    else
+    //    {
+    //        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    //        [self getUserProfile:localUser.user_id];
+    // 
+    //    }
     
     [self createObservers];
-
+    
 }
 
 @end
