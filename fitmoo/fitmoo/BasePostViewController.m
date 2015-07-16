@@ -66,7 +66,7 @@
     [_tableview setBackgroundView:bview];
  
    
-    contentHight=[NSNumber numberWithInteger:50];
+    contentHight=[NSNumber numberWithInteger:60];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _saveToCommunity=@"0";
     [self defineTypeOfPost];
@@ -203,7 +203,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (indexPath.row==0) {
         return 60*Radio;
     }
-    return 50*Radio;
+    return 60*Radio;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -251,7 +251,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
     //    UIView *view= (UIView *) [cell viewWithTag:22];
         UIView *view= [[UIView alloc] init];
-        view.frame= CGRectMake(0, 0, 320, 50);
+        view.frame= CGRectMake(0, 0, 320, 60);
         view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:view respectToSuperFrame:nil];
         
         UILabel *label= [[UILabel alloc] init];
@@ -317,7 +317,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     
     UIButton *imageButton= [[UIButton alloc] init];
-    imageButton.frame= CGRectMake(0, 0, 75, 50);
+    imageButton.frame= CGRectMake(0, 0, 85, 60);
     imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
@@ -339,7 +339,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
  
     UILabel *nameLabel=[[UILabel alloc] init];
-    nameLabel.frame= CGRectMake(90, 18, 190, 41);
+    nameLabel.frame= CGRectMake(95, 23, 185, 41);
     nameLabel.numberOfLines=2;
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     imageview.layer.cornerRadius=imageview.frame.size.width/2;
@@ -367,14 +367,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     [cell.contentView addSubview:nameLabel];
     [cell.contentView addSubview:followButton];
     
-    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 50*frameRadio-1, cell.contentView.frame.size.width, 1)];
+    UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, imageButton.frame.size.height, cell.contentView.frame.size.width, 1)];
     v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:0.9f];
     [cell addSubview:v];
     
   
     contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+nameLabel.frame.origin.y];
-    if (contentHight.intValue<50*frameRadio) {
-            contentHight=[NSNumber numberWithInteger:50*frameRadio];
+    if (contentHight.intValue<60*frameRadio) {
+            contentHight=[NSNumber numberWithInteger:60*frameRadio];
         }
         
 
