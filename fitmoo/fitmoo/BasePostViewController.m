@@ -372,19 +372,19 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     [cell addSubview:v];
     
   
-    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+nameLabel.frame.origin.y];
-    if (contentHight.intValue<60*frameRadio) {
-            contentHight=[NSNumber numberWithInteger:60*frameRadio];
-        }
-        
+//    contentHight=[NSNumber numberWithInteger:nameLabel.frame.size.height+nameLabel.frame.origin.y];
+//    if (contentHight.intValue<60*frameRadio) {
+//            contentHight=[NSNumber numberWithInteger:60*frameRadio];
+//        }
+//        
 
-    if (indexPath.row>=[_heighArray count]) {
-        [_heighArray addObject:contentHight];
-    }else
-    {
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-    }
-    
+//    if (indexPath.row>=[_heighArray count]) {
+//        [_heighArray addObject:contentHight];
+//    }else
+//    {
+//        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+//    }
+//    
   
   
     return cell;
@@ -428,20 +428,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     
     double Radio= self.view.frame.size.width / 320;
-        if (indexPath.row==0) {
-            return 60*Radio;
-        }
+    return 60*Radio;
     
-    NSNumber *height;
-    if (indexPath.row<[_heighArray count]) {
-        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
-        
-    }else
-    {
-        height=[NSNumber numberWithInt:contentHight.intValue];
-    }
-    
-    return   height.intValue;
+//    double Radio= self.view.frame.size.width / 320;
+//        if (indexPath.row==0) {
+//            return 60*Radio;
+//        }
+//    
+//    NSNumber *height;
+//    if (indexPath.row<[_heighArray count]) {
+//        height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
+//        
+//    }else
+//    {
+//        height=[NSNumber numberWithInt:contentHight.intValue];
+//    }
+//    
+//    return   height.intValue;
 //    double Radio= self.view.frame.size.width / 320;
 //    if (indexPath.row==0) {
 //        return 60*Radio;
