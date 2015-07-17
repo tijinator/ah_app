@@ -61,20 +61,20 @@
     _localUser= [[UserManager sharedUserManager] localUser];
     
     
-    self.tableview = ({
-        UITableView *tableView = [[UITableView alloc] init];
-        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.opaque = NO;
-        tableView.backgroundColor = [UIColor clearColor];
-        tableView.backgroundView = nil;
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        tableView.bounces = NO;
-        tableView.scrollsToTop = NO;
-        tableView;
-    });
-    [self.view addSubview:self.tableview];
+//    self.tableview = ({
+//        UITableView *tableView = [[UITableView alloc] init];
+//        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+//        tableView.delegate = self;
+//        tableView.dataSource = self;
+//        tableView.opaque = NO;
+//        tableView.backgroundColor = [UIColor clearColor];
+//        tableView.backgroundView = nil;
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        tableView.bounces = NO;
+//        tableView.scrollsToTop = NO;
+//        tableView;
+//    });
+//    [self.view addSubview:self.tableview];
     
     self.tableview.tableFooterView = [[UIView alloc] init];
 
@@ -115,29 +115,29 @@
 
 - (void) moveDownTableView
 {
-//    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-//        
-//        _tableview.frame=CGRectMake(originalTableviewFrame.origin.x, originalTableviewFrame.origin.y, originalTableviewFrame.size.width, originalTableviewFrame.size.height);
-//        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
-//        
-//    }completion:^(BOOL finished){
-//        tableIsOnTop=false;
-//        [self resetCommunityArrayWithSelected];
-//       
-//        if ([_communityArray count]==0) {
-//            _saveToCommunity=@"0";
-//        }
-//         [_tableview reloadData];
-//        
-//    }];
-    tableIsOnTop=false;
-    [self resetCommunityArrayWithSelected];
-    
-    if ([_communityArray count]==0) {
-        _saveToCommunity=@"0";
-    }
-    [_tableview reloadData];
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+        _tableview.frame=CGRectMake(originalTableviewFrame.origin.x, originalTableviewFrame.origin.y, originalTableviewFrame.size.width, originalTableviewFrame.size.height);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
+        
+    }completion:^(BOOL finished){
+        tableIsOnTop=false;
+        [self resetCommunityArrayWithSelected];
+       
+        if ([_communityArray count]==0) {
+            _saveToCommunity=@"0";
+        }
+         [_tableview reloadData];
+        
+    }];
+//    tableIsOnTop=false;
+//    [self resetCommunityArrayWithSelected];
+//    
+//    if ([_communityArray count]==0) {
+//        _saveToCommunity=@"0";
+//    }
+//    [_tableview reloadData];
 
    
 }
@@ -146,22 +146,22 @@
 {
     _saveToCommunity=@"1";
     
-//    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
-//    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
-//    _textViewBackgroundView.alpha=0.7;
-//    [self.view addSubview:_textViewBackgroundView];
+    _textViewBackgroundView= [[TestView1 alloc] initWithFrame:CGRectMake(0, -50*[[FitmooHelper sharedInstance] frameRadio], self.view.frame.size.width, self.view.frame.size.height+100)];
+    _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+    _textViewBackgroundView.alpha=0.7;
+    [self.view addSubview:_textViewBackgroundView];
     
     originalTableviewFrame=_tableview.frame;
- //   [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"yes"];
     
     [self.view bringSubviewToFront:_tableview];
     
     
-//    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-//        
-//        _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
-//        
-//    }completion:^(BOOL finished){}];
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+        _tableview.frame=CGRectMake(0, 0, _tableview.frame.size.width, _SubmitButton.frame.size.height+_SubmitButton.frame.origin.y);
+        
+    }completion:^(BOOL finished){}];
     [self resetCommunityArray];
     
     tableIsOnTop=true;
@@ -223,7 +223,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 //    return height.integerValue;
     
     
-     double Radio= self.view.frame.size.width / 320;
+     double Radio= [[FitmooHelper sharedInstance] frameRadio];
     if (indexPath.row==0) {
         return 60*Radio;
     }
@@ -315,6 +315,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
  //    UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
  //   cell.contentView.frame=cell.bounds;
     UITableViewCell * cell  = [[UITableViewCell alloc] init];
+    cell.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:cell.contentView respectToSuperFrame:nil];
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     CreatedByCommunity *tempCommunity;
     if (tableIsOnTop==true) {
@@ -327,8 +328,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
    
     
     UIButton * followButton= [[UIButton alloc] init];
-    followButton.frame= CGRectMake(290, 20, 16, 12);
-    followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
+    followButton.frame= CGRectMake(290, 22, 16, 12);
+    followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:nil];
     [followButton setTag:indexPath.row*100+7];
    
     if ([tempCommunity.is_selected isEqualToString:@"1"]) {
@@ -344,7 +345,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     UIButton *imageButton= [[UIButton alloc] init];
     imageButton.frame= CGRectMake(0, 0, 85, 60);
-    imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:self.view];
+    imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageButton respectToSuperFrame:nil];
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageButton.frame.size.width, imageButton.frame.size.height)];
     view.clipsToBounds=YES;
@@ -367,7 +368,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     UILabel *nameLabel=[[UILabel alloc] init];
     nameLabel.frame= CGRectMake(95, 23, 185, 41);
     nameLabel.numberOfLines=2;
-    nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
+    nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:nil];
     imageview.layer.cornerRadius=imageview.frame.size.width/2;
   
     
@@ -453,7 +454,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    double Radio= self.view.frame.size.width / 320;
+    double Radio= [[FitmooHelper sharedInstance] frameRadio];
     return 60*Radio;
     
 //    double Radio= self.view.frame.size.width / 320;
@@ -765,7 +766,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [_WorkoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         _wihteArrawImage.frame= CGRectMake(150, 45, 20, 10);
-        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:nil];
         
     }else  if ([self.postType isEqualToString:@"nutrition"]) {
         [self setNutritionFrame];
@@ -773,7 +774,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_WorkoutButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _wihteArrawImage.frame= CGRectMake(55, 45, 20, 10);
-        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:nil];
        
       
     }else  if ([self.postType isEqualToString:@"workout"]) {
@@ -783,7 +784,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [_NormalPostButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self setWorkoutFrame];
         _wihteArrawImage.frame= CGRectMake(245, 45, 20, 10);
-        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+        _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:nil];
     }
 }
 
@@ -792,7 +793,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void) setPostFrame
 {
     _normalPostView.frame= CGRectMake(0, 55, 320, 142);
-    _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
+    _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:nil];
   
     _tableview.frame=CGRectMake(0, _normalPostView.frame.size.height+_normalPostView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_normalPostView.frame.size.height-_normalPostView.frame.origin.y-10);
     originalTableviewFrame=_tableview.frame;
@@ -812,7 +813,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void) setWorkoutFrame
 {
     _workoutView.frame= CGRectMake(0, 55, 320, 172);
-    _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
+    _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:nil];
     
      _tableview.frame=CGRectMake(0, _workoutView.frame.size.height+_workoutView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_workoutView.frame.size.height-_workoutView.frame.origin.y-10);
     originalTableviewFrame=_tableview.frame;
@@ -828,7 +829,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void) setNutritionFrame
 {
     _nutritionView.frame= CGRectMake(0, 55, 320, 245);
-    _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
+    _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:nil];
     
      _tableview.frame=CGRectMake(0, _nutritionView.frame.size.height+_nutritionView.frame.origin.y+10, 320*frameRadio, _SubmitButton.frame.origin.y-_nutritionView.frame.size.height-_nutritionView.frame.origin.y-10);
     originalTableviewFrame=_tableview.frame;
@@ -845,38 +846,41 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void) initFrames
 {
 
+    _normalPostView.frame= CGRectMake(0, 55, 320, 142);
+    _nutritionView.frame= CGRectMake(0, 55, 320, 245);
+    _workoutView.frame= CGRectMake(0, 55, 320, 172);
     frameRadio= [[FitmooHelper sharedInstance] frameRadio];
-    _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:self.view];
-    _normalPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostImage respectToSuperFrame:self.view];
+    _normalPostView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostView respectToSuperFrame:nil];
+    _normalPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostImage respectToSuperFrame:nil];
  //   _normalPostText.frame= CGRectMake(96*framradio, 10*framradio, 216, 112);
-    _normalPostBackView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostBackView respectToSuperFrame:self.view];
+    _normalPostBackView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalPostBackView respectToSuperFrame:nil];
  
    
-    _normalEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalEditButton respectToSuperFrame:self.view];
+    _normalEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_normalEditButton respectToSuperFrame:nil];
     
-    _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:self.view];
-    _workoutTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTitleView respectToSuperFrame:self.view];
-    _workoutEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutEditButton respectToSuperFrame:self.view];
+    _workoutView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutView respectToSuperFrame:nil];
+    _workoutTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTitleView respectToSuperFrame:nil];
+    _workoutEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutEditButton respectToSuperFrame:nil];
     
-    _workoutInstructionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutInstructionView respectToSuperFrame:self.view];
-    _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:self.view];
-    _nutritionTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionTitleView respectToSuperFrame:self.view];
-    _nutritionIngedientsView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionIngedientsView respectToSuperFrame:self.view];
-    _nutritionPreparationView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPreparationView respectToSuperFrame:self.view];
-    _nutritionEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionEditButton respectToSuperFrame:self.view];
+    _workoutInstructionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutInstructionView respectToSuperFrame:nil];
+    _nutritionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionView respectToSuperFrame:nil];
+    _nutritionTitleView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionTitleView respectToSuperFrame:nil];
+    _nutritionIngedientsView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionIngedientsView respectToSuperFrame:nil];
+    _nutritionPreparationView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPreparationView respectToSuperFrame:nil];
+    _nutritionEditButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionEditButton respectToSuperFrame:nil];
     
   //  _buttonView.frame= CGRectMake(0, 0, 320, 55);
-    _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:self.view];
-    _NormalPostButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NormalPostButton respectToSuperFrame:self.view];
-    _WorkoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_WorkoutButton respectToSuperFrame:self.view];
-    _NutritionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NutritionButton respectToSuperFrame:self.view];
-    _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
-    _nutritionPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPostImage respectToSuperFrame:self.view];
-    _workoutPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutPostImage respectToSuperFrame:self.view];
+    _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
+    _NormalPostButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NormalPostButton respectToSuperFrame:nil];
+    _WorkoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_WorkoutButton respectToSuperFrame:nil];
+    _NutritionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_NutritionButton respectToSuperFrame:nil];
+    _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:nil];
+    _nutritionPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nutritionPostImage respectToSuperFrame:nil];
+    _workoutPostImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutPostImage respectToSuperFrame:nil];
     
-    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
-    _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
-    _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:self.view];
+    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
+    _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:nil];
+    _SubmitButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_SubmitButton respectToSuperFrame:nil];
     
   
     
@@ -1270,9 +1274,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _textViewBackgroundView=nil;
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
-        _normalPostView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _normalPostView.frame.size.width, _normalPostView.frame.size.height);
-        _workoutView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _workoutView.frame.size.width, _workoutView.frame.size.height);
-        _nutritionView.frame=CGRectMake(0, 50*[[FitmooHelper sharedInstance] frameRadio], _nutritionView.frame.size.width, _nutritionView.frame.size.height);
+        _normalPostView.frame=CGRectMake(0, 55*[[FitmooHelper sharedInstance] frameRadio], _normalPostView.frame.size.width, _normalPostView.frame.size.height);
+        _workoutView.frame=CGRectMake(0, 55*[[FitmooHelper sharedInstance] frameRadio], _workoutView.frame.size.width, _workoutView.frame.size.height);
+        _nutritionView.frame=CGRectMake(0, 55*[[FitmooHelper sharedInstance] frameRadio], _nutritionView.frame.size.width, _nutritionView.frame.size.height);
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"showOKButton" object:@"no"];
         

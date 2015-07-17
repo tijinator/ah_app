@@ -516,8 +516,8 @@
     _postView.postActionType=_postActionType;
     
     [_postView defineTypeOfPost];
-    _postView.view.frame= CGRectMake(0, 50, _postView.view.frame.size.width, _postView.view.frame.size.height);
-    _postView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postView.view respectToSuperFrame:self.view];
+    _postView.view.frame= CGRectMake(0, 50, 320, 568);
+    _postView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postView.view respectToSuperFrame:nil];
     
    // [self presentViewController:_postView animated:YES completion:nil];
    // [self.view insertSubview:_postView.view belowSubview:self.postTopView];
