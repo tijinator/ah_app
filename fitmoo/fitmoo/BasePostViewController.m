@@ -59,7 +59,24 @@
     [self initFrames];
     tableIsOnTop=false;
     _localUser= [[UserManager sharedUserManager] localUser];
-     self.tableview.tableFooterView = [[UIView alloc] init];
+    
+    
+    self.tableview = ({
+        UITableView *tableView = [[UITableView alloc] init];
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.opaque = NO;
+        tableView.backgroundColor = [UIColor clearColor];
+        tableView.backgroundView = nil;
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.bounces = NO;
+        tableView.scrollsToTop = NO;
+        tableView;
+    });
+    [self.view addSubview:self.tableview];
+    
+    self.tableview.tableFooterView = [[UIView alloc] init];
 
     UIView* bview = [[UIView alloc] init];
     bview.backgroundColor =[UIColor colorWithRed:235.0/255.0 green:238.0/255.0 blue:240.0/255.0 alpha:1.0];
@@ -69,7 +86,7 @@
     contentHight=[NSNumber numberWithInteger:60];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _saveToCommunity=@"0";
- //   [self defineTypeOfPost];
+    [self defineTypeOfPost];
 
     [self createObservers];
 

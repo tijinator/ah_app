@@ -17,7 +17,7 @@
 #import "CreatedByCommunity.h"
 #import "AsyncImageView.h"
 
-@interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
+@interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
 @property (strong, nonatomic) IBOutlet UIButton *normalEditButton;
 
