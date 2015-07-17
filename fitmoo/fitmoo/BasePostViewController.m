@@ -69,7 +69,7 @@
     contentHight=[NSNumber numberWithInteger:60];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _saveToCommunity=@"0";
-    [self defineTypeOfPost];
+ //   [self defineTypeOfPost];
 
     [self createObservers];
 
