@@ -251,8 +251,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (indexPath.row==0) {
         
         
-   //     UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-          UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+        UITableViewCell * cell  = [[UITableViewCell alloc] init];
+   //       UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
         cell.selectionStyle= UITableViewCellSelectionStyleNone;
       //  [cell setSeparatorInset:UIEdgeInsetsMake(0, cell.contentView.frame.size.width/2, 0, cell.contentView.frame.size.width/2)];
         
@@ -295,9 +295,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
     }
     
-     UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
-    cell.contentView.frame=cell.bounds;
-    
+ //    UITableViewCell * cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+ //   cell.contentView.frame=cell.bounds;
+    UITableViewCell * cell  = [[UITableViewCell alloc] init];
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     CreatedByCommunity *tempCommunity;
     if (tableIsOnTop==true) {
