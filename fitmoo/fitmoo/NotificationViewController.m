@@ -106,11 +106,17 @@
         _unread_count=[unread stringValue];
         [self updateLocateUnreadCount];
         [self.tableview reloadData];
+        
+        [self updateUnreadFeed];
+        
     }
     
 
     
 }
+
+
+
 
 - (void) updateLocateUnreadCount
 {
@@ -180,7 +186,7 @@
     
 }
 
--(void) updateUnreadFeed: (NSString *) feed_id
+-(void) updateUnreadFeed
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -188,10 +194,8 @@
      User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     
-    
-    
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
-    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/notifications/",feed_id,@"/read"];
+    NSString * url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/",localUser.user_id,@"/notifications/read_all"];
     
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
@@ -491,7 +495,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _homeFeed.is_liked=@"0";
     [self.tableview reloadData];
-    [self updateUnreadFeed:_homeFeed.notification_id];
+  //  [self updateUnreadFeed:_homeFeed.notification_id];
     
     
   

@@ -27,7 +27,7 @@
 #import "BioViewController.h"
 #import "PhotoCell.h"
 #import "ComposeViewController.h"
-@interface CommunityPageViewController : UIViewController
+@interface CommunityPageViewController : BaseViewController
 
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
