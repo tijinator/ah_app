@@ -53,6 +53,7 @@
 -(void) getCommunityProfile:(NSString *) community_id;
 -(void) performLeave:(NSString *) postId;
 -(void) performJoin:(NSString *) postId;
+-(void) getWorkoutType;
 
 @property (strong, nonatomic) NSString * loginUrl;
 @property (strong, nonatomic) NSString * logoutUrl;
@@ -74,6 +75,6 @@
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;
-
+@property (strong, nonatomic)  NSMutableArray * workoutTypesArray;
 
 @end

@@ -34,5 +34,8 @@
 -(NSAttributedString *) replaceAttributedString: (NSMutableAttributedString *) stringToChange Font: (UIFont *) fontName range:(NSString *)rangeString newString:(NSString *)newString;
 - (NSString *) getTextForNumber: (NSString *) numberString;
 - (void) addActivityIndicator:(UIView *)view;
+
+- (NSString *) generateTimeString:(NSString *)timeString;
+
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;
 @end

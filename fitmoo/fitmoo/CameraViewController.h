@@ -13,9 +13,10 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BasePostViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "User.h"
 //@interface CameraViewController : UIImagePickerController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
-@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate>
+#import <CoreLocation/CoreLocation.h>
+@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic)  UIImagePickerController *picker;
 @property (strong, nonatomic)  UIImagePickerController *picker1;

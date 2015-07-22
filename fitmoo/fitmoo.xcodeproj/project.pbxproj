@@ -544,6 +544,7 @@
 		27CBC0E01B0F84DB00699E1E /* eventsscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0D41B0F84DB00699E1E /* eventsscreen@3x.png */; };
 		27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */; };
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
+		27DB8D811B5D9090005380CA /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DB8D801B5D9090005380CA /* Workout.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1156,6 +1157,8 @@
 		27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansCondensedBold.m; sourceTree = "<group>"; };
 		27CBC0E41B0FB6A200699E1E /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		27CBC0E51B0FB6A200699E1E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		27DB8D7F1B5D9090005380CA /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		27DB8D801B5D9090005380CA /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1431,6 +1434,8 @@
 				2732B73B1AD8493100610821 /* TitleInfo.m */,
 				2732B73D1AD849D000610821 /* Product.h */,
 				2732B73E1AD849D000610821 /* Product.m */,
+				27DB8D7F1B5D9090005380CA /* Workout.h */,
+				27DB8D801B5D9090005380CA /* Workout.m */,
 				2732B7401AD84B5600610821 /* Nutrition.h */,
 				2732B7411AD84B5600610821 /* Nutrition.m */,
 				2732B7461AD84EF200610821 /* Videos.h */,
@@ -2601,6 +2606,7 @@
 				27AD26711B18DFF3008D338D /* SpecialPageViewController.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,
+				27DB8D811B5D9090005380CA /* Workout.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */,

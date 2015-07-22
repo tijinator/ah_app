@@ -26,6 +26,7 @@
     _videos= [[Videos alloc] init];
     _videosArray= [[NSMutableArray alloc] init];
     _event= [[Event alloc] init];
+    _workout= [[Workout alloc] init];
     return self;
 }
 -(void) resetVideos

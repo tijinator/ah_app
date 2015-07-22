@@ -345,6 +345,9 @@
     
     
     _headerTag.hidden=false;
+    
+    
+    
 }
 
 - (void) setBodyFrameForNutrition
@@ -603,8 +606,48 @@
     _titleLabel.frame=CGRectMake(_titleLabel.frame.origin.x-40*_frameRadio, _titleLabel.frame.origin.y, _titleLabel.frame.size.width, _titleLabel.frame.size.height);
     _dayLabel.frame=CGRectMake(_dayLabel.frame.origin.x-40*_frameRadio, _dayLabel.frame.origin.y, _dayLabel.frame.size.width, _dayLabel.frame.size.height);
 }
+
+- (void) checkWorkoutCase
+{
+     if ([_homeFeed.type isEqualToString:@"workout"])
+     {
+         if (_homeFeed.workout.workout_type!=nil) {
+             _workoutTypeLabel.text=_homeFeed.workout.workout_type.uppercaseString;
+             _workoutTypeLabel.hidden=false;
+             
+             _workoutTypeLabel.frame=CGRectMake(248, 40, 55, 20);
+             _workoutTypeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTypeLabel respectToSuperFrame:nil];
+         }
+         
+         if (_homeFeed.workout.time!=nil&&![_homeFeed.workout.time isEqualToString:@""]) {
+  
+              _workoutTimeLabel.text=[[FitmooHelper sharedInstance] generateTimeString:_homeFeed.workout.time];
+             
+             if (_homeFeed.workout.workout_type!=nil&&![_homeFeed.workout.workout_type isEqualToString:@""]) {
+
+                 _workoutTimeLabel.frame=CGRectMake(248, 55, 55, 20);
+                 _workoutTimeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
+                 
+             }else
+             {
+                 _workoutTimeLabel.frame=CGRectMake(248, 40, 55, 20);
+                 _workoutTimeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
+             }
+             
+             _workoutTimeLabel.hidden=false;
+         }
+     }else
+     {
+         [_workoutTypeLabel removeFromSuperview];
+         [_workoutTimeLabel removeFromSuperview];
+     }
+}
+
 - (void) rebuiltHeaderViewFrame
 {
+    [self checkWorkoutCase];
+   
+    
     int maxHeight=0;
     for (UIView * subview in _headerView.subviews) {
         
@@ -682,6 +725,10 @@
     _bodyCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyCommentButton respectToSuperFrame:nil];
     _bodyShareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyShareButton respectToSuperFrame:nil];
     _bodyGradian.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyGradian respectToSuperFrame:nil];
+    
+    
+//    _workoutTimeLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
+//    _workoutTypeLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTypeLabel respectToSuperFrame:nil];
     
     _viewAllCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_viewAllCommentButton respectToSuperFrame:nil];
     //  _viewArray=[[NSMutableArray alloc] initWithObjects:_headerView,_bodyView,_commentView,_commentView1,_commentView2, nil];

@@ -17,6 +17,7 @@
 #import "Nutrition.h"
 #import "Videos.h"
 #import "Event.h"
+#import "Workout.h"
 
 @interface HomeFeed : NSObject
 @property (nonatomic, strong) NSString *notification_id;
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) NSString *total_like;
 @property (nonatomic, strong) NSString *is_liked;
 @property (nonatomic, strong) NSString *workout_title;
+//@property (nonatomic, strong) NSString *workout_type;
+//@property (nonatomic, strong) NSString *workout_time;
 
 @property (nonatomic, strong) FeedAction *feed_action;
 @property (nonatomic, strong) TitleInfo *title_info;
@@ -49,6 +52,7 @@
 
 @property (nonatomic, strong) NSObject *service;    //not used
 @property (nonatomic, strong) Nutrition *nutrition;
+@property (nonatomic, strong) Workout *workout;
 @property (nonatomic, strong) Videos *videos;
 @property (nonatomic, strong) NSMutableArray * videosArray;
 

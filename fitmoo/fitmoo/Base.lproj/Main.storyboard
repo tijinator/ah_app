@@ -312,7 +312,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="YbD-Xx-fax">
-                                <rect key="frame" x="-400" y="245" width="320" height="174"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dw8-2f-xiC">
@@ -356,7 +356,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="Wce-j3-trZ">
-                                        <rect key="frame" x="96" y="65" width="216" height="84"/>
+                                        <rect key="frame" x="96" y="125" width="216" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="QA3-4H-ziY">
@@ -372,11 +372,25 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VRQ-Ti-SpD">
+                                        <rect key="frame" x="101" y="47" width="210" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.57647058823529407" green="0.62352941176470589" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x9y-qU-QLD">
+                                        <rect key="frame" x="101" y="87" width="210" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.57647058819999997" green="0.62352941179999999" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="l9e-oe-5yW">
-                                <rect key="frame" x="0.0" y="50" width="320" height="142"/>
+                                <rect key="frame" x="-400" y="50" width="320" height="142"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1gt-UT-bsA">
@@ -516,6 +530,69 @@
                                     <action selector="postButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="iBL-ol-a9E"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" id="lCg-Qy-ywE">
+                                <rect key="frame" x="0.0" y="220" width="320" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="Pmi-gG-eQL">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92156862745098034" green="0.93333333333333335" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" id="KKw-dl-t9C">
+                                        <rect key="frame" x="0.0" y="39" width="320" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="450906569.89285302">
+                                            <!--2015-04-16 19:49:29 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QRz-wh-KAf">
+                                        <rect key="frame" x="261" y="8" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="NpG-6q-dTj" eventType="touchUpInside" id="fHQ-At-fCs"/>
+                                            <action selector="doneButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="ias-pj-xQn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784313725488" green="0.83137254901960778" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="Aob-gX-gcf">
+                                <rect key="frame" x="0.0" y="220" width="320" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="f3S-4A-0L8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z4G-OB-lEl">
+                                        <rect key="frame" x="263" y="8" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="T1U-eV-qk7" eventType="touchUpInside" id="IxB-kG-Ovr"/>
+                                            <action selector="doneButtonClick:" destination="NpG-6q-dTj" eventType="touchUpInside" id="wlu-BH-eTB"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" id="LVc-8y-A6W">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="T1U-eV-qk7" id="hMa-X0-exD"/>
+                                            <outlet property="delegate" destination="T1U-eV-qk7" id="ON9-AT-lDB"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MzR-fN-3U5">
                                 <rect key="frame" x="0.0" y="212" width="320" height="218"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -576,6 +653,9 @@
                         <outlet property="SubmitButton" destination="K2t-51-h5v" id="E76-0Q-QGJ"/>
                         <outlet property="WorkoutButton" destination="qNp-yJ-XZa" id="zMX-3K-zNy"/>
                         <outlet property="buttonView" destination="tzq-A1-hee" id="ovV-d1-9Io"/>
+                        <outlet property="datePicker" destination="KKw-dl-t9C" id="uPz-4N-EhE"/>
+                        <outlet property="doneButton" destination="QRz-wh-KAf" id="Tdz-fj-3Zn"/>
+                        <outlet property="doneButton1" destination="Z4G-OB-lEl" id="OHh-4q-XM4"/>
                         <outlet property="normalEditButton" destination="APX-Ni-WvP" id="5rg-kT-7j7"/>
                         <outlet property="normalPostBackView" destination="cfp-vj-xux" id="uey-ae-M18"/>
                         <outlet property="normalPostImage" destination="1gt-UT-bsA" id="zfu-id-qmT"/>
@@ -590,14 +670,21 @@
                         <outlet property="nutritionTitle" destination="0i1-1P-Gq9" id="QiK-e4-K5g"/>
                         <outlet property="nutritionTitleView" destination="9US-Qu-8aX" id="y7n-0p-Adp"/>
                         <outlet property="nutritionView" destination="QqL-od-0x6" id="I7D-Mt-LUy"/>
+                        <outlet property="pickerBackView" destination="f3S-4A-0L8" id="FPZ-Dh-Rlt"/>
+                        <outlet property="pickerBackView1" destination="Pmi-gG-eQL" id="dIX-ec-R3n"/>
                         <outlet property="tableview" destination="MzR-fN-3U5" id="rRW-b5-2x0"/>
+                        <outlet property="timePickerView" destination="lCg-Qy-ywE" id="ytw-r4-3R4"/>
+                        <outlet property="typePicker" destination="LVc-8y-A6W" id="YIg-Mj-L6P"/>
+                        <outlet property="typePickerView" destination="Aob-gX-gcf" id="Ycr-Bu-iei"/>
                         <outlet property="wihteArrawImage" destination="vP0-9l-2Dm" id="yeV-rk-jar"/>
                         <outlet property="workoutEditButton" destination="toK-ho-ixV" id="fJg-JL-TYw"/>
                         <outlet property="workoutInstruction" destination="QA3-4H-ziY" id="AvY-sL-41b"/>
                         <outlet property="workoutInstructionView" destination="Wce-j3-trZ" id="oiX-BL-QRx"/>
                         <outlet property="workoutPostImage" destination="ixC-pO-AbG" id="6g6-wi-5LG"/>
+                        <outlet property="workoutTimeLabel" destination="x9y-qU-QLD" id="l4n-vS-ff0"/>
                         <outlet property="workoutTitle" destination="w7t-OV-CVp" id="PGc-In-vZr"/>
                         <outlet property="workoutTitleView" destination="pIa-nT-ygX" id="U47-Oj-77r"/>
+                        <outlet property="workoutTypeLabel" destination="VRQ-Ti-SpD" id="BrW-Pv-n7W"/>
                         <outlet property="workoutView" destination="YbD-Xx-fax" id="grS-PG-5ch"/>
                     </connections>
                 </viewController>

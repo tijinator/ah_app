@@ -13,6 +13,7 @@
     double constentUp;
     double constentdown;
     bool loginExists;
+    
 }
 @end
 
@@ -43,10 +44,13 @@
     [self createObservers];
     [self showImagesWithDelay];
     
-    
+   
  
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
+
 
 - (void) addActivityIndicator1
 {

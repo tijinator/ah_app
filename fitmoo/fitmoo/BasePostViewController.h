@@ -17,7 +17,7 @@
 #import "CreatedByCommunity.h"
 #import "AsyncImageView.h"
 
-@interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
 @property (strong, nonatomic) IBOutlet UIButton *normalEditButton;
 
@@ -46,6 +46,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *workoutInstruction;
 @property (strong, nonatomic) IBOutlet UIView *workoutTitleView;
 @property (strong, nonatomic) IBOutlet UIView *workoutInstructionView;
+@property (strong, nonatomic) IBOutlet UILabel *workoutTypeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *workoutTimeLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *nutritionView;
 @property (strong, nonatomic) IBOutlet UITextView *nutritionTitle;
@@ -81,12 +83,25 @@
 
 @property (strong, nonatomic)  NSMutableArray *communityArray;
 
+
 //@property (strong, nonatomic)  CameraViewController *overlay;
 //@property (strong, nonatomic)  UIImagePickerController *picker;
 - (IBAction)nutritionButtonClick:(id)sender;
 - (IBAction)normalPostButtonClick:(id)sender;
 - (IBAction)workoutButtonClick:(id)sender;
 - (IBAction)editClick:(id)sender;
+
+
+@property (strong, nonatomic) IBOutlet UIView *typePickerView;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIPickerView *typePicker;
+@property (strong, nonatomic) IBOutlet UIView *timePickerView;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton1;
+- (IBAction)doneButtonClick:(id)sender;
+@property (strong, nonatomic)  NSMutableArray *workoutTypeArray;
+@property (strong, nonatomic) IBOutlet UIView *pickerBackView;
+@property (strong, nonatomic) IBOutlet UIView *pickerBackView1;
 
 
 @end

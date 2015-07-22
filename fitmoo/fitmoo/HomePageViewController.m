@@ -856,8 +856,6 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)shareButtonClick:(id)sender {
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
-    
-    
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
@@ -871,15 +869,22 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
     
+//    NSArray *activityItems;
+//    NSString *text = @"I like this post";
+//    NSURL *url = [NSURL URLWithString:@"http://www.fitmoo.com"];
+//    UIImage *image = [UIImage imageNamed:@"nutritiontag.png"];
+//    activityItems = @[text, url, image];
+//    
+//    
+//    UIActivityViewController *activityController =
+//    [[UIActivityViewController alloc]
+//     initWithActivityItems:activityItems
+//     applicationActivities:nil];
+//    
+//    [self presentViewController:activityController
+//                       animated:YES completion:nil];
     
-    
-    //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
-    //    specialPage.action=@"Share";
-    //    specialPage.homeFeed= [_homeFeedArray objectAtIndex:index];
-    //    
-    //    [self.navigationController presentViewController:specialPage animated:YES completion:nil];
-    
+
 }
 
 

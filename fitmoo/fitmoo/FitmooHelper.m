@@ -196,7 +196,37 @@
 }
 
 
-
+- (NSString *) generateTimeString:(NSString *)timeString
+{
+    
+    if (timeString.intValue<60) {
+        if (timeString.intValue<2) {
+              timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"min"];
+        }else
+        {
+        timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"mins"];
+        }
+        
+    }else
+    {
+        
+        double hour=timeString.intValue/60;
+        double min=timeString.intValue%60;
+        if (min==0) {
+            if (hour==1) {
+                 timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hour"];
+            }else
+            {
+            timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hours"];
+            }
+        }else
+        {
+            timeString=[NSString stringWithFormat:@"%1.0f%@%1.0f",hour, @" : ", min];
+        }
+    }
+    
+    return timeString;
+}
 
 
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic
@@ -391,6 +421,28 @@
             homeFeed.nutrition.preparation=@"";
         }
     }
+    
+    NSDictionary *workout=[dic objectForKey:@"workout"];
+    if (![workout isEqual:[NSNull null ]]) {
+        homeFeed.workout.workout_id= [workout objectForKey:@"id"];
+        homeFeed.workout.title= [workout objectForKey:@"title"];
+        
+        NSNumber * time=[workout objectForKey:@"time"];
+     
+        if ([time isEqual:[NSNull null]]) {
+            homeFeed.workout.time=@"";
+        }else
+        {
+            homeFeed.workout.time= [time stringValue];
+        }
+        
+        homeFeed.workout.workout_type= [workout objectForKey:@"workout_type"];
+        
+        if ([homeFeed.workout.workout_type isEqual:[NSNull null]]) {
+            homeFeed.workout.workout_type=@"";
+        }
+    }
+    
     
     NSDictionary * videosArray= [dic objectForKey:@"videos"];
     if (![videosArray isEqual:[NSNull null ]]) {

@@ -46,6 +46,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentDetail;
 @property (strong, nonatomic) IBOutlet UILabel *commentDetail1;
 @property (strong, nonatomic) IBOutlet UILabel *commentDetail2;
+@property (strong, nonatomic) IBOutlet UILabel *workoutTimeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *workoutTypeLabel;
 
 
 @property (strong, nonatomic) IBOutlet UIView *bodyShadowView;

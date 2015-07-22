@@ -12,11 +12,13 @@
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
+#import "UserManager.h"
 @interface CameraViewController ()
 {
     bool takePhoto;
     bool startCapture;
     double ticks;
+    CLLocationManager *locationManager;
 }
 @end
 
@@ -38,14 +40,33 @@
     [self createObservers];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"2"];
     
-//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-//        self.edgesForExtendedLayout = UIRectEdgeAll;
+    [[UserManager sharedUserManager] getWorkoutType];
     
-    // Do any additional setup after loading the view.
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+
+    
+
 }
 
 
-
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    User *localuser= [[UserManager sharedUserManager] localUser];
+    NSNumber *lat= [NSNumber numberWithDouble:newLocation.coordinate.latitude];
+    localuser.location_lat=lat.stringValue;
+    
+    NSNumber *lon= [NSNumber numberWithDouble:newLocation.coordinate.longitude];
+    localuser.location_lon=lon.stringValue;
+    
+    [locationManager stopUpdatingLocation];
+}
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hidePostView" object:nil];
