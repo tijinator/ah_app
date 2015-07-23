@@ -544,6 +544,7 @@
 		27CBC0E01B0F84DB00699E1E /* eventsscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0D41B0F84DB00699E1E /* eventsscreen@3x.png */; };
 		27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */; };
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
+		27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */; };
 		27DB8D811B5D9090005380CA /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DB8D801B5D9090005380CA /* Workout.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -1157,6 +1158,8 @@
 		27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansCondensedBold.m; sourceTree = "<group>"; };
 		27CBC0E41B0FB6A200699E1E /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		27CBC0E51B0FB6A200699E1E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		27CC0F3C1B61064D005CC194 /* WorkTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTypeViewController.h; sourceTree = "<group>"; };
+		27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTypeViewController.m; sourceTree = "<group>"; };
 		27DB8D7F1B5D9090005380CA /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		27DB8D801B5D9090005380CA /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1478,6 +1481,8 @@
 			children = (
 				2736B2251AEFD9C50013B4B9 /* BasePostViewController.h */,
 				2736B2261AEFD9C50013B4B9 /* BasePostViewController.m */,
+				27CC0F3C1B61064D005CC194 /* WorkTypeViewController.h */,
+				27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */,
 				27AD26631B18BACC008D338D /* UITextView+Placeholder.h */,
 				27AD26641B18BACC008D338D /* UITextView+Placeholder.m */,
 				2736B22E1AF003540013B4B9 /* CameraViewController.h */,
@@ -2649,6 +2654,7 @@
 				279E57821B20A5320076C3B5 /* LanchScreen.m in Sources */,
 				2787C90D1B38AD7700B182FF /* Contacts.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
+				27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
 				2738D9391B02850300F5087E /* PhotoCell.m in Sources */,

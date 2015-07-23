@@ -117,6 +117,7 @@
         [_tableview reloadData];
         
     }];
+    [_workOutTypeView.view removeFromSuperview];
     //    tableIsOnTop=false;
     //    [self resetCommunityArrayWithSelected];
     //
@@ -836,7 +837,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _normalPostText.placeholder=@"Write a post...";
     _workoutTitle.placeholder=@"Title";
-    _workoutInstruction.placeholder=@"Workout";
+    _workoutInstruction.placeholder=@"Details";
     _nutritionTitle.placeholder=@"Title";
     _nutritionIngedients.placeholder=@"Ingredients";
     _nutritionPreparation.placeholder=@"Preparation";
@@ -945,11 +946,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _workoutTimeLabel.textColor= [UIColor blackColor];
 }
 - (IBAction)TypeButtonClick:(id)sender {
-    _typePickerView.hidden=false;
-    _timePickerView.hidden=true;
+//    _typePickerView.hidden=false;
+//    _timePickerView.hidden=true;
+//    
+//    [self showTextViewBackgroundView];
+//    [self.view bringSubviewToFront:_typePickerView];
     
     [self showTextViewBackgroundView];
-    [self.view bringSubviewToFront:_typePickerView];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    
+    if (_workOutTypeView==nil) {
+        _workOutTypeView = [mainStoryboard instantiateViewControllerWithIdentifier:@"WorkTypeViewController"];
+    }
+    
+    _workOutTypeView.workoutTypeLabel=_workoutTypeLabel;
+    _workOutTypeView.view.frame= CGRectMake(0, 0, 320, 568);
+    _workOutTypeView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workOutTypeView.view respectToSuperFrame:nil];
+    [self.view addSubview:_workOutTypeView.view];
+ 
+
+    
 }
 
 - (IBAction)TimeButtonClick:(id)sender {

@@ -72,7 +72,7 @@
           
             
             
-            NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"179547", @"fa_id", @"true", @"mobile",@"true", @"ios_app",
+            NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app",
                                       nil];
             
             NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",key];
@@ -394,7 +394,7 @@
    
     
     self.overlay.picker = self.picker;
-   // self.picker.cameraOverlayView = self.overlay.view;
+
     [self.picker.view addSubview:self.overlay.view];
     self.picker.delegate = self.overlay;
 

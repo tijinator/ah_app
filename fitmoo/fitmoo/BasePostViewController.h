@@ -16,6 +16,7 @@
 #import "User.h"
 #import "CreatedByCommunity.h"
 #import "AsyncImageView.h"
+#import "WorkTypeViewController.h"
 
 @interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
@@ -80,6 +81,7 @@
 @property (strong, nonatomic)  BasePostViewController *postView;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  User * localUser;
+@property (strong, nonatomic)  WorkTypeViewController * workOutTypeView;
 
 @property (strong, nonatomic)  NSMutableArray *communityArray;
 
@@ -102,6 +104,8 @@
 @property (strong, nonatomic)  NSMutableArray *workoutTypeArray;
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView;
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView1;
+
+
 
 
 @end
