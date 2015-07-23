@@ -611,28 +611,28 @@
 {
      if ([_homeFeed.type isEqualToString:@"workout"])
      {
-         if (_homeFeed.workout.workout_type!=nil) {
-             _workoutTypeLabel.text=_homeFeed.workout.workout_type.uppercaseString;
-             _workoutTypeLabel.hidden=false;
-             
-             _workoutTypeLabel.frame=CGRectMake(248, 40, 55, 20);
-             _workoutTypeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTypeLabel respectToSuperFrame:nil];
-         }
+//         if (_homeFeed.workout.workout_type!=nil) {
+//             _workoutTypeLabel.text=_homeFeed.workout.workout_type.uppercaseString;
+//             _workoutTypeLabel.hidden=false;
+//             
+//             _workoutTypeLabel.frame=CGRectMake(248, 40, 55, 20);
+//             _workoutTypeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTypeLabel respectToSuperFrame:nil];
+//         }
          
          if (_homeFeed.workout.time!=nil&&![_homeFeed.workout.time isEqualToString:@""]) {
   
               _workoutTimeLabel.text=[[FitmooHelper sharedInstance] generateTimeString:_homeFeed.workout.time];
              
-             if (_homeFeed.workout.workout_type!=nil&&![_homeFeed.workout.workout_type isEqualToString:@""]) {
+ //            if (_homeFeed.workout.workout_type!=nil&&![_homeFeed.workout.workout_type isEqualToString:@""]) {
 
-                 _workoutTimeLabel.frame=CGRectMake(248, 55, 55, 20);
+//                 _workoutTimeLabel.frame=CGRectMake(248, 55, 55, 20);
+//                 _workoutTimeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
+             
+//             }else
+//             {
+                 _workoutTimeLabel.frame=CGRectMake(248, 40, 70, 20);
                  _workoutTimeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
-                 
-             }else
-             {
-                 _workoutTimeLabel.frame=CGRectMake(248, 40, 55, 20);
-                 _workoutTimeLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
-             }
+//             }
              
              _workoutTimeLabel.hidden=false;
          }

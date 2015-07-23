@@ -102,10 +102,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *doneButton1;
 - (IBAction)doneButtonClick:(id)sender;
 @property (strong, nonatomic)  NSMutableArray *workoutTypeArray;
+@property (strong, nonatomic)  NSMutableArray *workoutTypeIdArray;
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView;
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView1;
 
-
+@property(retain, nonatomic) NSMutableArray *hoursArray;
+@property(retain, nonatomic) NSMutableArray *minsArray;
+@property(retain, nonatomic) NSMutableArray *secsArray;
 
 
 @end

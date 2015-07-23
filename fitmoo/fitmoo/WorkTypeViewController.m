@@ -35,7 +35,10 @@
  numberOfRowsInSection:(NSInteger)section
 {
 
-    return [_searchTypeArray count];
+//    if ([_searchTypeArray count]>0) {
+//        return [_searchTypeArray count]+1;
+//    }
+    return [_searchTypeArray count]+1;
     
     
 }
@@ -44,6 +47,28 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    if (indexPath.row==0) {
+         UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+        UILabel *nameLabel=[[UILabel alloc] init];
+        nameLabel.frame= CGRectMake(0, 5, 320, 42);
+        nameLabel.numberOfLines=2;
+        nameLabel.textAlignment=NSTextAlignmentCenter;
+        nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
+        
+        
+        nameLabel.text=@"MY WORKOUT ISN'T HERE";
+        nameLabel.textColor= [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
+        
+        [nameLabel setAttributedText:attributedString];
+        
+        [cell.contentView addSubview:nameLabel];
+        return cell;
+
+        
+    }
+    
     
     UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
     
@@ -53,7 +78,7 @@
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     
     
-    nameLabel.text= [_searchTypeArray objectAtIndex:indexPath.row];
+    nameLabel.text= [_searchTypeArray objectAtIndex:indexPath.row-1];
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
     
@@ -68,11 +93,20 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _workoutTypeLabel.text=[_searchTypeArray objectAtIndex:indexPath.row];
+    
+    if (indexPath.row==0) {
+        _workoutTypeLabel.text=_searchTermField.text;
+        _workoutTypeLabel.textColor=[UIColor blackColor];
+        [_searchTermField resignFirstResponder];
+        [self.view removeFromSuperview];
+    }else
+    {
+    
+    _workoutTypeLabel.text=[_searchTypeArray objectAtIndex:indexPath.row-1];
     _workoutTypeLabel.textColor=[UIColor blackColor];
     [_searchTermField resignFirstResponder];
     [self.view removeFromSuperview];
-    
+    }
 }
 
 // multy high table cell

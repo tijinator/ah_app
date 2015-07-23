@@ -43,7 +43,7 @@
     double frameRadio;
     CGRect originalTableviewFrame;
     bool tableIsOnTop;
-    
+    NSTimeInterval interval;
 }
 @property (nonatomic, strong) AWSS3TransferManagerUploadRequest *uploadRequest;
 @property (nonatomic) uint64_t filesize;
@@ -61,7 +61,7 @@
     _localUser= [[UserManager sharedUserManager] localUser];
     
     _workoutTypeArray= [[UserManager sharedUserManager] workoutTypesArray];
-    
+    _workoutTypeIdArray= [[UserManager sharedUserManager] workoutTypesIdArray];
     self.tableview.tableFooterView = [[UIView alloc] init];
     
     UIView* bview = [[UIView alloc] init];
@@ -836,7 +836,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //    _WorkoutButton.titleLabel.font = [UIFont fontWithName:@"BentonSans-Bold" size:_WorkoutButton.titleLabel.font.pointSize];
     
     _normalPostText.placeholder=@"Write a post...";
-    _workoutTitle.placeholder=@"Title";
+ //   _workoutTitle.placeholder=@"Title";
     _workoutInstruction.placeholder=@"Details";
     _nutritionTitle.placeholder=@"Title";
     _nutritionIngedients.placeholder=@"Ingredients";
@@ -864,6 +864,42 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _workoutTimeLabel.userInteractionEnabled=true;
     
     [self.datePicker addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+  
+    _hoursArray = [[NSMutableArray alloc] init];
+    _minsArray = [[NSMutableArray alloc] init];
+    _secsArray = [[NSMutableArray alloc] init];
+    NSString *strVal = [[NSString alloc] init];
+    
+    for(int i=0; i<60; i++)
+    {
+        strVal = [NSString stringWithFormat:@"%d", i];
+        
+        //NSLog(@"strVal: %@", strVal);
+        
+        //Create array with 0-12 hours
+        if (i < 24)
+        {
+            [_hoursArray addObject:strVal];
+        }
+        
+        //create arrays with 0-60 secs/mins
+        [_minsArray addObject:strVal];
+        [_secsArray addObject:strVal];
+    }
+    
+    UILabel *hourLabel = [[UILabel alloc] initWithFrame:CGRectMake(42, _typePicker.frame.size.height / 2 - 15, 75, 30)];
+    hourLabel.text = @"hour";
+    [_typePicker addSubview:hourLabel];
+    
+    UILabel *minsLabel = [[UILabel alloc] initWithFrame:CGRectMake(42 + (_typePicker.frame.size.width / 3), _typePicker.frame.size.height / 2 - 15, 75, 30)];
+    minsLabel.text = @"min";
+    [_typePicker addSubview:minsLabel];
+    
+    UILabel *secsLabel = [[UILabel alloc] initWithFrame:CGRectMake(42 + ((_typePicker.frame.size.width / 3) * 2), _typePicker.frame.size.height / 2 - 15, 75, 30)];
+    secsLabel.text = @"sec";
+    [_typePicker addSubview:secsLabel];
+
     //  self.datePicker.backgroundColor=[UIColor lightGrayColor];
     
     
@@ -882,7 +918,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(touch.phase == UITouchPhaseBegan) {
         //   [self disableViews];
         
-        [_workoutTitle resignFirstResponder];
+    //    [_workoutTitle resignFirstResponder];
         [_workoutInstruction resignFirstResponder];
         [_normalPostText resignFirstResponder];
         [_nutritionTitle resignFirstResponder];
@@ -897,41 +933,122 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
+-(IBAction)calculateTimeFromPicker
+{
+    
+    NSString *hoursStr = [NSString stringWithFormat:@"%@",[_hoursArray objectAtIndex:[_typePicker selectedRowInComponent:0]]];
+    
+    NSString *minsStr = [NSString stringWithFormat:@"%@",[_minsArray objectAtIndex:[_typePicker selectedRowInComponent:1]]];
+    
+    NSString *secsStr = [NSString stringWithFormat:@"%@",[_secsArray objectAtIndex:[_typePicker selectedRowInComponent:2]]];
+    
+   
+    int hoursInt = [hoursStr intValue];
+    int minsInt = [minsStr intValue];
+    int secsInt = [secsStr intValue];
+    
+    if (hoursInt<10) {
+        hoursStr=[NSString stringWithFormat:@"%@%@",@"0", hoursStr];
+    }
+    
+    if (minsInt<10) {
+        minsStr=[NSString stringWithFormat:@"%@%@",@"0", minsStr];
+    }
+    if (secsInt<10) {
+        secsStr=[NSString stringWithFormat:@"%@%@",@"0", secsStr];
+    }
+    
+    interval = secsInt + (minsInt*60) + (hoursInt*3600);
+    
+    _workoutTimeLabel.text =  [NSString stringWithFormat:@"%@%@%@%@%@", hoursStr, @" : ", minsStr, @" : ", secsStr];
+    _workoutTimeLabel.textColor= [UIColor blackColor];
+
+    
+ //   NSString *totalTimeStr = [NSString stringWithFormat:@"%1.0f",interval];
+    
+}
+
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component
 {
-    NSString *temType= [_workoutTypeArray objectAtIndex:row];
-   
-    _workoutTypeLabel.text=temType;
-  
-    _workoutTypeLabel.textColor=[UIColor blackColor];
+    
+    [self calculateTimeFromPicker];
+    
+//    NSString *temType= [_workoutTypeArray objectAtIndex:row];
+//   
+//    _workoutTypeLabel.text=temType;
+//  
+//    _workoutTypeLabel.textColor=[UIColor blackColor];
 
     // Handle the selection
 }
 
 // tell the picker how many rows are available for a given component
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger numRows = [_workoutTypeArray count];
-    return numRows;
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+//    NSUInteger numRows = [_workoutTypeArray count];
+//    return numRows;
+    
+    if (component==0)
+    {
+        return [_hoursArray count];
+    }
+    else if (component==1)
+    {
+        return [_minsArray count];
+    }
+    else
+    {
+        return [_secsArray count];
+    }
 }
 
 // tell the picker how many components it will have
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+    return 3;
+}
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 30;
 }
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel *columnView = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, self.view.frame.size.width/3 - 35, 30)];
+    columnView.text = [NSString stringWithFormat:@"%lu", (long) row];
+    columnView.textAlignment = NSTextAlignmentLeft;
+    
+    return columnView;
+}
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *title=[_workoutTypeArray objectAtIndex:row];
-    return title;
+//    NSString *title=[_workoutTypeArray objectAtIndex:row];
+//    return title;
+    switch (component)
+    {
+        case 0:
+            if (row<10) {
+                 return [NSString stringWithFormat:@"%@%@",@"0", [_hoursArray objectAtIndex:row]];
+            }
+            return [_hoursArray objectAtIndex:row];
+            break;
+        case 1:
+            if (row<10) {
+                return [NSString stringWithFormat:@"%@%@",@"0", [_minsArray objectAtIndex:row]];
+            }
+            return [_minsArray objectAtIndex:row];
+            break;
+        case 2:
+            if (row<10) {
+                return [NSString stringWithFormat:@"%@%@",@"0", [_secsArray objectAtIndex:row]];
+            }
+            return [_secsArray objectAtIndex:row];
+            break;
+    }
+    return nil;
+    
 }
 
-// tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 300;
-    
-    return sectionWidth;
-}
 
 
 
@@ -969,11 +1086,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)TimeButtonClick:(id)sender {
-    _typePickerView.hidden=true;
-    _timePickerView.hidden=false;
+//    _typePickerView.hidden=true;
+//    _timePickerView.hidden=false;
+//    
+//    [self showTextViewBackgroundView];
+//    [self.view bringSubviewToFront:_timePickerView];
     
-    [self showTextViewBackgroundView];
-    [self.view bringSubviewToFront:_timePickerView];
+    
+        _typePickerView.hidden=false;
+        _timePickerView.hidden=true;
+    
+        [self showTextViewBackgroundView];
+        [self.view bringSubviewToFront:_typePickerView];
 }
 
 
@@ -982,14 +1106,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIButton *b= (UIButton *) sender;
     if (b.tag==1) {
         
-        NSDate *pickerDate = [_datePicker date];
-        NSDateFormatter *format = [[NSDateFormatter alloc] init];
-        format.dateFormat = @"HH : mm";
-        _workoutTimeLabel.text =  [format stringFromDate:pickerDate];
-        _workoutTimeLabel.textColor= [UIColor blackColor];
+//        NSDate *pickerDate = [_datePicker date];
+//        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+//        format.dateFormat = @"HH : mm";
+//        _workoutTimeLabel.text =  [format stringFromDate:pickerDate];
+//        _workoutTimeLabel.textColor= [UIColor blackColor];
     }else if (b.tag==2)
     {
-        
+        [self calculateTimeFromPicker];
     }
     
     _typePickerView.hidden=true;
@@ -1109,16 +1233,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
     }else  if ([self.postType isEqualToString:@"workout"]) {
-        if ([_workoutTitle.text isEqualToString:@""]) {
+        if ([_workoutTypeLabel.text isEqualToString:@""]) {
             UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                              message : @"Please write a title." delegate : nil cancelButtonTitle : @"OK"
+                                                              message : @"Please write a workout." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
         }else
         {
             if ([_workoutInstruction.text isEqualToString:@""]) {
                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                                  message : @"Please fill out your workout." delegate : nil cancelButtonTitle : @"OK"
+                                                                  message : @"Please fill out your workout Details." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
             }else
@@ -1130,16 +1254,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 NSDictionary *video_attributes;
                 NSDictionary *feed;
                 
-                NSMutableDictionary *workout_attributes= [[NSMutableDictionary alloc] initWithObjectsAndKeys: _workoutTitle.text, @"title", nil];
-                if (![_workoutTypeLabel.text isEqualToString:@"Type"]) {
-                   [workout_attributes setObject:_workoutTypeLabel.text forKey:@"workout_type"];
+                NSMutableDictionary *workout_attributes= [[NSMutableDictionary alloc] initWithObjectsAndKeys: _workoutTypeLabel.text, @"title", nil];
+                if (![_workoutTypeLabel.text isEqualToString:@"Workout"]) {
+                    int index=-1;
+                    for (int i=0; i<[_workoutTypeArray count]; i++) {
+                        if ([_workoutTypeLabel.text isEqualToString:[_workoutTypeArray objectAtIndex:i]]) {
+                            index=i;
+                        }
+                    }
+                    
+                    if (index!=-1) {
+                         [workout_attributes setObject:[_workoutTypeIdArray objectAtIndex:index] forKey:@"workout_type_id"];
+                    }
+                  
                 }
                 
                 if (![_workoutTimeLabel.text isEqualToString:@"Time"]) {
                     NSArray *ary = [_workoutTimeLabel.text componentsSeparatedByString:@" : "];
                     NSString *hour= [ary objectAtIndex:0];
                     NSString *minute= [ary objectAtIndex:1];
-                    NSNumber *time=[NSNumber numberWithInt:hour.intValue*60+ minute.intValue];
+                    NSString *second= [ary objectAtIndex:2];
+                    NSNumber *time=[NSNumber numberWithInt:hour.intValue*3600+ minute.intValue*60+second.intValue];
                     [workout_attributes setObject:time.stringValue forKey:@"time"];
                 }
                 
@@ -1148,20 +1283,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                     videoArray=[[NSArray alloc] initWithObjects:video_attributes, nil];
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
                     
-                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes",videoArray, @"videos_attributes",workout_attributes,@"workout_attributes", nil];
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTypeLabel.text, @"workout_title",photos_attributes, @"photos_attributes",videoArray, @"videos_attributes",workout_attributes,@"workout_attributes", nil];
                     
                     
                 }
                 else if ([imageUrl isEqualToString:@""]) {
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys: nil];
-                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photos_attributes, @"photos_attributes",workout_attributes,@"workout_attributes", nil];
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTypeLabel.text, @"workout_title",photos_attributes, @"photos_attributes",workout_attributes,@"workout_attributes", nil];
                     
                 }else
                 {
                     
                     photos_attributes= [[NSDictionary alloc] initWithObjectsAndKeys:@"320",@"height",@"320", @"width",imageUrl, @"photo_url", nil];
                     photoArray = [[NSArray alloc] initWithObjects:photos_attributes, nil];
-                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTitle.text, @"workout_title",photoArray, @"photos_attributes",workout_attributes,@"workout_attributes", nil];
+                    feed= [[NSDictionary alloc] initWithObjectsAndKeys: _workoutInstruction.text, @"text",_workoutTypeLabel.text, @"workout_title",photoArray, @"photos_attributes",workout_attributes,@"workout_attributes", nil];
                     [self addActivityIndicator];
                 }
                 
@@ -1237,9 +1372,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
     }else  if ([self.postType isEqualToString:@"workout"]) {
-        if ([_workoutTitle.text isEqualToString:@""]) {
+        if ([_workoutTypeLabel.text isEqualToString:@""]) {
             UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                              message : @"Please fill out a title." delegate : nil cancelButtonTitle : @"OK"
+                                                              message : @"Please fill out a Workout." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
             return false;
@@ -1247,7 +1382,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         {
             if ([_workoutInstruction.text isEqualToString:@""]) {
                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                                  message : @"Please fill out your workout." delegate : nil cancelButtonTitle : @"OK"
+                                                                  message : @"Please fill out your workout Details." delegate : nil cancelButtonTitle : @"OK"
                                                         otherButtonTitles : nil ];
                 [alert show ];
                 return false;
@@ -1355,7 +1490,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)hideTextViewBackgroundView
 {
     
-    [_workoutTitle resignFirstResponder];
+ 
     [_workoutInstruction resignFirstResponder];
     [_normalPostText resignFirstResponder];
     [_nutritionTitle resignFirstResponder];

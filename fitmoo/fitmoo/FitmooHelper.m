@@ -201,18 +201,47 @@
     
     if (timeString.intValue<60) {
         if (timeString.intValue<2) {
-              timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"min"];
+              timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"sec"];
         }else
         {
-        timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"mins"];
+        timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"secs"];
         }
         
+    }else  if (timeString.intValue<3600)
+    {
+        
+        double min=timeString.intValue/60;
+        double sec=timeString.intValue%60;
+        if (sec==0) {
+            if (min==1) {
+                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" min"];
+            }else
+            {
+                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" mins"];
+            }
+        }else
+        {
+            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
+            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
+            if (min<10) {
+                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
+            }
+            if (sec<10) {
+                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+            }
+            
+            timeString=[NSString stringWithFormat:@"00 : %@%@%@",minuteStr, @" : ", secondStr];
+        }
+
+
     }else
     {
         
-        double hour=timeString.intValue/60;
-        double min=timeString.intValue%60;
-        if (min==0) {
+        double hour=timeString.intValue/3600;
+        double min=(timeString.intValue-3600*hour)/60;
+        double sec=timeString.intValue%60;
+        
+        if (min==0&&sec==0) {
             if (hour==1) {
                  timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hour"];
             }else
@@ -221,7 +250,15 @@
             }
         }else
         {
-            timeString=[NSString stringWithFormat:@"%1.0f%@%1.0f",hour, @" : ", min];
+            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
+            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
+            if (min<10) {
+                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
+            }
+            if (sec<10) {
+                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+            }
+            timeString=[NSString stringWithFormat:@"%1.0f%@%@%@%@",hour, @" : ", minuteStr,@" : ", secondStr ];
         }
     }
     

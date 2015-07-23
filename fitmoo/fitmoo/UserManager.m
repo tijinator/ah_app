@@ -36,10 +36,13 @@
        NSDictionary * responseDic= responseObject;
         NSDictionary *workoutType= [responseDic objectForKey:@"workout_types"];
         _workoutTypesArray= [[NSMutableArray alloc] init];
-        
+        _workoutTypesIdArray= [[NSMutableArray alloc] init];
         for (NSDictionary *dic in workoutType) {
             NSString *type=[dic objectForKey:@"text"];
             [_workoutTypesArray addObject:type];
+            
+            NSNumber *type_id=[dic objectForKey:@"id"];
+            [_workoutTypesIdArray addObject:type_id];
         }
         
         

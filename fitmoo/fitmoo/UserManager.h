@@ -76,5 +76,6 @@
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic) User * localUser;
 @property (strong, nonatomic)  NSMutableArray * workoutTypesArray;
+@property (strong, nonatomic)  NSMutableArray * workoutTypesIdArray;
 
 @end
