@@ -49,6 +49,8 @@
 
     if (indexPath.row==0) {
          UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
+        
+        
         UILabel *nameLabel=[[UILabel alloc] init];
         nameLabel.frame= CGRectMake(0, 5, 320, 42);
         nameLabel.numberOfLines=2;
@@ -77,8 +79,8 @@
     nameLabel.numberOfLines=2;
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     
-    
-    nameLabel.text= [_searchTypeArray objectAtIndex:indexPath.row-1];
+    Workout *workout=[_searchTypeArray objectAtIndex:indexPath.row-1];
+    nameLabel.text= workout.workout_type;
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
     
@@ -101,9 +103,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.view removeFromSuperview];
     }else
     {
-    
-    _workoutTypeLabel.text=[_searchTypeArray objectAtIndex:indexPath.row-1];
+    Workout *tempWorkout=[_searchTypeArray objectAtIndex:indexPath.row-1];
+    _workoutTypeLabel.text=tempWorkout.workout_type;
     _workoutTypeLabel.textColor=[UIColor blackColor];
+        
+    _workoutDetailTextview.text=tempWorkout.detail;
     [_searchTermField resignFirstResponder];
     [self.view removeFromSuperview];
     }
@@ -145,10 +149,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (seconds>=0.5 && seconds<0.6) {
         _searchTypeArray=[[NSMutableArray alloc] init];
-        for (NSString *type in _totalTypeArray) {
-            if ([type.lowercaseString rangeOfString:_searchTypeName].location != NSNotFound) {
+        for (Workout *temworkout in _totalTypeArray) {
+            if ([temworkout.workout_type.lowercaseString rangeOfString:_searchTypeName].location != NSNotFound) {
               
-                  [_searchTypeArray addObject:type];
+                  [_searchTypeArray addObject:temworkout];
             }
         }
         

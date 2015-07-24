@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-
+#import "Workout.h"
 #import "UserManager.h"
 @interface WorkTypeViewController : UIViewController<UITextFieldDelegate>
 - (IBAction)doneButtonClick:(id)sender;
@@ -22,4 +22,5 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSString *searchTypeName;
 @property (strong, nonatomic) IBOutlet UILabel *workoutTypeLabel;
+@property (strong, nonatomic) IBOutlet UITextView *workoutDetailTextview;
 @end

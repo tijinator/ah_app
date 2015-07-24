@@ -38,11 +38,21 @@
         _workoutTypesArray= [[NSMutableArray alloc] init];
         _workoutTypesIdArray= [[NSMutableArray alloc] init];
         for (NSDictionary *dic in workoutType) {
-            NSString *type=[dic objectForKey:@"text"];
-            [_workoutTypesArray addObject:type];
+            Workout *workout= [[Workout alloc] init];
             
+            NSString *type=[dic objectForKey:@"text"];
+            
+            workout.workout_type=type;
             NSNumber *type_id=[dic objectForKey:@"id"];
-            [_workoutTypesIdArray addObject:type_id];
+            workout.workout_id=type_id.stringValue;
+            
+            workout.detail=[dic objectForKey:@"details"];
+            
+            if (workout.detail==nil) {
+                workout.detail=@"";
+            }
+            
+            [_workoutTypesArray addObject:workout];
         }
         
         

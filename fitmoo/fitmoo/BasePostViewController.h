@@ -17,6 +17,7 @@
 #import "CreatedByCommunity.h"
 #import "AsyncImageView.h"
 #import "WorkTypeViewController.h"
+#import "Workout.h"
 
 @interface BasePostViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *normalPostImage;
@@ -102,7 +103,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *doneButton1;
 - (IBAction)doneButtonClick:(id)sender;
 @property (strong, nonatomic)  NSMutableArray *workoutTypeArray;
-@property (strong, nonatomic)  NSMutableArray *workoutTypeIdArray;
+
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView;
 @property (strong, nonatomic) IBOutlet UIView *pickerBackView1;
 

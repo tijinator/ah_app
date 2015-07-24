@@ -149,7 +149,7 @@
         return [NSString stringWithFormat:@"%d%@",hours, @" hours ago"];
     }else if (minutes!=0) {
         if (minutes<=1) {
-             return @"about a minute ago";
+            return @"about a minute ago";
         }
         
         return [NSString stringWithFormat:@"%d%@",minutes, @" minutes ago"];
@@ -161,17 +161,17 @@
 
 -(CGRect) caculateLabelHeight: (UILabel *) label
 {
-//    if ([label isEqual:[NSNull null]]) {
-//        CGRect newFrame =CGRectMake(0, 0, 1, 1);
-//        return newFrame;
-//    }
+    //    if ([label isEqual:[NSNull null]]) {
+    //        CGRect newFrame =CGRectMake(0, 0, 1, 1);
+    //        return newFrame;
+    //    }
     
     CGSize maximumLabelSize = CGSizeMake(label.frame.size.width*_frameRadio, FLT_MAX);
     
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
     
     CGRect newFrame = label.frame;
- //   newFrame.size.height = expectedLabelSize.height;
+    //   newFrame.size.height = expectedLabelSize.height;
     
     int lines = expectedLabelSize.height/label.font.pointSize;
     
@@ -182,16 +182,16 @@
 - (CGRect) resizeFrameWithFrame:(UIView *) view  respectToSuperFrame: (UIView *) superView
 {
     if (superView!=nil) {
-         double Radio= superView.frame.size.width / 320;
+        double Radio= superView.frame.size.width / 320;
         _frameRadio=Radio;
-         view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
+        view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
     }else
     {
         double Radio= self.screenSizeView.frame.size.width/320;
         _frameRadio=Radio;
         view.frame= CGRectMake(view.frame.origin.x * Radio, view.frame.origin.y * Radio, view.frame.size.width * Radio, view.frame.size.height*Radio);
     }
-   
+    
     return view.frame;
 }
 
@@ -199,68 +199,87 @@
 - (NSString *) generateTimeString:(NSString *)timeString
 {
     
-    if (timeString.intValue<60) {
-        if (timeString.intValue<2) {
-              timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"sec"];
-        }else
-        {
-        timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"secs"];
-        }
-        
-    }else  if (timeString.intValue<3600)
-    {
-        
-        double min=timeString.intValue/60;
-        double sec=timeString.intValue%60;
-        if (sec==0) {
-            if (min==1) {
-                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" min"];
-            }else
-            {
-                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" mins"];
-            }
-        }else
-        {
-            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
-            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
-            if (min<10) {
-                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
-            }
-            if (sec<10) {
-                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
-            }
-            
-            timeString=[NSString stringWithFormat:@"00 : %@%@%@",minuteStr, @" : ", secondStr];
-        }
-
-
-    }else
-    {
-        
-        double hour=timeString.intValue/3600;
-        double min=(timeString.intValue-3600*hour)/60;
-        double sec=timeString.intValue%60;
-        
-        if (min==0&&sec==0) {
-            if (hour==1) {
-                 timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hour"];
-            }else
-            {
-            timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hours"];
-            }
-        }else
-        {
-            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
-            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
-            if (min<10) {
-                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
-            }
-            if (sec<10) {
-                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
-            }
-            timeString=[NSString stringWithFormat:@"%1.0f%@%@%@%@",hour, @" : ", minuteStr,@" : ", secondStr ];
-        }
+//    if (timeString.intValue<60) {
+//        if (timeString.intValue<2) {
+//            timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"sec"];
+//        }else
+//        {
+//            timeString=[NSString stringWithFormat:@"%@ %@",timeString, @"secs"];
+//        }
+//        
+//    }else  if (timeString.intValue<3600)
+//    {
+//        
+//        double min=timeString.intValue/60;
+//        double sec=timeString.intValue%60;
+//        if (sec==0) {
+//            if (min==1) {
+//                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" min"];
+//            }else
+//            {
+//                timeString=[NSString stringWithFormat:@"%1.0f%@",min, @" mins"];
+//            }
+//        }else
+//        {
+//            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
+//            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
+//            if (min<10) {
+//                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
+//            }
+//            if (sec<10) {
+//                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+//            }
+//            
+//            timeString=[NSString stringWithFormat:@"00 : %@%@%@",minuteStr, @" : ", secondStr];
+//        }
+//        
+//        
+//    }else
+//    {
+//        
+//        double hour=timeString.intValue/3600;
+//        double min=(timeString.intValue-3600*hour)/60;
+//        double sec=timeString.intValue%60;
+//        
+//        if (min==0&&sec==0) {
+//            if (hour==1) {
+//                timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hour"];
+//            }else
+//            {
+//                timeString=[NSString stringWithFormat:@"%1.0f%@",hour, @" hours"];
+//            }
+//        }else
+//        {
+//            NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
+//            NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
+//            if (min<10) {
+//                minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
+//            }
+//            if (sec<10) {
+//                secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+//            }
+//            timeString=[NSString stringWithFormat:@"%1.0f%@%@%@%@",hour, @" : ", minuteStr,@" : ", secondStr ];
+//        }
+//    }
+//    
+    double hour=timeString.intValue/3600;
+    double min=(timeString.intValue-3600*hour)/60;
+    double sec=timeString.intValue%60;
+    NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
+    NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
+    NSString * hourStr= [NSString stringWithFormat:@"%1.0f",hour];
+    if (min<10) {
+        minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
     }
+    if (sec<10) {
+        secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+    }
+    
+    if (hour<10) {
+        hourStr= [NSString stringWithFormat:@"0%1.0f",hour];
+    }
+    timeString=[NSString stringWithFormat:@"%@%@%@%@%@",hourStr, @" : ", minuteStr,@" : ", secondStr ];
+
     
     return timeString;
 }
@@ -273,12 +292,12 @@
     NSNumber * feed_id=[dic objectForKey:@"id"];
     homeFeed.feed_id= [feed_id stringValue];
     
-     homeFeed.text= [dic objectForKey:@"text"];
+    homeFeed.text= [dic objectForKey:@"text"];
     if ([homeFeed.text isEqual:[NSNull null ]]) {
-       homeFeed.text=@"";
+        homeFeed.text=@"";
         
     }
-   
+    
     
     
     homeFeed.community_id=[dic objectForKey:@"community_id"];
@@ -289,19 +308,19 @@
     if (created_at!=nil) {
         homeFeed.created_at= [created_at stringValue];
     }
-
+    
     NSNumber * updated_at=[dic objectForKey:@"updated_at"];
     if (updated_at!=nil) {
-         homeFeed.updated_at= [updated_at stringValue];
+        homeFeed.updated_at= [updated_at stringValue];
     }
-   
+    
     
     NSNumber * total_comment=[dic objectForKey:@"total_comment"];
     if (total_comment!=nil) {
-         homeFeed.total_comment= [total_comment stringValue];
+        homeFeed.total_comment= [total_comment stringValue];
     }
- 
-   
+    
+    
     NSNumber * total_like=[dic objectForKey:@"total_like"];
     if (total_like!=nil) {
         homeFeed.total_like= [total_like stringValue];
@@ -316,7 +335,7 @@
     homeFeed.service= [dic objectForKey:@"service"];
     
     NSDictionary * photoArray= [dic objectForKey:@"photos"];
-     if (![photoArray isEqual:[NSNull null ]]) {
+    if (![photoArray isEqual:[NSNull null ]]) {
         for (NSDictionary *photoDic in photoArray) {
             [homeFeed resetPhotos];
             homeFeed.photos.photo_id= [photoDic objectForKey:@"id"];
@@ -365,7 +384,7 @@
         homeFeed.created_by.original=[avatars objectForKey:@"original"];
         homeFeed.created_by.thumb=[avatars objectForKey:@"thumb"];
         homeFeed.created_by.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
-
+        
     }
     
     NSDictionary *createdByCommunity=[dic objectForKey:@"created_by_community"];
@@ -398,7 +417,7 @@
             }
             
         }
-       
+        
         NSDictionary *created_by=[feed_action objectForKey:@"user"];
         if (![created_by isEqual:[NSNull null ]]) {
             homeFeed.feed_action.created_by.created_by_id= [created_by objectForKey:@"id"];
@@ -465,7 +484,7 @@
         homeFeed.workout.title= [workout objectForKey:@"title"];
         
         NSNumber * time=[workout objectForKey:@"time"];
-     
+        
         if ([time isEqual:[NSNull null]]) {
             homeFeed.workout.time=@"";
         }else
@@ -485,12 +504,12 @@
     if (![videosArray isEqual:[NSNull null ]]) {
         for (NSDictionary *videosDic in videosArray) {
             homeFeed.videos.video_url= [videosDic objectForKey:@"video_url"];
-           
+            
             NSDictionary *thumbnail=[videosDic objectForKey:@"thumbnail"];
             if (![thumbnail isEqual:[NSNull null]]) {
                 homeFeed.videos.thumbnail_url= [thumbnail objectForKey:@"url"];
             }
-              [homeFeed.videosArray addObject:homeFeed.videos];
+            [homeFeed.videosArray addObject:homeFeed.videos];
         }
     }
     
@@ -501,17 +520,17 @@
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
         
-//        NSDictionary *theme= [dic  objectForKey:@"theme"];
-//        if (![theme isEqual:[NSNull null]]) {
-//            NSDictionary *styles= [theme  objectForKey:@"styles"];
-//            NSDictionary *medium= [styles  objectForKey:@"medium"];
-//            homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
-//            if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
-//            {
-//                homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
-//            }
-//
-//        }
+        //        NSDictionary *theme= [dic  objectForKey:@"theme"];
+        //        if (![theme isEqual:[NSNull null]]) {
+        //            NSDictionary *styles= [theme  objectForKey:@"styles"];
+        //            NSDictionary *medium= [styles  objectForKey:@"medium"];
+        //            homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
+        //            if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
+        //            {
+        //                homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
+        //            }
+        //
+        //        }
         
         homeFeed.photos.originalUrl=homeFeed.event.theme;
         homeFeed.photos.stylesUrl=homeFeed.event.theme;
@@ -554,23 +573,23 @@
 {
     [self deleteDataLocally];
     LocalUser *user = [NSEntityDescription insertNewObjectForEntityForName:@"LocalUser"
-                                                   inManagedObjectContext:_context];
+                                                    inManagedObjectContext:_context];
     user.auth_token= localUser.auth_token;
     user.secret_id=localUser.secret_id;
     user.user_id=localUser.user_id;
     user.email=localUser.email;
     user.password=localUser.password;
     
-        NSError *error;
-        if (![_context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
+    NSError *error;
+    if (![_context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
     
 }
 
 -(User *) getUserLocally
 {
-   
+    
     NSError *error;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -578,7 +597,7 @@
                                               inManagedObjectContext:_context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [_context executeFetchRequest:fetchRequest error:&error];
-   
+    
     User *user= [[User alloc] init];
     
     for (LocalUser *result in fetchedObjects) {
@@ -650,7 +669,7 @@
     if ((self = [super init])) {
     }
     
-   
+    
     
     
     return self;

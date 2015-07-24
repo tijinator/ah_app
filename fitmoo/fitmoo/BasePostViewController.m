@@ -61,7 +61,7 @@
     _localUser= [[UserManager sharedUserManager] localUser];
     
     _workoutTypeArray= [[UserManager sharedUserManager] workoutTypesArray];
-    _workoutTypeIdArray= [[UserManager sharedUserManager] workoutTypesIdArray];
+  
     self.tableview.tableFooterView = [[UIView alloc] init];
     
     UIView* bview = [[UIView alloc] init];
@@ -1077,6 +1077,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     _workOutTypeView.workoutTypeLabel=_workoutTypeLabel;
+    _workOutTypeView.workoutDetailTextview=_workoutInstruction;
     _workOutTypeView.view.frame= CGRectMake(0, 0, 320, 568);
     _workOutTypeView.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workOutTypeView.view respectToSuperFrame:nil];
     [self.view addSubview:_workOutTypeView.view];
@@ -1258,13 +1259,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 if (![_workoutTypeLabel.text isEqualToString:@"Workout"]) {
                     int index=-1;
                     for (int i=0; i<[_workoutTypeArray count]; i++) {
-                        if ([_workoutTypeLabel.text isEqualToString:[_workoutTypeArray objectAtIndex:i]]) {
+                        Workout *temworkout=[_workoutTypeArray objectAtIndex:i];
+                        
+                        if ([_workoutTypeLabel.text isEqualToString:temworkout.workout_type]) {
                             index=i;
                         }
                     }
                     
                     if (index!=-1) {
-                         [workout_attributes setObject:[_workoutTypeIdArray objectAtIndex:index] forKey:@"workout_type_id"];
+                          Workout *temworkout=[_workoutTypeArray objectAtIndex:index];
+                         [workout_attributes setObject:temworkout.workout_id forKey:@"workout_type_id"];
                     }
                   
                 }
