@@ -38,6 +38,16 @@
 //    if ([_searchTypeArray count]>0) {
 //        return [_searchTypeArray count]+1;
 //    }
+    
+    if ([_searchTermField.text isEqualToString:@""]) {
+        if ([_totalTypeArray count]>10) {
+            return 11;
+        }else
+        {
+            return [_totalTypeArray count]+1;
+        }
+    }
+    
     return [_searchTypeArray count]+1;
     
     
@@ -66,10 +76,14 @@
         [nameLabel setAttributedText:attributedString];
         
         [cell.contentView addSubview:nameLabel];
+         cell.selectionStyle= UITableViewCellSelectionStyleNone;
         return cell;
 
         
     }
+    
+    
+    
     
     
     UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell1"];
@@ -79,14 +93,24 @@
     nameLabel.numberOfLines=2;
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     
-    Workout *workout=[_searchTypeArray objectAtIndex:indexPath.row-1];
+    if ([_searchTermField.text isEqualToString:@""]) {
+    
+    Workout *workout=[_totalTypeArray objectAtIndex:indexPath.row-1];
     nameLabel.text= workout.workout_type;
+    
+    }else
+    {
+        Workout *workout=[_searchTypeArray objectAtIndex:indexPath.row-1];
+        nameLabel.text= workout.workout_type;
+    }
+    
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
     
     [nameLabel setAttributedText:attributedString];
 
     [cell.contentView addSubview:nameLabel];
+     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     return cell;
 
     
@@ -103,6 +127,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.view removeFromSuperview];
     }else
     {
+        
+        if ([_searchTermField.text isEqualToString:@""]) {
+            Workout *tempWorkout=[_totalTypeArray objectAtIndex:indexPath.row-1];
+            _workoutTypeLabel.text=tempWorkout.workout_type;
+            _workoutTypeLabel.textColor=[UIColor blackColor];
+            
+            _workoutDetailTextview.text=tempWorkout.detail;
+            [_searchTermField resignFirstResponder];
+            [self.view removeFromSuperview];
+        }else
+        {
+        
     Workout *tempWorkout=[_searchTypeArray objectAtIndex:indexPath.row-1];
     _workoutTypeLabel.text=tempWorkout.workout_type;
     _workoutTypeLabel.textColor=[UIColor blackColor];
@@ -110,6 +146,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _workoutDetailTextview.text=tempWorkout.detail;
     [_searchTermField resignFirstResponder];
     [self.view removeFromSuperview];
+        }
     }
 }
 

@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) NSString *workout_type;
 @property (nonatomic, strong) NSString *detail;
+@property (nonatomic, strong) NSString *rank;
 
 @end

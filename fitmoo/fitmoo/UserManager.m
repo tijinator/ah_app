@@ -46,7 +46,11 @@
             NSNumber *type_id=[dic objectForKey:@"id"];
             workout.workout_id=type_id.stringValue;
             
+            NSNumber *rank=[dic objectForKey:@"rank"];
+            workout.rank=rank.stringValue;
+            
             workout.detail=[dic objectForKey:@"details"];
+            
             
             if (workout.detail==nil) {
                 workout.detail=@"";
@@ -772,6 +776,12 @@
     } // success callback block
      
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Post Failure"
+                                                                message : @"Please try again later." delegate : nil cancelButtonTitle : @"OK"
+                                                      otherButtonTitles : nil ];
+              [alert show ];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
+              
               NSLog(@"Error: %@", error);} // failure callback block
      ];
 
