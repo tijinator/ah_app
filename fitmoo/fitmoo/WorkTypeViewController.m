@@ -67,8 +67,12 @@
         nameLabel.textAlignment=NSTextAlignmentCenter;
         nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
         
-        
+        if ([_searchTermField.text isEqualToString:@""]) {
+            nameLabel.text=@"SUGGESTED FOR YOU";
+        }else
+        {
         nameLabel.text=@"MY WORKOUT ISN'T HERE";
+        }
         nameLabel.textColor= [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
         UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
@@ -121,10 +125,13 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row==0) {
+        
+          if (![_searchTermField.text isEqualToString:@""]) {
         _workoutTypeLabel.text=_searchTermField.text;
         _workoutTypeLabel.textColor=[UIColor blackColor];
         [_searchTermField resignFirstResponder];
         [self.view removeFromSuperview];
+          }
     }else
     {
         
