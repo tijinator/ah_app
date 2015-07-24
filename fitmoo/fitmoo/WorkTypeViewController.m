@@ -62,7 +62,7 @@
         
         
         UILabel *nameLabel=[[UILabel alloc] init];
-        nameLabel.frame= CGRectMake(0, 5, 320, 42);
+        nameLabel.frame= CGRectMake(10, 5, 300, 42);
         nameLabel.numberOfLines=2;
         nameLabel.textAlignment=NSTextAlignmentCenter;
         nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
@@ -71,7 +71,8 @@
             nameLabel.text=@"SUGGESTED FOR YOU";
         }else
         {
-        nameLabel.text=@"MY WORKOUT ISN'T HERE";
+        nameLabel.text=[NSString stringWithFormat:@"Use \"%@ \"", _searchTermField.text];
+            nameLabel.numberOfLines=1;
         }
         nameLabel.textColor= [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
         UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];

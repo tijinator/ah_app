@@ -339,11 +339,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="Wce-j3-trZ">
-                                        <rect key="frame" x="96" y="84" width="216" height="130"/>
+                                        <rect key="frame" x="96" y="91" width="216" height="126"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="QA3-4H-ziY">
-                                                <rect key="frame" x="0.0" y="0.0" width="216" height="130"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="216" height="126"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -363,7 +363,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x9y-qU-QLD">
-                                        <rect key="frame" x="101" y="48" width="210" height="35"/>
+                                        <rect key="frame" x="101" y="50" width="210" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.57647058819999997" green="0.62352941179999999" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
