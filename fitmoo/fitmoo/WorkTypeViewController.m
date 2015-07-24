@@ -71,7 +71,7 @@
             nameLabel.text=@"SUGGESTED FOR YOU";
         }else
         {
-        nameLabel.text=[NSString stringWithFormat:@"Use \"%@ \"", _searchTermField.text];
+        nameLabel.text=[NSString stringWithFormat:@"Don't see your workout? Use \"%@\"", _searchTermField.text];
             nameLabel.numberOfLines=1;
         }
         nameLabel.textColor= [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
