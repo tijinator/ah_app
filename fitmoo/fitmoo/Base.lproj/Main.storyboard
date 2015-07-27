@@ -312,7 +312,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="YbD-Xx-fax">
-                                <rect key="frame" x="0.0" y="50" width="320" height="225"/>
+                                <rect key="frame" x="-400" y="50" width="320" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dw8-2f-xiC">
@@ -373,7 +373,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="l9e-oe-5yW">
-                                <rect key="frame" x="-400" y="50" width="320" height="142"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="142"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1gt-UT-bsA">

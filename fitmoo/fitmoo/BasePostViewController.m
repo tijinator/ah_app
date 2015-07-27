@@ -741,7 +741,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _nutritionView.hidden=true;
     [_normalPostImage setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     if (self.PostImage==nil) {
+       
         [_normalPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+        
+    }
+ 
+    if ([_postActionType isEqualToString:@"video"]) {
+        [_normalPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     }
     
     //   _normalPostImage.image= self.PostImage;
@@ -758,7 +764,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     originalTableviewFrame=_tableview.frame;
     [_workoutPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     if (self.PostImage==nil) {
+       
         [_workoutPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+        
+    }
+    
+    if ([_postActionType isEqualToString:@"video"]) {
+        [_workoutPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     }
     _normalPostView.hidden=true;
     _workoutView.hidden=false;
@@ -777,7 +789,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _nutritionView.hidden=false;
     [_nutritionPostImage  setBackgroundImage:self.PostImage forState:UIControlStateNormal];
     if (self.PostImage==nil) {
+       
         [_nutritionPostImage setBackgroundImage:[UIImage imageNamed:@"defaultprofilepic.png"] forState:UIControlStateNormal];
+        
+    }
+    
+    
+    if ([_postActionType isEqualToString:@"video"]) {
+        [_nutritionPostImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     }
     
 }
