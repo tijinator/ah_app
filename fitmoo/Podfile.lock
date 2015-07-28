@@ -133,6 +133,7 @@ PODS:
     - EGOCache (~> 2.1)
     - UAProgressView (~> 0.1)
   - GZIP (1.0.3)
+  - JTCalendar (2.0.7)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - AWSiOSSDKv2
   - Facebook-iOS-SDK (~> 3.0)
   - FSImageViewer (~> 3.2)
+  - JTCalendar
   - TTTAttributedLabel (~> 1.10.1)
 
 SPEC CHECKSUMS:
@@ -172,6 +174,7 @@ SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FSImageViewer: 9106a89800e89a359b02d0c4bb7f7a3ddc1aff71
   GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
+  JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52

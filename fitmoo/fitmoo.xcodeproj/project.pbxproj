@@ -546,6 +546,9 @@
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
 		27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */; };
 		27DB8D811B5D9090005380CA /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DB8D801B5D9090005380CA /* Workout.m */; };
+		27DBA2581B6687080019C56A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA2561B6687080019C56A /* CalendarCell.m */; };
+		27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA2571B6687080019C56A /* CalendarCell.xib */; };
+		27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA25B1B66C05A0019C56A /* CalendarViewController.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1162,6 +1165,11 @@
 		27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTypeViewController.m; sourceTree = "<group>"; };
 		27DB8D7F1B5D9090005380CA /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		27DB8D801B5D9090005380CA /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		27DBA2551B6687080019C56A /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
+		27DBA2561B6687080019C56A /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
+		27DBA2571B6687080019C56A /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		27DBA25A1B66C05A0019C56A /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		27DBA25B1B66C05A0019C56A /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1307,6 +1315,9 @@
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
+				27DBA2551B6687080019C56A /* CalendarCell.h */,
+				27DBA2561B6687080019C56A /* CalendarCell.m */,
+				27DBA2571B6687080019C56A /* CalendarCell.xib */,
 				27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */,
 				27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */,
 				27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */,
@@ -1900,6 +1911,8 @@
 				27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */,
 				27A009B21B3AF0C60081AD4E /* ComposeViewController.h */,
 				27A009B31B3AF0C60081AD4E /* ComposeViewController.m */,
+				27DBA25A1B66C05A0019C56A /* CalendarViewController.h */,
+				27DBA25B1B66C05A0019C56A /* CalendarViewController.m */,
 			);
 			name = SidePages;
 			sourceTree = "<group>";
@@ -2212,6 +2225,7 @@
 				27ACD0F91B0A708C00322ED5 /* nutritiontag@2x.png in Resources */,
 				2752E9FC1B015CBC003841DC /* home_icon.png in Resources */,
 				2752EA1C1B015CBC003841DC /* whitehearticon@3x.png in Resources */,
+				27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */,
 				279E57941B20B4EC0076C3B5 /* greycamera@3x.png in Resources */,
 				27CBC0E01B0F84DB00699E1E /* eventsscreen@3x.png in Resources */,
 				277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */,
@@ -2615,6 +2629,7 @@
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */,
+				27DBA2581B6687080019C56A /* CalendarCell.m in Sources */,
 				27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */,
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
@@ -2628,6 +2643,7 @@
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
 				2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */,
 				2752E9931B014FF1003841DC /* PhotoGalary.m in Sources */,
+				27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */,
 				2732B7481AD84EF200610821 /* Videos.m in Sources */,
 				27410DDE1AFAB21800CF230C /* ImageFilter.m in Sources */,
 				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,

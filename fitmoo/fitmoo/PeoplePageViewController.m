@@ -11,13 +11,18 @@
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
+#import <JTCalendar/JTCalendar.h>
 @interface PeoplePageViewController ()
 {
     NSNumber * contentHight;
     NSString *bioText;
     UIButton *tempButton1;
-     UIView *indicatorView;
+    UIView *indicatorView;
+    NSDate *_todayDate;
+    NSDate *_minDate;
+    NSDate *_maxDate;
 }
+@property (strong, nonatomic) JTCalendarManager *calendarManager;
 @end
 
 @implementation PeoplePageViewController
@@ -31,6 +36,7 @@
     
     self.tableType=@"photo";
     self.feedType=@"feed";
+    self.CalendarModalType=@"day";
     [self initFrames];
     [self initValuable];
     [self postNotifications];
@@ -47,6 +53,7 @@
     
     [self getWorkoutItems];
     [self getStoreItems];
+    [self getCalendarItems];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -69,8 +76,28 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didGetProfileFinished:) name:@"didGetProfileFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calenderModelAction:) name:@"calenderModelAction" object:nil];
     
 }
+
+- (void) calenderModelAction: (NSNotification * ) note
+{
+ //   NSString *action=(NSString *)[note object];
+    NSArray *array=(NSArray *)[note object];
+    NSString *action=[array objectAtIndex:0];
+    
+    if ([action isEqualToString:@"month"]) {
+        self.CalendarModalType=@"month";
+      //  self.CalendarselectedDate=[];
+        [self.tableView reloadData];
+    }else if ([action isEqualToString:@"day"]) {
+        self.CalendarModalType=@"day";
+         self.CalendarselectedDate=[array objectAtIndex:1];
+        [self.tableView reloadData];
+    }
+    
+}
+
 - (void) updateTable: (NSNotification * ) note
 {
     
@@ -151,7 +178,41 @@
     
     
 }
+-(void) getCalendarItems
+{
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
 
+    _calendarManager = [JTCalendarManager new];
+    _todayDate = [NSDate date];
+    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
+ 
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",@"America/New_York", @"time_zone",_minDate, @"begin_time",_maxDate, @"end_time",@"0", @"offset", @"500" , @"limit", nil];
+    NSString * url;
+    if (_searchId!=nil) {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],_searchId,@"/calendar_workouts"];
+    }else
+    {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/calendar_workouts"];
+    }
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicCalendar= responseObject;
+        
+        
+            //    NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+
+}
 
 -(void) getStoreItems
 {
@@ -445,6 +506,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+    if ([self.feedType isEqualToString:@"calendar"]) {
+        return 2;
+    }
+    
     if(_searchId!=nil)
     {
         if (_temSearchUser==nil) {
@@ -610,8 +675,50 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     //  end of first cell
-    
-    if ([self.tableType isEqualToString:@"photo"]) {
+    if ([self.feedType isEqualToString:@"calendar"]) {
+        CalendarCell *cell =(CalendarCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+       
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CalendarCell" owner:self options:nil];
+         
+            cell = [nib objectAtIndex:0];
+        }else
+        {
+            return cell;
+        }
+        
+        if ([self.CalendarModalType isEqualToString:@"day"]) {
+            cell.calendarModleType=self.CalendarModalType;
+            cell.dateSelected=self.CalendarselectedDate;
+            [cell didChangeModeTouch];
+        }else if ([self.CalendarModalType isEqualToString:@"month"])
+        {
+         //   cell.calendarModleType=self.CalendarModalType;
+            cell.dateSelected=self.CalendarselectedDate;
+            [cell didChangeModeTouch];
+        }
+        
+      //  cell.tableview=tableView;
+        
+        if(indexPath.row==1)
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
+        }else
+        {
+            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+        }
+        
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+
+        return cell;
+        
+    }else if ([self.tableType isEqualToString:@"photo"]) {
         
         PhotoCell *cell =(PhotoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         
@@ -1324,6 +1431,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         self.tableType=@"feed";
         [self.tableView reloadData];
     }
+//     self.feedType=@"calendar";
+//    if ([_CalendarModalType isEqualToString:@"month"]) {
+//        _CalendarModalType=@"day";
+//    }else
+//    {
+//        _CalendarModalType=@"month";
+//    }
+//
+//     [self.tableView reloadData];
+    
     
 }
 - (IBAction)backButtonClick:(id)sender {

@@ -27,6 +27,7 @@
 #import "BioViewController.h"
 #import "PhotoCell.h"
 #import "ComposeViewController.h"
+#import "CalendarCell.h"
 @interface PeoplePageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -38,12 +39,15 @@
 
 @property (strong, nonatomic)  NSString * searchId;
 @property (strong, nonatomic)  NSString * feedType;
+@property (strong, nonatomic)  NSString * CalendarModalType;
+@property (strong, nonatomic)  NSDate * CalendarselectedDate;
 
 @property (strong, nonatomic)  User * temSearchUser;
 @property (strong, nonatomic)  NSMutableArray * heighArray;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSDictionary * responseDicWorkout;
 @property (strong, nonatomic)  NSDictionary * responseDicStore;
+@property (strong, nonatomic)  NSDictionary * responseDicCalendar;
 @property (strong, nonatomic)  NSMutableArray * homeFeedArray;
 
 @property (strong, nonatomic)  NSMutableArray * FeedArray;
