@@ -382,7 +382,14 @@
 //    showButton=false;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
-    _overlay.view.frame=CGRectMake(0, 0, _overlay.view.frame.size.width*[[FitmooHelper sharedInstance] frameRadio], _overlay.view.frame.size.height*[[FitmooHelper sharedInstance] frameRadio]);
+    
+//    _overlay.view.frame=CGRectMake(0, 0, 320, 568);
+//    _overlay.view.frame=CGRectMake(0, 0, _overlay.view.frame.size.width*[[FitmooHelper sharedInstance] frameRadio], _overlay.view.frame.size.height*[[FitmooHelper sharedInstance] frameRadio]);
+    
+    
+//    _overlay.view.frame= CGRectMake(0, 0, 320, 568);
+//    _overlay.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_overlay.view respectToSuperFrame:nil];
+    
     _picker = [[UIImagePickerController alloc] init];
     _picker.allowsEditing = NO;
 

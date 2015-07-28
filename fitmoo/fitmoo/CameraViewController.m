@@ -133,14 +133,14 @@
 
 -(void) initFrames
 {
-    _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:self.view];
+    _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:nil];
     _topView.frame= CGRectMake(0, 0, 320, 50);
-    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
+    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
     _cameraDirectionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cameraDirectionButton respectToSuperFrame:self.view];
-    _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
-    _footButtomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_footButtomView respectToSuperFrame:self.view];
+    _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:nil];
+    _footButtomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_footButtomView respectToSuperFrame:nil];
     
-    _imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_imageButton respectToSuperFrame:self.view];
+    _imageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_imageButton respectToSuperFrame:nil];
     _screenShotButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_screenShotButton respectToSuperFrame:self.view];
     _changeToCameraButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_changeToCameraButton respectToSuperFrame:self.view];
     
@@ -166,9 +166,9 @@
     
     _timerLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_timerLabel respectToSuperFrame:self.view];
     
-    _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:self.view];
+    _wihteArrawImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_wihteArrawImage respectToSuperFrame:nil];
     
-    _okButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_okButton respectToSuperFrame:self.view];
+    _okButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_okButton respectToSuperFrame:nil];
     _okButton.layer.cornerRadius=5;
     
     
@@ -181,6 +181,8 @@
     _textFieldButton.frame=_writePostTextField.frame;
     [self.view bringSubviewToFront:_footButtomView];
     [self.view bringSubviewToFront:_filterView];
+    
+    
 }
 
 
