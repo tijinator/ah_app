@@ -54,6 +54,8 @@
 @property (nonatomic, strong) NSString *hide_google;
 @property (nonatomic, strong) NSString *hide_instagram;
 
+@property (nonatomic, strong) NSString *workout_count;
+
 @property (nonatomic, strong) NSString *vanity_url;
 
 @property (nonatomic, strong) NSMutableArray * communityArray;

@@ -620,6 +620,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
         }
         
+        cell.workoutCountLabel.text= temUser.workout_count;
+        
         //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         

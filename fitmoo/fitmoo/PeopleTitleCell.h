@@ -42,6 +42,8 @@
 @property (strong, nonatomic) IBOutlet UIView *view4;
 @property (strong, nonatomic) IBOutlet UIButton *calendarButton;
 @property (strong, nonatomic) IBOutlet UIView *view5;
+@property (strong, nonatomic) IBOutlet UILabel *workoutCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *workoutLabel;
 
 
 - (void) setFrameForComunity;

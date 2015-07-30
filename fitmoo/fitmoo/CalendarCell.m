@@ -218,7 +218,7 @@
     // Selected date
     else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor redColor];
+        dayView.circleView.backgroundColor = [UIColor blackColor];
         dayView.dotView.backgroundColor = [UIColor whiteColor];
         dayView.textLabel.textColor = [UIColor whiteColor];
     }
@@ -236,8 +236,17 @@
     }
     
     if([self haveEventForDay:dayView.date]){
-        dayView.dotView.hidden = NO;
-    }
+       // dayView.dotView.hidden = NO;
+        dayView.dotView.hidden = YES;
+        
+         if(![_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]&&!(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date])){
+        dayView.circleView.hidden = NO;
+        dayView.circleView.backgroundColor = [UIColor redColor];
+        dayView.dotView.backgroundColor = [UIColor whiteColor];
+        dayView.textLabel.textColor = [UIColor whiteColor];
+         }
+        
+        }
     else{
         dayView.dotView.hidden = YES;
     }

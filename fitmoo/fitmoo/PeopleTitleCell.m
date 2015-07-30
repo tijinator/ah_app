@@ -100,6 +100,10 @@
     _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:nil];
     _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:nil];
      _view5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view5 respectToSuperFrame:nil];
+    
+    _workoutLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutLabel respectToSuperFrame:nil];
+    _workoutCountLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutCountLabel respectToSuperFrame:nil];
+    
      _calendarButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_calendarButton respectToSuperFrame:nil];
     [self.contentView bringSubviewToFront:_view1];
     _shadowImageView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shadowImageView respectToSuperFrame:nil];

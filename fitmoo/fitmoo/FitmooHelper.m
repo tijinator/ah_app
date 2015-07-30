@@ -262,21 +262,21 @@
 //        }
 //    }
 //    
-    double hour=timeString.intValue/3600;
-    double min=(timeString.intValue-3600*hour)/60;
-    double sec=timeString.intValue%60;
-    NSString * minuteStr= [NSString stringWithFormat:@"%1.0f",min];
-    NSString * secondStr= [NSString stringWithFormat:@"%1.0f",sec];
-    NSString * hourStr= [NSString stringWithFormat:@"%1.0f",hour];
+    int hour=timeString.intValue/3600;
+    int min=(timeString.intValue-3600*hour)/60;
+    int sec=timeString.intValue%60;
+    NSString * minuteStr= [NSString stringWithFormat:@"%d",min];
+    NSString * secondStr= [NSString stringWithFormat:@"%d",sec];
+    NSString * hourStr= [NSString stringWithFormat:@"%d",hour];
     if (min<10) {
-        minuteStr= [NSString stringWithFormat:@"0%1.0f",min];
+        minuteStr= [NSString stringWithFormat:@"0%d",min];
     }
     if (sec<10) {
-        secondStr= [NSString stringWithFormat:@"0%1.0f",sec];
+        secondStr= [NSString stringWithFormat:@"0%d",sec];
     }
     
     if (hour<10) {
-        hourStr= [NSString stringWithFormat:@"0%1.0f",hour];
+        hourStr= [NSString stringWithFormat:@"0%d",hour];
     }
     timeString=[NSString stringWithFormat:@"%@%@%@%@%@",hourStr, @" : ", minuteStr,@" : ", secondStr ];
 

@@ -305,7 +305,8 @@
         NSNumber * communities=[_responseDic objectForKey:@"communities"];
         localUser.communities= [communities stringValue];
         
-        
+        NSNumber * workout_count=[_responseDic objectForKey:@"workout_count"];
+        localUser.workout_count= [workout_count stringValue];
         
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
@@ -498,6 +499,9 @@
         if (_localUser.vanity_url==nil) {
             _localUser.vanity_url=@"";
         }
+        
+        NSNumber * workout_count=[_responseDic objectForKey:@"workout_count"];
+        _localUser.workout_count= [workout_count stringValue];
         
         if ([_localUser.bio isEqual:[NSNull null]]) {
             _localUser.bio=@"";
