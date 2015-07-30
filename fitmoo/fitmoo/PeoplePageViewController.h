@@ -28,6 +28,7 @@
 #import "PhotoCell.h"
 #import "ComposeViewController.h"
 #import "CalendarCell.h"
+#import "SubTableViewCell.h"
 @interface PeoplePageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic)  NSMutableArray * FeedArray;
 @property (strong, nonatomic)  NSMutableArray * WorkoutFeedArray;
 @property (strong, nonatomic)  NSMutableArray * StoreFeedArray;
+@property (strong, nonatomic)  NSMutableArray * CalendarArray;
 
 @property (strong, nonatomic) IBOutlet UIButton *feedButton;
 @property (strong, nonatomic) IBOutlet UIButton *workoutButton;

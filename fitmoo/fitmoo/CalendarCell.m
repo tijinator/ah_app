@@ -34,6 +34,15 @@
 - (void)awakeFromNib {
     
     
+    _calendarArray=[[NSMutableArray alloc] init];
+ 
+    [self initFrames];
+  
+    // Initialization code
+}
+
+- (void) CreateCalendarManager
+{
     
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
@@ -43,11 +52,9 @@
     
     // Create a min and max date for limit the calendar, optional
     [self createMinAndMaxDate];
-    [self initFrames];
     [_calendarManager setMenuView:_calendarMenuView];
     [_calendarManager setContentView:_calendarContentView];
     [_calendarManager setDate:_todayDate];
-    // Initialization code
 }
 
 - (void) initFrames
@@ -63,7 +70,25 @@
 //        [self didChangeModeTouch];
 //    }
     
+    
+//    self.calendarTableview = ({
+//        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320* [[FitmooHelper sharedInstance] frameRadio], 400*[[FitmooHelper sharedInstance] frameRadio]) style:UITableViewStylePlain];
+//        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+//        tableView.delegate = self;
+//        tableView.dataSource = self;
+//        tableView.opaque = NO;
+//        tableView.backgroundColor = [UIColor blueColor];
+//        tableView.backgroundView = nil;
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        tableView.bounces = NO;
+//        tableView.scrollsToTop = NO;
+//        tableView;
+//    });
+//    [self.contentView addSubview:self.calendarTableview];
+
+    
     _buttomView= [[UIView alloc] initWithFrame:_calendarContentView.frame];
+//      _buttomView= [[UIView alloc] initWithFrame:_calendarTableview.frame];
   
 }
 
@@ -115,6 +140,61 @@
   //  [_tableview reloadData];
   
 }
+
+//#pragma mark - UITableViewDelegate
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView
+// numberOfRowsInSection:(NSInteger)section
+//{
+//    
+//    return 24;
+//    
+//}
+//
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView
+//         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CalendarSubCell *cell =(CalendarSubCell *) [self.calendarTableview cellForRowAtIndexPath:indexPath];
+//    
+//    if (cell == nil)
+//    {
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CalendarSubCell" owner:self options:nil];
+//        
+//        cell = [nib objectAtIndex:0];
+//    }else
+//    {
+//        return cell;
+//    }
+//
+//    
+//    
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView
+//didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    
+//}
+//
+//// multy high table cell
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+//{
+//    
+//    
+//    return  40*[[FitmooHelper sharedInstance]frameRadio];
+//}
+//
+//
+
+
 
 #pragma mark - CalendarManager delegate
 
@@ -254,11 +334,13 @@
 {
     _eventsByDate = [NSMutableDictionary new];
     
-    for(int i = 0; i < 30; ++i){
-        // Generate 30 random dates between now and 60 days later
-        NSDate *randomDate = [NSDate dateWithTimeInterval:(rand() % (3600 * 24 * 60)) sinceDate:[NSDate date]];
+    for(int i = 0; i < [_calendarArray count]; ++i){
+        Workout *wk=[_calendarArray objectAtIndex:i];
         
-        // Use the date as key for eventsByDate
+        NSTimeInterval time=(NSTimeInterval ) wk.begin_time.intValue;
+        NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSince1970:time];
+        
+        
         NSString *key = [[self dateFormatter] stringFromDate:randomDate];
         
         if(!_eventsByDate[key]){

@@ -12,6 +12,7 @@
 #import "User.h"
 #import <CoreData/CoreData.h>
 #import "HomeFeed.h"
+#import "Workout.h"
 @interface FitmooHelper : NSObject{
     
 }
@@ -34,7 +35,7 @@
 -(NSAttributedString *) replaceAttributedString: (NSMutableAttributedString *) stringToChange Font: (UIFont *) fontName range:(NSString *)rangeString newString:(NSString *)newString;
 - (NSString *) getTextForNumber: (NSString *) numberString;
 - (void) addActivityIndicator:(UIView *)view;
-
+- (Workout *) generateWorkout: (NSDictionary *) dic;
 - (NSString *) generateTimeString:(NSString *)timeString;
 
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;

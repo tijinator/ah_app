@@ -285,6 +285,29 @@
 }
 
 
+- (Workout *) generateWorkout: (NSDictionary *) dic
+{
+
+        Workout *workout= [[Workout alloc] init];
+    
+        workout.name=[dic objectForKey:@"name"];
+  //      NSNumber *type_id=[dic objectForKey:@"id"];
+  //      workout.workout_id=type_id.stringValue;
+        
+        NSNumber *feed_id=[dic objectForKey:@"feed_id"];
+        workout.feed_id=feed_id.stringValue;
+    
+        NSNumber *begin_time=[dic objectForKey:@"begin_time"];
+        NSNumber *end_time=[dic objectForKey:@"end_time"];
+        workout.begin_time=begin_time.stringValue;
+        workout.end_time=end_time.stringValue;
+        
+        NSNumber *is_repeated=[dic objectForKey:@"is_repeated"];
+        workout.is_repeated=is_repeated.stringValue;
+    
+        return workout;
+}
+
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic
 {
     HomeFeed * homeFeed= [[HomeFeed alloc] init];

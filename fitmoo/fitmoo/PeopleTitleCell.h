@@ -40,6 +40,8 @@
 @property (strong, nonatomic) IBOutlet UIView *view2;
 @property (strong, nonatomic) IBOutlet UIView *view3;
 @property (strong, nonatomic) IBOutlet UIView *view4;
+@property (strong, nonatomic) IBOutlet UIButton *calendarButton;
+@property (strong, nonatomic) IBOutlet UIView *view5;
 
 
 - (void) setFrameForComunity;

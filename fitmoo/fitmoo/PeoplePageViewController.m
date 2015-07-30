@@ -202,6 +202,19 @@
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDicCalendar= responseObject;
+        _CalendarArray=[[NSMutableArray alloc] init];
+        
+        if ([_responseDicCalendar count] >0) {
+            for (NSDictionary *workout in _responseDicCalendar) {
+                Workout *wk= [[FitmooHelper sharedInstance] generateWorkout:workout];
+                [_CalendarArray addObject:wk];
+            }
+            if ([_feedType isEqualToString:@"calendar"]) {
+                [_tableView reloadData];
+            }
+            
+        }
+       
         
         
             //    NSLog(@"Submit response data: %@", responseObject);
@@ -507,7 +520,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
  numberOfRowsInSection:(NSInteger)section
 {
     if ([self.feedType isEqualToString:@"calendar"]) {
-        return 2;
+        return 3;
     }
     
     if(_searchId!=nil)
@@ -629,14 +642,27 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         if ([self.feedType isEqualToString:@"feed"]) {
-            [cell.feedButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+          
+            [cell.feedButton setImage:[UIImage imageNamed:@"feed_black.png"] forState:UIControlStateNormal];
             
         }else if ([self.feedType isEqualToString:@"workout"])
         {
-            [cell.workoutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [cell.workoutButton setImage:[UIImage imageNamed:@"workout_black.png"] forState:UIControlStateNormal];
         }else if ([self.feedType isEqualToString:@"store"])
         {
-            [cell.storeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [cell.storeButton setImage:[UIImage imageNamed:@"store_black.png"] forState:UIControlStateNormal];
+        }else if ([self.feedType isEqualToString:@"calendar"])
+        {
+            [cell.calendarButton setImage:[UIImage imageNamed:@"calendar_black.png"] forState:UIControlStateNormal];
+            [cell.scheduleButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+            if ([self.CalendarModalType isEqualToString:@"month"]) {
+                [cell.scheduleButton setTitle:@"MONTH" forState:UIControlStateNormal];
+            }else if ([self.CalendarModalType isEqualToString:@"day"])
+            {
+                 [cell.scheduleButton setTitle:@"DAY" forState:UIControlStateNormal];
+            }
+            
+            
         }
         
         _feedButton=cell.feedButton;
@@ -656,8 +682,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.workoutButton addTarget:self action:@selector(WorkoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.storeButton addTarget:self action:@selector(StoreButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.scheduleButton addTarget:self action:@selector(PhotoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.calendarButton addTarget:self action:@selector(CalendarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         [cell.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        if ([temUser.bio isEqualToString:@""]) {
+        if ([temUser.bio isEqualToString:@""]||[self.feedType isEqualToString:@"calendar"]) {
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.buttonView.frame.size.height+cell.buttonView.frame.origin.y);
             [cell.bioButton removeFromSuperview];
             contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
@@ -676,47 +705,59 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     //  end of first cell
     if ([self.feedType isEqualToString:@"calendar"]) {
-        CalendarCell *cell =(CalendarCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-       
-        if (cell == nil)
-        {
+        
+        if (indexPath.row==1) {
+            CalendarCell *cell =(CalendarCell *) [self.tableView cellForRowAtIndexPath:indexPath];
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CalendarCell" owner:self options:nil];
-         
             cell = [nib objectAtIndex:0];
-        }else
-        {
-            return cell;
-        }
-        
-        if ([self.CalendarModalType isEqualToString:@"day"]) {
-            cell.calendarModleType=self.CalendarModalType;
-            cell.dateSelected=self.CalendarselectedDate;
-            [cell didChangeModeTouch];
-        }else if ([self.CalendarModalType isEqualToString:@"month"])
-        {
-         //   cell.calendarModleType=self.CalendarModalType;
-            cell.dateSelected=self.CalendarselectedDate;
-            [cell didChangeModeTouch];
-        }
-        
-      //  cell.tableview=tableView;
-        
-        if(indexPath.row==1)
-        {
-            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+105];
-        }else
-        {
+            
+            cell.calendarArray= self.CalendarArray;
+            
+            [cell CreateCalendarManager];
+            if ([self.CalendarModalType isEqualToString:@"day"]) {
+                cell.calendarModleType=self.CalendarModalType;
+                cell.dateSelected=self.CalendarselectedDate;
+                [cell didChangeModeTouch];
+            }else if ([self.CalendarModalType isEqualToString:@"month"])
+            {
+                cell.dateSelected=self.CalendarselectedDate;
+                [cell didChangeModeTouch];
+            }
+            
             contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
-        }
-        
-        if (indexPath.row>=[_heighArray count]) {
-            [_heighArray addObject:contentHight];
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+            
+            
+            return cell;
+
         }else
         {
-            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-        }
+            if ([self.CalendarModalType isEqualToString:@"month"])
+            {
+                UITableViewCell *cell= [[UITableViewCell alloc] init];
+                contentHight=[NSNumber numberWithInteger: 100*[[FitmooHelper sharedInstance] frameRadio]];
+                [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+                return cell;
 
-        return cell;
+            }else
+            {
+            SubTableViewCell *cell =(SubTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SubTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+            cell.calendarArray= self.CalendarArray;
+                if (self.CalendarselectedDate!=nil) {
+                     cell.dateSelected=self.CalendarselectedDate;
+                }else
+                {
+                    cell.dateSelected= [NSDate date];
+                }
+                [cell defineWorkoutsForSelectedToday];
+            
+            contentHight=[NSNumber numberWithInteger: 400*[[FitmooHelper sharedInstance] frameRadio]];
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+            return cell;
+            }
+        }
         
     }else if ([self.tableType isEqualToString:@"photo"]) {
         
@@ -1122,7 +1163,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             
         }
         _count++;
+        
+        if (![self.feedType isEqualToString:@"calendar"]) {
         [self disableFeedButtons];
+        }
         //it means table view is pulled down like refresh
         return;
     }
@@ -1144,7 +1188,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 [self getStoreItems];
             }
             
-            [self disableFeedButtons];
+            if (![self.feedType isEqualToString:@"calendar"]) {
+                  [self disableFeedButtons];
+            }
+          
        //     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
        //     _tableView.userInteractionEnabled=NO;
             
@@ -1421,7 +1468,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  //   }
 }
 
+
+- (IBAction)CalendarButtonClick:(id)sender {
+    
+    self.feedType=@"calendar";
+
+    _CalendarModalType=@"month";
+    
+    
+    [self.tableView reloadData];
+}
+
 - (IBAction)PhotoButtonClick:(id)sender {
+    
+    if ([self.feedType isEqualToString:@"calendar"]) {
+        if ([_CalendarModalType isEqualToString:@"month"]) {
+            _CalendarModalType=@"day";
+        }else
+        {
+            _CalendarModalType=@"month";
+        }
+        
+        [self.tableView reloadData];
+
+    }else
+    {
     
     if ([self.tableType isEqualToString:@"feed"]) {
         self.tableType=@"photo";
@@ -1431,15 +1502,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         self.tableType=@"feed";
         [self.tableView reloadData];
     }
-//     self.feedType=@"calendar";
-//    if ([_CalendarModalType isEqualToString:@"month"]) {
-//        _CalendarModalType=@"day";
-//    }else
-//    {
-//        _CalendarModalType=@"month";
-//    }
-//
-//     [self.tableView reloadData];
+
+    }
     
     
 }

@@ -16,4 +16,11 @@
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSString *rank;
 
+@property (nonatomic, strong) NSString *feed_id;
+@property (nonatomic, strong) NSString *begin_time;
+@property (nonatomic, strong) NSString *end_time;
+@property (nonatomic, strong) NSString *is_owner;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *is_repeated;
+
 @end
