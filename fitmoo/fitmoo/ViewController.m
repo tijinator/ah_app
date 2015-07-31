@@ -13,7 +13,7 @@
     double constentUp;
     double constentdown;
     bool loginExists;
-    
+    UIView *indicatorView;
 }
 @end
 
@@ -44,17 +44,22 @@
     [self createObservers];
     [self showImagesWithDelay];
     
-   
- 
+     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeIndicator) userInfo:nil repeats:NO];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 
-
+- (void)removeIndicator
+{
+    [indicatorView removeFromSuperview];
+ //   indicatorView.hidden=true;
+}
 
 - (void) addActivityIndicator1
 {
 
+  indicatorView= [[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
     _lanchScreen.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], 569*[[FitmooHelper sharedInstance] frameRadio]);
@@ -64,7 +69,10 @@
     
     [UIView animateWithDuration:4 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
         _lanchScreen.view.alpha=0;
-    }completion:^(BOOL finished){}];
+    }completion:^(BOOL finished){
+     
+    
+    }];
     
     
    
@@ -114,6 +122,7 @@
     [[FitmooHelper sharedInstance] showViewWithAnimation:message withPareView:self.view];
  //   [_activityIndicator stopAnimating];
     [_lanchScreen.view removeFromSuperview];
+    [indicatorView removeFromSuperview];
 }
 
 -(void)checkLogin:(NSNotification * )note

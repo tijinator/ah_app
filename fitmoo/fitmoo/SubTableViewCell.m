@@ -187,9 +187,9 @@
     UILabel *timeLabel= (UILabel *)[cell viewWithTag:1];
     timeLabel.text=time;
     
-//    UILabel *nameLabel= (UILabel *)[cell viewWithTag:3];
-//    UILabel *locationLabel= (UILabel *)[cell viewWithTag:4];
-//    locationLabel.hidden=true;
+ 
+
+
     
     UIView *detailView= (UIView *)[cell viewWithTag:2];
     NSMutableArray *wkArray= [_SelectedcalendarArray objectAtIndex:indexPath.row-1];
@@ -201,38 +201,49 @@
         NSTimeInterval time=(NSTimeInterval ) wk.begin_time.intValue;
         NSDate *begintime = [[NSDate alloc] initWithTimeIntervalSince1970:time];
         NSDateComponents *beginday = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:begintime];
-        
-        NSTimeInterval time1=(NSTimeInterval ) wk.end_time.intValue;
-        NSDate *endtime = [[NSDate alloc] initWithTimeIntervalSince1970:time1];
-        NSDateComponents *endday = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:endtime];
-        
-        
+//        
+//        NSTimeInterval time1=(NSTimeInterval ) wk.end_time.intValue;
+//        NSDate *endtime = [[NSDate alloc] initWithTimeIntervalSince1970:time1];
+//        NSDateComponents *endday = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond  fromDate:endtime];
         detailView.hidden=false;
-        
-        NSString *beginTimeString=[self generateTimeString:beginday];
-        
-        NSString *endTimeString= [self generateTimeString:endday];
+//        NSString *beginTimeString=[self generateTimeString:beginday];
+//        NSString *endTimeString= [self generateTimeString:endday];
+     
+        NSNumber *timeDif= [NSNumber numberWithInt:wk.end_time.intValue-wk.begin_time.intValue];
+        NSString *timeString= [[FitmooHelper sharedInstance] generateTimeString:timeDif.stringValue];
+      
         
         UILabel *nameLabel=[[UILabel alloc] init];
         nameLabel.font=[UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
-        nameLabel.frame= CGRectMake(10,i*20+5, 262, 15);
+        nameLabel.frame= CGRectMake(10,i*40+5, 262, 15);
         nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:nil];
         nameLabel.textColor=[UIColor whiteColor];
-        nameLabel.text= [NSString stringWithFormat:@"%@ %@ - %@", wk.name, beginTimeString, endTimeString];
+        nameLabel.text= [NSString stringWithFormat:@"%@", wk.name];
         
+        UILabel *locationLabel=[[UILabel alloc] init];
+        locationLabel.font=[UIFont fontWithName:@"BentonSans" size:(CGFloat)(13)];
+        locationLabel.frame= CGRectMake(10,i*40+25, 262, 15);
+        locationLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:locationLabel respectToSuperFrame:nil];
+        locationLabel.textColor=[UIColor whiteColor];
+        locationLabel.text=timeString;
+      //  locationLabel.text= [NSString stringWithFormat:@"%@ - %@", beginTimeString, endTimeString];
+
 
         if ([beginday hour]==indexPath.row-1) {
             nameLabel.hidden=false;
+            locationLabel.hidden=false;
         }else
         {
             nameLabel.hidden=true;
+            locationLabel.hidden=true;
         }
         
         [detailView addSubview:nameLabel];
+        [detailView addSubview:locationLabel];
     
     }
 
-    cellHeight=MAX(40*[[FitmooHelper sharedInstance]frameRadio], [wkArray count]*20*[[FitmooHelper sharedInstance]frameRadio]);
+    cellHeight=MAX(40*[[FitmooHelper sharedInstance]frameRadio], [wkArray count]*40*[[FitmooHelper sharedInstance]frameRadio]);
     
     detailView.frame=CGRectMake(detailView.frame.origin.x, detailView.frame.origin.y, detailView.frame.size.width, cellHeight);
     timeLabel.frame= CGRectMake(timeLabel.frame.origin.x, cellHeight-13*[[FitmooHelper sharedInstance] frameRadio], timeLabel.frame.size.width, timeLabel.frame.size.height);
@@ -253,7 +264,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     NSMutableArray *wkArray= [_SelectedcalendarArray objectAtIndex:indexPath.row-1];
     
-    double height=[wkArray count]*20*[[FitmooHelper sharedInstance]frameRadio];
+    double height=[wkArray count]*40*[[FitmooHelper sharedInstance]frameRadio];
     
     
     
@@ -276,7 +287,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSMutableArray *wkArray= [_SelectedcalendarArray objectAtIndex:indexPath.row-1];
     
-    double height=[wkArray count]*20*[[FitmooHelper sharedInstance]frameRadio];
+    double height=[wkArray count]*40*[[FitmooHelper sharedInstance]frameRadio];
     
   
     

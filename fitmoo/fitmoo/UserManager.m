@@ -516,6 +516,7 @@
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"loginFailure" object: @"Invalid username/password."];
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     

@@ -82,17 +82,17 @@
 
 - (void) calenderModelAction: (NSNotification * ) note
 {
- //   NSString *action=(NSString *)[note object];
+    //   NSString *action=(NSString *)[note object];
     NSArray *array=(NSArray *)[note object];
     NSString *action=[array objectAtIndex:0];
     
     if ([action isEqualToString:@"month"]) {
         self.CalendarModalType=@"month";
-      //  self.CalendarselectedDate=[];
+        //  self.CalendarselectedDate=[];
         [self.tableView reloadData];
     }else if ([action isEqualToString:@"day"]) {
         self.CalendarModalType=@"day";
-         self.CalendarselectedDate=[array objectAtIndex:1];
+        self.CalendarselectedDate=[array objectAtIndex:1];
         [self.tableView reloadData];
     }
     
@@ -184,12 +184,12 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-
+    
     _calendarManager = [JTCalendarManager new];
     _todayDate = [NSDate date];
     _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
     _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
- 
+    
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",@"America/New_York", @"time_zone",_minDate, @"begin_time",_maxDate, @"end_time",@"0", @"offset", @"500" , @"limit", nil];
     NSString * url;
     if (_searchId!=nil) {
@@ -214,17 +214,17 @@
             }
             
         }
-       
         
         
-            //    NSLog(@"Submit response data: %@", responseObject);
+        
+        //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              _tableView.userInteractionEnabled=true;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
-
+    
 }
 
 -(void) getStoreItems
@@ -266,8 +266,8 @@
             
         }
         [self enableFeedButtons];
-         [indicatorView removeFromSuperview];
-         _tableView.userInteractionEnabled=YES;
+        [indicatorView removeFromSuperview];
+        _tableView.userInteractionEnabled=YES;
         //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -315,9 +315,9 @@
                 [self.tableView reloadData];
             }
         }
-           [self enableFeedButtons];
-         [indicatorView removeFromSuperview];
-         _tableView.userInteractionEnabled=YES;
+        [self enableFeedButtons];
+        [indicatorView removeFromSuperview];
+        _tableView.userInteractionEnabled=YES;
         //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -367,7 +367,7 @@
         }
         [self enableFeedButtons];
         _tableView.userInteractionEnabled=YES;
-         [indicatorView removeFromSuperview];
+        [indicatorView removeFromSuperview];
         //    NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -603,9 +603,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.followCountLabel addGestureRecognizer:tapGestureRecognizer];
         cell.followCountLabel.userInteractionEnabled=YES;
         UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followerLabelClick:)];
-        tapGestureRecognizer.numberOfTapsRequired = 1;
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
         [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.followerCountLabel.userInteractionEnabled=YES;
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(WorkoutButtonClick:)];
+        tapGestureRecognizer2.numberOfTapsRequired = 1;
+        [cell.workoutCountLabel addGestureRecognizer:tapGestureRecognizer2];
+        cell.workoutCountLabel.userInteractionEnabled=YES;
         
         
         
@@ -644,7 +648,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         if ([self.feedType isEqualToString:@"feed"]) {
-          
+            
             [cell.feedButton setImage:[UIImage imageNamed:@"feed_black.png"] forState:UIControlStateNormal];
             
         }else if ([self.feedType isEqualToString:@"workout"])
@@ -661,7 +665,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 [cell.scheduleButton setTitle:@"MONTH" forState:UIControlStateNormal];
             }else if ([self.CalendarModalType isEqualToString:@"day"])
             {
-                 [cell.scheduleButton setTitle:@"DAY" forState:UIControlStateNormal];
+                [cell.scheduleButton setTitle:@"DAY" forState:UIControlStateNormal];
             }
             
             
@@ -731,7 +735,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             
             
             return cell;
-
+            
         }else
         {
             if ([self.CalendarModalType isEqualToString:@"month"])
@@ -740,24 +744,24 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 contentHight=[NSNumber numberWithInteger: 100*[[FitmooHelper sharedInstance] frameRadio]];
                 [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
                 return cell;
-
+                
             }else
             {
-            SubTableViewCell *cell =(SubTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SubTableViewCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-            cell.calendarArray= self.CalendarArray;
+                SubTableViewCell *cell =(SubTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SubTableViewCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+                cell.calendarArray= self.CalendarArray;
                 if (self.CalendarselectedDate!=nil) {
-                     cell.dateSelected=self.CalendarselectedDate;
+                    cell.dateSelected=self.CalendarselectedDate;
                 }else
                 {
                     cell.dateSelected= [NSDate date];
                 }
                 [cell defineWorkoutsForSelectedToday];
-            
-            contentHight=[NSNumber numberWithInteger: 400*[[FitmooHelper sharedInstance] frameRadio]];
-            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-            return cell;
+                
+                contentHight=[NSNumber numberWithInteger: 400*[[FitmooHelper sharedInstance] frameRadio]];
+                [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+                return cell;
             }
         }
         
@@ -1160,14 +1164,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }else if([self.feedType isEqualToString:@"store"]) {
                 [self getStoreItems];
             }
-        //    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
-        //    _tableView.userInteractionEnabled=NO;
+            //    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+            //    _tableView.userInteractionEnabled=NO;
             
         }
         _count++;
         
         if (![self.feedType isEqualToString:@"calendar"]) {
-        [self disableFeedButtons];
+            [self disableFeedButtons];
         }
         //it means table view is pulled down like refresh
         return;
@@ -1191,11 +1195,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }
             
             if (![self.feedType isEqualToString:@"calendar"]) {
-                  [self disableFeedButtons];
+                [self disableFeedButtons];
             }
-          
-       //     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
-       //     _tableView.userInteractionEnabled=NO;
+            
+            //     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+            //     _tableView.userInteractionEnabled=NO;
             
         }
         _count++;
@@ -1447,34 +1451,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)WorkoutButtonClick:(id)sender {
- //   if ([_WorkoutFeedArray count]>0) {
-        [self resetOffset];
-        _offset=_WorkoutOffset;
-        self.feedType=@"workout";
-        _homeFeedArray= [_WorkoutFeedArray mutableCopy];
-        [self.tableView reloadData];
-        
-  //  }
+    //   if ([_WorkoutFeedArray count]>0) {
+    [self resetOffset];
+    _offset=_WorkoutOffset;
+    self.feedType=@"workout";
+    _homeFeedArray= [_WorkoutFeedArray mutableCopy];
+    [self.tableView reloadData];
+    
+    //  }
     
 }
 
 - (IBAction)StoreButtonClick:(id)sender {
     
-  //  if ([_StoreFeedArray count]>0) {
-        [self resetOffset];
-        _offset=_StoreOffset;
-        self.feedType=@"store";
-        _homeFeedArray= [_StoreFeedArray mutableCopy];
-        
-        [self.tableView reloadData];
- //   }
+    //  if ([_StoreFeedArray count]>0) {
+    [self resetOffset];
+    _offset=_StoreOffset;
+    self.feedType=@"store";
+    _homeFeedArray= [_StoreFeedArray mutableCopy];
+    
+    [self.tableView reloadData];
+    //   }
 }
 
 
 - (IBAction)CalendarButtonClick:(id)sender {
     
     self.feedType=@"calendar";
-
+    
     _CalendarModalType=@"month";
     
     
@@ -1492,19 +1496,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
         [self.tableView reloadData];
-
+        
     }else
     {
-    
-    if ([self.tableType isEqualToString:@"feed"]) {
-        self.tableType=@"photo";
-        [self.tableView reloadData];
-    }else
-    {
-        self.tableType=@"feed";
-        [self.tableView reloadData];
-    }
-
+        
+        if ([self.tableType isEqualToString:@"feed"]) {
+            self.tableType=@"photo";
+            [self.tableView reloadData];
+        }else
+        {
+            self.tableType=@"feed";
+            [self.tableView reloadData];
+        }
+        
     }
     
     
