@@ -20,4 +20,5 @@
 @property (strong, nonatomic) NSMutableArray *calendarArray;
 - (IBAction)didChangeModeTouch;
 - (void) CreateCalendarManager;
+- (void) addNoWorkoutLabel;
 @end

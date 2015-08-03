@@ -339,6 +339,20 @@
     
 }
 
+- (void) addNoWorkoutLabel
+{
+     UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(0, self.buttomView.frame.size.height+self.buttomView.frame.origin.y, 320*[[FitmooHelper sharedInstance] frameRadio], 30*[[FitmooHelper sharedInstance] frameRadio])];
+    Label.text=@"No workouts were posted on this day.";
+    Label.numberOfLines=2;
+    Label.font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];
+    Label.lineBreakMode= NSLineBreakByWordWrapping;
+    Label.textAlignment=NSTextAlignmentCenter;
+    [self.contentView addSubview:Label];
+    
+}
+
+
+
 - (void)createRandomEvents
 {
     _eventsByDate = [NSMutableDictionary new];

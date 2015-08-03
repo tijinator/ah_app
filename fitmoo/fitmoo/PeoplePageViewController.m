@@ -842,8 +842,22 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 cell.calendarModleType=self.CalendarModalType;
                 cell.dateSelected=self.CalendarselectedDate;
                 [cell didChangeModeTouch];
-                contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
-                [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+                
+                if ([_SelectedWkArray count]==0) {
+                   
+                    [cell addNoWorkoutLabel];
+                    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+115];
+                    [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+                }else
+                {
+                    
+                    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+                    [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+                }
+              
+                
+               
+                
             }else if ([self.CalendarModalType isEqualToString:@"month"])
             {
                 cell.dateSelected=self.CalendarselectedDate;
