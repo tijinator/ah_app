@@ -93,7 +93,9 @@
     }else if ([action isEqualToString:@"day"]) {
         self.CalendarModalType=@"day";
         self.CalendarselectedDate=[array objectAtIndex:1];
-        [self.tableView reloadData];
+      //  [self defineWorkoutsForSelectedToday];
+        [self getWorkoutFromSelectedDay];
+    //    [self.tableView reloadData];
     }
     
 }
@@ -106,9 +108,11 @@
     
     for (int i=0; i<[_homeFeedArray count]; i++) {
         HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+         if (![tempFeed isEqual:[NSNull null]]) {
         if (key==tempFeed.feed_id) {
             [_homeFeedArray removeObjectAtIndex:i];
         }
+         }
     }
     [self.tableView reloadData];
     
@@ -146,9 +150,11 @@
     if (feed!=nil) {
         for (int i=0; i<[_homeFeedArray count]; i++) {
             HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+             if (![tempFeed isEqual:[NSNull null]]) {
             if (feed.feed_id==tempFeed.feed_id) {
                 [_homeFeedArray replaceObjectAtIndex:i withObject:feed];
             }
+             }
         }
         [self.tableView reloadData];
     }else
@@ -178,6 +184,64 @@
     
     
 }
+
+#pragma mark - APICalls
+-(void) getWorkoutFromSelectedDay
+{
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+     _tableView.userInteractionEnabled=NO;
+    
+     NSDateComponents *selectedday = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:_CalendarselectedDate];
+    
+    NSString *dayString= [NSString stringWithFormat:@"%ld/%ld/%ld",(long)[selectedday year],(long)[selectedday month],(long)[selectedday day] ];
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",dayString, @"date",@"America/New_York", @"time_zone", nil];
+    NSString * url;
+    if (_searchId!=nil) {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],_searchId,@"/workouts"];
+    }else
+    {
+        url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] homeFeedUrl],localUser.user_id,@"/workouts"];
+    }
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+       NSDictionary *workOBJ= responseObject;
+        _tableView.userInteractionEnabled=YES;
+
+ 
+        _SelectedWkArray=[[NSMutableArray alloc] init];
+    
+            _homeFeedArray= [[NSMutableArray alloc] init];
+            [_homeFeedArray addObject:[NSNull null]];
+            
+            for (NSDictionary *workoutFeed in workOBJ) {
+                HomeFeed *wkFeed= [[FitmooHelper sharedInstance] generateHomeFeed:workoutFeed];
+                [_SelectedWkArray addObject:wkFeed];
+                [_homeFeedArray addObject:wkFeed];
+            }
+            if ([_feedType isEqualToString:@"calendar"]) {
+                [_tableView reloadData];
+            }
+            
+   
+        
+        
+        
+        //    NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+
 -(void) getCalendarItems
 {
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
@@ -377,6 +441,8 @@
      ];
 }
 
+#pragma mark -End of APICalls
+
 - (void) defineStoreFeedObjects
 {
     if (_offset==0) {
@@ -478,6 +544,52 @@
     
 }
 
+- (void) defineWorkoutsForSelectedToday
+{
+
+   
+        _SelectedWkArray=[[NSMutableArray alloc] init];
+    
+        _homeFeedArray= [[NSMutableArray alloc] init];
+        [_homeFeedArray addObject:[NSNull null]];
+        for (Workout *wk in _CalendarArray) {
+            
+            NSTimeInterval time=(NSTimeInterval ) wk.begin_time.intValue;
+            NSDate *dateFromWk = [[NSDate alloc] initWithTimeIntervalSince1970:time];
+            
+            
+            NSDateComponents *otherDay = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:dateFromWk];
+            NSDateComponents *selectedday = [[NSCalendar currentCalendar] components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:_CalendarselectedDate];
+            if([selectedday day] == [otherDay day] &&
+               [selectedday month] == [otherDay month] &&
+               [selectedday year] == [otherDay year] &&
+               [selectedday era] == [otherDay era]) {
+
+                    [_SelectedWkArray addObject:wk];
+
+            }
+        }
+    
+    
+        for (int i=0; i<[_SelectedWkArray count]; i++) {
+            Workout *wk= [_SelectedWkArray objectAtIndex:i];
+            for (HomeFeed *feed in _WorkoutFeedArray) {
+                if ([wk.feed_id isEqualToString:feed.feed_id]) {
+                    [_homeFeedArray addObject:feed];
+                }
+            }
+        }
+    
+
+    
+    
+    
+ 
+    
+}
+
+
+
 - (void) initFrames
 {
     _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
@@ -520,7 +632,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
  numberOfRowsInSection:(NSInteger)section
 {
     if ([self.feedType isEqualToString:@"calendar"]) {
-        return 3;
+        if ([_CalendarModalType isEqualToString:@"month"]) {
+            return 2;
+        }else
+        {
+            return 2+[_SelectedWkArray count];
+        }
+        
     }
     
     if(_searchId!=nil)
@@ -710,7 +828,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     //  end of first cell
-    if ([self.feedType isEqualToString:@"calendar"]) {
+    if ([self.feedType isEqualToString:@"calendar"]&&indexPath.row==1) {
         
         if (indexPath.row==1) {
             CalendarCell *cell =(CalendarCell *) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -724,14 +842,17 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 cell.calendarModleType=self.CalendarModalType;
                 cell.dateSelected=self.CalendarselectedDate;
                 [cell didChangeModeTouch];
+                contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
+                [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
             }else if ([self.CalendarModalType isEqualToString:@"month"])
             {
                 cell.dateSelected=self.CalendarselectedDate;
                 [cell didChangeModeTouch];
+                contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+115];
+                [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
             }
             
-            contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+15];
-            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+           
             
             
             return cell;
@@ -765,7 +886,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             }
         }
         
-    }else if ([self.tableType isEqualToString:@"photo"]) {
+    }else if ([self.tableType isEqualToString:@"photo"]&&![self.feedType isEqualToString:@"calendar"]) {
         
         PhotoCell *cell =(PhotoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         
@@ -1253,10 +1374,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         for (int i=0; i<[_homeFeedArray count]; i++) {
             HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
-            if (feed.feed_id==tempFeed.feed_id) {
-                [_homeFeedArray replaceObjectAtIndex:i withObject:feed];
+            if (![tempFeed isEqual:[NSNull null]]) {
+                if (feed.feed_id==tempFeed.feed_id) {
+                    [_homeFeedArray replaceObjectAtIndex:i withObject:feed];
+                }
+
             }
-        }
+            }
         [self.tableView reloadData];
         
     }else if ([feed.is_liked isEqualToString:@"1"])
@@ -1269,9 +1393,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         for (int i=0; i<[_homeFeedArray count]; i++) {
             HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:i];
+             if (![tempFeed isEqual:[NSNull null]]) {
             if (feed.feed_id==tempFeed.feed_id) {
                 [_homeFeedArray replaceObjectAtIndex:i withObject:feed];
             }
+             }
         }
         [self.tableView reloadData];
         

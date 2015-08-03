@@ -55,6 +55,7 @@
 @property (strong, nonatomic)  NSMutableArray * WorkoutFeedArray;
 @property (strong, nonatomic)  NSMutableArray * StoreFeedArray;
 @property (strong, nonatomic)  NSMutableArray * CalendarArray;
+@property (strong, nonatomic) NSMutableArray *SelectedWkArray;
 
 @property (strong, nonatomic) IBOutlet UIButton *feedButton;
 @property (strong, nonatomic) IBOutlet UIButton *workoutButton;

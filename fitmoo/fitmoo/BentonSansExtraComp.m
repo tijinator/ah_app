@@ -27,15 +27,18 @@
 
 - (void)drawRect:(CGRect)rect
 {
-   
+   if(self.text!=nil && ![self.text isEqualToString:@""])
+   {
     UIFont *font = [UIFont fontWithName:@"BentonSans-ExtraCondensedBold" size:self.font.pointSize];
     
     
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     
     [self setAttributedText:attributedString];
-    [super drawRect:rect];
     
+   }
+    
+    [super drawRect:rect];
 }
 
 @end
