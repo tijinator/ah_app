@@ -65,6 +65,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    if (self.text!=nil&&![self.text isEqualToString:@""]) {
     UIFont *font = [UIFont fontWithName:@"BentonSans" size:self.font.pointSize];
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     
@@ -83,7 +84,7 @@
     
     [self setAttributedText:attributedString];
 
-  
+    }
    //  self.frame= [[FitmooHelper sharedInstance] caculateLabelHeight:self];
   //  self.frame= CGRectMake(self.frame.origin.x, 20, self.frame.size.width, 80);
     [super drawRect:rect];

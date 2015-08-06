@@ -425,8 +425,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==[_searchArrayPeople count]+1) {
         return 310*Radio;
     }
-    
-    
     if (indexPath.row==0) {
         if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople count]==0) {
         
@@ -590,9 +588,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     float spacing = 1.0f;
     [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, @"SEARCH".length)];
     
-   // _searchTermField.attributedPlaceholder =attributedString;
-//    [_searchTermField setValue:attributedString
-//                    forKeyPath:@"_placeholderLabel.attributedText"];
     [_searchTermField setValue:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]
                     forKeyPath:@"_placeholderLabel.textColor"];
     [_searchTermField addTarget:self
@@ -609,12 +604,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _searchTermField.leftView = paddingView;
     _searchTermField.leftViewMode = UITextFieldViewModeAlways;
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardDidShow:)
-//                                                 name:UIKeyboardWillShowNotification
-//                                               object:nil];
-    
-     //[[NSNotificationCenter defaultCenter] postNotificationName:@"showBlackStatusBarHandler" object:@"1"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -628,7 +618,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _count=1;
     
     _searchArrayPeople= [[NSMutableArray alloc]init];
-  //  _searchArrayPeopleName= [[NSMutableArray alloc]init];
+
 }
 
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
@@ -638,7 +628,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (_count==0) {
         }
         _count++;
-        //it means table view is pulled down like refresh
+      
         return;
     }
     else if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height)) {
@@ -652,7 +642,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 _offset +=15;
                 
             }
-          //  [self getdiscoverItemForPeople];
             [self getSearchItemForPeople];
         }
         _count++;

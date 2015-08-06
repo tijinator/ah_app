@@ -55,6 +55,7 @@
 @property (nonatomic, strong) NSString *hide_instagram;
 
 @property (nonatomic, strong) NSString *workout_count;
+@property (nonatomic, strong) NSString *days_a_week;
 
 @property (nonatomic, strong) NSString *vanity_url;
 

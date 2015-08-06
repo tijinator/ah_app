@@ -175,6 +175,12 @@
 		27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEA1AFAB34100CF230C /* NSArray_PointArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		27410DF51AFAB34200CF230C /* Spline.m in Sources */ = {isa = PBXBuildFile; fileRef = 27410DEE1AFAB34100CF230C /* Spline.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2747E4331B72449E00F68E27 /* FollowPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747E4311B72449E00F68E27 /* FollowPhotoCell.m */; };
+		2747E4341B72449E00F68E27 /* FollowPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747E4321B72449E00F68E27 /* FollowPhotoCell.xib */; };
+		2747E4381B725DE000F68E27 /* FollowLeaderBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747E4361B725DE000F68E27 /* FollowLeaderBoardCell.m */; };
+		2747E4391B725DE000F68E27 /* FollowLeaderBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2747E4371B725DE000F68E27 /* FollowLeaderBoardCell.xib */; };
+		274824EB1B70F5BF0058452C /* SeachInterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274824E91B70F5BF0058452C /* SeachInterestCell.m */; };
+		274824EC1B70F5BF0058452C /* SeachInterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274824EA1B70F5BF0058452C /* SeachInterestCell.xib */; };
 		274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */; };
 		2752E9931B014FF1003841DC /* PhotoGalary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752E9921B014FF1003841DC /* PhotoGalary.m */; };
 		2752E9E01B015CBC003841DC /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2752E9941B015CBC003841DC /* calendar.png */; };
@@ -791,6 +797,15 @@
 		27410DEC1AFAB34100CF230C /* QuadraticBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuadraticBezierCurve.m; path = Curve/QuadraticBezierCurve.m; sourceTree = "<group>"; };
 		27410DED1AFAB34100CF230C /* Spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spline.h; path = Curve/Spline.h; sourceTree = "<group>"; };
 		27410DEE1AFAB34100CF230C /* Spline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Spline.m; path = Curve/Spline.m; sourceTree = "<group>"; };
+		2747E4301B72449E00F68E27 /* FollowPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowPhotoCell.h; sourceTree = "<group>"; };
+		2747E4311B72449E00F68E27 /* FollowPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowPhotoCell.m; sourceTree = "<group>"; };
+		2747E4321B72449E00F68E27 /* FollowPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowPhotoCell.xib; sourceTree = "<group>"; };
+		2747E4351B725DE000F68E27 /* FollowLeaderBoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowLeaderBoardCell.h; sourceTree = "<group>"; };
+		2747E4361B725DE000F68E27 /* FollowLeaderBoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowLeaderBoardCell.m; sourceTree = "<group>"; };
+		2747E4371B725DE000F68E27 /* FollowLeaderBoardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowLeaderBoardCell.xib; sourceTree = "<group>"; };
+		274824E81B70F5BF0058452C /* SeachInterestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachInterestCell.h; sourceTree = "<group>"; };
+		274824E91B70F5BF0058452C /* SeachInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachInterestCell.m; sourceTree = "<group>"; };
+		274824EA1B70F5BF0058452C /* SeachInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeachInterestCell.xib; sourceTree = "<group>"; };
 		274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoLayout.storyboard; sourceTree = "<group>"; };
 		2752E9911B014FF1003841DC /* PhotoGalary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalary.h; sourceTree = "<group>"; };
 		2752E9921B014FF1003841DC /* PhotoGalary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalary.m; sourceTree = "<group>"; };
@@ -1373,6 +1388,9 @@
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
+				274824E81B70F5BF0058452C /* SeachInterestCell.h */,
+				274824E91B70F5BF0058452C /* SeachInterestCell.m */,
+				274824EA1B70F5BF0058452C /* SeachInterestCell.xib */,
 				27989F7C1B6810FD004D7D8A /* SubTableViewCell.h */,
 				27989F7D1B6810FD004D7D8A /* SubTableViewCell.m */,
 				27989F7E1B6810FD004D7D8A /* SubTableViewCell.xib */,
@@ -1388,9 +1406,15 @@
 				2738D9361B02850300F5087E /* PhotoCell.h */,
 				2738D9371B02850300F5087E /* PhotoCell.m */,
 				2738D9381B02850300F5087E /* PhotoCell.xib */,
+				2747E4301B72449E00F68E27 /* FollowPhotoCell.h */,
+				2747E4311B72449E00F68E27 /* FollowPhotoCell.m */,
+				2747E4321B72449E00F68E27 /* FollowPhotoCell.xib */,
 				27988C8F1B0B7E7D00BDE8EB /* FollowCollectionViewCell.h */,
 				27988C901B0B7E7D00BDE8EB /* FollowCollectionViewCell.m */,
 				27988C911B0B7E7D00BDE8EB /* FollowCollectionViewCell.xib */,
+				2747E4351B725DE000F68E27 /* FollowLeaderBoardCell.h */,
+				2747E4361B725DE000F68E27 /* FollowLeaderBoardCell.m */,
+				2747E4371B725DE000F68E27 /* FollowLeaderBoardCell.xib */,
 				271DA8461B5557BF00D4E075 /* CommunityTitileCell.h */,
 				271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */,
 				271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */,
@@ -2343,6 +2367,7 @@
 				27AC92D11B066DF000BB7A0E /* selectedbars_brand@3x.png in Resources */,
 				279E57961B20B4EC0076C3B5 /* greyrightarrow@2x.png in Resources */,
 				27988CB31B0BB12500BDE8EB /* followsection_seeallpeoplebtn@2x.png in Resources */,
+				2747E4341B72449E00F68E27 /* FollowPhotoCell.xib in Resources */,
 				2752EA0E1B015CBC003841DC /* shareicon.png in Resources */,
 				27AC92D01B066DF000BB7A0E /* selectedbars_brand@2x.png in Resources */,
 				273FF5651AF7AA2C00B82DB3 /* nutritiontag.png in Resources */,
@@ -2362,6 +2387,7 @@
 				27BA5A411B6A50E500B30B62 /* store_black@3x.png in Resources */,
 				273FF5751AF7AA2C00B82DB3 /* whitearrowicon.png in Resources */,
 				27B259941B1E493F00276273 /* greycommenticon@2x.png in Resources */,
+				2747E4391B725DE000F68E27 /* FollowLeaderBoardCell.xib in Resources */,
 				27989F7B1B680B44004D7D8A /* CalendarSubCell.xib in Resources */,
 				27B259871B1E446300276273 /* blueheart.png in Resources */,
 				277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */,
@@ -2525,6 +2551,7 @@
 				2752E9F91B015CBC003841DC /* greyarrow@3x.png in Resources */,
 				27BA5A401B6A50E500B30B62 /* store_black@2x.png in Resources */,
 				279E57B81B20F0B40076C3B5 /* greywebsite@3x.png in Resources */,
+				274824EC1B70F5BF0058452C /* SeachInterestCell.xib in Resources */,
 				2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */,
 				27ADF1E01B14B1D8003A0A83 /* invalidalert@3x.png in Resources */,
 				27A101551B3342C3007B7BF3 /* search_follow@3x.png in Resources */,
@@ -2764,6 +2791,7 @@
 				273CE5A31AEE6FE000BCC66F /* UIViewController+RESideMenu.m in Sources */,
 				273CE5A11AEE6FE000BCC66F /* RECommonFunctions.m in Sources */,
 				272581FC1AD562A60059F43C /* IIViewDeckController.m in Sources */,
+				2747E4381B725DE000F68E27 /* FollowLeaderBoardCell.m in Sources */,
 				2720091C1ADAB59400CC3070 /* AsyncImageView.m in Sources */,
 				2752E9931B014FF1003841DC /* PhotoGalary.m in Sources */,
 				27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */,
@@ -2780,6 +2808,7 @@
 				27B1B46C1B1763C200F5F812 /* BaseViewController.m in Sources */,
 				27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */,
 				273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */,
+				274824EB1B70F5BF0058452C /* SeachInterestCell.m in Sources */,
 				2736B2301AF003540013B4B9 /* CameraViewController.m in Sources */,
 				2732B73F1AD849D000610821 /* Product.m in Sources */,
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
@@ -2817,6 +2846,7 @@
 				27410DF21AFAB34200CF230C /* LinearBezierCurve.m in Sources */,
 				27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */,
 				27988CC11B0BC69A00BDE8EB /* FollowCell.m in Sources */,
+				2747E4331B72449E00F68E27 /* FollowPhotoCell.m in Sources */,
 				2738D9351B026E5000F5087E /* BioViewController.m in Sources */,
 				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,

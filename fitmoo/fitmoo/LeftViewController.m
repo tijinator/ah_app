@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"settings.png",@"logout.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Follow",@"Settings",@"Logout", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"settings.png",@"logout.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Settings",@"Logout", nil];
     
     
     self.tableView = ({
@@ -193,16 +193,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
          [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"home"];
     }else if (indexPath.row==1) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"search"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
     }else if (indexPath.row==2) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
     }else if (indexPath.row==3) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"shop"];
     }else if (indexPath.row==4) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
-    }else if (indexPath.row==5) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
-    }else if (indexPath.row==6) {
+    }else if (indexPath.row==5) {
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
                                                        message:@"Are you sure you want to logout?"

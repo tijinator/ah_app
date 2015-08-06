@@ -23,4 +23,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *is_repeated;
 
+@property (nonatomic, strong) NSString *style_url;
+@property (nonatomic, strong) NSString *video_style_url;
+
 @end
