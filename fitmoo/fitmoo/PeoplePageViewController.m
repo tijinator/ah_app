@@ -846,7 +846,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 if ([_SelectedWkArray count]==0) {
                    
                     [cell addNoWorkoutLabel];
-                    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+115];
+                    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+125];
                     [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
                 }else
                 {

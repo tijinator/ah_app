@@ -46,7 +46,11 @@
         attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
 
     }
-    
+    if (self.tag==1001) {
+        float spacing = 1.0f;
+        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
+        
+    }
     
     
     

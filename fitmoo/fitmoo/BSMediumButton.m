@@ -1,31 +1,23 @@
 //
-//  BSBoldButton.m
+//  BSMediumButton.m
 //  fitmoo
 //
-//  Created by hongjian lin on 6/3/15.
+//  Created by hongjian lin on 8/7/15.
 //  Copyright (c) 2015 com.fitmoo. All rights reserved.
 //
 
-#import "BSBoldButton.h"
+#import "BSMediumButton.h"
 
-@implementation BSBoldButton
+@implementation BSMediumButton
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
-+ (BSBoldButton*) underlinedButton {
-    BSBoldButton* button = [[BSBoldButton alloc] init];
++ (BSMediumButton*) underlinedButton {
+    BSMediumButton* button = [[BSMediumButton alloc] init];
     return button ;
 }
 
 - (void) drawRect:(CGRect)rect {
     if (self.titleLabel.text!=nil&&![self.titleLabel.text isEqualToString:@""]) {
-        UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:self.titleLabel.font.pointSize];
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.titleLabel.font.pointSize];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text attributes:@{NSFontAttributeName: font}  ];
         if (self.tag==1000||self.tag==1||self.tag==2||self.tag==3) {
             float spacing = 1.5f;
@@ -41,10 +33,17 @@
         
         [self.titleLabel setAttributedText:attributedString];
         [self.titleLabel sizeToFit];
-
+        
     }
-       [super drawRect:rect];
+    [super drawRect:rect];
 }
 
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

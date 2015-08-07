@@ -293,6 +293,7 @@
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
 		278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278DF8DD1B2336A600ABF918 /* Images-2.xcassets */; };
 		279738711B1F3763005FE32B /* BSBoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 279738701B1F3763005FE32B /* BSBoldButton.m */; };
+		27974E9D1B7513BE00CBFC59 /* BSMediumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27974E9C1B7513BE00CBFC59 /* BSMediumButton.m */; };
 		27988C831B0B7C7400BDE8EB /* mainmenu_followicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C771B0B7C7400BDE8EB /* mainmenu_followicon.png */; };
 		27988C841B0B7C7400BDE8EB /* mainmenu_followicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C781B0B7C7400BDE8EB /* mainmenu_followicon@2x.png */; };
 		27988C851B0B7C7400BDE8EB /* mainmenu_followicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C791B0B7C7400BDE8EB /* mainmenu_followicon@3x.png */; };
@@ -922,6 +923,8 @@
 		278DF8DD1B2336A600ABF918 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		2797386F1B1F3763005FE32B /* BSBoldButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSBoldButton.h; sourceTree = "<group>"; };
 		279738701B1F3763005FE32B /* BSBoldButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSBoldButton.m; sourceTree = "<group>"; };
+		27974E9B1B7513BE00CBFC59 /* BSMediumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMediumButton.h; sourceTree = "<group>"; };
+		27974E9C1B7513BE00CBFC59 /* BSMediumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMediumButton.m; sourceTree = "<group>"; };
 		27988C771B0B7C7400BDE8EB /* mainmenu_followicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu_followicon.png; sourceTree = "<group>"; };
 		27988C781B0B7C7400BDE8EB /* mainmenu_followicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainmenu_followicon@2x.png"; sourceTree = "<group>"; };
 		27988C791B0B7C7400BDE8EB /* mainmenu_followicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainmenu_followicon@3x.png"; sourceTree = "<group>"; };
@@ -1446,6 +1449,8 @@
 				27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */,
 				2797386F1B1F3763005FE32B /* BSBoldButton.h */,
 				279738701B1F3763005FE32B /* BSBoldButton.m */,
+				27974E9B1B7513BE00CBFC59 /* BSMediumButton.h */,
+				27974E9C1B7513BE00CBFC59 /* BSMediumButton.m */,
 			);
 			name = CustomObjects;
 			sourceTree = "<group>";
@@ -2765,6 +2770,7 @@
 				27410DD51AFA9AEA00CF230C /* UIImage+Filters.m in Sources */,
 				273CE5A81AEE863600BCC66F /* BentonSansMedium.m in Sources */,
 				273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */,
+				27974E9D1B7513BE00CBFC59 /* BSMediumButton.m in Sources */,
 				27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */,
 				27AD266B1B18DF4D008D338D /* HomePageViewController.m in Sources */,
 				27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */,

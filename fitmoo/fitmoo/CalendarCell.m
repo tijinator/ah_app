@@ -211,14 +211,14 @@
     // Today
     if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor blueColor];
+        dayView.circleView.backgroundColor = [UIColor blackColor];
         dayView.dotView.backgroundColor = [UIColor whiteColor];
         dayView.textLabel.textColor = [UIColor whiteColor];
     }
     // Selected date
     else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor blackColor];
+        dayView.circleView.backgroundColor = [UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:153.0/255.0 alpha:1];
         dayView.dotView.backgroundColor = [UIColor whiteColor];
         dayView.textLabel.textColor = [UIColor whiteColor];
     }
@@ -341,7 +341,7 @@
 
 - (void) addNoWorkoutLabel
 {
-     UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(0, self.buttomView.frame.size.height+self.buttomView.frame.origin.y, 320*[[FitmooHelper sharedInstance] frameRadio], 30*[[FitmooHelper sharedInstance] frameRadio])];
+     UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(0, self.buttomView.frame.size.height+self.buttomView.frame.origin.y+15*[[FitmooHelper sharedInstance] frameRadio], 320*[[FitmooHelper sharedInstance] frameRadio], 30*[[FitmooHelper sharedInstance] frameRadio])];
     Label.text=@"No workouts were posted on this day.";
     Label.numberOfLines=2;
     Label.font= [UIFont fontWithName:@"BentonSans" size:(CGFloat)(14)];

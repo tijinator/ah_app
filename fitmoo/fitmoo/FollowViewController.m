@@ -42,7 +42,7 @@
     _searchArrayPeopleName= [[NSMutableArray alloc] init];
     sleep=false;
 
-    [self addActivityIndicator];
+  //  [self addActivityIndicator];
   //  [self getdiscoverItemForPeople];
  //   [self getCategoryAndLife];
     [self getDiscoverKeywords];
@@ -64,6 +64,7 @@
     _selectedKeywordId=(NSString *)[note object];
    // [self.tableview reloadData];
     [self initValuable];
+
     [self getdiscoverItemForPeople];
     [self getdiscoverBulk];
 }
@@ -350,6 +351,9 @@
         NSNumber *pd_id= [pdDic objectForKey:@"id"];
         pd.product_id= [pd_id stringValue];
         pd.title=[pdDic objectForKey:@"text"];
+        if ([pd.title isEqual:[NSNull null]]) {
+            pd.title=@"";
+        }
         
         NSDictionary *photo= [pdDic objectForKey:@"photo"];
         if (![photo isEqual:[NSNull null]]) {
@@ -447,14 +451,17 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
+   
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app", nil];
     _tableview.userInteractionEnabled=NO;
+    [self addActivityIndicator];
     NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",key];
     
     [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _tableview.userInteractionEnabled=YES;
+        [indicatorView removeFromSuperview];
+        
         NSDictionary * resDic= responseObject;
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
@@ -467,6 +474,7 @@
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              NSLog(@"Error: %@", error);
             _tableview.userInteractionEnabled=YES;
+            [indicatorView removeFromSuperview];
          } // failure callback block
      
      ];
@@ -501,6 +509,7 @@
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              sleep=false;
+            _tableview.userInteractionEnabled=YES;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     
@@ -524,11 +533,12 @@
         _responseDic2= responseObject;
         
         [self parseDiscoverKeywordDic];
-     
+        self.tableview.userInteractionEnabled=true;
         
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              self.tableview.userInteractionEnabled=true;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     
@@ -552,10 +562,11 @@
         
        
         [self parseResponseDic];
-       
+        self.tableview.userInteractionEnabled=true;
     } // success callback block
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              self.tableview.userInteractionEnabled=true;
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     
@@ -585,7 +596,7 @@
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              NSLog(@"Error: %@", error);
-             self.tableview.userInteractionEnabled=false;
+             self.tableview.userInteractionEnabled=true;
          } // failure callback block
      
      ];
@@ -596,14 +607,16 @@
 
 - (void) getdiscoverItemForPeople
 {
-
+    [self addActivityIndicator];
+    _tableview.userInteractionEnabled=NO;
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-      NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _offset];
+    
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",@"10", @"limit",_selectedKeywordId, @"id",nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_discover_users"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
@@ -618,7 +631,7 @@
      
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              NSLog(@"Error: %@", error);
-              self.tableview.userInteractionEnabled=false;
+              self.tableview.userInteractionEnabled=true;
          } // failure callback block
      
      ];
