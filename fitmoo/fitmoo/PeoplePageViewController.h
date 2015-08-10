@@ -30,6 +30,7 @@
 #import "CalendarCell.h"
 #import "SubTableViewCell.h"
 @interface PeoplePageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UIButton *addUserButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

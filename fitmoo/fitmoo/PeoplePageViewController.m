@@ -598,7 +598,7 @@
     _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:self.view];
     _rightButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:self.view];
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
-    
+    _addUserButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_addUserButton respectToSuperFrame:self.view];
     
     
 }
@@ -810,7 +810,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         
         [cell.backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        if ([temUser.bio isEqualToString:@""]||[self.feedType isEqualToString:@"calendar"]) {
+        if ([temUser.bio isEqualToString:@""]||[self.feedType isEqualToString:@"calendar"]||[self.feedType isEqualToString:@"workout"]||[self.feedType isEqualToString:@"store"]) {
             cell.buttomView.frame=CGRectMake(cell.buttomView.frame.origin.x, cell.buttomView.frame.origin.y, cell.buttomView.frame.size.width, cell.buttonView.frame.size.height+cell.buttonView.frame.origin.y);
             [cell.bioButton removeFromSuperview];
             contentHight=[NSNumber numberWithInteger:cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height] ;
@@ -1588,7 +1588,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
-
+- (IBAction)addUserButtonClick:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    
+    [self.navigationController pushViewController:inviteView animated:YES];
+}
 
 - (IBAction)WorkoutButtonClick:(id)sender {
     //   if ([_WorkoutFeedArray count]>0) {

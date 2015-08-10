@@ -339,7 +339,6 @@
 		27989F7B1B680B44004D7D8A /* CalendarSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27989F791B680B44004D7D8A /* CalendarSubCell.xib */; };
 		27989F7F1B6810FD004D7D8A /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27989F7D1B6810FD004D7D8A /* SubTableViewCell.m */; };
 		27989F801B6810FD004D7D8A /* SubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27989F7E1B6810FD004D7D8A /* SubTableViewCell.xib */; };
-		279A3ACB1B52D62D00432168 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
 		279E57821B20A5320076C3B5 /* LanchScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E57811B20A5320076C3B5 /* LanchScreen.m */; };
 		279E57921B20B4EC0076C3B5 /* greycamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57831B20B4EC0076C3B5 /* greycamera.png */; };
 		279E57931B20B4EC0076C3B5 /* greycamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57841B20B4EC0076C3B5 /* greycamera@2x.png */; };
@@ -564,6 +563,7 @@
 		27BC07CC1B1665A300AF414A /* buyicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07C91B1665A300AF414A /* buyicon.png */; };
 		27BC07CD1B1665A300AF414A /* buyicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07CA1B1665A300AF414A /* buyicon@2x.png */; };
 		27BC07CE1B1665A300AF414A /* buyicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07CB1B1665A300AF414A /* buyicon@3x.png */; };
+		27C9B4831B7928BF007B4AE7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */; };
 		27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */; };
 		27CBC0D51B0F84DB00699E1E /* bluepeopleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */; };
 		27CBC0D61B0F84DB00699E1E /* bluepeopleicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0CA1B0F84DB00699E1E /* bluepeopleicon@2x.png */; };
@@ -584,6 +584,7 @@
 		27DBA2581B6687080019C56A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA2561B6687080019C56A /* CalendarCell.m */; };
 		27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA2571B6687080019C56A /* CalendarCell.xib */; };
 		27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA25B1B66C05A0019C56A /* CalendarViewController.m */; };
+		27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1219,6 +1220,8 @@
 		27BC07C91B1665A300AF414A /* buyicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyicon.png; sourceTree = "<group>"; };
 		27BC07CA1B1665A300AF414A /* buyicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyicon@2x.png"; sourceTree = "<group>"; };
 		27BC07CB1B1665A300AF414A /* buyicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyicon@3x.png"; sourceTree = "<group>"; };
+		27C9B4811B7928BF007B4AE7 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		27CBC0C61B0F7A8000699E1E /* BentonSansCondensedMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansCondensedMedium.h; sourceTree = "<group>"; };
 		27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansCondensedMedium.m; sourceTree = "<group>"; };
 		27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluepeopleicon.png; sourceTree = "<group>"; };
@@ -1572,6 +1575,8 @@
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27CBC0E41B0FB6A200699E1E /* LocationViewController.h */,
 				27CBC0E51B0FB6A200699E1E /* LocationViewController.m */,
+				27C9B4811B7928BF007B4AE7 /* DiscoverViewController.h */,
+				27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */,
 				279A3AC91B52D62D00432168 /* FollowViewController.h */,
 				279A3ACA1B52D62D00432168 /* FollowViewController.m */,
 				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
@@ -2806,12 +2811,14 @@
 				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
 				27989F7A1B680B44004D7D8A /* CalendarSubCell.m in Sources */,
+				27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */,
 				27B1B4661B17594900F5F812 /* ForgotPdViewController.m in Sources */,
 				27410DF51AFAB34200CF230C /* Spline.m in Sources */,
 				273FF5821AF7B5F500B82DB3 /* CommentViewController.m in Sources */,
 				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,
 				272582051AD5633F0059F43C /* RightViewController.m in Sources */,
 				27B1B46C1B1763C200F5F812 /* BaseViewController.m in Sources */,
+				27C9B4831B7928BF007B4AE7 /* DiscoverViewController.m in Sources */,
 				27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */,
 				273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */,
 				274824EB1B70F5BF0058452C /* SeachInterestCell.m in Sources */,
@@ -2841,7 +2848,6 @@
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,
 				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
-				279A3ACB1B52D62D00432168 /* FollowViewController.m in Sources */,
 				27AD266E1B18DF6C008D338D /* PeoplePageViewController.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,

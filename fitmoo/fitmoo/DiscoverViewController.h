@@ -28,7 +28,7 @@
 #import "SeachInterestCell.h"
 #import "FollowPhotoCell.h"
 #import "FollowLeaderBoardCell.h"
-@interface FollowViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+@interface DiscoverViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

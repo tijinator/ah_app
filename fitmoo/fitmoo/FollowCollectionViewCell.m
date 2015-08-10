@@ -20,7 +20,7 @@
 {
     
 //    self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
-    _image.frame= CGRectMake(0, 0, 120, 120);
+    _image.frame= CGRectMake(0, 0, 100, 100);
     _image.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_image respectToSuperFrame:nil];
     
     _userLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_userLabel respectToSuperFrame:nil];

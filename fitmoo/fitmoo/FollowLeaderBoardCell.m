@@ -67,7 +67,10 @@
     _workoutWeekLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutWeekLabel respectToSuperFrame:nil];
     _workoutPostLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutPostLabel respectToSuperFrame:nil];
     
-    _seprelaterView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_seprelaterView respectToSuperFrame:nil];
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
+    _seprelaterView.frame=CGRectMake(20*radio, 74*radio, 300*radio, 1);
+    
+
     
     
    
@@ -77,18 +80,18 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
  
-    if (selected==true) {
+  //  if (selected==true) {
         _CountLabel.backgroundColor=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
         _CountLabel.textColor=[UIColor whiteColor];
         _workoutPostCount.textColor=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
         _workoutWeekCount.textColor=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0f];
-    }else
-    {
-        _CountLabel.backgroundColor=[UIColor colorWithRed:194.0/255.0 green:202.0/255.0 blue:206.0/255.0 alpha:1.0f];
-        _CountLabel.textColor=[UIColor blackColor];
-        _workoutPostCount.textColor=[UIColor colorWithRed:128.0/255.0 green:148.0/255.0 blue:160.0/255.0 alpha:1.0f];
-        _workoutWeekCount.textColor=[UIColor colorWithRed:128.0/255.0 green:148.0/255.0 blue:160.0/255.0 alpha:1.0f];
-    }
+//    }else
+//    {
+//        _CountLabel.backgroundColor=[UIColor colorWithRed:194.0/255.0 green:202.0/255.0 blue:206.0/255.0 alpha:1.0f];
+//        _CountLabel.textColor=[UIColor blackColor];
+//        _workoutPostCount.textColor=[UIColor colorWithRed:128.0/255.0 green:148.0/255.0 blue:160.0/255.0 alpha:1.0f];
+//        _workoutWeekCount.textColor=[UIColor colorWithRed:128.0/255.0 green:148.0/255.0 blue:160.0/255.0 alpha:1.0f];
+//    }
     // Configure the view for the selected state
 }
 

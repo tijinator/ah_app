@@ -66,7 +66,7 @@
 {
     
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
-    
+    double radio= [[FitmooHelper sharedInstance] frameRadio];
     
    
     
@@ -95,11 +95,11 @@
     _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
     
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:nil];
-    _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:nil];
-    _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:nil];
-    _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:nil];
-    _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:nil];
-     _view5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view5 respectToSuperFrame:nil];
+    _view1.frame= CGRectMake(_view1.frame.origin.x*radio, _view1.frame.origin.y*radio, 1, 30*radio);
+    _view2.frame= CGRectMake(_view2.frame.origin.x*radio, _view2.frame.origin.y*radio, 1, 30*radio);
+    _view3.frame= CGRectMake(_view3.frame.origin.x*radio, _view3.frame.origin.y*radio, 1, 30*radio);
+    _view4.frame= CGRectMake(_view4.frame.origin.x*radio, _view4.frame.origin.y*radio, 1, 30*radio);
+    _view5.frame= CGRectMake(_view5.frame.origin.x*radio, _view5.frame.origin.y*radio, 320*radio, 1);;
     
     _workoutLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutLabel respectToSuperFrame:nil];
     _workoutCountLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutCountLabel respectToSuperFrame:nil];

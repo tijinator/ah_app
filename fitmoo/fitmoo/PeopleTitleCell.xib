@@ -153,7 +153,7 @@
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="fS4-mf-BJM">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="1"/>
+                                        <rect key="frame" x="0.0" y="49" width="320" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
@@ -168,7 +168,6 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sPc-om-Jce">
                                 <rect key="frame" x="19" y="61" width="271" height="62"/>
@@ -222,8 +221,8 @@
                 <outlet property="view1" destination="8o5-Tn-0at" id="DuT-Rg-lvn"/>
                 <outlet property="view2" destination="CnU-MK-M8W" id="MpN-cv-Tve"/>
                 <outlet property="view3" destination="t84-Nf-E67" id="GBY-TK-QvK"/>
-                <outlet property="view4" destination="fS4-mf-BJM" id="ERl-y5-j7x"/>
-                <outlet property="view5" destination="rQi-kz-AIn" id="VLw-xk-3Fs"/>
+                <outlet property="view4" destination="rQi-kz-AIn" id="tMF-6a-dYA"/>
+                <outlet property="view5" destination="fS4-mf-BJM" id="3h0-IZ-cSo"/>
                 <outlet property="workoutButton" destination="0GF-ot-CS7" id="WwJ-dM-FRI"/>
                 <outlet property="workoutCountLabel" destination="k3h-ay-BjX" id="l6C-Mz-t6P"/>
                 <outlet property="workoutLabel" destination="JjH-IW-9pE" id="x9b-wF-SmI"/>
