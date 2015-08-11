@@ -31,7 +31,7 @@
     contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     _searchterm=@"";
-    _searchType=@"community";
+    _searchType=@"people";
     UINib *cellNib = [UINib nibWithNibName:@"FollowCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FollowCollectionViewCell"];
     
@@ -164,8 +164,7 @@
     
     _timerQueue= [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    // self.automaticallyAdjustsScrollViewInsets = NO;
-    //  _tableview.con
+   
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -238,7 +237,7 @@
 - (void) buildKeyWordDictionary
 {
     _searchArrayKeyword= [[NSMutableArray alloc] init];
-    NSArray *textArray= [[NSArray alloc] initWithObjects:@"communities",@"people",@"workouts",@"product + brands", nil];
+    NSArray *textArray= [[NSArray alloc] initWithObjects:@"people",@"communities",@"workouts",@"product + brands", nil];
     
     for (int i=0; i<[textArray count]; i++) {
         CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
@@ -291,15 +290,15 @@
 -(void) parseAllResponseBulk
 {
     _searchArrayTotalKeyword= [[NSMutableArray alloc] init];
-    
-    NSDictionary *community= [_responseDic2 objectForKey:@"communities"];
     NSDictionary *leader= [_responseDic2 objectForKey:@"leaders"];
+    NSDictionary *community= [_responseDic2 objectForKey:@"communities"];
+   
     NSDictionary *workout= [_responseDic2 objectForKey:@"workouts"];
     NSDictionary *product= [_responseDic2 objectForKey:@"products"];
     NSDictionary *user= [_responseDic2 objectForKey:@"users"];
- 
-    [_searchArrayTotalKeyword addObject:community];
     [_searchArrayTotalKeyword addObject:leader];
+    [_searchArrayTotalKeyword addObject:community];
+   
     [_searchArrayTotalKeyword addObject:workout];
     [_searchArrayTotalKeyword addObject:product];
     [_searchArrayTotalKeyword addObject:user];
@@ -316,7 +315,7 @@
 {
     NSDictionary *bulk= [_searchArrayTotalKeyword objectAtIndex:index];
     
-    if (index==0) {
+    if (index==1) {
        _searchType=@"community";
         _searchArrayCommunity= [[NSMutableArray alloc] init];
    
@@ -338,7 +337,7 @@
         }
     }
     
-    if (index==1) {
+    if (index==0) {
          _searchType=@"people";
          _searchArrayLeader= [[NSMutableArray alloc] init];
         
@@ -634,7 +633,13 @@
    
     
     if ([self.searchType isEqualToString:@"people"]) {
-         count=2+(int)[_searchArrayLeader count];
+        count=(int)[_searchArrayPeople count]/3;
+        if ([_searchArrayPeople count]%3!=0) {
+            count=count+1;
+        }
+        count=count+1+(int)[_searchArrayLeader count];
+        
+        
     }
    
     
@@ -920,7 +925,13 @@
         return cell;
     }
     
-    if ([self.searchType isEqualToString:@"people"]) {
+    
+    int count=(int)[_searchArrayPeople count]/3;
+    if ([_searchArrayPeople count]%3!=0) {
+        count=count+1;
+    }
+    count=count+1;
+    if (indexPath.row<count&&[self.searchType isEqualToString:@"people"]) {
         SearchPhotoCell *cell =(SearchPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
         
         
@@ -966,10 +977,7 @@
         if ([_searchArrayWorkouts count]%3!=0) {
             count=count+1;
         }
-        if(indexPath.row==count)
-        {
-            contentHight=[NSNumber numberWithInteger:contentHight.intValue+60];
-        }
+      
         if (indexPath.row>=[_heighArray count]) {
             [_heighArray addObject:contentHight];
         }else
@@ -1040,12 +1048,14 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowLeaderBoardCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    
+   
 
-    User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-2)];
+    User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count)];
     cell.tempUser= tempUser;
     
     [cell buildCell];
-    cell.CountLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row-1];
+    cell.CountLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row-count+1];
     
     contentHight=[NSNumber numberWithDouble:75*[[FitmooHelper sharedInstance] frameRadio]];
     if (indexPath.row>=[_heighArray count]) {
@@ -1063,10 +1073,15 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row>1)
+    
+    int count=(int)[_searchArrayPeople count]/3;
+    if ([_searchArrayPeople count]%3!=0) {
+        count=count+1;
+    }
+    if(indexPath.row>count)
     {
         
-        User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-2)];
+        User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count-1)];
         NSString* key=[NSString stringWithFormat:@"%ld", (long)tempUser.user_id.intValue+100];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
         

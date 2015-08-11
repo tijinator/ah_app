@@ -7930,11 +7930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012935.559217"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "-getAlldiscoverBulk"
             landmarkType = "5">
          </BreakpointContent>
@@ -7946,11 +7946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "460934419.128349"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-parseAllResponseBulk"
             landmarkType = "5">
          </BreakpointContent>
@@ -7962,11 +7962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012935.559217"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "-parseResponseBulk:"
             landmarkType = "5">
          </BreakpointContent>
@@ -8074,11 +8074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012935.559217"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "-parseResponseBulk:"
             landmarkType = "5">
          </BreakpointContent>
@@ -8106,11 +8106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012935.559217"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -8122,11 +8122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012935.559217"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "808"
-            endingLineNumber = "808"
+            startingLineNumber = "813"
+            endingLineNumber = "813"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -8138,11 +8138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/SearchViewController.m"
-            timestampString = "461012773.236176"
+            timestampString = "461022425.491436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "-parseResponseBulk:"
             landmarkType = "5">
          </BreakpointContent>
