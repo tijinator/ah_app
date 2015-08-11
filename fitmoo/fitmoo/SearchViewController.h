@@ -28,7 +28,8 @@
 #import "SeachInterestCell.h"
 #import "FollowPhotoCell.h"
 #import "FollowLeaderBoardCell.h"
-@interface SearchViewController : BaseViewController <UICollectionViewDataSource,UICollectionViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+#import "SearchPhotoCell.h"
+@interface SearchViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
@@ -54,6 +55,7 @@
 @property (assign, nonatomic)  int searchlimit;
 @property (assign, nonatomic)  int searchoffset;
 
+@property (strong, nonatomic)  NSString * searchType;
 @property (strong, nonatomic)  NSString * searchterm;
 @property (strong, nonatomic)  NSString * selectedKeywordId;
 //@property (strong, nonatomic)  UITextField * searchTermField;

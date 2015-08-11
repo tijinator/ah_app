@@ -102,11 +102,19 @@
 
 - (NSString *) getTextForNumber: (NSString *) numberString
 {
+    if (numberString.intValue>999999) {
+        CGFloat following=numberString.intValue/1000000.0f;
+        NSString *result= [NSString stringWithFormat:@"%0.01f%@",following,@"M"];
+        return result;
+    }
+    
     if (numberString.intValue>999) {
         CGFloat following=numberString.intValue/1000.0f;
         NSString *result= [NSString stringWithFormat:@"%0.01f%@",following,@"K"];
         return result;
     }
+    
+  
     
     return numberString;
 }

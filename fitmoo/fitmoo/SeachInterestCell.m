@@ -11,6 +11,12 @@
 @implementation SeachInterestCell
 
 - (void)awakeFromNib {
+    
+    UIColor * color1=[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1];
+    UIColor * color2=[UIColor colorWithRed:247.0/255.0 green:147.0/255.0 blue:30.0/255.0 alpha:1];
+    UIColor * color3=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1];
+    
+    _colorArray= [[NSMutableArray alloc] initWithObjects:color2,color1,color3,color2,  nil];
     // Initialization code
 }
 
@@ -24,8 +30,6 @@
         [_scrollView removeFromSuperview];
         _scrollView=nil;
     }
-    
-    
   
     _scrollView= [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 140)];
     _scrollView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_scrollView respectToSuperFrame:nil];
@@ -36,6 +40,54 @@
     
     int x =0;
     int scrollToX=0;
+    double frameRadio= [[FitmooHelper sharedInstance] frameRadio];
+    if ([self.searchType isEqualToString:@"discover"]) {
+        for (int i=0; i<[_searchArrayKeyword count]; i++) {
+            CreatedByCommunity *keyword= [_searchArrayKeyword objectAtIndex:i];
+            _scrollView.backgroundColor=[UIColor blackColor];
+            UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(x+(35*frameRadio), 70*frameRadio, 250*frameRadio, 30*frameRadio)];
+            titleLabel.text=keyword.name;
+            
+            UIColor *color= [_colorArray objectAtIndex:i];
+            titleLabel.textColor=color;
+            titleLabel.numberOfLines=3;
+            titleLabel.textAlignment=NSTextAlignmentCenter;
+            
+            UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
+            NSString *string= titleLabel.text;
+            NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string.uppercaseString attributes:@{NSFontAttributeName: font}  ];
+            float spacing = 1.5f;
+            [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [titleLabel.text length])];
+            [titleLabel setAttributedText:attributedString];
+            
+            [_scrollView addSubview:titleLabel];
+            
+            UILabel *titleLabel1= [[UILabel alloc] initWithFrame:CGRectMake(x+(35*frameRadio), 50*frameRadio, 250*frameRadio, 30*frameRadio)];
+            titleLabel1.text=@"trending";
+            
+        
+            titleLabel1.textColor=[UIColor whiteColor];
+            titleLabel1.textAlignment=NSTextAlignmentCenter;
+            
+            UIFont *font1 = [UIFont fontWithName:@"BentonSans-Bold" size:14];
+            NSString *string1= @"trending";
+            NSMutableAttributedString *attributedString1= [[NSMutableAttributedString alloc] initWithString:string1.uppercaseString attributes:@{NSFontAttributeName: font1}  ];
+
+            [attributedString1 addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [titleLabel1.text length])];
+            [titleLabel1 setAttributedText:attributedString1];
+            
+            [_scrollView addSubview:titleLabel1];
+
+            
+            
+            if ([_selectedKeywordId isEqualToString:keyword.created_by_community_id]) {
+                scrollToX=x;
+            }
+            x= x+ _scrollView.frame.size.width;
+
+        }
+    }else
+    {
    
     for (int i=0; i<[_searchArrayKeyword count]; i++) {
         CreatedByCommunity *keyword= [_searchArrayKeyword objectAtIndex:i];
@@ -47,7 +99,7 @@
         scrollImage.contentMode = UIViewContentModeScaleToFill;
         [_scrollView addSubview:scrollImage];
         
-        double frameRadio= [[FitmooHelper sharedInstance] frameRadio];
+      
         UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(x+(85*frameRadio), 25*frameRadio, 150*frameRadio, 90*frameRadio)];
         titleLabel.text=keyword.name;
         titleLabel.textColor=[UIColor whiteColor];
@@ -67,18 +119,14 @@
             scrollToX=x;
         }
         x= x+ _scrollView.frame.size.width;
-        
+    }
       
         
     }
 
     
-    
-    
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * [_searchArrayKeyword count], self.scrollView.frame.size.height);
-  
     [self.scrollView setContentOffset:CGPointMake(scrollToX, 0) animated:NO];
-    
     [self.contentView addSubview:_scrollView];
 }
 

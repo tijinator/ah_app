@@ -15,7 +15,8 @@
 - (void) addScrollView;
 @property (strong, nonatomic)  NSString * selectedKeywordId;
 @property (strong, nonatomic)  NSMutableArray * searchArrayKeyword;
+@property (strong, nonatomic)  NSMutableArray * colorArray;
 @property (assign, nonatomic)  int * selectedIndex;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-
+@property (strong, nonatomic)  NSString * searchType;
 @end

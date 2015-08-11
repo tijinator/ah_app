@@ -563,7 +563,11 @@
 		27BC07CC1B1665A300AF414A /* buyicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07C91B1665A300AF414A /* buyicon.png */; };
 		27BC07CD1B1665A300AF414A /* buyicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07CA1B1665A300AF414A /* buyicon@2x.png */; };
 		27BC07CE1B1665A300AF414A /* buyicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07CB1B1665A300AF414A /* buyicon@3x.png */; };
-		27C9B4831B7928BF007B4AE7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */; };
+		27C0A6F81B7A498F00BA3612 /* SearchPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C0A6F61B7A498F00BA3612 /* SearchPhotoCell.m */; };
+		27C0A6F91B7A498F00BA3612 /* SearchPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6F71B7A498F00BA3612 /* SearchPhotoCell.xib */; };
+		27C0A6FD1B7A893C00BA3612 /* whiteuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FA1B7A893C00BA3612 /* whiteuser.png */; };
+		27C0A6FE1B7A893C00BA3612 /* whiteuser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */; };
+		27C0A6FF1B7A893C00BA3612 /* whiteuser@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */; };
 		27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */; };
 		27CBC0D51B0F84DB00699E1E /* bluepeopleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */; };
 		27CBC0D61B0F84DB00699E1E /* bluepeopleicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0CA1B0F84DB00699E1E /* bluepeopleicon@2x.png */; };
@@ -1220,8 +1224,12 @@
 		27BC07C91B1665A300AF414A /* buyicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyicon.png; sourceTree = "<group>"; };
 		27BC07CA1B1665A300AF414A /* buyicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyicon@2x.png"; sourceTree = "<group>"; };
 		27BC07CB1B1665A300AF414A /* buyicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyicon@3x.png"; sourceTree = "<group>"; };
-		27C9B4811B7928BF007B4AE7 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
-		27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		27C0A6F51B7A498F00BA3612 /* SearchPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPhotoCell.h; sourceTree = "<group>"; };
+		27C0A6F61B7A498F00BA3612 /* SearchPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPhotoCell.m; sourceTree = "<group>"; };
+		27C0A6F71B7A498F00BA3612 /* SearchPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPhotoCell.xib; sourceTree = "<group>"; };
+		27C0A6FA1B7A893C00BA3612 /* whiteuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteuser.png; sourceTree = "<group>"; };
+		27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteuser@2x.png"; sourceTree = "<group>"; };
+		27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteuser@3x.png"; sourceTree = "<group>"; };
 		27CBC0C61B0F7A8000699E1E /* BentonSansCondensedMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansCondensedMedium.h; sourceTree = "<group>"; };
 		27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansCondensedMedium.m; sourceTree = "<group>"; };
 		27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluepeopleicon.png; sourceTree = "<group>"; };
@@ -1409,6 +1417,9 @@
 				27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */,
 				27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */,
 				27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */,
+				27C0A6F51B7A498F00BA3612 /* SearchPhotoCell.h */,
+				27C0A6F61B7A498F00BA3612 /* SearchPhotoCell.m */,
+				27C0A6F71B7A498F00BA3612 /* SearchPhotoCell.xib */,
 				2738D9361B02850300F5087E /* PhotoCell.h */,
 				2738D9371B02850300F5087E /* PhotoCell.m */,
 				2738D9381B02850300F5087E /* PhotoCell.xib */,
@@ -1575,8 +1586,6 @@
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27CBC0E41B0FB6A200699E1E /* LocationViewController.h */,
 				27CBC0E51B0FB6A200699E1E /* LocationViewController.m */,
-				27C9B4811B7928BF007B4AE7 /* DiscoverViewController.h */,
-				27C9B4821B7928BF007B4AE7 /* DiscoverViewController.m */,
 				279A3AC91B52D62D00432168 /* FollowViewController.h */,
 				279A3ACA1B52D62D00432168 /* FollowViewController.m */,
 				27250CF71AF902D7005FC4C5 /* SettingViewController.h */,
@@ -1699,6 +1708,9 @@
 				279E57831B20B4EC0076C3B5 /* greycamera.png */,
 				279E57841B20B4EC0076C3B5 /* greycamera@2x.png */,
 				279E57851B20B4EC0076C3B5 /* greycamera@3x.png */,
+				27C0A6FA1B7A893C00BA3612 /* whiteuser.png */,
+				27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */,
+				27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */,
 				273D6DEA1B505B1300A56CCD /* joinbtn.png */,
 				273D6DEB1B505B1300A56CCD /* joinbtn@2x.png */,
 				273D6DEC1B505B1300A56CCD /* joinbtn@3x.png */,
@@ -2298,6 +2310,7 @@
 				27ADF1D81B14B1D8003A0A83 /* facebookbtn.png in Resources */,
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
 				27988CCB1B0BE4C500BDE8EB /* shopscreen@3x.png in Resources */,
+				27C0A6FE1B7A893C00BA3612 /* whiteuser@2x.png in Resources */,
 				2752E9E91B015CBC003841DC /* deselectedsquare@3x.png in Resources */,
 				273D6DF21B505B1300A56CCD /* joinbtn@3x.png in Resources */,
 				27988CAE1B0BB12500BDE8EB /* followsection_followingbtn@3x.png in Resources */,
@@ -2399,6 +2412,7 @@
 				27B259941B1E493F00276273 /* greycommenticon@2x.png in Resources */,
 				2747E4391B725DE000F68E27 /* FollowLeaderBoardCell.xib in Resources */,
 				27989F7B1B680B44004D7D8A /* CalendarSubCell.xib in Resources */,
+				27C0A6F91B7A498F00BA3612 /* SearchPhotoCell.xib in Resources */,
 				27B259871B1E446300276273 /* blueheart.png in Resources */,
 				277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */,
 				27ACD0FB1B0A708C00322ED5 /* workouttag@2x.png in Resources */,
@@ -2611,6 +2625,7 @@
 				27A1015D1B3342C3007B7BF3 /* searchfollowingbtn@2x.png in Resources */,
 				27ADF1E81B14B1D8003A0A83 /* loginimage@2x.png in Resources */,
 				27A101561B3342C3007B7BF3 /* search.png in Resources */,
+				27C0A6FF1B7A893C00BA3612 /* whiteuser@3x.png in Resources */,
 				2752EA281B015CBC003841DC /* whitearrow@3x.png in Resources */,
 				273FF54E1AF7AA2C00B82DB3 /* addusericon.png in Resources */,
 				2752EA2A1B015CBC003841DC /* x@2x.png in Resources */,
@@ -2640,6 +2655,7 @@
 				27A101871B334554007B7BF3 /* notification@2x.png in Resources */,
 				27ADF1CF1B14B1D8003A0A83 /* continuebluebar.png in Resources */,
 				2752EA161B015CBC003841DC /* whitecommenticon@3x.png in Resources */,
+				27C0A6FD1B7A893C00BA3612 /* whiteuser.png in Resources */,
 				273FF5661AF7AA2C00B82DB3 /* pausebtn.png in Resources */,
 				27988CB71B0BB12500BDE8EB /* followsection_smallfollowbtn@3x.png in Resources */,
 				276094461AD708C100A769CE /* BentonSans-ExtraLight.otf in Resources */,
@@ -2818,7 +2834,6 @@
 				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,
 				272582051AD5633F0059F43C /* RightViewController.m in Sources */,
 				27B1B46C1B1763C200F5F812 /* BaseViewController.m in Sources */,
-				27C9B4831B7928BF007B4AE7 /* DiscoverViewController.m in Sources */,
 				27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */,
 				273CE5A21AEE6FE000BCC66F /* RESideMenu.m in Sources */,
 				274824EB1B70F5BF0058452C /* SeachInterestCell.m in Sources */,
@@ -2846,6 +2861,7 @@
 				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
 				27B1B4691B175FE100F5F812 /* NavigationViewController.m in Sources */,
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
+				27C0A6F81B7A498F00BA3612 /* SearchPhotoCell.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,
 				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
 				27AD266E1B18DF6C008D338D /* PeoplePageViewController.m in Sources */,

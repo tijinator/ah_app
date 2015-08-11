@@ -12,6 +12,7 @@
 #import "AsyncImageView.h"
 #import "Product.h"
 #import "CreatedByCommunity.h"
+#import "User.h"
 @implementation FollowPhotoCell
 
 - (void)awakeFromNib {
@@ -179,6 +180,39 @@
             }
             
         }
+        
+        if ([_cellType isEqualToString:@"people"]) {
+            if (i==0) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view1Button Icon:_view1VideoIcon];
+            }else if (i==1) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view2Button Icon:_view2VideoIcon];
+            }else if (i==2) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view3Button Icon:_view3VideoIcon];
+            }else if (i==3) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view4Button Icon:_view4VideoIcon];
+            }else if (i==4) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view5Button Icon:_view5VideoIcon];
+            }else if (i==5) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view6Button Icon:_view6VideoIcon];
+            }else if (i==6) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view7Button Icon:_view7VideoIcon];
+            }else if (i==7) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view8Button Icon:_view8VideoIcon];
+            }else if (i==8) {
+                User *tempUser= [_cellArray objectAtIndex:i];
+                [self setViewItemWith:tempUser.name photo:tempUser.profile_avatar_thumb video:nil button:_view9Button Icon:_view9VideoIcon];
+            }
+            
+        }
+
 
     }
     

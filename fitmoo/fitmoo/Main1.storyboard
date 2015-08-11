@@ -311,10 +311,10 @@
             </objects>
             <point key="canvasLocation" x="1323" y="250"/>
         </scene>
-        <!--Search View Controller-->
+        <!--View Controller-->
         <scene sceneID="fvi-ax-eac">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGD-ur-5Is" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="XGD-ur-5Is" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T11-y1-olH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

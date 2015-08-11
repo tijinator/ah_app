@@ -751,18 +751,6 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    if (![_searchTermField.text isEqualToString:@""]) {
-        if ([_searchArrayPeople1 count]==0) {
-            
-            if (![searchPeopleName isEqualToString:@""]&&searchPeopleName!=nil) {
-                return 1;
-            }
-            
-            return 0;
-        }
-        return [_searchArrayPeople1 count]+2;
-
-    }
     
     int count=9+(int)[_searchArrayLeader count];
     return count;
@@ -775,139 +763,6 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-     if (![_searchTermField.text isEqualToString:@""]) {
-         
-         if (indexPath.row==0) {
-             if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-                 UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell3"];
-                 
-                 UILabel *text= (UILabel *) [Cell viewWithTag:1001];
-                 text.frame=CGRectMake(0, 21, 320, 27);
-                 text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
-                 
-                 UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
-                 inviteButton.frame=CGRectMake(81, 56, 157, 30);
-                 inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
-                 [inviteButton addTarget:self action:@selector(addUserButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-                 return Cell;
-                 
-             }
-             
-             
-             UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell4"];
-             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
-             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, tableView.frame.size.width, 20)];
-             
-             NSString *string= @"PROFILES + BRANDS";
-             
-             [label setBackgroundColor:[UIColor clearColor]];
-             [label setText:string];
-             [label setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]];
-             UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12];
-             NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font}  ];
-             
-             float spacing = 1.0f;
-             [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [string length])];
-             
-             [label setAttributedText:attributedString];
-             cell.selectionStyle= UITableViewCellSelectionStyleNone;
-             
-             [view addSubview:label];
-             
-             [view setBackgroundColor:[UIColor whiteColor]];
-             [cell.contentView addSubview:view];
-             return cell;
-             
-             
-         }
-         
-         //last cell
-         if (indexPath.row==[_searchArrayPeople1 count]+1) {
-             UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell3"];
-             
-             UILabel *text= (UILabel *) [Cell viewWithTag:1001];
-             text.frame=CGRectMake(0, 21, 320, 27);
-             text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
-             
-             UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
-             inviteButton.frame=CGRectMake(81, 56, 157, 30);
-             inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
-             [inviteButton addTarget:self action:@selector(addUserButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-             return Cell;
-         }
-         
-         
-         UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell4"];
-         @try {
-             UIButton *imageview=[[UIButton alloc] init];
-             imageview.frame= CGRectMake(15, 15, 35, 35);
-             imageview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageview respectToSuperFrame:self.view];
-             UILabel *nameLabel=[[UILabel alloc] init];
-             nameLabel.frame= CGRectMake(63, 11, 125, 42);
-             nameLabel.numberOfLines=2;
-             nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
-             
-             UIButton * followButton= [[UIButton alloc] init];
-             followButton.frame= CGRectMake(210, 14, 100, 31);
-             followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
-             
-             UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
-             view.clipsToBounds=YES;
-             view.layer.cornerRadius=view.frame.size.width/2;
-             User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
-             nameLabel.text= temUser.name;
-             // nameLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
-             UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
-             NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
-             
-             [nameLabel setAttributedText:attributedString];
-             
-             
-             AsyncImageView *userImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
-             [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:userImage];
-             userImage.imageURL =[NSURL URLWithString:temUser.profile_avatar_thumb];
-             
-             [view addSubview:userImage];
-             [imageview addSubview:view];
-             
-             [followButton setTag:indexPath.row+100];
-             
-             
-             if ([temUser.is_following isEqualToString:@"0"]) {
-                 
-                 [followButton setBackgroundImage:[UIImage imageNamed:@"searchfollowbtn.png"] forState:UIControlStateNormal];
-                 
-             }else
-             {
-                 [followButton setBackgroundImage:[UIImage imageNamed:@"searchfollowingbtn.png"] forState:UIControlStateNormal];
-             }
-             [followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-             
-             [cell.contentView addSubview:imageview];
-             [cell.contentView addSubview:followButton];
-             [cell.contentView addSubview:nameLabel];
-             cell.selectionStyle= UITableViewCellSelectionStyleNone;
-             
-             UIView *v= [[UIView alloc] initWithFrame:CGRectMake(55, 59, 270, 1)];
-             if (indexPath.row==[_searchArrayPeople1 count]) {
-                 v= [[UIView alloc] initWithFrame:CGRectMake(5, 59, 310, 1)];
-             }
-             
-             v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
-             v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
-             [cell.contentView addSubview:v];
-             v.frame= CGRectMake(v.frame.origin.x, v.frame.origin.y, v.frame.size.width, 1);
-         }
-         @catch (NSException * e) {
-             NSLog(@"Exception: %@", e);
-         }
-         
-         
-         
-         return cell;
-
-         
-     }
     
     
     if (indexPath.row==0) {
@@ -919,6 +774,7 @@
         }
         cell.searchArrayKeyword=self.searchArrayKeyword;
         cell.selectedKeywordId=self.selectedKeywordId;
+        cell.searchType=@"search";
         [cell addScrollView];
         
         
@@ -1152,21 +1008,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (![_searchTermField.text isEqualToString:@""]) {
-        double Radio= self.view.frame.size.width / 320;
-        
-        if (indexPath.row==[_searchArrayPeople1 count]+1) {
-            return 310*Radio;
-        }
-        if (indexPath.row==0) {
-            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-                
-                return 310*Radio;
-            }
-        }
-        return 60*Radio;
-    }
-        
+    
         NSNumber *height;
         if (indexPath.row<[_heighArray count]) {
             height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -1182,21 +1024,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    if (![_searchTermField.text isEqualToString:@""]) {
-    double Radio= self.view.frame.size.width / 320;
-    
-    if (indexPath.row==[_searchArrayPeople1 count]+1) {
-        return 310*Radio;
-    }
-    if (indexPath.row==0) {
-        if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-            
-            return 310*Radio;
-        }
-    }
-    return 60*Radio;
-    }
-
+   
         NSNumber *height;
         if (indexPath.row<[_heighArray count]) {
             height= (NSNumber *)[_heighArray objectAtIndex:indexPath.row];
@@ -1314,38 +1142,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
-    if (![_searchTermField.text isEqualToString:@""]) {
-        if(self.tableview.contentOffset.y<-75){
-            if (_count==0) {
-            }
-            _count++;
-            
-            return;
-        }
-        else if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height)) {
-            
-            
-            if (_count==0) {
-                if (self.tableview.contentOffset.y<0) {
-                    _searchoffset =0;
-                }else
-                {
-                    _searchoffset +=15;
-                    
-                }
-                [self getSearchItemForPeople];
-            }
-            _count++;
-            
-            
-        }else
-        {
-            _count=0;
-        }
-
-    }else
-    {
-   
+    
     
     if(self.collectionView.contentOffset.x<-75){
         if (_count==0) {
@@ -1377,7 +1174,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         _count=0;
     }
-    }
+    
     
 }
 

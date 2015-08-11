@@ -863,30 +863,38 @@
                                             <action selector="backButtonClick:" destination="hcf-6K-sfu" eventType="touchUpInside" id="hkm-le-p5x"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" clearButtonMode="always" id="GLV-9G-Ceb">
-                                        <rect key="frame" x="46" y="23" width="269" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISCOVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KFc-37-zNI" customClass="BentonSansBold">
+                                        <rect key="frame" x="102" y="28" width="116" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E6y-uN-aVY">
+                                        <rect key="frame" x="290" y="29" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="adduser.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
-                                            <outlet property="delegate" destination="hcf-6K-sfu" id="EjT-y9-Ifv"/>
+                                            <action selector="addUserButtonClick:" destination="hfy-7c-KzY" eventType="touchUpInside" id="69r-VH-HoM"/>
+                                            <action selector="addUserButtonClick:" destination="hcf-6K-sfu" eventType="touchUpInside" id="ON8-sy-3pc"/>
                                         </connections>
-                                    </textField>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="addUser" destination="E6y-uN-aVY" id="dTO-Nb-HOr"/>
                         <outlet property="bodyView" destination="2zC-0M-YXb" id="QFw-vi-yE4"/>
                         <outlet property="collectionView" destination="gVe-QY-vJI" id="kdb-wm-RK1"/>
                         <outlet property="featerLabel" destination="D0H-lz-Wx5" id="BKX-B0-C9R"/>
                         <outlet property="headerView" destination="GBq-xL-cLX" id="e8D-F5-m4I"/>
                         <outlet property="leftButton" destination="Hi6-gv-gU1" id="GAU-cR-xrV"/>
-                        <outlet property="searchTermField" destination="GLV-9G-Ceb" id="Qgq-0Z-WDs"/>
                         <outlet property="tableview" destination="zbf-m4-Zy2" id="7sf-tA-Mrb"/>
+                        <outlet property="titleLabel" destination="KFc-37-zNI" id="PbO-bz-3he"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDi-R1-2fu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2657,35 +2665,6 @@ instructions to reset your password.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="vkE-Q3-qz7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURED PEOPLE + BRANDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VuH-JM-tRA" customClass="BentonSansBold">
-                                        <rect key="frame" x="15" y="15" width="226" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ceg-bL-WKW">
-                                        <rect key="frame" x="0.0" y="45" width="320" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uBr-RT-g3T">
-                                            <size key="itemSize" width="101" height="210"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="zjv-Fg-93d" id="NxY-mr-hXx"/>
-                                            <outlet property="delegate" destination="zjv-Fg-93d" id="Cm6-Bl-kKH"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="372" sectionHeaderHeight="22" sectionFooterHeight="22" id="COz-vU-XOm">
                                 <rect key="frame" x="0.0" y="60" width="320" height="510"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2808,9 +2787,6 @@ instructions to reset your password.</string>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="bodyView" destination="vkE-Q3-qz7" id="HKS-MP-zvq"/>
-                        <outlet property="collectionView" destination="ceg-bL-WKW" id="A4L-UH-gat"/>
-                        <outlet property="featerLabel" destination="VuH-JM-tRA" id="2KD-a2-LlW"/>
                         <outlet property="headerView" destination="t8c-SZ-Wlx" id="T6s-8T-MRh"/>
                         <outlet property="leftButton" destination="As9-LT-jgF" id="4co-9b-ju4"/>
                         <outlet property="searchTermField" destination="zKQ-Nr-uc7" id="zA8-mb-S5a"/>
