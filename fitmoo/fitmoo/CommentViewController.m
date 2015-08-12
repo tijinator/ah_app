@@ -355,9 +355,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
    // [self moveUpView:_buttomView];
-    textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+//    textField.spellCheckingType = UITextSpellCheckingTypeNo;
+//    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
 }
 

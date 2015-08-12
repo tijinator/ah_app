@@ -30,6 +30,8 @@
         label.textAlignment= NSTextAlignmentCenter;
         label.numberOfLines=3;
         label.text=text;
+        label.textColor=[UIColor whiteColor];
+        label.backgroundColor=[UIColor clearColor];
         
         UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
@@ -89,30 +91,39 @@
             if (i==0) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view1Button Icon:_view1VideoIcon];
+                _view1.backgroundColor=[UIColor blackColor];
             }else if (i==1) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view2Button Icon:_view2VideoIcon];
+                 _view2.backgroundColor=[UIColor blackColor];
             }else if (i==2) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view3Button Icon:_view3VideoIcon];
+                 _view3.backgroundColor=[UIColor blackColor];
             }else if (i==3) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view4Button Icon:_view4VideoIcon];
+                 _view4.backgroundColor=[UIColor blackColor];
             }else if (i==4) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view5Button Icon:_view5VideoIcon];
+                   _view5.backgroundColor=[UIColor blackColor];
             }else if (i==5) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view6Button Icon:_view6VideoIcon];
+                   _view6.backgroundColor=[UIColor blackColor];
             }else if (i==6) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view7Button Icon:_view7VideoIcon];
+                   _view7.backgroundColor=[UIColor blackColor];
             }else if (i==7) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view8Button Icon:_view8VideoIcon];
+                   _view8.backgroundColor=[UIColor blackColor];
             }else if (i==8) {
                 Workout *wk= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:wk.title photo:wk.style_url video:wk.video_style_url button:_view9Button Icon:_view9VideoIcon];
+                   _view9.backgroundColor=[UIColor blackColor];
             }
 
         }
@@ -121,30 +132,39 @@
             if (i==0) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view1Button Icon:_view1VideoIcon];
+                 _view1.backgroundColor=[UIColor blackColor];
             }else if (i==1) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view2Button Icon:_view2VideoIcon];
+                 _view2.backgroundColor=[UIColor blackColor];
             }else if (i==2) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view3Button Icon:_view3VideoIcon];
+                 _view3.backgroundColor=[UIColor blackColor];
             }else if (i==3) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view4Button Icon:_view4VideoIcon];
+                 _view4.backgroundColor=[UIColor blackColor];
             }else if (i==4) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view5Button Icon:_view5VideoIcon];
+                 _view5.backgroundColor=[UIColor blackColor];
             }else if (i==5) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view6Button Icon:_view6VideoIcon];
+                 _view6.backgroundColor=[UIColor blackColor];
             }else if (i==6) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view7Button Icon:_view7VideoIcon];
+                 _view7.backgroundColor=[UIColor blackColor];
             }else if (i==7) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view8Button Icon:_view8VideoIcon];
+                 _view8.backgroundColor=[UIColor blackColor];
             }else if (i==8) {
                 Product *pd= [_cellArray objectAtIndex:i];
                 [self setViewItemWith:pd.title photo:pd.photo video:pd.videos button:_view9Button Icon:_view9VideoIcon];
+                _view9.backgroundColor=[UIColor blackColor];
             }
             
         }

@@ -588,6 +588,15 @@
 		27DBA2581B6687080019C56A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA2561B6687080019C56A /* CalendarCell.m */; };
 		27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA2571B6687080019C56A /* CalendarCell.xib */; };
 		27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA25B1B66C05A0019C56A /* CalendarViewController.m */; };
+		27DDF4341B7B7C140011BB46 /* searchleftarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF42B1B7B7C140011BB46 /* searchleftarrow.png */; };
+		27DDF4351B7B7C140011BB46 /* searchleftarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF42C1B7B7C140011BB46 /* searchleftarrow@2x.png */; };
+		27DDF4361B7B7C140011BB46 /* searchleftarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF42D1B7B7C140011BB46 /* searchleftarrow@3x.png */; };
+		27DDF4371B7B7C140011BB46 /* searchrightarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF42E1B7B7C140011BB46 /* searchrightarrow.png */; };
+		27DDF4381B7B7C140011BB46 /* searchrightarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF42F1B7B7C140011BB46 /* searchrightarrow@2x.png */; };
+		27DDF4391B7B7C140011BB46 /* searchrightarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF4301B7B7C140011BB46 /* searchrightarrow@3x.png */; };
+		27DDF43A1B7B7C140011BB46 /* workoutdefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF4311B7B7C140011BB46 /* workoutdefault.png */; };
+		27DDF43B1B7B7C140011BB46 /* workoutdefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF4321B7B7C140011BB46 /* workoutdefault@2x.png */; };
+		27DDF43C1B7B7C140011BB46 /* workoutdefault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF4331B7B7C140011BB46 /* workoutdefault@3x.png */; };
 		27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -1257,6 +1266,15 @@
 		27DBA2571B6687080019C56A /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		27DBA25A1B66C05A0019C56A /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		27DBA25B1B66C05A0019C56A /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		27DDF42B1B7B7C140011BB46 /* searchleftarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchleftarrow.png; sourceTree = "<group>"; };
+		27DDF42C1B7B7C140011BB46 /* searchleftarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchleftarrow@2x.png"; sourceTree = "<group>"; };
+		27DDF42D1B7B7C140011BB46 /* searchleftarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchleftarrow@3x.png"; sourceTree = "<group>"; };
+		27DDF42E1B7B7C140011BB46 /* searchrightarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchrightarrow.png; sourceTree = "<group>"; };
+		27DDF42F1B7B7C140011BB46 /* searchrightarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchrightarrow@2x.png"; sourceTree = "<group>"; };
+		27DDF4301B7B7C140011BB46 /* searchrightarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchrightarrow@3x.png"; sourceTree = "<group>"; };
+		27DDF4311B7B7C140011BB46 /* workoutdefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workoutdefault.png; sourceTree = "<group>"; };
+		27DDF4321B7B7C140011BB46 /* workoutdefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workoutdefault@2x.png"; sourceTree = "<group>"; };
+		27DDF4331B7B7C140011BB46 /* workoutdefault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workoutdefault@3x.png"; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1711,6 +1729,15 @@
 				27C0A6FA1B7A893C00BA3612 /* whiteuser.png */,
 				27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */,
 				27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */,
+				27DDF42B1B7B7C140011BB46 /* searchleftarrow.png */,
+				27DDF42C1B7B7C140011BB46 /* searchleftarrow@2x.png */,
+				27DDF42D1B7B7C140011BB46 /* searchleftarrow@3x.png */,
+				27DDF42E1B7B7C140011BB46 /* searchrightarrow.png */,
+				27DDF42F1B7B7C140011BB46 /* searchrightarrow@2x.png */,
+				27DDF4301B7B7C140011BB46 /* searchrightarrow@3x.png */,
+				27DDF4311B7B7C140011BB46 /* workoutdefault.png */,
+				27DDF4321B7B7C140011BB46 /* workoutdefault@2x.png */,
+				27DDF4331B7B7C140011BB46 /* workoutdefault@3x.png */,
 				273D6DEA1B505B1300A56CCD /* joinbtn.png */,
 				273D6DEB1B505B1300A56CCD /* joinbtn@2x.png */,
 				273D6DEC1B505B1300A56CCD /* joinbtn@3x.png */,
@@ -2293,6 +2320,7 @@
 				27A1015E1B3342C3007B7BF3 /* searchfollowingbtn@3x.png in Resources */,
 				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
 				27ADF1DE1B14B1D8003A0A83 /* invalidalert.png in Resources */,
+				27DDF4371B7B7C140011BB46 /* searchrightarrow.png in Resources */,
 				27A101841B334554007B7BF3 /* newposts@2x.png in Resources */,
 				27988CAB1B0BB12500BDE8EB /* followsection_followbtn@3x.png in Resources */,
 				273FF55E1AF7AA2C00B82DB3 /* greyleftarrow.png in Resources */,
@@ -2314,6 +2342,7 @@
 				2752E9E91B015CBC003841DC /* deselectedsquare@3x.png in Resources */,
 				273D6DF21B505B1300A56CCD /* joinbtn@3x.png in Resources */,
 				27988CAE1B0BB12500BDE8EB /* followsection_followingbtn@3x.png in Resources */,
+				27DDF4391B7B7C140011BB46 /* searchrightarrow@3x.png in Resources */,
 				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
 				273D6DF41B505B1300A56CCD /* leavebtn@2x.png in Resources */,
 				273FF5571AF7AA2C00B82DB3 /* endorsetextbackground.png in Resources */,
@@ -2337,6 +2366,7 @@
 				27B2599B1B1E494900276273 /* greyhearticon@3x.png in Resources */,
 				278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */,
 				2738D92E1B02456800F5087E /* selectedsquares@3x.png in Resources */,
+				27DDF4341B7B7C140011BB46 /* searchleftarrow.png in Resources */,
 				27AC92D61B066DF700BB7A0E /* selectedbars@2x.png in Resources */,
 				279E57BE1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png in Resources */,
 				273FF57E1AF7AA2C00B82DB3 /* whitexicon.png in Resources */,
@@ -2385,6 +2415,7 @@
 				273FF5561AF7AA2C00B82DB3 /* endorsedicon.png in Resources */,
 				27A1017C1B334554007B7BF3 /* follow@3x.png in Resources */,
 				27ADF1E71B14B1D8003A0A83 /* loginimage.png in Resources */,
+				27DDF4361B7B7C140011BB46 /* searchleftarrow@3x.png in Resources */,
 				276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */,
 				27988CAA1B0BB12500BDE8EB /* followsection_followbtn@2x.png in Resources */,
 				27AC92D11B066DF000BB7A0E /* selectedbars_brand@3x.png in Resources */,
@@ -2496,7 +2527,9 @@
 				27988CAC1B0BB12500BDE8EB /* followsection_followingbtn.png in Resources */,
 				27AC92DD1B066E0300BB7A0E /* selectedsquares_brand@3x.png in Resources */,
 				27ACD0FA1B0A708C00322ED5 /* nutritiontag@3x.png in Resources */,
+				27DDF43C1B7B7C140011BB46 /* workoutdefault@3x.png in Resources */,
 				279E57BC1B20FBDB0076C3B5 /* leftsidemenubackground.png in Resources */,
+				27DDF43B1B7B7C140011BB46 /* workoutdefault@2x.png in Resources */,
 				2738D9211B023EE700F5087E /* following_btn@2x.png in Resources */,
 				27A101851B334554007B7BF3 /* newposts@3x.png in Resources */,
 				27A101881B334554007B7BF3 /* notification@3x.png in Resources */,
@@ -2541,6 +2574,7 @@
 				27AC92C31B06292E00BB7A0E /* settings_profileicon@3x.png in Resources */,
 				273FF57B1AF7AA2C00B82DB3 /* whitelargecameraicon.png in Resources */,
 				273FF5671AF7AA2C00B82DB3 /* playbtn.png in Resources */,
+				27DDF43A1B7B7C140011BB46 /* workoutdefault.png in Resources */,
 				27A101511B3342C3007B7BF3 /* greysearch@2x.png in Resources */,
 				27BA5A331B6A50E500B30B62 /* calendar_black.png in Resources */,
 				2738D9201B023EE700F5087E /* following_btn.png in Resources */,
@@ -2577,6 +2611,7 @@
 				279E57B81B20F0B40076C3B5 /* greywebsite@3x.png in Resources */,
 				274824EC1B70F5BF0058452C /* SeachInterestCell.xib in Resources */,
 				2760941E1AD708AD00A769CE /* SemplicitaPro-BoldItalic.otf in Resources */,
+				27DDF4351B7B7C140011BB46 /* searchleftarrow@2x.png in Resources */,
 				27ADF1E01B14B1D8003A0A83 /* invalidalert@3x.png in Resources */,
 				27A101551B3342C3007B7BF3 /* search_follow@3x.png in Resources */,
 				273FF5591AF7AA2C00B82DB3 /* followicon.png in Resources */,
@@ -2672,6 +2707,7 @@
 				27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */,
 				27ADF1DB1B14B1D8003A0A83 /* greyx.png in Resources */,
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
+				27DDF4381B7B7C140011BB46 /* searchrightarrow@2x.png in Resources */,
 				279E57A41B20E9530076C3B5 /* Stars.png in Resources */,
 				27B2598F1B1E44BA00276273 /* greycomment@3x.png in Resources */,
 				271DA84A1B5557BF00D4E075 /* CommunityTitileCell.xib in Resources */,
