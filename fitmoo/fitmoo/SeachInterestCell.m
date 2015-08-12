@@ -17,10 +17,17 @@
     UIColor * color3=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1];
     
     _colorArray= [[NSMutableArray alloc] initWithObjects:color2,color1,color3,color2,  nil];
+    
+    [self initFrames];
     // Initialization code
 }
 
-
+- (void) initFrames
+{
+    
+    self.leftButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:nil];
+    self.rightButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:_rightButton respectToSuperFrame:nil];
+}
 
 
 
@@ -82,6 +89,7 @@
             
             if ([_selectedKeywordId isEqualToString:keyword.created_by_community_id]) {
                 scrollToX=x;
+                [self hideButtons:i];
             }
             x= x+ _scrollView.frame.size.width;
 
@@ -117,6 +125,7 @@
         
         if ([_selectedKeywordId isEqualToString:keyword.created_by_community_id]) {
             scrollToX=x;
+            [self hideButtons:i];
         }
         x= x+ _scrollView.frame.size.width;
     }
@@ -127,19 +136,26 @@
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * [_searchArrayKeyword count], self.scrollView.frame.size.height);
     [self.scrollView setContentOffset:CGPointMake(scrollToX, 0) animated:NO];
-    [self.contentView addSubview:_scrollView];
+    
+    [self.contentView insertSubview:_scrollView belowSubview:_leftButton];
+    //[self.contentView addSubview:_scrollView];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self definePage:scrollView];
+    
+}
+
+- (void) definePage:(UIScrollView *)scrollView
 {
     CGFloat width = scrollView.frame.size.width;
     NSInteger page = (scrollView.contentOffset.x + (0.5f * width)) / width;
     
     CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:page];
     _selectedKeywordId=temCom.created_by_community_id;
-    
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"cellAction" object:_selectedKeywordId];
-    
+  //  [self hideButtons:page];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cellAction" object:_selectedKeywordId];
 }
 
 
@@ -149,4 +165,63 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)leftButtonClick:(id)sender {
+
+    
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+         [_scrollView setContentOffset:CGPointMake(_scrollView.contentOffset.x-_scrollView.frame.size.width,0)];
+    } completion:^(BOOL finished) {
+        //some code
+        CGFloat width = _scrollView.frame.size.width;
+        NSInteger page = (_scrollView.contentOffset.x + (0.5f * width)) / width;
+        CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:page];
+        _selectedKeywordId=temCom.created_by_community_id;
+        
+      //  [self hideButtons:page];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"cellAction" object:_selectedKeywordId];
+        
+    
+        
+    }];
+    
+}
+
+- (void) hideButtons:(NSInteger ) page
+{
+    if (page==0) {
+        _leftButton.hidden=true;
+        _rightButton.hidden=false;
+    }else if (page==[_searchArrayKeyword count]-1)
+    {
+        _leftButton.hidden=false;
+        _rightButton.hidden=true;
+    }else
+    {
+        _leftButton.hidden=false;
+        _rightButton.hidden=false;
+    }
+
+}
+
+- (IBAction)rightButtonClick:(id)sender {
+
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+         [_scrollView setContentOffset:CGPointMake(_scrollView.contentOffset.x+_scrollView.frame.size.width,0)];
+    } completion:^(BOOL finished) {
+        //some code
+        CGFloat width = _scrollView.frame.size.width;
+        NSInteger page = (_scrollView.contentOffset.x + (0.5f * width)) / width;
+        CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:page];
+        _selectedKeywordId=temCom.created_by_community_id;
+        
+    //    [self hideButtons:page];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"cellAction" object:_selectedKeywordId];
+    }];
+    
+   
+    
+}
 @end

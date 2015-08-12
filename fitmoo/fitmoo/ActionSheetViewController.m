@@ -34,7 +34,9 @@
     }else
     {
         [_endorseButton setHidden:false];
+        [_shopButton setHidden:false];
         [_view2 setHidden:false];
+        [_view4 setHidden:false];
         [self showViews];
     }
     
@@ -59,6 +61,9 @@
     _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:self.view];
     _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:self.view];
     _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:self.view];
+    _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:self.view];
+    
+    _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -205,6 +210,17 @@
     
      [[UserManager sharedUserManager] performShare:@"" withId:_postId];
      [self.view removeFromSuperview];
+}
+
+- (IBAction)shopButtonClick:(id)sender {
+    if (_shoplink!=nil) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
+    }else
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
+    }
+    
+    
 }
 
 - (IBAction)shareCancelClick:(id)sender {

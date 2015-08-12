@@ -167,10 +167,13 @@
    
 }
 
+
+
 - (void) viewWillDisappear:(BOOL)animated
 {
     [_timerQueue invalidate];
     [_timer invalidate];
+
 }
 
 
@@ -246,7 +249,8 @@
         tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
         [_searchArrayKeyword addObject:tempCom];
     }
-   
+    CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:0];
+    _selectedKeywordId=temCom.created_by_community_id;
 
 }
 
@@ -352,6 +356,9 @@
             temUser.workout_count= [workout_count stringValue];
             NSNumber *user_id= [leader objectForKey:@"id"];
             temUser.user_id=[user_id stringValue];
+            
+            NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
+            temUser.nutrition_count= [nutrition_count stringValue];
             
             NSDictionary *profile= [leader objectForKey:@"profile"];
             
@@ -1361,6 +1368,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)backButtonClick:(id)sender {
     //  [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
+    self.backButtonClicked=true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 - (IBAction)addUserButtonClick:(id)sender {

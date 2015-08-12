@@ -59,6 +59,15 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [self removeObservers];
+    
+//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+//        
+//        if (self.backButtonClicked==false) {
+//               [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"swipeBack"];
+//        }
+//     
+//    }
+
 }
 
 - (void) removeObservers
@@ -672,11 +681,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     if (indexPath.row==0) {
-        PeopleTitleCell *cell=(PeopleTitleCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-        
+        PeopleTitleCell *cell=(PeopleTitleCell *) [tableView cellForRowAtIndexPath:indexPath];
+     
         if (cell==nil) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PeopleTitleCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+        }else
+        {
+            return cell;
         }
         User *temUser;
         
@@ -742,8 +754,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",follower,@"K"];
         }
         
-        cell.workoutCountLabel.text= temUser.workout_count;
-        
+        cell.workoutCountLabel.text= temUser.influence_factor;
+       
         //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
@@ -1425,11 +1437,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index=(NSInteger) button.tag/100-1;
     HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
     
+
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
         ActionSheet.action= @"endorse";
+        NSString *link;
+        
+        if (feed.feed_action.feed_action_id!=nil) {
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+        }
+        
+        ActionSheet.shoplink= link;
         
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
         ActionSheet.action= @"report";
@@ -1662,6 +1683,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
     
     //  [self.navigationController popViewControllerAnimated:YES];
+    self.backButtonClicked=true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
@@ -1773,21 +1795,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+
 - (void) viewWillAppear:(BOOL)animated
 {
-    //    if (_searchId!=nil) {
-    //        [self getUserProfile:_searchId];
-    //    }else if (_searchCommunityId!=nil)
-    //    {
-    //        [self getUserCommunityProfile:_searchCommunityId];
-    //    }
-    //    else
-    //    {
-    //        User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    //        [self getUserProfile:localUser.user_id];
-    // 
-    //    }
-    
+
+    [super viewWillAppear:animated];
     [self createObservers];
     
 }

@@ -32,7 +32,10 @@
 }
 
 
+- (void) viewWillDisappear:(BOOL)animated
+{
 
+}
 
 - (void) initFrames
 {
@@ -350,6 +353,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 */
 
 - (IBAction)backButtonClick:(id)sender {
+    self.backButtonClicked=true;
  //   [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
     

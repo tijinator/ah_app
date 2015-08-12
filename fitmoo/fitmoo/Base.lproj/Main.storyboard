@@ -1523,21 +1523,36 @@ instructions to reset your password.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="JrN-iI-iKO">
-                                <rect key="frame" x="0.0" y="568" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="EL8-RW-lPc">
-                                        <rect key="frame" x="0.0" y="90" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="140" width="320" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" id="kmU-qP-oh5">
-                                        <rect key="frame" x="0.0" y="41" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <view hidden="YES" contentMode="scaleToFill" id="3Sz-p8-qDd">
+                                        <rect key="frame" x="0.0" y="42" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gVX-B3-r0A">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Shop"/>
+                                        <connections>
+                                            <action selector="shopButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="vfu-bi-jdT"/>
+                                        </connections>
+                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lvt-Qx-2WG">
-                                        <rect key="frame" x="0.0" y="-1" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="51" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1547,7 +1562,7 @@ instructions to reset your password.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PPy-NB-Zbs">
-                                        <rect key="frame" x="-6" y="101" width="326" height="50"/>
+                                        <rect key="frame" x="-6" y="153" width="326" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1557,7 +1572,7 @@ instructions to reset your password.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CX3-mj-xXj">
-                                        <rect key="frame" x="-6" y="50" width="326" height="50"/>
+                                        <rect key="frame" x="-6" y="102" width="326" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1581,9 +1596,11 @@ instructions to reset your password.</string>
                         <outlet property="shareButtomView" destination="KDE-00-l4l" id="NJW-NF-IJu"/>
                         <outlet property="shareButton" destination="k6H-cB-QGT" id="7Pt-WS-NPB"/>
                         <outlet property="shareCancelButton" destination="w7Y-ZV-u5U" id="vd8-RV-10p"/>
+                        <outlet property="shopButton" destination="gVX-B3-r0A" id="vtS-M3-HZu"/>
                         <outlet property="view1" destination="oOb-vp-IeS" id="SRj-Kh-LYo"/>
                         <outlet property="view2" destination="kmU-qP-oh5" id="6DZ-dx-PtP"/>
                         <outlet property="view3" destination="EL8-RW-lPc" id="gcT-Hk-hqU"/>
+                        <outlet property="view4" destination="3Sz-p8-qDd" id="hhN-If-bCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDG-zH-fah" userLabel="First Responder" sceneMemberID="firstResponder"/>

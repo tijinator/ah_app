@@ -56,6 +56,8 @@
 
 @property (nonatomic, strong) NSString *workout_count;
 @property (nonatomic, strong) NSString *days_a_week;
+@property (nonatomic, strong) NSString *nutrition_count;
+@property (nonatomic, strong) NSString *influence_factor;
 
 @property (nonatomic, strong) NSString *vanity_url;
 

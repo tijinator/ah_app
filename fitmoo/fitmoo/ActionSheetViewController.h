@@ -30,6 +30,12 @@
 @property (strong, nonatomic) IBOutlet UIView *view1;
 @property (strong, nonatomic) IBOutlet UIView *view2;
 @property (strong, nonatomic) IBOutlet UIView *view3;
+@property (strong, nonatomic) IBOutlet UIView *view4;
+@property (strong, nonatomic) IBOutlet UIButton *shopButton;
+
+@property (strong, nonatomic)  NSString *shoplink;
+
+- (IBAction)shopButtonClick:(id)sender;
 
 - (IBAction)shareCancelClick:(id)sender;
 

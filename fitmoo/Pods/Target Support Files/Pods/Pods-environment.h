@@ -294,6 +294,12 @@
 #define COCOAPODS_VERSION_MINOR_Reachability 2
 #define COCOAPODS_VERSION_PATCH_Reachability 0
 
+// SwipeBack
+#define COCOAPODS_POD_AVAILABLE_SwipeBack
+#define COCOAPODS_VERSION_MAJOR_SwipeBack 1
+#define COCOAPODS_VERSION_MINOR_SwipeBack 1
+#define COCOAPODS_VERSION_PATCH_SwipeBack 0
+
 // TMCache
 #define COCOAPODS_POD_AVAILABLE_TMCache
 #define COCOAPODS_VERSION_MAJOR_TMCache 1

@@ -292,6 +292,9 @@
         NSNumber * following=[_responseDic objectForKey:@"following"];
         localUser.following= [following stringValue];
         
+        NSNumber * influence_factor=[_responseDic objectForKey:@"influence_factor"];
+        localUser.influence_factor= [influence_factor stringValue];
+        
         NSString * followerString=[_responseDic objectForKey:@"followers"];
         if ([followerString isKindOfClass:[NSString class]]) {
              localUser.followers= followerString;
@@ -487,6 +490,9 @@
         _localUser.followers= [followers stringValue];
          NSNumber * communities=[_responseDic objectForKey:@"communities"];
         _localUser.communities= [communities stringValue];
+        
+        NSNumber * influence_factor=[_responseDic objectForKey:@"influence_factor"];
+        _localUser.influence_factor= [influence_factor stringValue];
         
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         _localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];

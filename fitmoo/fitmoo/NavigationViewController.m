@@ -285,6 +285,15 @@
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
+    }else  if ([key isEqualToString:@"swipeBack"]) {
+
+        
+        [_Pagestuck removeLastObject];
+        NSString *page=[_Pagestuck lastObject];
+        currentPage=page;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        
     }else  if ([key isEqualToString:@"back"]) {
         
 

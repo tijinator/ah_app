@@ -31,7 +31,7 @@
     startCapture= false;
     _mediaType=@"camera";
     _postActionType=@"text";
-    _postType=@"post";
+    _postType=@"workout";
     
     if (self.chosenImage!=nil) {
         [self.imageButton setBackgroundImage:_chosenImage forState:UIControlStateNormal];

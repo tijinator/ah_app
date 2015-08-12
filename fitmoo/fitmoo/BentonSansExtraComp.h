@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BentonSansExtraComp : UILabel
+@property (strong, nonatomic) NSString *count;
+
 
 @end

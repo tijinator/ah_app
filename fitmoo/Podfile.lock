@@ -138,6 +138,7 @@ PODS:
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
   - Reachability (3.2)
+  - SwipeBack (1.1.0)
   - TMCache (1.2.4)
   - TTTAttributedLabel (1.10.1)
   - UAProgressView (0.1.1)
@@ -150,6 +151,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.0)
   - FSImageViewer (~> 3.2)
   - JTCalendar
+  - SwipeBack (~> 1.0)
   - TTTAttributedLabel (~> 1.10.1)
 
 SPEC CHECKSUMS:
@@ -177,6 +179,7 @@ SPEC CHECKSUMS:
   JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SwipeBack: 45a42c333b7b9657b9f02cf19673339b3a006195
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070

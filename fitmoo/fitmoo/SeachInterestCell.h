@@ -16,6 +16,10 @@
 @property (strong, nonatomic)  NSString * selectedKeywordId;
 @property (strong, nonatomic)  NSMutableArray * searchArrayKeyword;
 @property (strong, nonatomic)  NSMutableArray * colorArray;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
+- (IBAction)leftButtonClick:(id)sender;
+- (IBAction)rightButtonClick:(id)sender;
 @property (assign, nonatomic)  int * selectedIndex;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic)  NSString * searchType;

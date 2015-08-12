@@ -18,14 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </scrollView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nym-mD-Bib">
+                        <rect key="frame" x="5" y="55" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="searchleftarrow.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="leftButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8aJ-vt-ETO"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9HX-5a-UQH">
+                        <rect key="frame" x="290" y="55" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="searchrightarrow.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="rightButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Az-RF-Rgu"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="leftButton" destination="Nym-mD-Bib" id="pda-bm-vQT"/>
+                <outlet property="rightButton" destination="9HX-5a-UQH" id="dqg-zL-0DI"/>
                 <outlet property="scrollView" destination="Lci-FG-rgu" id="ZBr-Dc-myf"/>
             </connections>
             <point key="canvasLocation" x="253" y="226"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="searchleftarrow.png" width="7" height="13"/>
+        <image name="searchrightarrow.png" width="7" height="13"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -50,6 +50,7 @@
 }
 */
 
+
 - (IBAction)shopButtonClick:(id)sender {
     if (_shoplink!=nil) {
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
@@ -59,6 +60,7 @@
     }
 }
 - (IBAction)backButtonClick:(id)sender {
+     self.backButtonClicked=true;
       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 @end

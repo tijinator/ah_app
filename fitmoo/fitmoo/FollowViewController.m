@@ -172,6 +172,8 @@
 {
     [_timerQueue invalidate];
     [_timer invalidate];
+    
+ 
 }
 
 
@@ -420,6 +422,9 @@
         temUser.workout_count= [workout_count stringValue];
         NSNumber *user_id= [leader objectForKey:@"id"];
         temUser.user_id=[user_id stringValue];
+        
+        NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
+        temUser.nutrition_count= [nutrition_count stringValue];
         
         NSDictionary *profile= [leader objectForKey:@"profile"];
      
@@ -1290,8 +1295,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 - (IBAction)backButtonClick:(id)sender {
-    //  [[NSNotificationCenter defaultCenter] postNotificationName:@"swipeHandler" object:Nil];
-       [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
+    self.backButtonClicked=true;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 - (IBAction)addUserButtonClick:(id)sender {
     

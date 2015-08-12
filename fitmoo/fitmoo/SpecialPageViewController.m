@@ -480,7 +480,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([feed.action_sheet isEqualToString:@"endorse"]) {
         ActionSheet.action= @"endorse";
-        
+        NSString *link;
+        if (feed.feed_action.feed_action_id!=nil) {
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+        }
+        ActionSheet.shoplink= link;
     }else if ([feed.action_sheet isEqualToString:@"report"]) {
         ActionSheet.action= @"report";
         

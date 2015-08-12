@@ -33,7 +33,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
 - (IBAction)backButtonClick:(id)sender {
+    self.backButtonClicked=true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 

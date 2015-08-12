@@ -143,6 +143,8 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNotificationStatus" object:Nil];
         }
     }
+    
+
    
 }
 
@@ -632,6 +634,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
     [_tableview removeFromSuperview];
     _tableview=nil;
+    self.backButtonClicked=true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
     
 }

@@ -23,7 +23,7 @@
 {
     _nameLabel.text=_tempUser.name;
     _workoutPostCount.text=_tempUser.workout_count;
-    _workoutWeekCount.text=_tempUser.days_a_week;
+    _workoutWeekCount.text=_tempUser.nutrition_count;
     
     _workoutPostLabel.textAlignment= NSTextAlignmentCenter;
     _workoutWeekLabel.textAlignment= NSTextAlignmentCenter;

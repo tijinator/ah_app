@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "AFNetworking.h"
 #import "UserManager.h"
+#import <SwipeBack/SwipeBack.h>
 @interface BaseViewController ()
 {
  bool showButton;
@@ -158,7 +159,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+  //  self.navigationController.swipeBackEnabled = NO;
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
@@ -462,6 +463,8 @@
             
     }
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

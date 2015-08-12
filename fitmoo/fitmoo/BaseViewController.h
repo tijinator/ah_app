@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BasePostViewController.h"
 #import "SpecialPageViewController.h"
+
 @interface BaseViewController : UIViewController<UIApplicationDelegate>
 
 - (IBAction)openSideMenu:(id)sender;
@@ -39,4 +40,5 @@
 @property (strong, nonatomic)  NSString *PostingValue;
 @property (assign, nonatomic)  int PrePage;
 @property (strong, nonatomic)  NSString * notifucationStatus;
+@property (assign, nonatomic)  BOOL backButtonClicked;
 @end
