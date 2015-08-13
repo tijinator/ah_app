@@ -584,6 +584,10 @@
 		27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */; };
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
 		27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */; };
+		27D0DF731B7CC2CD00DC49C5 /* InfluFactorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0DF721B7CC2CD00DC49C5 /* InfluFactorViewController.m */; };
+		27D0DF771B7CC38D00DC49C5 /* infoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF741B7CC38D00DC49C5 /* infoicon.png */; };
+		27D0DF781B7CC38D00DC49C5 /* infoicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */; };
+		27D0DF791B7CC38D00DC49C5 /* infoicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */; };
 		27DB8D811B5D9090005380CA /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DB8D801B5D9090005380CA /* Workout.m */; };
 		27DBA2581B6687080019C56A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA2561B6687080019C56A /* CalendarCell.m */; };
 		27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA2571B6687080019C56A /* CalendarCell.xib */; };
@@ -1262,6 +1266,11 @@
 		27CBC0E51B0FB6A200699E1E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		27CC0F3C1B61064D005CC194 /* WorkTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTypeViewController.h; sourceTree = "<group>"; };
 		27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTypeViewController.m; sourceTree = "<group>"; };
+		27D0DF711B7CC2CD00DC49C5 /* InfluFactorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfluFactorViewController.h; sourceTree = "<group>"; };
+		27D0DF721B7CC2CD00DC49C5 /* InfluFactorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfluFactorViewController.m; sourceTree = "<group>"; };
+		27D0DF741B7CC38D00DC49C5 /* infoicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoicon.png; sourceTree = "<group>"; };
+		27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@2x.png"; sourceTree = "<group>"; };
+		27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@3x.png"; sourceTree = "<group>"; };
 		27DB8D7F1B5D9090005380CA /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		27DB8D801B5D9090005380CA /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		27DBA2551B6687080019C56A /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
@@ -1732,6 +1741,9 @@
 				279E57831B20B4EC0076C3B5 /* greycamera.png */,
 				279E57841B20B4EC0076C3B5 /* greycamera@2x.png */,
 				279E57851B20B4EC0076C3B5 /* greycamera@3x.png */,
+				27D0DF741B7CC38D00DC49C5 /* infoicon.png */,
+				27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */,
+				27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */,
 				27C0A6FA1B7A893C00BA3612 /* whiteuser.png */,
 				27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */,
 				27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */,
@@ -2060,6 +2072,8 @@
 				27A009B31B3AF0C60081AD4E /* ComposeViewController.m */,
 				27DBA25A1B66C05A0019C56A /* CalendarViewController.h */,
 				27DBA25B1B66C05A0019C56A /* CalendarViewController.m */,
+				27D0DF711B7CC2CD00DC49C5 /* InfluFactorViewController.h */,
+				27D0DF721B7CC2CD00DC49C5 /* InfluFactorViewController.m */,
 			);
 			name = SidePages;
 			sourceTree = "<group>";
@@ -2351,6 +2365,7 @@
 				2752E9E91B015CBC003841DC /* deselectedsquare@3x.png in Resources */,
 				273D6DF21B505B1300A56CCD /* joinbtn@3x.png in Resources */,
 				27988CAE1B0BB12500BDE8EB /* followsection_followingbtn@3x.png in Resources */,
+				27D0DF771B7CC38D00DC49C5 /* infoicon.png in Resources */,
 				27DDF4391B7B7C140011BB46 /* searchrightarrow@3x.png in Resources */,
 				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
 				273D6DF41B505B1300A56CCD /* leavebtn@2x.png in Resources */,
@@ -2443,6 +2458,7 @@
 				27B2D3921B399CF900F37584 /* bluecheck.png in Resources */,
 				27ADF1F51B14B1D8003A0A83 /* signupbtn@3x.png in Resources */,
 				279E57A61B20E9530076C3B5 /* Stars@3x.png in Resources */,
+				27D0DF781B7CC38D00DC49C5 /* infoicon@2x.png in Resources */,
 				2752E9E11B015CBC003841DC /* calendar@2x.png in Resources */,
 				27ADF1CA1B14B1D8003A0A83 /* changeprofilepicturebtn@2x.png in Resources */,
 				27988CA91B0BB12500BDE8EB /* followsection_followbtn.png in Resources */,
@@ -2473,6 +2489,7 @@
 				2752E9EB1B015CBC003841DC /* deselectedsquares@2x.png in Resources */,
 				27ADF1DC1B14B1D8003A0A83 /* greyx@2x.png in Resources */,
 				27989F801B6810FD004D7D8A /* SubTableViewCell.xib in Resources */,
+				27D0DF791B7CC38D00DC49C5 /* infoicon@3x.png in Resources */,
 				27A101501B3342C3007B7BF3 /* greysearch.png in Resources */,
 				27B2599A1B1E494900276273 /* greyhearticon@2x.png in Resources */,
 				276094251AD708AD00A769CE /* SemplicitaPro-SemiBold.otf in Resources */,
@@ -2848,6 +2865,7 @@
 				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
 				276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */,
 				27AD26711B18DFF3008D338D /* SpecialPageViewController.m in Sources */,
+				27D0DF731B7CC2CD00DC49C5 /* InfluFactorViewController.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,
 				27DB8D811B5D9090005380CA /* Workout.m in Sources */,

@@ -736,7 +736,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         tapGestureRecognizer1.numberOfTapsRequired = 1;
         [cell.followerCountLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.followerCountLabel.userInteractionEnabled=YES;
-        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(WorkoutButtonClick:)];
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InfluenceButtonClick:)];
         tapGestureRecognizer2.numberOfTapsRequired = 1;
         [cell.workoutCountLabel addGestureRecognizer:tapGestureRecognizer2];
         cell.workoutCountLabel.userInteractionEnabled=YES;
@@ -1783,6 +1783,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
     
     
+    
+    
+}
+
+- (IBAction)InfluenceButtonClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    InfluFactorViewController *influencePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"InfluFactorViewController"];
+   
+    [self.navigationController pushViewController:influencePage animated:YES];
     
     
 }

@@ -29,8 +29,15 @@
 {
     int radius = self.frame.size.width/2;
     int strokeWidth = 8;
-    CGColorRef color = [UIColor whiteColor].CGColor;
- 
+    
+    if (self.tag==1004) {
+        strokeWidth = 5;
+    }else if (self.tag==1005) {
+         strokeWidth = 12;
+    }
+    
+    //CGColorRef color = [UIColor whiteColor].CGColor;
+    CGColorRef color = [UIColor colorWithRed:235.0/255.0 green:238.0/255.0 blue:240.0/255.0 alpha:1].CGColor;
     
     CGFloat startAngle = (-1*M_PI/2);
     CGFloat endAngle =(3.00001*M_PI/2);
@@ -64,12 +71,17 @@
     
     [super drawRect:rect];
     
-    if (self.tag==1003) {
+    if (self.tag==1003||self.tag==1004||self.tag==1005) {
         [self addCircle];
         if (![self.text isEqualToString:@"0"] ) {
         
         int radius = self.frame.size.width/2;
         int strokeWidth = 8;
+        if (self.tag==1004) {
+            strokeWidth = 5;
+        }else if (self.tag==1005) {
+            strokeWidth = 12;
+        }
         CGColorRef color = [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0].CGColor;
         int timeInSeconds = 5;
         
