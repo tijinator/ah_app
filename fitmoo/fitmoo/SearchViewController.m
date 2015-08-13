@@ -578,7 +578,7 @@
 
 - (void) addActivityIndicator
 {
-    indicatorView= [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, 160*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
+    indicatorView= [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-50, 220*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
     indicatorView.backgroundColor=[UIColor colorWithRed:174.0/255.0 green:182.0/255.0 blue:186.0/255.0 alpha:1];
     //  view.backgroundColor=[UIColor whiteColor];
     indicatorView.layer.cornerRadius=5;

@@ -50,8 +50,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="searchleftarrow.png" width="7" height="13"/>
-        <image name="searchrightarrow.png" width="7" height="13"/>
+        <image name="searchleftarrow.png" width="10" height="19"/>
+        <image name="searchrightarrow.png" width="10" height="19"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

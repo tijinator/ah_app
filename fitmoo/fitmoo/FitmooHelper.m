@@ -41,6 +41,8 @@
 {
     indicatorView= [[UIView alloc] initWithFrame:CGRectMake(selfView.frame.size.width/2-50, 200*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
     indicatorView.backgroundColor=[UIColor colorWithRed:174.0/255.0 green:182.0/255.0 blue:186.0/255.0 alpha:1];
+  
+  //  indicatorView.backgroundColor=[UIColor clearColor];
     //  view.backgroundColor=[UIColor whiteColor];
     indicatorView.layer.cornerRadius=5;
     

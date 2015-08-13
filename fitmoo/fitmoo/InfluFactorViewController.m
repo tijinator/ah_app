@@ -150,7 +150,16 @@
         }
         cell.bodyButton1.text= _influence_factor;
         if (_search_name!=nil) {
+            NSArray * Name= [_search_name componentsSeparatedByString:@" "];
+            NSString * firstName=[Name objectAtIndex:0];
+            
+            if(firstName.length>10)
+            {
             cell.bodyLabel1.text=@"THE INFLUENCE FACTOR IS";
+            }else
+            {
+                cell.bodyLabel1.text= [NSString stringWithFormat:@"%@%@",firstName.uppercaseString,@"'S INFLUENCE FACTOR IS"];
+            }
         }
         
         contentHight=[NSNumber numberWithDouble:460*[[FitmooHelper sharedInstance]frameRadio]];
