@@ -292,6 +292,8 @@
 		278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AB1B06972500FE8A4C /* white_toggle@2x.png */; };
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
 		278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278DF8DD1B2336A600ABF918 /* Images-2.xcassets */; };
+		279717761B7CFF7A004ACBC2 /* InfluenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279717741B7CFF7A004ACBC2 /* InfluenceCell.m */; };
+		279717771B7CFF7A004ACBC2 /* InfluenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */; };
 		279738711B1F3763005FE32B /* BSBoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 279738701B1F3763005FE32B /* BSBoldButton.m */; };
 		27974E9D1B7513BE00CBFC59 /* BSMediumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27974E9C1B7513BE00CBFC59 /* BSMediumButton.m */; };
 		27988C831B0B7C7400BDE8EB /* mainmenu_followicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27988C771B0B7C7400BDE8EB /* mainmenu_followicon.png */; };
@@ -942,6 +944,9 @@
 		278818AB1B06972500FE8A4C /* white_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@2x.png"; sourceTree = "<group>"; };
 		278818AC1B06972500FE8A4C /* white_toggle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@3x.png"; sourceTree = "<group>"; };
 		278DF8DD1B2336A600ABF918 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		279717731B7CFF7A004ACBC2 /* InfluenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfluenceCell.h; sourceTree = "<group>"; };
+		279717741B7CFF7A004ACBC2 /* InfluenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfluenceCell.m; sourceTree = "<group>"; };
+		279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfluenceCell.xib; sourceTree = "<group>"; };
 		2797386F1B1F3763005FE32B /* BSBoldButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSBoldButton.h; sourceTree = "<group>"; };
 		279738701B1F3763005FE32B /* BSBoldButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSBoldButton.m; sourceTree = "<group>"; };
 		27974E9B1B7513BE00CBFC59 /* BSMediumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMediumButton.h; sourceTree = "<group>"; };
@@ -1435,6 +1440,9 @@
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
+				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
+				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
+				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
 				274824E81B70F5BF0058452C /* SeachInterestCell.h */,
 				274824E91B70F5BF0058452C /* SeachInterestCell.m */,
 				274824EA1B70F5BF0058452C /* SeachInterestCell.xib */,
@@ -2440,6 +2448,7 @@
 				273FF5561AF7AA2C00B82DB3 /* endorsedicon.png in Resources */,
 				27A1017C1B334554007B7BF3 /* follow@3x.png in Resources */,
 				27ADF1E71B14B1D8003A0A83 /* loginimage.png in Resources */,
+				279717771B7CFF7A004ACBC2 /* InfluenceCell.xib in Resources */,
 				27DDF4361B7B7C140011BB46 /* searchleftarrow@3x.png in Resources */,
 				276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */,
 				27988CAA1B0BB12500BDE8EB /* followsection_followbtn@2x.png in Resources */,
@@ -2943,6 +2952,7 @@
 				2747E4331B72449E00F68E27 /* FollowPhotoCell.m in Sources */,
 				2738D9351B026E5000F5087E /* BioViewController.m in Sources */,
 				27188FC31AD4775200C34372 /* FitmooHelper.m in Sources */,
+				279717761B7CFF7A004ACBC2 /* InfluenceCell.m in Sources */,
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,
 				27410DEF1AFAB34200CF230C /* BezierCurve.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,

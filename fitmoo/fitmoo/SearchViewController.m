@@ -550,7 +550,9 @@
     
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_discover_bulk"];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_bulk"];
+
+  
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic2= responseObject;
@@ -809,7 +811,7 @@
         
         
         
-        contentHight=[NSNumber numberWithDouble:cell.scrollView.frame.size.height];
+        contentHight=[NSNumber numberWithDouble:cell.scrollView.frame.size.height+1];
         [_heighArray replaceObjectAtIndex:0 withObject:contentHight];
         
         return cell;

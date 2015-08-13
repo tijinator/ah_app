@@ -68,7 +68,29 @@
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
     double radio= [[FitmooHelper sharedInstance] frameRadio];
     
-   
+    if (radio==1.0) {
+        
+        UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:8];
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:_followerLabel.text attributes:@{NSFontAttributeName: font}  ];
+        float spacing = 1.0f;
+        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [_followerLabel.text length])];
+        [_followerLabel setAttributedText:attributedString];
+        
+        NSMutableAttributedString *attributedString1= [[NSMutableAttributedString alloc] initWithString:_followingLabel.text attributes:@{NSFontAttributeName: font}  ];
+        [attributedString1 addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [_followingLabel.text length])];
+        [_followingLabel setAttributedText:attributedString1];
+        
+        
+//        font = [UIFont fontWithName:@"BentonSans-ExtraCondensedBold" size:25];
+//       attributedString= [[NSMutableAttributedString alloc] initWithString:@"0" attributes:@{NSFontAttributeName: font}  ];
+//        
+//        [_followCountLabel setAttributedText:attributedString];
+//        [_followerCountLabel setAttributedText:attributedString];
+//        [_workoutCountLabel setAttributedText:attributedString];
+
+        
+        
+    }
     
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:nil];
     

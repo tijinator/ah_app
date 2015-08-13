@@ -17,18 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel1;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel2;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel3;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel4;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel5;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel6;
-@property (strong, nonatomic) IBOutlet UILabel *bodyLabel7;
-
-@property (strong, nonatomic) IBOutlet UILabel *bodyButton1;
-@property (strong, nonatomic) IBOutlet UILabel *bodyButton2;
-@property (strong, nonatomic) IBOutlet UILabel *bodyButton3;
-@property (strong, nonatomic) IBOutlet UILabel *bodyButton4;
+@property (strong, nonatomic)  NSMutableArray * heighArray;
 
 @property (strong, nonatomic) IBOutlet UIView *view1;
 @property (strong, nonatomic) IBOutlet UIView *view2;
@@ -36,7 +25,11 @@
 - (IBAction)okButtomClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *view3;
 @property (strong, nonatomic) IBOutlet UILabel *infoLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic)  NSDictionary * responseDic2;
 
-
+@property (strong, nonatomic)  NSMutableArray * searchArrayLeader;
+@property (strong, nonatomic) NSString *influence_factor;
+@property (strong, nonatomic) NSString *search_name;
 
 @end

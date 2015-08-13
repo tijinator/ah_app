@@ -99,13 +99,13 @@
         [_scrollView addSubview:scrollImage];
         _scrollView.backgroundColor= [UIColor blackColor];
         
-        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(_scrollView.frame.size.width-50,10, 40, 40)];
         
         UIView *v= [[UIView alloc] initWithFrame:CGRectMake(80,80,80,80)];
         v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:nil];
-        _bodyImage.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
+ //       _bodyImage.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
         
-        [_bodyImage setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        [_bodyImage setImage:[UIImage imageNamed:@"thumbnail_playbtn.png"] forState:UIControlStateNormal];
         [_scrollView addSubview:_bodyImage];
         
         //      _scrollView.userInteractionEnabled=NO;

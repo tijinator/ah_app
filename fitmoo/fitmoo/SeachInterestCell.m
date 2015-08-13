@@ -63,7 +63,7 @@
             UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
             NSString *string= titleLabel.text;
             NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string.uppercaseString attributes:@{NSFontAttributeName: font}  ];
-            float spacing = 1.5f;
+            float spacing = 3.0f;
             [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [titleLabel.text length])];
             [titleLabel setAttributedText:attributedString];
             
@@ -117,7 +117,7 @@
         UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:18];
         NSString *string= titleLabel.text;
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string.uppercaseString attributes:@{NSFontAttributeName: font}  ];
-        float spacing = 1.5f;
+        float spacing = 3.0f;
         [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [titleLabel.text length])];
         [titleLabel setAttributedText:attributedString];
 

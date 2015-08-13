@@ -7,7 +7,7 @@
 //
 
 #import "BentonSansExtraComp.h"
-
+#import "FitmooHelper.h"
 @implementation BentonSansExtraComp
 
 - (id)initWithFrame:(CGRect)frame
@@ -31,9 +31,9 @@
     int strokeWidth = 8;
     
     if (self.tag==1004) {
-        strokeWidth = 5;
-    }else if (self.tag==1005) {
-         strokeWidth = 12;
+        strokeWidth = 12;
+    }else if (self.tag>=1005&&self.tag<=1008) {
+         strokeWidth = 5;
     }
     
     //CGColorRef color = [UIColor whiteColor].CGColor;
@@ -49,6 +49,10 @@
                                               clockwise:NO].CGPath;
     
     circle.position = CGPointMake(0, -2);
+    if (self.tag==1004) {
+        circle.position = CGPointMake(0, -4);
+    }
+    
     circle.fillColor = [UIColor clearColor].CGColor;
     circle.strokeColor = color;
     circle.lineWidth = strokeWidth;
@@ -71,17 +75,17 @@
     
     [super drawRect:rect];
     
-    if (self.tag==1003||self.tag==1004||self.tag==1005) {
+    if (self.tag>=1003&&self.tag<=1008) {
         [self addCircle];
         if (![self.text isEqualToString:@"0"] ) {
         
         int radius = self.frame.size.width/2;
         int strokeWidth = 8;
-        if (self.tag==1004) {
-            strokeWidth = 5;
-        }else if (self.tag==1005) {
-            strokeWidth = 12;
-        }
+            if (self.tag==1004) {
+                strokeWidth = 12;
+            }else if (self.tag>=1005&&self.tag<=1008) {
+                strokeWidth = 5;
+            }
         CGColorRef color = [UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0].CGColor;
         int timeInSeconds = 5;
         
@@ -108,6 +112,9 @@
                                                   clockwise:NO].CGPath;
 
         circle.position = CGPointMake(0, -2);
+        if (self.tag==1004) {
+                circle.position = CGPointMake(0, -4);
+        }
         circle.fillColor = [UIColor clearColor].CGColor;
         circle.strokeColor = color;
         circle.lineWidth = strokeWidth;
@@ -126,8 +133,34 @@
             
             drawAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             
+            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle]<2&&self.tag==1003) {
+                 [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                [FitmooHelper sharedInstance].firstTimeLoadingCircle++;
+            }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]<2&&self.tag==1004)
+            {
+                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                [FitmooHelper sharedInstance].firstTimeLoadingCircle1++;
+            }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]<2&&self.tag==1005)
+            {
+                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                [FitmooHelper sharedInstance].firstTimeLoadingCircle2++;
+            }
+            else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]<2&&self.tag==1006)
+            {
+                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                [FitmooHelper sharedInstance].firstTimeLoadingCircle3++;
+            }
+            else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]<2&&self.tag==1007)
+            {
+                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                [FitmooHelper sharedInstance].firstTimeLoadingCircle4++;
+            }
+        
             
-            [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+            
+          //  [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+            
+            
         }
       
 

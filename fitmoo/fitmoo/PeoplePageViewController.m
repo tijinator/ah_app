@@ -728,6 +728,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         cell.followCountLabel.text= temUser.following;
         cell.followerCountLabel.text=temUser.followers;
+
+        
+        
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(followLabelClick:)];
         tapGestureRecognizer.numberOfTapsRequired = 1;
         [cell.followCountLabel addGestureRecognizer:tapGestureRecognizer];
@@ -745,7 +748,6 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         if (temUser.following.intValue>999) {
             CGFloat following=temUser.following.floatValue/1000.0f;
-            
             cell.followCountLabel.text= [NSString stringWithFormat:@"%0.01f%@",following,@"K"];
         }
         
@@ -755,12 +757,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         cell.workoutCountLabel.text= temUser.influence_factor;
-       
-        //    cell.communityCountLabel.text=temUser.communities;
         bioText=temUser.bio;
         
-        //     [cell loadHeaderImage:imageUrl];
-        
+        if ([[FitmooHelper sharedInstance]frameRadio]==1) {
+            UIFont *font = [UIFont fontWithName:@"BentonSans-ExtraCondensedBold" size:25];
+            cell.followCountLabel.font=font;
+            cell.followerCountLabel.font=font;
+            cell.workoutCountLabel.font=font;
+        }
+
         [cell loadHeader1Image:temUser.profile_avatar_original];
         
         UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
@@ -1685,6 +1690,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //  [self.navigationController popViewControllerAnimated:YES];
     self.backButtonClicked=true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
+    //[FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
 }
 
 - (IBAction)photoImageButtonClick:(id)sender {
@@ -1788,11 +1794,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)InfluenceButtonClick:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
-    InfluFactorViewController *influencePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"InfluFactorViewController"];
-   
-    [self.navigationController pushViewController:influencePage animated:YES];
     
+    if (_temSearchUser!=nil) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        InfluFactorViewController *influencePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"InfluFactorViewController"];
+        influencePage.influence_factor= _temSearchUser.influence_factor;
+        if (_searchId!=nil) {
+            influencePage.search_name=_temSearchUser.name;
+        }
+      
+        [self.navigationController pushViewController:influencePage animated:YES];
+    }
+
     
 }
 
@@ -1810,6 +1823,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [super viewWillAppear:animated];
     [self createObservers];
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
     
 }
 

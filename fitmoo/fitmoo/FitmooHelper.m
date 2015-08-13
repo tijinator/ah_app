@@ -700,7 +700,10 @@
     if ((self = [super init])) {
     }
     
-    
+    _firstTimeLoadingCircle=0;
+    _firstTimeLoadingCircle1=0;
+    _firstTimeLoadingCircle2=0;
+    _firstTimeLoadingCircle3=0;
     
     
     return self;

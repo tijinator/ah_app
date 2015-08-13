@@ -625,7 +625,7 @@
     
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_bulk"];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_discover_bulk"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic2= responseObject;
@@ -809,6 +809,7 @@
         titleLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:titleLabel respectToSuperFrame:nil];
         
         titleLabel.text=@"Trending Workouts".uppercaseString;
+        titleLabel.textColor= [UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1];
         UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(11)];
         titleLabel.font= font;
         [cell.contentView addSubview:titleLabel];
@@ -859,6 +860,7 @@
         titleLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:titleLabel respectToSuperFrame:nil];
         
         titleLabel.text=@"Trending Products".uppercaseString;
+        titleLabel.textColor= [UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1];
         UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(11)];
         titleLabel.font= font;
         [cell.contentView addSubview:titleLabel];
@@ -910,6 +912,7 @@
         titleLabel.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:titleLabel respectToSuperFrame:nil];
         
         titleLabel.text=@"Trending Communities".uppercaseString;
+        titleLabel.textColor= [UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1];
         UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(11)];
         titleLabel.font= font;
         [cell.contentView addSubview:titleLabel];
@@ -956,13 +959,13 @@
         
         UILabel *titleLabel= (UILabel *)[cell viewWithTag:1];
         titleLabel.text=@"Leaderboard".uppercaseString;
-        
-        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(20*[[FitmooHelper sharedInstance] frameRadio], 49*[[FitmooHelper sharedInstance] frameRadio], 300*[[FitmooHelper sharedInstance] frameRadio], 1)];
+        titleLabel.textColor= [UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1];
+        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(20*[[FitmooHelper sharedInstance] frameRadio], 55*[[FitmooHelper sharedInstance] frameRadio], 300*[[FitmooHelper sharedInstance] frameRadio], 1)];
         v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
     //    v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:nil];
         [cell.contentView addSubview:v];
         
-        contentHight=[NSNumber numberWithDouble:50*[[FitmooHelper sharedInstance] frameRadio]];
+        contentHight=[NSNumber numberWithDouble:56*[[FitmooHelper sharedInstance] frameRadio]];
         [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         
         return cell;

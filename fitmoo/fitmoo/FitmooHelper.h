@@ -27,6 +27,12 @@
 @property (strong, nonatomic) NSManagedObjectContext * context;
 @property (strong, nonatomic) UIView * screenSizeView;
 @property (assign, nonatomic) double frameRadio;
+@property (assign, nonatomic) double firstTimeLoadingCircle;
+@property (assign, nonatomic) double firstTimeLoadingCircle1;
+@property (assign, nonatomic) double firstTimeLoadingCircle2;
+@property (assign, nonatomic) double firstTimeLoadingCircle3;
+@property (assign, nonatomic) double firstTimeLoadingCircle4;
+
 - (NSString *)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 -(void) showViewWithAnimation: (NSString *) text withPareView: (UIView *)parentView;
 -(NSAttributedString *) setAttributedString: (NSString *) stringToChange Font: (NSString *) fontName size:(CGFloat) size;

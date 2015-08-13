@@ -32,7 +32,7 @@
         label.text=text;
         label.backgroundColor=[UIColor clearColor];
         
-        UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+        UIFont *font = [UIFont fontWithName:@"BentonSans" size:13];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
         
         [label setAttributedText:attributedString];
