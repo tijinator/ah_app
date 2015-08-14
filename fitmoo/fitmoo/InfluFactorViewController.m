@@ -51,8 +51,8 @@
 {
 
         _searchArrayLeader= [[NSMutableArray alloc] init];
-        NSDictionary *bulk= [_responseDic2 objectForKey:@"leaders"];
-        for (NSDictionary *leader in bulk) {
+    //    NSDictionary *bulk= [_responseDic2 objectForKey:@"leaders"];
+        for (NSDictionary *leader in _responseDic2) {
             User *temUser= [[User alloc] init];
             temUser.name= [leader objectForKey:@"full_name"];
             
@@ -92,8 +92,8 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_bulk"];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile", nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_leaders"];
     
     
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){

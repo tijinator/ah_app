@@ -260,7 +260,7 @@
     
     _calendarManager = [JTCalendarManager new];
     _todayDate = [NSDate date];
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-6];
     _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
     
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", @"true", @"mobile",@"true", @"ios_app",@"America/New_York", @"time_zone",_minDate, @"begin_time",_maxDate, @"end_time",@"0", @"offset", @"500" , @"limit", nil];

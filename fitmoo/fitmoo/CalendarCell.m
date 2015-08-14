@@ -309,7 +309,7 @@
     _todayDate = [NSDate date];
     
     // Min date will be 2 month before today
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-6];
     
     // Max date will be 2 month after today
     _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
