@@ -45,6 +45,9 @@
         AsyncImageView *headerImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, button.frame.size.width, button.frame.size.height)];
         headerImage.userInteractionEnabled = NO;
         headerImage.exclusiveTouch = NO;
+      //  headerImage.contentMode=UIViewContentModeScaleAspectFit;
+        headerImage.contentMode=UIViewContentModeScaleAspectFill;
+        
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
         
         if (photo!=nil) {
@@ -59,6 +62,7 @@
             
         }
         [button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+         button.clipsToBounds=YES;
         [button addSubview:headerImage];
     }
     
