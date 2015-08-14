@@ -368,7 +368,7 @@
     
     _bodyDetailLabel.frame= CGRectMake(30*_frameRadio, _bodyLabel2.frame.size.height+_bodyLabel2.frame.origin.y+3, 260*_frameRadio, _bodyDetailLabel.frame.size.height);
     _bodyDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyDetailLabel];
-    if (_bodyDetailLabel.frame.size.height>80) {
+    if (_bodyDetailLabel.frame.size.height>95) {
         _bodyDetailLabel.numberOfLines=0;
         [_bodyDetailLabel sizeToFit];
         double radio=_bodyDetailLabel.frame.size.height/100;
@@ -382,7 +382,7 @@
     _bodyLabel1.frame= CGRectMake(30*_frameRadio, _bodyLabel3.frame.size.height+_bodyLabel3.frame.origin.y+5, 260*_frameRadio, _bodyLabel1.frame.size.height);
     _bodyLabel1.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_bodyLabel1];
     
-    if (_bodyLabel1.frame.size.height>80) {
+    if (_bodyLabel1.frame.size.height>95) {
         [_bodyLabel1 setNumberOfLines:0];
         [_bodyLabel1 sizeToFit];
         double radio=_bodyLabel1.frame.size.height/100;

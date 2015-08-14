@@ -1083,18 +1083,36 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    int count=(int)[_searchArrayPeople count]/3;
-    if ([_searchArrayPeople count]%3!=0) {
-        count=count+1;
-    }
-    if(indexPath.row>count)
+    if ([_searchTermField.text isEqualToString:@""]) {
+        int count=(int)[_searchArrayPeople count]/3;
+        if ([_searchArrayPeople count]%3!=0) {
+            count=count+1;
+        }
+        if(indexPath.row>count)
+        {
+            
+            User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count-1)];
+            NSString* key=[NSString stringWithFormat:@"%ld", (long)tempUser.user_id.intValue+100];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+            
+        }
+
+    }else
     {
-        
-        User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count-1)];
-        NSString* key=[NSString stringWithFormat:@"%ld", (long)tempUser.user_id.intValue+100];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
-        
+        @try {
+            
+            if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople1 count]) {
+                User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+            }
+        }
+        @catch (NSException * e) {
+            NSLog(@"Exception: %@", e);
+        }
+        [_searchTermField resignFirstResponder];
     }
+    
     
     
 }
