@@ -28,7 +28,10 @@
     [super viewDidLoad];
     [self initFrames];
     
-
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle1=0;
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle2=0;
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle3=0;
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle4=0;
     
     contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
@@ -39,10 +42,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [FitmooHelper sharedInstance].firstTimeLoadingCircle1=0;
-    [FitmooHelper sharedInstance].firstTimeLoadingCircle2=0;
-    [FitmooHelper sharedInstance].firstTimeLoadingCircle3=0;
-    [FitmooHelper sharedInstance].firstTimeLoadingCircle4=0;
+ 
   
 }
 

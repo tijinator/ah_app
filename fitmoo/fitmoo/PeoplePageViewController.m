@@ -40,7 +40,7 @@
     [self initFrames];
     [self initValuable];
     [self postNotifications];
-    
+    [FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
     if (_searchId!=nil) {
         [self getUserProfile:_searchId];
     }
@@ -1823,7 +1823,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [super viewWillAppear:animated];
     [self createObservers];
-    [FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
+  
     
 }
 
