@@ -131,29 +131,58 @@
             drawAnimation.fromValue = [NSNumber numberWithFloat:startAngle];
             drawAnimation.toValue   = [NSNumber numberWithFloat:endAngle];
             
+            
             drawAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+           
             
             if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle]<2&&self.tag==1003) {
-                 [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
                 [FitmooHelper sharedInstance].firstTimeLoadingCircle++;
+                if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle]!=2) {
+                    circle.lineWidth=0;
+                 
+                }
+                  [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
             }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]<2&&self.tag==1004)
             {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
                 [FitmooHelper sharedInstance].firstTimeLoadingCircle1++;
+                 if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]==2) {
+                       [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                 }else
+                 {
+                     circle.lineWidth=0;
+                 }
             }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]<2&&self.tag==1005)
             {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+              
                 [FitmooHelper sharedInstance].firstTimeLoadingCircle2++;
+                if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]==2) {
+                      [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                }else
+                {
+                    circle.lineWidth=0;
+                }
             }
             else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]<2&&self.tag==1006)
             {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+              
                 [FitmooHelper sharedInstance].firstTimeLoadingCircle3++;
+                if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]==2) {
+                      [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                }else
+                {
+                    circle.lineWidth=0;
+                }
             }
             else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]<2&&self.tag==1007)
             {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
                 [FitmooHelper sharedInstance].firstTimeLoadingCircle4++;
+               
+                if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]==2) {
+                 [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
+                }else
+                {
+                    circle.lineWidth=0;
+                }
             }
         
             
