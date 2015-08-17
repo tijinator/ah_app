@@ -1476,6 +1476,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
         ActionSheet.action= @"share";
+        if ([tempFeed.AsycImageViewArray count]!=0) {
+            AsyncImageView *image = [tempFeed.AsycImageViewArray objectAtIndex:0];
+            ActionSheet.shareImage= image.image;
+        }
+        
+        if ([tempFeed.videosArray count]!=0) {
+            tempFeed.videos= [tempFeed.videosArray objectAtIndex:0];
+            ActionSheet.shareVideo= tempFeed.videos.video_url;
+        }
+        if ([tempFeed.type isEqualToString:@"regular"]) {
+            ActionSheet.ShareTitle=tempFeed.text;
+        }else if ([tempFeed.type isEqualToString:@"workout"])
+        {
+            ActionSheet.ShareTitle=tempFeed.workout_title;
+        }else if ([tempFeed.type isEqualToString:@"nutrition"])
+        {
+            ActionSheet.ShareTitle=tempFeed.nutrition.title;
+        }else if ([tempFeed.type isEqualToString:@"product"])
+        {
+            ActionSheet.ShareTitle=tempFeed.product.title;
+        }
         ActionSheet.postType=tempFeed.type;
         ActionSheet.postId= tempFeed.feed_id;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];

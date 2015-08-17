@@ -40,7 +40,10 @@
         [self showViews];
     }
     
-    
+    if (_shareImage==nil&&_shareVideo==nil) {
+        _InstagramButton.hidden=true;
+        _view5.hidden=true;
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -57,13 +60,16 @@
     _shareCancelButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareCancelButton respectToSuperFrame:self.view];
     _shareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButton respectToSuperFrame:self.view];
     _shareButtomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shareButtomView respectToSuperFrame:self.view];
-    
+    _socialNetworkButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_socialNetworkButton respectToSuperFrame:self.view];
+    _view0.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view0 respectToSuperFrame:self.view];
     _view1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view1 respectToSuperFrame:self.view];
     _view2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view2 respectToSuperFrame:self.view];
     _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:self.view];
     _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:self.view];
+    _view5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view5 respectToSuperFrame:self.view];
     
     _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
+    _InstagramButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_InstagramButton respectToSuperFrame:self.view];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -190,7 +196,11 @@
         }
     }
 }
-
+- (UIDocumentInteractionController *) setupControllerWithURL: (NSURL*) fileURL usingDelegate: (id <UIDocumentInteractionControllerDelegate>) interactionDelegate {
+    UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL: fileURL];
+    interactionController.delegate = interactionDelegate;
+    return interactionController;
+}
 - (IBAction)cancelButtonClick:(id)sender {
       [self.view removeFromSuperview];
   //  [self disableViews];
@@ -210,6 +220,70 @@
     
      [[UserManager sharedUserManager] performShare:@"" withId:_postId];
      [self.view removeFromSuperview];
+}
+
+- (IBAction)InstagramButtonClick:(id)sender {
+    
+    NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //create an array and store result of our search for the documents directory in it
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //create NSString object, that holds our exact path to the documents directory
+    
+    NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"insta.igo"]]; //add our image to the path
+    
+    [fileManager createFileAtPath:fullPath contents:imageData attributes:nil]; //finally save the path (image)
+    
+    NSLog(@"image saved");
+    
+    
+    CGRect rect = CGRectMake(0 ,0 , 0, 0);
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsEndImageContext();
+    NSString *fileNameToSave = [NSString stringWithFormat:@"Documents/insta.igo"];
+    NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:fileNameToSave];
+    NSLog(@"jpg path %@",jpgPath);
+    NSString *newJpgPath = [NSString stringWithFormat:@"file://%@",jpgPath]; //[[NSString alloc] initWithFormat:@"file://%@", jpgPath] ];
+    NSLog(@"with File path %@",newJpgPath);
+    NSURL *igImageHookFile = [[NSURL alloc] initFileURLWithPath:newJpgPath];
+    NSLog(@"url Path %@",igImageHookFile);
+    
+    self.docFile.UTI = @"com.instagram.exclusivegram";
+    self.docFile = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
+    self.docFile=[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
+    [self.docFile presentOpenInMenuFromRect: rect    inView: self.view animated: YES ];
+    
+
+}
+
+- (IBAction)socialNewworkButtonClick:(id)sender {
+    
+    
+        NSArray *activityItems;
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://urlrouter.fitmoo.com/feed/", _postId]];
+        if (_shareVideo!=nil) {
+        NSURL *_URL=[NSURL URLWithString:_shareVideo];
+           activityItems = @[_ShareTitle, _URL];
+        }
+        else if (_shareImage!=nil) {
+           activityItems = @[_ShareTitle, url, _shareImage];
+        }else
+        {
+           activityItems = @[_ShareTitle, url];
+        }
+
+        UIActivityViewController *activityController =
+        [[UIActivityViewController alloc]
+         initWithActivityItems:activityItems
+         applicationActivities:nil];
+    
+        [self presentViewController:activityController
+                           animated:YES completion:nil];
+    
+//      [self.view removeFromSuperview];
 }
 
 - (IBAction)shopButtonClick:(id)sender {

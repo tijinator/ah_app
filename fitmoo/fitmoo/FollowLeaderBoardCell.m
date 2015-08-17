@@ -46,6 +46,8 @@
     [view addSubview:headerImage];
     [_headerButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [_headerButton addSubview:view];
+    _headerButton.userInteractionEnabled = NO;
+    _headerButton.exclusiveTouch = NO;
     
     
     

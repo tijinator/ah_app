@@ -83,6 +83,7 @@
     _scrollView.delegate = self;
     
     if ([_homeFeed.videosArray count]>0) {
+        [_homeFeed resetAsycImageViewArray];
         AsyncImageView *scrollImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:scrollImage];
         _homeFeed.videos= [_homeFeed.videosArray objectAtIndex:0];
@@ -92,6 +93,7 @@
         }else
         {
             scrollImage.imageURL =[NSURL URLWithString:_homeFeed.videos.thumbnail_url];
+            [_homeFeed.AsycImageViewArray addObject:scrollImage];
         }
         scrollImage.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -99,12 +101,14 @@
         [_scrollView addSubview:scrollImage];
         _scrollView.backgroundColor= [UIColor blackColor];
         
-        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(_scrollView.frame.size.width-50,10, 40, 40)];
-        
-        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(80,80,80,80)];
+        _bodyImage= [[UIButton alloc] initWithFrame:CGRectMake(0,0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+    
+        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(10,270,270,10)];
+
         v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:nil];
- //       _bodyImage.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
+        _bodyImage.imageEdgeInsets = UIEdgeInsetsMake(v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
         
+     
         [_bodyImage setImage:[UIImage imageNamed:@"thumbnail_playbtn.png"] forState:UIControlStateNormal];
         [_scrollView addSubview:_bodyImage];
         

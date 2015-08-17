@@ -501,6 +501,10 @@
         _localUser.profile_avatar_original=[avatar objectForKey:@"original"];
         _localUser.bio=[profile objectForKey:@"bio"];
         
+        if (_localUser.bio==nil) {
+            _localUser.bio=@"";
+        }
+        
         _localUser.vanity_url=[_responseDic objectForKey:@"vanity_url"];
         if (_localUser.vanity_url==nil) {
             _localUser.vanity_url=@"";
