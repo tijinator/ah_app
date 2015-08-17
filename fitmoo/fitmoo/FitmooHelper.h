@@ -43,6 +43,6 @@
 - (void) addActivityIndicator:(UIView *)view;
 - (Workout *) generateWorkout: (NSDictionary *) dic;
 - (NSString *) generateTimeString:(NSString *)timeString;
-
+- (UIImage *) generateWatermarkForImage:(UIImage *) mainImg;
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;
 @end

@@ -590,6 +590,7 @@
 		27D0DF771B7CC38D00DC49C5 /* infoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF741B7CC38D00DC49C5 /* infoicon.png */; };
 		27D0DF781B7CC38D00DC49C5 /* infoicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */; };
 		27D0DF791B7CC38D00DC49C5 /* infoicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */; };
+		27D11D411B828A440012094F /* fitmoo-live-logo-instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */; };
 		27DB8D811B5D9090005380CA /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DB8D801B5D9090005380CA /* Workout.m */; };
 		27DBA2581B6687080019C56A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA2561B6687080019C56A /* CalendarCell.m */; };
 		27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA2571B6687080019C56A /* CalendarCell.xib */; };
@@ -1276,6 +1277,7 @@
 		27D0DF741B7CC38D00DC49C5 /* infoicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoicon.png; sourceTree = "<group>"; };
 		27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@2x.png"; sourceTree = "<group>"; };
 		27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@3x.png"; sourceTree = "<group>"; };
+		27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitmoo-live-logo-instagram.png"; sourceTree = "<group>"; };
 		27DB8D7F1B5D9090005380CA /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		27DB8D801B5D9090005380CA /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		27DBA2551B6687080019C56A /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
@@ -1677,6 +1679,7 @@
 				273FF5241AF7AA2C00B82DB3 /* endorsedicon.png */,
 				273FF5251AF7AA2C00B82DB3 /* endorsetextbackground.png */,
 				273FF5261AF7AA2C00B82DB3 /* endorsetouchicon.png */,
+				27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */,
 				273FF5271AF7AA2C00B82DB3 /* followicon.png */,
 				273FF52A1AF7AA2C00B82DB3 /* greyendorseicon.png */,
 				273FF52C1AF7AA2C00B82DB3 /* greyleftarrow.png */,
@@ -2535,6 +2538,7 @@
 				273FF5761AF7AA2C00B82DB3 /* whitecamerareverse.png in Resources */,
 				2752EA141B015CBC003841DC /* whitecommenticon.png in Resources */,
 				2752EA1F1B015CBC003841DC /* bluewhitecamera@3x.png in Resources */,
+				27D11D411B828A440012094F /* fitmoo-live-logo-instagram.png in Resources */,
 				2738D9061B023E7F00F5087E /* black_gradient.png in Resources */,
 				27988C8A1B0B7C7400BDE8EB /* mainmenu_settingsicon@2x.png in Resources */,
 				27BC07CD1B1665A300AF414A /* buyicon@2x.png in Resources */,

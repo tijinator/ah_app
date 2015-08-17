@@ -223,7 +223,7 @@
 }
 
 - (IBAction)InstagramButtonClick:(id)sender {
-    
+    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage];
     NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
     
     NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
@@ -269,6 +269,8 @@
            activityItems = @[_ShareTitle, _URL];
         }
         else if (_shareImage!=nil) {
+            
+          _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage];
            activityItems = @[_ShareTitle, url, _shareImage];
         }else
         {
