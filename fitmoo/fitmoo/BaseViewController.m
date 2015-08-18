@@ -156,7 +156,14 @@
     
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+        if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+             [[NSNotificationCenter defaultCenter] removeObserver:self name:@"handleDeeplink" object:nil];
 
+        }
+}
 
 - (void)viewWillAppear:(BOOL)animated {
   //  self.navigationController.swipeBackEnabled = NO;

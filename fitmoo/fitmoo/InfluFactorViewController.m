@@ -182,6 +182,9 @@
     cell.CountLabel.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
     
     contentHight=[NSNumber numberWithDouble:75*[[FitmooHelper sharedInstance] frameRadio]];
+    if (indexPath.row==0+(int)[_searchArrayLeader count]) {
+        contentHight=[NSNumber numberWithDouble:165*[[FitmooHelper sharedInstance] frameRadio]];
+    }
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else

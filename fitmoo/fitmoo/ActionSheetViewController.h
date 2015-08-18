@@ -14,6 +14,9 @@
 @property (strong, nonatomic) NSString * action;
 @property (strong, nonatomic) NSString * postType;
 @property (strong, nonatomic) NSString * postId;
+@property (strong, nonatomic) NSString * profileId;
+@property (strong, nonatomic) NSString * communityId;
+@property (strong, nonatomic) NSString * feedActionId;
 @property (strong, nonatomic) NSString * ShareTitle;
 @property (strong, nonatomic) NSString * ShareBody;
 @property (strong, nonatomic) UIImage *shareImage;

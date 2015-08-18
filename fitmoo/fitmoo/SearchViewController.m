@@ -27,10 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    _searchterm=@"people";
     [self initSearchValuable];
     contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-    _searchterm=@"";
+    
     _searchType=@"people";
     UINib *cellNib = [UINib nibWithNibName:@"FollowCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FollowCollectionViewCell"];
@@ -40,6 +41,7 @@
     _searchArrayCategory= [[NSMutableArray alloc] init];
     _searchArrayPeople= [[NSMutableArray alloc] init];
     _searchArrayPeople1= [[NSMutableArray alloc] init];
+    _searchArrayPeople2= [[NSMutableArray alloc] init];
     _searchArrayPeopleName= [[NSMutableArray alloc] init];
     sleep=false;
     
@@ -114,9 +116,12 @@
         if ([_searchArrayPeopleName count]>0) {
             searchPeopleName= [_searchArrayPeopleName objectAtIndex:0];
             [_searchArrayPeopleName removeObjectAtIndex:0];
-            
+            _searchArrayPeople2=[[NSMutableArray alloc] init];
+            _searchArrayWorkout2=[[NSMutableArray alloc] init];
+            _searchArrayProduct2=[[NSMutableArray alloc] init];
             if ([searchPeopleName isEqualToString:@""]) {
                 [self initSearchValuable];
+
                 [self.tableview reloadData];
                 
             }else
@@ -256,31 +261,87 @@
 
 -(void) parseResponseDic: (NSString *) category
 {
-    
-    NSDictionary *resultArray= [_responseDic objectForKey:@"results"];
-    
-    
-    for (NSDictionary * result in resultArray) {
-        User *tempUser= [[User alloc]  init];
-        NSNumber * isfollowing=[result objectForKey:@"is_following"];
-        tempUser.is_following= [isfollowing stringValue];
+      NSDictionary *resultArray= [_responseDic objectForKey:@"results"];
+    if ([category isEqualToString:@"people"]) {
+      
         
-        NSNumber * following=[result objectForKey:@"following"];
-        tempUser.following= [following stringValue];
-        NSNumber * followers=[result objectForKey:@"followers"];
-        tempUser.followers= [followers stringValue];
-        NSNumber * communities=[result objectForKey:@"communities"];
-        tempUser.communities= [communities stringValue];
+        for (NSDictionary * result in resultArray) {
+            User *tempUser= [[User alloc]  init];
+            NSNumber * isfollowing=[result objectForKey:@"is_following"];
+            tempUser.is_following= [isfollowing stringValue];
+            
+            NSNumber * following=[result objectForKey:@"following"];
+            tempUser.following= [following stringValue];
+            NSNumber * followers=[result objectForKey:@"followers"];
+            tempUser.followers= [followers stringValue];
+            NSNumber * communities=[result objectForKey:@"communities"];
+            tempUser.communities= [communities stringValue];
+            
+            NSDictionary * profile=[result objectForKey:@"profile"];
+            tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
+            NSDictionary *avatar=[profile objectForKey:@"avatars"];
+            tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
+            tempUser.name= [result objectForKey:@"full_name"];
+            NSNumber * user_id=[result objectForKey:@"id"];
+            tempUser.user_id= [user_id stringValue];
+            
+            [_searchArrayPeople2 addObject:tempUser];
+        }
         
-        NSDictionary * profile=[result objectForKey:@"profile"];
-        tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
-        NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-        tempUser.name= [result objectForKey:@"full_name"];
-        NSNumber * user_id=[result objectForKey:@"id"];
-        tempUser.user_id= [user_id stringValue];
+        _searchArrayPeople1=[_searchArrayPeople2 mutableCopy];
+
+    }else if ([category isEqualToString:@"workout"]) {
+        for (NSDictionary * result in resultArray) {
+            Workout *tempWk= [[Workout alloc]  init];
+            
+            NSNumber * wk_id=[result objectForKey:@"id"];
+            tempWk.workout_id= [wk_id stringValue];
+            
+            tempWk.title=[result objectForKey:@"text"];
+            
+            NSNumber * time=[result objectForKey:@"time"];
+          
+            if ([time isEqual:[NSNull null]]) {
+                tempWk.time=@"";
+            }else
+            {
+                tempWk.time=[time stringValue];
+            }
+            
+            NSDictionary * photo= [result objectForKey:@"photo"];
+            if (![photo isEqual:[NSNull null]]) {
+                NSDictionary * style= [photo objectForKey:@"styles"];
+                NSDictionary *thumb= [style objectForKey:@"thumb"];
+                tempWk.style_url= [thumb objectForKey:@"photo_url"];
+            }
+         
+
+            [_searchArrayWorkout2 addObject:tempWk];
+        }
+         _searchArrayPeople1=[_searchArrayWorkout2 mutableCopy];
         
-        [_searchArrayPeople1 addObject:tempUser];
+    }else if ([category isEqualToString:@"product"]) {
+        for (NSDictionary * result in resultArray) {
+            Product *tempPd= [[Product alloc]  init];
+            
+            NSNumber * pd_id=[result objectForKey:@"id"];
+            tempPd.product_id= [pd_id stringValue];
+            
+            tempPd.title=[result objectForKey:@"text"];
+            
+            NSNumber * price=[result objectForKey:@"price"];
+            tempPd.original_price=[price stringValue];
+            
+            NSDictionary * photo= [result objectForKey:@"photo"];
+            if (![photo isEqual:[NSNull null]]) {
+            NSDictionary * style= [photo objectForKey:@"styles"];
+            NSDictionary *thumb= [style objectForKey:@"thumb"];
+            tempPd.photo= [thumb objectForKey:@"photo_url"];
+            }
+            [_searchArrayProduct2 addObject:tempPd];
+        }
+         _searchArrayPeople1=[_searchArrayProduct2 mutableCopy];
+        
     }
     
     
@@ -501,6 +562,9 @@
     
 }
 
+
+
+
 - (void) getSearchItemForPeople
 {
     // [_activityIndicator startAnimating];
@@ -514,13 +578,20 @@
     NSString *lim= [NSString stringWithFormat:@"%i", _searchlimit];
     NSString *ofs= [NSString stringWithFormat:@"%i", _searchoffset];
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",lim, @"limit",@"true", @"mobile",@"people", @"c",searchPeopleName, @"q",nil];
+    NSString *c=@"people";
+    if ([_searchterm isEqualToString:@"workout"]) {
+        c=@"workouts";
+    }else if ([_searchterm isEqualToString:@"product"]) {
+        c=@"products";
+    }
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",lim, @"limit",@"true", @"mobile",c, @"c",searchPeopleName, @"q",nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/global/search"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic= responseObject;
         
-        [self parseResponseDic:@"People"];
+        [self parseResponseDic:_searchterm];
         _tableview.userInteractionEnabled=YES;
         sleep=false;
         [indicatorView removeFromSuperview];
@@ -665,47 +736,71 @@
     if (![_searchTermField.text isEqualToString:@""]) {
         
         if (indexPath.row==0) {
-            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-                UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell3"];
-                
-                UILabel *text= (UILabel *) [Cell viewWithTag:1001];
-                text.frame=CGRectMake(0, 21, 320, 27);
-                text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
-                
-                UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
-                inviteButton.frame=CGRectMake(81, 56, 157, 30);
-                inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
-                [inviteButton addTarget:self action:@selector(addUserButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-                return Cell;
-                
+//            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
+//                UITableViewCell *Cell= [tableView dequeueReusableCellWithIdentifier:@"cell3"];
+//                
+//                UILabel *text= (UILabel *) [Cell viewWithTag:1001];
+//                text.frame=CGRectMake(0, 21, 320, 27);
+//                text.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:text respectToSuperFrame:self.view];
+//                
+//                UIButton *inviteButton= (UIButton *) [Cell viewWithTag:1];
+//                inviteButton.frame=CGRectMake(81, 56, 157, 30);
+//                inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
+//                [inviteButton addTarget:self action:@selector(addUserButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//                return Cell;
+//                
+//            }
+//            
+//            
+//            UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell4"];
+//            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
+//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, tableView.frame.size.width, 20)];
+//            
+//            NSString *string= @"PROFILES + BRANDS";
+//            
+//            [label setBackgroundColor:[UIColor clearColor]];
+//            [label setText:string];
+//            [label setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]];
+//            UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12];
+//            NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font}  ];
+//            
+//            float spacing = 1.0f;
+//            [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [string length])];
+//            
+//            [label setAttributedText:attributedString];
+//            cell.selectionStyle= UITableViewCellSelectionStyleNone;
+//            
+//            [view addSubview:label];
+//            
+//            [view setBackgroundColor:[UIColor whiteColor]];
+//            [cell.contentView addSubview:view];
+//            return cell;
+            SearchTapCell *cell =(SearchTapCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+            
+            if (cell==nil) {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchTapCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
             }
             
+            if ([_searchterm isEqualToString:@"people"]) {
+                [cell.peopleButton setTitleColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+            }else if ([_searchterm isEqualToString:@"workout"]) {
+                [cell.workoutButton setTitleColor:[UIColor colorWithRed:205.0/255.0 green:103.0/255.0 blue:239.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+            }else if ([_searchterm isEqualToString:@"product"]) {
+                [cell.productButton setTitleColor:[UIColor colorWithRed:247.0/255.0 green:147.0/255.0 blue:30.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+            }
             
-            UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell4"];
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, tableView.frame.size.width, 20)];
+            [cell.peopleButton addTarget:self action:@selector(peopleTapClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.workoutButton addTarget:self action:@selector(workoutTapClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.productButton addTarget:self action:@selector(productTapClick:) forControlEvents:UIControlEventTouchUpInside];
             
-            NSString *string= @"PROFILES + BRANDS";
-            
-            [label setBackgroundColor:[UIColor clearColor]];
-            [label setText:string];
-            [label setTextColor:[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1]];
-            UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12];
-            NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font}  ];
-            
-            float spacing = 1.0f;
-            [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [string length])];
-            
-            [label setAttributedText:attributedString];
-            cell.selectionStyle= UITableViewCellSelectionStyleNone;
-            
-            [view addSubview:label];
-            
-            [view setBackgroundColor:[UIColor whiteColor]];
-            [cell.contentView addSubview:view];
+            UIView *v= [[UIView alloc] initWithFrame:CGRectMake(5, 43, 310, 1)];
+            v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
+            v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
+            v.frame= CGRectMake(v.frame.origin.x, v.frame.origin.y, v.frame.size.width, 1);
+            [cell.contentView addSubview:v];
             return cell;
-            
-            
+
         }
         
         //last cell
@@ -720,77 +815,57 @@
             inviteButton.frame=CGRectMake(81, 56, 157, 30);
             inviteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:inviteButton respectToSuperFrame:self.view];
             [inviteButton addTarget:self action:@selector(addUserButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+            if (![self.searchterm isEqualToString:@"people"]) {
+                text.hidden=true;
+                inviteButton.hidden=true;
+            }else
+            {
+                text.hidden=false;
+                inviteButton.hidden=false;
+            }
+            
             return Cell;
         }
         
         
-        UITableViewCell * cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell4"];
+        SearchCell *cell =(SearchCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        if (cell==nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+
         @try {
-            UIButton *imageview=[[UIButton alloc] init];
-            imageview.frame= CGRectMake(15, 15, 35, 35);
-            imageview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:imageview respectToSuperFrame:self.view];
-            UILabel *nameLabel=[[UILabel alloc] init];
-            nameLabel.frame= CGRectMake(63, 11, 125, 42);
-            nameLabel.numberOfLines=2;
-            nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
-            
-            UIButton * followButton= [[UIButton alloc] init];
-            followButton.frame= CGRectMake(210, 14, 100, 31);
-            followButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:followButton respectToSuperFrame:self.view];
-            
-            UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
-            view.clipsToBounds=YES;
-            view.layer.cornerRadius=view.frame.size.width/2;
-            User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
-            nameLabel.text= temUser.name;
-            // nameLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:nameLabel];
-            UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:14];
-            NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:nameLabel.text attributes:@{NSFontAttributeName: font}  ];
-            
-            [nameLabel setAttributedText:attributedString];
-            
-            
-            AsyncImageView *userImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, imageview.frame.size.width, imageview.frame.size.height)];
-            [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:userImage];
-            userImage.imageURL =[NSURL URLWithString:temUser.profile_avatar_thumb];
-            
-            [view addSubview:userImage];
-            [imageview addSubview:view];
-            
-            [followButton setTag:indexPath.row+100];
-            
-            
-            if ([temUser.is_following isEqualToString:@"0"]) {
-                
-                [followButton setBackgroundImage:[UIImage imageNamed:@"searchfollowbtn.png"] forState:UIControlStateNormal];
-                
-            }else
-            {
-                [followButton setBackgroundImage:[UIImage imageNamed:@"searchfollowingbtn.png"] forState:UIControlStateNormal];
+            if ([self.searchterm isEqualToString:@"people"]) {
+                User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                cell.temUser=temUser;
+                [cell builtSearchCell];
+                [cell.followButton setTag:indexPath.row+100];
+                [cell.followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+            }else if ([self.searchterm isEqualToString:@"workout"]){
+                Workout *temWk=[_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                cell.temWk=temWk;
+                [cell builtWkSearchCell];
+            }else if ([self.searchterm isEqualToString:@"product"]){
+                Product *temPd=[_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                cell.temPd=temPd;
+                [cell builtPdSearchCell];
             }
-            [followButton addTarget:self action:@selector(followButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [cell.contentView addSubview:imageview];
-            [cell.contentView addSubview:followButton];
-            [cell.contentView addSubview:nameLabel];
-            cell.selectionStyle= UITableViewCellSelectionStyleNone;
-            
-            UIView *v= [[UIView alloc] initWithFrame:CGRectMake(55, 59, 270, 1)];
-            if (indexPath.row==[_searchArrayPeople1 count]) {
-                v= [[UIView alloc] initWithFrame:CGRectMake(5, 59, 310, 1)];
-            }
-            
-            v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
-            v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
-            [cell.contentView addSubview:v];
-            v.frame= CGRectMake(v.frame.origin.x, v.frame.origin.y, v.frame.size.width, 1);
         }
         @catch (NSException * e) {
             NSLog(@"Exception: %@", e);
         }
         
         
-        
+        UIView *v= [[UIView alloc] initWithFrame:CGRectMake(55, 59, 270, 1)];
+        if (indexPath.row==[_searchArrayPeople1 count]) {
+            v= [[UIView alloc] initWithFrame:CGRectMake(5, 59, 310, 1)];
+        }
+        v.backgroundColor=[UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1];
+        v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
+        [cell.contentView addSubview:v];
+        v.frame= CGRectMake(v.frame.origin.x, v.frame.origin.y, v.frame.size.width, 1);
         return cell;
         
         
@@ -999,57 +1074,7 @@
     }
 
 
-//    if (indexPath.row==1&&[self.searchType isEqualToString:@"community"]) {
-//        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
-//        if (cell==nil) {
-//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
-//            cell = [nib objectAtIndex:0];
-//        }
-//        
-//        cell.cellArray=self.searchArrayCommunity;
-//        cell.cellType=@"community";
-//        [cell builtCells];
-//        
-//        [cell.view1Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view2Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view3Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view4Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view5Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view6Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view7Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view8Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view9Button addTarget:self action:@selector(communityButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        contentHight=[cell CaculateCellHeight];
-//        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-//        return cell;
-//    }
 
-//    if (indexPath.row==1&&[self.searchType isEqualToString:@"people"]) {
-//        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
-//        if (cell==nil) {
-//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
-//            cell = [nib objectAtIndex:0];
-//        }
-//        
-//        cell.cellArray=self.searchArrayPeople;
-//        cell.cellType=@"people";
-//        [cell builtCells];
-//        
-//        [cell.view1Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view2Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view3Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view4Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view5Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view6Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view7Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view8Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.view9Button addTarget:self action:@selector(peopleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        contentHight=[cell CaculateCellHeight];
-//        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-//        return cell;
-//    }
 
     
     FollowLeaderBoardCell *cell =(FollowLeaderBoardCell *) [self.tableview cellForRowAtIndexPath:indexPath];
@@ -1067,6 +1092,11 @@
     cell.CountLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row-count+1];
     
     contentHight=[NSNumber numberWithDouble:75*[[FitmooHelper sharedInstance] frameRadio]];
+    
+    if (indexPath.row+1==count+(int)[_searchArrayLeader count]) {
+         contentHight=[NSNumber numberWithDouble:135*[[FitmooHelper sharedInstance] frameRadio]];
+    }
+    
     if (indexPath.row>=[_heighArray count]) {
         [_heighArray addObject:contentHight];
     }else
@@ -1101,12 +1131,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     {
         @try {
             
-            if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople1 count]) {
-                User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
-                NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+            if ([_searchterm isEqualToString:@"people"]) {
+                if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople1 count]) {
+                    User *temUser= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                    NSString *key=[NSString stringWithFormat:@"%d", temUser.user_id.intValue+100];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+                }
+
+            }else if ([_searchterm isEqualToString:@"workout"]) {
+                if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople1 count]) {
+                    Workout *wk= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                    [self getSpecialPage:wk.workout_id];
+                }
+                
+            }else if ([_searchterm isEqualToString:@"product"]) {
+                if (indexPath.row>0&&indexPath.row<=[_searchArrayPeople1 count]) {
+                    Product *pd= [_searchArrayPeople1 objectAtIndex:indexPath.row-1];
+                   [self getSpecialPage:pd.product_id];
+                }
+                
             }
-        }
+            
+            
+            }
         @catch (NSException * e) {
             NSLog(@"Exception: %@", e);
         }
@@ -1127,10 +1174,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             return 310*Radio;
         }
         if (indexPath.row==0) {
-            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-                
-                return 310*Radio;
-            }
+//            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
+//                
+//                return 310*Radio;
+//            }
+            
+           return 44*Radio;
         }
         return 60*Radio;
     }
@@ -1157,10 +1206,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             return 310*Radio;
         }
         if (indexPath.row==0) {
-            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
-                
-                return 310*Radio;
-            }
+//            if ((![searchPeopleName isEqualToString:@""])&&[_searchArrayPeople1 count]==0) {
+//                
+//                return 310*Radio;
+//            }
+            return 44*Radio;
         }
         return 60*Radio;
     }
@@ -1199,21 +1249,36 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void) initSearchValuable
 {
-    _searchoffset=0;
+    
+    if ([_searchterm isEqualToString:@"people"]) {
+        _PeopleOffset=0;
+        _searchoffset=_PeopleOffset;
+        _searchArrayPeople2= [[NSMutableArray alloc]init];
+    }else if ([_searchterm isEqualToString:@"workout"]) {
+        _WorkoutOffset=0;
+        _searchoffset=_WorkoutOffset;
+        _searchArrayWorkout2= [[NSMutableArray alloc]init];
+    }else if ([_searchterm isEqualToString:@"product"]) {
+        _StoreOffset=0;
+        _searchoffset=_StoreOffset;
+        _searchArrayProduct2= [[NSMutableArray alloc]init];
+    }
+   // _searchoffset=0;
     _searchlimit=15;
     _searchcount=1;
     
-    _searchArrayPeople1= [[NSMutableArray alloc]init];
+  
 }
+
+
 
 -(void) initValuable
 {
+    
     _offset=0;
     _limit=10;
     _count=1;
-    
-    
-    
+
 }
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
@@ -1293,6 +1358,46 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     
+}
+
+
+- (IBAction)workoutTapClick:(id)sender {
+    _searchterm=@"workout";
+    
+    if ([_searchArrayWorkout2 count]==0) {
+        [self initSearchValuable];
+        [self getSearchItemForPeople];
+    }else
+    {
+        _searchArrayPeople1= [_searchArrayWorkout2 mutableCopy];
+        [self.tableview reloadData];
+    }
+   
+}
+
+- (IBAction)productTapClick:(id)sender {
+    _searchterm=@"product";
+    
+    if ([_searchArrayProduct2 count]==0) {
+        [self initSearchValuable];
+        [self getSearchItemForPeople];
+    }else
+    {
+        _searchArrayPeople1= [_searchArrayProduct2 mutableCopy];
+        [self.tableview reloadData];
+    }
+}
+
+- (IBAction)peopleTapClick:(id)sender {
+    _searchterm=@"people";
+    if ([_searchArrayPeople2 count]==0) {
+        [self initSearchValuable];
+        [self getSearchItemForPeople];
+    }else
+    {
+        _searchArrayPeople1= [_searchArrayPeople2 mutableCopy];
+        [self.tableview reloadData];
+    }
 }
 
 - (IBAction)workoutButtonClick:(id)sender {

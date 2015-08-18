@@ -608,6 +608,10 @@
 		27DDF4411B7B8A670011BB46 /* cement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF43E1B7B8A670011BB46 /* cement@2x.png */; };
 		27DDF4421B7B8A670011BB46 /* cement@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF43F1B7B8A670011BB46 /* cement@3x.png */; };
 		27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
+		27FF37021B8363AC008A3227 /* SearchTapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF37001B8363AC008A3227 /* SearchTapCell.m */; };
+		27FF37031B8363AC008A3227 /* SearchTapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF37011B8363AC008A3227 /* SearchTapCell.xib */; };
+		27FF37071B83ABAC008A3227 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF37051B83ABAC008A3227 /* SearchCell.m */; };
+		27FF37081B83ABAC008A3227 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF37061B83ABAC008A3227 /* SearchCell.xib */; };
 		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1297,6 +1301,12 @@
 		27DDF43D1B7B8A670011BB46 /* cement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cement.png; sourceTree = "<group>"; };
 		27DDF43E1B7B8A670011BB46 /* cement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cement@2x.png"; sourceTree = "<group>"; };
 		27DDF43F1B7B8A670011BB46 /* cement@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cement@3x.png"; sourceTree = "<group>"; };
+		27FF36FF1B8363AC008A3227 /* SearchTapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTapCell.h; sourceTree = "<group>"; };
+		27FF37001B8363AC008A3227 /* SearchTapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTapCell.m; sourceTree = "<group>"; };
+		27FF37011B8363AC008A3227 /* SearchTapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTapCell.xib; sourceTree = "<group>"; };
+		27FF37041B83ABAC008A3227 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		27FF37051B83ABAC008A3227 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		27FF37061B83ABAC008A3227 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1365,7 +1375,8 @@
 				2725827E1AD5AA7D0059F43C /* MainPages */,
 				2725820F1AD578A80059F43C /* UserManagement */,
 				272582021AD563280059F43C /* SideView */,
-				27188FC61AD47BD700C34372 /* CustomObjects */,
+				27FF36FE1B83633E008A3227 /* CustomCells */,
+				27188FC61AD47BD700C34372 /* CustomFonts */,
 				27188FC51AD47BC600C34372 /* 3rdParty */,
 				27188F911AD4695000C34372 /* img */,
 				27188F781AD4646300C34372 /* Images.xcassets */,
@@ -1437,59 +1448,11 @@
 			name = 3rdParty;
 			sourceTree = "<group>";
 		};
-		27188FC61AD47BD700C34372 /* CustomObjects */ = {
+		27188FC61AD47BD700C34372 /* CustomFonts */ = {
 			isa = PBXGroup;
 			children = (
 				2725820C1AD5735F0059F43C /* UIUnderlinedButton.h */,
 				2725820D1AD5735F0059F43C /* UIUnderlinedButton.m */,
-				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
-				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
-				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
-				274824E81B70F5BF0058452C /* SeachInterestCell.h */,
-				274824E91B70F5BF0058452C /* SeachInterestCell.m */,
-				274824EA1B70F5BF0058452C /* SeachInterestCell.xib */,
-				27989F7C1B6810FD004D7D8A /* SubTableViewCell.h */,
-				27989F7D1B6810FD004D7D8A /* SubTableViewCell.m */,
-				27989F7E1B6810FD004D7D8A /* SubTableViewCell.xib */,
-				27989F771B680B44004D7D8A /* CalendarSubCell.h */,
-				27989F781B680B44004D7D8A /* CalendarSubCell.m */,
-				27989F791B680B44004D7D8A /* CalendarSubCell.xib */,
-				27DBA2551B6687080019C56A /* CalendarCell.h */,
-				27DBA2561B6687080019C56A /* CalendarCell.m */,
-				27DBA2571B6687080019C56A /* CalendarCell.xib */,
-				27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */,
-				27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */,
-				27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */,
-				27C0A6F51B7A498F00BA3612 /* SearchPhotoCell.h */,
-				27C0A6F61B7A498F00BA3612 /* SearchPhotoCell.m */,
-				27C0A6F71B7A498F00BA3612 /* SearchPhotoCell.xib */,
-				2738D9361B02850300F5087E /* PhotoCell.h */,
-				2738D9371B02850300F5087E /* PhotoCell.m */,
-				2738D9381B02850300F5087E /* PhotoCell.xib */,
-				2747E4301B72449E00F68E27 /* FollowPhotoCell.h */,
-				2747E4311B72449E00F68E27 /* FollowPhotoCell.m */,
-				2747E4321B72449E00F68E27 /* FollowPhotoCell.xib */,
-				27988C8F1B0B7E7D00BDE8EB /* FollowCollectionViewCell.h */,
-				27988C901B0B7E7D00BDE8EB /* FollowCollectionViewCell.m */,
-				27988C911B0B7E7D00BDE8EB /* FollowCollectionViewCell.xib */,
-				2747E4351B725DE000F68E27 /* FollowLeaderBoardCell.h */,
-				2747E4361B725DE000F68E27 /* FollowLeaderBoardCell.m */,
-				2747E4371B725DE000F68E27 /* FollowLeaderBoardCell.xib */,
-				271DA8461B5557BF00D4E075 /* CommunityTitileCell.h */,
-				271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */,
-				271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */,
-				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
-				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
-				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
-				272F276E1AE6BE2B00C9EADC /* CommunityTableViewCell.h */,
-				272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */,
-				272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */,
-				27988CBE1B0BC69A00BDE8EB /* FollowCell.h */,
-				27988CBF1B0BC69A00BDE8EB /* FollowCell.m */,
-				27988CC01B0BC69A00BDE8EB /* FollowCell.xib */,
-				276F44221B0CFB6700342DC9 /* FollowHeaderCell.h */,
-				276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */,
-				276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */,
 				273CE5A61AEE863600BCC66F /* BentonSansMedium.h */,
 				273CE5A71AEE863600BCC66F /* BentonSansMedium.m */,
 				273CE5A91AEEB24900BCC66F /* BentonSansRegular.h */,
@@ -1509,7 +1472,7 @@
 				27974E9B1B7513BE00CBFC59 /* BSMediumButton.h */,
 				27974E9C1B7513BE00CBFC59 /* BSMediumButton.m */,
 			);
-			name = CustomObjects;
+			name = CustomFonts;
 			sourceTree = "<group>";
 		};
 		2720983E1AEA9088007577B7 /* VimeoHelper */ = {
@@ -2236,6 +2199,67 @@
 			name = profile;
 			sourceTree = "<group>";
 		};
+		27FF36FE1B83633E008A3227 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
+				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
+				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
+				27FF37041B83ABAC008A3227 /* SearchCell.h */,
+				27FF37051B83ABAC008A3227 /* SearchCell.m */,
+				27FF37061B83ABAC008A3227 /* SearchCell.xib */,
+				274824E81B70F5BF0058452C /* SeachInterestCell.h */,
+				274824E91B70F5BF0058452C /* SeachInterestCell.m */,
+				274824EA1B70F5BF0058452C /* SeachInterestCell.xib */,
+				27FF36FF1B8363AC008A3227 /* SearchTapCell.h */,
+				27FF37001B8363AC008A3227 /* SearchTapCell.m */,
+				27FF37011B8363AC008A3227 /* SearchTapCell.xib */,
+				27989F7C1B6810FD004D7D8A /* SubTableViewCell.h */,
+				27989F7D1B6810FD004D7D8A /* SubTableViewCell.m */,
+				27989F7E1B6810FD004D7D8A /* SubTableViewCell.xib */,
+				27989F771B680B44004D7D8A /* CalendarSubCell.h */,
+				27989F781B680B44004D7D8A /* CalendarSubCell.m */,
+				27989F791B680B44004D7D8A /* CalendarSubCell.xib */,
+				27DBA2551B6687080019C56A /* CalendarCell.h */,
+				27DBA2561B6687080019C56A /* CalendarCell.m */,
+				27DBA2571B6687080019C56A /* CalendarCell.xib */,
+				27ADE6401B3DC438001B8D99 /* ShareTableViewCell.h */,
+				27ADE6411B3DC438001B8D99 /* ShareTableViewCell.m */,
+				27ADE6451B3DC9FF001B8D99 /* ShareTableViewCell.xib */,
+				27C0A6F51B7A498F00BA3612 /* SearchPhotoCell.h */,
+				27C0A6F61B7A498F00BA3612 /* SearchPhotoCell.m */,
+				27C0A6F71B7A498F00BA3612 /* SearchPhotoCell.xib */,
+				2738D9361B02850300F5087E /* PhotoCell.h */,
+				2738D9371B02850300F5087E /* PhotoCell.m */,
+				2738D9381B02850300F5087E /* PhotoCell.xib */,
+				2747E4301B72449E00F68E27 /* FollowPhotoCell.h */,
+				2747E4311B72449E00F68E27 /* FollowPhotoCell.m */,
+				2747E4321B72449E00F68E27 /* FollowPhotoCell.xib */,
+				27988C8F1B0B7E7D00BDE8EB /* FollowCollectionViewCell.h */,
+				27988C901B0B7E7D00BDE8EB /* FollowCollectionViewCell.m */,
+				27988C911B0B7E7D00BDE8EB /* FollowCollectionViewCell.xib */,
+				2747E4351B725DE000F68E27 /* FollowLeaderBoardCell.h */,
+				2747E4361B725DE000F68E27 /* FollowLeaderBoardCell.m */,
+				2747E4371B725DE000F68E27 /* FollowLeaderBoardCell.xib */,
+				271DA8461B5557BF00D4E075 /* CommunityTitileCell.h */,
+				271DA8471B5557BF00D4E075 /* CommunityTitileCell.m */,
+				271DA8481B5557BF00D4E075 /* CommunityTitileCell.xib */,
+				2731C6331ADD6FD800788181 /* PeopleTitleCell.h */,
+				2731C6341ADD6FD800788181 /* PeopleTitleCell.m */,
+				2731C6351ADD6FD800788181 /* PeopleTitleCell.xib */,
+				272F276E1AE6BE2B00C9EADC /* CommunityTableViewCell.h */,
+				272F276F1AE6BE2B00C9EADC /* CommunityTableViewCell.m */,
+				272F27701AE6BE2B00C9EADC /* CommunityTableViewCell.xib */,
+				27988CBE1B0BC69A00BDE8EB /* FollowCell.h */,
+				27988CBF1B0BC69A00BDE8EB /* FollowCell.m */,
+				27988CC01B0BC69A00BDE8EB /* FollowCell.xib */,
+				276F44221B0CFB6700342DC9 /* FollowHeaderCell.h */,
+				276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */,
+				276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
 		9EFAD12DB94C2C1F8BB2FB70 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2523,6 +2547,7 @@
 				27AC92BB1B06292E00BB7A0E /* settings_bioicon.png in Resources */,
 				27BA5A3B1B6A50E500B30B62 /* feed_black@3x.png in Resources */,
 				27D027CB1B7E1B2300436FEF /* workout_grey@3x.png in Resources */,
+				27FF37031B8363AC008A3227 /* SearchTapCell.xib in Resources */,
 				27ADF1E41B14B1D8003A0A83 /* loginbtn.png in Resources */,
 				27ADF1CB1B14B1D8003A0A83 /* changeprofilepicturebtn@3x.png in Resources */,
 				279E57991B20B4EC0076C3B5 /* menugradient@2x.png in Resources */,
@@ -2750,6 +2775,7 @@
 				27ADF1DB1B14B1D8003A0A83 /* greyx.png in Resources */,
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
 				27DDF4381B7B7C140011BB46 /* searchrightarrow@2x.png in Resources */,
+				27FF37081B83ABAC008A3227 /* SearchCell.xib in Resources */,
 				279E57A41B20E9530076C3B5 /* Stars.png in Resources */,
 				27B2598F1B1E44BA00276273 /* greycomment@3x.png in Resources */,
 				271DA84A1B5557BF00D4E075 /* CommunityTitileCell.xib in Resources */,
@@ -2888,6 +2914,7 @@
 				27DBA2581B6687080019C56A /* CalendarCell.m in Sources */,
 				27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */,
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
+				27FF37021B8363AC008A3227 /* SearchTapCell.m in Sources */,
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
 				27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */,
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
@@ -2939,6 +2966,7 @@
 				27410DF31AFAB34200CF230C /* NSArray_PointArray.m in Sources */,
 				27250CF61AF9007C005FC4C5 /* ShopViewController.m in Sources */,
 				27B1B4691B175FE100F5F812 /* NavigationViewController.m in Sources */,
+				27FF37071B83ABAC008A3227 /* SearchCell.m in Sources */,
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
 				27C0A6F81B7A498F00BA3612 /* SearchPhotoCell.m in Sources */,
 				272581FD1AD562A60059F43C /* IIWrapController.m in Sources */,

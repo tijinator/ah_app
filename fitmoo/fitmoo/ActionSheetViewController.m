@@ -263,7 +263,23 @@
     
     
         NSArray *activityItems;
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://urlrouter.fitmoo.com/feed/", _postId]];
+        NSURL *url;
+        NSString *rootUrl;
+        if (_communityId!=nil) {
+            rootUrl=@"https://urlrouter.fitmoo.com/community/";
+        }else
+        {
+            rootUrl=@"https://urlrouter.fitmoo.com/profile/";
+        }
+    
+        if (_feedActionId!=nil) {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId,@"/fa/",_feedActionId]];
+        }else
+        {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId]];
+        }
+    
+    
         if (_shareVideo!=nil) {
         NSURL *_URL=[NSURL URLWithString:_shareVideo];
            activityItems = @[_ShareTitle, _URL];

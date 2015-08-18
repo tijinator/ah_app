@@ -29,6 +29,8 @@
 #import "FollowPhotoCell.h"
 #import "FollowLeaderBoardCell.h"
 #import "SearchPhotoCell.h"
+#import "SearchTapCell.h"
+#import "SearchCell.h"
 @interface SearchViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
 
 
@@ -51,6 +53,11 @@
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 
+
+@property (assign, nonatomic)  int PeopleOffset;
+@property (assign, nonatomic)  int WorkoutOffset;
+@property (assign, nonatomic)  int StoreOffset;
+
 @property (assign, nonatomic)  int searchcount;
 @property (assign, nonatomic)  int searchlimit;
 @property (assign, nonatomic)  int searchoffset;
@@ -64,6 +71,9 @@
 @property (strong, nonatomic)  NSDictionary * responseDic2;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople1;
+@property (strong, nonatomic)  NSMutableArray * searchArrayPeople2;
+@property (strong, nonatomic)  NSMutableArray * searchArrayWorkout2;
+@property (strong, nonatomic)  NSMutableArray * searchArrayProduct2;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
 @property (strong, nonatomic)  NSMutableArray * searchArrayKeyword;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCommunity;

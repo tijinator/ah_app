@@ -877,7 +877,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 - (IBAction)shareButtonClick:(id)sender {
-    User *localUser= [[UserManager sharedUserManager] getUserLocally];
+    User *localUser= [[UserManager sharedUserManager] localUser];
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
@@ -911,6 +911,21 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         ActionSheet.postType=tempFeed.type;
         ActionSheet.postId= tempFeed.feed_id;
+        
+     
+        
+        if (tempFeed.created_by_community!=nil||![tempFeed.created_by_community isEqual:[NSNull null]]) {
+             ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
+            ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
+        }else
+        {
+             ActionSheet.profileId= tempFeed.created_by.created_by_id;
+           
+        }
+        if (tempFeed.feed_action!=nil||![tempFeed.feed_action isEqual:[NSNull null]]) {
+             ActionSheet.feedActionId= tempFeed.feed_action.feed_action_id;
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
     
