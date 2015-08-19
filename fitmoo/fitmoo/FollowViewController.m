@@ -249,7 +249,7 @@
         NSDictionary *photo= [wkDic objectForKey:@"photo"];
         if (![photo isEqual:[NSNull null]]) {
             NSDictionary *style= [photo objectForKey:@"styles"];
-            NSDictionary *slider=[style objectForKey:@"thumb"];
+            NSDictionary *slider=[style objectForKey:@"small"];
             wk.style_url= [slider objectForKey:@"photo_url"];
             
         }
@@ -281,7 +281,7 @@
         NSDictionary *photo= [pdDic objectForKey:@"photo"];
         if (![photo isEqual:[NSNull null]]) {
             NSDictionary *style= [photo objectForKey:@"styles"];
-            NSDictionary *slider=[style objectForKey:@"thumb"];
+            NSDictionary *slider=[style objectForKey:@"small"];
             pd.photo= [slider objectForKey:@"photo_url"];
             
         }
