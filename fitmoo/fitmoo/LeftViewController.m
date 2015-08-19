@@ -71,13 +71,15 @@
     AsyncImageView *imageview=[[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _humanImage.frame.size.width, _humanImage.frame.size.height)];
     imageview.userInteractionEnabled = NO;
     imageview.exclusiveTouch = NO;
+    view.userInteractionEnabled = NO;
+    view.exclusiveTouch = NO;
 
     imageview.imageURL =[NSURL URLWithString:localuser.profile_avatar_thumb];
     
     [_humanImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [view addSubview:imageview];
     [_humanImage addSubview:view];
-    
+    _my_id=localuser.user_id;
     _nameLabel.text= localuser.name.uppercaseString;
     
 }
@@ -230,4 +232,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+- (IBAction)humanButtonClick:(id)sender {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
+}
 @end
