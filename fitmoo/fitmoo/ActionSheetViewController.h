@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString * ShareTitle;
 @property (strong, nonatomic) NSString * ShareBody;
 @property (assign, nonatomic) BOOL hideRepost;
+@property (assign, nonatomic) BOOL hideInstegram;
 @property (strong, nonatomic) UIImage *shareImage;
 @property (strong, nonatomic) NSString *shareVideo;
 -(void) performAnimation: (UIView *)view;

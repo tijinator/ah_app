@@ -34,7 +34,14 @@
     UIGraphicsBeginImageContext(backgroundImage.size);
     [backgroundImage drawInRect:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)];
     // set watermark position/frame a s(xposition,yposition,width,height)
+    
+    
+    if (backgroundImage.size.width>backgroundImage.size.height) {
+        [watermarkImage drawInRect:CGRectMake((backgroundImage.size.width-watermarkImage.size.width)/2, backgroundImage.size.height - watermarkImage.size.height, watermarkImage.size.width, watermarkImage.size.height)];
+    }else
+    {
      [watermarkImage drawInRect:CGRectMake(0, backgroundImage.size.height - watermarkImage.size.height, watermarkImage.size.width, watermarkImage.size.height)];
+    }
    // [watermarkImage drawInRect:CGRectMake(100, 300, 150, 23)];
     
     // now merging two images into one

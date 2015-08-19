@@ -42,9 +42,9 @@
         [self showViews];
     }
     
-    if (_shareImage==nil&&_shareVideo==nil) {
-        _cpLinkButton.frame= _socialNetworkButton.frame;
-        _socialNetworkButton.frame=_InstagramButton.frame;
+    if (_shareImage==nil||_hideInstegram==true) {
+      //  _cpLinkButton.frame= _socialNetworkButton.frame;
+      //  _socialNetworkButton.frame=_InstagramButton.frame;
         _InstagramButton.hidden=true;
         _view6.hidden=true;
         if (_hideRepost==true) {
@@ -339,9 +339,12 @@
     if (_hideRepost==true) {
         _shareButton.hidden=true;
         _view6.hidden=true;
-        _cpLinkButton.frame=_socialNetworkButton.frame;
-        _socialNetworkButton.frame=_InstagramButton.frame;
-        _InstagramButton.frame=_shareButton.frame;
+        _InstagramButton.frame=_socialNetworkButton.frame;
+        _socialNetworkButton.frame=_cpLinkButton.frame;
+        _cpLinkButton.frame=_shareButton.frame;
+        
+       
+      
     }
     
     

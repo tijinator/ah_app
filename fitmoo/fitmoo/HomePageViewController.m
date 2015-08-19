@@ -835,7 +835,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
         FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
         imageViewController.backgroundColorVisible=[UIColor blackColor];
-        
+        imageViewController.sharingDisabled=true;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
         [self presentViewController:navigationController animated:YES completion:nil];
         
@@ -892,10 +892,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             ActionSheet.shareImage= image.image;
         }
         
-//        if ([tempFeed.videosArray count]!=0) {
-//            tempFeed.videos= [tempFeed.videosArray objectAtIndex:0];
-//            ActionSheet.shareImage= tempFeed.videos.thumbnail_url;
-//        }
+        if ([tempFeed.videosArray count]!=0) {
+           
+            ActionSheet.hideInstegram= true;
+        }
         if ([tempFeed.type isEqualToString:@"regular"]) {
             ActionSheet.ShareTitle=tempFeed.text;
         }else if ([tempFeed.type isEqualToString:@"workout"])

@@ -520,7 +520,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imageArray];
         FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
         imageViewController.backgroundColorVisible=[UIColor blackColor];
-        
+        imageViewController.sharingDisabled=true;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
         [self presentViewController:navigationController animated:YES completion:nil];
         
@@ -594,8 +594,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
            }
            
            if ([tempFeed.videosArray count]!=0) {
-               tempFeed.videos= [tempFeed.videosArray objectAtIndex:0];
-               ActionSheet.shareVideo= tempFeed.videos.video_url;
+               ActionSheet.hideInstegram= true;
            }
            if ([tempFeed.type isEqualToString:@"regular"]) {
                ActionSheet.ShareTitle=tempFeed.text;
