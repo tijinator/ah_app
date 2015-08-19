@@ -61,7 +61,7 @@
 - (void) cellAction: (NSNotification * ) note
 {
     _selectedKeywordId=(NSString *)[note object];
-   // [self.tableview reloadData];
+
     [self initValuable];
     int index=0;
     for (int i=0; i<[_searchArrayKeyword count]; i++) {
@@ -78,81 +78,7 @@
   //  [self getdiscoverBulk];
 }
 
-#pragma mark - text field delegate
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch * touch = [touches anyObject];
-    if(touch.phase == UITouchPhaseBegan) {
-        [_searchTermField resignFirstResponder];
-        
-    }
-}
 
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    // [self moveUpView:_buttomView];
-    textField.spellCheckingType = UITextSpellCheckingTypeNo;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    
-}
-
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
-    
-    [textField resignFirstResponder];
-    if (![textField.text isEqualToString:@""]) {
-         [_searchArrayPeopleName addObject:searchPeopleName];
-    }
-   
-
-    return YES;
-}
-
-- (void)callQueue
-{
-    if (sleep==false) {
-        if ([_searchArrayPeopleName count]>0) {
-            searchPeopleName= [_searchArrayPeopleName objectAtIndex:0];
-            [_searchArrayPeopleName removeObjectAtIndex:0];
-            
-            if ([searchPeopleName isEqualToString:@""]) {
-                [self initSearchValuable];
-                [self.tableview reloadData];
-                
-            }else
-            {
-                [self initSearchValuable];
-                [self getSearchItemForPeople];
-                sleep=true;
-            }
-            
-            
-        }
-        
-    }
-    
-}
-
-- (void)timerTick:(NSTimer *)timer
-{
-    
-    ticks += 0.1;
-    double seconds = fmod(ticks, 60.0);
-    
-    if (seconds>=0.5 && seconds<0.6) {
-        [_searchArrayPeopleName addObject:searchPeopleName];
-    }
-}
-
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    [_timer invalidate];
-    ticks=0;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
-    searchPeopleName=textField.text;
-    
-    
-}
 
 
 
@@ -162,19 +88,13 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     
-    _timerQueue= [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
+   
     self.automaticallyAdjustsScrollViewInsets = NO;
    // self.automaticallyAdjustsScrollViewInsets = NO;
   //  _tableview.con
 }
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [_timerQueue invalidate];
-    [_timer invalidate];
-    
- 
-}
+
 
 
 - (void) initFrames
@@ -237,41 +157,7 @@
 }
 #pragma mark - API CALL with parser
 
--(void) parseResponseDic: (NSString *) category
-{
-    
-    NSDictionary *resultArray= [_responseDic objectForKey:@"results"];
-    
-    
-    for (NSDictionary * result in resultArray) {
-        User *tempUser= [[User alloc]  init];
-        NSNumber * isfollowing=[result objectForKey:@"is_following"];
-        tempUser.is_following= [isfollowing stringValue];
-        
-        NSNumber * following=[result objectForKey:@"following"];
-        tempUser.following= [following stringValue];
-        NSNumber * followers=[result objectForKey:@"followers"];
-        tempUser.followers= [followers stringValue];
-        NSNumber * communities=[result objectForKey:@"communities"];
-        tempUser.communities= [communities stringValue];
-        
-        NSDictionary * profile=[result objectForKey:@"profile"];
-        tempUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
-        NSDictionary *avatar=[profile objectForKey:@"avatars"];
-        tempUser.profile_avatar_thumb=[avatar objectForKey:@"thumb"];
-        tempUser.name= [result objectForKey:@"full_name"];
-        NSNumber * user_id=[result objectForKey:@"id"];
-        tempUser.user_id= [user_id stringValue];
-        
-        [_searchArrayPeople1 addObject:tempUser];
-    }
-    
-    
-    
-    [_tableview reloadData];
-    
-    
-}
+
 -(void) parseResponseDicDiscover
 {
      if (_offset==0) {
@@ -296,7 +182,7 @@
             [_searchArrayPeople addObject:tempUser];
         }
     [self.collectionView reloadData];
- //   [self.tableview reloadData];
+
 }
 
 
@@ -316,7 +202,7 @@
             
             [_searchArrayCategory addObject:tempUser];
         }
- //   [self addScrollView];
+
     [self.tableview reloadData];
 }
 
@@ -363,7 +249,7 @@
         NSDictionary *photo= [wkDic objectForKey:@"photo"];
         if (![photo isEqual:[NSNull null]]) {
             NSDictionary *style= [photo objectForKey:@"styles"];
-            NSDictionary *slider=[style objectForKey:@"slider"];
+            NSDictionary *slider=[style objectForKey:@"thumb"];
             wk.style_url= [slider objectForKey:@"photo_url"];
             
         }
@@ -395,7 +281,7 @@
         NSDictionary *photo= [pdDic objectForKey:@"photo"];
         if (![photo isEqual:[NSNull null]]) {
             NSDictionary *style= [photo objectForKey:@"styles"];
-            NSDictionary *slider=[style objectForKey:@"slider"];
+            NSDictionary *slider=[style objectForKey:@"thumb"];
             pd.photo= [slider objectForKey:@"photo_url"];
             
         }
@@ -478,8 +364,7 @@
     _selectedKeywordId=temCom.created_by_community_id;
     
     [self getdiscoverItemForPeople];
-  //  [self getdiscoverBulk];
-   // [self.tableview reloadData];
+
     
     
 }
@@ -519,39 +404,6 @@
 
 }
 
-- (void) getSearchItemForPeople
-{
-    // [_activityIndicator startAnimating];
-    [self addActivityIndicator];
-    _tableview.userInteractionEnabled=NO;
-    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *lim= [NSString stringWithFormat:@"%i", _searchlimit];
-    NSString *ofs= [NSString stringWithFormat:@"%i", _searchoffset];
-    
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",ofs, @"offset",lim, @"limit",@"true", @"mobile",@"people", @"c",searchPeopleName, @"q",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/global/search"];
-    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        _responseDic= responseObject;
-        
-        [self parseResponseDic:@"People"];
-        _tableview.userInteractionEnabled=YES;
-        sleep=false;
-        [indicatorView removeFromSuperview];
-       // [_activityIndicator stopAnimating];
-    } // success callback block
-     
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             sleep=false;
-            _tableview.userInteractionEnabled=YES;
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-    
-}
 
 
 - (void) getDiscoverKeywords
@@ -756,6 +608,10 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+    
+    if ([_searchArrayLeader count]==0) {
+        return 0;
+    }
     
     int count=9+(int)[_searchArrayLeader count];
     return count;
