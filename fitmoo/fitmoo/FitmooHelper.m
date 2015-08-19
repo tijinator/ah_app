@@ -27,14 +27,14 @@
 
 -(UIImage *) generateWatermarkForImage:(UIImage *) mainImg{
     UIImage *backgroundImage = mainImg;
-    UIImage *watermarkImage = [UIImage imageNamed:@"fitmoo-live-logo-instagram.png"];
+    UIImage *watermarkImage = [UIImage imageNamed:@"instagramlogo8.png"];
     
     
     //Now re-drawing your  Image using drawInRect method
     UIGraphicsBeginImageContext(backgroundImage.size);
     [backgroundImage drawInRect:CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height)];
     // set watermark position/frame a s(xposition,yposition,width,height)
-     [watermarkImage drawInRect:CGRectMake(20, backgroundImage.size.height - watermarkImage.size.height-20, watermarkImage.size.width, watermarkImage.size.height)];
+     [watermarkImage drawInRect:CGRectMake(0, backgroundImage.size.height - watermarkImage.size.height, watermarkImage.size.width, watermarkImage.size.height)];
    // [watermarkImage drawInRect:CGRectMake(100, 300, 150, 23)];
     
     // now merging two images into one

@@ -681,7 +681,7 @@
 }
 
 
-
+//get horizental people
 - (void) getdiscoverItemForPeople
 {
  //   [self addActivityIndicator];
@@ -1065,7 +1065,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     FollowCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FollowCollectionViewCell" forIndexPath:indexPath];
  
     User *tempUser= [_searchArrayPeople objectAtIndex:indexPath.row];
-    cell.userLabel.text= tempUser.followers;
+    cell.userLabel.text=[[FitmooHelper sharedInstance] getTextForNumber:tempUser.followers];
     cell.nameLabel.text= tempUser.name;
     
     

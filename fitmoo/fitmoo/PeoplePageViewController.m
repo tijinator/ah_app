@@ -1468,7 +1468,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
 }
 - (IBAction)shareButtonClick:(id)sender {
-    if (_searchId!=nil) {
+    
         UIButton *button = (UIButton *)sender;
         NSInteger index=(NSInteger) button.tag/100-1;
         
@@ -1476,6 +1476,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
         ActionSheet.action= @"share";
+    
+        if (_searchId==nil) {
+            ActionSheet.hideRepost=true;
+        }
         if ([tempFeed.AsycImageViewArray count]!=0) {
             AsyncImageView *image = [tempFeed.AsycImageViewArray objectAtIndex:0];
             ActionSheet.shareImage= image.image;
@@ -1499,8 +1503,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         ActionSheet.postType=tempFeed.type;
         ActionSheet.postId= tempFeed.feed_id;
+        
+        if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
+            ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
+            ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
+        }else
+        {
+            ActionSheet.profileId= tempFeed.created_by.created_by_id;
+            
+        }
+        if (tempFeed.feed_action!=nil||![tempFeed.feed_action isEqual:[NSNull null]]) {
+            ActionSheet.feedActionId= tempFeed.feed_action.feed_action_id;
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
-    }
+    
     
     
 }

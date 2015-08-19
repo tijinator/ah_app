@@ -914,7 +914,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
      
         
-        if (tempFeed.created_by_community!=nil||![tempFeed.created_by_community isEqual:[NSNull null]]) {
+        if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
              ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
             ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
         }else

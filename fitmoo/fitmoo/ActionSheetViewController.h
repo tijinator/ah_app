@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString * feedActionId;
 @property (strong, nonatomic) NSString * ShareTitle;
 @property (strong, nonatomic) NSString * ShareBody;
+@property (assign, nonatomic) BOOL hideRepost;
 @property (strong, nonatomic) UIImage *shareImage;
 @property (strong, nonatomic) NSString *shareVideo;
 -(void) performAnimation: (UIView *)view;
@@ -33,6 +34,10 @@
 @property (strong, nonatomic) IBOutlet UIView *shareButtomView;
 @property (strong, nonatomic) IBOutlet UIButton *socialNetworkButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *cpLinkButton;
+
+- (IBAction)copyLinkClick:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareCancelButton;
 - (IBAction)shareClick:(id)sender;
@@ -43,6 +48,7 @@
 @property (strong, nonatomic) IBOutlet UIView *view3;
 @property (strong, nonatomic) IBOutlet UIView *view4;
 @property (strong, nonatomic) IBOutlet UIView *view5;
+@property (strong, nonatomic) IBOutlet UIView *view6;
 @property (strong, nonatomic) IBOutlet UIButton *shopButton;
 
 @property (strong, nonatomic)  NSString *shoplink;

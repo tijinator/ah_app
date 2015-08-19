@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    
+    [self hideRepostButton];
     if ([_action isEqualToString:@"share"]) {
         [self showShareViews];
     }else
@@ -37,12 +37,19 @@
         [_shopButton setHidden:false];
         [_view2 setHidden:false];
         [_view4 setHidden:false];
+
+        
         [self showViews];
     }
     
     if (_shareImage==nil&&_shareVideo==nil) {
+        _cpLinkButton.frame= _socialNetworkButton.frame;
+        _socialNetworkButton.frame=_InstagramButton.frame;
         _InstagramButton.hidden=true;
-        _view5.hidden=true;
+        _view6.hidden=true;
+        if (_hideRepost==true) {
+            _view5.hidden=true;
+        }
     }
     // Do any additional setup after loading the view.
 }
@@ -67,9 +74,12 @@
     _view3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view3 respectToSuperFrame:self.view];
     _view4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view4 respectToSuperFrame:self.view];
     _view5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view5 respectToSuperFrame:self.view];
+    _view6.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_view6 respectToSuperFrame:self.view];
     
     _shopButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shopButton respectToSuperFrame:self.view];
     _InstagramButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_InstagramButton respectToSuperFrame:self.view];
+    _cpLinkButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cpLinkButton respectToSuperFrame:self.view];
+
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -259,25 +269,33 @@
 
 }
 
+
+- (NSString *) defineUrl
+{
+    NSString *url;
+    
+    NSString *rootUrl;
+    if (_communityId!=nil) {
+        rootUrl=@"https://urlrouter.fitmoo.com/community/";
+    }else
+    {
+        rootUrl=@"https://urlrouter.fitmoo.com/profile/";
+    }
+    
+    if (_feedActionId!=nil) {
+        url =[NSString stringWithFormat:@"%@%@%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId,@"/fa/",_feedActionId];
+    }else
+    {
+        url = [NSString stringWithFormat:@"%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId];
+    }
+
+    return url;
+}
 - (IBAction)socialNewworkButtonClick:(id)sender {
     
     
         NSArray *activityItems;
-        NSURL *url;
-        NSString *rootUrl;
-        if (_communityId!=nil) {
-            rootUrl=@"https://urlrouter.fitmoo.com/community/";
-        }else
-        {
-            rootUrl=@"https://urlrouter.fitmoo.com/profile/";
-        }
-    
-        if (_feedActionId!=nil) {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId,@"/fa/",_feedActionId]];
-        }else
-        {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@",rootUrl, _profileId, @"/feed/",_postId]];
-        }
+        NSURL *url=[NSURL URLWithString:[self defineUrl]];
     
     
         if (_shareVideo!=nil) {
@@ -315,7 +333,31 @@
     
 }
 
+- (void) hideRepostButton
+{
+    
+    if (_hideRepost==true) {
+        _shareButton.hidden=true;
+        _view6.hidden=true;
+        _cpLinkButton.frame=_socialNetworkButton.frame;
+        _socialNetworkButton.frame=_InstagramButton.frame;
+        _InstagramButton.frame=_shareButton.frame;
+    }
+    
+    
+}
+
 - (IBAction)shareCancelClick:(id)sender {
     [self.view removeFromSuperview];
+}
+- (IBAction)copyLinkClick:(id)sender {
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = [self defineUrl];
+    
+    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Copied"
+                                                      message : @"Link copied successfully into clipboard!" delegate : nil cancelButtonTitle : @"OK"
+                                            otherButtonTitles : nil ];
+    [alert show ];
 }
 @end
