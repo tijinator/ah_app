@@ -407,6 +407,8 @@
             homeFeed.photos.stylesUrlHeight=[slider objectForKey:@"height"];
             homeFeed.photos.stylesUrl=[slider objectForKey:@"photo_url"];
             
+            NSDictionary *small=[styles objectForKey:@"small"];
+            homeFeed.photos.smallUrl=[small objectForKey:@"photo_url"];
             
             [homeFeed.photoArray addObject:homeFeed.photos];
         }

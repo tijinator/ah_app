@@ -95,7 +95,7 @@
         if ([_homeFeed1.photoArray count]>0) {
             [_homeFeed1 resetPhotos];
             _homeFeed1.photos=[_homeFeed1.photoArray objectAtIndex:0];
-            headerImage.imageURL =[NSURL URLWithString:_homeFeed1.photos.stylesUrl];
+            headerImage.imageURL =[NSURL URLWithString:_homeFeed1.photos.smallUrl];
             
         }else
         {
@@ -184,7 +184,7 @@
          if ([_homeFeed2.photoArray count]>0) {
              [_homeFeed2 resetPhotos];
              _homeFeed2.photos=[_homeFeed2.photoArray objectAtIndex:0];
-             headerImage.imageURL =[NSURL URLWithString:_homeFeed2.photos.stylesUrl];
+             headerImage.imageURL =[NSURL URLWithString:_homeFeed2.photos.smallUrl];
              
          }else
          {
@@ -271,7 +271,7 @@
         if ([_homeFeed3.photoArray count]>0) {
             [_homeFeed3 resetPhotos];
             _homeFeed3.photos=[_homeFeed3.photoArray objectAtIndex:0];
-            headerImage.imageURL =[NSURL URLWithString:_homeFeed3.photos.stylesUrl];
+            headerImage.imageURL =[NSURL URLWithString:_homeFeed3.photos.smallUrl];
             
         }else
         {
