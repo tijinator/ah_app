@@ -25,10 +25,21 @@
     
 }
 
--(UIImage *) generateWatermarkForImage:(UIImage *) mainImg{
+-(UIImage *) generateWatermarkForImage:(UIImage *) mainImg withType:(NSString *) type{
     UIImage *backgroundImage = mainImg;
+    
     UIImage *watermarkImage = [UIImage imageNamed:@"instagramlogo8.png"];
     
+    if ([type isEqualToString:@"workout"]) {
+        watermarkImage = [UIImage imageNamed:@"instagramlogo_workout.png"];
+    }else if ([type isEqualToString:@"nutrition"])
+    {
+        watermarkImage = [UIImage imageNamed:@"instagramlogo_nutrition.png"];
+    }else if ([type isEqualToString:@"product"])
+    {
+        watermarkImage = [UIImage imageNamed:@"instagramlogo_product.png"];
+    }
+
     
     //Now re-drawing your  Image using drawInRect method
     UIGraphicsBeginImageContext(backgroundImage.size);
@@ -691,6 +702,10 @@
     
     return stringToChange;
 }
+
+
+
+
 
 -(NSAttributedString *) setBaseLineOffsetAttributedString: (NSMutableAttributedString *) stringToChange Font: (NSString *) fontName size:(CGFloat)size range:(NSString *)rangeString
 {

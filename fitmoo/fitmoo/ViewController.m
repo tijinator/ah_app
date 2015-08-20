@@ -46,6 +46,12 @@
     
      [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeIndicator) userInfo:nil repeats:NO];
     
+ 
+ 
+        [self checkNewVersion];
+    
+    
+ 
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -54,6 +60,62 @@
 {
     [indicatorView removeFromSuperview];
  //   indicatorView.hidden=true;
+}
+
+- (void) checkNewVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    
+    NSURL *url = [NSURL URLWithString:@"http://urlrouter.fitmoo.com/latest_ios_app"];
+   // NSURL *url = [NSURL URLWithString:@"http://urlrouter.fitmoo.com/older_ios_app"];
+    NSError* error;
+    NSString *content = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
+
+    if ([content rangeOfString:version].location==NSNotFound) {
+       
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *key = [prefs stringForKey:@"fitmooCheckNewVersionStatus"];
+        if (![key isEqualToString:@"1"]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"New Version"
+                                                       message:@"New version available, would you like to download it now?"
+                                                      delegate:self
+                                             cancelButtonTitle:@"No"
+                                             otherButtonTitles:@"Yes",@"Remind me later",
+                                             nil];
+        [alert show];
+        }
+    }else
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:@"0" forKey:@"fitmooCheckNewVersionStatus"];
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+        NSString *iTunesLink = @"itms://itunes.apple.com/us/app/fitmoo/id959749830?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:@"1" forKey:@"fitmooCheckNewVersionStatus"];
+        
+    }else if(buttonIndex == 0)
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:@"1" forKey:@"fitmooCheckNewVersionStatus"];
+    }else
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:@"0" forKey:@"fitmooCheckNewVersionStatus"];
+    }
+    
+    
 }
 
 - (void) addActivityIndicator1

@@ -594,7 +594,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
            }
            
            if ([tempFeed.videosArray count]!=0) {
-               ActionSheet.hideInstegram= true;
+               NSString * url= tempFeed.videos.video_url;
+               if ([url rangeOfString:@"vimeo.com"].location == NSNotFound)
+               {
+                   ActionSheet.hideInstegram= true;
+               }
+
            }
            if ([tempFeed.type isEqualToString:@"regular"]) {
                ActionSheet.ShareTitle=tempFeed.text;

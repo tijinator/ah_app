@@ -233,7 +233,7 @@
 }
 
 - (IBAction)InstagramButtonClick:(id)sender {
-    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage];
+    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:_postType];
     NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
     
     NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
@@ -304,7 +304,7 @@
         }
         else if (_shareImage!=nil) {
             
-          _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage];
+          _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:_postType];
            activityItems = @[_ShareTitle, url, _shareImage];
         }else
         {
@@ -359,7 +359,7 @@
     pasteboard.string = [self defineUrl];
     
     UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Copied"
-                                                      message : @"Link copied successfully into clipboard!" delegate : nil cancelButtonTitle : @"OK"
+                                                      message : @"Link copied successfully." delegate : nil cancelButtonTitle : @"OK"
                                             otherButtonTitles : nil ];
     [alert show ];
 }

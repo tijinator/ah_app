@@ -1123,12 +1123,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     tempButton1 = (UIButton *)sender;
     NSInteger index=(NSInteger) tempButton1.tag-100;
     
-    if (![_searchTermField.text isEqualToString:@""]) {
-        tempUser1= [_searchArrayPeople1 objectAtIndex:(index-1)];
-    }else
-    {
+//    if (![_searchTermField.text isEqualToString:@""]) {
+//        tempUser1= [_searchArrayPeople1 objectAtIndex:(index-1)];
+//    }else
+//    {
         tempUser1= [_searchArrayPeople objectAtIndex:index];
-    }
+//    }
     
     if ([tempUser1.is_following isEqualToString:@"0"]) {
         [[UserManager sharedUserManager] performFollow:tempUser1.user_id];

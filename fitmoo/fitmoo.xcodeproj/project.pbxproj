@@ -284,6 +284,15 @@
 		2760945E1AD717E700A769CE /* fontello.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2760945D1AD717E700A769CE /* fontello.ttf */; };
 		276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */; };
 		276F44261B0CFB6700342DC9 /* FollowHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */; };
+		276FE3931B866332009496DE /* instagramlogo_product.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3901B866332009496DE /* instagramlogo_product.png */; };
+		276FE3941B866332009496DE /* instagramlogo_product@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3911B866332009496DE /* instagramlogo_product@2x.png */; };
+		276FE3951B866332009496DE /* instagramlogo_product@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3921B866332009496DE /* instagramlogo_product@3x.png */; };
+		276FE3991B866BF8009496DE /* instagramlogo_nutrition.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3961B866BF8009496DE /* instagramlogo_nutrition.png */; };
+		276FE39A1B866BF8009496DE /* instagramlogo_nutrition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3971B866BF8009496DE /* instagramlogo_nutrition@2x.png */; };
+		276FE39B1B866BF8009496DE /* instagramlogo_nutrition@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE3981B866BF8009496DE /* instagramlogo_nutrition@3x.png */; };
+		276FE39F1B866C0A009496DE /* instagramlogo_workout.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39C1B866C0A009496DE /* instagramlogo_workout.png */; };
+		276FE3A01B866C0A009496DE /* instagramlogo_workout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39D1B866C0A009496DE /* instagramlogo_workout@2x.png */; };
+		276FE3A11B866C0A009496DE /* instagramlogo_workout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39E1B866C0A009496DE /* instagramlogo_workout@3x.png */; };
 		277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F71B1FAB2C00AE4B36 /* profile.png */; };
 		277BE8FB1B1FAB2C00AE4B36 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */; };
 		277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */; };
@@ -943,6 +952,15 @@
 		276F44221B0CFB6700342DC9 /* FollowHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowHeaderCell.h; sourceTree = "<group>"; };
 		276F44231B0CFB6700342DC9 /* FollowHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowHeaderCell.m; sourceTree = "<group>"; };
 		276F44241B0CFB6700342DC9 /* FollowHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowHeaderCell.xib; sourceTree = "<group>"; };
+		276FE3901B866332009496DE /* instagramlogo_product.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo_product.png; sourceTree = "<group>"; };
+		276FE3911B866332009496DE /* instagramlogo_product@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_product@2x.png"; sourceTree = "<group>"; };
+		276FE3921B866332009496DE /* instagramlogo_product@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_product@3x.png"; sourceTree = "<group>"; };
+		276FE3961B866BF8009496DE /* instagramlogo_nutrition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo_nutrition.png; sourceTree = "<group>"; };
+		276FE3971B866BF8009496DE /* instagramlogo_nutrition@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_nutrition@2x.png"; sourceTree = "<group>"; };
+		276FE3981B866BF8009496DE /* instagramlogo_nutrition@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_nutrition@3x.png"; sourceTree = "<group>"; };
+		276FE39C1B866C0A009496DE /* instagramlogo_workout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo_workout.png; sourceTree = "<group>"; };
+		276FE39D1B866C0A009496DE /* instagramlogo_workout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_workout@2x.png"; sourceTree = "<group>"; };
+		276FE39E1B866C0A009496DE /* instagramlogo_workout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_workout@3x.png"; sourceTree = "<group>"; };
 		277BE8F71B1FAB2C00AE4B36 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@3x.png"; sourceTree = "<group>"; };
@@ -1642,6 +1660,7 @@
 				2752E91C1B014506003841DC /* with2xs */,
 				273FF51E1AF7AA2C00B82DB3 /* bluehighlightsquare.png */,
 				273FF51F1AF7AA2C00B82DB3 /* cameracircleicon.png */,
+				276FE38F1B86630F009496DE /* watermarks */,
 				273FF5201AF7AA2C00B82DB3 /* cameraicon.png */,
 				273FF5211AF7AA2C00B82DB3 /* carticon.png */,
 				273FF5221AF7AA2C00B82DB3 /* commenticon.png */,
@@ -1649,9 +1668,6 @@
 				273FF5251AF7AA2C00B82DB3 /* endorsetextbackground.png */,
 				273FF5261AF7AA2C00B82DB3 /* endorsetouchicon.png */,
 				27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */,
-				27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */,
-				27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */,
-				27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */,
 				273FF5271AF7AA2C00B82DB3 /* followicon.png */,
 				273FF52A1AF7AA2C00B82DB3 /* greyendorseicon.png */,
 				273FF52C1AF7AA2C00B82DB3 /* greyleftarrow.png */,
@@ -1994,6 +2010,25 @@
 				276094421AD708C100A769CE /* BentonSansExtraComp-Regular.otf */,
 			);
 			path = "Benton Sans";
+			sourceTree = "<group>";
+		};
+		276FE38F1B86630F009496DE /* watermarks */ = {
+			isa = PBXGroup;
+			children = (
+				27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */,
+				27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */,
+				27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */,
+				276FE3961B866BF8009496DE /* instagramlogo_nutrition.png */,
+				276FE3971B866BF8009496DE /* instagramlogo_nutrition@2x.png */,
+				276FE3981B866BF8009496DE /* instagramlogo_nutrition@3x.png */,
+				276FE39C1B866C0A009496DE /* instagramlogo_workout.png */,
+				276FE39D1B866C0A009496DE /* instagramlogo_workout@2x.png */,
+				276FE39E1B866C0A009496DE /* instagramlogo_workout@3x.png */,
+				276FE3901B866332009496DE /* instagramlogo_product.png */,
+				276FE3911B866332009496DE /* instagramlogo_product@2x.png */,
+				276FE3921B866332009496DE /* instagramlogo_product@3x.png */,
+			);
+			name = watermarks;
 			sourceTree = "<group>";
 		};
 		27988C761B0B7C4300BDE8EB /* follow */ = {
@@ -2397,6 +2432,7 @@
 				2752EA1E1B015CBC003841DC /* bluewhitecamera@2x.png in Resources */,
 				27B2D3941B399CF900F37584 /* bluecheck@3x.png in Resources */,
 				2752EA1D1B015CBC003841DC /* bluewhitecamera.png in Resources */,
+				276FE3A11B866C0A009496DE /* instagramlogo_workout@3x.png in Resources */,
 				279E579F1B20B4EC0076C3B5 /* startshopping@2x.png in Resources */,
 				27BA5A371B6A50E500B30B62 /* calendar_grey@2x.png in Resources */,
 				27B259931B1E493F00276273 /* greycommenticon.png in Resources */,
@@ -2443,12 +2479,15 @@
 				27ADF1D91B14B1D8003A0A83 /* facebookbtn@2x.png in Resources */,
 				27A1017A1B334554007B7BF3 /* follow.png in Resources */,
 				2752EA011B015CBC003841DC /* location@3x.png in Resources */,
+				276FE39B1B866BF8009496DE /* instagramlogo_nutrition@3x.png in Resources */,
 				27BA5A3E1B6A50E500B30B62 /* feed_grey@3x.png in Resources */,
+				276FE39F1B866C0A009496DE /* instagramlogo_workout.png in Resources */,
 				27ADF1F31B14B1D8003A0A83 /* signupbtn.png in Resources */,
 				273FF5501AF7AA2C00B82DB3 /* bluehighlightsquare.png in Resources */,
 				2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */,
 				27988CC21B0BC69A00BDE8EB /* FollowCell.xib in Resources */,
 				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
+				276FE39A1B866BF8009496DE /* instagramlogo_nutrition@2x.png in Resources */,
 				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,
 				27A1017B1B334554007B7BF3 /* follow@2x.png in Resources */,
 				27ACD1001B0A74E900322ED5 /* thumbnail_playbtn.png in Resources */,
@@ -2474,6 +2513,7 @@
 				27DBA2591B6687080019C56A /* CalendarCell.xib in Resources */,
 				279E57941B20B4EC0076C3B5 /* greycamera@3x.png in Resources */,
 				27CBC0E01B0F84DB00699E1E /* eventsscreen@3x.png in Resources */,
+				276FE3A01B866C0A009496DE /* instagramlogo_workout@2x.png in Resources */,
 				277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
 				2738D9041B023E7F00F5087E /* greyendorseicon.png in Resources */,
@@ -2513,6 +2553,7 @@
 				273FF5751AF7AA2C00B82DB3 /* whitearrowicon.png in Resources */,
 				27B259941B1E493F00276273 /* greycommenticon@2x.png in Resources */,
 				2747E4391B725DE000F68E27 /* FollowLeaderBoardCell.xib in Resources */,
+				276FE3991B866BF8009496DE /* instagramlogo_nutrition.png in Resources */,
 				27989F7B1B680B44004D7D8A /* CalendarSubCell.xib in Resources */,
 				27C0A6F91B7A498F00BA3612 /* SearchPhotoCell.xib in Resources */,
 				27B259871B1E446300276273 /* blueheart.png in Resources */,
@@ -2545,6 +2586,7 @@
 				271114621ADF11A10056EB13 /* Info.plist in Resources */,
 				2752EA031B015CBC003841DC /* menu_plus_icon@2x.png in Resources */,
 				276094441AD708C100A769CE /* BentonSans-Bold.otf in Resources */,
+				276FE3941B866332009496DE /* instagramlogo_product@2x.png in Resources */,
 				27988CBC1B0BB12500BDE8EB /* followsection_usericon@2x.png in Resources */,
 				27A101541B3342C3007B7BF3 /* search_follow@2x.png in Resources */,
 				27188FBC1AD4695000C34372 /* play.png in Resources */,
@@ -2643,6 +2685,7 @@
 				27ADF1E11B14B1D8003A0A83 /* login_continueoutline.png in Resources */,
 				272E7E2C1B4C09CD00023D09 /* adduser.png in Resources */,
 				27B259881B1E446300276273 /* blueheart@2x.png in Resources */,
+				276FE3931B866332009496DE /* instagramlogo_product.png in Resources */,
 				2760944E1AD708C100A769CE /* BentonSansComp-Light.otf in Resources */,
 				273FF5691AF7AA2C00B82DB3 /* postmenuicon.png in Resources */,
 				27A101941B334554007B7BF3 /* shop@3x.png in Resources */,
@@ -2743,6 +2786,7 @@
 				273FF54E1AF7AA2C00B82DB3 /* addusericon.png in Resources */,
 				2752EA2A1B015CBC003841DC /* x@2x.png in Resources */,
 				27A101821B334554007B7BF3 /* logout@3x.png in Resources */,
+				276FE3951B866332009496DE /* instagramlogo_product@3x.png in Resources */,
 				279E579C1B20B4EC0076C3B5 /* splashscreen@2x.png in Resources */,
 				273FF56D1AF7AA2C00B82DB3 /* rightpeopleicon.png in Resources */,
 				2752EA2B1B015CBC003841DC /* x@3x.png in Resources */,
