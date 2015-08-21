@@ -421,9 +421,9 @@
 - (void) initFrames
 {
    // _nav.view.frame= CGRectMake(0, 0, 320, 568);
-    _nav.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nav.view respectToSuperFrame:self.view];
+  //  _nav.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nav.view respectToSuperFrame:self.view];
 
-    
+    _nav.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], _nav.view.frame.size.height);
 }
 
 @end
