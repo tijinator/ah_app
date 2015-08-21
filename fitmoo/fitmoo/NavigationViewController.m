@@ -126,6 +126,14 @@
     CGRect windowFrame = self.nav.view.frame;
     if (windowFrame.origin.y!=0) {
         windowFrame.origin.y=0;
+        
+        if (windowFrame.size.height>568*[[FitmooHelper sharedInstance] frameRadio]) {
+              windowFrame.size.height=windowFrame.size.height-20;
+        }else if (windowFrame.size.height<568*[[FitmooHelper sharedInstance] frameRadio])
+        {
+            windowFrame.size.height=windowFrame.size.height+20;
+        }
+      
         self.nav.view.frame=windowFrame;
     }
     

@@ -212,7 +212,7 @@
 {
      double Radio= self.view.frame.size.width / 320;
     
-    _bottomView= [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-Radio*60, 320*Radio, 60*Radio)];
+    _bottomView= [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.view.frame.size.height-Radio*60, 320*Radio, 60*Radio)];
     _bottomImageView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _bottomView.frame.size.width, _bottomView.frame.size.height)];
     _bottomImageView.image= [UIImage imageNamed:@"menugradient.png"];
     [_bottomView addSubview:_bottomImageView];
