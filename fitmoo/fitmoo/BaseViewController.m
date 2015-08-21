@@ -68,10 +68,7 @@
             NSRange firstRange = [key rangeOfString:@"feed/"];
             NSRange finalRange = NSMakeRange(firstRange.location + firstRange.length, key.length-firstRange.length);
             key= [key substringWithRange:finalRange];
-           
-           
-          
-            
+
             
             NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app",
                                       nil];
@@ -147,6 +144,21 @@
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
             
+        }else if (!([key rangeOfString:@"discover"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
+        }else if (!([key rangeOfString:@"home"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"home"];
+        }else if (!([key rangeOfString:@"settings"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+        }else if (!([key rangeOfString:@"shop"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"shop"];
+        }else if (!([key rangeOfString:@"search"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"search"];
         }
 
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -166,6 +178,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    
+    
   //  self.navigationController.swipeBackEnabled = NO;
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
@@ -391,12 +406,14 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
     
-//    _overlay.view.frame=CGRectMake(0, 0, 320, 568);
-//    _overlay.view.frame=CGRectMake(0, 0, _overlay.view.frame.size.width*[[FitmooHelper sharedInstance] frameRadio], _overlay.view.frame.size.height*[[FitmooHelper sharedInstance] frameRadio]);
+     CGRect windowFrame = _overlay.view.frame;
+    if (windowFrame.origin.y!=0) {
+        windowFrame.size.height=windowFrame.size.height+windowFrame.origin.y;
+        windowFrame.origin.y=0;
+        _overlay.view.frame=windowFrame;
+    }
     
-    
-//    _overlay.view.frame= CGRectMake(0, 0, 320, 568);
-//    _overlay.view.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_overlay.view respectToSuperFrame:nil];
+
     
     _picker = [[UIImagePickerController alloc] init];
     _picker.allowsEditing = NO;

@@ -91,14 +91,12 @@
     @try {
         CGRect windowFrame = _navigateView.view.frame;
         if (_sideMenuViewController.view.frame.origin.y>0) {
-            windowFrame.origin.y = 0;
             windowFrame.size.height=windowFrame.size.height+_sideMenuViewController.view.frame.origin.y;
-        }else
-        {
-            windowFrame.origin.y = 0;
         }
+         windowFrame.origin.y = 0;
      //   _sideMenuViewController.contentViewController.view.frame=windowFrame;
          _sideMenuViewController.view.frame=windowFrame;
+   
     }
     @catch (NSException *exception) {
          }
@@ -212,11 +210,13 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-  
+    
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

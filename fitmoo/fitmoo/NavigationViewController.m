@@ -29,7 +29,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-
+ 
 }
 
 - (void)viewDidLoad
@@ -66,6 +66,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
       [self createNotificationTimer];
+    
+    
 }
 
 
@@ -121,6 +123,13 @@
 }
 
 - (void)appWillEnterForeground:(NSNotification *)notification {
+    CGRect windowFrame = self.nav.view.frame;
+    if (windowFrame.origin.y!=0) {
+        windowFrame.origin.y=0;
+        self.nav.view.frame=windowFrame;
+    }
+    
+    
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {

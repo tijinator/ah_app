@@ -149,6 +149,13 @@
             cell = [nib objectAtIndex:0];
         }
         cell.bodyButton1.text= _influence_factor;
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InfoButtonClick:)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.bodyButton1 addGestureRecognizer:tapGestureRecognizer];
+        cell.bodyButton1.userInteractionEnabled=YES;
+
+        
         if (_search_name!=nil) {
             NSArray * Name= [_search_name componentsSeparatedByString:@" "];
             NSString * firstName=[Name objectAtIndex:0];
@@ -279,6 +286,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 - (IBAction)backButtonClick:(id)sender
 {
