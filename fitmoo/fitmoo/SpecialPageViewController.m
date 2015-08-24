@@ -562,9 +562,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)headerImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSString *key=[NSString stringWithFormat:@"%ld", (long)button.tag];
-    User *tempUser= [[UserManager sharedUserManager] localUser];
+  //  User *tempUser= [[UserManager sharedUserManager] localUser];
     
-    if ([key isEqualToString:tempUser.user_id] || [key isEqualToString:_searchId]) {
+    if ([key isEqualToString:_searchId]) {
       //  [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"6"];
         [self.navigationController popViewControllerAnimated:YES];
     }else
@@ -619,8 +619,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
            
            
            if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
-               ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
-               ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
+               ActionSheet.communityId= tempFeed.feed_action.community_id;
+               ActionSheet.profileId=tempFeed.feed_action.community_id;
            }else
            {
                ActionSheet.profileId= tempFeed.created_by.created_by_id;

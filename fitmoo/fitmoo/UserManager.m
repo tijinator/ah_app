@@ -1102,18 +1102,18 @@
 
 //----------------------- uat
     
-//    _clientUrl= @"http://uat.fitmoo.com";
-//    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
-//    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
-//    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
-//    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
-//    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
-//    _amazonUploadUrl= @"https://d1cpiexk3lbp6h.cloudfront.net/photos/";
-//    _s3_accountId=@"271404364214";
-//    _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
-//    _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
-//    _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
-//    _s3_bucket=@"fitmoo-uat";
+    _clientUrl= @"http://uat.fitmoo.com";
+    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
+    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
+    _logoutUrl=@"http://uat.fitmoo.com/api/tokens/delete_token?";
+    _postUrl=@"http://uat.fitmoo.com/api/users/feeds";
+    _feedsUrl=@"http://uat.fitmoo.com/api/feeds/";
+    _amazonUploadUrl= @"https://d1cpiexk3lbp6h.cloudfront.net/photos/";
+    _s3_accountId=@"271404364214";
+    _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
+    _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
+    _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
+    _s3_bucket=@"fitmoo-uat";
     
 
 
@@ -1121,19 +1121,19 @@
     
 //----------------------- live
     
-        _clientUrl= @"https://fitmoo.com";
-        _loginUrl= @"https://fitmoo.com/api/tokens";
-        _homeFeedUrl= @"https://fitmoo.com/api/users/";
-        _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
-        _postUrl=@"https://fitmoo.com/api/users/feeds";
-        _feedsUrl=@"https://fitmoo.com/api/feeds/";
-
-        _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
-        _s3_accountId=@"271404364214";
-        _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
-        _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
-        _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
-        _s3_bucket=@"webapp-beta";
+//        _clientUrl= @"https://fitmoo.com";
+//        _loginUrl= @"https://fitmoo.com/api/tokens";
+//        _homeFeedUrl= @"https://fitmoo.com/api/users/";
+//        _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
+//        _postUrl=@"https://fitmoo.com/api/users/feeds";
+//        _feedsUrl=@"https://fitmoo.com/api/feeds/";
+//
+//        _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
+//        _s3_accountId=@"271404364214";
+//        _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
+//        _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
+//        _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
+//        _s3_bucket=@"webapp-beta";
     
     
     return self;

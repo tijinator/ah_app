@@ -1009,8 +1009,50 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
         ActionSheet.action= @"share";
+        if (_searchId==nil) {
+            ActionSheet.hideRepost=true;
+        }
+        if ([tempFeed.AsycImageViewArray count]!=0) {
+            AsyncImageView *image = [tempFeed.AsycImageViewArray objectAtIndex:0];
+            ActionSheet.shareImage= image.image;
+        }
+        
+        if ([tempFeed.videosArray count]!=0) {
+            
+            NSString * url= tempFeed.videos.video_url;
+            if ([url rangeOfString:@"vimeo.com"].location == NSNotFound)
+            {
+                ActionSheet.hideInstegram= true;
+            }
+            
+        }
+        if ([tempFeed.type isEqualToString:@"regular"]) {
+            ActionSheet.ShareTitle=tempFeed.text;
+        }else if ([tempFeed.type isEqualToString:@"workout"])
+        {
+            ActionSheet.ShareTitle=tempFeed.workout_title;
+        }else if ([tempFeed.type isEqualToString:@"nutrition"])
+        {
+            ActionSheet.ShareTitle=tempFeed.nutrition.title;
+        }else if ([tempFeed.type isEqualToString:@"product"])
+        {
+            ActionSheet.ShareTitle=tempFeed.product.title;
+        }
         ActionSheet.postType=tempFeed.type;
         ActionSheet.postId= tempFeed.feed_id;
+        
+        if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
+            ActionSheet.communityId= tempFeed.feed_action.community_id;
+            ActionSheet.profileId=tempFeed.feed_action.community_id;
+        }else
+        {
+            ActionSheet.profileId= tempFeed.created_by.created_by_id;
+            
+        }
+        if (tempFeed.feed_action!=nil||![tempFeed.feed_action isEqual:[NSNull null]]) {
+            ActionSheet.feedActionId= tempFeed.feed_action.feed_action_id;
+        }
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
     }
     

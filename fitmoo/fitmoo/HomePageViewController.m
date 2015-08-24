@@ -882,11 +882,15 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *tempFeed= [_homeFeedArray objectAtIndex:index];
     NSString *create_by_id=[NSString stringWithFormat:@"%@", tempFeed.created_by.created_by_id];
-    if (![localUser.user_id isEqualToString:create_by_id]) {
+   
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
         ActionSheet.action= @"share";
-        
+    
+         if ([localUser.user_id isEqualToString:create_by_id]) {
+              ActionSheet.hideRepost=true;
+         }
+    
         if ([tempFeed.AsycImageViewArray count]!=0) {
             AsyncImageView *image = [tempFeed.AsycImageViewArray objectAtIndex:0];
             ActionSheet.shareImage= image.image;
@@ -918,8 +922,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
      
         
         if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
-             ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
-            ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
+             ActionSheet.communityId= tempFeed.feed_action.community_id;
+            ActionSheet.profileId=tempFeed.feed_action.community_id;
         }else
         {
              ActionSheet.profileId= tempFeed.created_by.created_by_id;
@@ -930,22 +934,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
-    }
-    
-//    NSArray *activityItems;
-//    NSString *text = @"I like this post";
-//    NSURL *url = [NSURL URLWithString:@"http://www.fitmoo.com"];
-//    UIImage *image = [UIImage imageNamed:@"nutritiontag.png"];
-//    activityItems = @[text, url, image];
-//    
-//    
-//    UIActivityViewController *activityController =
-//    [[UIActivityViewController alloc]
-//     initWithActivityItems:activityItems
-//     applicationActivities:nil];
-//    
-//    [self presentViewController:activityController
-//                       animated:YES completion:nil];
+ 
     
 
 }

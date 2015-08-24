@@ -41,27 +41,30 @@
     
     CGFloat startAngle = (-1*M_PI/2);
     CGFloat endAngle =(3.00001*M_PI/2);
-    CAShapeLayer *circle = [CAShapeLayer layer];
-    circle.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius)
+    CAShapeLayer *circle1 = [CAShapeLayer layer];
+    circle1.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius)
                                                  radius:radius
                                              startAngle:startAngle
                                                endAngle:endAngle
                                               clockwise:NO].CGPath;
     
-    circle.position = CGPointMake(0, -2);
+    circle1.position = CGPointMake(0, -2);
     if (self.tag==1004) {
-        circle.position = CGPointMake(0, -4);
+        circle1.position = CGPointMake(0, -4);
     }
     
-    circle.fillColor = [UIColor clearColor].CGColor;
-    circle.strokeColor = color;
-    circle.lineWidth = strokeWidth;
-    [self.layer addSublayer:circle];
+    circle1.fillColor = [UIColor clearColor].CGColor;
+    circle1.strokeColor = color;
+    circle1.lineWidth = strokeWidth;
+    [self.layer addSublayer:circle1];
     
 }
 
 - (void) addDrawingCircle
 {
+    
+//    NSLock *arrayLock = [[NSLock alloc] init];
+//    [arrayLock lock];
     if (![self.text isEqualToString:@"0"] ) {
         
         int radius = self.frame.size.width/2;
@@ -130,44 +133,40 @@
         }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]<2&&self.tag==1004)
         {
             [FitmooHelper sharedInstance].firstTimeLoadingCircle1++;
-            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]==2) {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
-            }else
-            {
-                circle.lineWidth=0;
+            
+         
+            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle1]!=2) {
+                 circle.lineWidth=0;
             }
+            [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
         }else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]<2&&self.tag==1005)
         {
             
             [FitmooHelper sharedInstance].firstTimeLoadingCircle2++;
-            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]==2) {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
-            }else
-            {
+            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle2]!=2) {
                 circle.lineWidth=0;
             }
+            [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
         }
         else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]<2&&self.tag==1006)
         {
             
             [FitmooHelper sharedInstance].firstTimeLoadingCircle3++;
-            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]==2) {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
-            }else
-            {
-                circle.lineWidth=0;
+            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle3]!=2) {
+                 circle.lineWidth=0;
             }
+            
+             [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
         }
         else if([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]<2&&self.tag==1007)
         {
             [FitmooHelper sharedInstance].firstTimeLoadingCircle4++;
             
-            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]==2) {
-                [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
-            }else
-            {
-                circle.lineWidth=0;
+            if ([[FitmooHelper sharedInstance] firstTimeLoadingCircle4]!=2) {
+               circle.lineWidth=0;
             }
+
+              [circle addAnimation:drawAnimation forKey:@"drawCircleAnimation"];
         }
         
         
@@ -176,6 +175,8 @@
         
         
     }
+    
+  //    [arrayLock unlock];
 
 }
 

@@ -236,7 +236,7 @@
             SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
             
             specialPage.homeFeed=feed;
-            specialPage.searchId=[NSString stringWithFormat:@"%@",feed.created_by.created_by_id ];
+       //     specialPage.searchId=[NSString stringWithFormat:@"%@",feed.created_by.created_by_id ];
             [self.navigationController pushViewController:specialPage animated:YES];
             
             

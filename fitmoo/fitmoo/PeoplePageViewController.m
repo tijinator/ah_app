@@ -1510,8 +1510,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         ActionSheet.postId= tempFeed.feed_id;
         
         if (![tempFeed.feed_action.community_id isEqual:[NSNull null]]) {
-            ActionSheet.communityId= tempFeed.created_by_community.created_by_community_id;
-            ActionSheet.profileId=tempFeed.created_by_community.created_by_community_id;
+            ActionSheet.communityId= tempFeed.feed_action.community_id;
+            ActionSheet.profileId=tempFeed.feed_action.community_id;
         }else
         {
             ActionSheet.profileId= tempFeed.created_by.created_by_id;
@@ -1754,6 +1754,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(_searchId!=nil)
     {
         specialPage.searchId=_searchId;
+    }else
+    {
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        specialPage.searchId=tempUser.user_id;
     }
     [self.navigationController pushViewController:specialPage animated:YES];
     
