@@ -134,11 +134,18 @@
 -(void) initFrames
 {
     _closeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_closeButton respectToSuperFrame:nil];
-    if (_topView.frame.size.height<50) {
-        
+    
+    if (_topView.frame.size.height==0)
+    {
+        _topView.frame= CGRectMake(0, 0, 320, 50);
+        _filterTopView.frame= CGRectMake(320, 0, 320, 50);
+        _postTopView.frame=CGRectMake(320, 0, 320, 50);
+    }else if (_topView.frame.size.height<50)
+    {
+   
     }else
     {
-    _topView.frame= CGRectMake(0, 0, 320, 50);
+        _topView.frame= CGRectMake(0, 0, 320, 50);
     }
     _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
     _cameraDirectionButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cameraDirectionButton respectToSuperFrame:self.view];
@@ -187,7 +194,12 @@
     [self.view bringSubviewToFront:_footButtomView];
     [self.view bringSubviewToFront:_filterView];
     
-    
+    //case for ihone4
+    if (self.view.frame.size.height<500) {
+        _footButtomView.frame=CGRectMake(_footButtomView.frame.origin.x, self.view.frame.size.height-_footButtomView.frame.size.height, _footButtomView.frame.size.width, _footButtomView.frame.size.height);
+        _buttomView.frame=CGRectMake(_buttomView.frame.origin.x, _footButtomView.frame.origin.y-83, _buttomView.frame.size.width, 83);
+        
+    }
 }
 
 
@@ -489,6 +501,7 @@
     [UIView commitAnimations];
     _closeButton.hidden=true;
     _cameraDirectionButton.hidden=true;
+    [self.view bringSubviewToFront:_filterTopView];
 }
 -(void) hidePostViewAnimation
 {

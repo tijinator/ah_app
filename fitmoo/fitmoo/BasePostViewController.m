@@ -919,6 +919,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     secsLabel.text = @"sec";
     [_typePicker addSubview:secsLabel];
 
+    
+    if (self.view.frame.size.height<500) {
+        _SubmitButton.frame=CGRectMake(0, 385, _SubmitButton.frame.size.width, _SubmitButton.frame.size.height);
+     
+    }
     //  self.datePicker.backgroundColor=[UIColor lightGrayColor];
     
     

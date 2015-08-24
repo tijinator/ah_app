@@ -41,6 +41,12 @@
     _backButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_backButton respectToSuperFrame:self.view];
   //  _topview.frame=CGRectMake(0, 0, 320, 73);
     _topview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topview respectToSuperFrame:self.view];
+    
+    if (self.view.frame.size.height<500) {
+        
+        _tableView.frame= CGRectMake(_tableView.frame.origin.x,_tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height-88);
+        
+    }
 }
 
 -(void)createObservers{
