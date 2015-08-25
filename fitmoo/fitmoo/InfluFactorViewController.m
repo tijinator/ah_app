@@ -149,6 +149,22 @@
         cell.bodyButton3.text=[NSString stringWithFormat:@"%0.00f",[_posts_factor_status floatValue]];
         cell.bodyButton4.text=[NSString stringWithFormat:@"%0.00f",[_follower_factor_status floatValue]];
         
+        UITapGestureRecognizer *tapGestureRecognizer6 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InviteButtonClick:)];
+        tapGestureRecognizer6.numberOfTapsRequired = 1;
+        [cell.bodyLabel7 addGestureRecognizer:tapGestureRecognizer6];
+        cell.bodyLabel7.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(WorkoutButtonClick:)];
+        tapGestureRecognizer5.numberOfTapsRequired = 1;
+        [cell.bodyLabel5 addGestureRecognizer:tapGestureRecognizer5];
+        cell.bodyLabel5.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ProfileButtonClick:)];
+        tapGestureRecognizer4.numberOfTapsRequired = 1;
+        [cell.bodyLabel3 addGestureRecognizer:tapGestureRecognizer4];
+        cell.bodyLabel3.userInteractionEnabled=YES;
+        
+        
         UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InviteButtonClick:)];
         tapGestureRecognizer3.numberOfTapsRequired = 1;
         [cell.bodyButton4 addGestureRecognizer:tapGestureRecognizer3];
@@ -364,7 +380,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)WorkoutButtonClick:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@""
-                                                   message:@"Are you sure you want to leave this page?"
+                                                   message:@"Would you like to leave this page and post something?"
                                                   delegate:self
                                          cancelButtonTitle:@"No"
                                          otherButtonTitles:@"Yes",nil];
