@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
-
+#import "InviteViewController.h"
+#import "CameraViewController.h"
 @interface InfluFactorViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *topView;
 - (IBAction)backButtonClick:(id)sender;
@@ -30,6 +31,10 @@
 
 @property (strong, nonatomic)  NSMutableArray * searchArrayLeader;
 @property (strong, nonatomic) NSString *influence_factor;
+@property (nonatomic, strong) NSString *profile_factor_status;
+@property (nonatomic, strong) NSString *posts_factor_status;
+@property (nonatomic, strong) NSString *follower_factor_status;
 @property (strong, nonatomic) NSString *search_name;
-
+@property (strong, nonatomic)  CameraViewController *overlay;
+@property (strong, nonatomic)  UIImagePickerController *picker;
 @end

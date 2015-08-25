@@ -40,11 +40,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
- 
-  
-}
+
 
 
 -(void) parseResponseBulk
@@ -149,6 +145,24 @@
             cell = [nib objectAtIndex:0];
         }
         cell.bodyButton1.text= _influence_factor;
+        cell.bodyButton2.text=[NSString stringWithFormat:@"%0.00f",[_profile_factor_status floatValue]];
+        cell.bodyButton3.text=[NSString stringWithFormat:@"%0.00f",[_posts_factor_status floatValue]];
+        cell.bodyButton4.text=[NSString stringWithFormat:@"%0.00f",[_follower_factor_status floatValue]];
+        
+        UITapGestureRecognizer *tapGestureRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InviteButtonClick:)];
+        tapGestureRecognizer3.numberOfTapsRequired = 1;
+        [cell.bodyButton4 addGestureRecognizer:tapGestureRecognizer3];
+        cell.bodyButton4.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(WorkoutButtonClick:)];
+        tapGestureRecognizer2.numberOfTapsRequired = 1;
+        [cell.bodyButton3 addGestureRecognizer:tapGestureRecognizer2];
+        cell.bodyButton3.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ProfileButtonClick:)];
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
+        [cell.bodyButton2 addGestureRecognizer:tapGestureRecognizer1];
+        cell.bodyButton2.userInteractionEnabled=YES;
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(InfoButtonClick:)];
         tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -292,6 +306,80 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)backButtonClick:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)InviteButtonClick:(id)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    
+    [self.navigationController pushViewController:inviteView animated:YES];
+    
+}
+
+- (void) presentCameraView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _overlay = [mainStoryboard instantiateViewControllerWithIdentifier:@"CameraViewController"];
+    
+    CGRect windowFrame = _overlay.view.frame;
+    if (windowFrame.origin.y!=0) {
+        windowFrame.size.height=windowFrame.size.height+windowFrame.origin.y;
+        windowFrame.origin.y=0;
+        _overlay.view.frame=windowFrame;
+    }
+    
+    _picker = [[UIImagePickerController alloc] init];
+    _picker.allowsEditing = NO;
+    
+    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    self.picker.navigationBarHidden = YES;
+    self.picker.toolbarHidden = YES;
+    
+    self.overlay.picker = self.picker;
+    
+    [self.picker.view addSubview:self.overlay.view];
+    self.picker.delegate = self.overlay;
+    
+    [self presentViewController:_picker animated:YES completion:NULL];
+    
+
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+        
+        [self presentCameraView];
+        
+    }
+    
+    
+}
+
+
+- (IBAction)WorkoutButtonClick:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@""
+                                                   message:@"Are you sure you want to leave this page?"
+                                                  delegate:self
+                                         cancelButtonTitle:@"No"
+                                         otherButtonTitles:@"Yes",nil];
+    [alert show];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+   
+    
+}
+
+- (IBAction)ProfileButtonClick:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+    
 }
 
 - (IBAction)InfoButtonClick:(id)sender {

@@ -295,6 +295,13 @@
         NSNumber * influence_factor=[_responseDic objectForKey:@"influence_factor"];
         localUser.influence_factor= [influence_factor stringValue];
         
+        NSNumber * profile_factor_status=[_responseDic objectForKey:@"profile_factor_status"];
+        localUser.profile_factor_status= [profile_factor_status stringValue];
+        NSNumber * posts_factor_status=[_responseDic objectForKey:@"posts_factor_status"];
+        localUser.posts_factor_status= [posts_factor_status stringValue];
+        NSNumber * follower_factor_status=[_responseDic objectForKey:@"follower_factor_status"];
+        localUser.follower_factor_status= [follower_factor_status stringValue];
+        
         NSString * followerString=[_responseDic objectForKey:@"followers"];
         if ([followerString isKindOfClass:[NSString class]]) {
              localUser.followers= followerString;
@@ -493,6 +500,14 @@
         
         NSNumber * influence_factor=[_responseDic objectForKey:@"influence_factor"];
         _localUser.influence_factor= [influence_factor stringValue];
+        
+        NSNumber * profile_factor_status=[_responseDic objectForKey:@"profile_factor_status"];
+        _localUser.profile_factor_status= [profile_factor_status stringValue];
+        NSNumber * posts_factor_status=[_responseDic objectForKey:@"posts_factor_status"];
+        _localUser.posts_factor_status= [posts_factor_status stringValue];
+        NSNumber * follower_factor_status=[_responseDic objectForKey:@"follower_factor_status"];
+        _localUser.follower_factor_status= [follower_factor_status stringValue];
+        
         
         NSDictionary * profile=[_responseDic objectForKey:@"profile"];
         _localUser.cover_photo_url=[profile objectForKey:@"cover_photo_url"];

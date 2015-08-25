@@ -58,6 +58,9 @@
 @property (nonatomic, strong) NSString *days_a_week;
 @property (nonatomic, strong) NSString *nutrition_count;
 @property (nonatomic, strong) NSString *influence_factor;
+@property (nonatomic, strong) NSString *profile_factor_status;
+@property (nonatomic, strong) NSString *posts_factor_status;
+@property (nonatomic, strong) NSString *follower_factor_status;
 
 @property (nonatomic, strong) NSString *vanity_url;
 

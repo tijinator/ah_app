@@ -413,8 +413,6 @@
         _overlay.view.frame=windowFrame;
     }
     
-
-    
     _picker = [[UIImagePickerController alloc] init];
     _picker.allowsEditing = NO;
 
@@ -422,8 +420,6 @@
     self.picker.showsCameraControls = NO;
     self.picker.navigationBarHidden = YES;
     self.picker.toolbarHidden = YES;
-    
-   
     
     self.overlay.picker = self.picker;
 

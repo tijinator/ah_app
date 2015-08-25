@@ -51,6 +51,7 @@
         //  [self getHomePageItems];
     }
     
+    [self getHomePageItems];
     [self getWorkoutItems];
     [self getStoreItems];
     [self getCalendarItems];
@@ -86,6 +87,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calenderModelAction:) name:@"calenderModelAction" object:nil];
+  
     
 }
 
@@ -140,7 +142,8 @@
     _temSearchUser=[[User alloc] init];
     _temSearchUser= (User *) [note object];
     if (_temSearchUser.current_user_can_view_profile.intValue==1) {
-        [self getHomePageItems];
+      //  [self getHomePageItems];
+        _homeFeedArray= [_FeedArray mutableCopy];
         [_tableView reloadData];
     }else
     {
@@ -1846,6 +1849,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
         InfluFactorViewController *influencePage = [mainStoryboard instantiateViewControllerWithIdentifier:@"InfluFactorViewController"];
         influencePage.influence_factor= _temSearchUser.influence_factor;
+        influencePage.profile_factor_status= _temSearchUser.profile_factor_status;
+        influencePage.posts_factor_status= _temSearchUser.posts_factor_status;
+        influencePage.follower_factor_status= _temSearchUser.follower_factor_status;
         if (_searchId!=nil) {
             influencePage.search_name=_temSearchUser.name;
         }
