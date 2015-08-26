@@ -7,7 +7,7 @@
 //
 
 #import "SettingWebViewController.h"
-
+#import <SwipeBack/SwipeBack.h>
 @interface SettingWebViewController ()
 
 @end
@@ -19,6 +19,7 @@
     [self initFrames];
     
     [self displayWebview];
+     self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
 }
 

@@ -116,7 +116,15 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSideMenu:) name:@"hideSideMenu" object:nil];
 }
 
-
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    CGPoint location = [[[event allTouches] anyObject] locationInView:[self window]];
+    CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    if (CGRectContainsPoint(statusBarFrame, location)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"statusBarTappedNotification"
+                                                            object:nil];
+    }
+}
 
 
 -(void)openSideMenu:(NSNotification*)note{

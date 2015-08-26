@@ -54,6 +54,8 @@
      blackStatusbar=0;
     _Pagestuck= [[NSMutableArray alloc] init];
     
+    
+
 //    self.navigationController.navigationBar.translucent = NO;
 //    self.nav.navigationBar.translucent=NO;
 //    [self setEdgesForExtendedLayout:UIRectEdgeNone];

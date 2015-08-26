@@ -177,11 +177,14 @@
         }
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+     self.navigationController.swipeBackEnabled = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
-    
-    
-    
-  //  self.navigationController.swipeBackEnabled = NO;
+
+   
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {

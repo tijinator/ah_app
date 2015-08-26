@@ -11,6 +11,7 @@
 #import "InfluenceCell.h"
 #import "AFNetworking.h"
 #import "UserManager.h"
+#import <SwipeBack/SwipeBack.h>
 @interface InfluFactorViewController ()
 {
     NSNumber * contentHight;
@@ -37,6 +38,7 @@
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     
     [self getAlldiscoverBulk];
+    self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
 }
 

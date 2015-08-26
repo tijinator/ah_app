@@ -13,6 +13,7 @@
 #import "FSImageViewerViewController.h"
 #import "CommentViewController.h"
 #import "ActionSheetViewController.h"
+#import <SwipeBack/SwipeBack.h>
 @interface SpecialPageViewController ()
 {
     NSNumber * contentHight;
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     [self initFrames];
     [self createObservers];
+     self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
 }
 

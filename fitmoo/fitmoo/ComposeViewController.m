@@ -8,7 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "AFNetworking.h"
-
+#import <SwipeBack/SwipeBack.h>
 @interface ComposeViewController ()
 {
     double cellHeight;
@@ -45,6 +45,8 @@
         [self getLikeItem];
     }
      indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+    
+     self.navigationController.swipeBackEnabled = YES;
 }
 
 -(void) initValuable

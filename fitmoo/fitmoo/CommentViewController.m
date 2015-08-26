@@ -8,6 +8,7 @@
 
 #import "CommentViewController.h"
 #import "AFNetworking.h"
+#import <SwipeBack/SwipeBack.h>
 @interface CommentViewController ()
 {
      NSNumber * contentHight;
@@ -30,6 +31,7 @@
     [_homeFeed resetCommentsArray];
     [self getCommentItem];
     [self createObservers];
+     self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
 }
 -(void) initValuable

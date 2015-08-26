@@ -11,6 +11,7 @@
 #import "UserManager.h"
 #import "APAddressBook.h"
 #import "APContact.h"
+#import <SwipeBack/SwipeBack.h>
 @interface InviteViewController ()
 {
     NSArray *content;
@@ -27,6 +28,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     [self getAddressBook];
     
     indices= [self convertToArray];
+    self.navigationController.swipeBackEnabled = YES;
     
  //  [self sendSMS:@"Body of SMS..." recipientList:[NSArray arrayWithObjects:@"+1-111-222-3333", @"111-333-4444", nil]];
 }

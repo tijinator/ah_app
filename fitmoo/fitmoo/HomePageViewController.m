@@ -45,16 +45,20 @@
     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
     [self addtopBarView];
     
-    
+ 
 }
 
 - (void) addtopBarView
 {
+
+    
     UIView *v= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
     v.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:v respectToSuperFrame:self.view];
     v.backgroundColor= [UIColor whiteColor];
     [self.view addSubview:v];
 }
+
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -78,10 +82,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(statusBarTappedAction:)
+                                                 name:@"statusBarTappedNotification"
+                                               object:nil];
     
 }
 
+- (void) statusBarTappedAction: (NSNotification * ) note
+{
+    if ([self numberOfSectionsInTableView:self.tableView] > 0)
+    {
+    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
+    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
 
 
 - (void) updateTable: (NSNotification * ) note
@@ -781,6 +796,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     
     
 }
+
+
+
+
+
+
+
 - (IBAction)optionButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100;

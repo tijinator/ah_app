@@ -7,7 +7,7 @@
 //
 
 #import "BioViewController.h"
-
+#import <SwipeBack/SwipeBack.h>
 @interface BioViewController ()
 
 @end
@@ -30,6 +30,7 @@
     
     _bioTextView.attributedText=attributedString;
     _bioTextView.allowsEditingTextAttributes=false;
+     self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
 }
 

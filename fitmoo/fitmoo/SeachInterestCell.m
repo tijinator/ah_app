@@ -16,7 +16,7 @@
     UIColor * color2=[UIColor colorWithRed:247.0/255.0 green:147.0/255.0 blue:30.0/255.0 alpha:1];
     UIColor * color3=[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1];
     
-    _colorArray= [[NSMutableArray alloc] initWithObjects:color2,color1,color3,color2,  nil];
+    _colorArray= [[NSMutableArray alloc] initWithObjects:color3,color3,color1,color2,  nil];
     
     [self initFrames];
     // Initialization code

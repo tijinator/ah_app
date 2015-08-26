@@ -9,9 +9,7 @@
 #import "AcountViewController.h"
 #import "AWSCore.h"
 #import "AWSS3.h"
-
-
-
+#import <SwipeBack/SwipeBack.h>
 
 @interface AcountViewController ()
 {
@@ -31,6 +29,7 @@
     [super viewDidLoad];
     [self initFrames];
     [self createObservers];
+     self.navigationController.swipeBackEnabled = YES;
   //  self.tabletype=@"setting";
 
     double radio= [[FitmooHelper sharedInstance] frameRadio];
