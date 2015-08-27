@@ -53,10 +53,16 @@
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
 
-
 @property (assign, nonatomic)  int PeopleOffset;
 @property (assign, nonatomic)  int WorkoutOffset;
 @property (assign, nonatomic)  int StoreOffset;
+
+@property (assign, nonatomic)  int DiscoverLeaderOffset;
+@property (assign, nonatomic)  int DiscoverCommunityOffset;
+@property (assign, nonatomic)  int DiscoverWorkoutOffset;
+@property (assign, nonatomic)  int DiscoverProductOffset;
+@property (assign, nonatomic)  int DiscoverAllLimit;
+@property (assign, nonatomic)  int DiscoverCount;
 
 @property (assign, nonatomic)  int searchcount;
 @property (assign, nonatomic)  int searchlimit;
@@ -69,6 +75,10 @@
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSDictionary * responseDic1;
 @property (strong, nonatomic)  NSDictionary * responseDic2;
+@property (strong, nonatomic)  NSDictionary * responseDicLeader;
+@property (strong, nonatomic)  NSDictionary * responseDicWorkouts;
+@property (strong, nonatomic)  NSDictionary * responseDicProducts;
+@property (strong, nonatomic)  NSDictionary * responseDicCommnuities;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople1;
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeople2;

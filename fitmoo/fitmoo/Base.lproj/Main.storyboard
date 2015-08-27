@@ -1398,7 +1398,7 @@ instructions to reset your password.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zzK-HK-43F">
-                                        <rect key="frame" x="288" y="26" width="22" height="22"/>
+                                        <rect key="frame" x="280" y="24" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="whitedots.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1607,7 +1607,7 @@ instructions to reset your password.</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Invite my Contacts"/>
+                                        <state key="normal" title="Invite Contacts"/>
                                         <connections>
                                             <action selector="InviteButtonFunction:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="dye-nf-Y3s"/>
                                         </connections>
@@ -1669,6 +1669,11 @@ instructions to reset your password.</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <view contentMode="scaleToFill" id="UhL-wF-Pbm">
+                                        <rect key="frame" x="0.0" y="100" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fob-qe-h2u">
                                         <rect key="frame" x="0.0" y="161" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1699,6 +1704,16 @@ instructions to reset your password.</string>
                                             <action selector="settingButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="V7V-ps-TKt"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PMS-KO-ojx">
+                                        <rect key="frame" x="0.0" y="59" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Edit Profile"/>
+                                        <connections>
+                                            <action selector="settingButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="A6y-N3-VI2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1721,12 +1736,14 @@ instructions to reset your password.</string>
                         <outlet property="buttomView" destination="JrN-iI-iKO" id="bKQ-Jd-NrI"/>
                         <outlet property="cancelButton" destination="PPy-NB-Zbs" id="XQ9-x8-dqs"/>
                         <outlet property="cpLinkButton" destination="1UI-Ec-U5e" id="Maw-kd-c3r"/>
+                        <outlet property="editProfileButton" destination="PMS-KO-ojx" id="82Z-T5-SvV"/>
                         <outlet property="endorseButton" destination="Lvt-Qx-2WG" id="IQY-X8-40I"/>
                         <outlet property="logoutButton" destination="fob-qe-h2u" id="HYO-qu-nKI"/>
                         <outlet property="menuBottomView" destination="yFi-bE-L8z" id="H15-kU-99g"/>
                         <outlet property="menuCancelButton" destination="2rQ-NS-Wz5" id="TZu-cQ-qSQ"/>
                         <outlet property="menuView1" destination="Bpr-JW-kAU" id="joS-jE-2IF"/>
-                        <outlet property="menuView2" destination="AwS-QK-noy" id="wQN-W8-AGO"/>
+                        <outlet property="menuView2" destination="AwS-QK-noy" id="m9Y-82-Z3q"/>
+                        <outlet property="menuView3" destination="UhL-wF-Pbm" id="dRI-V6-1vk"/>
                         <outlet property="reportButton" destination="CX3-mj-xXj" id="ftX-mh-5Ed"/>
                         <outlet property="settingButton" destination="T2o-Lm-Q9H" id="8d2-Ox-DYX"/>
                         <outlet property="shareButtomView" destination="KDE-00-l4l" id="NJW-NF-IJu"/>

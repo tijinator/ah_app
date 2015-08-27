@@ -41,7 +41,9 @@
             if (![_profileId isEqualToString:[[UserManager sharedUserManager] localUser].user_id]) {
                 [_logoutButton setTitle:@"Copy Profile URL" forState:UIControlStateNormal];
                 _settingButton.hidden=true;
+                _editProfileButton.hidden=true;
                 _menuView1.hidden=true;
+                _menuView3.hidden=true;
             }
             
             
@@ -112,10 +114,12 @@
     
     _menuView1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_menuView1 respectToSuperFrame:self.view];
     _menuView2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_menuView2 respectToSuperFrame:self.view];
+    _menuView3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_menuView3 respectToSuperFrame:self.view];
     _menuBottomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_menuBottomView respectToSuperFrame:self.view];
     _logoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_logoutButton respectToSuperFrame:self.view];
     _settingButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_settingButton respectToSuperFrame:self.view];
     _menuCancelButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_menuCancelButton respectToSuperFrame:self.view];
+    _editProfileButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_editProfileButton respectToSuperFrame:self.view];
     
 }
 
@@ -354,7 +358,7 @@
 }
 
 - (IBAction)InstagramButtonClick:(id)sender {
-    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:_postType];
+    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:@"invite"];
     NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
     
     NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager

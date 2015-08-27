@@ -30,6 +30,23 @@
         _View1CountLabel.text=[[FitmooHelper sharedInstance] getTextForNumber:_user1.followers];
         
     }
+    
+    if ([self.searchType isEqualToString:@"workout"]) {
+        [self setViewItemWith:_wk1.title photo:_wk1.style_url video:_wk1.video_style_url button:_view1Button Icon:_view1VideoIcon];
+        _View1BlackImage.hidden=true;
+        _View1CountLabel.hidden=true;
+        _view1Label.hidden=true;
+        _View1Gradiant.hidden=true;
+    }
+    
+    if ([self.searchType isEqualToString:@"product"]) {
+        [self setViewItemWith:_pd1.title photo:_pd1.photo video:_pd1.videos button:_view1Button Icon:_view1VideoIcon];
+     
+        _View1BlackImage.hidden=true;
+        _View1CountLabel.hidden=true;
+        _view1Label.hidden=true;
+        _View1Gradiant.hidden=true;
+    }
 
 }
 - (void) setView2Item
@@ -47,6 +64,23 @@
          _View2CountLabel.text=[[FitmooHelper sharedInstance] getTextForNumber:_user2.followers];
      }
     
+    if ([self.searchType isEqualToString:@"workout"]) {
+        [self setViewItemWith:_wk2.title photo:_wk2.style_url video:_wk2.video_style_url button:_view2Button Icon:_view2VideoIcon];
+        _View2BlackImage.hidden=true;
+        _View2CountLabel.hidden=true;
+        _view2Label.hidden=true;
+        _View2Gradiant.hidden=true;
+    }
+    
+    if ([self.searchType isEqualToString:@"product"]) {
+        [self setViewItemWith:_pd2.title photo:_pd2.photo video:_pd2.videos button:_view2Button Icon:_view2VideoIcon];
+        
+        _View2BlackImage.hidden=true;
+        _View2CountLabel.hidden=true;
+        _view2Label.hidden=true;
+        _View2Gradiant.hidden=true;
+    }
+    
 }
 - (void) setView3Item
 {
@@ -61,6 +95,23 @@
          _view3Label.text= _user3.name;
          _View3CountLabel.text=[[FitmooHelper sharedInstance] getTextForNumber:_user3.followers];
      }
+    
+    if ([self.searchType isEqualToString:@"workout"]) {
+        [self setViewItemWith:_wk3.title photo:_wk3.style_url video:_wk3.video_style_url button:_view3Button Icon:_view3VideoIcon];
+        _View3BlackImage.hidden=true;
+        _View3CountLabel.hidden=true;
+        _view3Label.hidden=true;
+        _View3Gradiant.hidden=true;
+    }
+    
+    if ([self.searchType isEqualToString:@"product"]) {
+        [self setViewItemWith:_pd3.title photo:_pd3.photo video:_pd3.videos button:_view3Button Icon:_view3VideoIcon];
+        
+        _View3BlackImage.hidden=true;
+        _View3CountLabel.hidden=true;
+        _view3Label.hidden=true;
+        _View3Gradiant.hidden=true;
+    }
 }
 
 - (void) initFrames
@@ -103,20 +154,38 @@
 {
     if (photo==nil&&video==nil)
     {
+//        UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(20,20,button.frame.size.width-40 , button.frame.size.height-40)];
+//        label.userInteractionEnabled = NO;
+//        label.exclusiveTouch = NO;
+//        label.textAlignment= NSTextAlignmentCenter;
+//        label.numberOfLines=3;
+//        label.text=text;
+//        label.textColor=[UIColor whiteColor];
+//        
+//        UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+//        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
+//        
+//        [label setAttributedText:attributedString];
+//        
+//        [button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+//        [button addSubview:label];
         UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(20,20,button.frame.size.width-40 , button.frame.size.height-40)];
         label.userInteractionEnabled = NO;
         label.exclusiveTouch = NO;
         label.textAlignment= NSTextAlignmentCenter;
         label.numberOfLines=3;
         label.text=text;
+        label.backgroundColor=[UIColor clearColor];
         
-        UIFont *font = [UIFont fontWithName:@"BentonSans" size:12];
+        UIFont *font = [UIFont fontWithName:@"BentonSans" size:13];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
         
         [label setAttributedText:attributedString];
         
         [button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [button setBackgroundImage:[UIImage imageNamed:@"cement.png"] forState:UIControlStateNormal];
         [button addSubview:label];
+
     }else
     {
         AsyncImageView *headerImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, button.frame.size.width, button.frame.size.height)];

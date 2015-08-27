@@ -49,6 +49,15 @@
 @property (strong, nonatomic) User *user2;
 @property (strong, nonatomic) User *user3;
 
+@property (strong, nonatomic) Workout *wk1;
+@property (strong, nonatomic) Workout *wk2;
+@property (strong, nonatomic) Workout *wk3;
+
+@property (strong, nonatomic) Product *pd1;
+@property (strong, nonatomic) Product *pd2;
+@property (strong, nonatomic) Product *pd3;
+
+
 - (void) setView1Item;
 - (void) setView2Item;
 - (void) setView3Item;

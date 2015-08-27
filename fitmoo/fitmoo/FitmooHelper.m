@@ -38,8 +38,11 @@
     }else if ([type isEqualToString:@"product"])
     {
         watermarkImage = [UIImage imageNamed:@"instagramlogo_product.png"];
+    }else if ([type isEqualToString:@"invite"])
+    {
+        watermarkImage = [UIImage imageNamed:@"followmeonfitmoo.png"];
     }
-
+    
     
     //Now re-drawing your  Image using drawInRect method
     UIGraphicsBeginImageContext(backgroundImage.size);

@@ -19,6 +19,13 @@
     NSString *searchPeopleName;
     BOOL sleep;
     double ticks;
+    
+    BOOL workoutHere;
+    BOOL LeaderHere;
+    BOOL ProductHere;
+    BOOL CommunityHere;
+    
+    
 }
 @end
 
@@ -29,6 +36,7 @@
     [self initFrames];
     _searchterm=@"people";
     [self initSearchValuable];
+    [self initDiscoverValuable];
     contentHight=[NSNumber numberWithInteger:270*[[FitmooHelper sharedInstance] frameRadio]];
     _heighArray= [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithDouble: 380*[[FitmooHelper sharedInstance] frameRadio]],contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
     
@@ -50,6 +58,10 @@
     
     self.tableview.userInteractionEnabled=false;
     [self createObservers];
+    
+   
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -74,7 +86,18 @@
         }
     }
     
-    [self parseResponseBulk:index];
+    if (index==0) {
+        _searchType=@"people";
+    }else if (index==1) {
+        _searchType=@"community";
+    }else if (index==2) {
+        _searchType=@"workout";
+    }else if (index==3) {
+        _searchType=@"product";
+    }
+    
+    [_tableview reloadData];
+  //  [self parseResponseBulk:index];
     
    
     //  [self getdiscoverBulk];
@@ -370,64 +393,154 @@
   
     [self parseResponseBulk:0];
     
+
+}
+
+
+- (void) parseCommunity:(NSDictionary *) bulk
+{
+    for (NSDictionary * comDic in bulk) {
+        CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
+        tempCom.cover_photo_url=[comDic objectForKey:@"cover_photo_url"];
+        tempCom.name= [comDic objectForKey:@"name"];
+        NSNumber * Com_id=[comDic objectForKey:@"id"];
+        tempCom.created_by_community_id= [Com_id stringValue];
+        
+        NSNumber * member_count=[comDic objectForKey:@"members_count"];
+        tempCom.joiners_count= [member_count stringValue];
+        
+        if ([tempCom.cover_photo_url isEqual:[NSNull null]]) {
+            tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
+        }
+        [_searchArrayCommunity addObject:tempCom];
+        
+    }
     
+    if ([_searchType isEqualToString:@"community"]) {
+        [self.tableview reloadData];
+    }
+
+}
+
+- (void) parseLeader:(NSDictionary *) bulk
+{
+    for (NSDictionary *leader in bulk) {
+        User *temUser= [[User alloc] init];
+        temUser.name= [leader objectForKey:@"full_name"];
+        
+        NSNumber *days_a_week= [leader objectForKey:@"days_a_week"];
+        temUser.days_a_week= [days_a_week stringValue];
+        
+        NSNumber *workout_count= [leader objectForKey:@"workout_count"];
+        temUser.workout_count= [workout_count stringValue];
+        NSNumber *user_id= [leader objectForKey:@"id"];
+        temUser.user_id=[user_id stringValue];
+        
+        NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
+        temUser.nutrition_count= [nutrition_count stringValue];
+        
+        NSDictionary *profile= [leader objectForKey:@"profile"];
+        
+        NSDictionary *avatars= [profile objectForKey:@"avatars"];
+        temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
+        [_searchArrayLeader addObject:temUser];
+        
+    }
     
+    if ([_searchType isEqualToString:@"people"]) {
+        [self.tableview reloadData];
+    }
+}
+
+- (void) parseProduct:(NSDictionary *) bulk
+{
+    for (NSDictionary *pdDic in bulk) {
+        Product *pd= [[Product alloc] init];
+        NSNumber *pd_id= [pdDic objectForKey:@"id"];
+        pd.product_id= [pd_id stringValue];
+        pd.title=[pdDic objectForKey:@"text"];
+        if ([pd.title isEqual:[NSNull null]]) {
+            pd.title=@"";
+        }
+        
+        NSDictionary *photo= [pdDic objectForKey:@"photo"];
+        if (![photo isEqual:[NSNull null]]) {
+            NSDictionary *style= [photo objectForKey:@"styles"];
+            NSDictionary *slider=[style objectForKey:@"small"];
+            pd.photo= [slider objectForKey:@"photo_url"];
+            
+        }
+        
+        NSDictionary *video= [pdDic objectForKey:@"video"];
+        if (![video isEqual:[NSNull null]]) {
+            
+            NSDictionary *thumbnail= [video objectForKey:@"thumbnail"];
+            pd.videos=[thumbnail objectForKey:@"url"];
+            
+        }
+        [_searchArrayProducts addObject:pd];
+        
+    }
     
+    if ([_searchType isEqualToString:@"product"]) {
+        [self.tableview reloadData];
+    }
+
+}
+
+- (void) parseWorkout:(NSDictionary *) bulk
+{
+    for (NSDictionary *wkDic in bulk) {
+        Workout *wk= [[Workout alloc] init];
+        NSNumber *wk_id= [wkDic objectForKey:@"id"];
+        wk.workout_id= [wk_id stringValue];
+        wk.title=[wkDic objectForKey:@"text"];
+        
+        NSDictionary *photo= [wkDic objectForKey:@"photo"];
+        if (![photo isEqual:[NSNull null]]) {
+            NSDictionary *style= [photo objectForKey:@"styles"];
+            NSDictionary *slider=[style objectForKey:@"small"];
+            wk.style_url= [slider objectForKey:@"photo_url"];
+            
+        }
+        
+        NSDictionary *video= [wkDic objectForKey:@"video"];
+        if (![video isEqual:[NSNull null]]) {
+            
+            
+            NSDictionary *thumbnail= [video objectForKey:@"thumbnail"];
+            wk.video_style_url=[thumbnail objectForKey:@"url"];
+            
+            
+        }
+        
+        [_searchArrayWorkouts addObject:wk];
+        
+    }
     
+    if ([_searchType isEqualToString:@"workout"]) {
+        [self.tableview reloadData];
+    }
+    
+
 }
 
 -(void) parseResponseBulk: (int) index
 {
-    NSDictionary *bulk= [_searchArrayTotalKeyword objectAtIndex:index];
+    NSDictionary *bulk= [_searchArrayTotalKeyword objectAtIndex:1];
     
-    if (index==1) {
-       _searchType=@"community";
+   // if (index==1) {
+   //    _searchType=@"community";
         _searchArrayCommunity= [[NSMutableArray alloc] init];
-   
-        for (NSDictionary * comDic in bulk) {
-            CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
-            tempCom.cover_photo_url=[comDic objectForKey:@"cover_photo_url"];
-            tempCom.name= [comDic objectForKey:@"name"];
-            NSNumber * Com_id=[comDic objectForKey:@"id"];
-            tempCom.created_by_community_id= [Com_id stringValue];
-            
-            NSNumber * member_count=[comDic objectForKey:@"members_count"];
-            tempCom.joiners_count= [member_count stringValue];
-            
-            if ([tempCom.cover_photo_url isEqual:[NSNull null]]) {
-                tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
-            }
-            [_searchArrayCommunity addObject:tempCom];
-            
-        }
-    }
+        [self parseCommunity:bulk];
+   // }
     
-    if (index==0) {
-         _searchType=@"people";
+   // if (index==0) {
+        bulk= [_searchArrayTotalKeyword objectAtIndex:0];
+   //      _searchType=@"people";
          _searchArrayLeader= [[NSMutableArray alloc] init];
         
-        for (NSDictionary *leader in bulk) {
-            User *temUser= [[User alloc] init];
-            temUser.name= [leader objectForKey:@"full_name"];
-            
-            NSNumber *days_a_week= [leader objectForKey:@"days_a_week"];
-            temUser.days_a_week= [days_a_week stringValue];
-            
-            NSNumber *workout_count= [leader objectForKey:@"workout_count"];
-            temUser.workout_count= [workout_count stringValue];
-            NSNumber *user_id= [leader objectForKey:@"id"];
-            temUser.user_id=[user_id stringValue];
-            
-            NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
-            temUser.nutrition_count= [nutrition_count stringValue];
-            
-            NSDictionary *profile= [leader objectForKey:@"profile"];
-            
-            NSDictionary *avatars= [profile objectForKey:@"avatars"];
-            temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
-            [_searchArrayLeader addObject:temUser];
-            
-        }
+        [self parseLeader:bulk];
         
         _searchArrayPeople= [[NSMutableArray alloc] init];
         bulk= [_searchArrayTotalKeyword objectAtIndex:4];
@@ -452,80 +565,150 @@
 
         
         
-    }
+  //  }
     
-    if (index==2) {
-         _searchType=@"workout";
+  //  if (index==2) {
+          bulk= [_searchArrayTotalKeyword objectAtIndex:2];
+  //       _searchType=@"workout";
          _searchArrayWorkouts= [[NSMutableArray alloc] init];
-        
-        for (NSDictionary *wkDic in bulk) {
-            Workout *wk= [[Workout alloc] init];
-            NSNumber *wk_id= [wkDic objectForKey:@"id"];
-            wk.workout_id= [wk_id stringValue];
-            wk.title=[wkDic objectForKey:@"text"];
-            
-            NSDictionary *photo= [wkDic objectForKey:@"photo"];
-            if (![photo isEqual:[NSNull null]]) {
-                NSDictionary *style= [photo objectForKey:@"styles"];
-                NSDictionary *slider=[style objectForKey:@"small"];
-                wk.style_url= [slider objectForKey:@"photo_url"];
-                
-            }
-            
-            NSDictionary *video= [wkDic objectForKey:@"video"];
-            if (![video isEqual:[NSNull null]]) {
-                
-                
-                NSDictionary *thumbnail= [video objectForKey:@"thumbnail"];
-                wk.video_style_url=[thumbnail objectForKey:@"url"];
-                
-                
-            }
-            
-            [_searchArrayWorkouts addObject:wk];
-            
-        }
-    }
+        [self parseWorkout:bulk];
+  //  }
     
-    if (index==3) {
+  //  if (index==3) {
+        bulk= [_searchArrayTotalKeyword objectAtIndex:3];
        _searchArrayProducts= [[NSMutableArray alloc] init];
-         _searchType=@"product";
-        for (NSDictionary *pdDic in bulk) {
-            Product *pd= [[Product alloc] init];
-            NSNumber *pd_id= [pdDic objectForKey:@"id"];
-            pd.product_id= [pd_id stringValue];
-            pd.title=[pdDic objectForKey:@"text"];
-            if ([pd.title isEqual:[NSNull null]]) {
-                pd.title=@"";
-            }
-            
-            NSDictionary *photo= [pdDic objectForKey:@"photo"];
-            if (![photo isEqual:[NSNull null]]) {
-                NSDictionary *style= [photo objectForKey:@"styles"];
-                NSDictionary *slider=[style objectForKey:@"small"];
-                pd.photo= [slider objectForKey:@"photo_url"];
-                
-            }
-            
-            NSDictionary *video= [pdDic objectForKey:@"video"];
-            if (![video isEqual:[NSNull null]]) {
-                
-                NSDictionary *thumbnail= [video objectForKey:@"thumbnail"];
-                pd.videos=[thumbnail objectForKey:@"url"];
-                
-            }
-            [_searchArrayProducts addObject:pd];
-            
-        }
-    }
+  //     _searchType=@"product";
+        [self parseProduct:bulk];
+        
+        
+  //  }
   
     
     
-    [self.tableview reloadData];
+   
+}
+
+- (void) getSearchProducts
+{
+    
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _DiscoverAllLimit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverProductOffset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_products"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicProducts= responseObject;
+        [self parseProduct:_responseDicProducts];
+        ProductHere=true;
+        self.tableview.userInteractionEnabled=true;
+        
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             self.tableview.userInteractionEnabled=true;
+             
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
 }
 
 
+- (void) getSearchCommunities
+{
+    
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _DiscoverAllLimit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverCommunityOffset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_communities"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicCommnuities= responseObject;
+        [self parseCommunity:_responseDicCommnuities];
+        CommunityHere=true;
+        self.tableview.userInteractionEnabled=true;
+        
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             self.tableview.userInteractionEnabled=true;
+             
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
 
+
+- (void) getSearchWorkouts
+{
+    
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _DiscoverAllLimit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverWorkoutOffset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_workouts"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicWorkouts= responseObject;
+        [self parseWorkout:_responseDicWorkouts];
+        workoutHere=true;
+        self.tableview.userInteractionEnabled=true;
+        
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             self.tableview.userInteractionEnabled=true;
+             
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
+- (void) getSearchLeaders
+{
+    
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _DiscoverAllLimit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverLeaderOffset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_leaders"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicLeader= responseObject;
+        [self parseLeader:_responseDicLeader];
+        LeaderHere=true;
+        self.tableview.userInteractionEnabled=true;
+        
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             self.tableview.userInteractionEnabled=true;
+             
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
 
 - (void) getSpecialPage: (NSString *) key
 {
@@ -628,7 +811,10 @@
         
         _responseDic2= responseObject;
         [self parseAllResponseBulk];
-        
+        [self getSearchLeaders];
+        [self getSearchWorkouts];
+        [self getSearchCommunities];
+        [self getSearchProducts];
         self.tableview.userInteractionEnabled=true;
         [indicatorView removeFromSuperview];
         
@@ -718,10 +904,22 @@
             count=count+1;
         }
         count=count+1+(int)[_searchArrayLeader count];
-        
-        
     }
    
+    if ([self.searchType isEqualToString:@"workout"]) {
+        count=(int)[_searchArrayWorkouts count]/3;
+        if ([_searchArrayWorkouts count]%3!=0) {
+            count=count+1;
+        }
+        count=count+1;
+    }
+    if ([self.searchType isEqualToString:@"product"]) {
+        count=(int)[_searchArrayProducts count]/3;
+        if ([_searchArrayProducts count]%3!=0) {
+            count=count+1;
+        }
+        count=count+1;
+    }
     
     return count;
     
@@ -892,33 +1090,94 @@
         return cell;
     }
     
-
-    
-    if (indexPath.row==1&&[self.searchType isEqualToString:@"product"]) {
-        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
-        if (cell==nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
+    if ([self.searchType isEqualToString:@"product"]) {
+        SearchPhotoCell *cell =(SearchPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchPhotoCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        cell.searchType=@"product";
+        int current=(int) (indexPath.row-1)*3;
+        if (current<[_searchArrayProducts count]) {
+            Product *pd1=[_searchArrayProducts objectAtIndex:current];
+            cell.pd1= pd1;
+            cell.view1Button.tag=pd1.product_id.integerValue;
+            [cell.view1Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView1Item];
+        }else
+        {
+            cell.view1.hidden=true;
         }
         
-        cell.cellArray=self.searchArrayProducts;
-        cell.cellType=@"product";
-        [cell builtCells];
+        if (current+1<[_searchArrayProducts count]) {
+            Product *pd2=[_searchArrayProducts objectAtIndex:current+1];
+            cell.pd2= pd2;
+            cell.view2Button.tag=pd2.product_id.integerValue;
+            [cell.view2Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView2Item];
+        }else
+        {
+            cell.view2.hidden=true;
+        }
         
-        [cell.view1Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view2Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view3Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view4Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view5Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view6Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view7Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view8Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view9Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        if (current+2<[_searchArrayProducts count]) {
+            Product *pd3=[_searchArrayProducts objectAtIndex:current+2];
+            cell.pd3= pd3;
+            cell.view3Button.tag=pd3.product_id.integerValue;
+            [cell.view3Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView3Item];
+        }else
+        {
+            cell.view3.hidden=true;
+        }
         
-        contentHight=[cell CaculateCellHeight];
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
+        int count=(int)[_searchArrayProducts count]/3;
+        if ([_searchArrayProducts count]%3!=0) {
+            count=count+1;
+        }
+        if(indexPath.row==count)
+        {
+            contentHight=[NSNumber numberWithInteger:contentHight.intValue+60];
+        }
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+        
+        
         return cell;
+        
     }
+
+    
+//    if (indexPath.row==1&&[self.searchType isEqualToString:@"product"]) {
+//        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+//        if (cell==nil) {
+//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
+//            cell = [nib objectAtIndex:0];
+//        }
+//        
+//        cell.cellArray=self.searchArrayProducts;
+//        cell.cellType=@"product";
+//        [cell builtCells];
+//        
+//        [cell.view1Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view2Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view3Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view4Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view5Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view6Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view7Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view8Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view9Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        contentHight=[cell CaculateCellHeight];
+//        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+//        return cell;
+//    }
     
     if ([self.searchType isEqualToString:@"community"]) {
         SearchPhotoCell *cell =(SearchPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
@@ -962,8 +1221,8 @@
         }
         
         contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
-        int count=(int)[_searchArrayWorkouts count]/3;
-        if ([_searchArrayWorkouts count]%3!=0) {
+        int count=(int)[_searchArrayCommunity count]/3;
+        if ([_searchArrayCommunity count]%3!=0) {
             count=count+1;
         }
         if(indexPath.row==count)
@@ -981,33 +1240,95 @@
         return cell;
 
     }
-
     
-    if (indexPath.row==1&&[self.searchType isEqualToString:@"workout"]) {
-        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
-        if (cell==nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
+    if ([self.searchType isEqualToString:@"workout"]) {
+        SearchPhotoCell *cell =(SearchPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchPhotoCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        cell.searchType=@"workout";
+        int current=(int) (indexPath.row-1)*3;
+        if (current<[_searchArrayWorkouts count]) {
+            Workout *wk1=[_searchArrayWorkouts objectAtIndex:current];
+            cell.wk1= wk1;
+            cell.view1Button.tag=wk1.workout_id.integerValue;
+            [cell.view1Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView1Item];
+        }else
+        {
+            cell.view1.hidden=true;
         }
         
-        cell.cellArray=self.searchArrayWorkouts;
-        cell.cellType=@"workout";
-        [cell builtCells];
+        if (current+1<[_searchArrayWorkouts count]) {
+            Workout *wk2=[_searchArrayWorkouts objectAtIndex:current+1];
+            cell.wk2= wk2;
+            cell.view2Button.tag=wk2.workout_id.integerValue;
+            [cell.view2Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView2Item];
+        }else
+        {
+            cell.view2.hidden=true;
+        }
         
-        [cell.view1Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view2Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view3Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view4Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view5Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view6Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view7Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view8Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.view9Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        if (current+2<[_searchArrayWorkouts count]) {
+            Workout *wk3=[_searchArrayWorkouts objectAtIndex:current+2];
+            cell.wk3= wk3;
+            cell.view3Button.tag=wk3.workout_id.integerValue;
+            [cell.view3Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView3Item];
+        }else
+        {
+            cell.view3.hidden=true;
+        }
         
-        contentHight=[cell CaculateCellHeight];
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
+        int count=(int)[_searchArrayWorkouts count]/3;
+        if ([_searchArrayWorkouts count]%3!=0) {
+            count=count+1;
+        }
+        if(indexPath.row==count)
+        {
+            contentHight=[NSNumber numberWithInteger:contentHight.intValue+60];
+        }
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+        
+        
         return cell;
+        
     }
+
+    
+//    if (indexPath.row>=1&&[self.searchType isEqualToString:@"workout"]) {
+//        FollowPhotoCell *cell =(FollowPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+//        if (cell==nil) {
+//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowPhotoCell" owner:self options:nil];
+//            cell = [nib objectAtIndex:0];
+//        }
+//        
+//        cell.cellArray=self.searchArrayWorkouts;
+//        cell.cellType=@"workout";
+//        [cell builtCells];
+//        
+//        [cell.view1Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view2Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view3Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view4Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view5Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view6Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view7Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view8Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.view9Button addTarget:self action:@selector(workoutButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        contentHight=[cell CaculateCellHeight];
+//        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+//        return cell;
+//    }
     
     
     int count=(int)[_searchArrayPeople count]/3;
@@ -1245,7 +1566,32 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
+- (void) initDiscoverValuable
+{
+    
+  //  if ([_searchType isEqualToString:@"people"]) {
+        _DiscoverLeaderOffset=10;
+      
+  //      _searchArrayPeople= [[NSMutableArray alloc]init];
+  //  }else if ([_searchType  isEqualToString:@"workout"]) {
+        _DiscoverWorkoutOffset=9;
+      
+  //      _searchArrayWorkouts= [[NSMutableArray alloc]init];
+  //  }else if ([_searchType  isEqualToString:@"product"]) {
+        _DiscoverProductOffset=9;
+      
+   //     _searchArrayProducts= [[NSMutableArray alloc]init];
+   // }else if ([_searchType  isEqualToString:@"community"]) {
+        _DiscoverCommunityOffset=9;
 
+ //       _searchArrayCommunity= [[NSMutableArray alloc]init];
+   // }
+ 
+    _DiscoverAllLimit=9;
+    _DiscoverCount=1;
+    
+    
+}
 
 - (void) initSearchValuable
 {
@@ -1402,21 +1748,22 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)workoutButtonClick:(id)sender {
     UIButton *tempButton = (UIButton *)sender;
-    NSInteger index=(NSInteger) tempButton.tag-1;
-    if (index<[_searchArrayWorkouts count]) {
-        Workout *wk= [_searchArrayWorkouts objectAtIndex:index];
-        [self getSpecialPage:wk.workout_id];
-    }
-    
+    NSInteger index=(NSInteger) tempButton.tag;
+    NSString * key= [NSString stringWithFormat:@"%ld",(long)index];
+    [self getSpecialPage:key];
 }
 
 - (IBAction)productButtonClick:(id)sender {
+//    UIButton *tempButton = (UIButton *)sender;
+//    NSInteger index=(NSInteger) tempButton.tag-1;
+//    if (index<[_searchArrayProducts count]) {
+//        Product *pd= [_searchArrayProducts objectAtIndex:index];
+//        [self getSpecialPage:pd.product_id];
+//    }
     UIButton *tempButton = (UIButton *)sender;
-    NSInteger index=(NSInteger) tempButton.tag-1;
-    if (index<[_searchArrayProducts count]) {
-        Product *pd= [_searchArrayProducts objectAtIndex:index];
-        [self getSpecialPage:pd.product_id];
-    }
+    NSInteger index=(NSInteger) tempButton.tag;
+    NSString * key= [NSString stringWithFormat:@"%ld",(long)index];
+    [self getSpecialPage:key];
 }
 
 - (IBAction)communityButtonClick:(id)sender {

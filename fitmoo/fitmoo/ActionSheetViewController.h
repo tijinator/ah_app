@@ -78,6 +78,9 @@
 @property (strong, nonatomic) IBOutlet UIView *menuBottomView;
 @property (strong, nonatomic) IBOutlet UIView *menuView1;
 @property (strong, nonatomic) IBOutlet UIView *menuView2;
+@property (strong, nonatomic) IBOutlet UIView *menuView3;
+@property (strong, nonatomic) IBOutlet UIButton *editProfileButton;
+
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 @property (strong, nonatomic) IBOutlet UIButton *menuCancelButton;
 @property (strong, nonatomic) IBOutlet UIButton *settingButton;
