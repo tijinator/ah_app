@@ -241,7 +241,7 @@
     
     UIImage *im= [UIImage imageNamed:@"sidemenu_icon.png"];
     [_leftButton1 setBackgroundImage:im forState:UIControlStateNormal];
-    UIImage *im1= [UIImage imageNamed:@"menu_plus_icon.png"];
+    UIImage *im1= [UIImage imageNamed:@"menu_post.png"];
     [_middleButton1 setBackgroundImage:im1 forState:UIControlStateNormal];
     UIImage *im2= [UIImage imageNamed:@"profile.png"];
     [_rightButton1 setBackgroundImage:im2 forState:UIControlStateNormal];
@@ -436,7 +436,7 @@
 }
 
 - (IBAction)doubleClick:(id)sender {
-    [self presentCameraView];
+ //   [self presentCameraView];
    
 
 }
@@ -451,15 +451,15 @@
             break;
         case 12:
             
-            if (showButton==false) {
-                 [self showThreeSubButtons];
-                showButton=true;
-            }else
-            {
-                [self hideThreeSubButtons];
-                showButton=false;
-            }
-            
+//            if (showButton==false) {
+//                 [self showThreeSubButtons];
+//                showButton=true;
+//            }else
+//            {
+//                [self hideThreeSubButtons];
+//                showButton=false;
+//            }
+            [self presentCameraView];
             break;
         case 13:
          [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];

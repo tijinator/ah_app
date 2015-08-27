@@ -80,7 +80,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PnF-oO-Nuc">
                         <rect key="frame" x="204" y="345" width="105" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="editprofile_btn.png">
+                        <state key="normal" backgroundImage="invitebtn.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -233,8 +233,8 @@
     <resources>
         <image name="black_gradient.png" width="322" height="54"/>
         <image name="calendar_grey.png" width="56" height="30"/>
-        <image name="editprofile_btn.png" width="451" height="113"/>
         <image name="feed_grey.png" width="26" height="30"/>
+        <image name="invitebtn.png" width="102" height="27"/>
         <image name="selectedbars.png" width="18" height="13"/>
         <image name="store_grey.png" width="35" height="31"/>
         <image name="whitearrow.png" width="11" height="17"/>

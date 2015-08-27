@@ -42,7 +42,7 @@
     headerImage1.imageURL =[NSURL URLWithString:url];
    
     [self.headerImage1 addSubview:headerImage1];
-    
+    _tempUser.profile_avatar_original_image=headerImage1;
 }
 
 

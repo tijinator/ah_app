@@ -606,7 +606,7 @@
         self.videoURL = info[UIImagePickerControllerMediaURL];
         UISaveVideoAtPathToSavedPhotosAlbum([self.videoURL path], nil, nil, nil);
         [_picker1 dismissViewControllerAnimated:YES completion:nil];
-        self.postType=@"post";
+        self.postType=@"workout";
        //  _chosenImage =[self thumbnailImageForVideo:self.videoURL atTime:1];
         [self.imageButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
         [self.imageButton setBackgroundImage:[self thumbnailImageForVideo:self.videoURL atTime:1] forState:UIControlStateNormal];

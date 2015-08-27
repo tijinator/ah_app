@@ -70,13 +70,13 @@
 //    }
 
 }
-
+#pragma mark -Observer and Notes
 - (void) removeObservers
 {
-    //   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostFinished" object:nil];
+
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didGetProfileFinished" object:nil];
-    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateTable" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"openInvite" object:nil];
+
 }
 
 -(void)createObservers{
@@ -87,8 +87,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTable:) name:@"updateTable" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calenderModelAction:) name:@"calenderModelAction" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInvite:) name:@"openInvite" object:nil];
   
     
+}
+
+- (void) openInvite: (NSNotification * ) note
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    [self.navigationController pushViewController:inviteView animated:YES];
 }
 
 - (void) calenderModelAction: (NSNotification * ) note
@@ -768,9 +776,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.followerCountLabel.font=font;
             cell.workoutCountLabel.font=font;
         }
-
+        cell.tempUser=temUser;
         [cell loadHeader1Image:temUser.profile_avatar_original];
-        
+              
         UIFont *font = [UIFont fontWithName:@"BentonSans-Book" size:cell.bioLabel.font.pointSize];
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:temUser.bio attributes:@{NSFontAttributeName: font}  ];
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -1366,7 +1374,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-
+#pragma mark -Button Functions
 - (IBAction)commentButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
@@ -1661,11 +1669,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)addUserButtonClick:(id)sender {
-    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    ActionSheet.action=@"menu";
+    User *temUser;
     
-    [self.navigationController pushViewController:inviteView animated:YES];
+    if (_temSearchUser !=nil&&_searchId !=nil) {
+        temUser=_temSearchUser;
+    }else
+    {
+        temUser= [[UserManager sharedUserManager] localUser];
+    }
+    ActionSheet.profileId= temUser.user_id;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+//    
+//    [self.navigationController pushViewController:inviteView animated:YES];
 }
 
 - (IBAction)WorkoutButtonClick:(id)sender {
@@ -1812,7 +1833,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else
     {
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+  //      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"settings"];
+
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+        ActionSheet.action=@"invite";
+        User *temUser;
+        
+        if (_temSearchUser !=nil&&_searchId !=nil) {
+            temUser=_temSearchUser;
+        }else
+        {
+            temUser= [[UserManager sharedUserManager] localUser];
+        }
+        
+        ActionSheet.ShareTitle=@"Follow me on Fitmoo.";
+        ActionSheet.shareImage=temUser.profile_avatar_original_image.image;
+        ActionSheet.profileId= temUser.user_id;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+        
     }
     
 }

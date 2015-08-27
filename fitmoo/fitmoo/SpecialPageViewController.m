@@ -586,7 +586,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)shareButtonClick:(id)sender {
 
       User *localUser= [[UserManager sharedUserManager] localUser];
-       if (![localUser.user_id isEqualToString:_searchId]) {
+ //      if (![localUser.user_id isEqualToString:_searchId]) {
     HomeFeed *tempFeed= _homeFeed;
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
@@ -600,7 +600,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                AsyncImageView *image = [tempFeed.AsycImageViewArray objectAtIndex:0];
                ActionSheet.shareImage= image.image;
            }
-           
+    
+            if ([localUser.user_id isEqualToString:_searchId]) {
+                ActionSheet.hideRepost=true;
+            }
+    
            if ([tempFeed.videosArray count]!=0) {
                NSString * url= tempFeed.videos.video_url;
                if ([url rangeOfString:@"vimeo.com"].location == NSNotFound)
@@ -643,7 +647,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
            
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
        
- }
+// }
     //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //    SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
     //    specialPage.action=@"Share";

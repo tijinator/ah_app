@@ -1400,7 +1400,7 @@ instructions to reset your password.</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zzK-HK-43F">
                                         <rect key="frame" x="288" y="26" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="adduser.png">
+                                        <state key="normal" image="whitedots.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1578,17 +1578,157 @@ instructions to reset your password.</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="mxm-IO-MPV">
+                                <rect key="frame" x="0.0" y="568" width="320" height="262"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="37n-kb-gqw">
+                                        <rect key="frame" x="0.0" y="100" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="wdb-nw-Plm">
+                                        <rect key="frame" x="0.0" y="149" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="q0o-3n-5j5">
+                                        <rect key="frame" x="0.0" y="202" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="5ll-zc-Ehr">
+                                        <rect key="frame" x="0.0" y="48" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9m7-eJ-4pB">
+                                        <rect key="frame" x="0.0" y="8" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Invite my Contacts"/>
+                                        <connections>
+                                            <action selector="InviteButtonFunction:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="dye-nf-Y3s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VXo-Gp-OW1">
+                                        <rect key="frame" x="0.0" y="161" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Copy Profile Link"/>
+                                        <connections>
+                                            <action selector="InviteButtonFunction:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="1Qe-b6-4eJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bgH-bR-IGQ">
+                                        <rect key="frame" x="-6" y="212" width="332" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="THA-5T-FFU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UEK-4S-RFe">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Share My Profile"/>
+                                        <connections>
+                                            <action selector="InviteButtonFunction:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="97A-go-mTZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TTb-uH-QTD">
+                                        <rect key="frame" x="0.0" y="59" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Post Profile to Instagram"/>
+                                        <connections>
+                                            <action selector="InviteButtonFunction:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="4NV-7i-dW1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="yFi-bE-L8z">
+                                <rect key="frame" x="0.0" y="568" width="320" height="262"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="Bpr-JW-kAU">
+                                        <rect key="frame" x="0.0" y="149" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="AwS-QK-noy">
+                                        <rect key="frame" x="0.0" y="202" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fob-qe-h2u">
+                                        <rect key="frame" x="0.0" y="161" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Log out"/>
+                                        <connections>
+                                            <action selector="logoutButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="3vn-zS-V27"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2rQ-NS-Wz5">
+                                        <rect key="frame" x="-6" y="212" width="332" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="PLr-op-L1e"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T2o-Lm-Q9H">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Settings"/>
+                                        <connections>
+                                            <action selector="settingButtonClick:" destination="FLE-Hu-wzI" eventType="touchUpInside" id="V7V-ps-TKt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="CopyProfileLKButton" destination="VXo-Gp-OW1" id="xYV-10-X3w"/>
+                        <outlet property="IVView1" destination="37n-kb-gqw" id="wFi-gj-5mx"/>
+                        <outlet property="IVView2" destination="wdb-nw-Plm" id="4fi-kk-VcK"/>
+                        <outlet property="IVView3" destination="q0o-3n-5j5" id="ofb-bd-pQc"/>
+                        <outlet property="IVView4" destination="5ll-zc-Ehr" id="5Vh-L7-c5L"/>
                         <outlet property="InstagramButton" destination="v3X-Me-bua" id="lTc-dE-ZyY"/>
+                        <outlet property="InviteCancelButton" destination="bgH-bR-IGQ" id="dy2-nU-GL4"/>
+                        <outlet property="InviteMyCTButton" destination="9m7-eJ-4pB" id="vGx-0h-paF"/>
+                        <outlet property="InvitePostToInstagramButton" destination="TTb-uH-QTD" id="L4Y-DQ-J2R"/>
+                        <outlet property="InviteView" destination="mxm-IO-MPV" id="bfo-IL-rFe"/>
+                        <outlet property="ShareMyProfileButton" destination="UEK-4S-RFe" id="WVx-eI-ZsG"/>
                         <outlet property="blackView" destination="vB2-6O-NZL" id="t6X-RX-81Z"/>
                         <outlet property="buttomView" destination="JrN-iI-iKO" id="bKQ-Jd-NrI"/>
                         <outlet property="cancelButton" destination="PPy-NB-Zbs" id="XQ9-x8-dqs"/>
                         <outlet property="cpLinkButton" destination="1UI-Ec-U5e" id="Maw-kd-c3r"/>
                         <outlet property="endorseButton" destination="Lvt-Qx-2WG" id="IQY-X8-40I"/>
+                        <outlet property="logoutButton" destination="fob-qe-h2u" id="HYO-qu-nKI"/>
+                        <outlet property="menuBottomView" destination="yFi-bE-L8z" id="H15-kU-99g"/>
+                        <outlet property="menuCancelButton" destination="2rQ-NS-Wz5" id="TZu-cQ-qSQ"/>
+                        <outlet property="menuView1" destination="Bpr-JW-kAU" id="joS-jE-2IF"/>
+                        <outlet property="menuView2" destination="AwS-QK-noy" id="wQN-W8-AGO"/>
                         <outlet property="reportButton" destination="CX3-mj-xXj" id="ftX-mh-5Ed"/>
+                        <outlet property="settingButton" destination="T2o-Lm-Q9H" id="8d2-Ox-DYX"/>
                         <outlet property="shareButtomView" destination="KDE-00-l4l" id="NJW-NF-IJu"/>
                         <outlet property="shareButton" destination="k6H-cB-QGT" id="7Pt-WS-NPB"/>
                         <outlet property="shareCancelButton" destination="w7Y-ZV-u5U" id="vd8-RV-10p"/>
@@ -2841,6 +2981,7 @@ instructions to reset your password.</string>
         <image name="video_icon.png" width="31" height="31"/>
         <image name="white_toggle.png" width="16" height="9"/>
         <image name="whitearrow.png" width="11" height="17"/>
+        <image name="whitedots.png" width="24" height="6"/>
         <image name="whitex.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

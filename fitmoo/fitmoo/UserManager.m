@@ -289,6 +289,9 @@
         
         localUser.name=[_responseDic objectForKey:@"full_name"];
         
+        NSNumber * profile_id=[_responseDic objectForKey:@"id"];
+        localUser.user_id= [profile_id stringValue];
+        
         NSNumber * following=[_responseDic objectForKey:@"following"];
         localUser.following= [following stringValue];
         

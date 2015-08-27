@@ -10,6 +10,7 @@
 #import "HomeFeed.h"
 #import "FitmooHelper.h"
 #import "AsyncImageView.h"
+#import "User.h"
 #import <QuartzCore/QuartzCore.h>
 @interface PeopleTitleCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage;
@@ -19,7 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UIButton *bioButton;
 @property (strong, nonatomic) IBOutlet UILabel *bioLabel;
-
+@property (strong, nonatomic) User *tempUser;
 @property (strong, nonatomic) IBOutlet UIImageView *shadowImageView;
 
 @property (strong, nonatomic) IBOutlet UIImageView *headerImage1;

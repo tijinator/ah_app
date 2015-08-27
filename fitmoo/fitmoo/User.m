@@ -19,6 +19,7 @@
 {
     _created_by_community= [[CreatedByCommunity alloc] init];
      _communityArray= [[NSMutableArray alloc] init];
+    _profile_avatar_original_image=[[UIImageView alloc] init];
     return self;
 }
 

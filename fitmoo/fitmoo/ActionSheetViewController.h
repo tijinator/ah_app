@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "UserManager.h"
+#import "InviteViewController.h"
 
 @interface ActionSheetViewController : UIViewController<UIDocumentInteractionControllerDelegate>
 @property (strong, nonatomic) NSString * action;
@@ -23,10 +24,13 @@
 @property (assign, nonatomic) BOOL hideInstegram;
 @property (strong, nonatomic) UIImage *shareImage;
 @property (strong, nonatomic) NSString *shareVideo;
+- (IBAction)logoutButtonClick:(id)sender;
+- (IBAction)settingButtonClick:(id)sender;
 -(void) performAnimation: (UIView *)view;
 - (IBAction)endoseButtonClick:(id)sender;
 - (IBAction)reportButtonClick:(id)sender;
 - (IBAction)cancelButtonClick:(id)sender;
+- (IBAction) InviteButtonFunction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UIButton *endorseButton;
 @property (strong, nonatomic) IBOutlet UIButton *reportButton;
@@ -59,4 +63,25 @@
 - (IBAction)InstagramButtonClick:(id)sender;
 - (IBAction)shareCancelClick:(id)sender;
 @property(nonatomic,retain)UIDocumentInteractionController *docFile;
+
+@property (strong, nonatomic) IBOutlet UIView *InviteView;
+@property (strong, nonatomic) IBOutlet UIView *IVView1;
+@property (strong, nonatomic) IBOutlet UIView *IVView2;
+@property (strong, nonatomic) IBOutlet UIView *IVView3;
+@property (strong, nonatomic) IBOutlet UIView *IVView4;
+@property (strong, nonatomic) IBOutlet UIButton *InviteMyCTButton;
+@property (strong, nonatomic) IBOutlet UIButton *CopyProfileLKButton;
+@property (strong, nonatomic) IBOutlet UIButton *InviteCancelButton;
+@property (strong, nonatomic) IBOutlet UIButton *ShareMyProfileButton;
+@property (strong, nonatomic) IBOutlet UIButton *InvitePostToInstagramButton;
+
+@property (strong, nonatomic) IBOutlet UIView *menuBottomView;
+@property (strong, nonatomic) IBOutlet UIView *menuView1;
+@property (strong, nonatomic) IBOutlet UIView *menuView2;
+@property (strong, nonatomic) IBOutlet UIButton *logoutButton;
+@property (strong, nonatomic) IBOutlet UIButton *menuCancelButton;
+@property (strong, nonatomic) IBOutlet UIButton *settingButton;
+
+
+
 @end

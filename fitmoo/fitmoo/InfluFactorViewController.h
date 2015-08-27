@@ -10,6 +10,7 @@
 #import "FitmooHelper.h"
 #import "InviteViewController.h"
 #import "CameraViewController.h"
+#import "ActionSheetViewController.h"
 @interface InfluFactorViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *topView;
 - (IBAction)backButtonClick:(id)sender;

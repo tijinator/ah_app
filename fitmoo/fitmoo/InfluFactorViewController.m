@@ -132,7 +132,22 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInvite:) name:@"openInvite" object:nil];
+}
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"openInvite" object:nil];
+}
+
+- (void) openInvite: (NSNotification * ) note
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    [self.navigationController pushViewController:inviteView animated:YES];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -328,10 +343,22 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)InviteButtonClick:(id)sender {
     
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+//    
+//    [self.navigationController pushViewController:inviteView animated:YES];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    InviteViewController * inviteView = [mainStoryboard instantiateViewControllerWithIdentifier:@"InviteViewController"];
+    ActionSheetViewController *ActionSheet = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActionSheetViewController"];
+    ActionSheet.action=@"invite";
+    User *temUser;
     
-    [self.navigationController pushViewController:inviteView animated:YES];
+    temUser= [[UserManager sharedUserManager] localUser];
+    
+    ActionSheet.ShareTitle=@"Follow me on Fitmoo.";
+    ActionSheet.shareImage=temUser.profile_avatar_original_image.image;
+    ActionSheet.profileId= temUser.user_id;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];
+
     
 }
 
