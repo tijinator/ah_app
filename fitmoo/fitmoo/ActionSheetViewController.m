@@ -39,7 +39,7 @@
         {
             
             if (![_profileId isEqualToString:[[UserManager sharedUserManager] localUser].user_id]) {
-                [_logoutButton setTitle:@"Copy Profile URL" forState:UIControlStateNormal];
+                [_logoutButton setTitle:@"Copy Profile Link" forState:UIControlStateNormal];
                 _settingButton.hidden=true;
                 _editProfileButton.hidden=true;
                 _menuView1.hidden=true;
@@ -358,6 +358,8 @@
 }
 
 - (IBAction)InstagramButtonClick:(id)sender {
+    [self copyLinkClick:sender];
+    
     _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:@"invite"];
     NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
     

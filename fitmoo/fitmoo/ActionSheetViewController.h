@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSString *shareVideo;
 - (IBAction)logoutButtonClick:(id)sender;
 - (IBAction)settingButtonClick:(id)sender;
--(void) performAnimation: (UIView *)view;
+
 - (IBAction)endoseButtonClick:(id)sender;
 - (IBAction)reportButtonClick:(id)sender;
 - (IBAction)cancelButtonClick:(id)sender;

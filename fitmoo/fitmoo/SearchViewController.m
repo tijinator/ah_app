@@ -604,8 +604,11 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDicProducts= responseObject;
-        [self parseProduct:_responseDicProducts];
-        ProductHere=true;
+        if ([_responseDicProducts count]>0) {
+            [self parseProduct:_responseDicProducts];
+            ProductHere=true;
+        }
+       
         self.tableview.userInteractionEnabled=true;
         
     } // success callback block
@@ -635,8 +638,10 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDicCommnuities= responseObject;
+         if ([_responseDicCommnuities count]>0) {
         [self parseCommunity:_responseDicCommnuities];
         CommunityHere=true;
+         }
         self.tableview.userInteractionEnabled=true;
         
     } // success callback block
@@ -666,8 +671,10 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDicWorkouts= responseObject;
+         if ([_responseDicWorkouts count]>0) {
         [self parseWorkout:_responseDicWorkouts];
         workoutHere=true;
+         }
         self.tableview.userInteractionEnabled=true;
         
     } // success callback block
@@ -696,8 +703,10 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDicLeader= responseObject;
+          if ([_responseDicLeader count]>0) {
         [self parseLeader:_responseDicLeader];
         LeaderHere=true;
+          }
         self.tableview.userInteractionEnabled=true;
         
     } // success callback block
@@ -1410,7 +1419,7 @@
     cell.tempUser= tempUser;
     
     [cell buildCell];
-    cell.CountLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row-count+1];
+    cell.CountLabel.text=[NSString stringWithFormat:@"%d",indexPath.row-count+1];
     
     contentHight=[NSNumber numberWithDouble:75*[[FitmooHelper sharedInstance] frameRadio]];
     
@@ -1659,7 +1668,34 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
     }else
     {
-        
+        if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height)) {
+
+            if (_count==0) {
+
+                
+                if ([self.searchType isEqualToString:@"people"]) {
+                    _DiscoverLeaderOffset+=9;
+                    [self getSearchLeaders];
+                }else if([self.searchType isEqualToString:@"workout"]) {
+                    _DiscoverWorkoutOffset+=9;
+                    [self getSearchWorkouts];
+                }else if([self.searchType isEqualToString:@"product"]) {
+                    _DiscoverProductOffset+=9;
+                    [self getSearchProducts];
+                }else if([self.searchType isEqualToString:@"community"]) {
+                    _DiscoverCommunityOffset+=9;
+                    [self getSearchCommunities];
+                }
+               
+            }
+            _count++;
+            
+            
+        }else
+        {
+            _count=0;
+        }
+
         
     }
     
