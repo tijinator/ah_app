@@ -43,6 +43,7 @@
 
 @property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) MPMoviePlayerViewController *playerView;
+@property (strong, nonatomic) AVPlayer *moviePlayer;
 
 
 @end
