@@ -642,7 +642,17 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         HomeFeed *homefeed=[_homeFeedArray objectAtIndex:indexPath.row];
         NSString * url= homefeed.videos.video_url;
         if (url!=nil) {
-              [self.moviePlayer pause];
+            if ([url rangeOfString:@"vimeo"].location != NSNotFound)
+            {
+                [self.moviePlayer pause];
+            }else
+            {
+                [self.moviePlayer1 pause];
+            }
+            
+            
+            
+            
         }
       
       
@@ -883,7 +893,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
         [self presentViewController:navigationController animated:YES completion:nil];
         
-    }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+    }else if ([url rangeOfString:@"vimeo"].location != NSNotFound) {
         
         
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
@@ -936,7 +946,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         
         if ([tempFeed.videosArray count]!=0) {
             NSString * url= tempFeed.videos.video_url;
-            if ([url rangeOfString:@"vimeo.com"].location == NSNotFound)
+            if ([url rangeOfString:@"vimeo"].location == NSNotFound)
             {
                 ActionSheet.hideInstegram= true;
             }

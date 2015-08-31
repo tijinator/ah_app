@@ -43,6 +43,7 @@
 @property (assign, nonatomic)  BOOL backButtonClicked;
 
 @property (strong, nonatomic) AVPlayer *moviePlayer;
+@property (strong, nonatomic) AVPlayer *moviePlayer1;
 - (void)playMovieWithUrl:(UIButton *)button withUrl:(NSString *) url;
 
 - (void)slientVoice:(NSString *)url;
