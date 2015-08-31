@@ -1238,8 +1238,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.bodyCommentButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    //    [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bodyImageTagClick:)];
+        tapGestureRecognizer10.numberOfTapsRequired = 1;
+        UITapGestureRecognizer *tapGestureRecognizer11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTagClick:)];
+        tapGestureRecognizer11.numberOfTapsRequired = 2;
+        [tapGestureRecognizer10 requireGestureRecognizerToFail:tapGestureRecognizer11];
         
+        [cell.bodyImage addGestureRecognizer:tapGestureRecognizer10];
+        [cell.bodyImage addGestureRecognizer:tapGestureRecognizer11];
+        cell.bodyImage.userInteractionEnabled=YES;
         
         if(indexPath.row==[_homeFeedArray count])
         {
@@ -1899,6 +1907,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 
     
+}
+
+- (IBAction)bodyImageTagClick:(id)sender {
+    float tag=[(UIGestureRecognizer *)sender view].tag;
+    UIButton *b= [[UIButton alloc] init];
+    b.tag=tag;
+    [self bodyImageButtonClick:b];
+}
+
+- (IBAction)likeTagClick:(id)sender {
+    float tag=[(UIGestureRecognizer *)sender view].tag;
+    UIButton *b= [[UIButton alloc] init];
+    b.tag=tag;
+    [self likeButtonClick:b];
 }
 
 - (IBAction)BioButtonClick:(id)sender {

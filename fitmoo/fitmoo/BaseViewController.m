@@ -695,6 +695,8 @@
                                                object:[_moviePlayer currentItem]];
 }
 
+
+
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
     AVPlayerItem *p = [notification object];
     [p seekToTime:kCMTimeZero];
