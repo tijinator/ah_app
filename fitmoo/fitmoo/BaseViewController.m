@@ -13,7 +13,8 @@
 #import <SwipeBack/SwipeBack.h>
 @interface BaseViewController ()
 {
- bool showButton;
+  bool showButton;
+  float playerVolume;
 }
 @end
 
@@ -488,6 +489,130 @@
 }
 
 
+- (void)slientVoice:(NSString *)url
+{
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
+    NSArray *audioTracks = [asset tracksWithMediaType:AVMediaTypeAudio];
+    
+    // Mute all the audio tracks
+    NSMutableArray *allAudioParams = [NSMutableArray array];
+    for (AVAssetTrack *track in audioTracks) {
+        AVMutableAudioMixInputParameters *audioInputParams =[AVMutableAudioMixInputParameters audioMixInputParameters];
+        if (playerVolume==0.0) {
+            playerVolume=0.5;
+        }else
+        {
+            playerVolume=0.0;
+        }
+        
+        [audioInputParams setVolume:playerVolume atTime:kCMTimeZero];
+        [audioInputParams setTrackID:[track trackID]];
+        [allAudioParams addObject:audioInputParams];
+    }
+    AVMutableAudioMix *audioZeroMix = [AVMutableAudioMix audioMix];
+    [audioZeroMix setInputParameters:allAudioParams];
+    [[_moviePlayer currentItem] setAudioMix:audioZeroMix];
+}
+
+
+
+- (void)playMovieWithUrl:(UIButton *)button withUrl:(NSString *) url
+{
+
+    if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+            if (error) {
+                NSLog(@"Error : %@", [error localizedDescription]);
+                UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                  message : @"This video cannot be played right now." delegate : nil cancelButtonTitle : @"OK"
+                                                        otherButtonTitles : nil ];
+                [alert show ];
+                
+            } else if (videoURL) {
+                NSLog(@"Extracted url : %@", [videoURL absoluteString]);
+                
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                
+                dispatch_async(queue, ^{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self playVideoWithUrl:button withUrl:[videoURL absoluteString]];
+
+                        
+                     
+                    });
+                });
+                
+                
+
+              //  [self playVideoWithUrl:button withUrl:[videoURL absoluteString]];
+            }
+        }];
+        
+    }else{
+
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        
+        dispatch_async(queue, ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                [self playVideoWithUrl:button withUrl:url];
+                
+            });
+        });
+        
+
+    }
+}
+
+- (void)playVideoWithUrl:(UIButton *)button withUrl:(NSString *) url
+{
+
+    
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
+    NSArray *audioTracks = [asset tracksWithMediaType:AVMediaTypeAudio];
+    
+    // Mute all the audio tracks
+    NSMutableArray *allAudioParams = [NSMutableArray array];
+    for (AVAssetTrack *track in audioTracks) {
+        AVMutableAudioMixInputParameters *audioInputParams =[AVMutableAudioMixInputParameters audioMixInputParameters];
+        [audioInputParams setVolume:0.0 atTime:kCMTimeZero];
+        [audioInputParams setTrackID:[track trackID]];
+        [allAudioParams addObject:audioInputParams];
+    }
+    AVMutableAudioMix *audioZeroMix = [AVMutableAudioMix audioMix];
+    [audioZeroMix setInputParameters:allAudioParams];
+    
+    // Create a player item
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+    [playerItem setAudioMix:audioZeroMix]; // Mute the player item
+    
+    // Create an AVPlayer
+    _moviePlayer = [AVPlayer playerWithPlayerItem: playerItem];
+    AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:_moviePlayer];
+    playerLayer.frame = button.bounds;
+    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    playerLayer.needsDisplayOnBoundsChange = YES;
+    [button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [button setBackgroundColor:[UIColor blackColor]];
+    [button.layer addSublayer:playerLayer];
+    button.layer.needsDisplayOnBoundsChange = YES;
+    
+    [_moviePlayer play];
+    
+    playerVolume=0.0;
+    _moviePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[_moviePlayer currentItem]];
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *p = [notification object];
+    [p seekToTime:kCMTimeZero];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -41,4 +41,9 @@
 @property (assign, nonatomic)  int PrePage;
 @property (strong, nonatomic)  NSString * notifucationStatus;
 @property (assign, nonatomic)  BOOL backButtonClicked;
+
+@property (strong, nonatomic) AVPlayer *moviePlayer;
+- (void)playMovieWithUrl:(UIButton *)button withUrl:(NSString *) url;
+
+- (void)slientVoice:(NSString *)url;
 @end
