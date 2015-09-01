@@ -18,6 +18,7 @@
 {
     NSNumber * contentHight;
       float playerVolume;
+     bool bodyLikeAnimation;
 }
 @end
 
@@ -316,7 +317,13 @@
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
         [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+        [cell.bodyLikeButton setImage:[UIImage imageNamed:@"blueheart100.png"] forState:UIControlStateNormal];
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (bodyLikeAnimation==true) {
+            [[FitmooHelper sharedInstance] likeButtonAnimation:cell.bodyLikeButton];
+            bodyLikeAnimation=false;
+        }
     }else
     {
         [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
@@ -739,10 +746,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)likeTagClick:(id)sender {
-    float tag=[(UIGestureRecognizer *)sender view].tag;
-    UIButton *b= [[UIButton alloc] init];
-    b.tag=tag;
-    [self likeButtonClick:b];
+    UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self likeButtonClick:myButton];
+    bodyLikeAnimation=true;
 }
 
 - (IBAction)shareButtonClick:(id)sender {
