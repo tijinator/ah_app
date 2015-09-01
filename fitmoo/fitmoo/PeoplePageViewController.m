@@ -21,7 +21,7 @@
     NSDate *_todayDate;
     NSDate *_minDate;
     NSDate *_maxDate;
-    bool bodyLikeAnimation;
+    NSInteger bodyLikeAnimation;
 }
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @end
@@ -1234,9 +1234,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             [cell.bodyLikeButton setImage:[UIImage imageNamed:@"blueheart100.png"] forState:UIControlStateNormal];
             [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
-            if (bodyLikeAnimation==true) {
+            if (bodyLikeAnimation==indexPath.row-1) {
                 [[FitmooHelper sharedInstance] likeButtonAnimation:cell.bodyLikeButton];
-                bodyLikeAnimation=false;
+                bodyLikeAnimation=-1;
             }
         }else
         {
@@ -1444,7 +1444,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
     
-    
+    bodyLikeAnimation=index;
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
     if ([feed.is_liked isEqualToString:@"0"]) {
@@ -1961,7 +1961,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)likeTagClick:(id)sender {
     UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
     [self likeButtonClick:myButton];
-    bodyLikeAnimation=true;
+   
 }
 
 - (IBAction)BioButtonClick:(id)sender {

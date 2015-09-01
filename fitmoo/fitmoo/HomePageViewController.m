@@ -26,7 +26,7 @@
     NSNumber * contentHight;
     bool pullDown;
     UIView *indicatorView;
-    bool bodyLikeAnimation;
+    NSInteger bodyLikeAnimation;
     
 }
 
@@ -37,7 +37,7 @@
     [super viewDidLoad];
     contentHight=[NSNumber numberWithInteger:300];
     _heighArray= [[NSMutableArray alloc] initWithObjects:contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight,contentHight, nil];
-    
+    bodyLikeAnimation=-1;
     [self initFrames];
     [self initValuable];
     [self postNotifications];
@@ -541,9 +541,9 @@
         [cell.bodyLikeButton setImage:[UIImage imageNamed:@"blueheart100.png"] forState:UIControlStateNormal];
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        if (bodyLikeAnimation==true) {
+        if (bodyLikeAnimation==indexPath.row) {
              [[FitmooHelper sharedInstance] likeButtonAnimation:cell.bodyLikeButton];
-             bodyLikeAnimation=false;
+             bodyLikeAnimation=-1;
         }
        
     }else
@@ -820,7 +820,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)likeTagClick:(id)sender {
      UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
     [self likeButtonClick:myButton];
-    bodyLikeAnimation=true;
+    
 //  float tag=[(UIGestureRecognizer *)sender view].tag;
 //    UIButton *b= [[UIButton alloc] init];
 //    b.tag=tag;
@@ -832,6 +832,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSInteger index=(NSInteger) button.tag/100;
     HomeFeed *feed=[_homeFeedArray objectAtIndex:index];
     
+    bodyLikeAnimation=index;
     if ([feed.is_liked isEqualToString:@"0"]) {
         NSNumber *totalLike=[NSNumber numberWithInt:1+feed.total_like.intValue];
         //  NSString *newLikeString= totalLike.stringValue;

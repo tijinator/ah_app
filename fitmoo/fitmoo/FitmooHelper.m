@@ -23,36 +23,37 @@
 - (IBAction)likeButtonAnimation:(id)sender {
     UIButton *myButton= (UIButton *)sender;
     
-    NSMutableArray *imageArray = [NSMutableArray new];
-    
-    for (int i = 0; i < 6; i ++) {
-        [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart%d.png",i*10+100]]];
-    }
-    
-    for (int i = 4; i >= 0; i --) {
-        [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart%d.png",i*10+100]]];
-    }
+//    NSMutableArray *imageArray = [NSMutableArray new];
+//    
+//    for (int i = 0; i < 6; i ++) {
+//        [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart%d.png",i*10+100]]];
+//    }
+//    
+//    for (int i = 4; i >= 0; i --) {
+//        [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart%d.png",i*10+100]]];
+//    }
 
     
-    [myButton setImage:[UIImage imageNamed:@"blueheart100.png"] forState:UIControlStateNormal];
+//    [myButton setImage:[UIImage imageNamed:@"blueheart100.png"] forState:UIControlStateNormal];
     
-    [myButton.imageView setAnimationImages:[imageArray copy]];
-    [myButton.imageView setAnimationDuration:1.5];
-    [myButton.imageView setAnimationRepeatCount:2];
-    [myButton.imageView startAnimating];
-    
-    
+//    [myButton.imageView setAnimationImages:[imageArray copy]];
+//    [myButton.imageView setAnimationDuration:1.5];
+//    [myButton.imageView setAnimationRepeatCount:2];
+//    [myButton.imageView startAnimating];
+//    
+//    
     UIImageView *image= [[UIImageView alloc] initWithFrame:CGRectMake(myButton.imageView.frame.origin.x, myButton.imageView.frame.origin.y, 10, 10)];
     image.image=[UIImage imageNamed:@"blueheart100.png"];
     [myButton addSubview:image];
     
-    [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
         image.frame=CGRectMake(myButton.imageView.frame.origin.x-5, myButton.imageView.frame.origin.y-5, 20, 20);
     }completion:^(BOOL finished){
         [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
             image.frame=CGRectMake(myButton.imageView.frame.origin.x, myButton.imageView.frame.origin.y, 10, 10);
         }completion:^(BOOL finished){
             [image removeFromSuperview];
+           
         }];
     }];
     
