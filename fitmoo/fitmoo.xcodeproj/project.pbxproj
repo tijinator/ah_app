@@ -425,6 +425,7 @@
 		27A101921B334554007B7BF3 /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A101771B334554007B7BF3 /* shop.png */; };
 		27A101931B334554007B7BF3 /* shop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A101781B334554007B7BF3 /* shop@2x.png */; };
 		27A101941B334554007B7BF3 /* shop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A101791B334554007B7BF3 /* shop@3x.png */; };
+		27A3AC0E1B9606FD00D78AAA /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3AC0D1B9606FD00D78AAA /* ShopDetailViewController.m */; };
 		27A6E71F1B305EF0000104CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A6E71E1B305EF0000104CB /* NotificationViewController.m */; };
 		27ABBEFE1B84CC5300AB54D2 /* instagramlogo8.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */; };
 		27ABBF001B84CE2900AB54D2 /* instagramlogo8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */; };
@@ -1119,6 +1120,8 @@
 		27A101771B334554007B7BF3 /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop.png; sourceTree = "<group>"; };
 		27A101781B334554007B7BF3 /* shop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop@2x.png"; sourceTree = "<group>"; };
 		27A101791B334554007B7BF3 /* shop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop@3x.png"; sourceTree = "<group>"; };
+		27A3AC0C1B9606FD00D78AAA /* ShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailViewController.h; sourceTree = "<group>"; };
+		27A3AC0D1B9606FD00D78AAA /* ShopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailViewController.m; sourceTree = "<group>"; };
 		27A6E71D1B305EF0000104CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		27A6E71E1B305EF0000104CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo8.png; sourceTree = "<group>"; };
@@ -1634,6 +1637,8 @@
 				27A6E71E1B305EF0000104CB /* NotificationViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
+				27A3AC0C1B9606FD00D78AAA /* ShopDetailViewController.h */,
+				27A3AC0D1B9606FD00D78AAA /* ShopDetailViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
 				27A101201B3334A7007B7BF3 /* SearchViewController.m */,
 				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
@@ -3091,6 +3096,7 @@
 				279717761B7CFF7A004ACBC2 /* InfluenceCell.m in Sources */,
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,
 				27410DEF1AFAB34200CF230C /* BezierCurve.m in Sources */,
+				27A3AC0E1B9606FD00D78AAA /* ShopDetailViewController.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,
 				2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */,
 			);

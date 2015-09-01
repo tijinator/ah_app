@@ -46,6 +46,6 @@
 -(UIImage *) generateWatermarkForImage:(UIImage *) mainImg withType:(NSString *) type;
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;
 
-
+- (IBAction)likeButtonAnimation:(id)sender;
 
 @end

@@ -15,7 +15,7 @@
 #import "UserManager.h"
 #import "AsyncImageView.h"
 #import "HomeFeed.h"
-
+#import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "VimeoHelper.h"
@@ -38,6 +38,6 @@
 @property (strong, nonatomic) MPMoviePlayerViewController *playerView;
 @property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic)  NSString * searchCommunityId;
-
+@property (strong, nonatomic) AVPlayer *moviePlayer;
 
 @end

@@ -650,50 +650,6 @@
     }
 }
 
-- (void)playVideoWithArray:(NSArray *)array
-{
-    UIButton *button=[array objectAtIndex:0];
-    NSString *url=[array objectAtIndex:1];
-    
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
-    NSArray *audioTracks = [asset tracksWithMediaType:AVMediaTypeAudio];
-    
-    // Mute all the audio tracks
-    NSMutableArray *allAudioParams = [NSMutableArray array];
-    for (AVAssetTrack *track in audioTracks) {
-        AVMutableAudioMixInputParameters *audioInputParams =[AVMutableAudioMixInputParameters audioMixInputParameters];
-        [audioInputParams setVolume:0.0 atTime:kCMTimeZero];
-        [audioInputParams setTrackID:[track trackID]];
-        [allAudioParams addObject:audioInputParams];
-    }
-    AVMutableAudioMix *audioZeroMix = [AVMutableAudioMix audioMix];
-    [audioZeroMix setInputParameters:allAudioParams];
-    
-    // Create a player item
-    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
-    [playerItem setAudioMix:audioZeroMix]; // Mute the player item
-    
-    // Create an AVPlayer
-    _moviePlayer = [AVPlayer playerWithPlayerItem: playerItem];
-    AVPlayerLayer* playerLayer = [AVPlayerLayer playerLayerWithPlayer:_moviePlayer];
-    playerLayer.frame = button.bounds;
-    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-    playerLayer.needsDisplayOnBoundsChange = YES;
-    [button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    [button setBackgroundColor:[UIColor blackColor]];
-    [button.layer addSublayer:playerLayer];
-    button.layer.needsDisplayOnBoundsChange = YES;
-    
-    [_moviePlayer play];
-    
-    playerVolume=0.0;
-    _moviePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[_moviePlayer currentItem]];
-}
 
 
 

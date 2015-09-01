@@ -26,7 +26,7 @@
     NSNumber * contentHight;
     bool pullDown;
     UIView *indicatorView;
-  
+    bool bodyLikeAnimation;
     
 }
 
@@ -474,10 +474,10 @@
                 [videoView loadRequest:request];
                 
                 [cell.bodyView bringSubviewToFront:cell.bodyShadowView];
-            }else
+            }else if ([url rangeOfString:@"vimeo"].location != NSNotFound)
             {
-                [cell.bodyImage setTag:indexPath.row*100+8];
-                [self playMovie:cell.bodyImage];
+//                [cell.bodyImage setTag:indexPath.row*100+8];
+//                [self playMovie:cell.bodyImage];
             }
         }
     }else
@@ -538,7 +538,14 @@
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
         [cell.likeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+        [cell.bodyLikeButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
         [cell.likeButton addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (bodyLikeAnimation==true) {
+             [[FitmooHelper sharedInstance] likeButtonAnimation:cell.bodyLikeButton];
+             bodyLikeAnimation=false;
+        }
+       
     }else
     {
         [cell.likeButton setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
@@ -811,10 +818,13 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 - (IBAction)likeTagClick:(id)sender {
-  float tag=[(UIGestureRecognizer *)sender view].tag;
-    UIButton *b= [[UIButton alloc] init];
-    b.tag=tag;
-    [self likeButtonClick:b];
+     UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self likeButtonClick:myButton];
+    bodyLikeAnimation=true;
+//  float tag=[(UIGestureRecognizer *)sender view].tag;
+//    UIButton *b= [[UIButton alloc] init];
+//    b.tag=tag;
+//    [self likeButtonClick:b];
 }
 
 - (IBAction)likeButtonClick:(id)sender {
@@ -937,7 +947,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 
             } else if (videoURL) {
                 NSLog(@"Extracted url : %@", [videoURL absoluteString]);
-                [self slientVoice:[videoURL absoluteString]];
+         //       [self slientVoice:[videoURL absoluteString]];
+                _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                [self.playerView.moviePlayer prepareToPlay];
+                [self presentViewController:self.playerView animated:YES completion:^(void) {
+                    self.playerView = nil;
+                }];
             }
         }];
         
@@ -945,7 +960,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     } else
     {
         
-        [self slientVoice:url];
+        self.videoURL= [NSURL URLWithString:url];
+        MPMoviePlayerViewController*  movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.videoURL];
+        [self presentMoviePlayerViewControllerAnimated:movieController];
+        [movieController.moviePlayer play];
 
     }
     

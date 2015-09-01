@@ -20,6 +20,30 @@
     
 }
 
+- (IBAction)likeButtonAnimation:(id)sender {
+    UIButton *myButton= (UIButton *)sender;
+    
+    NSMutableArray *imageArray = [NSMutableArray new];
+    
+//    for (int i = 1; i < 4; i ++) {
+//        [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]]];
+//    }
+    
+    [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart.png"]]];
+    [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"hearticon.png"]]];
+    [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"blueheart.png"]]];
+    [imageArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"hearticon.png"]]];
+    
+    
+    [myButton setImage:[UIImage imageNamed:@"blueheart.png"] forState:UIControlStateNormal];
+    
+    [myButton.imageView setAnimationImages:[imageArray copy]];
+    [myButton.imageView setAnimationDuration:0.5];
+    [myButton.imageView setAnimationRepeatCount:2];
+    [myButton.imageView startAnimating];
+    
+}
+
 - (void) makeAHomeFeedForTestPost
 {
     
@@ -531,8 +555,19 @@
         NSNumber * selling_price=[product objectForKey:@"selling_price"];
         homeFeed.product.selling_price= [selling_price stringValue];
         homeFeed.product.brand= [product objectForKey:@"brand"];
-        homeFeed.product.photo= [product objectForKey:@"photo"];
-        homeFeed.product.videos= [product objectForKey:@"videos"];
+        homeFeed.product.photo= [product objectForKey:@"feed_photos"];
+        NSNumber * allowed_for_sale=[product objectForKey:@"allowed_for_sale"];
+        homeFeed.product.allowed_for_sale=[allowed_for_sale stringValue];
+        NSNumber * shipping_buyer_amount=[product objectForKey:@"shipping_buyer_amount"];
+        homeFeed.product.shipping_buyer_amount=[shipping_buyer_amount stringValue];
+        NSNumber * shipping_full_amount=[product objectForKey:@"shipping_full_amount"];
+        homeFeed.product.shipping_full_amount=[shipping_full_amount stringValue];
+        NSNumber * shipping_type_id=[product objectForKey:@"shipping_type_id"];
+        homeFeed.product.shipping_type_id=[shipping_type_id stringValue];
+        NSNumber * sold_out=[product objectForKey:@"sold_out"];
+        homeFeed.product.sold_out=[sold_out stringValue];
+        
+     //   NSDictionary *variant_matrix=[product objectForKey:@"variant_matrix"];
         
     }
     

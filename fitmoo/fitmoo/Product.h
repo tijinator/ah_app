@@ -13,13 +13,25 @@
 @property (nonatomic, strong) NSString *product_id;
 @property (nonatomic, strong) NSString *type_product;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *detail;  //not using
-@property (nonatomic, strong) NSString *gender;  //not using
+@property (nonatomic, strong) NSString *detail;
+@property (nonatomic, strong) NSString *gender;
 
 @property (nonatomic, strong) NSString *original_price;
 @property (nonatomic, strong) NSString *selling_price;
-@property (nonatomic, strong) NSString *brand;   //not using
+@property (nonatomic, strong) NSString *brand;
 @property (nonatomic, strong) NSString *photo;
 @property (nonatomic, strong) NSString *videos;
+@property (nonatomic, strong) NSString *condition;
+@property (nonatomic, strong) NSString *allowed_for_sale;
+
+@property (nonatomic, strong) NSString *shipping_buyer_amount;
+@property (nonatomic, strong) NSString *shipping_full_amount;
+@property (nonatomic, strong) NSString *shipping_type_id;
+@property (nonatomic, strong) NSString *sold_out;
+
+@property (nonatomic, strong) NSMutableArray *variant_matrix;
+@property (nonatomic, strong) NSMutableArray *variant_options;
+@property (nonatomic, strong) NSMutableArray *variants;
+
 
 @end

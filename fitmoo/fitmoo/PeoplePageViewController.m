@@ -1165,6 +1165,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                     [videoView loadRequest:request];
                     
                     [cell.bodyView bringSubviewToFront:cell.bodyShadowView];
+                }else if ([url rangeOfString:@"vimeo"].location != NSNotFound)
+                {
+//                    [cell.bodyImage setTag:indexPath.row*100+8];
+//                    [self playMovie:cell.bodyImage];
                 }
             }
             
@@ -1267,6 +1271,27 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         return cell;
     }
     //  end of feed type table
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound&&indexPath.row>0)
+    {
+        HomeFeed *homefeed=[_homeFeedArray objectAtIndex:indexPath.row-1];
+        NSString * url= homefeed.videos.video_url;
+        if (url!=nil) {
+            if ([url rangeOfString:@"vimeo"].location != NSNotFound)
+            {
+                [self.moviePlayer pause];
+            }else
+            {
+                [self.moviePlayer1 pause];
+            }
+
+        }
+        
+        
+    }
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -1545,6 +1570,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
 }
+
+- (void)playMovie:(UIButton *)button
+{
+    NSInteger index=(NSInteger) button.tag/100-1;
+    HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
+    NSString * url= homefeed.videos.video_url;
+    
+    [self playMovieWithUrl:button withUrl:url];
+}
+
 - (IBAction)bodyImageButtonClick:(id)sender{
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
@@ -1590,7 +1625,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 [alert show ];
             } else if (videoURL) {
                 NSLog(@"Extracted url : %@", [videoURL absoluteString]);
-                
+               //  [self slientVoice:[videoURL absoluteString]];
                 _playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
                 [self.playerView.moviePlayer prepareToPlay];
                 [self presentViewController:self.playerView animated:YES completion:^(void) {
