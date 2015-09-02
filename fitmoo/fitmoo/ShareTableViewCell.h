@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeFeed.h"
 #import "AsyncImageView.h"
+
 //#import "Comments.h"
 
 @interface ShareTableViewCell : UITableViewCell <UIScrollViewDelegate>
@@ -36,6 +37,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *commentView;
 @property (strong, nonatomic) IBOutlet UIImageView *commentImage;
+@property (strong, nonatomic) IBOutlet UIButton *ShadowBuyNowButton;
 
 @property (strong, nonatomic) IBOutlet UIView *commentView1;
 @property (strong, nonatomic) IBOutlet UIView *commentView2;
@@ -94,5 +96,6 @@
 - (void) setBodyShadowFrameForImagePost;
 - (void) setTitleLabelForHeader;
 @property (strong, nonatomic) IBOutlet UIButton *viewAllCommentButton;
+
 
 @end

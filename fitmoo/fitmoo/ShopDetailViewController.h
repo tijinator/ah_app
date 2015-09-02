@@ -20,9 +20,29 @@
 #import "VimeoHelper.h"
 #import "YTVimeoExtractor.h"
 #import "ComposeViewController.h"
-@interface ShopDetailViewController : UIViewController
+#import "ShopTableViewCell.h"
+@interface ShopDetailViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
+
+@property (strong, nonatomic) IBOutlet UIButton *BuyNowButton;
+- (IBAction)BuyNowButtonClick:(id)sender;
+
+
+@property (strong, nonatomic)  HomeFeed * homeFeed;
+@property (strong, nonatomic)  NSString * postText;
+@property (strong, nonatomic)  NSString * searchId;
+@property (strong, nonatomic)  UITextView * textView;
+@property (strong, nonatomic)  NSString * action;
+
+@property (strong, nonatomic)  NSString * searchCommunityId;
+
+@property (strong, nonatomic) IBOutlet UIPickerView *typePicker;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+- (IBAction)doneButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *pickerBackView;
+@property (strong, nonatomic) IBOutlet UIView *typePickerView;
+
 @end

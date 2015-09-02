@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeFeed.h"
 #import "AsyncImageView.h"
-@interface ShopTableViewCell : UITableViewCell
+@interface ShopTableViewCell : UITableViewCell<UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
@@ -66,23 +66,18 @@
 - (void) removeViewsFromBodyView: (UIView *) removeView;
 - (void) reDefineHearderViewsFrame;
 - (void) removeCommentView;
-- (void) removeCommentView2;
-- (void) removeCommentView1;
+
 - (void) addCommentView: (UIView *) addView Atindex:(int) index;
 - (void) loadHeaderImage1: (NSString *)url;
 - (void) loadHeaderImage2: (NSString *)url;
-- (void) loadCommentImage: (NSString *)url;
-- (void) deleteViews:(UIView *)view;
+
+
 - (void) addScrollView;
 - (void) rebuiltBodyViewFrame;
 - (void) rebuiltHeaderViewFrame;
 - (void) rebuiltCommentViewFrame;
-- (void) setBodyFrameForWorkout;
-- (void) setBodyFrameForRegular;
-- (void) setBodyFrameForNutrition;
-- (void) setBodyFrameForEvent;
+- (void) setTopViewFrameForProduct;
 - (void) setBodyFrameForProduct;
-- (void) setBodyShadowFrameForTextPost;
 - (void) setBodyShadowFrameForImagePost;
 - (void) setTitleLabelForHeader;
 

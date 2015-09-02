@@ -1191,6 +1191,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }else if ([tempHomefeed.type isEqualToString:@"product"])
         {
             [cell setBodyFrameForProduct];
+            [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+            [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if ([tempHomefeed.type isEqualToString:@"event"])
         {
@@ -1227,6 +1229,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
         [cell.bodyLikeButton setTag:indexPath.row*100+4];
+        
+  
+        
         NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -1282,23 +1287,23 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound&&indexPath.row>0)
-    {
-        HomeFeed *homefeed=[_homeFeedArray objectAtIndex:indexPath.row-1];
-        NSString * url= homefeed.videos.video_url;
-        if (url!=nil) {
-            if ([url rangeOfString:@"vimeo"].location != NSNotFound)
-            {
-                [self.moviePlayer pause];
-            }else
-            {
-                [self.moviePlayer1 pause];
-            }
-
-        }
-        
-        
-    }
+//    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound&&indexPath.row>0)
+//    {
+//        HomeFeed *homefeed=[_homeFeedArray objectAtIndex:indexPath.row-1];
+//        NSString * url= homefeed.videos.video_url;
+//        if (url!=nil) {
+//            if ([url rangeOfString:@"vimeo"].location != NSNotFound)
+//            {
+//                [self.moviePlayer pause];
+//            }else
+//            {
+//                [self.moviePlayer1 pause];
+//            }
+//
+//        }
+//        
+//        
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -1809,6 +1814,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
     //[FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
 }
+
+
+- (IBAction)BuyNowButtonClick:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    NSInteger feed_id=(NSInteger) button.tag;
+    HomeFeed *tempFeed= [[HomeFeed alloc] init];
+    for (int i=0; i<[_homeFeedArray count]; i++) {
+        HomeFeed *temp=[_homeFeedArray objectAtIndex:i];
+        if (feed_id==temp.feed_id.integerValue) {
+            tempFeed=temp;
+        }
+    }
+    
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopDetailViewController *shopDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+    shopDetail.homeFeed=tempFeed;
+    [self.navigationController pushViewController:shopDetail animated:YES];
+    
+    
+}
+
 
 - (IBAction)photoImageButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;

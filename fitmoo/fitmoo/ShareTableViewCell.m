@@ -197,6 +197,7 @@
     [_bodyCastView removeFromSuperview];
     
     _headerTag.hidden=false;
+    _ShadowBuyNowButton.hidden=false;
     _headerTag.image= [UIImage imageNamed:@"buyicon.png"];
 }
 
@@ -729,6 +730,7 @@
     _bodyCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyCommentButton respectToSuperFrame:nil];
     _bodyShareButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyShareButton respectToSuperFrame:nil];
     _bodyGradian.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyGradian respectToSuperFrame:nil];
+    _ShadowBuyNowButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_ShadowBuyNowButton respectToSuperFrame:nil];
     
     
 //    _workoutTimeLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_workoutTimeLabel respectToSuperFrame:nil];
@@ -748,6 +750,7 @@
     
     // Configure the view for the selected state
 }
+
 
 
 @end

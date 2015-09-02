@@ -30,6 +30,7 @@
 #import "CalendarCell.h"
 #import "SubTableViewCell.h"
 #import "InfluFactorViewController.h"
+#import "ShopDetailViewController.h"
 @interface PeoplePageViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *addUserButton;
 

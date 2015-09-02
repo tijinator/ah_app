@@ -277,6 +277,8 @@
     }else if ([tempHomefeed.type isEqualToString:@"product"])
     {
         [cell setBodyFrameForProduct];
+        [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+        [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     else if ([tempHomefeed.type isEqualToString:@"event"])
     {
@@ -353,29 +355,6 @@
 
     
     return cell;
-}
-
-
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([tableView.indexPathsForVisibleRows indexOfObject:indexPath] == NSNotFound)
-    {
-      
-        NSString * url= _homeFeed.videos.video_url;
-        if (url!=nil) {
-            if ([url rangeOfString:@"vimeo"].location != NSNotFound)
-            {
-                [self.moviePlayer pause];
-            }
-            
-            
-            
-            
-        }
-        
-        
-    }
 }
 
 
@@ -750,7 +729,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self likeButtonClick:myButton];
     bodyLikeAnimation=true;
 }
+- (IBAction)BuyNowButtonClick:(id)sender {
 
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopDetailViewController *shopDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+    shopDetail.homeFeed=_homeFeed;
+    [self.navigationController pushViewController:shopDetail animated:YES];
+    
+    
+}
 - (IBAction)shareButtonClick:(id)sender {
 
       User *localUser= [[UserManager sharedUserManager] localUser];

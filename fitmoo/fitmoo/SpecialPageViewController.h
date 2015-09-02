@@ -21,7 +21,7 @@
 #import "VimeoHelper.h"
 #import "YTVimeoExtractor.h"
 #import "ComposeViewController.h"
-
+#import "ShopDetailViewController.h"
 @interface SpecialPageViewController : UIViewController <UITableViewDataSource , UITableViewDelegate , UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (IBAction)backButtonClick:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;

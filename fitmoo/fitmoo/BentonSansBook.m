@@ -45,6 +45,18 @@
         [attributedString addAttribute:NSParagraphStyleAttributeName
                                  value:style
                                  range:NSMakeRange(0, self.text.length)];
+    }else if (self.tag==1001) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineSpacing:8];
+       
+        style.alignment=NSTextAlignmentCenter;
+        
+        float spacing = 1.0f;
+        [attributedString addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [self.text length])];
+        
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:style
+                                 range:NSMakeRange(0, self.text.length)];
     }
     
     
