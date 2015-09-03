@@ -566,6 +566,9 @@
 		27B2D3921B399CF900F37584 /* bluecheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B2D38F1B399CF900F37584 /* bluecheck.png */; };
 		27B2D3931B399CF900F37584 /* bluecheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B2D3901B399CF900F37584 /* bluecheck@2x.png */; };
 		27B2D3941B399CF900F37584 /* bluecheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B2D3911B399CF900F37584 /* bluecheck@3x.png */; };
+		27B3DFA21B988FC500423D88 /* Options.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B3DFA11B988FC500423D88 /* Options.m */; };
+		27B3DFA51B989D8E00423D88 /* Variants.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B3DFA41B989D8E00423D88 /* Variants.m */; };
+		27B3DFA81B98BD4A00423D88 /* Matrixs.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B3DFA71B98BD4A00423D88 /* Matrixs.m */; };
 		27B4FC351B0E262600CBEA83 /* SettingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */; };
 		27B5F85F1B3481FE00068D8F /* invitefriends.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B5F85C1B3481FE00068D8F /* invitefriends.png */; };
 		27B5F8601B3481FE00068D8F /* invitefriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B5F85D1B3481FE00068D8F /* invitefriends@2x.png */; };
@@ -1300,6 +1303,12 @@
 		27B2D38F1B399CF900F37584 /* bluecheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluecheck.png; sourceTree = "<group>"; };
 		27B2D3901B399CF900F37584 /* bluecheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluecheck@2x.png"; sourceTree = "<group>"; };
 		27B2D3911B399CF900F37584 /* bluecheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluecheck@3x.png"; sourceTree = "<group>"; };
+		27B3DFA01B988FC500423D88 /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
+		27B3DFA11B988FC500423D88 /* Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Options.m; sourceTree = "<group>"; };
+		27B3DFA31B989D8E00423D88 /* Variants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variants.h; sourceTree = "<group>"; };
+		27B3DFA41B989D8E00423D88 /* Variants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variants.m; sourceTree = "<group>"; };
+		27B3DFA61B98BD4A00423D88 /* Matrixs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrixs.h; sourceTree = "<group>"; };
+		27B3DFA71B98BD4A00423D88 /* Matrixs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrixs.m; sourceTree = "<group>"; };
 		27B4FC331B0E262600CBEA83 /* SettingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingWebViewController.h; sourceTree = "<group>"; };
 		27B4FC341B0E262600CBEA83 /* SettingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingWebViewController.m; sourceTree = "<group>"; };
 		27B5F85C1B3481FE00068D8F /* invitefriends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invitefriends.png; sourceTree = "<group>"; };
@@ -1665,6 +1674,12 @@
 				2732B73B1AD8493100610821 /* TitleInfo.m */,
 				2732B73D1AD849D000610821 /* Product.h */,
 				2732B73E1AD849D000610821 /* Product.m */,
+				27B3DFA61B98BD4A00423D88 /* Matrixs.h */,
+				27B3DFA71B98BD4A00423D88 /* Matrixs.m */,
+				27B3DFA31B989D8E00423D88 /* Variants.h */,
+				27B3DFA41B989D8E00423D88 /* Variants.m */,
+				27B3DFA01B988FC500423D88 /* Options.h */,
+				27B3DFA11B988FC500423D88 /* Options.m */,
 				27DB8D7F1B5D9090005380CA /* Workout.h */,
 				27DB8D801B5D9090005380CA /* Workout.m */,
 				2732B7401AD84B5600610821 /* Nutrition.h */,
@@ -3152,6 +3167,7 @@
 				2752E9931B014FF1003841DC /* PhotoGalary.m in Sources */,
 				27DBA25C1B66C05A0019C56A /* CalendarViewController.m in Sources */,
 				2732B7481AD84EF200610821 /* Videos.m in Sources */,
+				27B3DFA21B988FC500423D88 /* Options.m in Sources */,
 				27410DDE1AFAB21800CF230C /* ImageFilter.m in Sources */,
 				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
@@ -3171,6 +3187,7 @@
 				27188F6B1AD4646300C34372 /* main.m in Sources */,
 				27B4FC351B0E262600CBEA83 /* SettingWebViewController.m in Sources */,
 				273CE5AB1AEEB24900BCC66F /* BentonSansRegular.m in Sources */,
+				27B3DFA81B98BD4A00423D88 /* Matrixs.m in Sources */,
 				27A6E71F1B305EF0000104CB /* NotificationViewController.m in Sources */,
 				2738D9321B024E6100F5087E /* BentonSansExtraComp.m in Sources */,
 				27A3AC131B962D4A00D78AAA /* ShopTableViewCell.m in Sources */,
@@ -3198,6 +3215,7 @@
 				27AD266E1B18DF6C008D338D /* PeoplePageViewController.m in Sources */,
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
+				27B3DFA51B989D8E00423D88 /* Variants.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,
 				27BAF7731B97445B004E69B4 /* BentonSansExtraCompBook.m in Sources */,
 				271DA8491B5557BF00D4E075 /* CommunityTitileCell.m in Sources */,

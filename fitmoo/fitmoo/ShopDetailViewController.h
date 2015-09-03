@@ -21,6 +21,8 @@
 #import "YTVimeoExtractor.h"
 #import "ComposeViewController.h"
 #import "ShopTableViewCell.h"
+#import "Variants.h"
+#import "Matrixs.h"
 @interface ShopDetailViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
@@ -37,7 +39,18 @@
 @property (strong, nonatomic)  UITextView * textView;
 @property (strong, nonatomic)  NSString * action;
 
+@property (strong, nonatomic)  UIButton * variantButton1;
+@property (strong, nonatomic)  UIButton * variantButton2;
+@property (strong, nonatomic)  UIButton * variantButton3;
+@property (strong, nonatomic)  UIButton * variantButton4;
+@property (strong, nonatomic)  UIButton * SelectedVariantButton;
+
+
+@property (strong, nonatomic)  NSMutableArray * pickerDisplayArray;
+
 @property (strong, nonatomic)  NSString * searchCommunityId;
+@property (strong, nonatomic)  Variants * selectedVariants;
+@property (strong, nonatomic)  Matrixs * selectedMatrixs;
 
 @property (strong, nonatomic) IBOutlet UIPickerView *typePicker;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;

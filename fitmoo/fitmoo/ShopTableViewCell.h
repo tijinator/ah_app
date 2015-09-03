@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *variantsButton1;
 @property (strong, nonatomic) IBOutlet UIButton *variantsButton2;
 @property (strong, nonatomic) IBOutlet UIButton *variantsButton3;
+@property (strong, nonatomic) IBOutlet UIButton *variantsButton4;
 
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
@@ -79,6 +80,7 @@
 - (void) setTopViewFrameForProduct;
 - (void) setBodyFrameForProduct;
 - (void) setBodyShadowFrameForImagePost;
+- (void) setVariantsFrame;
 - (void) setTitleLabelForHeader;
 
 @end

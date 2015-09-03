@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    _pickerDisplayArray=[[NSMutableArray alloc] init];
     [self createObservers];
     self.navigationController.swipeBackEnabled = YES;
     // Do any additional setup after loading the view.
@@ -255,7 +256,7 @@
     
     [cell rebuiltBodyViewFrame];
     
-    
+    [cell setVariantsFrame];
     
     
     //built comment view
@@ -287,9 +288,18 @@
     [cell.variantsButton1 setTag:indexPath.row*100+10];
     [cell.variantsButton2 setTag:indexPath.row*100+11];
     [cell.variantsButton3 setTag:indexPath.row*100+12];
+    [cell.variantsButton4 setTag:indexPath.row*100+13];
+    
+    _variantButton1=cell.variantsButton1;
+    _variantButton2=cell.variantsButton2;
+    _variantButton3=cell.variantsButton3;
+    _variantButton4=cell.variantsButton4;
+    
+    
     [cell.variantsButton1 addTarget:self action:@selector(variantsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.variantsButton2 addTarget:self action:@selector(variantsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.variantsButton3 addTarget:self action:@selector(variantsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.variantsButton4 addTarget:self action:@selector(variantsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
@@ -408,24 +418,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-#pragma mark - UIPickerViewDelegate
+
 
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
-    if (row==1) {
-      
+    NSString *selectedString=[_pickerDisplayArray objectAtIndex:row];
+    
+    [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
+    
+    for (int i=0; i<[_homeFeed.product.variant_matrix_array count]; i++) {
+        [_homeFeed.product resetMatrixs];
+        _homeFeed.product.variant_matrix= [_homeFeed.product.variant_matrix_array objectAtIndex:i];
         
-    }else if (row==0) {
-         
-            
+        if ([selectedString isEqualToString:_homeFeed.product.variant_matrix.matrix_name]) {
+            _selectedMatrixs=_homeFeed.product.variant_matrix;
+        }
+        
     }
-  
+    
     // Handle the selection
 }
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger numRows = 2;
+    NSUInteger numRows = [_pickerDisplayArray count];
     return numRows;
 }
 
@@ -436,13 +452,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *title;
-    if (row==0) {
-        title=@"Male";
-    }else if (row==1)
-    {
-        title=@"Female";
-    }
+    NSString *title=[_pickerDisplayArray objectAtIndex:row];
+
     
     return title;
 }
@@ -500,7 +511,189 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)variantsButtonClick:(id)sender {
+    UIButton *b=(UIButton *)sender;
+    _SelectedVariantButton=b;
     
+    
+    
+    NSString *title=b.titleLabel.text;
+    if ([title isEqualToString:@"QTY"]) {
+        if ([_homeFeed.product.variant_array count]==1) {
+              [_homeFeed.product resetVariants];
+            _homeFeed.product.variants=[_homeFeed.product.variant_array objectAtIndex:0];
+           int quantity= _homeFeed.product.variants.quantity.intValue;
+            _pickerDisplayArray=[[NSMutableArray alloc] init];
+            for (int i=0; i<quantity; i++) {
+                [_pickerDisplayArray addObject:[NSString stringWithFormat:@"%d",i]];
+            }
+        
+        }else
+        {
+            //find variants
+            _selectedVariants=[[Variants alloc] init];
+            for (int i=0; i<[_homeFeed.product.variant_array count]; i++) {
+                [_homeFeed.product resetVariants];
+                _homeFeed.product.variants=[_homeFeed.product.variant_array objectAtIndex:i];
+                if (![_homeFeed.product.variants.options isEqual:[NSNull null]]) {
+                 //     NSArray *optionsArray= [_homeFeed.product.variants.options componentsSeparatedByString:@"/"];
+                    
+                    BOOL found=true;
+                     if ([_homeFeed.product.variant_options_array count]==1)//use button 1
+                     {
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                             found=false;
+                         }
+                         
+                         
+                     }else if ([_homeFeed.product.variant_options_array count]==2)//use button 1,2
+                     {
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                             found=false;
+                         }
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton2.titleLabel.text].location == NSNotFound) {
+                             found=false;
+                         }
+                         
+                     }else if ([_homeFeed.product.variant_options_array count]==3)//use button 1,2,3
+                     {
+                         
+                         NSString *string=_homeFeed.product.variants.options;
+                         NSString *string1=_variantButton1.titleLabel.text;
+                         NSString *string2=_variantButton2.titleLabel.text;
+                         NSString *string3=_variantButton3.titleLabel.text;
+                         
+                         
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                             found=false;
+                         }
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton2.titleLabel.text.uppercaseString].location == NSNotFound) {
+                             found=false;
+                         }
+                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton3.titleLabel.text.uppercaseString].location == NSNotFound) {
+                             found=false;
+                         }
+                     }
+                    
+                    
+                    if (found==true) {
+                        _selectedVariants= _homeFeed.product.variants;
+                    }
+                    
+                }
+                
+            
+                
+                
+            }
+            
+            _pickerDisplayArray=[[NSMutableArray alloc] init];
+            if (_selectedVariants!=nil) {
+                int quantity= _selectedVariants.quantity.intValue;
+                for (int i=0; i<quantity; i++) {
+                    [_pickerDisplayArray addObject:[NSString stringWithFormat:@"%d",i]];
+                }
+            }
+        
+          
+            
+        }
+        
+        
+    }else
+    {
+        
+        if (_selectedMatrixs==nil) {
+            for (int i=0; i<[_homeFeed.product.variant_options_array count]; i++) {
+                [_homeFeed.product resetOptions];
+                _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:i];
+                
+                if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
+                    _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
+                }
+            }
+        }else
+        {
+            //selecting the button which is just selected
+            if ([_selectedMatrixs.matrix_name isEqualToString:b.titleLabel.text]) {
+                for (int i=0; i<[_homeFeed.product.variant_options_array count]; i++) {
+                    [_homeFeed.product resetOptions];
+                    _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:i];
+                    
+                    if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
+                        _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
+                    }
+                }
+
+            }else //selecting other buttons
+            {
+                for (int i=0; i<[_selectedMatrixs.matrix_option_array count]; i++) {
+                    
+                    //other button not selected
+                    if ([b.titleLabel.text isEqualToString:[_selectedMatrixs.matrix_option_array objectAtIndex:i]]) {
+                        _pickerDisplayArray=[_selectedMatrixs.matrix_data_array objectAtIndex:i];
+                    }
+                    
+                    
+                    //other button has previous selected
+                    NSMutableArray *matrixsOptions=[_selectedMatrixs.matrix_data_array objectAtIndex:i];
+                    for (int j=0; j<[matrixsOptions count]; j++) {
+                        if ([b.titleLabel.text isEqualToString:[matrixsOptions objectAtIndex:j]]) {
+                             _pickerDisplayArray=[_selectedMatrixs.matrix_data_array objectAtIndex:i];
+                        }
+                    }
+ 
+                }
+            }
+        }
+       
+    }
+    
+    [_typePicker reloadAllComponents];
+    
+//    
+//    if ([_homeFeed.product.variant_options_array count]==0) {
+//        if (b.tag==110) {
+//            
+//        }
+//        
+//    }
+//    
+//    if ([_homeFeed.product.variant_options_array count]==1) {
+//        if (b.tag==110) {
+//            
+//        }
+//        if (b.tag==111) {
+//            
+//        }
+//    }
+//    
+//    if ([_homeFeed.product.variant_options_array count]==2) {
+//        if (b.tag==110) {
+//            
+//        }
+//        if (b.tag==111) {
+//            
+//        }
+//        if (b.tag==112) {
+//            
+//        }
+//    }
+//    
+//    if ([_homeFeed.product.variant_options_array count]==3) {
+//        if (b.tag==110) {
+//            
+//        }
+//        if (b.tag==111) {
+//            
+//        }
+//        if (b.tag==112) {
+//            
+//        }
+//        if (b.tag==113) {
+//            
+//        }
+//        
+//    }
     
      _typePickerView.hidden=false;
 }

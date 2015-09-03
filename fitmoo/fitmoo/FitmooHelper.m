@@ -566,6 +566,7 @@
         homeFeed.product.title= [product objectForKey:@"title"];
         homeFeed.product.detail= [product objectForKey:@"detail"];
         homeFeed.product.gender= [product objectForKey:@"gender"];
+
         
         NSNumber * original_price=[product objectForKey:@"original_price"];
         homeFeed.product.original_price=[original_price stringValue];
@@ -583,8 +584,111 @@
         homeFeed.product.shipping_type_id=[shipping_type_id stringValue];
         NSNumber * sold_out=[product objectForKey:@"sold_out"];
         homeFeed.product.sold_out=[sold_out stringValue];
+    
         
-     //   NSDictionary *variant_matrix=[product objectForKey:@"variant_matrix"];
+        NSDictionary *options=[product objectForKey:@"variant_options"];
+        for (NSDictionary *option in options) {
+            [homeFeed.product resetOptions];
+            homeFeed.product.variant_options.title=[option objectForKey:@"title"];
+            NSArray *optionArray= [option objectForKey:@"options"];
+            homeFeed.product.variant_options.optionArray=[optionArray mutableCopy];
+            [homeFeed.product.variant_options_array addObject:homeFeed.product.variant_options];
+        }
+        
+        NSDictionary *variants=[product objectForKey:@"variants"];
+        for (NSDictionary *variant in variants) {
+            [homeFeed.product resetVariants];
+            
+            NSNumber * deleted=[variant objectForKey:@"deleted"];
+            homeFeed.product.variants.deleted=[deleted stringValue];
+            NSNumber * enabled=[variant objectForKey:@"enabled"];
+            homeFeed.product.variants.enabled=[enabled stringValue];
+            NSNumber * variants_id=[variant objectForKey:@"id"];
+            homeFeed.product.variants.variants_id=[variants_id stringValue];
+            NSNumber * needs_shipping=[variant objectForKey:@"needs_shipping"];
+            homeFeed.product.variants.needs_shipping=[needs_shipping stringValue];
+            NSNumber * price=[variant objectForKey:@"price"];
+            homeFeed.product.variants.price=[price stringValue];
+            NSNumber * quantity=[variant objectForKey:@"quantity"];
+            homeFeed.product.variants.quantity=[quantity stringValue];
+          //  NSNumber * sku=[variant objectForKey:@"sku"];
+            homeFeed.product.variants.sku=[variant objectForKey:@"sku"];
+           // NSNumber * weight=[variant objectForKey:@"weight"];
+            homeFeed.product.variants.weight=[variant objectForKey:@"weight"];
+            
+            NSDictionary *photoDic=[variant objectForKey:@"photo"];
+            
+            if ([photoDic isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *slider=[photoDic objectForKey:@"slider"];
+                homeFeed.product.variants.photo.stylesUrl=[slider objectForKey:@"photo_url"];
+                homeFeed.product.variants.photo.stylesUrlWidth=[slider objectForKey:@"width"];
+                homeFeed.product.variants.photo.stylesUrlHeight=[slider objectForKey:@"height"];
+            }else
+            {
+                homeFeed.product.variants.photo.stylesUrl=[variant objectForKey:@"photo"];
+                homeFeed.product.variants.photo.stylesUrlWidth=@"320";
+                homeFeed.product.variants.photo.stylesUrlHeight=@"320";
+            }
+            
+            homeFeed.product.variants.type=[variant objectForKey:@"type"];
+            homeFeed.product.variants.title=[variant objectForKey:@"title"];
+            homeFeed.product.variants.options=[variant objectForKey:@"options"];
+            [homeFeed.product.variant_array addObject:homeFeed.product.variants];
+            
+        }
+        
+        
+        NSMutableArray *allOptions=[[NSMutableArray alloc] init];
+        NSMutableArray *allOptionsTitle=[[NSMutableArray alloc] init];
+        for (int i=0; i<[homeFeed.product.variant_options_array count]; i++) {
+             [homeFeed.product resetOptions];
+             homeFeed.product.variant_options=[homeFeed.product.variant_options_array objectAtIndex:i];
+            [allOptionsTitle addObject:homeFeed.product.variant_options.title];
+            for (int j=0; j<[homeFeed.product.variant_options.optionArray count]; j++) {
+                [allOptions addObject:[homeFeed.product.variant_options.optionArray objectAtIndex:j]];
+            }
+        }
+        
+        
+        NSArray *variant_matrixs_array=[product objectForKey:@"variant_matrix"];
+        
+        if ([variant_matrixs_array count]>0) {
+            NSDictionary *variant_matrixs= [variant_matrixs_array objectAtIndex:0];
+            
+            for (int m=0; m<[variant_matrixs count]; m++) {
+                [homeFeed.product resetMatrixs];
+                NSString *matrixs_name= [allOptions objectAtIndex:m];
+                NSDictionary *matrixsDic= [variant_matrixs objectForKey:matrixs_name];
+                //check matixs_name belongs to which option and remove it
+                NSMutableArray *allOptionsTitleCopy=[allOptionsTitle mutableCopy];
+                int index=0;
+                for (int i=0; i<[homeFeed.product.variant_options_array count]; i++) {
+                    [homeFeed.product resetOptions];
+                    homeFeed.product.variant_options=[homeFeed.product.variant_options_array objectAtIndex:i];
+                    for (int j=0; j<[homeFeed.product.variant_options.optionArray count]; j++) {
+                        if ([matrixs_name isEqualToString:[homeFeed.product.variant_options.optionArray objectAtIndex:j]]) {
+                            index=i;
+                        }
+                    }
+                }
+                
+                [allOptionsTitleCopy removeObjectAtIndex:index];
+                
+                for (int i=0; i<[allOptionsTitleCopy count]; i++) {
+                    homeFeed.product.variant_matrix.matrix_name=matrixs_name;
+                    [homeFeed.product.variant_matrix.matrix_data_array addObject:[matrixsDic objectForKey:[allOptionsTitleCopy objectAtIndex:i]]];
+                    [homeFeed.product.variant_matrix.matrix_option_array addObject:[allOptionsTitleCopy objectAtIndex:i]];
+                    
+                }
+
+                [homeFeed.product.variant_matrix_array addObject:homeFeed.product.variant_matrix];
+                
+            }
+            
+
+
+        }//end of[variant_matrixs_array count]>0
+        
         
     }
     

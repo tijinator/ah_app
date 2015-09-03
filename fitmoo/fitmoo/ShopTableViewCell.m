@@ -149,6 +149,8 @@
 }
 
 
+
+
 - (void) setBodyFrameForProduct
 {
 
@@ -172,6 +174,75 @@
  
 
 }
+
+- (void) rebuiltVariantsViewFrame
+{
+    int maxHeight=0;
+    for (UIView * subview in _variantsView.subviews) {
+        
+        int temHeight= (subview.frame.size.height+subview.frame.origin.y+15);
+        maxHeight= MAX(maxHeight, temHeight);
+        
+    }
+    _variantsView.frame= CGRectMake(0, _variantsView.frame.origin.y, _variantsView.frame.size.width, maxHeight);
+    
+
+    self.headerView.frame= CGRectMake(self.headerView.frame.origin.x, _variantsView.frame.size.height+_variantsView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height);
+    
+    self.commentView.frame= CGRectMake(self.commentView.frame.origin.x, _headerView.frame.size.height+_headerView.frame.origin.y, self.commentView.frame.size.width, self.commentView.frame.size.height);
+    
+    self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+}
+
+- (void) setVariantsFrame
+{
+    if ([_homeFeed.product.variant_options_array count]==1) {
+        
+        [_variantsButton4 removeFromSuperview];
+        [_variantsButton3 removeFromSuperview];
+        
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
+        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton2 setTitle:@"QTY" forState:UIControlStateNormal];
+    }else if ([_homeFeed.product.variant_options_array count]==2) {
+        [_variantsButton4 removeFromSuperview];
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
+        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:1] ;
+        [_variantsButton2 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton3 setTitle:@"QTY" forState:UIControlStateNormal];
+        
+    }else if ([_homeFeed.product.variant_options_array count]==3) {
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
+        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:1] ;
+        [_variantsButton2 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        
+        [_homeFeed.product resetOptions];
+        _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:2] ;
+        [_variantsButton3 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        
+        [_variantsButton4 setTitle:@"QTY" forState:UIControlStateNormal];
+        
+    }else if ([_homeFeed.product.variant_options_array count]==0) {
+        [_variantsButton4 removeFromSuperview];
+        [_variantsButton3 removeFromSuperview];
+        [_variantsButton2 removeFromSuperview];
+        
+        [_variantsButton1 setTitle:@"QTY" forState:UIControlStateNormal];
+        
+    }
+    
+     [self rebuiltVariantsViewFrame];
+}
+
 
 
 - (CGRect)caculateLabelHeight: (UILabel *) originalLabel withString: (NSString *) string
@@ -381,10 +452,12 @@
     _variantsButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_variantsButton1 respectToSuperFrame:nil];
     _variantsButton2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_variantsButton2 respectToSuperFrame:nil];
     _variantsButton3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_variantsButton3 respectToSuperFrame:nil];
+    _variantsButton4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_variantsButton4 respectToSuperFrame:nil];
     
     _variantsButton1.layer.cornerRadius=5;
     _variantsButton2.layer.cornerRadius=5;
     _variantsButton3.layer.cornerRadius=5;
+    _variantsButton4.layer.cornerRadius=5;
     
     _headerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_headerView respectToSuperFrame:nil];
     _bodyView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyView respectToSuperFrame:nil];
