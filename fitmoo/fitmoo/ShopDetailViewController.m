@@ -510,6 +510,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
       _typePickerView.hidden=true;
 }
 
+
+- (BOOL) checkeQTYButton:(UIButton *) QTYButton
+{
+    
+    if ([_homeFeed.product.variant_options_array count]==0&&QTYButton.tag==10) {
+        
+        return true;
+    }else if ([_homeFeed.product.variant_options_array count]==1&&QTYButton.tag==11) {
+        
+        return true;
+    }else if ([_homeFeed.product.variant_options_array count]==2&&QTYButton.tag==12) {
+        
+        return true;
+    }else if ([_homeFeed.product.variant_options_array count]==3&&QTYButton.tag==13) {
+        
+        return true;
+    }
+        
+        
+        
+        
+    return false;
+}
+
 - (IBAction)variantsButtonClick:(id)sender {
     UIButton *b=(UIButton *)sender;
     _SelectedVariantButton=b;
@@ -517,7 +541,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     NSString *title=b.titleLabel.text;
-    if ([title isEqualToString:@"QTY"]) {
+    if ([self checkeQTYButton:b]==true) {
         if ([_homeFeed.product.variant_array count]==1) {
               [_homeFeed.product resetVariants];
             _homeFeed.product.variants=[_homeFeed.product.variant_array objectAtIndex:0];
@@ -538,38 +562,50 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                  //     NSArray *optionsArray= [_homeFeed.product.variants.options componentsSeparatedByString:@"/"];
                     
                     BOOL found=true;
+                    NSString *checkString;
+                    NSString *checkString1;
+                    NSString *checkString2;
+                    
+                    
+                    
+                    
                      if ([_homeFeed.product.variant_options_array count]==1)//use button 1
                      {
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                         checkString=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
+            
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
                              found=false;
                          }
                          
                          
                      }else if ([_homeFeed.product.variant_options_array count]==2)//use button 1,2
                      {
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                         
+                          checkString=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
+                         checkString1=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton2.titleLabel.text];
+                         
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
                              found=false;
                          }
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton2.titleLabel.text].location == NSNotFound) {
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString1].location == NSNotFound) {
                              found=false;
                          }
                          
                      }else if ([_homeFeed.product.variant_options_array count]==3)//use button 1,2,3
                      {
                          
-                         NSString *string=_homeFeed.product.variants.options;
-                         NSString *string1=_variantButton1.titleLabel.text;
-                         NSString *string2=_variantButton2.titleLabel.text;
-                         NSString *string3=_variantButton3.titleLabel.text;
+                       
+                         checkString=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
+                         checkString1=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton2.titleLabel.text];
+                         checkString2=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton3.titleLabel.text];
                          
-                         
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton1.titleLabel.text].location == NSNotFound) {
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
                              found=false;
                          }
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton2.titleLabel.text.uppercaseString].location == NSNotFound) {
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString1].location == NSNotFound) {
                              found=false;
                          }
-                         if ([_homeFeed.product.variants.options rangeOfString:_variantButton3.titleLabel.text.uppercaseString].location == NSNotFound) {
+                         if ([_homeFeed.product.variants.options rangeOfString:checkString2].location == NSNotFound) {
                              found=false;
                          }
                      }
@@ -622,6 +658,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                     if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
                         _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
                     }
+                    
+                    for (int j=0; j<[_homeFeed.product.variant_options.optionArray count]; j++) {
+                        if ([title isEqualToString:[_homeFeed.product.variant_options.optionArray objectAtIndex:j]]) {
+                             _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
+                        }
+                    }
+                    
                 }
 
             }else //selecting other buttons
@@ -650,50 +693,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [_typePicker reloadAllComponents];
     
-//    
-//    if ([_homeFeed.product.variant_options_array count]==0) {
-//        if (b.tag==110) {
-//            
-//        }
-//        
-//    }
-//    
-//    if ([_homeFeed.product.variant_options_array count]==1) {
-//        if (b.tag==110) {
-//            
-//        }
-//        if (b.tag==111) {
-//            
-//        }
-//    }
-//    
-//    if ([_homeFeed.product.variant_options_array count]==2) {
-//        if (b.tag==110) {
-//            
-//        }
-//        if (b.tag==111) {
-//            
-//        }
-//        if (b.tag==112) {
-//            
-//        }
-//    }
-//    
-//    if ([_homeFeed.product.variant_options_array count]==3) {
-//        if (b.tag==110) {
-//            
-//        }
-//        if (b.tag==111) {
-//            
-//        }
-//        if (b.tag==112) {
-//            
-//        }
-//        if (b.tag==113) {
-//            
-//        }
-//        
-//    }
     
      _typePickerView.hidden=false;
 }
@@ -887,5 +886,78 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)BuyNowButtonClick:(id)sender {
+    NSString *endorser_id;
+    NSString *variant_id;
+    NSString *type=@"Product";
+    NSString *quantity;
+    if ([_homeFeed.feed_action.action isEqualToString:@"endorse"]) {
+        endorser_id= _homeFeed.feed_action.created_by.created_by_id;
+    }
+    if (_selectedVariants!=nil) {
+        variant_id=_selectedVariants.variants_id;
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"please select all options." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return;
+    }
+    
+    
+    if ([_homeFeed.product.variant_options_array count]==0) {
+        
+        quantity=_variantButton1.titleLabel.text;
+    }else if ([_homeFeed.product.variant_options_array count]==1) {
+        quantity=_variantButton2.titleLabel.text;
+   
+    }else if ([_homeFeed.product.variant_options_array count]==2) {
+        
+        quantity=_variantButton3.titleLabel.text;
+    }else if ([_homeFeed.product.variant_options_array count]==3) {
+        
+        quantity=_variantButton4.titleLabel.text;
+    }
+  
+    if ([quantity isEqualToString:@"QTY"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"please select QTY." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return;
+    }
+    
+    User *localUser=[[UserManager sharedUserManager] localUser];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict;
+    if (endorser_id==nil) {
+        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
+    }else
+    {
+        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",endorser_id, @"endorser_id",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
+    }
+  
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/cart/add" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+  
+        
+        
+        
+        
+        // [[NSNotificationCenter defaultCenter] postNotificationName:@"likeFinished" object:nil];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+    
 }
 @end

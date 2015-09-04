@@ -789,6 +789,18 @@
     //more error handling here
 }
 
+- (NSString *) checkStringIsANumeric:(NSString *)newString
+{
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([newString rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+    {
+        return newString;
+        // newString consists only of the digits 0 through 9
+    }
+    
+    return newString.uppercaseString;
+}
+
 - (void) setContext: (NSManagedObjectContext *) con
 {
     _context=con;

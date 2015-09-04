@@ -489,7 +489,7 @@
         
     }
     
-    if (_offset!=0) {
+    if (_offset!=0&&[self.feedType isEqualToString:@"store"]) {
         
         _homeFeedArray=[_StoreFeedArray mutableCopy];
     }
@@ -522,7 +522,7 @@
         
     }
     
-    if (_offset!=0) {
+    if (_offset!=0&&[self.feedType isEqualToString:@"workout"]) {
         _homeFeedArray=[_WorkoutFeedArray mutableCopy];
     }
     

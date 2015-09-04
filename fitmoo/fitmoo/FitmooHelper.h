@@ -45,7 +45,7 @@
 - (NSString *) generateTimeString:(NSString *)timeString;
 -(UIImage *) generateWatermarkForImage:(UIImage *) mainImg withType:(NSString *) type;
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;
-
+- (NSString *) checkStringIsANumeric:(NSString *)newString;
 - (IBAction)likeButtonAnimation:(id)sender;
 
 @end

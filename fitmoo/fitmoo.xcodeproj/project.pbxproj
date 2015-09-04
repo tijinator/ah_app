@@ -301,6 +301,8 @@
 		278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AB1B06972500FE8A4C /* white_toggle@2x.png */; };
 		278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278818AC1B06972500FE8A4C /* white_toggle@3x.png */; };
 		278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278DF8DD1B2336A600ABF918 /* Images-2.xcassets */; };
+		2795A9141B9A0B5100A1C7CD /* ShopInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */; };
+		2795A9151B9A0B5100A1C7CD /* ShopInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */; };
 		279717761B7CFF7A004ACBC2 /* InfluenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279717741B7CFF7A004ACBC2 /* InfluenceCell.m */; };
 		279717771B7CFF7A004ACBC2 /* InfluenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */; };
 		279738711B1F3763005FE32B /* BSBoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 279738701B1F3763005FE32B /* BSBoldButton.m */; };
@@ -1010,6 +1012,9 @@
 		278818AB1B06972500FE8A4C /* white_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@2x.png"; sourceTree = "<group>"; };
 		278818AC1B06972500FE8A4C /* white_toggle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_toggle@3x.png"; sourceTree = "<group>"; };
 		278DF8DD1B2336A600ABF918 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoCell.h; sourceTree = "<group>"; };
+		2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoCell.m; sourceTree = "<group>"; };
+		2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopInfoCell.xib; sourceTree = "<group>"; };
 		279717731B7CFF7A004ACBC2 /* InfluenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfluenceCell.h; sourceTree = "<group>"; };
 		279717741B7CFF7A004ACBC2 /* InfluenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfluenceCell.m; sourceTree = "<group>"; };
 		279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfluenceCell.xib; sourceTree = "<group>"; };
@@ -2394,6 +2399,9 @@
 				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
 				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
 				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
+				2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */,
+				2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */,
+				2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */,
 				27A3AC101B962D4A00D78AAA /* ShopTableViewCell.h */,
 				27A3AC111B962D4A00D78AAA /* ShopTableViewCell.m */,
 				27A3AC121B962D4A00D78AAA /* ShopTableViewCell.xib */,
@@ -3051,6 +3059,7 @@
 				276094511AD708C100A769CE /* BentonSansCond-Black.otf in Resources */,
 				27BA5A431B6A50E500B30B62 /* store_grey@2x.png in Resources */,
 				2752EA0F1B015CBC003841DC /* shareicon@2x.png in Resources */,
+				2795A9151B9A0B5100A1C7CD /* ShopInfoCell.xib in Resources */,
 				27B5F8611B3481FE00068D8F /* invitefriends@3x.png in Resources */,
 				2752EA051B015CBC003841DC /* posticon.png in Resources */,
 				27ACD1021B0A74E900322ED5 /* thumbnail_playbtn@3x.png in Resources */,
@@ -3174,6 +3183,7 @@
 				27989F7A1B680B44004D7D8A /* CalendarSubCell.m in Sources */,
 				27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */,
 				27B1B4661B17594900F5F812 /* ForgotPdViewController.m in Sources */,
+				2795A9141B9A0B5100A1C7CD /* ShopInfoCell.m in Sources */,
 				27410DF51AFAB34200CF230C /* Spline.m in Sources */,
 				273FF5821AF7B5F500B82DB3 /* CommentViewController.m in Sources */,
 				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,

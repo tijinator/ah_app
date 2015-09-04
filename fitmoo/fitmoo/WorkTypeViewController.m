@@ -252,8 +252,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)doneButtonClick:(id)sender {
      [_timer invalidate];
+    _workoutTypeLabel.text=_searchTermField.text;
+    _workoutTypeLabel.textColor=[UIColor blackColor];
     [_searchTermField resignFirstResponder];
- //   [self.view removeFromSuperview];
+    [self.view removeFromSuperview];
+
     
 }
 @end
