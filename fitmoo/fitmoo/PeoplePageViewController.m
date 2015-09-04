@@ -343,7 +343,7 @@
             count=[_StoreFeedArray count];
         }
         [self defineStoreFeedObjects];
-        
+      
         if ([_responseDicStore count]>0&& count!=[_StoreFeedArray count]) {
             if ([_feedType isEqualToString:@"store"]) {
                 [self.tableView reloadData];
@@ -393,7 +393,10 @@
         if (_WorkoutFeedArray!=nil ) {
             count=[_WorkoutFeedArray count];
         }
+        
         [self defineWorkoutFeedObjects];
+        
+       
         
         if ([_responseDicWorkout count]>0&& count!=[_WorkoutFeedArray count]) {
             if ([_feedType isEqualToString:@"workout"]) {
@@ -444,7 +447,7 @@
             count=[_FeedArray count];
         }
         [self defineFeedObjects];
-        
+       
         if ([_responseDic count]>0&& count!=[_FeedArray count]) {
             if ([_feedType isEqualToString:@"feed"]) {
                 [self.tableView reloadData];
@@ -489,7 +492,7 @@
         
     }
     
-    if (_offset!=0&&[self.feedType isEqualToString:@"store"]) {
+    if ([self.feedType isEqualToString:@"store"]) {
         
         _homeFeedArray=[_StoreFeedArray mutableCopy];
     }
@@ -522,7 +525,7 @@
         
     }
     
-    if (_offset!=0&&[self.feedType isEqualToString:@"workout"]) {
+    if ([self.feedType isEqualToString:@"workout"]) {
         _homeFeedArray=[_WorkoutFeedArray mutableCopy];
     }
     

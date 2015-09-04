@@ -948,8 +948,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         
         
-        
-        // [[NSNotificationCenter defaultCenter] postNotificationName:@"likeFinished" object:nil];
+      
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
