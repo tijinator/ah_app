@@ -501,7 +501,7 @@
     [UIView commitAnimations];
     _closeButton.hidden=true;
     _cameraDirectionButton.hidden=true;
-    [self.view bringSubviewToFront:_filterTopView];
+ //   [self.view bringSubviewToFront:_filterTopView];
 }
 -(void) hidePostViewAnimation
 {
