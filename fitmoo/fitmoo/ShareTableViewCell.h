@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HomeFeed.h"
 #import "AsyncImageView.h"
-
+#import "RTLabel.h"
 //#import "Comments.h"
 
-@interface ShareTableViewCell : UITableViewCell <UIScrollViewDelegate>
+@interface ShareTableViewCell : UITableViewCell <UIScrollViewDelegate,RTLabelDelegate>
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIButton *heanderImage1;
 @property (strong, nonatomic) IBOutlet UIButton *headerImage2;
@@ -95,6 +95,11 @@
 - (void) setBodyShadowFrameForTextPost;
 - (void) setBodyShadowFrameForImagePost;
 - (void) setTitleLabelForHeader;
+
+@property (nonatomic, strong) RTLabel *rtLabel;
+@property (nonatomic, strong) RTLabel *rtLabel1;
+@property (nonatomic, strong) RTLabel *rtLabel2;
+
 @property (strong, nonatomic) IBOutlet UIButton *viewAllCommentButton;
 
 

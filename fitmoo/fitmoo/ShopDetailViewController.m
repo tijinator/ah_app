@@ -422,19 +422,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
-    NSString *selectedString=[_pickerDisplayArray objectAtIndex:row];
     
-    [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
-    
-    for (int i=0; i<[_homeFeed.product.variant_matrix_array count]; i++) {
-        [_homeFeed.product resetMatrixs];
-        _homeFeed.product.variant_matrix= [_homeFeed.product.variant_matrix_array objectAtIndex:i];
+    if ([_pickerDisplayArray count]>0) {
+        NSString *selectedString=[_pickerDisplayArray objectAtIndex:row];
         
-        if ([selectedString isEqualToString:_homeFeed.product.variant_matrix.matrix_name]) {
-            _selectedMatrixs=_homeFeed.product.variant_matrix;
+        [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
+        
+        for (int i=0; i<[_homeFeed.product.variant_matrix_array count]; i++) {
+            [_homeFeed.product resetMatrixs];
+            _homeFeed.product.variant_matrix= [_homeFeed.product.variant_matrix_array objectAtIndex:i];
+            
+            if ([selectedString isEqualToString:_homeFeed.product.variant_matrix.matrix_name]) {
+                _selectedMatrixs=_homeFeed.product.variant_matrix;
+            }
+            
         }
-        
     }
+    
+ 
     
     // Handle the selection
 }
@@ -638,7 +643,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else
     {
         
-        if (_selectedMatrixs==nil) {
+        if (_selectedMatrixs==nil||[_homeFeed.product.variant_matrix_array count]==0) {
             for (int i=0; i<[_homeFeed.product.variant_options_array count]; i++) {
                 [_homeFeed.product resetOptions];
                 _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:i];
@@ -646,6 +651,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
                     _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
                 }
+                
+                for (int j=0; j<[_homeFeed.product.variant_options.optionArray count]; j++) {
+                    if ([title isEqualToString:[_homeFeed.product.variant_options.optionArray objectAtIndex:j]]) {
+                        _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
+                    }
+                }
+
             }
         }else
         {

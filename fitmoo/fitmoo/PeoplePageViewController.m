@@ -1928,6 +1928,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         
         ActionSheet.ShareTitle=@"Follow me on Fitmoo.";
+        ActionSheet.postType=@"invite";
         ActionSheet.shareImage=temUser.profile_avatar_original_image.image;
         ActionSheet.profileId= temUser.user_id;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"openPopup" object:ActionSheet];

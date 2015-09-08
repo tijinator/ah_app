@@ -461,7 +461,9 @@
     if (index==0) {
         
         
-         _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,22*_frameRadio)];
+//         _commentDetail= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,22*_frameRadio)];
+        
+     
         
 //        _commentDetail= [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,22*_frameRadio)];
 //        _commentDetail.enabledTextCheckingTypes = NSTextCheckingTypeLink;
@@ -470,17 +472,29 @@
 //        _commentDetail.delegate=self;
         
         
-        [_commentDetail setAttributedText:attributedString];
+//        [_commentDetail setAttributedText:attributedString];
+//         _commentDetail.numberOfLines=0;
+//        [_commentDetail sizeToFit];
+//        _commentDetail.lineBreakMode= NSLineBreakByWordWrapping;
+//        _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12*_frameRadio, _commentDetail.frame.origin.y+1*_frameRadio, 11*_frameRadio, 9*_frameRadio)];
+//        _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
+//        
+//        [_commentView addSubview:_commentImage];
+//        [_commentView addSubview:_commentDetail];
+       
+        _rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 15*_frameRadio, 270*_frameRadio,100)];
+        [_rtLabel setDelegate:self];
+        _rtLabel.lineSpacing=10;
+        [_rtLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Medium size=14 >%@</font></a><font face=BentonSans size=14 color=#575D60> %@</font>",_homeFeed.comments.created_by_id,string1,string2]];
+        CGSize optimumSize =[_rtLabel optimumSize];
         
-         _commentDetail.numberOfLines=0;
-        [_commentDetail sizeToFit];
-        _commentDetail.lineBreakMode= NSLineBreakByWordWrapping;
+        _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
         
-        _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12*_frameRadio, _commentDetail.frame.origin.y+1*_frameRadio, 11*_frameRadio, 9*_frameRadio)];
+        _commentImage= [[UIImageView alloc] initWithFrame:CGRectMake(12*_frameRadio, _rtLabel.frame.origin.y+1*_frameRadio, 11*_frameRadio, 9*_frameRadio)];
         _commentImage.image= [UIImage imageNamed:@"greycommenticon.png"];
         
         [_commentView addSubview:_commentImage];
-        [_commentView addSubview:_commentDetail];
+        [_commentView addSubview:_rtLabel];
         
         
     }
@@ -488,52 +502,84 @@
     
     if (index==1) {
         
-        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+//        _commentDetail1= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+//        
+////        _commentDetail1= [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+////        _commentDetail1.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+////        NSRange range= [string rangeOfString:string1];
+////        [_commentDetail1 addLinkToURL:[NSURL URLWithString:@"https://fitmoo.com"] withRange:range];
+////        _commentDetail1.delegate=self;
+//        
+//        
+//        [_commentDetail1 setAttributedText:attributedString];
+//        _commentDetail1.lineBreakMode= NSLineBreakByWordWrapping;
+//        
+//        _commentDetail1.numberOfLines=0;
+//        [_commentDetail1 sizeToFit];
+//        
+//        [_commentView addSubview:_commentDetail1];
         
-//        _commentDetail1= [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail.frame.size.height+_commentDetail.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
-//        _commentDetail1.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-//        NSRange range= [string rangeOfString:string1];
-//        [_commentDetail1 addLinkToURL:[NSURL URLWithString:@"https://fitmoo.com"] withRange:range];
-//        _commentDetail1.delegate=self;
+        _rtLabel1=[[RTLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_rtLabel.frame.size.height+_rtLabel.frame.origin.y, 270*_frameRadio,100)];
+        [_rtLabel1 setDelegate:self];
         
+        _rtLabel1.lineSpacing=10;
+        [_rtLabel1 setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Medium size=14 >%@</font></a><font face=BentonSans size=14 color=#575D60> %@</font>",_homeFeed.comments.created_by_id,string1,string2]];
+        CGSize optimumSize =[_rtLabel1 optimumSize];
         
-        [_commentDetail1 setAttributedText:attributedString];
-        _commentDetail1.lineBreakMode= NSLineBreakByWordWrapping;
+        _rtLabel1.frame=CGRectMake(_rtLabel1.frame.origin.x, _rtLabel1.frame.origin.y, optimumSize.width, optimumSize.height+10);
         
-        _commentDetail1.numberOfLines=0;
-        [_commentDetail1 sizeToFit];
-        
-        [_commentView addSubview:_commentDetail1];
+    
+        [_commentView addSubview:_rtLabel1];
+
         
         
     }
     
     if (index==2) {
-        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+//        _commentDetail2= [[UILabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+//        
+////        _commentDetail2= [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
+////        _commentDetail2.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+////        NSRange range= [string rangeOfString:string1];
+////        [_commentDetail2 addLinkToURL:[NSURL URLWithString:@"https://fitmoo.com"] withRange:range];
+////        _commentDetail2.delegate=self;
+//        
+//        
+//        [_commentDetail2 setAttributedText:attributedString];
+//        _commentDetail2.lineBreakMode= NSLineBreakByWordWrapping;
+//        _commentDetail2.numberOfLines=0;
+//        [_commentDetail2 sizeToFit];
+//        [_commentView addSubview:_commentDetail2];
         
-//        _commentDetail2= [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_commentDetail1.frame.size.height+_commentDetail1.frame.origin.y, 270*_frameRadio,22*_frameRadio)];
-//        _commentDetail2.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-//        NSRange range= [string rangeOfString:string1];
-//        [_commentDetail2 addLinkToURL:[NSURL URLWithString:@"https://fitmoo.com"] withRange:range];
-//        _commentDetail2.delegate=self;
+        _rtLabel2=[[RTLabel alloc] initWithFrame:CGRectMake(30*_frameRadio, 5*_frameRadio+_rtLabel1.frame.size.height+_rtLabel1.frame.origin.y, 270*_frameRadio,100)];
+        [_rtLabel2 setDelegate:self];
         
+        _rtLabel2.lineSpacing=10;
+        [_rtLabel2 setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Medium size=14 >%@</font></a><font face=BentonSans size=14 color=#575D60> %@</font>",_homeFeed.comments.created_by_id,string1,string2]];
+        CGSize optimumSize =[_rtLabel2 optimumSize];
         
-        [_commentDetail2 setAttributedText:attributedString];
-        _commentDetail2.lineBreakMode= NSLineBreakByWordWrapping;
-        _commentDetail2.numberOfLines=0;
-        [_commentDetail2 sizeToFit];
+        _rtLabel2.frame=CGRectMake(_rtLabel2.frame.origin.x, _rtLabel2.frame.origin.y, optimumSize.width, optimumSize.height+10);
         
-        
-        [_commentView addSubview:_commentDetail2];
-        
+      
+        [_commentView addSubview:_rtLabel2];
         
     }
     
     if (_homeFeed.total_comment.intValue>3) {
-        _viewAllCommentButton.frame= CGRectMake(_commentDetail2.frame.origin.x, _commentDetail2.frame.origin.y+_commentDetail2.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+//        _viewAllCommentButton.frame= CGRectMake(_commentDetail2.frame.origin.x, _commentDetail2.frame.origin.y+_commentDetail2.frame.size.height, _viewAllCommentButton.frame.size.width, _viewAllCommentButton.frame.size.height);
+         _viewAllCommentButton.frame= CGRectMake(_rtLabel2.frame.origin.x, _rtLabel2.frame.origin.y+_rtLabel2.frame.size.height, _rtLabel2.frame.size.width, _rtLabel2.frame.size.height);
         [_commentView addSubview:_viewAllCommentButton];
     }
     
+}
+
+#pragma mark RTLabel delegate
+
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url
+{
+    NSLog(@"did select url %@", url);
+   NSString *key=[NSString stringWithFormat:@"%d", [url absoluteString].intValue+100];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
 }
 
 //#pragma mark - TTTAttributedLabelDelegate

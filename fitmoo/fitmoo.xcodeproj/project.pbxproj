@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703A7221B9E2E8A001F6440 /* RTLabel.m */; };
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		2711144D1ADF095D0056EB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
 		271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
@@ -682,6 +683,8 @@
 
 /* Begin PBXFileReference section */
 		0CC700DB5F9343FBFFA1E76D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2703A7211B9E2E8A001F6440 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		2703A7221B9E2E8A001F6440 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
 		2714AF601B028F5E003339A0 /* BentonSansBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansBold.h; sourceTree = "<group>"; };
 		2714AF611B028F5E003339A0 /* BentonSansBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansBold.m; sourceTree = "<group>"; };
@@ -1552,6 +1555,8 @@
 		27188FC51AD47BC600C34372 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				2703A7211B9E2E8A001F6440 /* RTLabel.h */,
+				2703A7221B9E2E8A001F6440 /* RTLabel.m */,
 				2720091A1ADAB59400CC3070 /* AsyncImageView.h */,
 				2720091B1ADAB59400CC3070 /* AsyncImageView.m */,
 				27410DD31AFA9AEA00CF230C /* UIImage+Filters.h */,
@@ -3149,6 +3154,7 @@
 				273CE5AE1AEEC13A00BCC66F /* BentonSansBook.m in Sources */,
 				27974E9D1B7513BE00CBFC59 /* BSMediumButton.m in Sources */,
 				27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */,
+				2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */,
 				27AD266B1B18DF4D008D338D /* HomePageViewController.m in Sources */,
 				27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,

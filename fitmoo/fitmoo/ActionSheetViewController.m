@@ -221,6 +221,7 @@
             [self.view removeFromSuperview];
             break;
         case 2:      // post profile to instagram
+            _action=@"invite";
             [self InstagramButtonClick:sender];
             break;
         case 3:     //share my profile
@@ -358,9 +359,12 @@
 }
 
 - (IBAction)InstagramButtonClick:(id)sender {
-    [self copyLinkClick:sender];
+  //  [self copyLinkClick:sender];
     
-    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:@"invite"];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = [self defineUrl];
+    
+    _shareImage= [[FitmooHelper sharedInstance] generateWatermarkForImage:_shareImage withType:_postType];
     NSData *imageData = UIImagePNGRepresentation(_shareImage); //convert image into .png format.
     
     NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
