@@ -128,7 +128,7 @@
 
 
 -(void)openSideMenu:(NSNotification*)note{
-   [_deckController toggleLeftViewAnimated:YES];
+ //  [_deckController toggleLeftViewAnimated:YES];
     
 }
 
@@ -141,10 +141,10 @@
 {
     NSString * flag= [note object];
     if ([flag isEqualToString:@"YES"]) {
-           [_deckController setEnabled:YES];
+      //     [_deckController setEnabled:YES];
     }else
     {
-           [_deckController setEnabled:NO];
+     //      [_deckController setEnabled:NO];
     }
 }
 

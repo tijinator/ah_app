@@ -11,7 +11,7 @@
 #import "NavigationViewController.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
-#import "IIViewDeckController.h"
+//#import "IIViewDeckController.h"
 #import "FitmooHelper.h"
 #import "UserManager.h"
 #import "ActionSheetViewController.h"
@@ -30,7 +30,7 @@
 @property (strong, nonatomic)  RightViewController *rightView;
 @property (strong, nonatomic) NavigationViewController *navigateView;
 @property (strong, nonatomic) ActionSheetViewController *popupView;
-@property (strong, nonatomic) IIViewDeckController *deckController;
+//@property (strong, nonatomic) IIViewDeckController *deckController;
 @property (strong, nonatomic) RESideMenu *sideMenuViewController;
 
 

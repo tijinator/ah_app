@@ -23,6 +23,7 @@
 #import "ShopTableViewCell.h"
 #import "Variants.h"
 #import "Matrixs.h"
+#import "ShopCartViewController.h"
 @interface ShopDetailViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
