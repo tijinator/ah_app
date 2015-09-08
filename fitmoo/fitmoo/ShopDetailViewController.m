@@ -555,6 +555,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 [_pickerDisplayArray addObject:[NSString stringWithFormat:@"%d",i]];
             }
             
+            
+            _selectedVariants= [_homeFeed.product.variant_array objectAtIndex:0];
+            
         }else
         {
             //find variants
@@ -905,73 +908,73 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)BuyNowButtonClick:(id)sender {
     
-    [self openShopCartPage];
+ //   [self openShopCartPage];
     
-//    NSString *endorser_id;
-//    NSString *variant_id;
-//    NSString *type=@"Product";
-//    NSString *quantity;
-//    if ([_homeFeed.feed_action.action isEqualToString:@"endorse"]) {
-//        endorser_id= _homeFeed.feed_action.created_by.created_by_id;
-//    }
-//    if (_selectedVariants!=nil) {
-//        variant_id=_selectedVariants.variants_id;
-//    }else
-//    {
-//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-//                                                          message : @"please select all options." delegate : nil cancelButtonTitle : @"OK"
-//                                                otherButtonTitles : nil ];
-//        [alert show ];
-//        return;
-//    }
-//    
-//    
-//    if ([_homeFeed.product.variant_options_array count]==0) {
-//        
-//        quantity=_variantButton1.titleLabel.text;
-//    }else if ([_homeFeed.product.variant_options_array count]==1) {
-//        quantity=_variantButton2.titleLabel.text;
-//        
-//    }else if ([_homeFeed.product.variant_options_array count]==2) {
-//        
-//        quantity=_variantButton3.titleLabel.text;
-//    }else if ([_homeFeed.product.variant_options_array count]==3) {
-//        
-//        quantity=_variantButton4.titleLabel.text;
-//    }
-//    
-//    if ([quantity isEqualToString:@"QTY"]) {
-//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-//                                                          message : @"please select QTY." delegate : nil cancelButtonTitle : @"OK"
-//                                                otherButtonTitles : nil ];
-//        [alert show ];
-//        return;
-//    }
-//    
-//    User *localUser=[[UserManager sharedUserManager] localUser];
-//    
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    manager.securityPolicy.allowInvalidCertificates = YES;
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    NSDictionary *jsonDict;
-//    if (endorser_id==nil) {
-//        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
-//    }else
-//    {
-//        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",endorser_id, @"endorser_id",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
-//    }
-//    
-//    
-//    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/cart/add" ];
-//    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-//        
-//        [self openShopCartPage];
-//        //      NSLog(@"Submit response data: %@", responseObject);
-//    } // success callback block
-//     
-//          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-//              NSLog(@"Error: %@", error);} // failure callback block
-//     ];
+    NSString *endorser_id;
+    NSString *variant_id;
+    NSString *type=@"Product";
+    NSString *quantity;
+    if ([_homeFeed.feed_action.action isEqualToString:@"endorse"]) {
+        endorser_id= _homeFeed.feed_action.created_by.created_by_id;
+    }
+    if (_selectedVariants!=nil) {
+        variant_id=_selectedVariants.variants_id;
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"please select all options." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return;
+    }
+    
+    
+    if ([_homeFeed.product.variant_options_array count]==0) {
+        
+        quantity=_variantButton1.titleLabel.text;
+    }else if ([_homeFeed.product.variant_options_array count]==1) {
+        quantity=_variantButton2.titleLabel.text;
+        
+    }else if ([_homeFeed.product.variant_options_array count]==2) {
+        
+        quantity=_variantButton3.titleLabel.text;
+    }else if ([_homeFeed.product.variant_options_array count]==3) {
+        
+        quantity=_variantButton4.titleLabel.text;
+    }
+    
+    if ([quantity isEqualToString:@"QTY"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"please select QTY." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return;
+    }
+    
+    User *localUser=[[UserManager sharedUserManager] localUser];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict;
+    if (endorser_id==nil) {
+        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
+    }else
+    {
+        jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",endorser_id, @"endorser_id",type, @"type",quantity, @"quantity",variant_id, @"variant_id",nil];
+    }
+    
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/cart/add" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        [self openShopCartPage];
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
     
     
 }
