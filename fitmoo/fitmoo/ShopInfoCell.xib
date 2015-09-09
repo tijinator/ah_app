@@ -11,12 +11,8 @@
         <mutableArray key="BentonSansComp-Medium.otf">
             <string>BentonSans-ExtraCondensedMedium</string>
             <string>BentonSans-ExtraCondensedMedium</string>
-            <string>BentonSans-ExtraCondensedMedium</string>
-            <string>BentonSans-ExtraCondensedMedium</string>
-            <string>BentonSans-ExtraCondensedMedium</string>
         </mutableArray>
         <mutableArray key="BentonSansComp-Regular.otf">
-            <string>BentonSans-ExtraCondensedRegular</string>
             <string>BentonSans-ExtraCondensedRegular</string>
             <string>BentonSans-ExtraCondensedRegular</string>
             <string>BentonSans-ExtraCondensedRegular</string>
@@ -26,11 +22,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="366" id="KGk-i7-Jjw" customClass="ShopInfoCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="201" id="KGk-i7-Jjw" customClass="ShopInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="364.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KKc-cf-RKA">
@@ -54,71 +50,39 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="scc-vz-ddd" customClass="BentonSansCondensedMedium">
-                        <rect key="frame" x="20" y="158" width="146" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedMedium" family="BentonSans" pointSize="14"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EgJ-Fb-dTd" customClass="BentonSansCondensedMedium">
-                        <rect key="frame" x="20" y="182" width="146" height="21"/>
+                        <rect key="frame" x="20" y="130" width="90" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedMedium" family="BentonSans" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endorse By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XBu-Fg-eWy" customClass="BentonSansCondensedMedium">
-                        <rect key="frame" x="20" y="208" width="146" height="21"/>
+                        <rect key="frame" x="20" y="159" width="90" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedMedium" family="BentonSans" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zTr-et-iqL" customClass="BentonSansExtraCompRegular">
-                        <rect key="frame" x="186" y="158" width="116" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EnS-hL-JMs" customClass="BentonSansExtraCompRegular">
+                        <rect key="frame" x="125" y="159" width="165" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedRegular" family="BentonSans" pointSize="14"/>
                         <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsb-xV-ePW" customClass="BentonSansExtraCompRegular">
-                        <rect key="frame" x="186" y="182" width="116" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedRegular" family="BentonSans" pointSize="14"/>
-                        <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EnS-hL-JMs" customClass="BentonSansExtraCompRegular">
-                        <rect key="frame" x="186" y="208" width="116" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedRegular" family="BentonSans" pointSize="14"/>
-                        <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XRS-pU-NfP">
-                        <rect key="frame" x="0.0" y="290" width="160" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedMedium" family="BentonSans" pointSize="14"/>
-                        <state key="normal" title="Refund Policy">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oZz-HN-5tQ">
-                        <rect key="frame" x="160" y="290" width="160" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedMedium" family="BentonSans" pointSize="14"/>
-                        <state key="normal" title="BILLING INFO">
-                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIZE SMALL" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Gt-xo-40b" customClass="BentonSansExtraCompRegular">
                         <rect key="frame" x="125" y="90" width="165" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedRegular" family="BentonSans" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsb-xV-ePW" customClass="BentonSansExtraCompRegular">
+                        <rect key="frame" x="125" y="130" width="165" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedRegular" family="BentonSans" pointSize="14"/>
+                        <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -127,17 +91,13 @@
                 <outlet property="ItemDetailLabel" destination="6Gt-xo-40b" id="QrE-I9-vqH"/>
                 <outlet property="ItemPriceLabel" destination="MDS-wa-4Ck" id="H47-Ig-J6o"/>
                 <outlet property="ItemTitleLabel" destination="7CF-Ec-eYV" id="rTH-y0-CXp"/>
-                <outlet property="detailLabel1" destination="zTr-et-iqL" id="Rhm-bC-Npq"/>
                 <outlet property="detailLabel2" destination="hsb-xV-ePW" id="Q7N-eA-PsS"/>
                 <outlet property="detailLabel3" destination="EnS-hL-JMs" id="IEl-4u-zjZ"/>
-                <outlet property="infoButton1" destination="XRS-pU-NfP" id="xK5-fq-H6z"/>
-                <outlet property="infoButtons2" destination="oZz-HN-5tQ" id="TFB-Bl-dYe"/>
                 <outlet property="itemImage" destination="KKc-cf-RKA" id="QuW-1V-xxd"/>
-                <outlet property="label1" destination="scc-vz-ddd" id="bVI-d8-P0d"/>
                 <outlet property="label2" destination="EgJ-Fb-dTd" id="ePz-1v-STw"/>
                 <outlet property="label3" destination="XBu-Fg-eWy" id="VoK-OO-xqu"/>
             </connections>
-            <point key="canvasLocation" x="242" y="388.5"/>
+            <point key="canvasLocation" x="242" y="306"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

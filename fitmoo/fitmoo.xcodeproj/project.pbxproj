@@ -10,7 +10,6 @@
 		2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703A7221B9E2E8A001F6440 /* RTLabel.m */; };
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		2711144D1ADF095D0056EB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
-		271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
 		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
 		271114551ADF11690056EB13 /* ActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731C6391ADDAAD000788181 /* ActionSheetViewController.m */; };
 		2711145A1ADF11780056EB13 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272582041AD5633F0059F43C /* RightViewController.m */; };
@@ -39,7 +38,6 @@
 		271114731ADF12E70056EB13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F7A1AD4646300C34372 /* LaunchScreen.xib */; };
 		2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 2714AF611B028F5E003339A0 /* BentonSansBold.m */; };
 		27188F6B1AD4646300C34372 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6A1AD4646300C34372 /* main.m */; };
-		27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */; };
 		27188F711AD4646300C34372 /* fitmoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27188F6F1AD4646300C34372 /* fitmoo.xcdatamodeld */; };
 		27188F741AD4646300C34372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188F731AD4646300C34372 /* ViewController.m */; };
 		27188F771AD4646300C34372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27188F751AD4646300C34372 /* Main.storyboard */; };
@@ -653,6 +651,9 @@
 		27DDF4401B7B8A670011BB46 /* cement.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF43D1B7B8A670011BB46 /* cement.png */; };
 		27DDF4411B7B8A670011BB46 /* cement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF43E1B7B8A670011BB46 /* cement@2x.png */; };
 		27DDF4421B7B8A670011BB46 /* cement@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27DDF43F1B7B8A670011BB46 /* cement@3x.png */; };
+		27DE04EB1BA083DE00050ADD /* FitmooAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE04EA1BA083DE00050ADD /* FitmooAppDelegate.m */; };
+		27DE04EE1BA0868800050ADD /* ShopCheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE04ED1BA0868800050ADD /* ShopCheckoutViewController.m */; };
+		27DE04F11BA0C03100050ADD /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE04F01BA0C03100050ADD /* Address.m */; };
 		27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A3ACA1B52D62D00432168 /* FollowViewController.m */; };
 		27FE159F1B8F852B00E124EF /* invitebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE15991B8F852B00E124EF /* invitebtn.png */; };
 		27FE15A01B8F852B00E124EF /* invitebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE159A1B8F852B00E124EF /* invitebtn@2x.png */; };
@@ -694,7 +695,6 @@
 		27188F691AD4646300C34372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27188F6A1AD4646300C34372 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitmooAppDelegate.h; sourceTree = "<group>"; };
-		27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FitmooAppDelegate.m; sourceTree = "<group>"; };
 		27188F701AD4646300C34372 /* fitmoo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fitmoo.xcdatamodel; sourceTree = "<group>"; };
 		27188F721AD4646300C34372 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		27188F731AD4646300C34372 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -1415,6 +1415,11 @@
 		27DDF43D1B7B8A670011BB46 /* cement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cement.png; sourceTree = "<group>"; };
 		27DDF43E1B7B8A670011BB46 /* cement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cement@2x.png"; sourceTree = "<group>"; };
 		27DDF43F1B7B8A670011BB46 /* cement@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cement@3x.png"; sourceTree = "<group>"; };
+		27DE04EA1BA083DE00050ADD /* FitmooAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitmooAppDelegate.m; sourceTree = "<group>"; };
+		27DE04EC1BA0868800050ADD /* ShopCheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCheckoutViewController.h; sourceTree = "<group>"; };
+		27DE04ED1BA0868800050ADD /* ShopCheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCheckoutViewController.m; sourceTree = "<group>"; };
+		27DE04EF1BA0C03100050ADD /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		27DE04F01BA0C03100050ADD /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		27FE15991B8F852B00E124EF /* invitebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invitebtn.png; sourceTree = "<group>"; };
 		27FE159A1B8F852B00E124EF /* invitebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invitebtn@2x.png"; sourceTree = "<group>"; };
 		27FE159B1B8F852B00E124EF /* invitebtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invitebtn@3x.png"; sourceTree = "<group>"; };
@@ -1482,7 +1487,7 @@
 			isa = PBXGroup;
 			children = (
 				27188F6C1AD4646300C34372 /* FitmooAppDelegate.h */,
-				27188F6D1AD4646300C34372 /* FitmooAppDelegate.m */,
+				27DE04EA1BA083DE00050ADD /* FitmooAppDelegate.m */,
 				27188F751AD4646300C34372 /* Main.storyboard */,
 				27A009AE1B3AE84C0081AD4E /* Main1.storyboard */,
 				274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */,
@@ -1666,6 +1671,8 @@
 			children = (
 				272582751AD593150059F43C /* LocalUser.h */,
 				272582761AD593150059F43C /* LocalUser.m */,
+				27DE04EF1BA0C03100050ADD /* Address.h */,
+				27DE04F01BA0C03100050ADD /* Address.m */,
 				2787C90B1B38AD7700B182FF /* Contacts.h */,
 				2787C90C1B38AD7700B182FF /* Contacts.m */,
 				272582781AD5A4DE0059F43C /* User.h */,
@@ -1725,6 +1732,8 @@
 				27A3AC0D1B9606FD00D78AAA /* ShopDetailViewController.m */,
 				27940B291B9F24D9007F722D /* ShopCartViewController.h */,
 				27940B2A1B9F24D9007F722D /* ShopCartViewController.m */,
+				27DE04EC1BA0868800050ADD /* ShopCheckoutViewController.h */,
+				27DE04ED1BA0868800050ADD /* ShopCheckoutViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
@@ -3163,6 +3172,7 @@
 				27974E9D1B7513BE00CBFC59 /* BSMediumButton.m in Sources */,
 				27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */,
 				2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */,
+				27DE04EB1BA083DE00050ADD /* FitmooAppDelegate.m in Sources */,
 				27AD266B1B18DF4D008D338D /* HomePageViewController.m in Sources */,
 				27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
@@ -3198,7 +3208,6 @@
 				2732B7481AD84EF200610821 /* Videos.m in Sources */,
 				27B3DFA21B988FC500423D88 /* Options.m in Sources */,
 				27410DDE1AFAB21800CF230C /* ImageFilter.m in Sources */,
-				27188F6E1AD4646300C34372 /* FitmooAppDelegate.m in Sources */,
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
 				27989F7A1B680B44004D7D8A /* CalendarSubCell.m in Sources */,
 				27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */,
@@ -3229,6 +3238,7 @@
 				2787C90D1B38AD7700B182FF /* Contacts.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */,
+				27DE04F11BA0C03100050ADD /* Address.m in Sources */,
 				27410DF11AFAB34200CF230C /* CubicBezierCurve.m in Sources */,
 				2732B7421AD84B5600610821 /* Nutrition.m in Sources */,
 				2738D9391B02850300F5087E /* PhotoCell.m in Sources */,
@@ -3246,6 +3256,7 @@
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
 				27B3DFA51B989D8E00423D88 /* Variants.m in Sources */,
+				27DE04EE1BA0868800050ADD /* ShopCheckoutViewController.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,
 				27BAF7731B97445B004E69B4 /* BentonSansExtraCompBook.m in Sources */,
 				271DA8491B5557BF00D4E075 /* CommunityTitileCell.m in Sources */,
@@ -3285,7 +3296,6 @@
 				2711145B1ADF117A0056EB13 /* LeftViewController.m in Sources */,
 				271114691ADF12B50056EB13 /* Comments.m in Sources */,
 				271114601ADF118B0056EB13 /* PeopleTitleCell.m in Sources */,
-				271114501ADF11590056EB13 /* FitmooAppDelegate.m in Sources */,
 				271114681ADF12B30056EB13 /* Photos.m in Sources */,
 				271114671ADF12B00056EB13 /* HomeFeed.m in Sources */,
 				271114721ADF12D90056EB13 /* AsyncImageView.m in Sources */,

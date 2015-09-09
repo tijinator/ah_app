@@ -14,6 +14,7 @@
 #import "UserManager.h"
 #import "ShopCart.h"
 #import "ShopInfoTotalCell.h"
+#import "ShopCheckoutViewController.h"
 @interface ShopCartViewController : UIViewController
 
 

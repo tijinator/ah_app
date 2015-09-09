@@ -8,16 +8,17 @@
 
 #import "FitmooAppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
-
+#import "Stripe.h"
 @interface FitmooAppDelegate ()
 
 @end
 
+NSString * const StripePublishableKey = @"pk_test_VeQcv4NuFL6AejcKInmcYpbq";
 @implementation FitmooAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  
+    [Stripe setDefaultPublishableKey:StripePublishableKey];
     
     [FBLoginView class];
     

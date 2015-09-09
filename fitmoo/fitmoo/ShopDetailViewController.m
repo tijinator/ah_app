@@ -908,7 +908,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)BuyNowButtonClick:(id)sender {
     
- //   [self openShopCartPage];
+    [self openShopCartPage];
+    return;
     
     NSString *endorser_id;
     NSString *variant_id;

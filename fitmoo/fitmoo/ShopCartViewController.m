@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    contentHight=[NSNumber numberWithInteger:365*[[FitmooHelper sharedInstance] frameRadio]];
+    contentHight=[NSNumber numberWithInteger:200*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
     [self getShopCart];
     // Do any additional setup after loading the view.
@@ -117,10 +117,15 @@
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _responseDic= responseObject;
+        NSNumber *empty=[_responseDic objectForKey:@"empty"];
         
+        if (empty.intValue==1) {
+            
+        }else
+        {
         [self generateShopCard:_responseDic];
-        
         [self.tableView reloadData];
+        }
         
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -129,6 +134,8 @@
     
     
 }
+
+
 
 
 #pragma mark - UITableViewDelegate
@@ -169,9 +176,10 @@
         
         if (_shopCart!=nil) {
             
-            cell.label4.text=_shopCart.subtotal;
-            cell.label5.text=_shopCart.shipping;
-            cell.label6.text=_shopCart.total;
+            cell.label4.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.subtotal.floatValue];
+            cell.label5.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.shipping.floatValue];
+            cell.label6.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.total.floatValue];
+            cell.label7.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.tax.floatValue];
             
         }
         
@@ -239,6 +247,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     
 }
+
+
+- (void) openShopCheckouPage
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopCheckoutViewController *ShopCheckout = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopCheckoutViewController"];
+    
+    
+    [self.navigationController pushViewController:ShopCheckout animated:YES];
+}
+
+- (IBAction)BuyNowButtonClick:(id)sender
+{
+    [self openShopCheckouPage];
+}
+
 - (IBAction)backButtonClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

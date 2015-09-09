@@ -138,6 +138,9 @@ PODS:
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
   - Reachability (3.2)
+  - Stripe (5.1.2):
+    - Stripe/Core (= 5.1.2)
+  - Stripe/Core (5.1.2)
   - SwipeBack (1.1.0)
   - TMCache (1.2.4)
   - TTTAttributedLabel (1.10.1)
@@ -151,6 +154,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.0)
   - FSImageViewer (~> 3.2)
   - JTCalendar
+  - Stripe
   - SwipeBack (~> 1.0)
   - TTTAttributedLabel (~> 1.10.1)
 
@@ -179,6 +183,7 @@ SPEC CHECKSUMS:
   JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
   SwipeBack: 45a42c333b7b9657b9f02cf19673339b3a006195
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a

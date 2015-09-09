@@ -294,6 +294,18 @@
 #define COCOAPODS_VERSION_MINOR_Reachability 2
 #define COCOAPODS_VERSION_PATCH_Reachability 0
 
+// Stripe
+#define COCOAPODS_POD_AVAILABLE_Stripe
+#define COCOAPODS_VERSION_MAJOR_Stripe 5
+#define COCOAPODS_VERSION_MINOR_Stripe 1
+#define COCOAPODS_VERSION_PATCH_Stripe 2
+
+// Stripe/Core
+#define COCOAPODS_POD_AVAILABLE_Stripe_Core
+#define COCOAPODS_VERSION_MAJOR_Stripe_Core 5
+#define COCOAPODS_VERSION_MINOR_Stripe_Core 1
+#define COCOAPODS_VERSION_PATCH_Stripe_Core 2
+
 // SwipeBack
 #define COCOAPODS_POD_AVAILABLE_SwipeBack
 #define COCOAPODS_VERSION_MAJOR_SwipeBack 1

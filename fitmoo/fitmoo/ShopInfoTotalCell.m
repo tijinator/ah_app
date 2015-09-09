@@ -31,6 +31,8 @@
     _label4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label4 respectToSuperFrame:nil];
     _label5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label5 respectToSuperFrame:nil];
     _label6.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label6 respectToSuperFrame:nil];
+    _label0.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label0 respectToSuperFrame:nil];
+    _label7.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label7 respectToSuperFrame:nil];
     _checkoutButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_checkoutButton respectToSuperFrame:nil];
     
     
