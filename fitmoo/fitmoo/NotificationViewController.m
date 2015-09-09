@@ -201,7 +201,7 @@
     
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkNotification" object:Nil];
         
     } // success callback block
      

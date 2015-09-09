@@ -430,6 +430,36 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     
 }
+- (void) addActivityIndicator
+{
+    UIView *view= [[UIView alloc] initWithFrame:CGRectMake(110*[[FitmooHelper sharedInstance] frameRadio], 200*[[FitmooHelper sharedInstance] frameRadio], 100, 100)];
+    view.backgroundColor=[UIColor colorWithRed:174.0/255.0 green:182.0/255.0 blue:186.0/255.0 alpha:1];
+    //  view.backgroundColor=[UIColor whiteColor];
+    view.layer.cornerRadius=5;
+    
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [[FitmooHelper sharedInstance] resizeFrameWithFrame:activityIndicator respectToSuperFrame:nil];
+    activityIndicator.alpha = 1.0;
+    activityIndicator.center = CGPointMake(50, 40);
+    activityIndicator.hidesWhenStopped = YES;
+    [activityIndicator setBackgroundColor:[UIColor clearColor]];
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+    [activityIndicator startAnimating];
+    
+    UILabel * postingLabel= [[UILabel alloc] initWithFrame: CGRectMake(0,60, 100, 30)];
+    postingLabel.text= @"POSTING...";
+    //  postingLabel.textColor=[UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
+    postingLabel.textColor=[UIColor whiteColor];
+    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:13];
+    [postingLabel setFont:font];
+    postingLabel.textAlignment=NSTextAlignmentCenter;
+    
+    [view addSubview:activityIndicator];
+    [view addSubview:postingLabel];
+    [self.view addSubview:view];
+    
+    self.view.userInteractionEnabled=NO;
+}
 
 - (IBAction)backButtonClick:(id)sender {
     [self.tableview removeFromSuperview];
@@ -447,6 +477,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     {
     [[UserManager sharedUserManager] performComment:_textField.text withId:_homeFeed.feed_id];
     self.postButton.userInteractionEnabled=NO;
+    [self addActivityIndicator];
     }
     
 }
