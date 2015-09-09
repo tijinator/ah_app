@@ -122,7 +122,7 @@
     }else if([_searchType isEqualToString:@"following"]) {
         url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/",_searchId,@"/following?"];
     }else if([_searchType isEqualToString:@"members"]) {
-        url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/communities/",_searchId,@"/members"];
+        url= [NSString stringWithFormat: @"%@%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/communities/",_searchId,@"/all_members"];
     }
     
  
