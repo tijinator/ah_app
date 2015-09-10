@@ -13,6 +13,7 @@
 {
  
     NSNumber * contentHight;
+    NSString *deleteCartId;
 
 }
 @end
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
-    contentHight=[NSNumber numberWithInteger:200*[[FitmooHelper sharedInstance] frameRadio]];
+    contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
     [self getShopCart];
     // Do any additional setup after loading the view.
@@ -105,6 +106,25 @@
     
 }
 
+- (void) deleteCart:(NSString *)cartId
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",cartId, @"cart_id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/remove"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+
+        
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+
+}
+
 -(void) getShopCart
 {
     
@@ -180,8 +200,10 @@
             cell.label5.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.shipping.floatValue];
             cell.label6.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.total.floatValue];
             cell.label7.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.tax.floatValue];
-            
+            [cell.checkoutButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
+        
+  
         
 
         return cell;
@@ -201,7 +223,8 @@
     
     [cell buildCell];
     
-    
+
+    [cell.DeleteButton addTarget:self action:@selector(deleteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -258,9 +281,52 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController pushViewController:ShopCheckout animated:YES];
 }
 
+
 - (IBAction)BuyNowButtonClick:(id)sender
 {
     [self openShopCheckouPage];
+}
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+      
+        [self deleteCart:deleteCartId];
+        
+        for (int i=0; i<[_shopCart.shop_cart_details count]; i++) {
+            [_shopCart resetshopCartDetail];
+            _shopCart.shop_cart_detail= [_shopCart.shop_cart_details objectAtIndex:i];
+            if ([deleteCartId isEqualToString:_shopCart.shop_cart_detail.shop_cart_detail_id]) {
+                [_shopCart.shop_cart_details removeObjectAtIndex:i];
+            }
+        }
+        
+        [self.tableView reloadData];
+        
+        
+    }
+    
+    
+}
+- (IBAction)deleteButtonClick:(id)sender
+{
+    UIButton *b=(UIButton *)sender;
+    deleteCartId= [NSString stringWithFormat:@"%ld", (long)b.tag];
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Delete Cart"
+                                                   message:@"Are you sure you want to delete this item?"
+                                                  delegate:self
+                                         cancelButtonTitle:@"No"
+                                         otherButtonTitles:@"Yes",nil];
+    [alert show];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+    
+
+    
 }
 
 - (IBAction)backButtonClick:(id)sender {

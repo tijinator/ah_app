@@ -707,6 +707,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [_typePicker reloadAllComponents];
     
+    for (int i=0; i<[_pickerDisplayArray count]; i++) {
+        if ([title isEqualToString:[_pickerDisplayArray objectAtIndex:i]]) {
+            [_typePicker selectRow:i inComponent:0 animated:NO];
+        }
+    }
     
     _typePickerView.hidden=false;
 }
@@ -908,8 +913,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)BuyNowButtonClick:(id)sender {
     
-    [self openShopCartPage];
-    return;
+//    [self openShopCartPage];
+//    return;
     
     NSString *endorser_id;
     NSString *variant_id;

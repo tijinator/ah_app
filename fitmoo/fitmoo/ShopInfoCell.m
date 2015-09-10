@@ -19,6 +19,11 @@
 {
     _ItemTitleLabel.text=_shopCartDetail.title;
     _ItemDetailLabel.text=_shopCartDetail.item_details;
+    
+    _ItemTitleLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemTitleLabel];
+    _ItemDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemDetailLabel];
+    
+    
     _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
     
     _detailLabel1.text= _shopCartDetail.item_price;
@@ -47,7 +52,7 @@
     _itemImage.clipsToBounds=YES;
     [_itemImage addSubview:headerImage];
 
-    
+    _DeleteButton.tag=_shopCartDetail.shop_cart_detail_id.intValue;
     
 }
 
@@ -70,6 +75,11 @@
     _detailLabel3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_detailLabel3 respectToSuperFrame:nil];
     _infoButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_infoButton1 respectToSuperFrame:nil];
     _infoButtons2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_infoButtons2 respectToSuperFrame:nil];
+    
+    _buttonView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttonView respectToSuperFrame:nil];
+
+    
+    _DeleteButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_DeleteButton respectToSuperFrame:nil];
     
     
 }

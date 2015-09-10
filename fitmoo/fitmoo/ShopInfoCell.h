@@ -25,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel3;
 @property (strong, nonatomic) IBOutlet UIButton *infoButton1;
 @property (strong, nonatomic) IBOutlet UIButton *infoButtons2;
+@property (strong, nonatomic) IBOutlet UIView *buttonView;
+@property (strong, nonatomic) IBOutlet UIButton *DeleteButton;
 
 @property (strong, nonatomic) ShopCart *shopCart;
 @property (strong, nonatomic) ShopCartDetail *shopCartDetail;

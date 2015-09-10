@@ -612,6 +612,12 @@
 		27C0A6FD1B7A893C00BA3612 /* whiteuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FA1B7A893C00BA3612 /* whiteuser.png */; };
 		27C0A6FE1B7A893C00BA3612 /* whiteuser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */; };
 		27C0A6FF1B7A893C00BA3612 /* whiteuser@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */; };
+		27C3199E1BA1F05500701D86 /* UITableView+reloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C3199D1BA1F05500701D86 /* UITableView+reloadData.m */; };
+		27C319A31BA1F12800701D86 /* CheckoutAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C319A11BA1F12800701D86 /* CheckoutAddressCell.m */; };
+		27C319A41BA1F12800701D86 /* CheckoutAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C319A21BA1F12800701D86 /* CheckoutAddressCell.xib */; };
+		27C319A81BA21CEF00701D86 /* ShopPaymentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C319A61BA21CEF00701D86 /* ShopPaymentInfoCell.m */; };
+		27C319A91BA21CEF00701D86 /* ShopPaymentInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C319A71BA21CEF00701D86 /* ShopPaymentInfoCell.xib */; };
+		27C319AC1BA223CE00701D86 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C319AB1BA223CE00701D86 /* State.m */; };
 		27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */; };
 		27CBC0D51B0F84DB00699E1E /* bluepeopleicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */; };
 		27CBC0D61B0F84DB00699E1E /* bluepeopleicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CBC0CA1B0F84DB00699E1E /* bluepeopleicon@2x.png */; };
@@ -1368,6 +1374,16 @@
 		27C0A6FA1B7A893C00BA3612 /* whiteuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteuser.png; sourceTree = "<group>"; };
 		27C0A6FB1B7A893C00BA3612 /* whiteuser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteuser@2x.png"; sourceTree = "<group>"; };
 		27C0A6FC1B7A893C00BA3612 /* whiteuser@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteuser@3x.png"; sourceTree = "<group>"; };
+		27C3199C1BA1F05500701D86 /* UITableView+reloadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+reloadData.h"; sourceTree = "<group>"; };
+		27C3199D1BA1F05500701D86 /* UITableView+reloadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+reloadData.m"; sourceTree = "<group>"; };
+		27C319A01BA1F12800701D86 /* CheckoutAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutAddressCell.h; sourceTree = "<group>"; };
+		27C319A11BA1F12800701D86 /* CheckoutAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutAddressCell.m; sourceTree = "<group>"; };
+		27C319A21BA1F12800701D86 /* CheckoutAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutAddressCell.xib; sourceTree = "<group>"; };
+		27C319A51BA21CEF00701D86 /* ShopPaymentInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPaymentInfoCell.h; sourceTree = "<group>"; };
+		27C319A61BA21CEF00701D86 /* ShopPaymentInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopPaymentInfoCell.m; sourceTree = "<group>"; };
+		27C319A71BA21CEF00701D86 /* ShopPaymentInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopPaymentInfoCell.xib; sourceTree = "<group>"; };
+		27C319AA1BA223CE00701D86 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		27C319AB1BA223CE00701D86 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
 		27CBC0C61B0F7A8000699E1E /* BentonSansCondensedMedium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansCondensedMedium.h; sourceTree = "<group>"; };
 		27CBC0C71B0F7A8000699E1E /* BentonSansCondensedMedium.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansCondensedMedium.m; sourceTree = "<group>"; };
 		27CBC0C91B0F84DB00699E1E /* bluepeopleicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluepeopleicon.png; sourceTree = "<group>"; };
@@ -1497,6 +1513,8 @@
 				27188F731AD4646300C34372 /* ViewController.m */,
 				27B1B4671B175FE100F5F812 /* NavigationViewController.h */,
 				27B1B4681B175FE100F5F812 /* NavigationViewController.m */,
+				27C3199C1BA1F05500701D86 /* UITableView+reloadData.h */,
+				27C3199D1BA1F05500701D86 /* UITableView+reloadData.m */,
 				27B1B46A1B1763C200F5F812 /* BaseViewController.h */,
 				27B1B46B1B1763C200F5F812 /* BaseViewController.m */,
 				279E57801B20A5320076C3B5 /* LanchScreen.h */,
@@ -1695,6 +1713,8 @@
 				2732B73B1AD8493100610821 /* TitleInfo.m */,
 				2732B73D1AD849D000610821 /* Product.h */,
 				2732B73E1AD849D000610821 /* Product.m */,
+				27C319AA1BA223CE00701D86 /* State.h */,
+				27C319AB1BA223CE00701D86 /* State.m */,
 				27940B2C1B9F35F5007F722D /* ShopCart.h */,
 				27940B2D1B9F35F5007F722D /* ShopCart.m */,
 				27940B2F1B9F36D1007F722D /* ShopCartDetail.h */,
@@ -2417,21 +2437,35 @@
 			name = profile;
 			sourceTree = "<group>";
 		};
-		27FF36FE1B83633E008A3227 /* CustomCells */ = {
+		27C3199F1BA1F0AE00701D86 /* shopCells */ = {
 			isa = PBXGroup;
 			children = (
-				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
-				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
-				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
 				2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */,
 				2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */,
 				2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */,
+				27C319A01BA1F12800701D86 /* CheckoutAddressCell.h */,
+				27C319A11BA1F12800701D86 /* CheckoutAddressCell.m */,
+				27C319A21BA1F12800701D86 /* CheckoutAddressCell.xib */,
 				27940B321B9F7570007F722D /* ShopInfoTotalCell.h */,
 				27940B331B9F7570007F722D /* ShopInfoTotalCell.m */,
 				27940B341B9F7570007F722D /* ShopInfoTotalCell.xib */,
+				27C319A51BA21CEF00701D86 /* ShopPaymentInfoCell.h */,
+				27C319A61BA21CEF00701D86 /* ShopPaymentInfoCell.m */,
+				27C319A71BA21CEF00701D86 /* ShopPaymentInfoCell.xib */,
 				27A3AC101B962D4A00D78AAA /* ShopTableViewCell.h */,
 				27A3AC111B962D4A00D78AAA /* ShopTableViewCell.m */,
 				27A3AC121B962D4A00D78AAA /* ShopTableViewCell.xib */,
+			);
+			name = shopCells;
+			sourceTree = "<group>";
+		};
+		27FF36FE1B83633E008A3227 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				27C3199F1BA1F0AE00701D86 /* shopCells */,
+				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
+				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
+				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
 				27FF37041B83ABAC008A3227 /* SearchCell.h */,
 				27FF37051B83ABAC008A3227 /* SearchCell.m */,
 				27FF37061B83ABAC008A3227 /* SearchCell.xib */,
@@ -2699,6 +2733,7 @@
 				279E57941B20B4EC0076C3B5 /* greycamera@3x.png in Resources */,
 				27CBC0E01B0F84DB00699E1E /* eventsscreen@3x.png in Resources */,
 				276FE3A01B866C0A009496DE /* instagramlogo_workout@2x.png in Resources */,
+				27C319A41BA1F12800701D86 /* CheckoutAddressCell.xib in Resources */,
 				277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
 				2738D9041B023E7F00F5087E /* greyendorseicon.png in Resources */,
@@ -2791,6 +2826,7 @@
 				27A1017F1B334554007B7BF3 /* home@3x.png in Resources */,
 				27AC92BB1B06292E00BB7A0E /* settings_bioicon.png in Resources */,
 				27BA5A3B1B6A50E500B30B62 /* feed_black@3x.png in Resources */,
+				27C319A91BA21CEF00701D86 /* ShopPaymentInfoCell.xib in Resources */,
 				27D027CB1B7E1B2300436FEF /* workout_grey@3x.png in Resources */,
 				27FF37031B8363AC008A3227 /* SearchTapCell.xib in Resources */,
 				27ADF1E41B14B1D8003A0A83 /* loginbtn.png in Resources */,
@@ -3176,13 +3212,16 @@
 				27AD266B1B18DF4D008D338D /* HomePageViewController.m in Sources */,
 				27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */,
 				272F27711AE6BE2B00C9EADC /* CommunityTableViewCell.m in Sources */,
+				27C319A31BA1F12800701D86 /* CheckoutAddressCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
+				27C3199E1BA1F05500701D86 /* UITableView+reloadData.m in Sources */,
 				276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */,
 				27AD26711B18DFF3008D338D /* SpecialPageViewController.m in Sources */,
 				27D0DF731B7CC2CD00DC49C5 /* InfluFactorViewController.m in Sources */,
 				2732B7301AD8439100610821 /* Comments.m in Sources */,
 				272098431AEA9088007577B7 /* VimeoHelper.m in Sources */,
+				27C319A81BA21CEF00701D86 /* ShopPaymentInfoCell.m in Sources */,
 				27DB8D811B5D9090005380CA /* Workout.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
@@ -3196,6 +3235,7 @@
 				272582011AD5631D0059F43C /* LeftViewController.m in Sources */,
 				27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */,
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
+				27C319AC1BA223CE00701D86 /* State.m in Sources */,
 				27A101211B3334A7007B7BF3 /* SearchViewController.m in Sources */,
 				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
 				271DA84D1B555DDA00D4E075 /* CommunityPageViewController.m in Sources */,
