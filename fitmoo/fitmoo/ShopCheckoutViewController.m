@@ -77,27 +77,8 @@
      ];
 }
 
-- (void) createAddress
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    User *localUser= [[UserManager sharedUserManager] localUser];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",@"Hongjian Lin", @"full_name",@"743 38st", @"address1",@"", @"address2",@"toms river", @"city",@"10012", @"zipcode",@"45", @"state_id",@"1", @"address_type_id",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address_create"];
-    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
-    
-        
-        
-        
-        [self.tableView reloadData];
-        
-    } // success callback block
-         failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             NSLog(@"Error: %@", error);} // failure callback block
-     ];
-}
+
+
 
 - (void) getDefaultAddress
 {
@@ -111,8 +92,20 @@
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/addresses"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _responseDic= responseObject;
-        
-        [self parseAddress:_responseDic];
+        _addressArray=[[NSMutableArray alloc] init];
+        for (NSDictionary * dic in _responseDic) {
+            Address *ad= [[FitmooHelper sharedInstance] parseAddress:dic];
+            if ([ad.is_default_billing isEqualToString:@"1"]) {
+                _billingAddress=ad;
+            }
+            if ([ad.is_default_shipping isEqualToString:@"1"]) {
+                _shippingAddress=ad;
+            }
+
+            [_addressArray addObject:ad];
+        }
+    
+    
         
         [self.tableView reloadData];
         
@@ -123,58 +116,7 @@
 
 }
 
-- (void) parseAddress:(NSDictionary *)dic
-{
-    
-    _addressArray= [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *addressDic in dic) {
-        Address *address= [[Address alloc] init];
-        address.address1= [addressDic objectForKey:@"address1"];
-        address.address2= [addressDic objectForKey:@"address2"];
-        
-        NSNumber *address_type_id=[addressDic objectForKey:@"address_type_id"];
-        address.address_type_id= [address_type_id stringValue];
-        address.city= [addressDic objectForKey:@"city"];
-        
-        NSNumber *country_id=[addressDic objectForKey:@"country_id"];
-        address.country_id= [country_id stringValue];
-        
-        address.country_name= [addressDic objectForKey:@"country_name"];
-        address.full_name= [addressDic objectForKey:@"full_name"];
-        
-        NSNumber *address_id=[addressDic objectForKey:@"id"];
-        address.address_id= [address_id stringValue];
-        
-        NSNumber *is_default_billing=[addressDic objectForKey:@"is_default_billing"];
-        address.is_default_billing= [is_default_billing stringValue];
-        
-        NSNumber *is_default_shipping=[addressDic objectForKey:@"is_default_shipping"];
-        address.is_default_shipping= [is_default_shipping stringValue];
-        
-        NSNumber *order_total=[addressDic objectForKey:@"order_total"];
-        address.order_total= [order_total stringValue];
-        
-        address.phone= [addressDic objectForKey:@"phone"];
-        
-        NSNumber *shipping_rate=[addressDic objectForKey:@"shipping_rate"];
-        address.shipping_rate= [shipping_rate stringValue];
-        
-        NSNumber *state_id=[addressDic objectForKey:@"state_id"];
-        address.state_id= [state_id stringValue];
-        address.state_name= [addressDic objectForKey:@"state_name"];
-        
-        NSNumber *user_id=[addressDic objectForKey:@"user_id"];
-        address.user_id= [user_id stringValue];
-        address.zipcode= [addressDic objectForKey:@"zipcode"];
-        
-        
-        [_addressArray addObject:address];
-        
-    }
-    
-    
-}
+
 
 - (void) getStateList
 {
@@ -406,7 +348,9 @@
 {
     
     
-    if (indexPath.section==0||indexPath.section==1) {
+    if (indexPath.section==0) {
+       
+        
         CheckoutAddressCell *cell =(CheckoutAddressCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         if (cell == nil)
         {
@@ -420,8 +364,74 @@
         cell.stateTextField.userInteractionEnabled=YES;
         _stateLabel= cell.stateTextField;
         
+        
+     
+         if (_shippingAddress!=nil) {
+             
+             CheckoutAdrPrefillCell *cell =(CheckoutAdrPrefillCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+             if (cell == nil)
+             {
+                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CheckoutAdrPrefillCell" owner:self options:nil];
+                 cell = [nib objectAtIndex:0];
+             }
+             
+             cell.address=_shippingAddress;
+             [cell builtCell];
+             
+             cell.editButton.tag=1;
+            [cell.editButton addTarget:self action:@selector(editButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+             
+             
+            contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+              return cell;
+         }
+
+        
+        
+        contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+        
         return cell;
-    }else if (indexPath.section==2)
+    } else if (indexPath.section==1)
+    {
+        CheckoutAddressCell *cell =(CheckoutAddressCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CheckoutAddressCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        
+        UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(StateButtonClick:)];
+        tapGestureRecognizer10.numberOfTapsRequired = 1;
+        [cell.stateTextField addGestureRecognizer:tapGestureRecognizer10];
+        cell.stateTextField.userInteractionEnabled=YES;
+        _stateLabel= cell.stateTextField;
+        
+        
+        
+        if (_billingAddress!=nil) {
+            
+            CheckoutAdrPrefillCell *cell =(CheckoutAdrPrefillCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+            if (cell == nil)
+            {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CheckoutAdrPrefillCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            
+            cell.address=_billingAddress;
+            [cell builtCell];
+            cell.editButton.tag=2;
+            [cell.editButton addTarget:self action:@selector(editButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+             return cell;
+        }
+        
+        
+        
+        contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+        
+        return cell;
+    }
+    else if (indexPath.section==2)
     {
         ShopPaymentInfoCell *cell =(ShopPaymentInfoCell *) [self.tableView cellForRowAtIndexPath:indexPath];
         if (cell == nil)
@@ -431,15 +441,16 @@
         }
         
         
-        
+        contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         
         return cell;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
     UILabel *label= (UILabel *) [cell viewWithTag:1];
+    label.frame= CGRectMake(23, 17, 275, 76);
     label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
-    
+    contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
     return cell;
     
     
@@ -505,6 +516,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     selectedIndex= v.tag;
     
     [self.tableView reloadData:YES];
+}
+
+
+
+- (IBAction)editButtonClick:(id)sender {
+    UIButton *b= (UIButton *) sender;
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopAddressViewController *AddressVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopAddressViewController"];
+    
+    AddressVC.addressArray= _addressArray;
+    AddressVC.stateArray=_stateArray;
+    if (b.tag==1) {
+        
+        AddressVC.addreeType=@"shipping address";
+        
+    }else
+    {
+        AddressVC.addreeType=@"billing address";
+    }
+    
+    [self.navigationController pushViewController:AddressVC animated:YES];
 }
 
 - (IBAction)backButtonClick:(id)sender {

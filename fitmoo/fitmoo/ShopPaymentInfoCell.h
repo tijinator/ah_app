@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopPaymentInfoCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *cardType;
+@property (strong, nonatomic) IBOutlet UITextField *cardNumber;
+@property (strong, nonatomic) IBOutlet UILabel *date;
+@property (strong, nonatomic) IBOutlet UILabel *year;
+@property (strong, nonatomic) IBOutlet UITextField *cvc;
 
 @end

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *stateTextField;
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (strong, nonatomic) IBOutlet UITextField *zipTextField;
+@property (strong, nonatomic) IBOutlet UITextField *Address2TextField;
 
 
 

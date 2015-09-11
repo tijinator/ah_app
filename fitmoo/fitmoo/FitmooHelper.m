@@ -20,6 +20,80 @@
     
 }
 
+
+- (Address *) parseAddress:(NSDictionary *)addressDic
+{
+    
+//    NSMutableArray * addressArray= [[NSMutableArray alloc] init];
+//    
+//    for (NSDictionary *addressDic in dic) {
+        Address *address= [[Address alloc] init];
+        address.address1= [addressDic objectForKey:@"address1"];
+        address.address2= [addressDic objectForKey:@"address2"];
+        
+        NSNumber *address_type_id=[addressDic objectForKey:@"address_type_id"];
+        if ([address_type_id isEqual:[NSNull null]]) {
+            address.address_type_id= @"0";
+        }else
+        {
+            address.address_type_id= [address_type_id stringValue];
+        }
+        
+        address.city= [addressDic objectForKey:@"city"];
+        
+        NSNumber *country_id=[addressDic objectForKey:@"country_id"];
+        address.country_id= [country_id stringValue];
+        
+        address.country_name= [addressDic objectForKey:@"country_name"];
+        address.full_name= [addressDic objectForKey:@"full_name"];
+        
+        NSNumber *address_id=[addressDic objectForKey:@"id"];
+        address.address_id= [address_id stringValue];
+        
+        NSNumber *is_default_billing=[addressDic objectForKey:@"is_default_billing"];
+        address.is_default_billing= [is_default_billing stringValue];
+        
+        NSNumber *is_default_shipping=[addressDic objectForKey:@"is_default_shipping"];
+        address.is_default_shipping= [is_default_shipping stringValue];
+        
+        NSNumber *order_total=[addressDic objectForKey:@"order_total"];
+        if ([order_total isEqual:[NSNull null]]) {
+            order_total=[NSNumber numberWithInt:0];
+        }
+        address.order_total= [order_total stringValue];
+    
+        address.phone= [addressDic objectForKey:@"phone"];
+        if ([address.phone isEqual:[NSNull null]]) {
+            address.phone=@"";
+        }
+        
+        NSNumber *shipping_rate=[addressDic objectForKey:@"shipping_rate"];
+        if ([shipping_rate isEqual:[NSNull null]]) {
+            shipping_rate=[NSNumber numberWithInt:0];
+        }
+        address.shipping_rate= [shipping_rate stringValue];
+        
+        NSNumber *state_id=[addressDic objectForKey:@"state_id"];
+        address.state_id= [state_id stringValue];
+        address.state_name= [addressDic objectForKey:@"state_name"];
+        
+        NSNumber *user_id=[addressDic objectForKey:@"user_id"];
+        address.user_id= [user_id stringValue];
+        address.zipcode= [addressDic objectForKey:@"zipcode"];
+        
+        address.address_prefill=@"1";
+      
+        
+        
+      //  [addressArray addObject:address];
+        
+//    }
+//    
+//    return addressArray;
+    
+    return address;
+}
+
 - (IBAction)likeButtonAnimation:(id)sender {
     UIButton *myButton= (UIButton *)sender;
     
@@ -180,6 +254,22 @@
     }];
     
     
+}
+
+- (NSString *) findStageId:(NSString *)selectedState withArray:(NSMutableArray *)stateArray
+{
+    NSString *stateId=@"0";
+    
+    for (State *s in stateArray) {
+        
+        if ([selectedState isEqualToString:s.abbr]) {
+            stateId=s.state_id;
+        }
+        
+    }
+    
+    
+    return stateId;
 }
 
 - (NSString *) getTextForNumber: (NSString *) numberString

@@ -7,10 +7,11 @@
 //
 
 #import "ShopPaymentInfoCell.h"
-
+#import "FitmooHelper.h"
 @implementation ShopPaymentInfoCell
 
 - (void)awakeFromNib {
+    
     // Initialization code
 }
 
@@ -18,6 +19,19 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void) initFrames
+{
+    
+    self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
+    _cardNumber.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cardNumber respectToSuperFrame:nil];
+    _cardType.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cardType respectToSuperFrame:nil];
+    _date.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_date respectToSuperFrame:nil];
+    _year.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_year respectToSuperFrame:nil];
+    _cvc.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cvc respectToSuperFrame:nil];
+
+    
 }
 
 @end

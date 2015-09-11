@@ -450,6 +450,10 @@
 		27A3AC361B96446600D78AAA /* blueheart150@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3AC251B96446600D78AAA /* blueheart150@2x.png */; };
 		27A3AC371B96446600D78AAA /* blueheart150@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3AC261B96446600D78AAA /* blueheart150@3x.png */; };
 		27A3AC391B96455C00D78AAA /* blueheart150.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A3AC381B96455C00D78AAA /* blueheart150.png */; };
+		27A665431BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A665411BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m */; };
+		27A665441BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A665421BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib */; };
+		27A665471BA323DB00CF0FAA /* ShopAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A665461BA323DB00CF0FAA /* ShopAddressViewController.m */; };
+		27A6654A1BA33C3D00CF0FAA /* ShopAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */; };
 		27A6E71F1B305EF0000104CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A6E71E1B305EF0000104CB /* NotificationViewController.m */; };
 		27ABBEFE1B84CC5300AB54D2 /* instagramlogo8.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */; };
 		27ABBF001B84CE2900AB54D2 /* instagramlogo8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */; };
@@ -1192,6 +1196,13 @@
 		27A3AC251B96446600D78AAA /* blueheart150@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueheart150@2x.png"; sourceTree = "<group>"; };
 		27A3AC261B96446600D78AAA /* blueheart150@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueheart150@3x.png"; sourceTree = "<group>"; };
 		27A3AC381B96455C00D78AAA /* blueheart150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueheart150.png; sourceTree = "<group>"; };
+		27A665401BA3106A00CF0FAA /* CheckoutAdrPrefillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutAdrPrefillCell.h; sourceTree = "<group>"; };
+		27A665411BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutAdrPrefillCell.m; sourceTree = "<group>"; };
+		27A665421BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutAdrPrefillCell.xib; sourceTree = "<group>"; };
+		27A665451BA323DB00CF0FAA /* ShopAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAddressViewController.h; sourceTree = "<group>"; };
+		27A665461BA323DB00CF0FAA /* ShopAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAddressViewController.m; sourceTree = "<group>"; };
+		27A665481BA33C3D00CF0FAA /* ShopAddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAddAddressViewController.h; sourceTree = "<group>"; };
+		27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAddAddressViewController.m; sourceTree = "<group>"; };
 		27A6E71D1B305EF0000104CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		27A6E71E1B305EF0000104CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo8.png; sourceTree = "<group>"; };
@@ -1754,6 +1765,10 @@
 				27940B2A1B9F24D9007F722D /* ShopCartViewController.m */,
 				27DE04EC1BA0868800050ADD /* ShopCheckoutViewController.h */,
 				27DE04ED1BA0868800050ADD /* ShopCheckoutViewController.m */,
+				27A665451BA323DB00CF0FAA /* ShopAddressViewController.h */,
+				27A665461BA323DB00CF0FAA /* ShopAddressViewController.m */,
+				27A665481BA33C3D00CF0FAA /* ShopAddAddressViewController.h */,
+				27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
@@ -2443,6 +2458,9 @@
 				2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */,
 				2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */,
 				2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */,
+				27A665401BA3106A00CF0FAA /* CheckoutAdrPrefillCell.h */,
+				27A665411BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m */,
+				27A665421BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib */,
 				27C319A01BA1F12800701D86 /* CheckoutAddressCell.h */,
 				27C319A11BA1F12800701D86 /* CheckoutAddressCell.m */,
 				27C319A21BA1F12800701D86 /* CheckoutAddressCell.xib */,
@@ -2891,6 +2909,7 @@
 				27BA5A471B6A50E500B30B62 /* workout_black@3x.png in Resources */,
 				273FF56B1AF7AA2C00B82DB3 /* recordingbtn.png in Resources */,
 				278818AF1B06972500FE8A4C /* white_toggle@3x.png in Resources */,
+				27A665441BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib in Resources */,
 				27988CB21B0BB12500BDE8EB /* followsection_seeallpeoplebtn.png in Resources */,
 				2760941D1AD708AD00A769CE /* SemplicitaPro-Bold.otf in Resources */,
 				27ADF1C61B14B1D8003A0A83 /* bluearrow.png in Resources */,
@@ -3228,6 +3247,7 @@
 				27940B2B1B9F24D9007F722D /* ShopCartViewController.m in Sources */,
 				27AC92C61B062AAF00BB7A0E /* AcountViewController.m in Sources */,
 				27DBA2581B6687080019C56A /* CalendarCell.m in Sources */,
+				27A665431BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m in Sources */,
 				27940B351B9F7570007F722D /* ShopInfoTotalCell.m in Sources */,
 				27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */,
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
@@ -3251,11 +3271,13 @@
 				2732B72A1AD83BE300610821 /* HomeFeed.m in Sources */,
 				27989F7A1B680B44004D7D8A /* CalendarSubCell.m in Sources */,
 				27EB0A4F1B765BDB005AA250 /* FollowViewController.m in Sources */,
+				27A6654A1BA33C3D00CF0FAA /* ShopAddAddressViewController.m in Sources */,
 				27B1B4661B17594900F5F812 /* ForgotPdViewController.m in Sources */,
 				2795A9141B9A0B5100A1C7CD /* ShopInfoCell.m in Sources */,
 				27410DF51AFAB34200CF230C /* Spline.m in Sources */,
 				273FF5821AF7B5F500B82DB3 /* CommentViewController.m in Sources */,
 				272098471AEA960B007577B7 /* YTVimeoExtractor.m in Sources */,
+				27A665471BA323DB00CF0FAA /* ShopAddressViewController.m in Sources */,
 				272582051AD5633F0059F43C /* RightViewController.m in Sources */,
 				27B1B46C1B1763C200F5F812 /* BaseViewController.m in Sources */,
 				27CBC0C81B0F7A8000699E1E /* BentonSansCondensedMedium.m in Sources */,

@@ -31,4 +31,6 @@
 @property (nonatomic, retain) NSString * user_id;
 @property (nonatomic, retain) NSString * zipcode;
 
+@property (nonatomic, retain) NSString * address_prefill;
+
 @end

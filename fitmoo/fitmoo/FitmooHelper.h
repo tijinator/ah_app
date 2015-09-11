@@ -13,6 +13,8 @@
 #import <CoreData/CoreData.h>
 #import "HomeFeed.h"
 #import "Workout.h"
+#import "State.h"
+#import "Address.h"
 @interface FitmooHelper : NSObject{
     
 }
@@ -47,5 +49,8 @@
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and: (UIView *) selfView;
 - (NSString *) checkStringIsANumeric:(NSString *)newString;
 - (IBAction)likeButtonAnimation:(id)sender;
+
+- (NSString *) findStageId:(NSString *)selectedState withArray:(NSMutableArray *)stateArray;
+- (Address *) parseAddress:(NSDictionary *)addressDic;
 
 @end

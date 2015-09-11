@@ -8,6 +8,8 @@
         <mutableArray key="BentonSans-Bold.otf">
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -950,14 +952,34 @@
             </objects>
             <point key="canvasLocation" x="199" y="879"/>
         </scene>
-        <!--Shop Checkout View Controller-->
+        <!--Shop Address View Controller-->
         <scene sceneID="Rdb-og-D7O">
             <objects>
-                <viewController storyboardIdentifier="ShopCheckoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UOC-Xk-foo" customClass="ShopCheckoutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UOC-Xk-foo" customClass="ShopAddressViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6f-b2-2BU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="aSf-5I-acH">
+                                <rect key="frame" x="0.0" y="45" width="320" height="475"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="110" id="ikQ-c5-73w">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikQ-c5-73w" id="6wr-U1-B3L">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UOC-Xk-foo" id="vu1-D2-iKd"/>
+                                    <outlet property="delegate" destination="UOC-Xk-foo" id="7RU-eR-oLm"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="top" id="BCQ-ko-HJ2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -972,7 +994,7 @@
                                             <action selector="backButtonClick:" destination="UOC-Xk-foo" eventType="touchUpInside" id="mth-Hf-cxR"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHECKOUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1rs-Zm-m25" customClass="BentonSansBold">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIPPING ADDRESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1rs-Zm-m25" customClass="BentonSansBold">
                                         <rect key="frame" x="40" y="28" width="240" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -988,66 +1010,71 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="PURCHASE">
+                                <state key="normal" title="ADD NEW SHIPPING ADDRESS">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="BuyNowButtonClick:" destination="UOC-Xk-foo" eventType="touchUpInside" id="rfy-IF-Nqo"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" id="0hL-0M-RUO">
-                                <rect key="frame" x="0.0" y="269" width="320" height="300"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="BuyNowButton" destination="Qe0-bw-ZdU" id="nXL-0V-SH1"/>
+                        <outlet property="leftButton" destination="lZO-n3-Vqx" id="LKx-H6-Z8S"/>
+                        <outlet property="tableView" destination="aSf-5I-acH" id="UBa-7H-xod"/>
+                        <outlet property="titleLabel" destination="1rs-Zm-m25" id="wM4-Bm-mmD"/>
+                        <outlet property="topView" destination="BCQ-ko-HJ2" id="x6C-Kl-lCs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="30y-Cq-G3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="879"/>
+        </scene>
+        <!--Shop Checkout View Controller-->
+        <scene sceneID="Z6a-bv-kOn">
+            <objects>
+                <viewController storyboardIdentifier="ShopCheckoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3tU-yl-OVo" customClass="ShopCheckoutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p4h-Rg-y0U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r57-fR-qvl" customClass="BSBoldButton">
+                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="Xxb-IC-weH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ATG-ey-0KF">
-                                        <rect key="frame" x="263" y="8" width="51" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doneButtonClick:" destination="UOC-Xk-foo" eventType="touchUpInside" id="ESu-Ea-cKD"/>
-                                        </connections>
-                                    </button>
-                                    <pickerView contentMode="scaleToFill" id="faN-yY-8dG">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="260"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="UOC-Xk-foo" id="IPa-SQ-886"/>
-                                            <outlet property="delegate" destination="UOC-Xk-foo" id="Fon-Y3-9pu"/>
-                                        </connections>
-                                    </pickerView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.81960784310000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="aSf-5I-acH">
-                                <rect key="frame" x="0.0" y="46" width="320" height="475"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="PURCHASE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="BuyNowButtonClick:" destination="3tU-yl-OVo" eventType="touchUpInside" id="GqG-HS-zh5"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="QVP-5Q-cW0">
+                                <rect key="frame" x="0.0" y="60" width="320" height="464"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="110" id="ikQ-c5-73w">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="110" id="lDL-JZ-z2Y">
                                         <rect key="frame" x="0.0" y="22" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikQ-c5-73w" id="6wr-U1-B3L">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lDL-JZ-z2Y" id="NyE-4A-jgd">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SRu-Yf-1Qt">
-                                                    <rect key="frame" x="26" y="19" width="268" height="71"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ED-8p-0GS">
+                                                    <rect key="frame" x="23" y="17" width="275" height="76"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
                                                             <string key="content">By clicking “Place Order” you confirm that you have read, understood, and accept our Terms and Conditions, Refund Policy and Privacy Policy.</string>
                                                             <attributes>
                                                                 <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <font key="NSFont" size="11" name="BentonSans-Book"/>
+                                                                <font key="NSFont" size="12" name="BentonSans"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4"/>
                                                             </attributes>
                                                         </fragment>
@@ -1059,28 +1086,215 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="UOC-Xk-foo" id="vu1-D2-iKd"/>
-                                    <outlet property="delegate" destination="UOC-Xk-foo" id="7RU-eR-oLm"/>
+                                    <outlet property="dataSource" destination="3tU-yl-OVo" id="07C-kI-A4y"/>
+                                    <outlet property="delegate" destination="3tU-yl-OVo" id="Ja9-b9-3GP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="top" id="vxs-kw-ZM8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sgR-Hn-EFH">
+                                        <rect key="frame" x="0.0" y="22" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="whitearrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClick:" destination="3tU-yl-OVo" eventType="touchUpInside" id="hzH-qA-DO9"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHECKOUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pcT-4W-KEj" customClass="BentonSansBold">
+                                        <rect key="frame" x="40" y="28" width="240" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="sn2-ad-Gag">
+                                <rect key="frame" x="0.0" y="269" width="320" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="iNT-Sd-jn7">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e1B-sC-edT">
+                                        <rect key="frame" x="263" y="8" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="3tU-yl-OVo" eventType="touchUpInside" id="mXZ-KI-Vaf"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" id="irU-8H-Ohb">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="3tU-yl-OVo" id="ksM-Bh-RMk"/>
+                                            <outlet property="delegate" destination="3tU-yl-OVo" id="Nsq-99-g1I"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="BuyNowButton" destination="Qe0-bw-ZdU" id="nXL-0V-SH1"/>
-                        <outlet property="doneButton" destination="ATG-ey-0KF" id="7d2-48-69C"/>
-                        <outlet property="leftButton" destination="lZO-n3-Vqx" id="LKx-H6-Z8S"/>
-                        <outlet property="pickerBackView" destination="Xxb-IC-weH" id="yeX-0p-we2"/>
-                        <outlet property="tableView" destination="aSf-5I-acH" id="UBa-7H-xod"/>
-                        <outlet property="titleLabel" destination="1rs-Zm-m25" id="wM4-Bm-mmD"/>
-                        <outlet property="topView" destination="BCQ-ko-HJ2" id="x6C-Kl-lCs"/>
-                        <outlet property="typePicker" destination="faN-yY-8dG" id="6bT-6c-Rb2"/>
-                        <outlet property="typePickerView" destination="0hL-0M-RUO" id="u7M-bM-6eu"/>
+                        <outlet property="BuyNowButton" destination="r57-fR-qvl" id="rDT-JW-4Tl"/>
+                        <outlet property="doneButton" destination="e1B-sC-edT" id="lJ8-3b-7ll"/>
+                        <outlet property="leftButton" destination="sgR-Hn-EFH" id="qod-fx-jrS"/>
+                        <outlet property="pickerBackView" destination="iNT-Sd-jn7" id="zmp-f6-aXF"/>
+                        <outlet property="tableView" destination="QVP-5Q-cW0" id="8iG-Tq-DqN"/>
+                        <outlet property="titleLabel" destination="pcT-4W-KEj" id="fSm-5C-Vjs"/>
+                        <outlet property="topView" destination="vxs-kw-ZM8" id="s6y-d0-EMV"/>
+                        <outlet property="typePicker" destination="irU-8H-Ohb" id="0aH-aT-Vu8"/>
+                        <outlet property="typePickerView" destination="sn2-ad-Gag" id="cSq-Ae-ukN"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="30y-Cq-G3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWz-3a-JXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="577" y="879"/>
+        </scene>
+        <!--Shop Add Address View Controller-->
+        <scene sceneID="8Yj-cX-2ax">
+            <objects>
+                <viewController storyboardIdentifier="ShopAddAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AHP-fj-VRz" customClass="ShopAddAddressViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="29c-tF-VIb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4eW-BO-5tl" customClass="BSBoldButton">
+                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="BuyNowButtonClick:" destination="AHP-fj-VRz" eventType="touchUpInside" id="ywH-uI-bMw"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xuv-3c-yVb">
+                                <rect key="frame" x="0.0" y="60" width="320" height="464"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="110" id="GVZ-Cu-92k">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GVZ-Cu-92k" id="fc5-1o-INW">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oIC-WP-iwM">
+                                                    <rect key="frame" x="23" y="17" width="275" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">By clicking “Place Order” you confirm that you have read, understood, and accept our Terms and Conditions, Refund Policy and Privacy Policy.</string>
+                                                            <attributes>
+                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" size="12" name="BentonSans"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AHP-fj-VRz" id="OM2-dP-sFN"/>
+                                    <outlet property="delegate" destination="AHP-fj-VRz" id="M6C-OJ-cRN"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="top" id="cHI-UU-lFU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wk3-wS-MW9">
+                                        <rect key="frame" x="0.0" y="22" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="whitearrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClick:" destination="AHP-fj-VRz" eventType="touchUpInside" id="nLD-si-4LT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHECKOUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L9P-sI-A9h" customClass="BentonSansBold">
+                                        <rect key="frame" x="40" y="28" width="240" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="ia7-sH-pHN">
+                                <rect key="frame" x="0.0" y="269" width="320" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="ebn-KF-zgF">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OxL-lN-bXc">
+                                        <rect key="frame" x="263" y="8" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="AHP-fj-VRz" eventType="touchUpInside" id="Y9O-tN-gq0"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" id="hb0-8h-jUK">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="AHP-fj-VRz" id="W32-fd-6Qr"/>
+                                            <outlet property="delegate" destination="AHP-fj-VRz" id="8D2-L8-hy3"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="BuyNowButton" destination="4eW-BO-5tl" id="LUn-Xh-Rxe"/>
+                        <outlet property="doneButton" destination="OxL-lN-bXc" id="7L8-SF-Myf"/>
+                        <outlet property="leftButton" destination="Wk3-wS-MW9" id="pbK-hT-c0H"/>
+                        <outlet property="pickerBackView" destination="ebn-KF-zgF" id="Kjv-3c-H22"/>
+                        <outlet property="tableView" destination="Xuv-3c-yVb" id="MM8-Eu-7zU"/>
+                        <outlet property="titleLabel" destination="L9P-sI-A9h" id="210-QV-pVr"/>
+                        <outlet property="topView" destination="cHI-UU-lFU" id="pPt-ee-91L"/>
+                        <outlet property="typePicker" destination="hb0-8h-jUK" id="VhE-g2-OYV"/>
+                        <outlet property="typePickerView" destination="ia7-sH-pHN" id="xfK-KN-vEz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sd8-ud-9IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1323" y="879"/>
         </scene>
     </scenes>
     <resources>

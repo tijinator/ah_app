@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="260" id="KGk-i7-Jjw" customClass="CheckoutAddressCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="CheckoutAddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Name" minimumFontSize="17" id="7m5-91-4uM">
@@ -23,7 +23,7 @@
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="V55-Tl-f3W"/>
                         </connections>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Address" minimumFontSize="17" id="83W-DM-5am">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Address1" minimumFontSize="17" id="83W-DM-5am">
                         <rect key="frame" x="35" y="67" width="250" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -33,7 +33,7 @@
                         </connections>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  City" minimumFontSize="17" id="oxy-uW-x8j">
-                        <rect key="frame" x="35" y="109" width="250" height="40"/>
+                        <rect key="frame" x="35" y="159" width="250" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -42,7 +42,7 @@
                         </connections>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Zip" minimumFontSize="17" id="Gvz-kJ-Fi6">
-                        <rect key="frame" x="195" y="151" width="90" height="40"/>
+                        <rect key="frame" x="195" y="201" width="90" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -51,7 +51,7 @@
                         </connections>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Phone" minimumFontSize="17" id="Seu-8x-5tm">
-                        <rect key="frame" x="35" y="193" width="250" height="40"/>
+                        <rect key="frame" x="35" y="250" width="250" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -60,15 +60,25 @@
                         </connections>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  State" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NmH-63-hGq">
-                        <rect key="frame" x="35" y="151" width="111" height="40"/>
+                        <rect key="frame" x="35" y="201" width="111" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Address2" minimumFontSize="17" id="Dmt-gP-KTj">
+                        <rect key="frame" x="35" y="111" width="250" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="ydg-gL-Atr"/>
+                        </connections>
+                    </textField>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="Address2TextField" destination="Dmt-gP-KTj" id="a5x-3Q-zo3"/>
                 <outlet property="AddressTextField" destination="83W-DM-5am" id="ouf-Rm-urD"/>
                 <outlet property="cityTextField" destination="oxy-uW-x8j" id="uix-OH-ovJ"/>
                 <outlet property="nameTextField" destination="7m5-91-4uM" id="rCw-hW-fAn"/>
@@ -76,7 +86,7 @@
                 <outlet property="stateTextField" destination="NmH-63-hGq" id="qRY-KX-7BR"/>
                 <outlet property="zipTextField" destination="Gvz-kJ-Fi6" id="F2M-OR-CIZ"/>
             </connections>
-            <point key="canvasLocation" x="242" y="336"/>
+            <point key="canvasLocation" x="242" y="356"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
