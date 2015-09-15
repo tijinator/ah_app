@@ -31,8 +31,37 @@
   
     [self getDefaultAddress];
     [self getStateList];
+    [self createObservers];
     // Do any additional setup after loading the view.
 }
+
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didEditAddressFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEditAddressFinished:) name:@"didEditAddressFinished" object:nil];
+}
+
+
+- (void) didEditAddressFinished: (NSNotification * ) note
+{
+    
+    NSArray *arrary= (NSArray *)[note object];
+    NSString *type= [arrary objectAtIndex:0];
+    Address *ad= [arrary objectAtIndex:1];
+    
+    if ([type isEqual:@"shipping address"]) {
+        _shippingAddress=ad;
+        
+    }else if ([type isEqual:@"billing address"]) {
+        _billingAddress=ad;
+    }
+ 
+    
+    
+    [self.tableView reloadData];
+    
+    
+}
+
 
 #pragma mark - APICalls
 - (void) makeCheckout
@@ -198,9 +227,18 @@
             _stateLabel.text= [NSString stringWithFormat:@"%@ - %@",tempState.abbr, tempState.name ];
             _stateLabel.textColor=[UIColor blackColor];
             
-        }else
+        }else if ([_pickerType isEqualToString:@"date"])
         {
-      
+            _monthLabel.text=[_pickerDisplayArray objectAtIndex:row];
+            _monthLabel.textColor=[UIColor blackColor];
+        }else if ([_pickerType isEqualToString:@"year"])
+        {
+             _yearLabel.text=[_pickerDisplayArray objectAtIndex:row];
+             _yearLabel.textColor=[UIColor blackColor];
+        }else if ([_pickerType isEqualToString:@"cardtype"])
+        {
+            _cardTypeLabel.text=[_pickerDisplayArray objectAtIndex:row];
+            _cardTypeLabel.textColor=[UIColor blackColor];
         }
         
     }
@@ -364,7 +402,21 @@
         cell.stateTextField.userInteractionEnabled=YES;
         _stateLabel= cell.stateTextField;
         
+        _nameTextField=cell.nameTextField;
+        _AddressTextField=cell.AddressTextField;
+        _cityTextField=cell.cityTextField;
+        _stateTextField=cell.stateTextField;
+        _phoneTextField=cell.phoneTextField;
+        _zipTextField=cell.zipTextField;
+        _stateTextField=cell.stateTextField;
+        _Address2TextField=cell.Address2TextField;
         
+        [cell.nameTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.AddressTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.Address2TextField setReturnKeyType:UIReturnKeyDone];
+        [cell.cityTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.zipTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.phoneTextField setReturnKeyType:UIReturnKeyDone];
      
          if (_shippingAddress!=nil) {
              
@@ -380,6 +432,7 @@
              
              cell.editButton.tag=1;
             [cell.editButton addTarget:self action:@selector(editButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+             
              
              
             contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
@@ -407,6 +460,21 @@
         _stateLabel= cell.stateTextField;
         
         
+        [cell.nameTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.AddressTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.Address2TextField setReturnKeyType:UIReturnKeyDone];
+        [cell.cityTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.zipTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.phoneTextField setReturnKeyType:UIReturnKeyDone];
+        
+        _nameTextField1=cell.nameTextField;
+        _AddressTextField1=cell.AddressTextField;
+        _cityTextField1=cell.cityTextField;
+        _stateTextField1=cell.stateTextField;
+        _phoneTextField1=cell.phoneTextField;
+        _zipTextField1=cell.zipTextField;
+        _stateTextField1=cell.stateTextField;
+        _Address2TextField1=cell.Address2TextField;
         
         if (_billingAddress!=nil) {
             
@@ -440,6 +508,27 @@
             cell = [nib objectAtIndex:0];
         }
         
+        UITapGestureRecognizer *tapGestureRecognizer12 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CardTypeButtonClick:)];
+        tapGestureRecognizer12.numberOfTapsRequired = 1;
+        [cell.cardType addGestureRecognizer:tapGestureRecognizer12];
+        cell.cardType.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(YearButtonClick:)];
+        tapGestureRecognizer11.numberOfTapsRequired = 1;
+        [cell.year addGestureRecognizer:tapGestureRecognizer11];
+        cell.year.userInteractionEnabled=YES;
+        
+        UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DateButtonClick:)];
+        tapGestureRecognizer10.numberOfTapsRequired = 1;
+        [cell.date addGestureRecognizer:tapGestureRecognizer10];
+        cell.date.userInteractionEnabled=YES;
+      
+
+        _monthLabel=cell.date;
+        _yearLabel=cell.year;
+        _cardTypeLabel=cell.cardType;
+        _cvcTextField=cell.cvc;
+        _cardNumberTextField=cell.cardNumber;
         
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         
@@ -477,16 +566,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
-
+//checkout button
 - (IBAction)BuyNowButtonClick:(id)sender
 {
     
     
     STPCard *card = [[STPCard alloc] init];
-    card.number = @"4111111111111111";
-    card.expMonth =1;
-    card.expYear = 2019;
-    card.cvc = @"123";
+//    card.number = @"4111111111111111";
+//    card.expMonth =1;
+//    card.expYear = 2019;
+//    card.cvc = @"123";
+    
+    card.number = _cardNumberTextField.text;
+    card.expMonth =_monthLabel.text.integerValue;
+    card.expYear = _yearLabel.text.integerValue;
+    card.cvc=_cvcTextField.text;
+    
     [[STPAPIClient sharedClient] createTokenWithCard:card
                                           completion:^(STPToken *token, NSError *error) {
                                               if (error) {
@@ -500,6 +595,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)doneButtonClick:(id)sender
 {
     _typePickerView.hidden=true;
+}
+
+- (IBAction)CardTypeButtonClick:(id)sender {
+    _typePickerView.hidden=false;
+    _pickerType=@"cardtype";
+    _pickerDisplayArray=[@[@"Visa",@"MasterCard",@"American Experss",@"Discover",@"Dinner Club",@"JCB"] mutableCopy];
+    [_typePicker reloadAllComponents];
+    [self.view bringSubviewToFront:_typePickerView];
+}
+
+
+- (IBAction)DateButtonClick:(id)sender {
+    _typePickerView.hidden=false;
+    _pickerType=@"date";
+    _pickerDisplayArray=[@[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12"] mutableCopy];
+    [_typePicker reloadAllComponents];
+    [self.view bringSubviewToFront:_typePickerView];
+}
+
+- (IBAction)YearButtonClick:(id)sender {
+    _typePickerView.hidden=false;
+    _pickerType=@"year";
+    _pickerDisplayArray=[[NSMutableArray alloc] init];
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    NSInteger year = [components year];
+    
+    for (int i=0; i<8; i++) {
+        NSString *y= [NSString stringWithFormat:@"%ld",year+i];
+        [_pickerDisplayArray addObject:y];
+    }
+    
+    [_typePicker reloadAllComponents];
+    [self.view bringSubviewToFront:_typePickerView];
 }
 
 - (IBAction)StateButtonClick:(id)sender {

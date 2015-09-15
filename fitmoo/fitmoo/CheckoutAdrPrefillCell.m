@@ -21,6 +21,7 @@
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
     
     self.editButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.editButton respectToSuperFrame:nil];
+    self.useThisAddButton.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.useThisAddButton respectToSuperFrame:nil];
     
 }
 
@@ -45,7 +46,8 @@
     
     _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
     
-   
+    _useThisAddButton.frame=CGRectMake(_useThisAddButton.frame.origin.x, _rtLabel.frame.origin.y+_rtLabel.frame.size.height+10, _useThisAddButton.frame.size.width, _useThisAddButton.frame.size.height);
+    
     
   
     [self.contentView insertSubview:_rtLabel belowSubview:_editButton];

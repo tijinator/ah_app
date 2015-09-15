@@ -33,6 +33,11 @@
 @property (strong, nonatomic)  NSMutableArray * addressArray;
 @property (strong, nonatomic)  NSMutableArray * pickerDisplayArray;
 @property (strong, nonatomic)  UILabel * stateLabel;
+@property (strong, nonatomic)  UILabel * monthLabel;
+@property (strong, nonatomic)  UILabel * yearLabel;
+@property (strong, nonatomic)  UILabel * cardTypeLabel;
+@property (strong, nonatomic)  UITextField *cardNumberTextField;
+@property (strong, nonatomic)  UITextField *cvcTextField;
 
 @property (strong, nonatomic)  NSMutableArray * stateArray;
 @property (strong, nonatomic)  NSString *pickerType;
@@ -44,6 +49,22 @@
 
 @property (strong, nonatomic)  Address * billingAddress;
 @property (strong, nonatomic)  Address * shippingAddress;
+
+@property (strong, nonatomic)  UITextField *nameTextField;
+@property (strong, nonatomic)  UITextField *AddressTextField;
+@property (strong, nonatomic)  UITextField *cityTextField;
+@property (strong, nonatomic)  UILabel *stateTextField;
+@property (strong, nonatomic)  UITextField *phoneTextField;
+@property (strong, nonatomic)  UITextField *zipTextField;
+@property (strong, nonatomic)  UITextField *Address2TextField;
+
+@property (strong, nonatomic)  UITextField *nameTextField1;
+@property (strong, nonatomic)  UITextField *AddressTextField1;
+@property (strong, nonatomic)  UITextField *cityTextField1;
+@property (strong, nonatomic)  UILabel *stateTextField1;
+@property (strong, nonatomic)  UITextField *phoneTextField1;
+@property (strong, nonatomic)  UITextField *zipTextField1;
+@property (strong, nonatomic)  UITextField *Address2TextField1;
 
 
 @end

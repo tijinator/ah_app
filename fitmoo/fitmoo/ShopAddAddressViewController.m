@@ -250,6 +250,14 @@
         _stateTextField=cell.stateTextField;
         _Address2TextField=cell.Address2TextField;
     
+    
+        [cell.nameTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.AddressTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.Address2TextField setReturnKeyType:UIReturnKeyDone];
+        [cell.cityTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.zipTextField setReturnKeyType:UIReturnKeyDone];
+        [cell.phoneTextField setReturnKeyType:UIReturnKeyDone];
+    
         
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         

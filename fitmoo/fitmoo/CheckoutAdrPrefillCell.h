@@ -14,6 +14,7 @@
 @property (nonatomic, strong) Address *address;
 - (void) builtCell;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *useThisAddButton;
 
 
 @end

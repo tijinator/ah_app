@@ -176,7 +176,10 @@
     [cell builtCell];
     cell.editButton.hidden=true;
     
-            
+    cell.useThisAddButton.hidden=false;
+    cell.useThisAddButton.tag=indexPath.section;
+    
+    [cell.useThisAddButton addTarget:self action:@selector(useThisAddButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
     contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
     return cell;
@@ -248,6 +251,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
 }
 
+
+- (IBAction)useThisAddButtonClick:(id)sender {
+    UIButton *b=(UIButton *)sender;
+    Address *addr= [_addressArray objectAtIndex:b.tag];
+    NSArray *array= [[NSArray alloc] initWithObjects:_addreeType,addr, nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didEditAddressFinished" object:array];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)sectionHeaderClick:(id)sender {
     UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
