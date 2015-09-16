@@ -638,6 +638,7 @@
 		27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */; };
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
 		27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */; };
+		27D0229A1BA8E77900A6FA2D /* CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D022991BA8E77900A6FA2D /* CreditCard.m */; };
 		27D027CA1B7E1B2300436FEF /* workout_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D027C81B7E1B2300436FEF /* workout_grey@2x.png */; };
 		27D027CB1B7E1B2300436FEF /* workout_grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D027C91B7E1B2300436FEF /* workout_grey@3x.png */; };
 		27D0DF731B7CC2CD00DC49C5 /* InfluFactorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0DF721B7CC2CD00DC49C5 /* InfluFactorViewController.m */; };
@@ -1415,6 +1416,8 @@
 		27CBC0E51B0FB6A200699E1E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		27CC0F3C1B61064D005CC194 /* WorkTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTypeViewController.h; sourceTree = "<group>"; };
 		27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTypeViewController.m; sourceTree = "<group>"; };
+		27D022981BA8E77900A6FA2D /* CreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCard.h; sourceTree = "<group>"; };
+		27D022991BA8E77900A6FA2D /* CreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCard.m; sourceTree = "<group>"; };
 		27D027C81B7E1B2300436FEF /* workout_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workout_grey@2x.png"; sourceTree = "<group>"; };
 		27D027C91B7E1B2300436FEF /* workout_grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workout_grey@3x.png"; sourceTree = "<group>"; };
 		27D0DF711B7CC2CD00DC49C5 /* InfluFactorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfluFactorViewController.h; sourceTree = "<group>"; };
@@ -1704,6 +1707,8 @@
 				27DE04F01BA0C03100050ADD /* Address.m */,
 				2787C90B1B38AD7700B182FF /* Contacts.h */,
 				2787C90C1B38AD7700B182FF /* Contacts.m */,
+				27D022981BA8E77900A6FA2D /* CreditCard.h */,
+				27D022991BA8E77900A6FA2D /* CreditCard.m */,
 				272582781AD5A4DE0059F43C /* User.h */,
 				272582791AD5A4DE0059F43C /* User.m */,
 				2732B7281AD83BE300610821 /* HomeFeed.h */,
@@ -3335,6 +3340,7 @@
 				279717761B7CFF7A004ACBC2 /* InfluenceCell.m in Sources */,
 				2732B7391AD846B800610821 /* FeedAction.m in Sources */,
 				27410DEF1AFAB34200CF230C /* BezierCurve.m in Sources */,
+				27D0229A1BA8E77900A6FA2D /* CreditCard.m in Sources */,
 				27A3AC0E1B9606FD00D78AAA /* ShopDetailViewController.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,
 				2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */,

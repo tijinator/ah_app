@@ -76,7 +76,126 @@
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @""
+                                                          message : @"Your order has been placed." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
         
+    
+
+        
+        
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+}
+
+- (void) createShipingAddress
+{
+    
+  
+    _shippingAddress=[[Address alloc] init];
+ 
+    
+    _shippingAddress.full_name=_nameTextField.text;
+    _shippingAddress.city=_cityTextField.text;
+    _shippingAddress.phone=_phoneTextField.text;
+    _shippingAddress.state_name=_stateLabel.text;
+    _shippingAddress.zipcode=_zipTextField.text;
+    _shippingAddress.full_name=_nameTextField.text;
+    _shippingAddress.address1=_AddressTextField.text;
+    _shippingAddress.address2=_Address2TextField.text;
+    
+    
+    
+    _shippingAddress.state_id=[[FitmooHelper sharedInstance] findStageId:_stateLabel.text withArray:_stateArray];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",_shippingAddress.full_name, @"full_name",_shippingAddress.address1, @"address1",_shippingAddress.address2, @"address2",_shippingAddress.city, @"city",_shippingAddress.zipcode, @"zipcode",_shippingAddress.phone, @"phone",_shippingAddress.state_id, @"state_id",@"2", @"address_type_id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address_create"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        [self createBillingAddress];
+        
+       
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+}
+
+- (void) createBillingAddress
+{
+    _billingAddress=[[Address alloc] init];
+    
+    
+    _billingAddress.full_name=_nameTextField1.text;
+    _billingAddress.city=_cityTextField1.text;
+    _billingAddress.phone=_phoneTextField1.text;
+    _billingAddress.state_name=_stateLabel1.text;
+    _billingAddress.zipcode=_zipTextField1.text;
+    _billingAddress.full_name=_nameTextField1.text;
+    _billingAddress.address1=_AddressTextField1.text;
+    _billingAddress.address2=_Address2TextField1.text;
+    
+    
+    
+    _billingAddress.state_id=[[FitmooHelper sharedInstance] findStageId:_stateLabel1.text withArray:_stateArray];
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",_billingAddress.full_name, @"full_name",_billingAddress.address1, @"address1",_billingAddress.address2, @"address2",_billingAddress.city, @"city",_billingAddress.zipcode, @"zipcode",_billingAddress.phone, @"phone",_billingAddress.state_id, @"state_id",@"1", @"address_type_id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address_create"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        [self validateCart];
+        
+        
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+}
+
+- (void) validateCart
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/validate"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *dic= (NSDictionary *) responseObject;
+        
+        NSNumber * good= [dic objectForKey:@"cart_is_good"];
+        if (good!=nil) {
+            if (good.intValue==1) {
+                [self makeCheckout];
+            }else
+            {
+                
+            }
+
+        }else
+        {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Opps"
+                                                              message : @"Your order infomation has been updated, review your cart again." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         
         
     } // success callback block
@@ -96,8 +215,13 @@
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/customer_create"];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        
-        [self makeCheckout];
+        if (_shippingAddress!=nil&&_billingAddress!=nil) {
+            [self validateCart];
+        }else
+        {
+            [self createShipingAddress];
+        }
+       
         
         
     } // success callback block
@@ -227,7 +351,13 @@
             _stateLabel.text= [NSString stringWithFormat:@"%@ - %@",tempState.abbr, tempState.name ];
             _stateLabel.textColor=[UIColor blackColor];
             
-        }else if ([_pickerType isEqualToString:@"date"])
+        }else if ([_pickerType isEqualToString:@"state1"]) {
+            State *tempState= [_pickerDisplayArray objectAtIndex:row];
+            _stateLabel1.text= [NSString stringWithFormat:@"%@ - %@",tempState.abbr, tempState.name ];
+            _stateLabel1.textColor=[UIColor blackColor];
+            
+        }
+        else if ([_pickerType isEqualToString:@"date"])
         {
             _monthLabel.text=[_pickerDisplayArray objectAtIndex:row];
             _monthLabel.textColor=[UIColor blackColor];
@@ -269,7 +399,13 @@
             
             title= [NSString stringWithFormat:@"%@ - %@",tempState.abbr, tempState.name ];
             
-        }else
+        }else if ([_pickerType isEqualToString:@"state1"]) {
+            State *tempState= [_pickerDisplayArray objectAtIndex:row];
+            
+            title= [NSString stringWithFormat:@"%@ - %@",tempState.abbr, tempState.name ];
+            
+        }
+        else
         {
             title=[_pickerDisplayArray objectAtIndex:row];
         }
@@ -398,17 +534,50 @@
         
         UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(StateButtonClick:)];
         tapGestureRecognizer10.numberOfTapsRequired = 1;
+        cell.stateTextField.tag=1;
         [cell.stateTextField addGestureRecognizer:tapGestureRecognizer10];
         cell.stateTextField.userInteractionEnabled=YES;
-        _stateLabel= cell.stateTextField;
         
+        if (_stateLabel!=nil) {
+            cell.stateTextField.text=_stateLabel.text;
+            if (![_stateLabel.text isEqualToString:@"State"]) {
+                cell.stateTextField.textColor=[UIColor blackColor];
+            }
+            
+        }
+        if (_nameTextField!=nil) {
+            cell.nameTextField.text=_nameTextField.text;
+            cell.nameTextField.textColor=[UIColor blackColor];
+        }
+        if (_AddressTextField!=nil) {
+            cell.AddressTextField.text=_AddressTextField.text;
+            cell.AddressTextField.textColor=[UIColor blackColor];
+        }
+        if (_Address2TextField!=nil) {
+            cell.Address2TextField.text=_Address2TextField.text;
+            cell.Address2TextField.textColor=[UIColor blackColor];
+        }
+        if (_cityTextField!=nil) {
+            cell.cityTextField.text=_cityTextField.text;
+            cell.cityTextField.textColor=[UIColor blackColor];
+        }
+        if (_phoneTextField!=nil) {
+            cell.phoneTextField.text=_phoneTextField.text;
+            cell.phoneTextField.textColor=[UIColor blackColor];
+        }
+        if (_zipTextField!=nil) {
+            cell.zipTextField.text=_zipTextField.text;
+            cell.zipTextField.textColor=[UIColor blackColor];
+        }
+        
+        
+        
+        _stateLabel= cell.stateTextField;
         _nameTextField=cell.nameTextField;
         _AddressTextField=cell.AddressTextField;
         _cityTextField=cell.cityTextField;
-        _stateTextField=cell.stateTextField;
         _phoneTextField=cell.phoneTextField;
         _zipTextField=cell.zipTextField;
-        _stateTextField=cell.stateTextField;
         _Address2TextField=cell.Address2TextField;
         
         [cell.nameTextField setReturnKeyType:UIReturnKeyDone];
@@ -455,9 +624,40 @@
         
         UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(StateButtonClick:)];
         tapGestureRecognizer10.numberOfTapsRequired = 1;
+         cell.stateTextField.tag=2;
         [cell.stateTextField addGestureRecognizer:tapGestureRecognizer10];
         cell.stateTextField.userInteractionEnabled=YES;
-        _stateLabel= cell.stateTextField;
+        
+        if (_stateLabel1!=nil) {
+            cell.stateTextField.text=_stateLabel1.text;
+            if (![_stateLabel1.text isEqualToString:@"State"]) {
+                cell.stateTextField.textColor=[UIColor blackColor];
+            }
+        }
+        if (_nameTextField1!=nil) {
+            cell.nameTextField.text=_nameTextField1.text;
+            cell.nameTextField.textColor=[UIColor blackColor];
+        }
+        if (_AddressTextField1!=nil) {
+            cell.AddressTextField.text=_AddressTextField1.text;
+            cell.AddressTextField.textColor=[UIColor blackColor];
+        }
+        if (_Address2TextField1!=nil) {
+            cell.Address2TextField.text=_Address2TextField1.text;
+            cell.Address2TextField.textColor=[UIColor blackColor];
+        }
+        if (_cityTextField1!=nil) {
+            cell.cityTextField.text=_cityTextField1.text;
+            cell.cityTextField.textColor=[UIColor blackColor];
+        }
+        if (_phoneTextField1!=nil) {
+            cell.phoneTextField.text=_phoneTextField1.text;
+            cell.phoneTextField.textColor=[UIColor blackColor];
+        }
+        if (_zipTextField1!=nil) {
+            cell.zipTextField.text=_zipTextField1.text;
+            cell.zipTextField.textColor=[UIColor blackColor];
+        }
         
         
         [cell.nameTextField setReturnKeyType:UIReturnKeyDone];
@@ -467,13 +667,12 @@
         [cell.zipTextField setReturnKeyType:UIReturnKeyDone];
         [cell.phoneTextField setReturnKeyType:UIReturnKeyDone];
         
+        _stateLabel1= cell.stateTextField;
         _nameTextField1=cell.nameTextField;
         _AddressTextField1=cell.AddressTextField;
         _cityTextField1=cell.cityTextField;
-        _stateTextField1=cell.stateTextField;
         _phoneTextField1=cell.phoneTextField;
         _zipTextField1=cell.zipTextField;
-        _stateTextField1=cell.stateTextField;
         _Address2TextField1=cell.Address2TextField;
         
         if (_billingAddress!=nil) {
@@ -523,7 +722,40 @@
         [cell.date addGestureRecognizer:tapGestureRecognizer10];
         cell.date.userInteractionEnabled=YES;
       
-
+        
+        if (_monthLabel!=nil) {
+            cell.date.text=_monthLabel.text;
+            if (![_monthLabel.text isEqualToString:@"Month"]) {
+                  cell.date.textColor=[UIColor blackColor];
+            }
+          
+        }
+        
+        if (_yearLabel!=nil) {
+            cell.year.text=_yearLabel.text;
+            if (![_yearLabel.text isEqualToString:@"Year"]) {
+            cell.year.textColor=[UIColor blackColor];
+            }
+        }
+        
+        if (_cardTypeLabel!=nil) {
+            cell.cardType.text=_cardTypeLabel.text;
+            if (![_cardTypeLabel.text isEqualToString:@"Card Type"]) {
+            cell.cardType.textColor=[UIColor blackColor];
+            }
+        }
+        
+        if (_cvcTextField!=nil) {
+            cell.cvc.text=_cvcTextField.text;
+            cell.cvc.textColor=[UIColor blackColor];
+        }
+        
+        if (_cardNumberTextField!=nil) {
+            cell.cardNumber.text=_cardNumberTextField.text;
+            cell.cardNumber.textColor=[UIColor blackColor];
+        }
+        
+        
         _monthLabel=cell.date;
         _yearLabel=cell.year;
         _cardTypeLabel=cell.cardType;
@@ -632,8 +864,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)StateButtonClick:(id)sender {
+     UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
+    
+    
+    
      _typePickerView.hidden=false;
-     _pickerType=@"state";
+    if (v.tag==1) {
+          _pickerType=@"state";
+    }else
+    {
+        _pickerType=@"state1";
+    }
+   
      _pickerDisplayArray=[_stateArray mutableCopy];
     [_typePicker reloadAllComponents];
     [self.view bringSubviewToFront:_typePickerView];

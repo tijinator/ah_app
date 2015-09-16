@@ -25,10 +25,14 @@
     [self initFrames];
     contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
-    [self getShopCart];
+  //  [self getShopCart];
     // Do any additional setup after loading the view.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self getShopCart];
+}
 
 -(void) generateShopCard: (NSDictionary *) dic
 {
@@ -140,7 +144,8 @@
         NSNumber *empty=[_responseDic objectForKey:@"empty"];
         
         if (empty.intValue==1) {
-            
+            _shopCart= [[ShopCart alloc] init];
+            [self.tableView reloadData];
         }else
         {
         [self generateShopCard:_responseDic];
