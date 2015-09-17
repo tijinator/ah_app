@@ -18,6 +18,7 @@
 {
     NSNumber * contentHight;
     bool bodyLikeAnimation;
+    NSString *OriganlVariantsButtonsStrings;
 }
 @end
 
@@ -256,7 +257,7 @@
     [cell rebuiltBodyViewFrame];
     
     [cell setVariantsFrame];
-    
+     OriganlVariantsButtonsStrings=[NSString stringWithFormat:@"%@+%@+%@+%@",cell.variantsButton1.titleLabel.text.uppercaseString,cell.variantsButton2.titleLabel.text.uppercaseString,cell.variantsButton3.titleLabel.text.uppercaseString,cell.variantsButton4.titleLabel.text.uppercaseString,nil];
     
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
@@ -917,6 +918,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[button layer] setBorderColor:[UIColor redColor].CGColor];
 }
 
+- (void) dehighLightButtons:(UIButton *) button
+{
+    [[button layer] setBorderWidth:0.0f];
+  
+}
+
 - (IBAction)BuyNowButtonClick:(id)sender {
     
 //    [self openShopCartPage];
@@ -940,33 +947,67 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSString *checkString;
         NSString *checkString1;
         NSString *checkString2;
+        NSString *checkString3; //qty
         
         
-        
-        
-        if ([_homeFeed.product.variant_options_array count]==1)//use button 1
+        if ([_homeFeed.product.variant_options_array count]==0)//use button 1
+        {
+            checkString3=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString3].location != NSNotFound) {
+                [self highLightButtons:_variantButton1];
+            }else
+            {
+                [self dehighLightButtons:_variantButton1];
+            }
+        }
+       else if ([_homeFeed.product.variant_options_array count]==1)//use button 1 2
         {
             checkString=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
             
-            if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString].location != NSNotFound) {
                 [self highLightButtons:_variantButton1];
+            }else
+            {
+                [self dehighLightButtons:_variantButton1];
+            }
+            
+            checkString3=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton2.titleLabel.text];
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString3].location != NSNotFound) {
+                [self highLightButtons:_variantButton2];
+            }else
+            {
+                [self dehighLightButtons:_variantButton2];
             }
             
             
-        }else if ([_homeFeed.product.variant_options_array count]==2)//use button 1,2
+        }else if ([_homeFeed.product.variant_options_array count]==2)//use button 1,2 3
         {
             
             checkString=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton1.titleLabel.text];
             checkString1=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton2.titleLabel.text];
             
-            if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString].location != NSNotFound) {
                   [self highLightButtons:_variantButton1];
+            }else
+            {
+                [self dehighLightButtons:_variantButton1];
             }
-            if ([_homeFeed.product.variants.options rangeOfString:checkString1].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString1].location != NSNotFound) {
                   [self highLightButtons:_variantButton2];
+            }else
+            {
+                [self dehighLightButtons:_variantButton2];
             }
             
-        }else if ([_homeFeed.product.variant_options_array count]==3)//use button 1,2,3
+            checkString3=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton3.titleLabel.text];
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString3].location != NSNotFound) {
+                [self highLightButtons:_variantButton3];
+            }else
+            {
+                [self dehighLightButtons:_variantButton3];
+            }
+            
+        }else if ([_homeFeed.product.variant_options_array count]==3)//use button 1,2,3 4
         {
             
             
@@ -974,14 +1015,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             checkString1=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton2.titleLabel.text];
             checkString2=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton3.titleLabel.text];
             
-            if ([_homeFeed.product.variants.options rangeOfString:checkString].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString].location != NSNotFound) {
                 [self highLightButtons:_variantButton1];
+            }else
+            {
+                [self dehighLightButtons:_variantButton1];
             }
-            if ([_homeFeed.product.variants.options rangeOfString:checkString1].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString1].location != NSNotFound) {
                 [self highLightButtons:_variantButton2];
+            }else
+            {
+                [self dehighLightButtons:_variantButton2];
             }
-            if ([_homeFeed.product.variants.options rangeOfString:checkString2].location == NSNotFound) {
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString2].location != NSNotFound) {
                 [self highLightButtons:_variantButton3];
+            }else
+            {
+                [self dehighLightButtons:_variantButton3];
+            }
+            
+            checkString3=[[FitmooHelper sharedInstance] checkStringIsANumeric:_variantButton4.titleLabel.text];
+            if ([OriganlVariantsButtonsStrings rangeOfString:checkString3].location != NSNotFound) {
+                [self highLightButtons:_variantButton4];
+            }else
+            {
+                [self dehighLightButtons:_variantButton4];
             }
         }
         

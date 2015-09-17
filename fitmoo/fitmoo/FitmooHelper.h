@@ -52,5 +52,6 @@
 
 - (NSString *) findStageId:(NSString *)selectedState withArray:(NSMutableArray *)stateArray;
 - (Address *) parseAddress:(NSDictionary *)addressDic;
+- (BOOL) checkStringIsNumberOnly:(NSString *)newString;
 
 @end

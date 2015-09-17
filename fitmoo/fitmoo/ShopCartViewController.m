@@ -52,8 +52,8 @@
     _shopCart.tax=[tax stringValue];
     NSNumber *total=[dic objectForKey:@"total"];
     _shopCart.total=[total stringValue];
-    NSNumber *verify_for_checkout=[dic objectForKey:@"verify_for_checkout"];
-    _shopCart.verify_for_checkout=[verify_for_checkout stringValue];
+//    NSNumber *verify_for_checkout=[dic objectForKey:@"verify_for_checkout"];
+//    _shopCart.verify_for_checkout=[verify_for_checkout stringValue];
     
     NSDictionary *order_details= [dic objectForKey:@"order_details"];
     

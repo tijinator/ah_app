@@ -14,6 +14,7 @@
 {
       NSNumber * contentHight;
      NSInteger selectedIndex;
+    UIView *indicatorView;
 }
 @end
 
@@ -82,12 +83,15 @@
         [alert show ];
         
     
-
-        
+        [indicatorView removeFromSuperview];
+        _BuyNowButton.userInteractionEnabled=YES;
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+           [indicatorView removeFromSuperview];} // failure callback block
+     
      ];
 }
 
@@ -126,7 +130,9 @@
        
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+           [indicatorView removeFromSuperview];} // failure callback block
      ];
 }
 
@@ -163,7 +169,9 @@
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+           [indicatorView removeFromSuperview];} // failure callback block
      ];
 }
 
@@ -200,7 +208,9 @@
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+           [indicatorView removeFromSuperview];} // failure callback block
      ];
 }
 
@@ -226,7 +236,9 @@
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+           [indicatorView removeFromSuperview];} // failure callback block
      ];
 }
 
@@ -264,7 +276,9 @@
         
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
-             NSLog(@"Error: %@", error);} // failure callback block
+             NSLog(@"Error: %@", error);
+             _BuyNowButton.userInteractionEnabled=YES;
+          [indicatorView removeFromSuperview];} // failure callback block
      ];
 
 }
@@ -689,6 +703,7 @@
             cell.editButton.tag=2;
             [cell.editButton addTarget:self action:@selector(editButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
+            contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
              return cell;
         }
         
@@ -762,6 +777,8 @@
         _cvcTextField=cell.cvc;
         _cardNumberTextField=cell.cardNumber;
         
+        
+        
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         
         return cell;
@@ -801,7 +818,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //checkout button
 - (IBAction)BuyNowButtonClick:(id)sender
 {
-    
+    if (_shippingAddress==nil&&_billingAddress==nil) {
+        if ([self ValidateAllFields]==false) {
+            return;
+        }
+    }
+   
+    if ([self ValidateYourCard]==false) {
+        return;
+    }
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+    _BuyNowButton.userInteractionEnabled=NO;
     
     STPCard *card = [[STPCard alloc] init];
 //    card.number = @"4111111111111111";
@@ -813,11 +840,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     card.expMonth =_monthLabel.text.integerValue;
     card.expYear = _yearLabel.text.integerValue;
     card.cvc=_cvcTextField.text;
+
     
     [[STPAPIClient sharedClient] createTokenWithCard:card
                                           completion:^(STPToken *token, NSError *error) {
                                               if (error) {
-                                                 
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+        message :@"Your card looks invalid."  delegate : nil cancelButtonTitle : @"OK"
+        otherButtonTitles : nil ];
+        [alert show ];
+        [indicatorView removeFromSuperview];
+        _BuyNowButton.userInteractionEnabled=YES;
                                               } else {
                                                   _sptoken=token.tokenId;
                                                   [self createCustomer];
@@ -918,6 +951,217 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (BOOL) ValidateYourCard
+{
+        if ([_cardTypeLabel.text isEqualToString:@"Card Type"]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please select a type of card." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+    
+            return false;
+        }
+    
+        if ([_cardNumberTextField.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please enter card number." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+    
+            return false;
+        }
+    
+        if ([_monthLabel.text isEqualToString:@"Month"]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please select a Month." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+    
+            return false;
+        }
+    
+        if ([_yearLabel.text isEqualToString:@"Year"]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please select a Year." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+    
+            return false;
+        }
+    
+        if ([_cvcTextField.text isEqualToString:@""]) {
+            UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                              message : @"Please enter the card CVC." delegate : nil cancelButtonTitle : @"OK"
+                                                    otherButtonTitles : nil ];
+            [alert show ];
+            
+            return false;
+        }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_cardNumberTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your card number." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_cvcTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your card CVC number." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    return true;
+}
+
+- (BOOL) ValidateAllFields
+{
+    
+    
+    if ([_nameTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please type your name for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_AddressTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your address1 for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_cityTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your city for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_stateLabel.text isEqualToString:@"State"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please select a state for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_zipTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your zip code for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_phoneTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your phone for shipping address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_zipTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your zip code." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_phoneTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_nameTextField1.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please type your name for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_AddressTextField1.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your address1 for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_cityTextField1.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your city for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_stateLabel1.text isEqualToString:@"State"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please select a state for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_zipTextField1.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your zip code for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_phoneTextField1.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your phone for billing address." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_zipTextField1.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your zip code." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_phoneTextField1.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+
+    
+
+    
+    
+    return true;
 }
 
 /*

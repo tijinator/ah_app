@@ -832,6 +832,18 @@
     return newString.uppercaseString;
 }
 
+- (BOOL) checkStringIsNumberOnly:(NSString *)newString
+{
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([newString rangeOfCharacterFromSet:notDigits].location == NSNotFound)
+    {
+        return true;
+        // newString consists only of the digits 0 through 9
+    }
+    
+    return false;
+}
+
 - (void) setContext: (NSManagedObjectContext *) con
 {
     _context=con;

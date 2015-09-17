@@ -292,6 +292,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
  //   [self createAddress];
     
+    if ([self ValidateAllFields]==false) {
+        return;
+    }
+    
+    
     bool createNew=false;
     if (_address==nil) {
         createNew=true;
@@ -367,6 +372,79 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL) ValidateAllFields
+{
+    
+    
+    if ([_nameTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please type your name." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_AddressTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your address1." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_cityTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your city." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_stateLabel.text isEqualToString:@"State"]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please select a state." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_zipTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your zip code." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    if ([_phoneTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter your phone." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_zipTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your zip code." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_phoneTextField.text]==false) {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+        return false;
+    }
+    
+    return true;
 }
 
 /*
