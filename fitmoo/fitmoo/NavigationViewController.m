@@ -347,6 +347,21 @@
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
+    }else  if ([key isEqualToString:@"cart"]) {
+      //  if (![currentPage isEqualToString:key]) {
+            
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        _cartPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopCartViewController"];
+        
+        
+      
+        [[self nav] pushViewController:_cartPage animated:YES];
+            
+      //      currentPage=key;
+      //      [_Pagestuck addObject:key];
+      //  }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        
     }else  if ([key isEqualToString:@"shop"]) {
         if (![currentPage isEqualToString:key]) {
             
@@ -372,6 +387,36 @@
 
     
     
+    }else  if ([key isEqualToString:@"purchases"]) {
+        if (![currentPage isEqualToString:key]) {
+            
+            _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
+            //    [[self nav] popViewControllerAnimated:NO];
+            [[self nav] pushViewController:_settingPage animated:YES];
+            
+            currentPage=key;
+            [_Pagestuck addObject:key];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        
+        
+        
+        
+    }else  if ([key isEqualToString:@"earnings"]) {
+        if (![currentPage isEqualToString:key]) {
+            
+            _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
+            //    [[self nav] popViewControllerAnimated:NO];
+            [[self nav] pushViewController:_settingPage animated:YES];
+            
+            currentPage=key;
+            [_Pagestuck addObject:key];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+        
+        
+        
+        
     }else  if ([key isEqualToString:@"location"]) {
         if (![currentPage isEqualToString:key]) {
             

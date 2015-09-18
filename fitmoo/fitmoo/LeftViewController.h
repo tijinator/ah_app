@@ -19,6 +19,8 @@
 @property (strong, nonatomic)  NSArray * textArray;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 - (IBAction)humanButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *cartButton;
+- (IBAction)cartButtonClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *humanImage;
@@ -28,4 +30,5 @@
 @property (strong, nonatomic)  NSString * notifucationStatus;
 @property (strong, nonatomic)  NSString * prenotifucationStatus;
 @property (strong, nonatomic)  NSString * my_id;
+
 @end

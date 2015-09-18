@@ -7,7 +7,7 @@
 //
 
 #import "LeftViewController.h"
-
+#import "AFNetworking.h"
 @implementation LeftViewController
 
 
@@ -58,6 +58,31 @@
  
 }
 
+- (void) updateCartCount
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/item_count"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary * responseDic= responseObject;
+        NSNumber *cartNumber= [responseDic objectForKey:@"count"];
+       
+        [_cartButton setTitle:cartNumber.stringValue forState:UIControlStateNormal];
+        
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+
+    
+}
+
 - (void) updateTopImage: (NSNotification * ) note
 {
     User * localuser= (User *) [note object];
@@ -81,6 +106,8 @@
     [_humanImage addSubview:view];
     _my_id=localuser.user_id;
     _nameLabel.text= localuser.name.uppercaseString;
+    
+    [self updateCartCount];
     
 }
 //Making an AsynchronousRequest to get the image download
@@ -109,6 +136,7 @@
     
      _nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_nameLabel respectToSuperFrame:self.view];
      _humanImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_humanImage respectToSuperFrame:self.view];
+     _cartButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cartButton respectToSuperFrame:self.view];
 }
 
 
@@ -234,5 +262,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)humanButtonClick:(id)sender {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"profile"];
+}
+- (IBAction)cartButtonClick:(id)sender {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"cart"];
+    
+    
 }
 @end

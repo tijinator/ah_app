@@ -95,6 +95,48 @@
      ];
 }
 
+- (void) updateShippingAddressType:(NSString *)type_id with:(NSString *)address_id
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",type_id, @"address_type_id",address_id, @"id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        [self updateBillingAddressType:@"1" with:_billingAddress.address_id];
+        
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+              [indicatorView removeFromSuperview];} // failure callback block
+     ];
+    
+}
+
+- (void) updateBillingAddressType:(NSString *)type_id with:(NSString *)address_id
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",type_id, @"address_type_id",address_id, @"id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        [self validateCart];
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);
+              _BuyNowButton.userInteractionEnabled=YES;
+              [indicatorView removeFromSuperview];} // failure callback block
+     ];
+
+}
+
 - (void) createShipingAddress
 {
     
@@ -226,7 +268,7 @@
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         if (_shippingAddress!=nil&&_billingAddress!=nil) {
-            [self validateCart];
+            [self updateShippingAddressType:@"2" with:_shippingAddress.address_id];
         }else
         {
             [self createShipingAddress];
