@@ -33,6 +33,13 @@
 }
 
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    if (_addressArray!=nil) {
+        [self.tableView reloadData];
+    }
+}
+
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didPostAddressFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPostAddressFinished:) name:@"didPostAddressFinished" object:nil];
@@ -230,7 +237,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ShopAddAddressViewController *AddressVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopAddAddressViewController"];
     
 
-    if (b.tag==0) {
+    if (b.tag==1000) {
         
         AddressVC.addreeType=[NSString stringWithFormat:@"add %@", _addreeType];
         
@@ -244,7 +251,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AddressVC.addressArray=_addressArray;
     AddressVC.stateArray=_stateArray;
-
+   
     
     [self.navigationController pushViewController:AddressVC animated:YES];
 
@@ -272,6 +279,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)backButtonClick:(id)sender {
+    int index=0;
+    for (int i=0; i<[_addressArray count]; i++) {
+        Address *ad= [_addressArray objectAtIndex:i];
+        
+        if ([ad.is_default_billing isEqualToString:@"1"]||[ad.is_default_shipping isEqualToString:@"1"]) {
+            index=i;
+        }
+    }
+    
+    Address *addr= [_addressArray objectAtIndex:index];
+    NSArray *array= [[NSArray alloc] initWithObjects:_addreeType,addr, nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didEditAddressFinished" object:array];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

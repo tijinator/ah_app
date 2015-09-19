@@ -26,10 +26,84 @@
     contentHight=[NSNumber numberWithInteger:110*[[FitmooHelper sharedInstance] frameRadio]];
     [self initFrames];
 
-    [self getOrders];
+   
     
     // Do any additional setup after loading the view.
 }
+
+- (void) viewWillAppear:(BOOL)animated
+{
+     [self getOrders];
+}
+
+- (void) parstOrders
+{
+    
+    _orderArray= [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *dic in _responseDic) {
+        
+        ShopOrder *order= [[ShopOrder alloc] init];
+        
+        order.title= [dic objectForKey:@"title"];
+        order.endorser_name= [dic objectForKey:@"endorser_name"];
+        if ([order.endorser_name isEqual:[NSNull null]]) {
+            order.endorser_name=@"";
+        }
+        
+        order.seller_name= [dic objectForKey:@"seller_name"];
+        order.status= [dic objectForKey:@"status"];
+        
+        NSNumber *order_id= [dic objectForKey:@"order_id"];
+        order.order_id= [order_id stringValue];
+        
+        order.placed_at= [dic objectForKey:@"placed_at"];
+        order.updated_at= [dic objectForKey:@"updated_at"];
+        order.payment_status= [dic objectForKey:@"payment_status"];
+        order.image_url= [dic objectForKey:@"image_url"];
+        order.options= [dic objectForKey:@"options"];
+        
+        if ([order.options isEqual:[NSNull null]]) {
+            order.options=@"";
+        }
+
+        
+        NSNumber *o_id= [dic objectForKey:@"id"];
+        order.o_id= [o_id stringValue];
+        
+        NSNumber *tracking_number= [dic objectForKey:@"tracking_number"];
+        if ([tracking_number isEqual:[NSNull null]]) {
+         order.tracking_number=@"";
+        }else
+        {
+        order.tracking_number= [tracking_number stringValue];
+        }
+      
+        order.total= [dic objectForKey:@"total"];
+        order.order_shipping_total=  [dic objectForKey:@"order_shipping_total"];
+      
+        NSDictionary *shippingDictionary=[dic objectForKey:@"shipping_address"];
+        order.shippingAddress.full_name=[shippingDictionary objectForKey:@"full_name"];
+        order.shippingAddress.address1=[shippingDictionary objectForKey:@"address1"];
+        order.shippingAddress.city=[shippingDictionary objectForKey:@"city"];
+        order.shippingAddress.state_name=[shippingDictionary objectForKey:@"state_name"];
+        order.shippingAddress.zipcode=[shippingDictionary objectForKey:@"zipcode"];
+        
+        
+        NSDictionary *billingDictionary=[dic objectForKey:@"billing_address"];
+        order.billingAddress.full_name=[billingDictionary objectForKey:@"full_name"];
+        order.billingAddress.address1=[billingDictionary objectForKey:@"address1"];
+        order.billingAddress.city=[billingDictionary objectForKey:@"city"];
+        order.billingAddress.state_name=[billingDictionary objectForKey:@"state_name"];
+        order.billingAddress.zipcode=[billingDictionary objectForKey:@"zipcode"];
+        
+        [_orderArray addObject:order];
+    }
+    
+    
+    [self.tableView reloadData];
+}
+
 
 - (void) getOrders
 {
@@ -40,12 +114,12 @@
     
     User *localUser= [[UserManager sharedUserManager] localUser];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",@"200",@"limit",@"0",@"offset",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/order/order_details"];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/orders/order_details"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _responseDic= responseObject;
         
         
-        
+        [self parstOrders];
         [self.tableView reloadData];
         
     } // success callback block
@@ -73,7 +147,7 @@
 {
     
     
-    return 1;
+    return [_orderArray count];
     
 }
 
@@ -91,23 +165,13 @@
         cell = [nib objectAtIndex:0];
     }
     
-//    cell.address=[_addressArray objectAtIndex:indexPath.section];
-//    [cell builtCell];
-//    cell.editButton.hidden=true;
-//    
-//    cell.useThisAddButton.hidden=false;
-//    cell.useThisAddButton.tag=indexPath.section;
-//    
-//    [cell.useThisAddButton addTarget:self action:@selector(useThisAddButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.order= [_orderArray objectAtIndex:indexPath.row];
+    [cell buildCell];
+    
+    
     
     contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
     return cell;
-    
-    
-    
-    
-    
-    
     
     
 }
@@ -118,6 +182,14 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopOrderDetailViewController *ordrVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopOrderDetailViewController"];
+    
+    ordrVC.order= [_orderArray objectAtIndex:indexPath.row];
+    
+    
+    [self.navigationController pushViewController:ordrVC animated:YES];
+
     
     
     

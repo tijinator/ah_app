@@ -10,6 +10,8 @@
 #import "FitmooHelper.h"
 #import "ShopPurchaseCell.h"
 #import "UserManager.h"
+#import "ShopOrder.h"
+#import "ShopOrderDetailViewController.h"
 
 @interface ShopPurchaseViewController : UIViewController
 

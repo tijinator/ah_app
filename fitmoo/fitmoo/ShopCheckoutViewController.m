@@ -10,6 +10,7 @@
 #import <SwipeBack/SwipeBack.h>
 #import "AFNetworking.h"
 #import "Stripe.h"
+#import "UserManager.h"
 @interface ShopCheckoutViewController ()
 {
       NSNumber * contentHight;
@@ -35,6 +36,9 @@
     [self createObservers];
     // Do any additional setup after loading the view.
 }
+
+
+
 
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didEditAddressFinished" object:nil];
@@ -84,6 +88,7 @@
         
     
         [indicatorView removeFromSuperview];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         _BuyNowButton.userInteractionEnabled=YES;
         
     } // success callback block
@@ -300,6 +305,8 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _responseDic= responseObject;
         _addressArray=[[NSMutableArray alloc] init];
+        _addressShipingArray=[[NSMutableArray alloc] init];
+        _addressBillingArray=[[NSMutableArray alloc] init];
         for (NSDictionary * dic in _responseDic) {
             Address *ad= [[FitmooHelper sharedInstance] parseAddress:dic];
             if ([ad.is_default_billing isEqualToString:@"1"]) {
@@ -308,6 +315,15 @@
             if ([ad.is_default_shipping isEqualToString:@"1"]) {
                 _shippingAddress=ad;
             }
+            
+            
+            if ([ad.address_type_id isEqualToString:@"2"]) {
+                [_addressShipingArray addObject:ad];
+            }
+            if ([ad.address_type_id isEqualToString:@"1"]) {
+                [_addressBillingArray addObject:ad];
+            }
+            
 
             [_addressArray addObject:ad];
         }
@@ -972,15 +988,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopAddressViewController *AddressVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopAddressViewController"];
     
-    AddressVC.addressArray= _addressArray;
+   
     AddressVC.stateArray=_stateArray;
     if (b.tag==1) {
         
         AddressVC.addreeType=@"shipping address";
+        AddressVC.addressArray= _addressShipingArray;
         
     }else
     {
         AddressVC.addreeType=@"billing address";
+        AddressVC.addressArray=_addressBillingArray;
     }
     
     [self.navigationController pushViewController:AddressVC animated:YES];

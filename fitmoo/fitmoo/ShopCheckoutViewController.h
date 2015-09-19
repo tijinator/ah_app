@@ -31,6 +31,8 @@
 @property (strong, nonatomic)  NSString * sptoken;
 
 @property (strong, nonatomic)  NSMutableArray * addressArray;
+@property (strong, nonatomic)  NSMutableArray * addressBillingArray;
+@property (strong, nonatomic)  NSMutableArray * addressShipingArray;
 @property (strong, nonatomic)  NSMutableArray * pickerDisplayArray;
 @property (strong, nonatomic)  UILabel * stateLabel;
 @property (strong, nonatomic)  UILabel * stateLabel1;

@@ -66,8 +66,13 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
+    NSString *address_type_id=@"1";
+    if ([_addreeType isEqualToString:@"add shipping address"]) {
+        address_type_id=@"2";
+    }
+    
     User *localUser= [[UserManager sharedUserManager] localUser];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",_address.full_name, @"full_name",_address.address1, @"address1",_address.address2, @"address2",_address.city, @"city",_address.zipcode, @"zipcode",_address.phone, @"phone",_address.state_id, @"state_id",@"0", @"address_type_id",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",_address.full_name, @"full_name",_address.address1, @"address1",_address.address2, @"address2",_address.city, @"city",_address.zipcode, @"zipcode",_address.phone, @"phone",_address.state_id, @"state_id",address_type_id, @"address_type_id",nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/address_create"];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         

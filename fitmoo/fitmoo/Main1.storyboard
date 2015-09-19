@@ -1419,6 +1419,9 @@
                                         <state key="normal" title="CANCEL">
                                             <color key="titleColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonClick:" destination="jVf-kO-MRF" eventType="touchUpInside" id="05N-AT-NgU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1427,6 +1430,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="JpV-iF-Ogk" id="4Gy-Tb-gju"/>
                         <outlet property="leftButton" destination="pwW-UT-lpK" id="N8Z-TG-dC0"/>
                         <outlet property="tableView" destination="ik2-y6-wjq" id="w6r-C6-uEm"/>
                         <outlet property="titleLabel" destination="tul-XW-eSK" id="dYJ-BH-Y7P"/>
