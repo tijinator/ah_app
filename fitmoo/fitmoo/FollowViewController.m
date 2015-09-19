@@ -928,7 +928,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image.frame.size.width, cell.image.frame.size.height)];
     headerImage2.userInteractionEnabled = NO;
     headerImage2.exclusiveTouch = NO;
-    headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
+  //  headerImage2.layer.cornerRadius=headerImage2.frame.size.width/2;
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
     
     headerImage2.imageURL =[NSURL URLWithString:tempUser.profile_avatar_thumb];

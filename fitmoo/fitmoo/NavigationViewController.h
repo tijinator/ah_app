@@ -24,6 +24,7 @@
 #import "SearchViewController.h"
 #import "CommunityPageViewController.h"
 #import "ShopCartViewController.h"
+#import "ShopPurchaseViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic)  SearchViewController *searchPage;
 @property (strong, nonatomic)  CommunityPageViewController *communityPage;
 @property (strong, nonatomic)  ShopCartViewController *cartPage;
+@property (strong, nonatomic)  ShopPurchaseViewController *purchasePage;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray *Pagestuck;
 

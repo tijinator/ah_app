@@ -1,14 +1,14 @@
 //
-//  ShopPurchaseCell.m
+//  ShopOrderDetailCell.m
 //  fitmoo
 //
-//  Created by hongjian lin on 9/17/15.
-//  Copyright (c) 2015 com.fitmoo. All rights reserved.
+//  Created by hongjian lin on 9/18/15.
+//  Copyright © 2015 com.fitmoo. All rights reserved.
 //
 
-#import "ShopPurchaseCell.h"
+#import "ShopOrderDetailCell.h"
 #import "FitmooHelper.h"
-@implementation ShopPurchaseCell
+@implementation ShopOrderDetailCell
 
 - (void)awakeFromNib {
     
@@ -20,12 +20,7 @@
 {
     
     self.contentView.frame=[[FitmooHelper sharedInstance] resizeFrameWithFrame:self.contentView respectToSuperFrame:nil];
-    _ImageButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_ImageButton respectToSuperFrame:nil];
-    _itemLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_itemLabel respectToSuperFrame:nil];
-    
-    
 
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

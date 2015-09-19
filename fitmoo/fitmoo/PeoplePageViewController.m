@@ -1499,6 +1499,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UIButton *button = (UIButton *)sender;
     NSInteger index=(NSInteger) button.tag/100-1;
+    
+    if ([_feedType isEqualToString:@"calendar"]) {
+        index=(NSInteger) button.tag/100-2;
+    }
+    
     HomeFeed *feed= [_homeFeedArray objectAtIndex:index];
     
 

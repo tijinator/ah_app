@@ -389,10 +389,11 @@
     
     }else  if ([key isEqualToString:@"purchases"]) {
         if (![currentPage isEqualToString:key]) {
-            
-            _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+            _purchasePage =[mainStoryboard instantiateViewControllerWithIdentifier:@"ShopPurchaseViewController"];
+           
             //    [[self nav] popViewControllerAnimated:NO];
-            [[self nav] pushViewController:_settingPage animated:YES];
+            [[self nav] pushViewController:_purchasePage animated:YES];
             
             currentPage=key;
             [_Pagestuck addObject:key];

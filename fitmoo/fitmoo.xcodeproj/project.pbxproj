@@ -551,6 +551,9 @@
 		27ADF1F81B14B1D8003A0A83 /* skipbar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF1C21B14B1D8003A0A83 /* skipbar@3x.png */; };
 		27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */; };
 		27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */; };
+		27AFADB41BACEE0C00FE42FA /* ShopOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFADB21BACEE0C00FE42FA /* ShopOrderDetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		27AFADB51BACEE0C00FE42FA /* ShopOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AFADB31BACEE0C00FE42FA /* ShopOrderDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
+		27AFADB81BACF53700FE42FA /* ShopOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFADB71BACF53700FE42FA /* ShopOrderDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		27B1B4661B17594900F5F812 /* ForgotPdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B1B4651B17594900F5F812 /* ForgotPdViewController.m */; };
 		27B1B4691B175FE100F5F812 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B1B4681B175FE100F5F812 /* NavigationViewController.m */; };
 		27B1B46C1B1763C200F5F812 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B1B46B1B1763C200F5F812 /* BaseViewController.m */; };
@@ -1323,6 +1326,11 @@
 		27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestViewController.m; sourceTree = "<group>"; };
 		27ADF1FD1B1519AD003A0A83 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		27AFADB11BACEE0C00FE42FA /* ShopOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderDetailCell.h; sourceTree = "<group>"; };
+		27AFADB21BACEE0C00FE42FA /* ShopOrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderDetailCell.m; sourceTree = "<group>"; };
+		27AFADB31BACEE0C00FE42FA /* ShopOrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopOrderDetailCell.xib; sourceTree = "<group>"; };
+		27AFADB61BACF53700FE42FA /* ShopOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderDetailViewController.h; sourceTree = "<group>"; };
+		27AFADB71BACF53700FE42FA /* ShopOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderDetailViewController.m; sourceTree = "<group>"; };
 		27B1B4641B17594900F5F812 /* ForgotPdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPdViewController.h; sourceTree = "<group>"; };
 		27B1B4651B17594900F5F812 /* ForgotPdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPdViewController.m; sourceTree = "<group>"; };
 		27B1B4671B175FE100F5F812 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -1804,6 +1812,8 @@
 				27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */,
 				27F9DC9E1BABA24600F2A534 /* ShopPurchaseViewController.h */,
 				27F9DC9F1BABA24600F2A534 /* ShopPurchaseViewController.m */,
+				27AFADB61BACF53700FE42FA /* ShopOrderDetailViewController.h */,
+				27AFADB71BACF53700FE42FA /* ShopOrderDetailViewController.m */,
 				27F9DCA11BABA25F00F2A534 /* ShopEarningViewController.h */,
 				27F9DCA21BABA25F00F2A534 /* ShopEarningViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
@@ -2507,6 +2517,9 @@
 				27F9DCA41BABA57800F2A534 /* ShopPurchaseCell.h */,
 				27F9DCA51BABA57800F2A534 /* ShopPurchaseCell.m */,
 				27F9DCA61BABA57800F2A534 /* ShopPurchaseCell.xib */,
+				27AFADB11BACEE0C00FE42FA /* ShopOrderDetailCell.h */,
+				27AFADB21BACEE0C00FE42FA /* ShopOrderDetailCell.m */,
+				27AFADB31BACEE0C00FE42FA /* ShopOrderDetailCell.xib */,
 				27A665401BA3106A00CF0FAA /* CheckoutAdrPrefillCell.h */,
 				27A665411BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m */,
 				27A665421BA3106A00CF0FAA /* CheckoutAdrPrefillCell.xib */,
@@ -2705,6 +2718,7 @@
 				27CBC0D71B0F84DB00699E1E /* bluepeopleicon@3x.png in Resources */,
 				27A1015E1B3342C3007B7BF3 /* searchfollowingbtn@3x.png in Resources */,
 				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
+				27AFADB51BACEE0C00FE42FA /* ShopOrderDetailCell.xib in Resources */,
 				27ADF1DE1B14B1D8003A0A83 /* invalidalert.png in Resources */,
 				27DDF4371B7B7C140011BB46 /* searchrightarrow.png in Resources */,
 				27A101841B334554007B7BF3 /* newposts@2x.png in Resources */,
@@ -3315,6 +3329,7 @@
 				27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */,
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
 				27C319AC1BA223CE00701D86 /* State.m in Sources */,
+				27AFADB41BACEE0C00FE42FA /* ShopOrderDetailCell.m in Sources */,
 				27A101211B3334A7007B7BF3 /* SearchViewController.m in Sources */,
 				2736B2271AEFD9C50013B4B9 /* BasePostViewController.m in Sources */,
 				271DA84D1B555DDA00D4E075 /* CommunityPageViewController.m in Sources */,
@@ -3351,6 +3366,7 @@
 				27B3DFA81B98BD4A00423D88 /* Matrixs.m in Sources */,
 				27A6E71F1B305EF0000104CB /* NotificationViewController.m in Sources */,
 				2738D9321B024E6100F5087E /* BentonSansExtraComp.m in Sources */,
+				27AFADB81BACF53700FE42FA /* ShopOrderDetailViewController.m in Sources */,
 				27A3AC131B962D4A00D78AAA /* ShopTableViewCell.m in Sources */,
 				27988CC51B0BCE9A00BDE8EB /* SecondFollowViewController.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,

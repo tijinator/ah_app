@@ -7,20 +7,130 @@
 //
 
 #import "ShopPurchaseViewController.h"
-
+#import <SwipeBack/SwipeBack.h>
+#import "AFNetworking.h"
 @interface ShopPurchaseViewController ()
-
+{
+    NSNumber * contentHight;
+    NSInteger selectedIndex;
+    UIView *indicatorView;
+}
 @end
 
 @implementation ShopPurchaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.swipeBackEnabled = NO;
+    selectedIndex=0;
+    contentHight=[NSNumber numberWithInteger:110*[[FitmooHelper sharedInstance] frameRadio]];
     [self initFrames];
+
+    [self getOrders];
     
     // Do any additional setup after loading the view.
 }
+
+- (void) getOrders
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",@"200",@"limit",@"0",@"offset",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/order/order_details"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        _responseDic= responseObject;
+        
+        
+        
+        [self.tableView reloadData];
+        
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);
+         
+             [indicatorView removeFromSuperview];} // failure callback block
+     ];
+    
+}
+
+
+
+#pragma mark - UITableViewDelegate
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    
+    
+    return 1;
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    ShopPurchaseCell *cell =(ShopPurchaseCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShopPurchaseCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+//    cell.address=[_addressArray objectAtIndex:indexPath.section];
+//    [cell builtCell];
+//    cell.editButton.hidden=true;
+//    
+//    cell.useThisAddButton.hidden=false;
+//    cell.useThisAddButton.tag=indexPath.section;
+//    
+//    [cell.useThisAddButton addTarget:self action:@selector(useThisAddButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+    return cell;
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+    
+    
+}
+
+// multy high table cell
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    return contentHight.intValue;
+}
+
+
 
 
 - (void) initFrames
@@ -43,6 +153,10 @@
     
     
     
+}
+
+- (IBAction)backButtonClick:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
 }
 
 - (void)didReceiveMemoryWarning {

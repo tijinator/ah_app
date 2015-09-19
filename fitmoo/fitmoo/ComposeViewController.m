@@ -211,7 +211,13 @@
     
     //    UILabel *nameLabel=(UILabel *) [cell viewWithTag:6];
     UILabel *nameLabel=[[UILabel alloc] init];
-    nameLabel.frame= CGRectMake(58, 16, 130, 41);
+    nameLabel.frame= CGRectMake(58, 25, 130, 41);
+    
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    if (currSysVer.doubleValue<9.0) {
+        nameLabel.frame=CGRectMake(58, 20, 130, 41);
+    }
+    
     nameLabel.numberOfLines=2;
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     imageview.layer.cornerRadius=imageview.frame.size.width/2;

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopPurchaseCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIButton *ImageButton;
+@property (strong, nonatomic) IBOutlet UILabel *itemLabel;
 
 @end
