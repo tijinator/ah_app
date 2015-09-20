@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"purchases.png",@"logout.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Discover",@"My Purchases",@"Logout", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"purchases.png",@"earnings.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Discover",@"My Purchases",@"My Earning", nil];
     
     
     self.tableView = ({
@@ -234,14 +234,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"purchases"];
     }else if (indexPath.row==6) {
         
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
-                                                       message:@"Are you sure you want to logout?"
-                                                      delegate:self
-                                             cancelButtonTitle:@"No"
-                                             otherButtonTitles:@"Yes",nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"
+//                                                       message:@"Are you sure you want to logout?"
+//                                                      delegate:self
+//                                             cancelButtonTitle:@"No"
+//                                             otherButtonTitles:@"Yes",nil];
+//        [alert show];
+//        
+//         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
         
-         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"earnings"];
        
     }
 //    else

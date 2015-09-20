@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BentonSans-Bold.otf">
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
+        </mutableArray>
+        <mutableArray key="BentonSansComp-Bold.otf">
+            <string>BentonSans-ExtraCondensedBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="400" id="KGk-i7-Jjw" customClass="ShopEarningCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="399.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR SALES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kft-ef-3Gf" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="200" width="121" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.55294117647058827" green="0.60392156862745094" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dr3-WR-tu1" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="200" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Gk-HV-AyO" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="225" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XFN-nu-bnU" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="254" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jte-1R-TA7" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="283" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U2t-CS-Du3" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="326" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lok-Te-J3Q" customClass="BentonSansBold">
+                        <rect key="frame" x="198" y="355" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR ENDORSEMENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CeQ-4g-rNO" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="225" width="144" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PENDING SALES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e2e-GB-KMh" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="254" width="121" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUSLY REDEEMED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MCW-Qb-yUH" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="326" width="161" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL EARNINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xp6-8T-iba" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="355" width="121" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REDEEMABLE BALANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mVJ-m6-3rD" customClass="BentonSansBold">
+                        <rect key="frame" x="65" y="70" width="191" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D7N-a1-uiJ">
+                        <rect key="frame" x="47" y="99" width="227" height="45"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-ExtraCondensedBold" family="BentonSans" pointSize="33"/>
+                        <color key="textColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PENDING ENDORSEMENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OPP-2y-yAL" customClass="BentonSansBold">
+                        <rect key="frame" x="20" y="283" width="167" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="endorsLabel" destination="0Gk-HV-AyO" id="YjI-F2-Crz"/>
+                <outlet property="label1" destination="mVJ-m6-3rD" id="IL8-xn-7zO"/>
+                <outlet property="label2" destination="kft-ef-3Gf" id="zu3-hQ-ZEH"/>
+                <outlet property="label3" destination="CeQ-4g-rNO" id="110-Q4-Tzh"/>
+                <outlet property="label4" destination="e2e-GB-KMh" id="29L-vB-8g9"/>
+                <outlet property="label5" destination="OPP-2y-yAL" id="owv-Ka-qyH"/>
+                <outlet property="label6" destination="MCW-Qb-yUH" id="teo-XI-1Uj"/>
+                <outlet property="label7" destination="Xp6-8T-iba" id="8Gl-kN-u56"/>
+                <outlet property="pendingEndorseLabel" destination="Jte-1R-TA7" id="Iau-K0-2I8"/>
+                <outlet property="pendingSaleLabel" destination="XFN-nu-bnU" id="vkX-1d-WS5"/>
+                <outlet property="previouslyReddeemLabel" destination="U2t-CS-Du3" id="ffm-rZ-3gI"/>
+                <outlet property="redeemLabel" destination="D7N-a1-uiJ" id="GLg-RE-5PH"/>
+                <outlet property="saleLabel" destination="Dr3-WR-tu1" id="uof-Zy-OPE"/>
+                <outlet property="totalEarningLabel" destination="Lok-Te-J3Q" id="dOe-3N-1yr"/>
+            </connections>
+            <point key="canvasLocation" x="164" y="406"/>
+        </tableViewCell>
+    </objects>
+</document>

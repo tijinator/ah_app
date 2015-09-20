@@ -405,10 +405,12 @@
         
     }else  if ([key isEqualToString:@"earnings"]) {
         if (![currentPage isEqualToString:key]) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+            _earningPage =[mainStoryboard instantiateViewControllerWithIdentifier:@"ShopEarningViewController"];
             
-            _settingPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingViewController"];
-            //    [[self nav] popViewControllerAnimated:NO];
-            [[self nav] pushViewController:_settingPage animated:YES];
+            
+      
+            [[self nav] pushViewController:_earningPage animated:YES];
             
             currentPage=key;
             [_Pagestuck addObject:key];

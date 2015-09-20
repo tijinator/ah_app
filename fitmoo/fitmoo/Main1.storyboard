@@ -11,6 +11,7 @@
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1440,6 +1441,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yA-Cj-urn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-165" y="1511"/>
+        </scene>
+        <!--Shop Earning View Controller-->
+        <scene sceneID="tdj-Lh-T17">
+            <objects>
+                <viewController storyboardIdentifier="ShopEarningViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UlQ-MW-i4z" customClass="ShopEarningViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O8R-Sw-w1j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="T5e-Zs-yhg">
+                                <rect key="frame" x="0.0" y="45" width="320" height="475"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="110" id="Rza-hq-szk">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rza-hq-szk" id="h8U-B1-Zgk">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UlQ-MW-i4z" id="PGy-lo-UJr"/>
+                                    <outlet property="delegate" destination="UlQ-MW-i4z" id="qzA-xi-B8t"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="top" id="hva-Vj-KVu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AvV-Ic-CB2">
+                                        <rect key="frame" x="0.0" y="22" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="whitearrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClick:" destination="UlQ-MW-i4z" eventType="touchUpInside" id="pN1-xk-tVT"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY EARNINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TW2-YA-QPe" customClass="BentonSansBold">
+                                        <rect key="frame" x="40" y="28" width="240" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button hidden="YES" opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0S4-yP-22b" customClass="BSBoldButton">
+                                <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="ADD NEW SHIPPING ADDRESS">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="BuyNowButtonClick:" destination="UlQ-MW-i4z" eventType="touchUpInside" id="6jO-2O-jcG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="BuyNowButton" destination="0S4-yP-22b" id="JPB-9b-nVv"/>
+                        <outlet property="leftButton" destination="AvV-Ic-CB2" id="Fw2-hb-P7m"/>
+                        <outlet property="tableView" destination="T5e-Zs-yhg" id="65a-A4-B9u"/>
+                        <outlet property="titleLabel" destination="TW2-YA-QPe" id="CWN-qC-tzm"/>
+                        <outlet property="topView" destination="hva-Vj-KVu" id="HUG-yk-eau"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Fa-XD-uQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="1511"/>
         </scene>
     </scenes>
     <resources>
