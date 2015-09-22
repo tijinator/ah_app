@@ -204,7 +204,7 @@
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
         [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
-        [_variantsButton2 setTitle:@"QTY" forState:UIControlStateNormal];
+        [_variantsButton2 setTitle:@"Qty" forState:UIControlStateNormal];
     }else if ([_homeFeed.product.variant_options_array count]==2) {
         [_variantsButton4 removeFromSuperview];
         [_homeFeed.product resetOptions];
@@ -214,7 +214,7 @@
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:1] ;
         [_variantsButton2 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
-        [_variantsButton3 setTitle:@"QTY" forState:UIControlStateNormal];
+        [_variantsButton3 setTitle:@"Qty" forState:UIControlStateNormal];
         
     }else if ([_homeFeed.product.variant_options_array count]==3) {
         [_homeFeed.product resetOptions];
@@ -229,14 +229,14 @@
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:2] ;
         [_variantsButton3 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
         
-        [_variantsButton4 setTitle:@"QTY" forState:UIControlStateNormal];
+        [_variantsButton4 setTitle:@"Qty" forState:UIControlStateNormal];
         
     }else if ([_homeFeed.product.variant_options_array count]==0) {
         [_variantsButton4 removeFromSuperview];
         [_variantsButton3 removeFromSuperview];
         [_variantsButton2 removeFromSuperview];
         
-        [_variantsButton1 setTitle:@"QTY" forState:UIControlStateNormal];
+        [_variantsButton1 setTitle:@"Qty" forState:UIControlStateNormal];
         
     }
     

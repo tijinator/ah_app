@@ -425,8 +425,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([_pickerDisplayArray count]>0) {
         NSString *selectedString=[_pickerDisplayArray objectAtIndex:row];
-        
         [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
+        if ([selectedString isEqualToString:@"0"]) {
+              [_SelectedVariantButton setTitle:@"Qty" forState:UIControlStateNormal];
+        }
+       
         
         for (int i=0; i<[_homeFeed.product.variant_matrix_array count]; i++) {
             [_homeFeed.product resetMatrixs];
@@ -1062,9 +1065,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         quantity=_variantButton4.titleLabel.text;
     }
     
-    if ([quantity isEqualToString:@"QTY"]) {
+    if ([quantity isEqualToString:@"Qty"]) {
         UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                          message : @"please select QTY." delegate : nil cancelButtonTitle : @"OK"
+                                                          message : @"please select Qty." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
         return;
@@ -1088,6 +1091,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         [self openShopCartPage];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      

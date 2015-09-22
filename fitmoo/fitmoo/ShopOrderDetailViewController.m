@@ -66,6 +66,11 @@
     }
     
     cell.order= _order;
+    
+    if (![_order.status.uppercaseString isEqualToString:@"PENDING"]) {
+        _cancelButton.hidden=true;
+    }
+    
     [cell buildCell];
     
     

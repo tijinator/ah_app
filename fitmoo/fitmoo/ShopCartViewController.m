@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initFrames];
+    _count=1;
     contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
   //  [self getShopCart];
@@ -121,7 +122,8 @@
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/remove"];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
 
-        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
+         [self getShopCart];
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
              NSLog(@"Error: %@", error);} // failure callback block
@@ -333,6 +335,25 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     
 }
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableView.contentOffset.y<-75){
+        if (_count==0) {
+            [self getShopCart];
+        }
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+   else
+    {
+        _count=0;
+    }
+    
+}
+
 
 - (IBAction)backButtonClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

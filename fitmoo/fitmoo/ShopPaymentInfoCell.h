@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShopPaymentInfoCell : UITableViewCell
+@interface ShopPaymentInfoCell : UITableViewCell<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *cardType;
 @property (strong, nonatomic) IBOutlet UITextField *cardNumber;
 @property (strong, nonatomic) IBOutlet UILabel *date;

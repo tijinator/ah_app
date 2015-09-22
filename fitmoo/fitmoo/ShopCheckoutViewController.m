@@ -91,6 +91,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         _BuyNowButton.userInteractionEnabled=YES;
         
+        [self.navigationController popViewControllerAnimated:YES];
+        
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"Error: %@", error);
@@ -828,6 +830,8 @@
             cell.cardNumber.textColor=[UIColor blackColor];
         }
         
+        [cell.cvc setReturnKeyType:UIReturnKeyDone];
+        [cell.cardNumber setReturnKeyType:UIReturnKeyDone];
         
         _monthLabel=cell.date;
         _yearLabel=cell.year;
@@ -885,7 +889,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self ValidateYourCard]==false) {
         return;
     }
-    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
     _BuyNowButton.userInteractionEnabled=NO;
     
     STPCard *card = [[STPCard alloc] init];

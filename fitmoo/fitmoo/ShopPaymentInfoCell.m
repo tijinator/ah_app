@@ -21,6 +21,12 @@
     // Configure the view for the selected state
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (void) initFrames
 {
     
@@ -31,7 +37,7 @@
     _year.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_year respectToSuperFrame:nil];
     _cvc.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cvc respectToSuperFrame:nil];
 
-    
+     
 }
 
 @end

@@ -54,4 +54,6 @@
 - (Address *) parseAddress:(NSDictionary *)addressDic;
 - (BOOL) checkStringIsNumberOnly:(NSString *)newString;
 
+- (UIView *) addActivityIndicatorView: (UIView *)indicatorView and:(UIView *) selfView text:(NSString *) text;
+
 @end
