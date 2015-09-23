@@ -654,7 +654,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 [_homeFeed.product resetOptions];
                 _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:i];
                 
-                if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
+                if ([title.uppercaseString isEqualToString:_homeFeed.product.variant_options.title.uppercaseString]) {
                     _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
                 }
                 
@@ -673,7 +673,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                     [_homeFeed.product resetOptions];
                     _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:i];
                     
-                    if ([title isEqualToString:_homeFeed.product.variant_options.title]) {
+                    if ([title.uppercaseString isEqualToString:_homeFeed.product.variant_options.title.uppercaseString]) {
                         _pickerDisplayArray=_homeFeed.product.variant_options.optionArray;
                     }
                     
@@ -690,7 +690,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                 for (int i=0; i<[_selectedMatrixs.matrix_option_array count]; i++) {
                     
                     //other button not selected
-                    if ([b.titleLabel.text isEqualToString:[_selectedMatrixs.matrix_option_array objectAtIndex:i]]) {
+                    if ([b.titleLabel.text.lowercaseString isEqualToString:[_selectedMatrixs.matrix_option_array objectAtIndex:i]]) {
                         _pickerDisplayArray=[_selectedMatrixs.matrix_data_array objectAtIndex:i];
                     }
                     
@@ -712,7 +712,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_typePicker reloadAllComponents];
     
     for (int i=0; i<[_pickerDisplayArray count]; i++) {
-        if ([title isEqualToString:[_pickerDisplayArray objectAtIndex:i]]) {
+        if ([title.lowercaseString isEqualToString:[_pickerDisplayArray objectAtIndex:i]]) {
             [_typePicker selectRow:i inComponent:0 animated:NO];
         }
     }

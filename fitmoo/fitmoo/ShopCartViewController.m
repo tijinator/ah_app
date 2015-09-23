@@ -283,7 +283,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopCheckoutViewController *ShopCheckout = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopCheckoutViewController"];
-    
+    ShopCheckout.shopCart=_shopCart;
     
     [self.navigationController pushViewController:ShopCheckout animated:YES];
 }

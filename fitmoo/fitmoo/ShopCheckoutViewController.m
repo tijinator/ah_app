@@ -846,11 +846,50 @@
         return cell;
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-    UILabel *label= (UILabel *) [cell viewWithTag:1];
-    label.frame= CGRectMake(23, 17, 275, 76);
+    
+    ShopInfoTotalCell *cell =(ShopInfoTotalCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShopInfoTotalCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    
+    if (_shopCart!=nil) {
+        
+        cell.label4.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.subtotal.floatValue];
+        cell.label5.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.shipping.floatValue];
+        cell.label6.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.total.floatValue];
+        cell.label7.text=[NSString stringWithFormat:@"$%0.2f", _shopCart.tax.floatValue];
+        cell.checkoutButton.hidden=true;
+  
+
+      
+    }
+    
+    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(23, 100, 275, 90)];
     label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
-    contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12.0f];
+
+    label.text=@"By clicking “Place Order” you confirm that you have read, understood, and accept our Terms and Conditions, Refund Policy and Privacy Policy.";
+    
+    
+    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
+    label.numberOfLines=5;
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    [style setLineSpacing:8];
+    
+
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName
+                             value:style
+                             range:NSMakeRange(0, label.text.length)];
+    
+    [label setAttributedText:attributedString];
+
+    [cell.contentView addSubview:label];
+    
+    contentHight=[NSNumber numberWithInt:200*[[FitmooHelper sharedInstance] frameRadio]];
     return cell;
     
     

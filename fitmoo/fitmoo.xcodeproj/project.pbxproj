@@ -454,6 +454,9 @@
 		27A665471BA323DB00CF0FAA /* ShopAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A665461BA323DB00CF0FAA /* ShopAddressViewController.m */; };
 		27A6654A1BA33C3D00CF0FAA /* ShopAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */; };
 		27A6E71F1B305EF0000104CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A6E71E1B305EF0000104CB /* NotificationViewController.m */; };
+		27A735711BB2323C004E7AB4 /* buynowbtn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A7356E1BB2323C004E7AB4 /* buynowbtn1.png */; settings = {ASSET_TAGS = (); }; };
+		27A735721BB2323C004E7AB4 /* buynowbtn1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A7356F1BB2323C004E7AB4 /* buynowbtn1@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27A735731BB2323C004E7AB4 /* buynowbtn1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A735701BB2323C004E7AB4 /* buynowbtn1@3x.png */; settings = {ASSET_TAGS = (); }; };
 		27ABBEFE1B84CC5300AB54D2 /* instagramlogo8.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */; };
 		27ABBF001B84CE2900AB54D2 /* instagramlogo8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */; };
 		27ABBF021B84CE3400AB54D2 /* instagramlogo8@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */; };
@@ -606,9 +609,6 @@
 		27BA5A461B6A50E500B30B62 /* workout_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA5A2E1B6A50E500B30B62 /* workout_black@2x.png */; };
 		27BA5A471B6A50E500B30B62 /* workout_black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA5A2F1B6A50E500B30B62 /* workout_black@3x.png */; };
 		27BA5A481B6A50E500B30B62 /* workout_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA5A301B6A50E500B30B62 /* workout_grey.png */; };
-		27BAF76E1B972FC6004E69B4 /* buynowbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BAF76B1B972FC6004E69B4 /* buynowbtn.png */; };
-		27BAF76F1B972FC6004E69B4 /* buynowbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BAF76C1B972FC6004E69B4 /* buynowbtn@2x.png */; };
-		27BAF7701B972FC6004E69B4 /* buynowbtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BAF76D1B972FC6004E69B4 /* buynowbtn@3x.png */; };
 		27BAF7731B97445B004E69B4 /* BentonSansExtraCompBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BAF7721B97445B004E69B4 /* BentonSansExtraCompBook.m */; };
 		27BC07CC1B1665A300AF414A /* buyicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07C91B1665A300AF414A /* buyicon.png */; };
 		27BC07CD1B1665A300AF414A /* buyicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BC07CA1B1665A300AF414A /* buyicon@2x.png */; };
@@ -1228,6 +1228,9 @@
 		27A665491BA33C3D00CF0FAA /* ShopAddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAddAddressViewController.m; sourceTree = "<group>"; };
 		27A6E71D1B305EF0000104CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		27A6E71E1B305EF0000104CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		27A7356E1BB2323C004E7AB4 /* buynowbtn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buynowbtn1.png; sourceTree = "<group>"; };
+		27A7356F1BB2323C004E7AB4 /* buynowbtn1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn1@2x.png"; sourceTree = "<group>"; };
+		27A735701BB2323C004E7AB4 /* buynowbtn1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn1@3x.png"; sourceTree = "<group>"; };
 		27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo8.png; sourceTree = "<group>"; };
 		27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo8@2x.png"; sourceTree = "<group>"; };
 		27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo8@3x.png"; sourceTree = "<group>"; };
@@ -1399,9 +1402,6 @@
 		27BA5A2E1B6A50E500B30B62 /* workout_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workout_black@2x.png"; sourceTree = "<group>"; };
 		27BA5A2F1B6A50E500B30B62 /* workout_black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workout_black@3x.png"; sourceTree = "<group>"; };
 		27BA5A301B6A50E500B30B62 /* workout_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workout_grey.png; sourceTree = "<group>"; };
-		27BAF76B1B972FC6004E69B4 /* buynowbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buynowbtn.png; sourceTree = "<group>"; };
-		27BAF76C1B972FC6004E69B4 /* buynowbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn@2x.png"; sourceTree = "<group>"; };
-		27BAF76D1B972FC6004E69B4 /* buynowbtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn@3x.png"; sourceTree = "<group>"; };
 		27BAF7711B97445B004E69B4 /* BentonSansExtraCompBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BentonSansExtraCompBook.h; sourceTree = "<group>"; };
 		27BAF7721B97445B004E69B4 /* BentonSansExtraCompBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BentonSansExtraCompBook.m; sourceTree = "<group>"; };
 		27BC07C91B1665A300AF414A /* buyicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyicon.png; sourceTree = "<group>"; };
@@ -1941,12 +1941,12 @@
 				27F9DC8C1BAB932900F2A534 /* earnings.png */,
 				27F9DC8D1BAB932900F2A534 /* earnings@2x.png */,
 				27F9DC8E1BAB932900F2A534 /* earnings@3x.png */,
+				27A7356E1BB2323C004E7AB4 /* buynowbtn1.png */,
+				27A7356F1BB2323C004E7AB4 /* buynowbtn1@2x.png */,
+				27A735701BB2323C004E7AB4 /* buynowbtn1@3x.png */,
 				27F9DC8F1BAB932900F2A534 /* purchases.png */,
 				27F9DC901BAB932900F2A534 /* purchases@2x.png */,
 				27F9DC911BAB932900F2A534 /* purchases@3x.png */,
-				27BAF76B1B972FC6004E69B4 /* buynowbtn.png */,
-				27BAF76C1B972FC6004E69B4 /* buynowbtn@2x.png */,
-				27BAF76D1B972FC6004E69B4 /* buynowbtn@3x.png */,
 				27FE15AB1B8FBF6F00E124EF /* followmeonfitmoo.png */,
 				27FE15AC1B8FBF6F00E124EF /* followmeonfitmoo@2x.png */,
 				27FE15AD1B8FBF6F00E124EF /* followmeonfitmoo@3x.png */,
@@ -2745,6 +2745,7 @@
 				2752EA181B015CBC003841DC /* whiteendorseicon_small@2x.png in Resources */,
 				2752EA201B015CBC003841DC /* reversecamera.png in Resources */,
 				27ADF1F41B14B1D8003A0A83 /* signupbtn@2x.png in Resources */,
+				27A735721BB2323C004E7AB4 /* buynowbtn1@2x.png in Resources */,
 				27AC92D71B066DF700BB7A0E /* selectedbars@3x.png in Resources */,
 				27ADE6461B3DC9FF001B8D99 /* ShareTableViewCell.xib in Resources */,
 				27AC92CF1B066DF000BB7A0E /* selectedbars_brand.png in Resources */,
@@ -2771,6 +2772,7 @@
 				2752EA1D1B015CBC003841DC /* bluewhitecamera.png in Resources */,
 				276FE3A11B866C0A009496DE /* instagramlogo_workout@3x.png in Resources */,
 				279E579F1B20B4EC0076C3B5 /* startshopping@2x.png in Resources */,
+				27A735731BB2323C004E7AB4 /* buynowbtn1@3x.png in Resources */,
 				27BA5A371B6A50E500B30B62 /* calendar_grey@2x.png in Resources */,
 				27B259931B1E493F00276273 /* greycommenticon.png in Resources */,
 				273FF5631AF7AA2C00B82DB3 /* leftmenuicon.png in Resources */,
@@ -3154,7 +3156,6 @@
 				2752EA281B015CBC003841DC /* whitearrow@3x.png in Resources */,
 				273FF54E1AF7AA2C00B82DB3 /* addusericon.png in Resources */,
 				2752EA2A1B015CBC003841DC /* x@2x.png in Resources */,
-				27BAF7701B972FC6004E69B4 /* buynowbtn@3x.png in Resources */,
 				27A101821B334554007B7BF3 /* logout@3x.png in Resources */,
 				27FE15A11B8F852B00E124EF /* invitebtn@3x.png in Resources */,
 				276FE3951B866332009496DE /* instagramlogo_product@3x.png in Resources */,
@@ -3169,6 +3170,7 @@
 				27988C861B0B7C7400BDE8EB /* mainmenu_houseicon.png in Resources */,
 				2738D90A1B023E9900F5087E /* greyendorseicon@3x.png in Resources */,
 				273FF5781AF7AA2C00B82DB3 /* whiteendorseicon_small.png in Resources */,
+				27A735711BB2323C004E7AB4 /* buynowbtn1.png in Resources */,
 				27988CBD1B0BB12500BDE8EB /* followsection_usericon@3x.png in Resources */,
 				2752E9F11B015CBC003841DC /* editprofile_btn@3x.png in Resources */,
 				279E57B71B20F0B40076C3B5 /* greywebsite@2x.png in Resources */,
@@ -3198,7 +3200,6 @@
 				27ADF1E61B14B1D8003A0A83 /* loginbtn@3x.png in Resources */,
 				27FE15A01B8F852B00E124EF /* invitebtn@2x.png in Resources */,
 				2760944D1AD708C100A769CE /* BentonSansComp-Book.otf in Resources */,
-				27BAF76E1B972FC6004E69B4 /* buynowbtn.png in Resources */,
 				27988C831B0B7C7400BDE8EB /* mainmenu_followicon.png in Resources */,
 				27ADF1F01B14B1D8003A0A83 /* passwordalert.png in Resources */,
 				2752E9FB1B015CBC003841DC /* hearticon@3x.png in Resources */,
@@ -3225,7 +3226,6 @@
 				273FF5541AF7AA2C00B82DB3 /* commenticon.png in Resources */,
 				27C687AB1BAEFE39005CD032 /* ShopRedemCell.xib in Resources */,
 				2752E9FF1B015CBC003841DC /* location.png in Resources */,
-				27BAF76F1B972FC6004E69B4 /* buynowbtn@2x.png in Resources */,
 				27AC92DC1B066E0300BB7A0E /* selectedsquares_brand@2x.png in Resources */,
 				279E57A01B20B4EC0076C3B5 /* startshopping@3x.png in Resources */,
 				27AC92E11B067E9500BB7A0E /* redheart.png in Resources */,

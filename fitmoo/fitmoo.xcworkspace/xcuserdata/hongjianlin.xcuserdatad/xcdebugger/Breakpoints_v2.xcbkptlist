@@ -10365,22 +10365,6 @@
             timestampString = "464573944.716496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "525"
-            endingLineNumber = "525"
-            landmarkName = "-checkeQTYButton:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "fitmoo/ShopDetailViewController.m"
-            timestampString = "464573944.716496"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "671"
             endingLineNumber = "671"
             landmarkName = "-variantsButtonClick:"
@@ -10938,11 +10922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/ShopCheckoutViewController.m"
-            timestampString = "464576166.789489"
+            timestampString = "464660745.365472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "957"
+            endingLineNumber = "957"
             landmarkName = "-BuyNowButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -11306,11 +11290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/ShopCheckoutViewController.m"
-            timestampString = "464576166.789489"
+            timestampString = "464660745.365472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "996"
-            endingLineNumber = "996"
+            startingLineNumber = "1035"
+            endingLineNumber = "1035"
             landmarkName = "-editButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -11514,11 +11498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/ShopCheckoutViewController.m"
-            timestampString = "464576166.789489"
+            timestampString = "464660745.365472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "901"
-            endingLineNumber = "901"
+            startingLineNumber = "940"
+            endingLineNumber = "940"
             landmarkName = "-BuyNowButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -11658,11 +11642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/ShopCheckoutViewController.m"
-            timestampString = "464576166.789489"
+            timestampString = "464660745.365472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "914"
-            endingLineNumber = "914"
+            startingLineNumber = "953"
+            endingLineNumber = "953"
             landmarkName = "-BuyNowButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -11674,11 +11658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fitmoo/ShopCheckoutViewController.m"
-            timestampString = "464576166.789489"
+            timestampString = "464660745.365472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "907"
-            endingLineNumber = "907"
+            startingLineNumber = "946"
+            endingLineNumber = "946"
             landmarkName = "-BuyNowButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -12286,6 +12270,38 @@
             startingLineNumber = "344"
             endingLineNumber = "344"
             landmarkName = "-scrollViewDidScroll:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/HomePageViewController.m"
+            timestampString = "464662226.196298"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1004"
+            endingLineNumber = "1004"
+            landmarkName = "-shareButtonClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "fitmoo/ActionSheetViewController.m"
+            timestampString = "464662274.188167"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-InstagramButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

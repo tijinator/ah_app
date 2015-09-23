@@ -17,6 +17,7 @@
 #import "State.h"
 #import "CheckoutAdrPrefillCell.h"
 #import "ShopAddressViewController.h"
+#import "ShopInfoTotalCell.h"
 @interface ShopCheckoutViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -59,6 +60,9 @@
 @property (strong, nonatomic)  UITextField *phoneTextField;
 @property (strong, nonatomic)  UITextField *zipTextField;
 @property (strong, nonatomic)  UITextField *Address2TextField;
+
+
+@property (strong, nonatomic)  ShopCart * shopCart;
 
 @property (strong, nonatomic)  UITextField *nameTextField1;
 @property (strong, nonatomic)  UITextField *AddressTextField1;

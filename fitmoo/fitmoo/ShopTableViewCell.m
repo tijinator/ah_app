@@ -194,6 +194,15 @@
     self.buttomView.frame= CGRectMake(self.buttomView.frame.origin.x, self.commentView.frame.size.height+self.commentView.frame.origin.y+1, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
 }
 
+- (NSString *)capitalFirstLetter:(NSString *)string
+{
+    
+    NSString *firstCapChar = [[string substringToIndex:1] capitalizedString];
+    NSString *cappedString = [string stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:firstCapChar];
+    
+    return cappedString;
+}
+
 - (void) setVariantsFrame
 {
     if ([_homeFeed.product.variant_options_array count]==1) {
@@ -203,31 +212,33 @@
         
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
-        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        
+      
+        [_variantsButton1 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         [_variantsButton2 setTitle:@"Qty" forState:UIControlStateNormal];
     }else if ([_homeFeed.product.variant_options_array count]==2) {
         [_variantsButton4 removeFromSuperview];
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
-        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton1 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:1] ;
-        [_variantsButton2 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton2 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         [_variantsButton3 setTitle:@"Qty" forState:UIControlStateNormal];
         
     }else if ([_homeFeed.product.variant_options_array count]==3) {
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:0] ;
-        [_variantsButton1 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton1 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:1] ;
-        [_variantsButton2 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton2 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         
         [_homeFeed.product resetOptions];
         _homeFeed.product.variant_options=[_homeFeed.product.variant_options_array objectAtIndex:2] ;
-        [_variantsButton3 setTitle:_homeFeed.product.variant_options.title forState:UIControlStateNormal];
+        [_variantsButton3 setTitle:[self capitalFirstLetter:_homeFeed.product.variant_options.title] forState:UIControlStateNormal];
         
         [_variantsButton4 setTitle:@"Qty" forState:UIControlStateNormal];
         
