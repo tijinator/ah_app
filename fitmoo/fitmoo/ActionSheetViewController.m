@@ -389,7 +389,8 @@
     NSLog(@"jpg path %@",jpgPath);
     NSString *newJpgPath = [NSString stringWithFormat:@"file://%@",jpgPath]; //[[NSString alloc] initWithFormat:@"file://%@", jpgPath] ];
     NSLog(@"with File path %@",newJpgPath);
-    NSURL *igImageHookFile = [[NSURL alloc] initFileURLWithPath:newJpgPath];
+  //  NSURL *igImageHookFile = [[NSURL alloc] initFileURLWithPath:newJpgPath];
+    NSURL *igImageHookFile = [NSURL URLWithString:newJpgPath];
     NSLog(@"url Path %@",igImageHookFile);
     
     self.docFile.UTI = @"com.instagram.exclusivegram";
