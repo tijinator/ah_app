@@ -14,7 +14,7 @@
  
     NSNumber * contentHight;
     NSString *deleteCartId;
-
+    UIView *indicatorView;
 }
 @end
 
@@ -134,6 +134,8 @@
 -(void) getShopCart
 {
     
+      indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Loading..."];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -154,8 +156,11 @@
         [self.tableView reloadData];
         }
         
+        [indicatorView removeFromSuperview];
+        
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+               [indicatorView removeFromSuperview];
              NSLog(@"Error: %@", error);} // failure callback block
      ];
     

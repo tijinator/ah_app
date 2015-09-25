@@ -14,8 +14,10 @@
 @interface ShopCheckoutViewController ()
 {
       NSNumber * contentHight;
-     NSInteger selectedIndex;
-    UIView *indicatorView;
+      NSInteger selectedIndex;
+      UIView *indicatorView;
+    
+      bool validate;
 }
 @end
 
@@ -34,6 +36,8 @@
     [self getDefaultAddress];
     [self getStateList];
     [self createObservers];
+    
+    validate=true;
     // Do any additional setup after loading the view.
 }
 
@@ -616,17 +620,41 @@
             cell.stateTextField.text=_stateLabel.text;
             if (![_stateLabel.text isEqualToString:@"State"]) {
                 cell.stateTextField.textColor=[UIColor blackColor];
+            }else
+            {
+                if (validate==false) {
+                    [self highLightButtons:cell.stateTextField];
+                }
             }
+
             
         }
         if (_nameTextField!=nil) {
             cell.nameTextField.text=_nameTextField.text;
             cell.nameTextField.textColor=[UIColor blackColor];
+            if ([cell.nameTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.nameTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.nameTextField];
+            }
         }
+
         if (_AddressTextField!=nil) {
             cell.AddressTextField.text=_AddressTextField.text;
             cell.AddressTextField.textColor=[UIColor blackColor];
+            if ([cell.AddressTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.AddressTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.AddressTextField];
+            }
         }
+
         if (_Address2TextField!=nil) {
             cell.Address2TextField.text=_Address2TextField.text;
             cell.Address2TextField.textColor=[UIColor blackColor];
@@ -634,15 +662,42 @@
         if (_cityTextField!=nil) {
             cell.cityTextField.text=_cityTextField.text;
             cell.cityTextField.textColor=[UIColor blackColor];
+            if ([cell.cityTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.cityTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.cityTextField];
+            }
         }
+
         if (_phoneTextField!=nil) {
             cell.phoneTextField.text=_phoneTextField.text;
             cell.phoneTextField.textColor=[UIColor blackColor];
+            if ([cell.phoneTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.phoneTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.phoneTextField];
+            }
         }
+
         if (_zipTextField!=nil) {
             cell.zipTextField.text=_zipTextField.text;
             cell.zipTextField.textColor=[UIColor blackColor];
+            if ([cell.zipTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.zipTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.zipTextField];
+            }
         }
+
         
         
         
@@ -706,31 +761,81 @@
             cell.stateTextField.text=_stateLabel1.text;
             if (![_stateLabel1.text isEqualToString:@"State"]) {
                 cell.stateTextField.textColor=[UIColor blackColor];
+            }else
+            {
+                if (validate==false) {
+                    [self highLightButtons:cell.stateTextField];
+                }
             }
+
         }
         if (_nameTextField1!=nil) {
             cell.nameTextField.text=_nameTextField1.text;
             cell.nameTextField.textColor=[UIColor blackColor];
+            if ([cell.nameTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.nameTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.nameTextField];
+            }
         }
+
         if (_AddressTextField1!=nil) {
             cell.AddressTextField.text=_AddressTextField1.text;
             cell.AddressTextField.textColor=[UIColor blackColor];
+            if ([cell.AddressTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.AddressTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.AddressTextField];
+            }
         }
+
         if (_Address2TextField1!=nil) {
             cell.Address2TextField.text=_Address2TextField1.text;
             cell.Address2TextField.textColor=[UIColor blackColor];
         }
+
         if (_cityTextField1!=nil) {
             cell.cityTextField.text=_cityTextField1.text;
             cell.cityTextField.textColor=[UIColor blackColor];
+            if ([cell.cityTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.cityTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.cityTextField];
+            }
         }
+
         if (_phoneTextField1!=nil) {
             cell.phoneTextField.text=_phoneTextField1.text;
             cell.phoneTextField.textColor=[UIColor blackColor];
+            if ([cell.phoneTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.phoneTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.phoneTextField];
+            }
         }
         if (_zipTextField1!=nil) {
             cell.zipTextField.text=_zipTextField1.text;
             cell.zipTextField.textColor=[UIColor blackColor];
+            if ([cell.zipTextField.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.zipTextField];
+            }
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.zipTextField];
+            }
         }
         
         
@@ -802,14 +907,39 @@
             cell.date.text=_monthLabel.text;
             if (![_monthLabel.text isEqualToString:@"Month"]) {
                   cell.date.textColor=[UIColor blackColor];
+                [self dehighLightButtons:cell.date];
+            }else
+            {
+                if (validate==false) {
+                    [self highLightButtons:cell.date];
+                }
             }
+
           
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.date];
+            }
         }
+        
         
         if (_yearLabel!=nil) {
             cell.year.text=_yearLabel.text;
             if (![_yearLabel.text isEqualToString:@"Year"]) {
             cell.year.textColor=[UIColor blackColor];
+                 [self dehighLightButtons:cell.year];
+            }else
+            {
+                if (validate==false) {
+                    [self highLightButtons:cell.year];
+                }
+            }
+
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.year];
             }
         }
         
@@ -817,19 +947,54 @@
             cell.cardType.text=_cardTypeLabel.text;
             if (![_cardTypeLabel.text isEqualToString:@"Card Type"]) {
             cell.cardType.textColor=[UIColor blackColor];
+                 [self dehighLightButtons:cell.cardType];
+            }else
+            {
+                if (validate==false) {
+                    [self highLightButtons:cell.cardType];
+                }
             }
+
+        }else
+        {
+            if (validate==false) {
+                [self highLightButtons:cell.cardType];
+            }
+
         }
+        
         
         if (_cvcTextField!=nil) {
             cell.cvc.text=_cvcTextField.text;
             cell.cvc.textColor=[UIColor blackColor];
+             [self dehighLightButtons:cell.cvc];
+            
+            if ([cell.cvc.text isEqualToString:@""]&&validate==false) {
+                    [self highLightButtons:cell.cvc];
+            }
+        }else
+        {
+            if ([cell.cvc.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.cvc];
+            }
+            
         }
+
         
         if (_cardNumberTextField!=nil) {
             cell.cardNumber.text=_cardNumberTextField.text;
             cell.cardNumber.textColor=[UIColor blackColor];
+            [self dehighLightButtons:cell.cardNumber];
+            if ([cell.cardNumber.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.cardNumber];
+            }
+        }else
+        {
+            if ([cell.cardNumber.text isEqualToString:@""]&&validate==false) {
+                [self highLightButtons:cell.cardNumber];
+            }
+            
         }
-        
         [cell.cvc setReturnKeyType:UIReturnKeyDone];
         [cell.cardNumber setReturnKeyType:UIReturnKeyDone];
         
@@ -921,11 +1086,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     if (_shippingAddress==nil&&_billingAddress==nil) {
         if ([self ValidateAllFields]==false) {
+            validate=false;
+            [self.tableView reloadData:YES];
             return;
         }
     }
    
     if ([self ValidateYourCard]==false) {
+        validate=false;
+          [self.tableView reloadData:YES];
         return;
     }
     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
@@ -1064,7 +1233,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               message : @"Please select a type of card." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
-    
+            selectedIndex= 2;
+          
             return false;
         }
     
@@ -1073,6 +1243,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               message : @"Please enter card number." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
+            selectedIndex= 2;
+          
     
             return false;
         }
@@ -1082,6 +1254,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               message : @"Please select a Month." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
+            selectedIndex= 2;
+         
     
             return false;
         }
@@ -1091,7 +1265,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               message : @"Please select a Year." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
-    
+            selectedIndex= 2;
+          
             return false;
         }
     
@@ -1100,7 +1275,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               message : @"Please enter the card CVC." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
             [alert show ];
-            
+            selectedIndex= 2;
+          
             return false;
         }
     
@@ -1110,6 +1286,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your card number." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 2;
+      
         return false;
     }
     
@@ -1118,10 +1296,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your card CVC number." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 2;
+      
         return false;
     }
     
     return true;
+}
+
+- (void) highLightButtons:(UIView *) button
+{
+    [[button layer] setBorderWidth:2.0f];
+    [[button layer] setBorderColor:[UIColor redColor].CGColor];
+}
+
+- (void) dehighLightButtons:(UIView *) button
+{
+    [[button layer] setBorderWidth:0.0f];
+    
 }
 
 - (BOOL) ValidateAllFields
@@ -1133,6 +1325,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please type your name for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+   
         return false;
     }
     
@@ -1141,6 +1335,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your address1 for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+    
         return false;
     }
     
@@ -1149,6 +1345,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your city for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+      
         return false;
     }
     
@@ -1157,6 +1355,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please select a state for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+      
         return false;
     }
     
@@ -1165,6 +1365,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your zip code for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+   
         return false;
     }
     
@@ -1173,6 +1375,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your phone for shipping address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+    
         return false;
     }
     
@@ -1182,6 +1386,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your zip code." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+      
         return false;
     }
     
@@ -1191,6 +1397,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 0;
+       
         return false;
     }
     
@@ -1199,6 +1407,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please type your name for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+      
         return false;
     }
     
@@ -1207,6 +1417,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your address1 for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+     
         return false;
     }
     
@@ -1215,6 +1427,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your city for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+      
         return false;
     }
     
@@ -1223,6 +1437,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please select a state for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+     
         return false;
     }
     
@@ -1231,6 +1447,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your zip code for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+     
         return false;
     }
     
@@ -1239,6 +1457,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter your phone for billing address." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+     
         return false;
     }
     
@@ -1248,6 +1468,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your zip code." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+      
         return false;
     }
     
@@ -1257,6 +1479,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        selectedIndex= 1;
+      
         return false;
     }
 
