@@ -88,6 +88,13 @@
         
         _shopCart.shop_cart_detail.item_count= [detail objectForKey:@"item_count"];
         _shopCart.shop_cart_detail.item_details= [detail objectForKey:@"item_details"];
+        
+        if ([_shopCart.shop_cart_detail.item_details isEqual:[NSNull null]]) {
+           // _shopCart.shop_cart_detail.item_details=@"";
+            NSDictionary *data= [detail objectForKey:@"data"];
+             _shopCart.shop_cart_detail.item_details= [data objectForKey:@"location"];
+        }
+        
         _shopCart.shop_cart_detail.item_photo_url= [detail objectForKey:@"item_photo_url"];
          NSNumber *price=[detail objectForKey:@"price"];
         _shopCart.shop_cart_detail.price= [price stringValue];
