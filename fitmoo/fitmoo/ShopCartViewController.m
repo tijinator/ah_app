@@ -11,10 +11,11 @@
 #import "AFNetworking.h"
 @interface ShopCartViewController ()
 {
- 
+    bool pullDown;
     NSNumber * contentHight;
     NSString *deleteCartId;
     UIView *indicatorView;
+    
 }
 @end
 
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     [self initFrames];
     _count=1;
+     pullDown=false;
     contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
   //  [self getShopCart];
@@ -33,6 +35,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [self getShopCart];
+     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Loading..."];
 }
 
 -(void) generateShopCard: (NSDictionary *) dic
@@ -134,7 +137,7 @@
 -(void) getShopCart
 {
     
-      indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Loading..."];
+    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
@@ -155,6 +158,15 @@
         [self generateShopCard:_responseDic];
         [self.tableView reloadData];
         }
+        
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
+
         
         [indicatorView removeFromSuperview];
         
@@ -197,6 +209,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+   
    // lastIndex
     if (indexPath.row==[_shopCart.shop_cart_details count]) {
         ShopInfoTotalCell *cell =(ShopInfoTotalCell *) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -229,7 +242,14 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShopInfoCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
+    if (indexPath.row==0) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+        _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+        _activityIndicator.hidesWhenStopped = YES;
+        [cell.contentView addSubview:_activityIndicator];
+        cell.clipsToBounds=false;
+    }
     cell.shopCart=_shopCart;
     cell.shopCartDetail=[_shopCart.shop_cart_details objectAtIndex:indexPath.row];
     
@@ -341,12 +361,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (pullDown==true) {
+        [_tableView setContentOffset:CGPointMake(0, -60) animated:YES];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if(self.tableView.contentOffset.y<-75){
+        
+        [_activityIndicator startAnimating];
+        
+        
+        
+    
+        pullDown=true;
+         [self getShopCart];
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+    
+}
+
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
     if(self.tableView.contentOffset.y<-75){
         if (_count==0) {
-            [self getShopCart];
+         //   [self getShopCart];
+            [_activityIndicator startAnimating];
         }
         _count++;
         //it means table view is pulled down like refresh

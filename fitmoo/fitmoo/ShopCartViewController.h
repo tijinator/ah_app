@@ -26,7 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *BuyNowButton;
 - (IBAction)BuyNowButtonClick:(id)sender;
 @property (assign, nonatomic)  int count;
-
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  ShopCart * shopCart;

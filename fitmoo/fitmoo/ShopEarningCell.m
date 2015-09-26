@@ -17,15 +17,18 @@
 }
 - (void) buildCell
 {
-    _redeemLabel.text=[NSString stringWithFormat:@"$%@", _earning.redeemable ];
-    _saleLabel.text=[NSString stringWithFormat:@"$%@", _earning.completed_sales];
-    _endorsLabel.text=[NSString stringWithFormat:@"$%@", _earning.completed_endorsements];
-    
-    _pendingSaleLabel.text=[NSString stringWithFormat:@"$%@", _earning.pending_sales ];
-    _pendingEndorseLabel.text=[NSString stringWithFormat:@"$%@", _earning.pending_endorsements];
-    _previouslyReddeemLabel.text=[NSString stringWithFormat:@"$%@", _earning.redeemed];
-    
-    _totalEarningLabel.text=[NSString stringWithFormat:@"$%@", _earning.total_earnings];
+    if (_earning!=nil) {
+        _redeemLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.redeemable.floatValue ];
+        _saleLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.completed_sales.floatValue];
+        _endorsLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.completed_endorsements.floatValue];
+        
+        _pendingSaleLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.pending_sales.floatValue ];
+        _pendingEndorseLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.pending_endorsements.floatValue];
+        _previouslyReddeemLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.redeemed.floatValue];
+        
+        _totalEarningLabel.text=[NSString stringWithFormat:@"$%0.2f", _earning.total_earnings.floatValue];
+    }
+ 
 }
 
 - (void) initFrames

@@ -1048,7 +1048,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="PURCHASE">
+                                <state key="normal" title="REVIEW">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

@@ -18,10 +18,13 @@
 
 - (void) buildCell
 {
-    _dateLabel.text= _redeem.created_at;
-    _depositedLabel.text=[NSString stringWithFormat:@"$%@", _redeem.deposited_amount ];
-    _amountLabel.text=[NSString stringWithFormat:@"$%@", _redeem.full_amount ];
-    _feeLabel.text=[NSString stringWithFormat:@"$%@", _redeem.withdrawal_fee ];
+    if (_redeem!=nil) {
+        _dateLabel.text= _redeem.created_at;
+        _depositedLabel.text=[NSString stringWithFormat:@"$%0.2f", _redeem.deposited_amount.floatValue ];
+        _amountLabel.text=[NSString stringWithFormat:@"$%0.2f", _redeem.full_amount.floatValue ];
+        _feeLabel.text=[NSString stringWithFormat:@"$%0.2f", _redeem.withdrawal_fee.floatValue ];
+    }
+  
 }
 
 - (void) initFrames

@@ -22,6 +22,7 @@
     NSDate *_minDate;
     NSDate *_maxDate;
     NSInteger bodyLikeAnimation;
+    bool pullDown;
 }
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @end
@@ -203,7 +204,7 @@
     _limit=9;
     _count=1;
     
-    
+    pullDown=false;
 }
 
 #pragma mark - APICalls
@@ -350,6 +351,13 @@
             }
             
         }
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
         [self enableFeedButtons];
         [indicatorView removeFromSuperview];
         _tableView.userInteractionEnabled=YES;
@@ -397,7 +405,13 @@
         [self defineWorkoutFeedObjects];
         
        
-        
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
         if ([_responseDicWorkout count]>0&& count!=[_WorkoutFeedArray count]) {
             if ([_feedType isEqualToString:@"workout"]) {
                 [self.tableView reloadData];
@@ -452,6 +466,13 @@
             if ([_feedType isEqualToString:@"feed"]) {
                 [self.tableView reloadData];
             }
+        }
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
         }
         [self enableFeedButtons];
         _tableView.userInteractionEnabled=YES;
@@ -705,6 +726,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         {
             return cell;
         }
+        
+        if (indexPath.row==0) {
+            _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+            _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], _topView.frame.size.height-10);
+            _activityIndicator.hidesWhenStopped = YES;
+            [cell.contentView addSubview:_activityIndicator];
+            cell.clipsToBounds=false;
+        }
+        
         User *temUser;
         
         if (_temSearchUser !=nil&&_searchId !=nil) {
@@ -1360,6 +1391,48 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _storeButton.userInteractionEnabled=NO;
 }
 
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (pullDown==true) {
+        if (![self.feedType isEqualToString:@"calendar"]) {
+           [_tableView setContentOffset:CGPointMake(0, -60) animated:YES];
+        }
+
+       
+    }
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if(self.tableView.contentOffset.y<-75){
+        
+       
+        
+        
+        
+        [self initValuable];
+        pullDown=true;
+        if ([self.feedType isEqualToString:@"feed"]) {
+             [_activityIndicator startAnimating];
+            [self getHomePageItems];
+          
+        }else if([self.feedType isEqualToString:@"workout"]) {
+             [_activityIndicator startAnimating];
+            [self getWorkoutItems];
+        }else if([self.feedType isEqualToString:@"store"]) {
+             [_activityIndicator startAnimating];
+            [self getStoreItems];
+            
+        }
+
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+    
+}
+
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
     
@@ -1368,13 +1441,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (_count==0) {
             [self initValuable];
             
-            if ([self.feedType isEqualToString:@"feed"]) {
-                [self getHomePageItems];
-            }else if([self.feedType isEqualToString:@"workout"]) {
-                [self getWorkoutItems];
-            }else if([self.feedType isEqualToString:@"store"]) {
-                [self getStoreItems];
-            }
+//            if ([self.feedType isEqualToString:@"feed"]) {
+//                [self getHomePageItems];
+//            }else if([self.feedType isEqualToString:@"workout"]) {
+//                [self getWorkoutItems];
+//            }else if([self.feedType isEqualToString:@"store"]) {
+//                [self getStoreItems];
+//            }
             //    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view];
             //    _tableView.userInteractionEnabled=NO;
             

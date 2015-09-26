@@ -1084,6 +1084,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //checkout button
 - (IBAction)BuyNowButtonClick:(id)sender
 {
+    UIButton *b= (UIButton *)sender;
+    if ([b.titleLabel.text isEqualToString:@"review".uppercaseString]) {
+        
+        selectedIndex=3;
+        [b setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
+        [self.tableView reloadData:YES];
+        
+        return;
+    }
+    
     if (_shippingAddress==nil&&_billingAddress==nil) {
         if ([self ValidateAllFields]==false) {
             validate=false;
@@ -1188,6 +1198,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
      UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
     
     selectedIndex= v.tag;
+    
+    if (v.tag!=3) {
+        [_BuyNowButton setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
+    }else
+    {
+        [_BuyNowButton setTitle:@"review".uppercaseString forState:UIControlStateNormal];
+    }
     
     [self.tableView reloadData:YES];
 }
@@ -1306,7 +1323,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) highLightButtons:(UIView *) button
 {
-    [[button layer] setBorderWidth:2.0f];
+    [[button layer] setBorderWidth:1.0f];
     [[button layer] setBorderColor:[UIColor redColor].CGColor];
 }
 
