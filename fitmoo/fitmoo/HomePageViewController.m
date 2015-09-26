@@ -217,7 +217,13 @@
         
     }
     
-    
+    //remove this when event feed added
+    if ([_homeFeedArray count]<4) {
+        _offset +=10;
+        [self getHomePageItems];
+    }
+
+
 }
 
 - (void) postNotifications
@@ -752,6 +758,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         _count=0;
     }
+    
+   
     
 }
 

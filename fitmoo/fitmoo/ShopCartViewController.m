@@ -92,7 +92,40 @@
         if ([_shopCart.shop_cart_detail.item_details isEqual:[NSNull null]]) {
            // _shopCart.shop_cart_detail.item_details=@"";
             NSDictionary *data= [detail objectForKey:@"data"];
-             _shopCart.shop_cart_detail.item_details= [data objectForKey:@"location"];
+            
+            NSString *location=[data objectForKey:@"location"];
+            NSString *begindate=[data objectForKey:@"begin_time"];
+            NSString *enddate=[data objectForKey:@"end_time"];
+            
+            NSArray *beginArray= [begindate componentsSeparatedByString:@"T" ];
+            NSArray *endArray= [enddate componentsSeparatedByString:@"T" ];
+            
+            NSString *beginhour=[beginArray objectAtIndex:1];
+            NSString *endhour=[endArray objectAtIndex:1];
+            
+            beginhour= [beginhour substringToIndex:2];
+            endhour= [endhour substringToIndex:2];
+            
+            if (beginhour.intValue>12) {
+                beginhour=[NSString stringWithFormat:@"%d%@", beginhour.intValue-12,@"pm" ];
+            }else
+            {
+                beginhour=[NSString stringWithFormat:@"%d%@", beginhour.intValue,@"am" ];
+            }
+            
+            if (endhour.intValue>12) {
+                endhour=[NSString stringWithFormat:@"%d%@", endhour.intValue-12,@"pm" ];
+            }else
+            {
+                endhour=[NSString stringWithFormat:@"%d%@", endhour.intValue,@"am" ];
+            }
+            
+            NSString *detail=[NSString stringWithFormat:@"%@ \n%@ %@ to %@ %@", location,[beginArray objectAtIndex:0],beginhour ,[endArray objectAtIndex:0],endhour];
+            
+            
+             _shopCart.shop_cart_detail.item_details= detail;
+            
+            
         }
         
         _shopCart.shop_cart_detail.item_photo_url= [detail objectForKey:@"item_photo_url"];
