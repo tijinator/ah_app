@@ -21,6 +21,13 @@
     return YES;
 }
 
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    [[textField layer] setBorderWidth:0.0f];
+    return YES;
+}
+
 - (void) initFrames
 {
     

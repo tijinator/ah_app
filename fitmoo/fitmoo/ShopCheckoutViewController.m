@@ -32,6 +32,8 @@
     
     _pickerDisplayArray=[[NSMutableArray alloc] init];
     _stateArray=[[NSMutableArray alloc] init];
+    
+    [self readCreditCardInfo];
   
     [self getDefaultAddress];
     [self getStateList];
@@ -72,6 +74,49 @@
 }
 
 
+- (void) readCreditCardInfo
+{
+    
+   
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *key = [prefs stringForKey:@"fitmooCreditCardType"];
+    NSString *key1 = [prefs stringForKey:@"fitmooCreditCardNumber"];
+    NSString *key2 = [prefs stringForKey:@"fitmooCreditCardCvc"];
+    NSString *key3 = [prefs stringForKey:@"fitmooCreditCardMonth"];
+    NSString *key4 = [prefs stringForKey:@"fitmooCreditCardYear"];
+    
+    if (key!=nil) {
+        _cardTypeLabel=[[UILabel alloc] init];
+        _cardNumberTextField=[[UITextField alloc] init];
+        _cvcTextField=[[UITextField alloc] init];
+        _monthLabel=[[UILabel alloc] init];
+        _yearLabel=[[UILabel alloc] init];
+        
+        _cardTypeLabel.text=key;
+        _cardNumberTextField.text=key1;
+        _cvcTextField.text=key2;
+        _monthLabel.text=key3;
+        _yearLabel.text=key4;
+        
+        
+    }
+    
+}
+
+- (void) storeCreditCardInfo
+{
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:_cardTypeLabel.text forKey:@"fitmooCreditCardType"];
+    [prefs setObject:_cardNumberTextField.text forKey:@"fitmooCreditCardNumber"];
+    [prefs setObject:_cvcTextField.text forKey:@"fitmooCreditCardCvc"];
+    [prefs setObject:_monthLabel.text forKey:@"fitmooCreditCardMonth"];
+    [prefs setObject:_yearLabel.text forKey:@"fitmooCreditCardYear"];
+    
+}
+
+
 #pragma mark - APICalls
 - (void) makeCheckout
 {
@@ -89,7 +134,7 @@
                                                           message : @"Your order has been placed." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
-        
+        [self storeCreditCardInfo];
     
         [indicatorView removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
@@ -1097,6 +1142,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_shippingAddress==nil&&_billingAddress==nil) {
         if ([self ValidateAllFields]==false) {
             validate=false;
+              [b setTitle:@"review".uppercaseString forState:UIControlStateNormal];
             [self.tableView reloadData:YES];
             return;
         }
@@ -1104,6 +1150,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    
     if ([self ValidateYourCard]==false) {
         validate=false;
+          [b setTitle:@"review".uppercaseString forState:UIControlStateNormal];
           [self.tableView reloadData:YES];
         return;
     }
@@ -1143,6 +1190,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)CardTypeButtonClick:(id)sender {
+    UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
+    [self dehighLightButtons:v];
+    
     _typePickerView.hidden=false;
     _pickerType=@"cardtype";
     _pickerDisplayArray=[@[@"Visa",@"MasterCard",@"American Experss",@"Discover",@"Dinner Club",@"JCB"] mutableCopy];
@@ -1152,6 +1202,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)DateButtonClick:(id)sender {
+    UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
+    [self dehighLightButtons:v];
+    
     _typePickerView.hidden=false;
     _pickerType=@"date";
     _pickerDisplayArray=[@[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12"] mutableCopy];
@@ -1160,6 +1213,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)YearButtonClick:(id)sender {
+     UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
+    [self dehighLightButtons:v];
+    
     _typePickerView.hidden=false;
     _pickerType=@"year";
     _pickerDisplayArray=[[NSMutableArray alloc] init];
@@ -1178,7 +1234,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)StateButtonClick:(id)sender {
      UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
-    
+     [self dehighLightButtons:v];
     
     
      _typePickerView.hidden=false;
@@ -1200,10 +1256,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     selectedIndex= v.tag;
     
     if (v.tag!=3) {
-        [_BuyNowButton setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
+         [_BuyNowButton setTitle:@"review".uppercaseString forState:UIControlStateNormal];
+      
     }else
     {
-        [_BuyNowButton setTitle:@"review".uppercaseString forState:UIControlStateNormal];
+         [_BuyNowButton setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
     }
     
     [self.tableView reloadData:YES];

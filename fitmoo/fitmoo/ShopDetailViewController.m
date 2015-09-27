@@ -544,6 +544,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)variantsButtonClick:(id)sender {
     UIButton *b=(UIButton *)sender;
+    [self dehighLightButtons:b];
     _SelectedVariantButton=b;
     
     
