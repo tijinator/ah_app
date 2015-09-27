@@ -44,7 +44,7 @@
     [self createObservers];
     [self showImagesWithDelay];
     
-     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeIndicator) userInfo:nil repeats:NO];
+     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(removeIndicator) userInfo:nil repeats:3];
     
  
  
