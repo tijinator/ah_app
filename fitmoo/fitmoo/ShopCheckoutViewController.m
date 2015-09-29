@@ -11,12 +11,14 @@
 #import "AFNetworking.h"
 #import "Stripe.h"
 #import "UserManager.h"
+
 @interface ShopCheckoutViewController ()
 {
       NSNumber * contentHight;
       NSInteger selectedIndex;
       UIView *indicatorView;
-    
+      bool  useDefaultCard;
+      bool  defaultCardExist;
       bool validate;
 }
 @end
@@ -38,7 +40,8 @@
     [self getDefaultAddress];
     [self getStateList];
     [self createObservers];
-    
+    useDefaultCard=false;
+    defaultCardExist=false;
     validate=true;
     // Do any additional setup after loading the view.
 }
@@ -74,35 +77,6 @@
 }
 
 
-- (void) readCreditCardInfo
-{
-    
-   
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *key = [prefs stringForKey:@"fitmooCreditCardType"];
-    NSString *key1 = [prefs stringForKey:@"fitmooCreditCardNumber"];
-    NSString *key2 = [prefs stringForKey:@"fitmooCreditCardCvc"];
-    NSString *key3 = [prefs stringForKey:@"fitmooCreditCardMonth"];
-    NSString *key4 = [prefs stringForKey:@"fitmooCreditCardYear"];
-    
-    if (key!=nil) {
-        _cardTypeLabel=[[UILabel alloc] init];
-        _cardNumberTextField=[[UITextField alloc] init];
-        _cvcTextField=[[UITextField alloc] init];
-        _monthLabel=[[UILabel alloc] init];
-        _yearLabel=[[UILabel alloc] init];
-        
-        _cardTypeLabel.text=key;
-        _cardNumberTextField.text=key1;
-        _cvcTextField.text=key2;
-        _monthLabel.text=key3;
-        _yearLabel.text=key4;
-        
-        
-    }
-    
-}
 
 - (void) storeCreditCardInfo
 {
@@ -118,6 +92,99 @@
 
 
 #pragma mark - APICalls
+
+
+- (void) parseCreditCard: (NSDictionary *) dic
+{
+    
+  //  NSNumber * default_card= [dic objectForKey:@"default_card"];
+    _cardDic= [dic objectForKey:@"default_card"];
+    
+    if ([_cardDic isKindOfClass:[NSDictionary class]]) {
+        
+        _cardTypeLabel= [[UILabel alloc] init];
+        _monthLabel= [[UILabel alloc] init];
+        _yearLabel= [[UILabel alloc] init];
+        _cvcTextField= [[UITextField alloc] init];
+        _cardNumberTextField= [[UITextField alloc] init];
+        
+        NSNumber *month=[_cardDic objectForKey:@"exp_month"];
+        NSNumber *year=[_cardDic objectForKey:@"exp_year"];
+      
+        useDefaultCard=true;
+        defaultCardExist=true;
+        
+        _cardTypeLabel.text=[_cardDic objectForKey:@"brand"];
+        _monthLabel.text=[month stringValue];
+        _yearLabel.text=[year stringValue];
+        _cvcTextField.text=[_cardDic objectForKey:@""];
+        _cardNumberTextField.text=[NSString stringWithFormat:@"************%@", [_cardDic objectForKey:@"last4"]];
+        
+        _sptoken=[_cardDic objectForKey:@"id"];
+        
+        _creditCard= [[CreditCard alloc] init];
+        
+        _creditCard.month=_monthLabel.text;
+        _creditCard.year=_yearLabel.text;
+        _creditCard.cvc=_cvcTextField.text;
+        _creditCard.cardNumber=_cardNumberTextField.text;
+        _creditCard.cardType=_cardTypeLabel.text;
+        
+        
+    }
+    
+}
+
+- (void) readCreditCardInfo
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/checkout"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSDictionary *dic= responseObject;
+        [self parseCreditCard:dic];
+        
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);
+             _BuyNowButton.userInteractionEnabled=YES;
+             [indicatorView removeFromSuperview];} // failure callback block
+     
+     ];
+    
+    
+    
+    //    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //    NSString *key = [prefs stringForKey:@"fitmooCreditCardType"];
+    //    NSString *key1 = [prefs stringForKey:@"fitmooCreditCardNumber"];
+    //    NSString *key2 = [prefs stringForKey:@"fitmooCreditCardCvc"];
+    //    NSString *key3 = [prefs stringForKey:@"fitmooCreditCardMonth"];
+    //    NSString *key4 = [prefs stringForKey:@"fitmooCreditCardYear"];
+    //
+    //    if (key!=nil) {
+    //        _cardTypeLabel=[[UILabel alloc] init];
+    //        _cardNumberTextField=[[UITextField alloc] init];
+    //        _cvcTextField=[[UITextField alloc] init];
+    //        _monthLabel=[[UILabel alloc] init];
+    //        _yearLabel=[[UILabel alloc] init];
+    //
+    //        _cardTypeLabel.text=key;
+    //        _cardNumberTextField.text=key1;
+    //        _cvcTextField.text=key2;
+    //        _monthLabel.text=key3;
+    //        _yearLabel.text=key4;
+    //        
+    //        
+    //    }
+    
+}
+
+
 - (void) makeCheckout
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -134,7 +201,7 @@
                                                           message : @"Your order has been placed." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
-        [self storeCreditCardInfo];
+      //  [self storeCreditCardInfo];
     
         [indicatorView removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
@@ -1043,14 +1110,54 @@
         [cell.cvc setReturnKeyType:UIReturnKeyDone];
         [cell.cardNumber setReturnKeyType:UIReturnKeyDone];
         
+        if (useDefaultCard==true) {
+            _monthLabel.userInteractionEnabled=NO;
+            _yearLabel.userInteractionEnabled=NO;
+            _cardTypeLabel.userInteractionEnabled=NO;
+            _cvcTextField.userInteractionEnabled=NO;
+            _cardNumberTextField.userInteractionEnabled=NO;
+            
+            cell.date.textColor=[UIColor blackColor];
+            cell.year.textColor=[UIColor blackColor];
+            cell.cardType.textColor=[UIColor blackColor];
+            
+            cell.cardType.text=_creditCard.cardType;
+            cell.date.text=_creditCard.month;
+            cell.year.text=_creditCard.year;
+            cell.cvc.text=_creditCard.cvc;
+            cell.cardNumber.text=_creditCard.cardNumber;
+            
+            cell.cvc.hidden=true;
+            
+        }else
+        {
+            //  cell.editButton.hidden=true;
+            _monthLabel.userInteractionEnabled=YES;
+            _yearLabel.userInteractionEnabled=YES;
+            _cardTypeLabel.userInteractionEnabled=YES;
+            _cvcTextField.userInteractionEnabled=YES;
+            _cardNumberTextField.userInteractionEnabled=YES;
+            
+            [cell resetCell];
+            
+        }
+        
+        
         _monthLabel=cell.date;
         _yearLabel=cell.year;
         _cardTypeLabel=cell.cardType;
         _cvcTextField=cell.cvc;
         _cardNumberTextField=cell.cardNumber;
         
+      
         
         
+        if (defaultCardExist==false) {
+            cell.editButton.hidden=true;
+        }
+        
+        
+        [cell.editButton addTarget:self action:@selector(useDifferentCardButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         
         return cell;
@@ -1169,21 +1276,32 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     card.cvc=_cvcTextField.text;
 
     
-    [[STPAPIClient sharedClient] createTokenWithCard:card
-                                          completion:^(STPToken *token, NSError *error) {
-                                              if (error) {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-        message :@"Your card looks invalid."  delegate : nil cancelButtonTitle : @"OK"
-        otherButtonTitles : nil ];
-        [alert show ];
-        [indicatorView removeFromSuperview];
-        _BuyNowButton.userInteractionEnabled=YES;
-                                              } else {
-                                                  _sptoken=token.tokenId;
-                                                  [self createCustomer];
-                                              }
-                                          }];
-}
+    if (useDefaultCard==true) {
+        
+          [self createCustomer];
+        
+        
+    }else
+    {
+        [[STPAPIClient sharedClient] createTokenWithCard:card
+                                              completion:^(STPToken *token, NSError *error) {
+                                                  if (error) {
+                                                      UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                                                                        message :@"Your card looks invalid."  delegate : nil cancelButtonTitle : @"OK"
+                                                                                              otherButtonTitles : nil ];
+                                                      [alert show ];
+                                                      [indicatorView removeFromSuperview];
+                                                      _BuyNowButton.userInteractionEnabled=YES;
+                                                  } else {
+                                                      _sptoken=token.tokenId;
+                                                      [self createCustomer];
+                                                  }
+                                              }];
+
+    }
+    
+    
+  }
 - (IBAction)doneButtonClick:(id)sender
 {
     _typePickerView.hidden=true;
@@ -1267,6 +1385,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+- (IBAction)useDifferentCardButtonClick:(id)sender {
+    
+    if (useDefaultCard==false) {
+        
+        useDefaultCard=true;
+        
+    }else if (useDefaultCard==TRUE)
+    {
+        useDefaultCard=false;
+    }
+    
+    
+    [self.tableView reloadData];
+    
+}
 
 - (IBAction)editButtonClick:(id)sender {
     UIButton *b= (UIButton *) sender;
@@ -1344,7 +1477,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             return false;
         }
     
-        if ([_cvcTextField.text isEqualToString:@""]) {
+        if ([_cvcTextField.text isEqualToString:@""]&&useDefaultCard==false) {
             UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
                                                               message : @"Please enter the card CVC." delegate : nil cancelButtonTitle : @"OK"
                                                     otherButtonTitles : nil ];
@@ -1355,7 +1488,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     
     
-    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_cardNumberTextField.text]==false) {
+    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_cardNumberTextField.text]==false&&useDefaultCard==false) {
         UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
                                                           message : @"Please enter number only for your card number." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];

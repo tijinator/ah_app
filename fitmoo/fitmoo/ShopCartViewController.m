@@ -387,8 +387,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIButton *b=(UIButton *)sender;
     deleteCartId= [NSString stringWithFormat:@"%ld", (long)b.tag];
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Delete Item"
-                                                   message:@"Are you sure you want to delete this item?"
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Remove Item"
+                                                   message:@"Are you sure you want to remove this item from the cart??"
                                                   delegate:self
                                          cancelButtonTitle:@"No"
                                          otherButtonTitles:@"Yes",nil];

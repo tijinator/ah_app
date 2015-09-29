@@ -18,6 +18,7 @@
 #import "CheckoutAdrPrefillCell.h"
 #import "ShopAddressViewController.h"
 #import "ShopInfoTotalCell.h"
+#import "CreditCard.h"
 @interface ShopCheckoutViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -29,6 +30,7 @@
 - (IBAction)BuyNowButtonClick:(id)sender;
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSDictionary * cardDic;
 @property (strong, nonatomic)  NSString * sptoken;
 
 @property (strong, nonatomic)  NSMutableArray * addressArray;
@@ -53,6 +55,7 @@
 
 @property (strong, nonatomic)  Address * billingAddress;
 @property (strong, nonatomic)  Address * shippingAddress;
+@property (strong, nonatomic)  CreditCard * creditCard;
 
 @property (strong, nonatomic)  UITextField *nameTextField;
 @property (strong, nonatomic)  UITextField *AddressTextField;
@@ -70,6 +73,8 @@
 @property (strong, nonatomic)  UITextField *phoneTextField1;
 @property (strong, nonatomic)  UITextField *zipTextField1;
 @property (strong, nonatomic)  UITextField *Address2TextField1;
+
+
 
 
 @end

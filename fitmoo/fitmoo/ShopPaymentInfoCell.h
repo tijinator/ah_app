@@ -14,5 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *year;
 @property (strong, nonatomic) IBOutlet UITextField *cvc;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
+
+- (void) resetCell;
 
 @end

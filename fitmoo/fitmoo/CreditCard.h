@@ -10,6 +10,10 @@
 
 @interface CreditCard : NSObject
 
-
+@property (nonatomic, retain) NSString * month;
+@property (nonatomic, retain) NSString * year;
+@property (nonatomic, retain) NSString * cardType;
+@property (nonatomic, retain) NSString * cvc;
+@property (nonatomic, retain) NSString * cardNumber;
 
 @end

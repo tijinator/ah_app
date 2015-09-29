@@ -35,6 +35,24 @@
     return YES;
 }
 
+- (void) resetCell
+{
+    _cardNumber.text=@"";
+    _cvc.text= @"";
+    _date.text=@"Month";
+    _year.text=@"Year";
+    _cardType.text=@"Card Type";
+    [_editButton setTitle:@"use exist card" forState:UIControlStateNormal];
+    
+    UIColor *color= [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0f];
+    
+    _date.textColor=color;
+    _year.textColor=color;
+    _cardType.textColor=color;
+    _cvc.hidden=false;
+    
+}
+
 - (void) initFrames
 {
     
@@ -44,6 +62,7 @@
     _date.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_date respectToSuperFrame:nil];
     _year.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_year respectToSuperFrame:nil];
     _cvc.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_cvc respectToSuperFrame:nil];
+    _editButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_editButton respectToSuperFrame:nil];
 
      
 }

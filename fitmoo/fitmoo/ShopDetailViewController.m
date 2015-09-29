@@ -515,7 +515,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)doneButtonClick:(id)sender
 {
+ 
     _typePickerView.hidden=true;
+  
 }
 
 
@@ -556,7 +558,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             _homeFeed.product.variants=[_homeFeed.product.variant_array objectAtIndex:0];
             int quantity= _homeFeed.product.variants.quantity.intValue;
             _pickerDisplayArray=[[NSMutableArray alloc] init];
-            for (int i=0; i<quantity; i++) {
+            for (int i=1; i<quantity; i++) {
                 [_pickerDisplayArray addObject:[NSString stringWithFormat:@"%d",i]];
             }
             
@@ -637,12 +639,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             _pickerDisplayArray=[[NSMutableArray alloc] init];
             if (_selectedVariants!=nil) {
                 int quantity= _selectedVariants.quantity.intValue;
-                for (int i=0; i<quantity; i++) {
+                for (int i=1; i<quantity; i++) {
                     [_pickerDisplayArray addObject:[NSString stringWithFormat:@"%d",i]];
                 }
             }
             
-            
+            if(_selectedVariants.variants_id==nil)
+            {
+                return;
+            }
+                
             
         }
         
@@ -718,6 +724,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
+   [_typePicker selectRow:0 inComponent:0 animated:NO];
+    NSString *selectedString=[_pickerDisplayArray objectAtIndex:0];
+    [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
     _typePickerView.hidden=false;
 }
 
@@ -948,6 +957,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                           message : @"Please select one of each option." delegate : nil cancelButtonTitle : @"OK"
                                                 otherButtonTitles : nil ];
         [alert show ];
+        
+        [_tableView setContentOffset:CGPointMake(0, 200*[[FitmooHelper sharedInstance] frameRadio])] ;
+        
+        
         NSString *checkString;
         NSString *checkString1;
         NSString *checkString2;
