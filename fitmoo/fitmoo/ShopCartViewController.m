@@ -356,7 +356,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)BuyNowButtonClick:(id)sender
 {
-    [self openShopCheckouPage];
+    
+    if (_shopCart != nil) {
+        [self openShopCheckouPage];
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"Your cart is empty" delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+
+    }
+    
+   
 }
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

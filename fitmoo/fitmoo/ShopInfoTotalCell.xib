@@ -14,7 +14,6 @@
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
-            <string>BentonSans-Bold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -83,20 +82,9 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wiw-ht-6hw" customClass="BSBoldButton">
-                        <rect key="frame" x="0.0" y="120" width="320" height="45.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
-                        <state key="normal" title="CHECKOUT">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkoutButton" destination="Wiw-ht-6hw" id="5UO-3m-e7S"/>
                 <outlet property="label0" destination="6oH-GG-pmO" id="LK9-E5-S0k"/>
                 <outlet property="label1" destination="Sw8-S6-3mT" id="69a-X8-4zr"/>
                 <outlet property="label2" destination="yHr-Xb-AZn" id="SHR-91-L3D"/>

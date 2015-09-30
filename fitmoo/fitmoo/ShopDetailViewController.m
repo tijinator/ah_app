@@ -19,6 +19,7 @@
     NSNumber * contentHight;
     bool bodyLikeAnimation;
     NSString *OriganlVariantsButtonsStrings;
+    NSString *VariantsButtonTitle;
 }
 @end
 
@@ -423,6 +424,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
     
+    
+    if (component==1)
+    {
+    
     if ([_pickerDisplayArray count]>0) {
         NSString *selectedString=[_pickerDisplayArray objectAtIndex:row];
         [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
@@ -442,33 +447,46 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-    
+    }
     
     // Handle the selection
 }
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (component==0) {
+        return 1;
+    }
+    
     NSUInteger numRows = [_pickerDisplayArray count];
     return numRows;
 }
 
 // tell the picker how many components it will have
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+    return 2;
 }
 
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *title=[_pickerDisplayArray objectAtIndex:row];
+    
+   if (component==1)
+    {
+        return [_pickerDisplayArray objectAtIndex:row];
+    }
+    
+  
     
     
-    return title;
+    return VariantsButtonTitle;
 }
 
 // tell the picker the width of each row for a given component
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 300;
+    
+   
+    
+    int sectionWidth = 100;
     
     return sectionWidth;
 }
@@ -543,6 +561,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return false;
 }
+- (NSString *)capitalFirstLetter:(NSString *)string
+{
+    
+    NSString *firstCapChar = [[string substringToIndex:1] capitalizedString];
+    NSString *cappedString = [string stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:firstCapChar];
+    
+    return cappedString;
+}
+
 
 - (IBAction)variantsButtonClick:(id)sender {
     UIButton *b=(UIButton *)sender;
@@ -716,6 +743,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
     }
     
+    
+    
+    NSArray * titleArray= [OriganlVariantsButtonsStrings componentsSeparatedByString:@"+"];
+    NSString *s=[titleArray objectAtIndex:b.tag-10];
+    VariantsButtonTitle=[self capitalFirstLetter:s.lowercaseString] ;
     [_typePicker reloadAllComponents];
     
     for (int i=0; i<[_pickerDisplayArray count]; i++) {
