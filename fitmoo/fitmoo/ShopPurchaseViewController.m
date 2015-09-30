@@ -76,7 +76,7 @@
          order.tracking_number=@"";
         }else
         {
-        order.tracking_number= [tracking_number stringValue];
+        order.tracking_number=[dic objectForKey:@"tracking_number"];
         }
       
         order.total= [dic objectForKey:@"total"];
