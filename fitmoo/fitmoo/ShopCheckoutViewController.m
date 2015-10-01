@@ -623,7 +623,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
 
-    return 45.0f;
+    return 47.0f;
 }
 
 
@@ -631,7 +631,7 @@
 {
 
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 47)];
 
     view.tag= section;
     UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sectionHeaderClick:)];
@@ -646,15 +646,15 @@
     view1.exclusiveTouch=NO;
     
     UILabel *nameLabel=[[UILabel alloc] init];
-    nameLabel.frame= CGRectMake(20, 7, 230, 21);
+    nameLabel.frame= CGRectMake(20, 9, 230, 21);
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     UIColor *fontColor= [UIColor colorWithRed:84.0/255.0 green:94.0/255.0 blue:96.0/255.0 alpha:1.0];
-    UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(12)];
+    UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(14)];
     nameLabel.font=font;
     nameLabel.textColor=fontColor;
     
     UILabel *nameLabel1=[[UILabel alloc] init];
-    nameLabel1.frame= CGRectMake(280, 7, 30, 21);
+    nameLabel1.frame= CGRectMake(280, 9, 30, 21);
     nameLabel1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel1 respectToSuperFrame:self.view];
     nameLabel1.font=font;
     nameLabel1.textColor=fontColor;
@@ -1184,7 +1184,7 @@
       
     }
     
-    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(23, 100, 275, 90)];
+    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(27, 110, 275, 90)];
     label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
     UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12.0f];
 

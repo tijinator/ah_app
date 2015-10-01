@@ -357,7 +357,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)BuyNowButtonClick:(id)sender
 {
     
-    if (_shopCart != nil) {
+    if ([_shopCart.shop_cart_details count]>0) {
         [self openShopCheckouPage];
     }else
     {

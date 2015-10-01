@@ -42,7 +42,7 @@
     _date.text=@"Month";
     _year.text=@"Year";
     _cardType.text=@"Card Type";
-    [_editButton setTitle:@"use exist card" forState:UIControlStateNormal];
+    [_editButton setTitle:@"USE EXISTING CARD" forState:UIControlStateNormal];
     
     UIColor *color= [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0f];
     
