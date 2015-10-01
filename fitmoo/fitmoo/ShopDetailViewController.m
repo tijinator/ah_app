@@ -756,10 +756,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         }
     }
     
-   [_typePicker selectRow:0 inComponent:0 animated:NO];
-    NSString *selectedString=[_pickerDisplayArray objectAtIndex:0];
-    [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
-    _typePickerView.hidden=false;
+    if ([_pickerDisplayArray count]>0) {
+        [_typePicker selectRow:0 inComponent:0 animated:NO];
+        NSString *selectedString=[_pickerDisplayArray objectAtIndex:0];
+        [_SelectedVariantButton setTitle:selectedString forState:UIControlStateNormal];
+        _typePickerView.hidden=false;
+    }else
+    {
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+                                                          message : @"This item has been sold out." delegate : nil cancelButtonTitle : @"OK"
+                                                otherButtonTitles : nil ];
+        [alert show ];
+    }
+  
+    
+    
+    
 }
 
 - (IBAction)likeButtonClick:(id)sender {
