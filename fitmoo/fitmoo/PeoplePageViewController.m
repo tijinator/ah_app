@@ -1546,7 +1546,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             }
         [self.tableView reloadData];
         
-    }else if ([feed.is_liked isEqualToString:@"1"])
+    }else if ([feed.is_liked isEqualToString:@"1"]&&button.tag%100!=8)
     {
         NSNumber *totalLike=[NSNumber numberWithInt:feed.total_like.intValue-1];
         [button setImage:[UIImage imageNamed:@"hearticon.png"] forState:UIControlStateNormal];
