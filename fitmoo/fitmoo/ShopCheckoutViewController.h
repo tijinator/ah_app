@@ -19,6 +19,7 @@
 #import "ShopAddressViewController.h"
 #import "ShopInfoTotalCell.h"
 #import "CreditCard.h"
+#import "RTLabel.h"
 @interface ShopCheckoutViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

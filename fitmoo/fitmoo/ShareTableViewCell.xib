@@ -191,7 +191,7 @@
                                         </state>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cyj-rc-zhw">
-                                        <rect key="frame" x="195" y="11" width="105" height="28"/>
+                                        <rect key="frame" x="209" y="11" width="105" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" backgroundImage="buynowbtn1.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -309,7 +309,7 @@
     <resources>
         <image name="black_gradient.png" width="322" height="54"/>
         <image name="bluepeopleicon.png" width="18" height="18"/>
-        <image name="buynowbtn1.png" width="102" height="27"/>
+        <image name="buynowbtn1.png" width="204" height="54"/>
         <image name="commenticon.png" width="13" height="10"/>
         <image name="datebadge.png" width="47" height="65"/>
         <image name="dots.png" width="3" height="16"/>

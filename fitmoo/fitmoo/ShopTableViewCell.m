@@ -251,6 +251,32 @@
         
     }
     
+    UIImageView *image= [[UIImageView alloc] initWithFrame:CGRectMake(70*[[FitmooHelper sharedInstance] frameRadio], 14*[[FitmooHelper sharedInstance] frameRadio], 11, 7)];
+    image.image=[UIImage imageNamed:@"greydownarrow.png"];
+    image.exclusiveTouch=NO;
+    image.userInteractionEnabled=NO;
+    [_variantsButton1 addSubview:image];
+    
+    UIImageView *image1= [[UIImageView alloc] initWithFrame:CGRectMake(70*[[FitmooHelper sharedInstance] frameRadio], 14*[[FitmooHelper sharedInstance] frameRadio], 11, 7)];
+    image1.image=[UIImage imageNamed:@"greydownarrow.png"];
+    image1.exclusiveTouch=NO;
+    image1.userInteractionEnabled=NO;
+    [_variantsButton2 addSubview:image1];
+    
+    UIImageView *image2= [[UIImageView alloc] initWithFrame:CGRectMake(70*[[FitmooHelper sharedInstance] frameRadio], 14*[[FitmooHelper sharedInstance] frameRadio], 11, 7)];
+    image2.image=[UIImage imageNamed:@"greydownarrow.png"];
+    image2.exclusiveTouch=NO;
+    image2.userInteractionEnabled=NO;
+    [_variantsButton3 addSubview:image2];
+    
+    UIImageView *image3= [[UIImageView alloc] initWithFrame:CGRectMake(70*[[FitmooHelper sharedInstance] frameRadio], 14*[[FitmooHelper sharedInstance] frameRadio], 11, 7)];
+    image3.image=[UIImage imageNamed:@"greydownarrow.png"];
+    image3.exclusiveTouch=NO;
+    image3.userInteractionEnabled=NO;
+    [_variantsButton4 addSubview:image3];
+    
+
+    
      [self rebuiltVariantsViewFrame];
 }
 
@@ -505,6 +531,9 @@
     _bodyGradian.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyGradian respectToSuperFrame:nil];
     _viewAllCommentButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_viewAllCommentButton respectToSuperFrame:nil];
 
+    
+  
+    
     
 }
 

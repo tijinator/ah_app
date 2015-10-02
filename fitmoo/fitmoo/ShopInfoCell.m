@@ -27,10 +27,10 @@
     _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
     
     _detailLabel1.text= _shopCartDetail.item_price;
-    _detailLabel2.text= _shopCartDetail.seller_name;
+    _detailLabel2.text= _shopCartDetail.seller_name.uppercaseString;
     
     if (_shopCartDetail.endorser.integerValue>0 ) {
-        _detailLabel3.text= _shopCartDetail.endorser_name;
+        _detailLabel3.text= _shopCartDetail.endorser_name.uppercaseString;
     }else
     {
         _detailLabel3.hidden=true;

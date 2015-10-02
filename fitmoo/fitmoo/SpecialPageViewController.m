@@ -362,15 +362,15 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *link;
-    if ([_homeFeed.type isEqualToString:@"product"]) {
-        if (_homeFeed.feed_action.feed_action_id!=nil) {
-            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",_homeFeed.feed_action.user_id,@"/feed/",_homeFeed.feed_id,@"/fa/",_homeFeed.feed_action.feed_action_id];
-        }
-        
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
-    }
+//    NSString *link;
+//    if ([_homeFeed.type isEqualToString:@"product"]) {
+//        if (_homeFeed.feed_action.feed_action_id!=nil) {
+//            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",_homeFeed.feed_action.user_id,@"/feed/",_homeFeed.feed_id,@"/fa/",_homeFeed.feed_action.feed_action_id];
+//        }
+//        
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
+//    }
     
 
     

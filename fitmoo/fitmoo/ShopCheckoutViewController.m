@@ -649,7 +649,7 @@
     nameLabel.frame= CGRectMake(20, 9, 230, 21);
     nameLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:nameLabel respectToSuperFrame:self.view];
     UIColor *fontColor= [UIColor colorWithRed:84.0/255.0 green:94.0/255.0 blue:96.0/255.0 alpha:1.0];
-    UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(14)];
+    UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(13)];
     nameLabel.font=font;
     nameLabel.textColor=fontColor;
     
@@ -1184,27 +1184,16 @@
       
     }
     
-    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(27, 110, 275, 90)];
-    label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
-    UIFont *font = [UIFont fontWithName:@"BentonSans-Bold" size:12.0f];
 
-    label.text=@"By clicking “Place Order” you confirm that you have read, understood, and accept our Terms and Conditions, Refund Policy and Privacy Policy.";
-    
-    
-    NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text attributes:@{NSFontAttributeName: font}  ];
-    label.numberOfLines=5;
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:8];
-    
 
+    double frameRadio=[[FitmooHelper sharedInstance] frameRadio];
+    RTLabel *rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(27*frameRadio, 150*frameRadio, 275*frameRadio,100)];
+   
+    rtLabel.lineSpacing=8;
     
-    [attributedString addAttribute:NSParagraphStyleAttributeName
-                             value:style
-                             range:NSMakeRange(0, label.text.length)];
-    
-    [label setAttributedText:attributedString];
+    [rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font><font face=BentonSans-Bold size=10 color=#000000>%@ </font><font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font><font face=BentonSans-Bold size=10 color=#000000>%@ </font>",@"By clicking “Place Order” you confirm that you have read, understood, and accept our".uppercaseString,@"Terms and Conditions, Refund Policy".uppercaseString,@"and".uppercaseString,@"Privacy Policy.".uppercaseString]];
 
-    [cell.contentView addSubview:label];
+    [cell.contentView addSubview:rtLabel];
     
     contentHight=[NSNumber numberWithInt:200*[[FitmooHelper sharedInstance] frameRadio]];
     return cell;

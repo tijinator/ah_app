@@ -1342,18 +1342,18 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row!=0) {
-        HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
-        NSString *link;
-        if ([feed.type isEqualToString:@"product"]) {
-            if (feed.feed_action.feed_action_id!=nil) {
-                link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
-            }
-            
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
-        }
-    }
+//    if (indexPath.row!=0) {
+//        HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
+//        NSString *link;
+//        if ([feed.type isEqualToString:@"product"]) {
+//            if (feed.feed_action.feed_action_id!=nil) {
+//                link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+//            }
+//            
+//            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
+//        }
+//    }
     
     
     
