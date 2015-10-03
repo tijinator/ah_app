@@ -35,5 +35,6 @@
 @property (nonatomic, strong) NSString *seller_profile_photo_url;
 @property (nonatomic, strong) NSString *title;
 
+@property (nonatomic, strong) NSString *count_on_hand;
 
 @end

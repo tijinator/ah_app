@@ -955,15 +955,51 @@
                                     <action selector="BuyNowButtonClick:" destination="H69-1v-WMv" eventType="touchUpInside" id="b6W-qZ-oDg"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" id="Pet-WL-6sE">
+                                <rect key="frame" x="0.0" y="269" width="320" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="VpB-3T-1nR">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sGV-9t-veB">
+                                        <rect key="frame" x="263" y="8" width="51" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonClick:" destination="H69-1v-WMv" eventType="touchUpInside" id="Za3-mk-bPQ"/>
+                                            <action selector="doneButtonClick:" destination="AHP-fj-VRz" eventType="touchUpInside" id="n32-Dd-ixO"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" id="OJh-Vk-q33">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="260"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="H69-1v-WMv" id="tWn-WT-b7u"/>
+                                            <outlet property="delegate" destination="H69-1v-WMv" id="F63-US-mbq"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="BuyNowButton" destination="h5d-Q1-9gL" id="Wwa-SJ-81c"/>
+                        <outlet property="doneButton" destination="sGV-9t-veB" id="nKa-sy-qTI"/>
                         <outlet property="leftButton" destination="owF-Pt-brx" id="Tfs-vm-tkG"/>
+                        <outlet property="pickerBackView" destination="VpB-3T-1nR" id="Jid-5B-J8f"/>
                         <outlet property="tableView" destination="1X6-sm-Zbi" id="26Z-yk-aJh"/>
                         <outlet property="titleLabel" destination="Ogw-eM-STX" id="bXl-4Z-Nnl"/>
                         <outlet property="topView" destination="Fqf-zq-K6Q" id="uen-q7-PC7"/>
+                        <outlet property="typePicker" destination="OJh-Vk-q33" id="Gfz-E2-rXu"/>
+                        <outlet property="typePickerView" destination="Pet-WL-6sE" id="0j9-cX-qne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPk-S3-KFz" userLabel="First Responder" sceneMemberID="firstResponder"/>

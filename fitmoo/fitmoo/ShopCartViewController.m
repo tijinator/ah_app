@@ -15,6 +15,9 @@
     NSNumber * contentHight;
     NSString *deleteCartId;
     UIView *indicatorView;
+    NSString *UpdateCartId;
+    NSString *maxQty;
+    NSString *selectedQty;
     
 }
 @end
@@ -28,6 +31,7 @@
      pullDown=false;
     contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
+    [self createObservers];
   //  [self getShopCart];
     // Do any additional setup after loading the view.
 }
@@ -89,6 +93,12 @@
         _shopCart.shop_cart_detail.item_count= [detail objectForKey:@"item_count"];
         _shopCart.shop_cart_detail.item_details= [detail objectForKey:@"item_details"];
         
+        
+        NSDictionary *data= [detail objectForKey:@"data"];
+        NSDictionary *variant= [data objectForKey:@"variant"];
+        NSNumber *count_on_hand=[variant objectForKey:@"count_on_hand"];
+        _shopCart.shop_cart_detail.count_on_hand= [count_on_hand stringValue];
+        
         if ([_shopCart.shop_cart_detail.item_details isEqual:[NSNull null]]) {
            // _shopCart.shop_cart_detail.item_details=@"";
             NSDictionary *data= [detail objectForKey:@"data"];
@@ -105,6 +115,9 @@
             
             beginhour= [beginhour substringToIndex:2];
             endhour= [endhour substringToIndex:2];
+            
+         
+
             
             if (beginhour.intValue>12) {
                 beginhour=[NSString stringWithFormat:@"%d%@", beginhour.intValue-12,@"pm" ];
@@ -174,6 +187,34 @@
 
 }
 
+
+
+- (void) updateCart
+{
+    
+    
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Updating..."];
+    _tableView.userInteractionEnabled=false;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",UpdateCartId, @"cart_item_id",selectedQty, @"quantity",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/quantity"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+       
+        [self getShopCart];
+    } // success callback block
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              _tableView.userInteractionEnabled=true;
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+    
+}
+
 -(void) getShopCart
 {
     
@@ -207,11 +248,12 @@
             pullDown=false;
         }
 
-        
+        _tableView.userInteractionEnabled=true;
         [indicatorView removeFromSuperview];
         
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
                [indicatorView removeFromSuperview];
              NSLog(@"Error: %@", error);} // failure callback block
      ];
@@ -219,7 +261,100 @@
     
 }
 
+-(void)createObservers{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"shopCartQtyClick" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopCartQtyClick:) name:@"shopCartQtyClick" object:nil];
+}
 
+
+- (void) shopCartQtyClick: (NSNotification * ) note
+{
+    NSArray *array= (NSArray *)[note object];
+    UpdateCartId=[array objectAtIndex:0];
+    maxQty= [array objectAtIndex:1];
+    NSString *quanty=[array objectAtIndex:2];
+    _typePickerView.hidden=false;
+    
+    
+    
+    [_typePicker reloadAllComponents];
+    
+    [_typePicker selectRow:quanty.intValue-1 inComponent:1 animated:NO];
+    
+    
+    
+}
+
+
+#pragma mark - UIPickerViewDelegate
+
+- (IBAction)doneButtonClick:(id)sender
+{
+    _typePickerView.hidden=true;
+    
+    
+    [self updateCart];
+    
+    
+    
+    
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
+    
+    if (component==1) {
+        selectedQty=[NSString stringWithFormat:@"%ld", row+1];
+        
+    }
+    
+    // Handle the selection
+}
+
+// tell the picker how many rows are available for a given component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+ 
+    if (component==0) {
+        return 1;
+    }
+    
+    if (maxQty!=nil) {
+        return maxQty.intValue;
+    }
+   
+    return 0;
+}
+
+// tell the picker how many components it will have
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+// tell the picker the title for a given component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    if (component==1)
+    {
+        if (row+1<=maxQty.intValue) {
+            return [NSString stringWithFormat:@"%ld", row+1];
+        }
+    }
+    
+    
+    
+    
+    return @"QTY";
+}
+
+
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    
+    
+    
+    int sectionWidth = 100;
+    
+    return sectionWidth;
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -330,7 +465,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _BuyNowButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_BuyNowButton respectToSuperFrame:self.view];
     
- 
+    _typePickerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_typePickerView respectToSuperFrame:nil];
+    
+    double x1=(self.view.frame.size.width-_typePicker.frame.size.width)/2;
+    _typePicker.frame= CGRectMake(_typePicker.frame.origin.x+x1, _typePicker.frame.origin.y*[[FitmooHelper sharedInstance] frameRadio], _typePicker.frame.size.width, _typePicker.frame.size.height);
+    _doneButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton respectToSuperFrame:nil];
+    _pickerBackView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_pickerBackView respectToSuperFrame:nil];
+
     
     if (self.view.frame.size.height<500) {
         

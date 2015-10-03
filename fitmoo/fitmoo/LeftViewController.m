@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"shop.png",@"follow.png",@"purchases.png",@"earnings.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Shop",@"Discover",@"My Purchases",@"My Earnings", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings", nil];
     
     
     self.tableView = ({
@@ -227,7 +227,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else if (indexPath.row==2) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
     }else if (indexPath.row==3) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"shop"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"cart"];
     }else if (indexPath.row==4) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
     }else if (indexPath.row==5) {

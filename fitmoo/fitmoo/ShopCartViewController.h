@@ -15,7 +15,8 @@
 #import "ShopCart.h"
 #import "ShopInfoTotalCell.h"
 #import "ShopCheckoutViewController.h"
-@interface ShopCartViewController : UIViewController
+@interface ShopCartViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+
 
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -30,5 +31,12 @@
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  ShopCart * shopCart;
+
+
+@property (strong, nonatomic) IBOutlet UIPickerView *typePicker;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+- (IBAction)doneButtonClick:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *pickerBackView;
+@property (strong, nonatomic) IBOutlet UIView *typePickerView;
 
 @end

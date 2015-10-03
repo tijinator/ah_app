@@ -10,7 +10,8 @@
 #import "ShopCart.h"
 #import "ShopCartDetail.h"
 #import "AsyncImageView.h"
-@interface ShopInfoCell : UITableViewCell
+#import "RTLabel.h"
+@interface ShopInfoCell : UITableViewCell<RTLabelDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *itemImage;
 @property (strong, nonatomic) IBOutlet UILabel *ItemTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ItemDetailLabel;

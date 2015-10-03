@@ -24,7 +24,16 @@
     _ItemDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemDetailLabel];
     
     
-    _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
+//    _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
+    
+    RTLabel *priceLabel= [[RTLabel alloc] initWithFrame:_ItemPriceLabel.frame];
+    priceLabel.delegate=self;
+      [priceLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#109CFB>Qty %@ </font></a><font face=BentonSans-Bold size=12 color=#000000> @ $%@</font>",_shopCartDetail.shop_cart_detail_id ,_shopCartDetail.quantity, _shopCartDetail.price ]];
+    
+    [self.contentView addSubview:priceLabel];
+    
+   
+    
     
     _detailLabel1.text= _shopCartDetail.item_price;
     _detailLabel2.text= _shopCartDetail.seller_name.uppercaseString;
@@ -54,6 +63,20 @@
 
     _DeleteButton.tag=_shopCartDetail.shop_cart_detail_id.intValue;
     
+}
+
+
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url
+{
+    NSLog(@"did select url %@", url);
+    NSString *key=[NSString stringWithFormat:@"%@", [url absoluteString]];
+    
+    NSString *key1=_shopCartDetail.count_on_hand;
+    NSString *key2=_shopCartDetail.quantity;
+    
+    NSArray *array= @[key,key1,key2];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"shopCartQtyClick" object:array];
 }
 
 - (void) initFrames
