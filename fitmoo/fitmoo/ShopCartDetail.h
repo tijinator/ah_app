@@ -36,5 +36,8 @@
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic, strong) NSString *count_on_hand;
+@property (nonatomic, strong) NSString *feed_id;
+
+
 
 @end

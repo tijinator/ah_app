@@ -50,7 +50,7 @@
     AsyncImageView *headerImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _itemImage.frame.size.width, _itemImage.frame.size.height)];
     headerImage.userInteractionEnabled = NO;
     headerImage.exclusiveTouch = NO;
-    headerImage.contentMode=UIViewContentModeScaleToFill;
+    headerImage.contentMode=UIViewContentModeScaleAspectFit;
  
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
@@ -60,6 +60,9 @@
     [_itemImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     _itemImage.clipsToBounds=YES;
     [_itemImage addSubview:headerImage];
+    
+//    _itemImage.userInteractionEnabled = NO;
+//    _itemImage.exclusiveTouch = NO;
 
     _DeleteButton.tag=_shopCartDetail.shop_cart_detail_id.intValue;
     

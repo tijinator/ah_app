@@ -197,17 +197,21 @@
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @""
-                                                          message : @"Your order has been placed." delegate : nil cancelButtonTitle : @"OK"
-                                                otherButtonTitles : nil ];
-        [alert show ];
+//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @""
+//                                                          message : @"Your order has been placed." delegate : nil cancelButtonTitle : @"OK"
+//                                                otherButtonTitles : nil ];
+//        [alert show ];
       //  [self storeCreditCardInfo];
     
+        NSDictionary *dic= responseObject;
+        
         [indicatorView removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         _BuyNowButton.userInteractionEnabled=YES;
         
-        [self.navigationController popViewControllerAnimated:YES];
+        
+         [self openShopComfirmPage];
+      //  [self.navigationController popViewControllerAnimated:YES];
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -1117,6 +1121,9 @@
             _cvcTextField.userInteractionEnabled=NO;
             _cardNumberTextField.userInteractionEnabled=NO;
             
+            
+            
+            
             cell.date.textColor=[UIColor blackColor];
             cell.year.textColor=[UIColor blackColor];
             cell.cardType.textColor=[UIColor blackColor];
@@ -1126,6 +1133,14 @@
             cell.year.text=_creditCard.year;
             cell.cvc.text=_creditCard.cvc;
             cell.cardNumber.text=_creditCard.cardNumber;
+            
+            
+            [self dehighLightButtons:cell.cardType];
+            [self dehighLightButtons:cell.date];
+            [self dehighLightButtons:cell.year];
+            [self dehighLightButtons:cell.cvc];
+            [self dehighLightButtons:cell.cardNumber];
+          
             
             cell.cvc.hidden=true;
             
@@ -1188,10 +1203,12 @@
 
     double frameRadio=[[FitmooHelper sharedInstance] frameRadio];
     RTLabel *rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(27*frameRadio, 150*frameRadio, 275*frameRadio,100)];
-   
+    rtLabel.delegate=self;
     rtLabel.lineSpacing=8;
     
-    [rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font><font face=BentonSans-Bold size=10 color=#000000>%@ </font><font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font><font face=BentonSans-Bold size=10 color=#000000>%@ </font>",@"By clicking “Place Order” you confirm that you have read, understood, and accept our".uppercaseString,@"Terms and Conditions, Refund Policy".uppercaseString,@"and".uppercaseString,@"Privacy Policy.".uppercaseString]];
+   
+    
+    [rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font> <a href='1'><font face=BentonSans-Bold size=10 color=#000000>%@ </font></a><font face=BentonSans-Bold size=10 color=#8D9AA0>%@ </font> <a href='0'><font face=BentonSans-Bold size=10 color=#000000>%@ </font></a>",@"By clicking “Place Order” you confirm that you have read, understood, and accept our".uppercaseString,@"Terms and Conditions, Refund Policy".uppercaseString,@"and".uppercaseString,@"Privacy Policy.".uppercaseString]];
 
     [cell.contentView addSubview:rtLabel];
     
@@ -1220,20 +1237,54 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return contentHight.intValue;
 }
 
+#pragma mark RTLabel delegate
 
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url
+{
+   
+     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    NSString *key=[NSString stringWithFormat:@"%@", [url absoluteString]];
+    if ([key isEqualToString:@"0"]) {
+        
+        SettingWebViewController *webPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        webPage.webviewLink=@"http://about.fitmoo.com/privacy-policy";
+        webPage.settingType= @"PRIVACY POLICY";
+        [self.navigationController pushViewController:webPage animated:YES];
+        
+   
+    }
+    else if ([key isEqualToString:@"1"]) {
+        SettingWebViewController *webPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        webPage.webviewLink=@"http://about.fitmoo.com/terms-and-conditions";
+        webPage.settingType= @"TERMS";
+        [self.navigationController pushViewController:webPage animated:YES];
+     
+    }
+}
+
+
+- (void) openShopComfirmPage
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopConfirmationViewController *ShopConfirm = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopConfirmationViewController"];
+    ShopConfirm.shopCart=_shopCart;
+    ShopConfirm.shippingAddress=_shippingAddress;
+    ShopConfirm.billingAddress=_billingAddress;
+    
+    [self.navigationController pushViewController:ShopConfirm animated:YES];
+}
 
 //checkout button
 - (IBAction)BuyNowButtonClick:(id)sender
 {
+    
+   
+    
+    
+    
     UIButton *b= (UIButton *)sender;
-    if ([b.titleLabel.text isEqualToString:@"review".uppercaseString]) {
-        
-        selectedIndex=3;
-        [b setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
-        [self.tableView reloadData:YES];
-        
-        return;
-    }
+   
     
     if (_shippingAddress==nil&&_billingAddress==nil) {
         if ([self ValidateAllFields]==false) {
@@ -1250,6 +1301,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
           [self.tableView reloadData:YES];
         return;
     }
+    
+    
+    if ([b.titleLabel.text isEqualToString:@"review".uppercaseString]) {
+        
+        selectedIndex=3;
+        [b setTitle:@"purchase".uppercaseString forState:UIControlStateNormal];
+        [self.tableView reloadData:YES];
+        
+        return;
+    }
+    
     indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
     _BuyNowButton.userInteractionEnabled=NO;
     
@@ -1378,14 +1440,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)useDifferentCardButtonClick:(id)sender {
     
     if (useDefaultCard==false) {
-        
+       
         useDefaultCard=true;
         
     }else if (useDefaultCard==TRUE)
     {
         useDefaultCard=false;
     }
-    
+ 
     
     [self.tableView reloadData];
     

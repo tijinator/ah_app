@@ -18,6 +18,8 @@
     NSString *UpdateCartId;
     NSString *maxQty;
     NSString *selectedQty;
+    NSString *selectedFeedId;
+    NSString *originalQty;
     
 }
 @end
@@ -70,6 +72,9 @@
          NSNumber *cart_shipping=[detail objectForKey:@"cart_shipping"];
         _shopCart.shop_cart_detail.cart_shipping= [cart_shipping stringValue];
         
+       
+        
+        
         NSNumber *cart_subtotal=[detail objectForKey:@"cart_subtotal"];
         _shopCart.shop_cart_detail.cart_subtotal= [cart_subtotal stringValue];
         
@@ -98,6 +103,9 @@
         NSDictionary *variant= [data objectForKey:@"variant"];
         NSNumber *count_on_hand=[variant objectForKey:@"count_on_hand"];
         _shopCart.shop_cart_detail.count_on_hand= [count_on_hand stringValue];
+        
+        NSNumber *feed_id=[data objectForKey:@"feed_id"];
+        _shopCart.shop_cart_detail.feed_id= [feed_id stringValue];
         
         if ([_shopCart.shop_cart_detail.item_details isEqual:[NSNull null]]) {
            // _shopCart.shop_cart_detail.item_details=@"";
@@ -215,6 +223,52 @@
     
 }
 
+- (void) openSpecialPage
+{
+    
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Updating..."];
+    _tableView.userInteractionEnabled=false;
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app",
+                              nil];
+    
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",selectedFeedId];
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSDictionary * resDic= responseObject;
+        _tableView.userInteractionEnabled=true;
+        [indicatorView removeFromSuperview];
+        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        ShopDetailViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+        
+        detailPage.homeFeed=feed;
+        [self.navigationController pushViewController:detailPage animated:YES];
+        
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
+             NSLog(@"Error: %@", error);
+         } // failure callback block
+     
+     ];
+    
+    
+    
+    
+}
+
+
 -(void) getShopCart
 {
     
@@ -272,14 +326,14 @@
     NSArray *array= (NSArray *)[note object];
     UpdateCartId=[array objectAtIndex:0];
     maxQty= [array objectAtIndex:1];
-    NSString *quanty=[array objectAtIndex:2];
+    originalQty=[array objectAtIndex:2];
     _typePickerView.hidden=false;
     
-    
+    selectedQty=originalQty;
     
     [_typePicker reloadAllComponents];
     
-    [_typePicker selectRow:quanty.intValue-1 inComponent:1 animated:NO];
+    [_typePicker selectRow:originalQty.intValue-1 inComponent:1 animated:NO];
     
     
     
@@ -292,8 +346,13 @@
 {
     _typePickerView.hidden=true;
     
+    if (![originalQty isEqualToString:selectedQty]) {
+        if (selectedQty!=nil) {
+             [self updateCart];
+        }
+       
+    }
     
-    [self updateCart];
     
     
     
@@ -432,6 +491,19 @@
     
 
     [cell.DeleteButton addTarget:self action:@selector(deleteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    cell.itemImage.tag=indexPath.row;
+    [cell.itemImage addTarget:self action:@selector(imageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.ItemTitleLabel.tag=indexPath.row;
+    UITapGestureRecognizer *tapGestureRecognizer11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapClick:)];
+    tapGestureRecognizer11.numberOfTapsRequired = 2;
+    [cell.ItemTitleLabel addGestureRecognizer:tapGestureRecognizer11];
+    cell.ItemTitleLabel.userInteractionEnabled=YES;
+
+    
+    
     return cell;
 }
 
@@ -440,7 +512,7 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+   
     
     
     
@@ -494,7 +566,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController pushViewController:ShopCheckout animated:YES];
 }
 
+- (IBAction)imageTapClick:(id)sender {
+    UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self imageButtonClick:myButton];
+    
+ 
+}
 
+- (IBAction)imageButtonClick:(id)sender
+{
+    UIButton *b= (UIButton *)sender;
+    if (b.tag<[_shopCart.shop_cart_details count]) {
+        ShopCartDetail *detail= [_shopCart.shop_cart_details objectAtIndex:b.tag];
+        selectedFeedId=detail.feed_id;
+        [self openSpecialPage];
+        
+    }
+    
+    
+    
+}
 - (IBAction)BuyNowButtonClick:(id)sender
 {
     

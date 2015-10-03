@@ -20,7 +20,10 @@
 #import "ShopInfoTotalCell.h"
 #import "CreditCard.h"
 #import "RTLabel.h"
-@interface ShopCheckoutViewController : UIViewController
+#import "SettingWebViewController.h"
+#import "ShopConfirmationViewController.h"
+
+@interface ShopCheckoutViewController : UIViewController<RTLabelDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

@@ -15,6 +15,7 @@
 #import "ShopCart.h"
 #import "ShopInfoTotalCell.h"
 #import "ShopCheckoutViewController.h"
+#import "ShopDetailViewController.h"
 @interface ShopCartViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 
