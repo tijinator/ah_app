@@ -29,7 +29,7 @@
     
     
     if (_order.image_url==nil||[_order.image_url isEqualToString:@""]) {
-        headerImage.image=[UIImage imageNamed:@"defaultprofilepic.png"];
+        headerImage.image=[UIImage imageNamed:@"product_default.png"];
     }else
     {
     headerImage.imageURL =[NSURL URLWithString:_order.image_url];
