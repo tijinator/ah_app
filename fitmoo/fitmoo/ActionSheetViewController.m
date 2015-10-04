@@ -52,9 +52,9 @@
         }else
         {
             [_endorseButton setHidden:false];
-            [_shopButton setHidden:false];
+          //  [_shopButton setHidden:false];
             [_view2 setHidden:false];
-            [_view4 setHidden:false];
+          //  [_view4 setHidden:false];
             
             
             [self showViews];

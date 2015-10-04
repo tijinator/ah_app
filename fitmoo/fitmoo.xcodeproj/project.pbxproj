@@ -468,6 +468,9 @@
 		27ABBEFE1B84CC5300AB54D2 /* instagramlogo8.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */; };
 		27ABBF001B84CE2900AB54D2 /* instagramlogo8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */; };
 		27ABBF021B84CE3400AB54D2 /* instagramlogo8@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */; };
+		27AC2BFA1BC1798100FD4131 /* cart_sidemenu_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC2BF71BC1798100FD4131 /* cart_sidemenu_red.png */; settings = {ASSET_TAGS = (); }; };
+		27AC2BFB1BC1798100FD4131 /* cart_sidemenu_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC2BF81BC1798100FD4131 /* cart_sidemenu_red@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27AC2BFC1BC1798100FD4131 /* cart_sidemenu_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC2BF91BC1798100FD4131 /* cart_sidemenu_red@3x.png */; settings = {ASSET_TAGS = (); }; };
 		27AC92BB1B06292E00BB7A0E /* settings_bioicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B21B06292D00BB7A0E /* settings_bioicon.png */; };
 		27AC92BC1B06292E00BB7A0E /* settings_bioicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B31B06292D00BB7A0E /* settings_bioicon@2x.png */; };
 		27AC92BD1B06292E00BB7A0E /* settings_bioicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AC92B41B06292E00BB7A0E /* settings_bioicon@3x.png */; };
@@ -1262,6 +1265,9 @@
 		27ABBEFD1B84CC5300AB54D2 /* instagramlogo8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo8.png; sourceTree = "<group>"; };
 		27ABBEFF1B84CE2900AB54D2 /* instagramlogo8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo8@2x.png"; sourceTree = "<group>"; };
 		27ABBF011B84CE3400AB54D2 /* instagramlogo8@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo8@3x.png"; sourceTree = "<group>"; };
+		27AC2BF71BC1798100FD4131 /* cart_sidemenu_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_sidemenu_red.png; sourceTree = "<group>"; };
+		27AC2BF81BC1798100FD4131 /* cart_sidemenu_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart_sidemenu_red@2x.png"; sourceTree = "<group>"; };
+		27AC2BF91BC1798100FD4131 /* cart_sidemenu_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart_sidemenu_red@3x.png"; sourceTree = "<group>"; };
 		27AC92B21B06292D00BB7A0E /* settings_bioicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_bioicon.png; sourceTree = "<group>"; };
 		27AC92B31B06292D00BB7A0E /* settings_bioicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bioicon@2x.png"; sourceTree = "<group>"; };
 		27AC92B41B06292E00BB7A0E /* settings_bioicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_bioicon@3x.png"; sourceTree = "<group>"; };
@@ -2033,6 +2039,9 @@
 				27E79AE41BBE12E10089F991 /* greydownarrow.png */,
 				27E79AE51BBE12E10089F991 /* greydownarrow@2x.png */,
 				27E79AE61BBE12E10089F991 /* greydownarrow@3x.png */,
+				27AC2BF71BC1798100FD4131 /* cart_sidemenu_red.png */,
+				27AC2BF81BC1798100FD4131 /* cart_sidemenu_red@2x.png */,
+				27AC2BF91BC1798100FD4131 /* cart_sidemenu_red@3x.png */,
 				27A9DC451BBF51E40050772C /* cart_sidemenu.png */,
 				27A9DC461BBF51E40050772C /* cart_sidemenu@2x.png */,
 				27A9DC471BBF51E40050772C /* cart_sidemenu@3x.png */,
@@ -2844,6 +2853,7 @@
 				273FF5631AF7AA2C00B82DB3 /* leftmenuicon.png in Resources */,
 				27A1018E1B334554007B7BF3 /* rednotification@3x.png in Resources */,
 				27ADF1D81B14B1D8003A0A83 /* facebookbtn.png in Resources */,
+				27AC2BFA1BC1798100FD4131 /* cart_sidemenu_red.png in Resources */,
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
 				27988CCB1B0BE4C500BDE8EB /* shopscreen@3x.png in Resources */,
 				27C0A6FE1B7A893C00BA3612 /* whiteuser@2x.png in Resources */,
@@ -3283,6 +3293,7 @@
 				27188FBE1AD4695000C34372 /* rsz3_fitmoo_logo_white.png in Resources */,
 				27ADF1DB1B14B1D8003A0A83 /* greyx.png in Resources */,
 				27188FBF1AD4695000C34372 /* rsz_fitmoo_logo_white.png in Resources */,
+				27AC2BFC1BC1798100FD4131 /* cart_sidemenu_red@3x.png in Resources */,
 				27DDF4381B7B7C140011BB46 /* searchrightarrow@2x.png in Resources */,
 				27FF37081B83ABAC008A3227 /* SearchCell.xib in Resources */,
 				279E57A41B20E9530076C3B5 /* Stars.png in Resources */,
@@ -3353,6 +3364,7 @@
 				27988CB11B0BB12500BDE8EB /* followsection_seeallbrandsbtn@3x.png in Resources */,
 				2752EA271B015CBC003841DC /* whitearrow@2x.png in Resources */,
 				27A101931B334554007B7BF3 /* shop@2x.png in Resources */,
+				27AC2BFB1BC1798100FD4131 /* cart_sidemenu_red@2x.png in Resources */,
 				276F44261B0CFB6700342DC9 /* FollowHeaderCell.xib in Resources */,
 				2738D91E1B023EE700F5087E /* follow_btn@2x.png in Resources */,
 				27988CB91B0BB12500BDE8EB /* followsection_smallfollowingbtn@2x.png in Resources */,

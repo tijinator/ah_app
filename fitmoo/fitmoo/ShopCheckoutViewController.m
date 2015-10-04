@@ -52,8 +52,19 @@
 -(void)createObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"didEditAddressFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEditAddressFinished:) name:@"didEditAddressFinished" object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hidePicker" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidePicker:) name:@"hidePicker" object:nil];
 }
 
+
+- (void) hidePicker: (NSNotification * ) note
+{
+    
+    _typePickerView.hidden=true;
+    
+}
 
 - (void) didEditAddressFinished: (NSNotification * ) note
 {
@@ -205,21 +216,35 @@
     
         NSDictionary *dic= responseObject;
         
+        NSNumber *order_id= [dic objectForKey:@"id"];
+        
         [indicatorView removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         _BuyNowButton.userInteractionEnabled=YES;
         
         
-         [self openShopComfirmPage];
+        [self openShopComfirmPage:[order_id stringValue]];
       //  [self.navigationController popViewControllerAnimated:YES];
         
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"Error: %@", error);
+              
+              
+              [self showError:(NSString *)error];
+
               _BuyNowButton.userInteractionEnabled=YES;
            [indicatorView removeFromSuperview];} // failure callback block
      
      ];
+}
+
+- (void) showError:(NSString *)error
+{
+    UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @""
+                                                      message : error delegate : nil cancelButtonTitle : @"OK"
+                                            otherButtonTitles : nil ];
+    [alert show ];
 }
 
 - (void) updateShippingAddressType:(NSString *)type_id with:(NSString *)address_id
@@ -378,6 +403,7 @@
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"Error: %@", error);
+              [self showError:(NSString *)error];
               _BuyNowButton.userInteractionEnabled=YES;
            [indicatorView removeFromSuperview];} // failure callback block
      ];
@@ -406,6 +432,7 @@
     } // success callback block
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
               NSLog(@"Error: %@", error);
+              [self showError:(NSString *)error];
               _BuyNowButton.userInteractionEnabled=YES;
            [indicatorView removeFromSuperview];} // failure callback block
      ];
@@ -1143,6 +1170,7 @@
           
             
             cell.cvc.hidden=true;
+            validate=true;
             
         }else
         {
@@ -1152,7 +1180,7 @@
             _cardTypeLabel.userInteractionEnabled=YES;
             _cvcTextField.userInteractionEnabled=YES;
             _cardNumberTextField.userInteractionEnabled=YES;
-            
+          //  [self dehighLightButtons:cell.cvc];
             [cell resetCell];
             
         }
@@ -1264,11 +1292,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
-- (void) openShopComfirmPage
+- (void) openShopComfirmPage:(NSString *) order_id
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopConfirmationViewController *ShopConfirm = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopConfirmationViewController"];
     ShopConfirm.shopCart=_shopCart;
+    ShopConfirm.order_id=order_id;
     ShopConfirm.shippingAddress=_shippingAddress;
     ShopConfirm.billingAddress=_billingAddress;
     
@@ -1359,7 +1388,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _typePickerView.hidden=true;
 }
 
+
+-(void) resignFirstResps
+{
+    
+    [_cardNumberTextField resignFirstResponder];
+    [_cvcTextField resignFirstResponder];
+    
+}
+
 - (IBAction)CardTypeButtonClick:(id)sender {
+    
+    [self resignFirstResps];
+    
     UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
     [self dehighLightButtons:v];
     
@@ -1372,6 +1413,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 - (IBAction)DateButtonClick:(id)sender {
+    [self resignFirstResps];
     UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
     [self dehighLightButtons:v];
     
@@ -1383,6 +1425,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)YearButtonClick:(id)sender {
+    [self resignFirstResps];
      UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
     [self dehighLightButtons:v];
     

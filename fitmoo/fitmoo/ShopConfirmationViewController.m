@@ -62,6 +62,7 @@
             cell = [nib objectAtIndex:0];
         }
         
+        cell.orderNumberLabel.text=[NSString stringWithFormat:@"ORDER NUMBER IS %@", _order_id];
         
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         return cell;

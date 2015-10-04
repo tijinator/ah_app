@@ -28,6 +28,8 @@
 @property (strong, nonatomic)  Address * shippingAddress;
 @property (strong, nonatomic)  ShopCart * shopCart;
 
+@property (strong, nonatomic)  NSString * order_id;
+
 @property (strong, nonatomic)  RTLabel * rtLabel;
 @property (strong, nonatomic)  RTLabel * rtLabel1;
 

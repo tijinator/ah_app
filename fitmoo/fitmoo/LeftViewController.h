@@ -31,4 +31,6 @@
 @property (strong, nonatomic)  NSString * prenotifucationStatus;
 @property (strong, nonatomic)  NSString * my_id;
 
+@property (strong, nonatomic)  NSNumber * cart_number;
+
 @end

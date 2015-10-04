@@ -70,9 +70,11 @@
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/api/cart/item_count"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         NSDictionary * responseDic= responseObject;
-        NSNumber *cartNumber= [responseDic objectForKey:@"count"];
+        _cart_number= [responseDic objectForKey:@"count"];
        
-        [_cartButton setTitle:cartNumber.stringValue forState:UIControlStateNormal];
+        [_cartButton setTitle:_cart_number.stringValue forState:UIControlStateNormal];
+        
+        [self.tableView reloadData];
         
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -195,6 +197,16 @@
         }else
         {
           cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
+        }
+    }
+    
+    
+    if (indexPath.row==3) {
+        if (_cart_number.intValue>0) {
+            cell.imageView.image = [UIImage imageNamed:@"cart_sidemenu_red.png"];
+        }else
+        {
+            cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
         }
     }
     
