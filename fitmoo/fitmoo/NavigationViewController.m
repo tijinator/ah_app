@@ -121,7 +121,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shopAction:) name:@"shopAction" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNotification:) name:@"checkNotification" object:nil];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToHome:) name:@"goToHome" object:nil];
    
+}
+
+- (void)goToHome:(NSNotification *)notification {
+    [self.nav popToViewController:_homePage animated:NO];
+    currentPage=@"home";
+    [_Pagestuck addObject:@"home"];
+    
 }
 
 - (void)appWillEnterForeground:(NSNotification *)notification {

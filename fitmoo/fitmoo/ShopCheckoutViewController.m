@@ -1181,7 +1181,10 @@
             _cvcTextField.userInteractionEnabled=YES;
             _cardNumberTextField.userInteractionEnabled=YES;
           //  [self dehighLightButtons:cell.cvc];
-            [cell resetCell];
+            if (validate==true) {
+                  [cell resetCell];
+            }
+          
             
         }
         
@@ -1368,11 +1371,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                               completion:^(STPToken *token, NSError *error) {
                                                   if (error) {
                                                       UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                                                                        message :@"Your card looks invalid."  delegate : nil cancelButtonTitle : @"OK"
+                                                                                                        message :[error localizedDescription]  delegate : nil cancelButtonTitle : @"OK"
                                                                                               otherButtonTitles : nil ];
                                                       [alert show ];
                                                       [indicatorView removeFromSuperview];
                                                       _BuyNowButton.userInteractionEnabled=YES;
+                                                      selectedIndex= 2;
+                                                      validate=false;
+                                                      [self.tableView reloadData];
+                                                      
                                                   } else {
                                                       _sptoken=token.tokenId;
                                                       [self createCustomer];

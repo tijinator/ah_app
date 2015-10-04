@@ -146,7 +146,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (buttonIndex == 1)
     {
-        
+          indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.securityPolicy.allowInvalidCertificates = YES;
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -161,7 +161,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                     otherButtonTitles : nil ];
             [alert show ];
             
-            
+            [indicatorView removeFromSuperview];
             [self.navigationController popViewControllerAnimated:YES];
         } // success callback block
               failure:^(AFHTTPRequestOperation *operation, NSError *error){

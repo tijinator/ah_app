@@ -15,6 +15,10 @@
 
 @interface ShopPurchaseViewController : UIViewController
 
+
+
+
+
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

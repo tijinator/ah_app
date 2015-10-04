@@ -205,6 +205,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:self.view];
     
     _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
+    
+    _doneButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_doneButton respectToSuperFrame:self.view];
+    _doneButton.layer.cornerRadius=3.0f;
+    
 
     if (self.view.frame.size.height<500) {
         
@@ -218,4 +222,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
+- (IBAction)doneButtonClick:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"goToHome" object:nil];
+    
+    
+}
 @end

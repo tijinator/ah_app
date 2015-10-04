@@ -23,6 +23,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+- (IBAction)doneButtonClick:(id)sender;
 
 @property (strong, nonatomic)  Address * billingAddress;
 @property (strong, nonatomic)  Address * shippingAddress;
