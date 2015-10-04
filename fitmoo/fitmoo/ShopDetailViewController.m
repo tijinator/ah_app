@@ -20,6 +20,7 @@
     bool bodyLikeAnimation;
     NSString *OriganlVariantsButtonsStrings;
     NSString *VariantsButtonTitle;
+    NSNumber *QtyFrameHeight;
 }
 @end
 
@@ -259,6 +260,8 @@
     
     [cell setVariantsFrame];
      OriganlVariantsButtonsStrings=[NSString stringWithFormat:@"%@+%@+%@+%@",cell.variantsButton1.titleLabel.text.uppercaseString,cell.variantsButton2.titleLabel.text.uppercaseString,cell.variantsButton3.titleLabel.text.uppercaseString,cell.variantsButton4.titleLabel.text.uppercaseString,nil];
+    
+    QtyFrameHeight= [NSNumber numberWithFloat:cell.variantsView.frame.origin.y-300];
     
     //built comment view
     if ([tempHomefeed.commentsArray count]!=0) {
@@ -1002,7 +1005,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
                                                 otherButtonTitles : nil ];
         [alert show ];
         
-        [_tableView setContentOffset:CGPointMake(0, 200*[[FitmooHelper sharedInstance] frameRadio])] ;
+        [_tableView setContentOffset:CGPointMake(0, QtyFrameHeight.doubleValue)] ;
         
         
         NSString *checkString;
