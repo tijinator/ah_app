@@ -168,7 +168,7 @@
         UILabel *label= [[UILabel alloc] init];
         label.frame= CGRectMake(34, 105, 253, 115);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
-        label.text=@"You haven't placed any orders yet. You can checkout the store tabs on your favorite influencers, search and discover sections".uppercaseString;
+        label.text=@"You haven't placed any orders yet. Check out the store tab of your favorite influencers and discover new products from discover and trending sections.".uppercaseString;
         
         UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(12)];
         
@@ -219,14 +219,16 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
-    ShopOrderDetailViewController *ordrVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopOrderDetailViewController"];
-    
-    ordrVC.order= [_orderArray objectAtIndex:indexPath.row];
-    
-    
-    [self.navigationController pushViewController:ordrVC animated:YES];
+    if ([_orderArray count]>0) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        ShopOrderDetailViewController *ordrVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopOrderDetailViewController"];
+        
+        ordrVC.order= [_orderArray objectAtIndex:indexPath.row];
+        
+        
+        [self.navigationController pushViewController:ordrVC animated:YES];
+    }
+  
 
     
     
