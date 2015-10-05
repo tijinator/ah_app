@@ -241,6 +241,11 @@
  numberOfRowsInSection:(NSInteger)section
 {
     if ([_tableType isEqualToString:@"redem"]) {
+        if ([_earning.RedeemArray count]==0) {
+            return 1;
+        }
+        
+        
         return [_earning.RedeemArray count];
     }
     
@@ -256,6 +261,43 @@
     
     
     if ([_tableType isEqualToString:@"redem"]) {
+        if ([_earning.RedeemArray count]==0) {
+          
+            UITableViewCell *cell =[[UITableViewCell alloc] init];
+            
+            cell.selectionStyle= UITableViewCellSelectionStyleNone;
+
+            UILabel *label= [[UILabel alloc] init];
+            label.frame= CGRectMake(34, 155, 253, 115);
+            label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+            label.text=@"No redemptions have been made yet.".uppercaseString;
+            
+            UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(20)];
+            
+            
+            NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text  attributes:@{NSFontAttributeName: font}  ];
+
+                NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+                [style setLineSpacing:8];
+                style.alignment=NSTextAlignmentCenter;
+                [attributedString addAttribute:NSParagraphStyleAttributeName
+                                         value:style
+                                         range:NSMakeRange(0, label.text.length)];
+
+            [label setAttributedText:attributedString];
+
+            label.numberOfLines=2;
+            label.textAlignment=NSTextAlignmentCenter;
+            label.textColor=[UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1.0f];
+
+            [cell.contentView addSubview:label];
+            
+            contentHight=[NSNumber numberWithFloat:450*[[FitmooHelper sharedInstance] frameRadio]];
+            return cell;
+        }
+        
+        
+        
          ShopRedemCell *cell =(ShopRedemCell *) [self.tableView cellForRowAtIndexPath:indexPath];
          if (cell == nil)
          {

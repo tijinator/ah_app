@@ -574,6 +574,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+- (void) resetQtyButton
+{
+    if ([self checkeQTYButton:_variantButton1]==true) {
+        [_variantButton1 setTitle:@"Qty" forState:UIControlStateNormal];
+    }
+    
+    
+    if ([self checkeQTYButton:_variantButton2]==true) {
+        [_variantButton2 setTitle:@"Qty" forState:UIControlStateNormal];
+    }
+    
+    if ([self checkeQTYButton:_variantButton3]==true) {
+        [_variantButton3 setTitle:@"Qty" forState:UIControlStateNormal];
+    }
+    
+    if ([self checkeQTYButton:_variantButton4]==true) {
+        [_variantButton4 setTitle:@"Qty" forState:UIControlStateNormal];
+    }
+}
+
 - (IBAction)variantsButtonClick:(id)sender {
     UIButton *b=(UIButton *)sender;
     [self dehighLightButtons:b];
@@ -685,7 +705,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
     }else
     {
-        
+        [self resetQtyButton];
         if (_selectedMatrixs==nil||[_homeFeed.product.variant_matrix_array count]==0) {
             for (int i=0; i<[_homeFeed.product.variant_options_array count]; i++) {
                 [_homeFeed.product resetOptions];
@@ -1115,15 +1135,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([_homeFeed.product.variant_options_array count]==0) {
         
         quantity=_variantButton1.titleLabel.text;
+         if ([quantity isEqualToString:@"Qty"]) {
+             [self highLightButtons:_variantButton1];
+         }
+        
     }else if ([_homeFeed.product.variant_options_array count]==1) {
         quantity=_variantButton2.titleLabel.text;
-        
+        if ([quantity isEqualToString:@"Qty"]) {
+            [self highLightButtons:_variantButton2];
+        }
     }else if ([_homeFeed.product.variant_options_array count]==2) {
         
         quantity=_variantButton3.titleLabel.text;
+        if ([quantity isEqualToString:@"Qty"]) {
+            [self highLightButtons:_variantButton3];
+        }
     }else if ([_homeFeed.product.variant_options_array count]==3) {
         
         quantity=_variantButton4.titleLabel.text;
+        if ([quantity isEqualToString:@"Qty"]) {
+            [self highLightButtons:_variantButton4];
+        }
+
     }
     
     if ([quantity isEqualToString:@"Qty"]) {

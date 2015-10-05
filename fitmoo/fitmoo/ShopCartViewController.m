@@ -443,6 +443,42 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    if ([_shopCart.shop_cart_details count]==0) {
+        
+        UITableViewCell *cell =[[UITableViewCell alloc] init];
+        
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
+        
+        UILabel *label= [[UILabel alloc] init];
+        label.frame= CGRectMake(34, 105, 253, 115);
+        label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
+        label.text=@"You haven't placed any orders yet. You can checkout the store tabs on your favorite influencers, search and discover sections".uppercaseString;
+        
+        UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(16)];
+        
+        
+        NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text  attributes:@{NSFontAttributeName: font}  ];
+        
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineSpacing:8];
+        style.alignment=NSTextAlignmentCenter;
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:style
+                                 range:NSMakeRange(0, label.text.length)];
+        
+        [label setAttributedText:attributedString];
+        
+        label.numberOfLines=6;
+        label.textAlignment=NSTextAlignmentCenter;
+        label.textColor=[UIColor colorWithRed:141.0/255.0 green:154.0/255.0 blue:160.0/255.0 alpha:1.0f];
+        
+        [cell.contentView addSubview:label];
+        
+        contentHight=[NSNumber numberWithFloat:450*[[FitmooHelper sharedInstance] frameRadio]];
+        return cell;
+    }
+
+    
    
    // lastIndex
     if (indexPath.row==[_shopCart.shop_cart_details count]) {
@@ -464,7 +500,7 @@
         
   
         
-
+        contentHight=[NSNumber numberWithFloat:cell.contentView.frame.size.height];
         return cell;
     }
     
@@ -503,7 +539,7 @@
     cell.ItemTitleLabel.userInteractionEnabled=YES;
 
     
-    
+     contentHight=[NSNumber numberWithFloat:cell.contentView.frame.size.height];
     return cell;
 }
 
