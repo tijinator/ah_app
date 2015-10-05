@@ -452,9 +452,9 @@
         UILabel *label= [[UILabel alloc] init];
         label.frame= CGRectMake(34, 105, 253, 115);
         label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
-        label.text=@"You haven't placed any orders yet. You can checkout the store tabs on your favorite influencers, search and discover sections".uppercaseString;
+        label.text=@"Your cart is empty. Check out the store tab of your favorite influencers and discover new products from discover and trending sections.".uppercaseString;
         
-        UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(16)];
+        UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(12)];
         
         
         NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text  attributes:@{NSFontAttributeName: font}  ];

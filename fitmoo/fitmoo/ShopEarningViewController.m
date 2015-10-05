@@ -272,7 +272,7 @@
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:nil];
             label.text=@"No redemptions have been made yet.".uppercaseString;
             
-            UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(20)];
+            UIFont *font= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(12)];
             
             
             NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:label.text  attributes:@{NSFontAttributeName: font}  ];
