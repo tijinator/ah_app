@@ -143,7 +143,7 @@
     _topPriceLabel.frame= CGRectMake(self.topPriceLabel.frame.origin.x, _topCategoryLabel.frame.size.height+_topCategoryLabel.frame.origin.y+10, self.topPriceLabel.frame.size.width, self.topPriceLabel.frame.size.height);
     
     _topCategoryLabel.text= [NSString stringWithFormat:@"%@%@%@",_homeFeed.product.type_product,@" • ", _homeFeed.product.gender];
-    _topPriceLabel.text=[NSString stringWithFormat:@"%@%@",@"$", _homeFeed.product.selling_price];
+    _topPriceLabel.text=[NSString stringWithFormat:@"%@%0.2f",@"$", _homeFeed.product.selling_price.floatValue];
     
     [self reBuiltTopViewFrame];
 }
