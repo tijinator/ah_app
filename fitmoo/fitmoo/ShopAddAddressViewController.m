@@ -27,9 +27,25 @@
     
     _pickerDisplayArray=[[NSMutableArray alloc] init];
  //   _stateArray=[[NSMutableArray alloc] init];
-    
+    [self createObservers];
    
     // Do any additional setup after loading the view.
+}
+
+
+
+-(void)createObservers{
+  
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hidePicker" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hidePicker:) name:@"hidePicker" object:nil];
+}
+
+
+- (void) hidePicker: (NSNotification * ) note
+{
+    
+    _typePickerView.hidden=true;
+    
 }
 
 #pragma mark - APICalls
@@ -237,10 +253,18 @@
             cell.nameTextField.text=_address.full_name;
             cell.AddressTextField.text=_address.address1;
             cell.cityTextField.text=_address.city;
+            
+            if ([_address.state_name isEqual:[NSNull null]]) {
+              
+            cell.stateTextField.textColor=[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0f];
+                
+            }else {
             cell.stateTextField.text=_address.state_name;
+            cell.stateTextField.textColor=[UIColor blackColor];
+            }
             cell.phoneTextField.text=_address.phone;
             cell.zipTextField.text=_address.zipcode;
-            cell.stateTextField.textColor=[UIColor blackColor];
+         
             
             cell.Address2TextField.text=_address.address2;
             
@@ -290,6 +314,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return contentHight.intValue;
 }
 
+
+-(void) resignFirstResps
+{
+   
+    
+    [_phoneTextField resignFirstResponder];
+    [_zipTextField resignFirstResponder];
+    [_Address2TextField resignFirstResponder];
+    [_nameTextField resignFirstResponder];
+    [_AddressTextField resignFirstResponder];
+    [_cityTextField resignFirstResponder];
+  
+    
+}
 
 
 
@@ -351,6 +389,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)StateButtonClick:(id)sender {
+    [self resignFirstResps];
     _typePickerView.hidden=false;
     _pickerType=@"state";
     _pickerDisplayArray=[_stateArray mutableCopy];

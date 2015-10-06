@@ -25,6 +25,7 @@
 {
     
     [[textField layer] setBorderWidth:0.0f];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hidePicker" object:nil];
     return YES;
 }
 

@@ -13,7 +13,11 @@
 
 @end
 
-NSString * const StripePublishableKey = @"pk_test_VeQcv4NuFL6AejcKInmcYpbq";
+//NSString * const StripePublishableKey = @"pk_test_VeQcv4NuFL6AejcKInmcYpbq";
+
+NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
+
+
 @implementation FitmooAppDelegate
 
 

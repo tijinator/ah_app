@@ -1398,7 +1398,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(void) resignFirstResps
 {
+    [_phoneTextField1 resignFirstResponder];
+    [_zipTextField1 resignFirstResponder];
+    [_Address2TextField1 resignFirstResponder];
+    [_nameTextField1 resignFirstResponder];
+    [_AddressTextField1 resignFirstResponder];
+    [_cityTextField1 resignFirstResponder];
     
+    [_phoneTextField resignFirstResponder];
+    [_zipTextField resignFirstResponder];
+    [_Address2TextField resignFirstResponder];
+    [_nameTextField resignFirstResponder];
+    [_AddressTextField resignFirstResponder];
+    [_cityTextField resignFirstResponder];
     [_cardNumberTextField resignFirstResponder];
     [_cvcTextField resignFirstResponder];
     
@@ -1453,6 +1465,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)StateButtonClick:(id)sender {
+      [self resignFirstResps];
+    
      UIView *v = (UIView *)[(UIGestureRecognizer *)sender view];
      [self dehighLightButtons:v];
     

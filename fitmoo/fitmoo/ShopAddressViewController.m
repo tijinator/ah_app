@@ -133,7 +133,7 @@
     nameLabel1.text=@"Edit";
 
         
-    nameLabel.text=[NSString stringWithFormat:@"ADDRESS %ld",(long)section];
+    nameLabel.text=[NSString stringWithFormat:@"ADDRESS"];
         
   
     nameLabel1.tag= section+10;
