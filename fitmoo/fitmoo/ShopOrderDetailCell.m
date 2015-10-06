@@ -61,13 +61,13 @@
 {
     
     AsyncImageView *headerImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _imageButton.frame.size.width, _imageButton.frame.size.height)];
-    headerImage.userInteractionEnabled = NO;
-    headerImage.exclusiveTouch = NO;
+    
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
     
     headerImage.imageURL =[NSURL URLWithString:_order.image_url];
-    
+    headerImage.userInteractionEnabled = NO;
+    headerImage.exclusiveTouch = NO;
     [_imageButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     _imageButton.clipsToBounds=YES;
     [_imageButton addSubview:headerImage];

@@ -342,6 +342,11 @@
             UILabel *label= (UILabel *)[cell viewWithTag:3];
             label.frame=CGRectMake(250, 79, 40, 20);
             label.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:label respectToSuperFrame:self.view];
+            UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageviewButtonClick:)];
+            tapGestureRecognizer10.numberOfTapsRequired = 1;
+            [label addGestureRecognizer:tapGestureRecognizer10];
+            label.userInteractionEnabled=YES;
+            
             
             UIButton *imageview=(UIButton *) [cell viewWithTag:4];
             imageview.frame= CGRectMake(240, 14,60, 60);

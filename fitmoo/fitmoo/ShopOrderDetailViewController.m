@@ -31,6 +31,50 @@
     // Do any additional setup after loading the view.
 }
 
+- (void) openSpecialPage
+{
+    
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Loading..."];
+    _tableView.userInteractionEnabled=false;
+    
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app",
+                              nil];
+    
+    NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",_order.feed_id];
+    
+    [manager GET:url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        NSDictionary * resDic= responseObject;
+        _tableView.userInteractionEnabled=true;
+        [indicatorView removeFromSuperview];
+        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+        ShopDetailViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+        
+        detailPage.homeFeed=feed;
+        [self.navigationController pushViewController:detailPage animated:YES];
+        
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             _tableView.userInteractionEnabled=true;
+             NSLog(@"Error: %@", error);
+         } // failure callback block
+     
+     ];
+    
+    
+    
+    
+}
 
 
 #pragma mark - UITableViewDelegate
@@ -73,6 +117,13 @@
     
     [cell buildCell];
     
+    [cell.imageButton addTarget:self action:@selector(imageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+ 
+    
+    UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageButtonClick:)];
+    tapGestureRecognizer1.numberOfTapsRequired = 1;
+    [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
+    cell.titleLabel.userInteractionEnabled=YES;
     
     
     contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
@@ -122,6 +173,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     
+}
+
+- (IBAction)imageButtonClick:(id)sender {
+    
+    [self openSpecialPage];
 }
 
 - (IBAction)backButtonClick:(id)sender {

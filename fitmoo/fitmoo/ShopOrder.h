@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString *total;
 @property (nonatomic, strong) NSString *order_shipping_total;
 @property (nonatomic, strong) NSString *options;
-
+@property (nonatomic, strong) NSString *feed_id;
 
 @property (nonatomic, strong) Address *shippingAddress;
 @property (nonatomic, strong) Address *billingAddress;

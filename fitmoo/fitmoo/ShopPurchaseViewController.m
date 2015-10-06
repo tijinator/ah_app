@@ -43,8 +43,18 @@
     
     for (NSDictionary *dic in _responseDic) {
         
+        
+        
         ShopOrder *order= [[ShopOrder alloc] init];
         
+        
+        if ([[dic allKeys] containsObject:@"product_feed_id"]) {
+            NSNumber *feed_id= [dic objectForKey:@"product_feed_id"];
+            order.feed_id=[feed_id stringValue];
+            
+        }
+
+
         order.title= [dic objectForKey:@"title"];
         order.endorser_name= [dic objectForKey:@"endorser_name"];
         if ([order.endorser_name isEqual:[NSNull null]]) {
