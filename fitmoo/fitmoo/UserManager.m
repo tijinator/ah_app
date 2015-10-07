@@ -1152,7 +1152,7 @@
         _s3_unauthRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appUnauth_Role";
         _s3_authRoleArn=@"arn:aws:iam::271404364214:role/Cognito_fitmoo_appAuth_Role";
         _s3_bucket=@"webapp-beta";
-    
+        //remember to change the stipe key when pointing to live, it is on top of fitmoodelegate.m
     
     return self;
 }

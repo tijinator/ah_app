@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *zipTextField;
 @property (strong, nonatomic) IBOutlet UITextField *Address2TextField;
 
+@property (strong, nonatomic) IBOutlet UIButton *useShippingButton;
 
 
 @end

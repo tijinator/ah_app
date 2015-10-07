@@ -391,6 +391,7 @@
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
         specialPage.homeFeed=feed;
+        specialPage.searchId=@"64367575756868";
         [self.navigationController pushViewController:specialPage animated:YES];
         
     } // success callback block

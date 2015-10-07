@@ -997,6 +997,11 @@
         _zipTextField1=cell.zipTextField;
         _Address2TextField1=cell.Address2TextField;
         
+        cell.useShippingButton.hidden=false;
+        [cell.useShippingButton addTarget:self action:@selector(useShippingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        
         if (_billingAddress!=nil) {
             
             CheckoutAdrPrefillCell *cell =(CheckoutAdrPrefillCell *) [self.tableView cellForRowAtIndexPath:indexPath];
@@ -1307,6 +1312,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.navigationController pushViewController:ShopConfirm animated:YES];
 }
 
+
+
+- (IBAction)useShippingButtonClick:(id)sender
+{
+    
+    _nameTextField1.text=_nameTextField.text;
+    _AddressTextField1.text=_AddressTextField.text;
+    _Address2TextField1.text=_Address2TextField.text;
+    _stateLabel1.text=_stateLabel.text;
+    _cityTextField1.text=_cityTextField.text;
+    _phoneTextField1.text=_phoneTextField.text;
+    _zipTextField1.text=_zipTextField.text;
+    [self.tableView reloadData];
+    
+    
+}
 //checkout button
 - (IBAction)BuyNowButtonClick:(id)sender
 {

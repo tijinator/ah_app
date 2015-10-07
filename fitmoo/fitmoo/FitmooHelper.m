@@ -294,10 +294,10 @@
 - (NSString *) findStageId:(NSString *)selectedState withArray:(NSMutableArray *)stateArray
 {
     NSString *stateId=@"0";
-    
+    NSString *st= [selectedState substringToIndex:2];
     for (State *s in stateArray) {
         
-        if ([selectedState isEqualToString:s.abbr]) {
+        if ([st isEqualToString:s.abbr]) {
             stateId=s.state_id;
         }
         

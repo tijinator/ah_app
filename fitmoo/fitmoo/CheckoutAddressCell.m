@@ -40,6 +40,7 @@
     _zipTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_zipTextField respectToSuperFrame:nil];
     _phoneTextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_phoneTextField respectToSuperFrame:nil];
     _Address2TextField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_Address2TextField respectToSuperFrame:nil];
+    _useShippingButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_useShippingButton respectToSuperFrame:nil];
     
     
 }
