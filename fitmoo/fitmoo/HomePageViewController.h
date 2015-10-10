@@ -24,6 +24,7 @@
 #import "YTVimeoExtractor.h"
 #import "ComposeViewController.h"
 #import "ShopDetailViewController.h"
+#import "SpecialPageViewController.h"
 
 @interface HomePageViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

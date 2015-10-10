@@ -4,6 +4,11 @@
         <deployment version="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="BentonSans-Bold.otf">
+            <string>BentonSans-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Camera View Controller-->
         <scene sceneID="tOp-J1-wq2">
@@ -1344,15 +1349,37 @@ instructions to reset your password.</string>
                                             <action selector="backButtonClick:" destination="cNq-KB-G9E" eventType="touchUpInside" id="ZX2-dP-yu6"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k2o-E1-jQV" customClass="BentonSansBold">
+                                        <rect key="frame" x="40" y="28" width="240" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button hidden="YES" opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4KJ-2Q-jPV" customClass="BSBoldButton">
+                                <rect key="frame" x="0.0" y="520" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="ATTEND">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="BuyNowButtonClick:" destination="06i-PE-EEd" eventType="touchUpInside" id="uem-Ve-5DU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="BuyNowButton" destination="4KJ-2Q-jPV" id="58x-KK-6g0"/>
                         <outlet property="backButton" destination="ghl-b2-0zy" id="gcv-yM-G1b"/>
                         <outlet property="tableView" destination="ONE-Z4-ro9" id="Hci-0T-ajg"/>
+                        <outlet property="titleLabel" destination="k2o-E1-jQV" id="C0P-gq-VwL"/>
                         <outlet property="topview" destination="vgj-dY-uSS" id="PHg-sA-PfD"/>
                     </connections>
                 </viewController>

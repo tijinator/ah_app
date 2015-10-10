@@ -209,11 +209,13 @@
         
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         
-        if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+//        if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+//            [_homeFeedArray addObject:feed];
+//        }
+        
+        if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
             [_homeFeedArray addObject:feed];
         }
-        
-        
         
     }
     
@@ -509,6 +511,9 @@
     else if ([tempHomefeed.type isEqualToString:@"event"])
     {
         [cell setBodyFrameForEvent];
+        [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+        [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
     }
     
     [cell rebuiltBodyViewFrame];
@@ -820,13 +825,29 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
 
+    if([tempFeed.type isEqualToString:@"event"])
+    {
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+        
+        specialPage.homeFeed=tempFeed;
+       
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        specialPage.searchId=tempUser.user_id;
+        specialPage.isEventDetail=true;
+        
+        [self.navigationController pushViewController:specialPage animated:YES];
+        
+    }else   //product
+    {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopDetailViewController *shopDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
     shopDetail.homeFeed=tempFeed;
     [self.navigationController pushViewController:shopDetail animated:YES];
     
-    
+    }
 }
 
 - (IBAction)bodyLikeButtonClick:(id)sender {

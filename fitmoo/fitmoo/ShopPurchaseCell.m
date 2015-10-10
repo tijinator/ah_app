@@ -27,7 +27,9 @@
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
     
-    
+    if ([_order.image_url isEqual:[NSNull null]]) {
+         headerImage.image=[UIImage imageNamed:@"product_default.png"];
+    }else
     if (_order.image_url==nil||[_order.image_url isEqualToString:@""]) {
         headerImage.image=[UIImage imageNamed:@"product_default.png"];
     }else

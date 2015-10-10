@@ -56,4 +56,7 @@
 
 - (UIView *) addActivityIndicatorView: (UIView *)indicatorView and:(UIView *) selfView text:(NSString *) text;
 
+- (NSArray *) generatedayArray:(NSString *)dateString;
+- (NSString *) generateMonth:(NSString *)monthString;
+
 @end

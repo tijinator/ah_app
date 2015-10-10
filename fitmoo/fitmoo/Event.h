@@ -17,5 +17,11 @@
 @property (nonatomic, strong) NSString *theme;   //picture for event
 @property (nonatomic, strong) NSString *peopleAttending;
 
+@property (nonatomic, strong) NSString *total_attendees;
+@property (nonatomic, strong) NSString *is_joined;
+@property (nonatomic, strong) NSString *event_instance_id;
+@property (nonatomic, strong) NSString *price;
+
+
 
 @end

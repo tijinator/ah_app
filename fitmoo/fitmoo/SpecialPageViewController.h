@@ -27,12 +27,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIView *topview;
 
+@property (strong, nonatomic) IBOutlet UIButton *BuyNowButton;
+- (IBAction)BuyNowButtonClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic)  HomeFeed * homeFeed;
 @property (strong, nonatomic)  NSString * postText;
 @property (strong, nonatomic)  NSString * searchId;
+@property (assign, nonatomic)  bool isEventDetail;
 @property (strong, nonatomic)  UITextView * textView;
 @property (strong, nonatomic)  NSString * action;
 @property (strong, nonatomic) MPMoviePlayerViewController *playerView;

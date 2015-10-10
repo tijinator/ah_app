@@ -568,7 +568,7 @@
             }
         }
         if (samefeed==false) {
-            if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+            if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
                 [_FeedArray addObject:feed];
             }
             
@@ -1231,6 +1231,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         else if ([tempHomefeed.type isEqualToString:@"event"])
         {
             [cell setBodyFrameForEvent];
+            [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+            [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         [cell rebuiltBodyViewFrame];

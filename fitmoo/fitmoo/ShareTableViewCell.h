@@ -100,6 +100,8 @@
 @property (nonatomic, strong) RTLabel *rtLabel1;
 @property (nonatomic, strong) RTLabel *rtLabel2;
 
+@property (nonatomic, assign) bool showEventDetail;
+
 @property (strong, nonatomic) IBOutlet UIButton *viewAllCommentButton;
 
 

@@ -45,6 +45,8 @@
   //  _topview.frame=CGRectMake(0, 0, 320, 73);
     _topview.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topview respectToSuperFrame:self.view];
     
+    _BuyNowButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_BuyNowButton respectToSuperFrame:self.view];
+    
     if (self.view.frame.size.height<500) {
         
         _tableView.frame= CGRectMake(_tableView.frame.origin.x,_tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height-88);
@@ -282,7 +284,13 @@
     }
     else if ([tempHomefeed.type isEqualToString:@"event"])
     {
+        cell.showEventDetail=_isEventDetail;
         [cell setBodyFrameForEvent];
+        [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+        [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.titleLabel.text=_homeFeed.event.name.uppercaseString;
+        self.BuyNowButton.hidden=false;
+        
     }
     
     [cell rebuiltBodyViewFrame];
@@ -729,12 +737,97 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self likeButtonClick:myButton];
     bodyLikeAnimation=true;
 }
+
+
+- (void) attendEvent
+{
+    User *localUser=[[UserManager sharedUserManager] localUser];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict;
+ 
+    jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",_homeFeed.event.event_instance_id,@"event_instance_id",nil];
+    
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/feeds/",_homeFeed.feed_id,@"/join_event" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *dic= responseObject;
+        NSNumber *newTotal_attendees=[dic objectForKey:@"total_attendees"];
+        _homeFeed.event.total_attendees=[newTotal_attendees stringValue];
+     
+        [self.tableView reloadData];
+        if (![_homeFeed.event.price isEqualToString:@"0"]) {
+            [_BuyNowButton setTitle:@"BUY TICKET" forState:UIControlStateNormal];
+        }
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+
+}
+- (void) openShopCartPage
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+    ShopCartViewController *ShopCartPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopCartViewController"];
+    
+    
+    [self.navigationController pushViewController:ShopCartPage animated:YES];
+}
+- (void) buyEvent
+{
+    User *localUser=[[UserManager sharedUserManager] localUser];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSDictionary *jsonDict;
+    
+    jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"1",@"quantity",@"Event",@"type",_homeFeed.event.event_instance_id,@"event_instance_id",nil];
+    
+    
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/cart/add" ];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+         [self openShopCartPage];
+        
+        //      NSLog(@"Submit response data: %@", responseObject);
+    } // success callback block
+     
+          failure:^(AFHTTPRequestOperation *operation, NSError *error){
+              NSLog(@"Error: %@", error);} // failure callback block
+     ];
+
+}
+
 - (IBAction)BuyNowButtonClick:(id)sender {
 
+    UIButton *b= (UIButton *)sender;
+    if([_homeFeed.type isEqualToString:@"event"])
+    {
+     
+        if ([b.titleLabel.text isEqualToString:@"ATTEND"]) {
+            [self attendEvent];
+        }else
+        {
+            [self buyEvent];
+        }
+        
+            
+
+    }else
+    {
+    
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopDetailViewController *shopDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
     shopDetail.homeFeed=_homeFeed;
     [self.navigationController pushViewController:shopDetail animated:YES];
+    }
     
     
 }
@@ -816,4 +909,5 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (IBAction)backButtonClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 @end

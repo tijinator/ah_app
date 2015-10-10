@@ -461,7 +461,40 @@
         return workout;
 }
 
+- (NSArray *) generatedayArray:(NSString *)string
+{
+    
+    NSArray *Array= [string componentsSeparatedByString:@"T"];
+    NSString *dateString= [Array objectAtIndex:0];
+    NSString *timeString= [Array objectAtIndex:1];
+    
+    NSArray *dateArray= [dateString componentsSeparatedByString:@"-"];
+    NSArray *timeArray= [timeString componentsSeparatedByString:@":"];
+    
+    return @[[dateArray objectAtIndex:0], [dateArray objectAtIndex:1],[dateArray objectAtIndex:2], [timeArray objectAtIndex:0],[timeArray objectAtIndex:1]];
+    
+    
+}
 
+- (NSString *) generateMonth:(NSString *)monthString
+{
+     if (monthString.intValue==1) {return @"JAN";}
+     if (monthString.intValue==2) {return @"FEB";}
+     if (monthString.intValue==3) {return @"MAT";}
+     if (monthString.intValue==4) {return @"APR";}
+     if (monthString.intValue==5) {return @"MAY";}
+     if (monthString.intValue==6) {return @"JUN";}
+     if (monthString.intValue==7) {return @"JUL";}
+     if (monthString.intValue==8) {return @"AUG";}
+     if (monthString.intValue==9) {return @"SEP";}
+     if (monthString.intValue==10) {return @"OCT";}
+     if (monthString.intValue==11) {return @"NOV";}
+     if (monthString.intValue==12) {return @"DEC";}
+    
+  
+    
+    return @"DEC";
+}
 
 
 -(HomeFeed *) generateHomeFeed: (NSDictionary *) dic
@@ -816,17 +849,35 @@
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
         
-//        NSDictionary *theme= [dic  objectForKey:@"theme"];
-//            if (![theme isEqual:[NSNull null]]) {
-//                    NSDictionary *styles= [theme  objectForKey:@"styles"];
-//                    NSDictionary *medium= [styles  objectForKey:@"medium"];
-//                    homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
-//                if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
-//                {
-//                    homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
-//                }
-//        
-//            }
+        NSNumber *price=[event objectForKey:@"price"];
+        homeFeed.event.price=[price stringValue];
+        
+        NSDictionary *theme= [dic  objectForKey:@"theme"];
+            if (![theme isEqual:[NSNull null]]) {
+                    NSDictionary *styles= [theme  objectForKey:@"styles"];
+                    NSDictionary *medium= [styles  objectForKey:@"medium"];
+                    homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
+                
+                if ([homeFeed.event.theme isEqual:[NSNull null]]) {
+                     homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
+                   
+                }else if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
+                {
+                    homeFeed.event.theme=@"https://fitmoo.com/assets/cover/theme-event-feed.png";
+                }
+              
+        
+            }
+        NSDictionary *event_instance= [dic objectForKey:@"event_instance"];
+        
+        NSNumber *event_instance_id=[event_instance objectForKey:@"id"];
+        homeFeed.event.event_instance_id=[event_instance_id stringValue];
+
+        NSNumber *total_attendees=[dic objectForKey:@"event_instance_joiner_count"];
+        homeFeed.event.total_attendees=[total_attendees stringValue];
+        
+        NSNumber *is_joined= [dic objectForKey:@"is_joined"];
+        homeFeed.event.is_joined=[is_joined stringValue];
         
         homeFeed.photos.originalUrl=homeFeed.event.theme;
         homeFeed.photos.stylesUrl=homeFeed.event.theme;

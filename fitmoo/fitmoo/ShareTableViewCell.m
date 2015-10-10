@@ -205,10 +205,17 @@
 {
     _bodyTitle.text= _homeFeed.event.name;
     //  _bodyDetailLabel.text= _homeFeed.text;
-    _bodyDetailLabel.text= _homeFeed.event.end_time;
-    _bodyLabel1.text= _homeFeed.event.begin_time;
-    //  _bodyLabel2.text=_homeFeed.event.end_time;
+    NSArray *dateBeginArray=[[FitmooHelper sharedInstance] generatedayArray:_homeFeed.event.begin_time];
+    NSArray *dateEndArray=[[FitmooHelper sharedInstance] generatedayArray:_homeFeed.event.end_time];
     
+    
+    _bodyLabel1.text= [NSString stringWithFormat:@"Begin: %@-%@-%@ %@:%@",[dateBeginArray objectAtIndex:0], [dateBeginArray objectAtIndex:1], [dateBeginArray objectAtIndex:2], [dateBeginArray objectAtIndex:3],[dateBeginArray objectAtIndex:4]];
+    
+    _bodyDetailLabel.text= [NSString stringWithFormat:@"End: %@-%@-%@ %@:%@",[dateEndArray objectAtIndex:0], [dateEndArray objectAtIndex:1], [dateEndArray objectAtIndex:2], [dateEndArray objectAtIndex:3],[dateEndArray objectAtIndex:4]];
+    
+ 
+    _bodyMonthLabel.text=[[FitmooHelper sharedInstance] generateMonth:[dateBeginArray objectAtIndex:1]];
+    _bodyDayLabel.text=[dateBeginArray objectAtIndex:2];
     
     
     _bodyTitle.frame= CGRectMake(90, 95, 200, _bodyTitle.frame.size.height);
@@ -224,21 +231,37 @@
     [_bodyLabel1 setTextColor:[UIColor blackColor]];
     [_bodyDetailLabel setTextColor:[UIColor blackColor]];
     
-    _bodyLabel2.text=@"people going";
+    _bodyLabel2.text=[NSString stringWithFormat:@"%@ people going", _homeFeed.event.total_attendees];
     _bodyLabel2.frame= CGRectMake(115,170, 200, _bodyLabel2.frame.size.height);
     _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
     [_bodyLabel2 setTextColor:[UIColor colorWithRed:16.0/255.0 green:156.0/255.0 blue:251.0/255.0 alpha:1]];
     
-    _bodyYesButton.frame=CGRectMake(90,210, 105, 33);
-    _bodyYesButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyYesButton respectToSuperFrame:nil];
-    _bodyYesButton.layer.cornerRadius=5;
+//    _bodyYesButton.frame=CGRectMake(90,210, 105, 33);
+//    _bodyYesButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyYesButton respectToSuperFrame:nil];
+//    _bodyYesButton.layer.cornerRadius=5;
+//    
+//    _bodyMaybeButton.frame=CGRectMake(200,210, 105, 33);
+//    _bodyMaybeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyMaybeButton respectToSuperFrame:nil];
+//    _bodyMaybeButton.layer.cornerRadius=5;
     
-    _bodyMaybeButton.frame=CGRectMake(200,210, 105, 33);
-    _bodyMaybeButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyMaybeButton respectToSuperFrame:nil];
-    _bodyMaybeButton.layer.cornerRadius=5;
+//    _bodyYesButton.hidden=false;
+//    _bodyMaybeButton.hidden=false;
     
-    _bodyYesButton.hidden=false;
-    _bodyMaybeButton.hidden=false;
+    if (_showEventDetail==true) {
+        _rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(90*_frameRadio, 205*_frameRadio, 200*_frameRadio,100)];
+        [_rtLabel setDelegate:self];
+        _rtLabel.lineSpacing=8;
+        [_rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans size=14>%@</font>",_homeFeed.text]];
+        CGSize optimumSize =[_rtLabel optimumSize];
+        
+        _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
+        
+         [_ShadowBuyNowButton removeFromSuperview];
+        
+        [self.bodyView addSubview:_rtLabel];
+
+    }
+    
     _bodyBluePeopleImage.hidden=false;
     _bodyDateImage.hidden=false;
     _bodyMonthLabel.hidden=false;
@@ -262,6 +285,10 @@
     
     
     [_bodyCastView removeFromSuperview];
+    
+    _headerTag.hidden=false;
+    _ShadowBuyNowButton.hidden=false;
+    _headerTag.image= [UIImage imageNamed:@"event_tag.png"];
     
     //    _bodyLabel2.frame= CGRectMake(90,135, 200, _bodyLabel2.frame.size.height);
     //    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
