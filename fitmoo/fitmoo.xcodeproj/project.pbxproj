@@ -569,6 +569,10 @@
 		27ADF1F81B14B1D8003A0A83 /* skipbar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27ADF1C21B14B1D8003A0A83 /* skipbar@3x.png */; };
 		27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */; };
 		27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */; };
+		27AE250C1BCAB29A00D7E25D /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE250B1BCAB29A00D7E25D /* LiveViewController.m */; settings = {ASSET_TAGS = (); }; };
+		27AE25101BCAB43300D7E25D /* LiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE250E1BCAB43300D7E25D /* LiveCell.m */; settings = {ASSET_TAGS = (); }; };
+		27AE25111BCAB43300D7E25D /* LiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AE250F1BCAB43300D7E25D /* LiveCell.xib */; settings = {ASSET_TAGS = (); }; };
+		27AE25141BCAD6B200D7E25D /* LiveFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE25131BCAD6B200D7E25D /* LiveFeed.m */; settings = {ASSET_TAGS = (); }; };
 		27AFADB41BACEE0C00FE42FA /* ShopOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFADB21BACEE0C00FE42FA /* ShopOrderDetailCell.m */; settings = {ASSET_TAGS = (); }; };
 		27AFADB51BACEE0C00FE42FA /* ShopOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AFADB31BACEE0C00FE42FA /* ShopOrderDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
 		27AFADB81BACF53700FE42FA /* ShopOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AFADB71BACF53700FE42FA /* ShopOrderDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1381,6 +1385,13 @@
 		27ADF1FA1B14F7A1003A0A83 /* InterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestViewController.m; sourceTree = "<group>"; };
 		27ADF1FD1B1519AD003A0A83 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		27ADF1FE1B1519AD003A0A83 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		27AE250A1BCAB29A00D7E25D /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
+		27AE250B1BCAB29A00D7E25D /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
+		27AE250D1BCAB43300D7E25D /* LiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveCell.h; sourceTree = "<group>"; };
+		27AE250E1BCAB43300D7E25D /* LiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveCell.m; sourceTree = "<group>"; };
+		27AE250F1BCAB43300D7E25D /* LiveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveCell.xib; sourceTree = "<group>"; };
+		27AE25121BCAD6B200D7E25D /* LiveFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveFeed.h; sourceTree = "<group>"; };
+		27AE25131BCAD6B200D7E25D /* LiveFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveFeed.m; sourceTree = "<group>"; };
 		27AFADB11BACEE0C00FE42FA /* ShopOrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopOrderDetailCell.h; sourceTree = "<group>"; };
 		27AFADB21BACEE0C00FE42FA /* ShopOrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopOrderDetailCell.m; sourceTree = "<group>"; };
 		27AFADB31BACEE0C00FE42FA /* ShopOrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopOrderDetailCell.xib; sourceTree = "<group>"; };
@@ -1643,6 +1654,8 @@
 				27B1B46B1B1763C200F5F812 /* BaseViewController.m */,
 				279E57801B20A5320076C3B5 /* LanchScreen.h */,
 				279E57811B20A5320076C3B5 /* LanchScreen.m */,
+				27F9DC9B1BAB992B00F2A534 /* LeftViewController.h */,
+				27F9DC9C1BAB992B00F2A534 /* LeftViewController.m */,
 				2736B2241AEFD99C0013B4B9 /* posts */,
 				27A3AC0F1B9629DE00D78AAA /* Shop */,
 				27A009B01B3AEF540081AD4E /* SidePages */,
@@ -1785,8 +1798,6 @@
 		272582021AD563280059F43C /* SideView */ = {
 			isa = PBXGroup;
 			children = (
-				27F9DC9B1BAB992B00F2A534 /* LeftViewController.h */,
-				27F9DC9C1BAB992B00F2A534 /* LeftViewController.m */,
 				272582031AD5633F0059F43C /* RightViewController.h */,
 				272582041AD5633F0059F43C /* RightViewController.m */,
 			);
@@ -1816,6 +1827,8 @@
 				272582761AD593150059F43C /* LocalUser.m */,
 				2787C90B1B38AD7700B182FF /* Contacts.h */,
 				2787C90C1B38AD7700B182FF /* Contacts.m */,
+				27AE25121BCAD6B200D7E25D /* LiveFeed.h */,
+				27AE25131BCAD6B200D7E25D /* LiveFeed.m */,
 				272582781AD5A4DE0059F43C /* User.h */,
 				272582791AD5A4DE0059F43C /* User.m */,
 				2732B7281AD83BE300610821 /* HomeFeed.h */,
@@ -1853,6 +1866,8 @@
 				27AD266A1B18DF4D008D338D /* HomePageViewController.m */,
 				27AD266C1B18DF6C008D338D /* PeoplePageViewController.h */,
 				27AD266D1B18DF6C008D338D /* PeoplePageViewController.m */,
+				27AE250A1BCAB29A00D7E25D /* LiveViewController.h */,
+				27AE250B1BCAB29A00D7E25D /* LiveViewController.m */,
 				271DA84B1B555DDA00D4E075 /* CommunityPageViewController.h */,
 				271DA84C1B555DDA00D4E075 /* CommunityPageViewController.m */,
 				27A6E71D1B305EF0000104CB /* NotificationViewController.h */,
@@ -1894,6 +1909,9 @@
 				279717731B7CFF7A004ACBC2 /* InfluenceCell.h */,
 				279717741B7CFF7A004ACBC2 /* InfluenceCell.m */,
 				279717751B7CFF7A004ACBC2 /* InfluenceCell.xib */,
+				27AE250D1BCAB43300D7E25D /* LiveCell.h */,
+				27AE250E1BCAB43300D7E25D /* LiveCell.m */,
+				27AE250F1BCAB43300D7E25D /* LiveCell.xib */,
 				27FF37041B83ABAC008A3227 /* SearchCell.h */,
 				27FF37051B83ABAC008A3227 /* SearchCell.m */,
 				27FF37061B83ABAC008A3227 /* SearchCell.xib */,
@@ -2761,6 +2779,7 @@
 				27188F621AD4646300C34372 /* Frameworks */,
 				27188F631AD4646300C34372 /* Resources */,
 				69376F4F6C3CD7F1B05058BB /* Copy Pods Resources */,
+				E482764DF225B3376C5961F6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2954,6 +2973,7 @@
 				276FE3A01B866C0A009496DE /* instagramlogo_workout@2x.png in Resources */,
 				27C319A41BA1F12800701D86 /* CheckoutAddressCell.xib in Resources */,
 				277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */,
+				27AE25111BCAB43300D7E25D /* LiveCell.xib in Resources */,
 				274CBC9D1AD6D52700CD6CB7 /* AutoLayout.storyboard in Resources */,
 				2738D9041B023E7F00F5087E /* greyendorseicon.png in Resources */,
 				27ADF1C81B14B1D8003A0A83 /* bluearrow@3x.png in Resources */,
@@ -3441,6 +3461,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		E482764DF225B3376C5961F6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3484,6 +3519,7 @@
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				27FF37021B8363AC008A3227 /* SearchTapCell.m in Sources */,
 				27410DF41AFAB34200CF230C /* QuadraticBezierCurve.m in Sources */,
+				27AE250C1BCAB29A00D7E25D /* LiveViewController.m in Sources */,
 				27250CF91AF902D7005FC4C5 /* SettingViewController.m in Sources */,
 				27C319AC1BA223CE00701D86 /* State.m in Sources */,
 				27AFADB41BACEE0C00FE42FA /* ShopOrderDetailCell.m in Sources */,
@@ -3552,6 +3588,7 @@
 				27B1B4691B175FE100F5F812 /* NavigationViewController.m in Sources */,
 				27940B311B9F36D1007F722D /* ShopCartDetail.m in Sources */,
 				27FF37071B83ABAC008A3227 /* SearchCell.m in Sources */,
+				27AE25141BCAD6B200D7E25D /* LiveFeed.m in Sources */,
 				27ADF1FB1B14F7A1003A0A83 /* InterestViewController.m in Sources */,
 				27C0A6F81B7A498F00BA3612 /* SearchPhotoCell.m in Sources */,
 				2714AF621B028F5E003339A0 /* BentonSansBold.m in Sources */,
@@ -3580,6 +3617,7 @@
 				27D0229A1BA8E77900A6FA2D /* CreditCard.m in Sources */,
 				27A3AC0E1B9606FD00D78AAA /* ShopDetailViewController.m in Sources */,
 				2732B7451AD84D1000610821 /* Event.m in Sources */,
+				27AE25101BCAB43300D7E25D /* LiveCell.m in Sources */,
 				2731C6361ADD6FD800788181 /* PeopleTitleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

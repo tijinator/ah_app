@@ -23,97 +23,71 @@ PODS:
   - APAddressBook (0.1.11):
     - APAddressBook/Core (= 0.1.11)
   - APAddressBook/Core (0.1.11)
-  - AWSAutoScaling (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSCloudWatch (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSCore (2.1.1):
-    - Bolts (~> 1.1.0)
-    - GZIP (~> 1.0.3)
-    - Mantle (~> 1.4)
-    - Reachability (~> 3.1)
-    - UICKeyChainStore (~> 2.0)
-    - XMLDictionary (~> 1.4.0)
-  - AWSDynamoDB (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSEC2 (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSElasticLoadBalancing (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSiOSSDKv2 (2.1.1):
-    - AWSiOSSDKv2/AutoScaling (= 2.1.1)
-    - AWSiOSSDKv2/AWSCore (= 2.1.1)
-    - AWSiOSSDKv2/CloudWatch (= 2.1.1)
-    - AWSiOSSDKv2/DynamoDB (= 2.1.1)
-    - AWSiOSSDKv2/EC2 (= 2.1.1)
-    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.1.1)
-    - AWSiOSSDKv2/Kinesis (= 2.1.1)
-    - AWSiOSSDKv2/S3 (= 2.1.1)
-    - AWSiOSSDKv2/SES (= 2.1.1)
-    - AWSiOSSDKv2/SimpleDB (= 2.1.1)
-    - AWSiOSSDKv2/SNS (= 2.1.1)
-    - AWSiOSSDKv2/SQS (= 2.1.1)
-  - AWSiOSSDKv2/AutoScaling (2.1.1):
-    - AWSAutoScaling (= 2.1.1)
-  - AWSiOSSDKv2/AWSCore (2.1.1):
-    - AWSCore (= 2.1.1)
-  - AWSiOSSDKv2/CloudWatch (2.1.1):
-    - AWSCloudWatch (= 2.1.1)
-  - AWSiOSSDKv2/DynamoDB (2.1.1):
-    - AWSDynamoDB (= 2.1.1)
-  - AWSiOSSDKv2/EC2 (2.1.1):
-    - AWSEC2 (= 2.1.1)
-  - AWSiOSSDKv2/ElasticLoadBalancing (2.1.1):
-    - AWSElasticLoadBalancing (= 2.1.1)
-  - AWSiOSSDKv2/Kinesis (2.1.1):
-    - AWSKinesis (= 2.1.1)
-  - AWSiOSSDKv2/S3 (2.1.1):
-    - AWSS3 (= 2.1.1)
-  - AWSiOSSDKv2/SES (2.1.1):
-    - AWSSES (= 2.1.1)
-  - AWSiOSSDKv2/SimpleDB (2.1.1):
-    - AWSSimpleDB (= 2.1.1)
-  - AWSiOSSDKv2/SNS (2.1.1):
-    - AWSSNS (= 2.1.1)
-  - AWSiOSSDKv2/SQS (2.1.1):
-    - AWSSQS (= 2.1.1)
-  - AWSKinesis (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - FMDB (~> 2.4)
-    - Mantle (~> 1.4)
-    - TMCache (~> 1.2.1)
-  - AWSS3 (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-    - TMCache (~> 1.2.1)
-  - AWSSES (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSimpleDB (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSNS (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSQS (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
+  - AWSAutoScaling (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSCloudWatch (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSCore (2.2.7)
+  - AWSDynamoDB (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSEC2 (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSElasticLoadBalancing (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSiOSSDKv2 (2.2.7):
+    - AWSiOSSDKv2/AutoScaling (= 2.2.7)
+    - AWSiOSSDKv2/AWSCore (= 2.2.7)
+    - AWSiOSSDKv2/CloudWatch (= 2.2.7)
+    - AWSiOSSDKv2/DynamoDB (= 2.2.7)
+    - AWSiOSSDKv2/EC2 (= 2.2.7)
+    - AWSiOSSDKv2/ElasticLoadBalancing (= 2.2.7)
+    - AWSiOSSDKv2/Kinesis (= 2.2.7)
+    - AWSiOSSDKv2/MobileAnalytics (= 2.2.7)
+    - AWSiOSSDKv2/S3 (= 2.2.7)
+    - AWSiOSSDKv2/SES (= 2.2.7)
+    - AWSiOSSDKv2/SimpleDB (= 2.2.7)
+    - AWSiOSSDKv2/SNS (= 2.2.7)
+    - AWSiOSSDKv2/SQS (= 2.2.7)
+  - AWSiOSSDKv2/AutoScaling (2.2.7):
+    - AWSAutoScaling (= 2.2.7)
+  - AWSiOSSDKv2/AWSCore (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSiOSSDKv2/CloudWatch (2.2.7):
+    - AWSCloudWatch (= 2.2.7)
+  - AWSiOSSDKv2/DynamoDB (2.2.7):
+    - AWSDynamoDB (= 2.2.7)
+  - AWSiOSSDKv2/EC2 (2.2.7):
+    - AWSEC2 (= 2.2.7)
+  - AWSiOSSDKv2/ElasticLoadBalancing (2.2.7):
+    - AWSElasticLoadBalancing (= 2.2.7)
+  - AWSiOSSDKv2/Kinesis (2.2.7):
+    - AWSKinesis (= 2.2.7)
+  - AWSiOSSDKv2/MobileAnalytics (2.2.7):
+    - AWSMobileAnalytics (= 2.2.7)
+  - AWSiOSSDKv2/S3 (2.2.7):
+    - AWSS3 (= 2.2.7)
+  - AWSiOSSDKv2/SES (2.2.7):
+    - AWSSES (= 2.2.7)
+  - AWSiOSSDKv2/SimpleDB (2.2.7):
+    - AWSSimpleDB (= 2.2.7)
+  - AWSiOSSDKv2/SNS (2.2.7):
+    - AWSSNS (= 2.2.7)
+  - AWSiOSSDKv2/SQS (2.2.7):
+    - AWSSQS (= 2.2.7)
+  - AWSKinesis (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSMobileAnalytics (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSS3 (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSES (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSimpleDB (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSNS (2.2.7):
+    - AWSCore (= 2.2.7)
+  - AWSSQS (2.2.7):
+    - AWSCore (= 2.2.7)
   - Bolts (1.1.5):
     - Bolts/AppLinks (= 1.1.5)
     - Bolts/Tasks (= 1.1.5)
@@ -123,72 +97,59 @@ PODS:
   - EGOCache (2.1.3)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
   - FSImageViewer (3.2):
     - AFNetworking (~> 2.5)
     - EGOCache (~> 2.1)
     - UAProgressView (~> 0.1)
-  - GZIP (1.0.3)
   - JTCalendar (2.0.7)
-  - Mantle (1.5.4):
-    - Mantle/extobjc (= 1.5.4)
-  - Mantle/extobjc (1.5.4)
   - Reachability (3.2)
   - Stripe (5.1.2):
     - Stripe/Core (= 5.1.2)
   - Stripe/Core (5.1.2)
   - SwipeBack (1.1.0)
-  - TMCache (1.2.4)
   - TTTAttributedLabel (1.10.1)
   - UAProgressView (0.1.1)
-  - UICKeyChainStore (2.0.4)
-  - XMLDictionary (1.4)
+  - youtube-ios-player-helper (0.1.4)
 
 DEPENDENCIES:
   - APAddressBook
-  - AWSiOSSDKv2
+  - AWSiOSSDKv2 (~> 2.2.2)
   - Facebook-iOS-SDK (~> 3.0)
   - FSImageViewer (~> 3.2)
   - JTCalendar
+  - Reachability
   - Stripe
   - SwipeBack (~> 1.0)
   - TTTAttributedLabel (~> 1.10.1)
+  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
-  AWSAutoScaling: 7dce9232ff39ba7261879ebee44e99e20ae19ddf
-  AWSCloudWatch: a71dec2b429d09e7d5baf2959548accf606b5f4e
-  AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300
-  AWSDynamoDB: 8afd8c76c9f19adfbd095abd3b6ca0cdb6a8c2e8
-  AWSEC2: 8ffacce17f49dd121ab18d468fae2db5db408500
-  AWSElasticLoadBalancing: a90d47b67609bcf2c1c2e3bccc23b51a9d0240d3
-  AWSiOSSDKv2: 4c97dae74014729e840146295edc1d6c023d176b
-  AWSKinesis: 4ef3a2c9683d50a4ccc2ecdd173c8b04ca9b6118
-  AWSS3: 891d269735be0f3c63eab5a2d1ee9d788f2c64ee
-  AWSSES: 04f6db9fcf3792a2374db5692701445df517e5f3
-  AWSSimpleDB: e863f52f11557d8af42e5fd47e702ea01e6446e2
-  AWSSNS: 49d9144ec52c8650ba9207232fdd17c68289fac8
-  AWSSQS: bb6b810a5d9826b4b25ed520e344b71a90d6e48f
+  AWSAutoScaling: 707c4ce02f9a27f8bb12e348ad6555eb14cb7113
+  AWSCloudWatch: 1b113e246ab47045c496820a899476c4fe75ac77
+  AWSCore: d81e1e534040780deb0f3877aaa207d297e54b4c
+  AWSDynamoDB: 211c266505513a57be42af255e2363bbbcdd2a1d
+  AWSEC2: da401a7bdb1d993ca158ca384356c6f97ec697ed
+  AWSElasticLoadBalancing: 4c691a1f48136572f0454e05a057e7863a058cfc
+  AWSiOSSDKv2: 265d3c4a518122e761855c19625b0f037e31a9f5
+  AWSKinesis: f2248f4c6ae46106f5e2f29c21f859baba7cd15a
+  AWSMobileAnalytics: ee66bd427dcfa264088804776e94d82932ad07f5
+  AWSS3: d39bae2ebbcdc450aef30635c85e556317b92a33
+  AWSSES: bef72332e719940454c8873dcee561d15c5040ba
+  AWSSimpleDB: 3e699c4437f17f70fce66558731232431e1b1090
+  AWSSNS: 6f526c50d4013eacd4c35af4b9b35eb415d202ec
+  AWSSQS: 0def5dfc1385564d88ebf88a0bdf7227f5f855e1
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FSImageViewer: 9106a89800e89a359b02d0c4bb7f7a3ddc1aff71
-  GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
   JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
-  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
   SwipeBack: 45a42c333b7b9657b9f02cf19673339b3a006195
-  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070
-  UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
-  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
+  youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.39.0

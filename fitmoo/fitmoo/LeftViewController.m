@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png",@"earnings.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings",@"live", nil];
     
     
     self.tableView = ({
@@ -244,6 +244,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
     }else if (indexPath.row==5) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"purchases"];
+    }else if (indexPath.row==7) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"live"];
     }else if (indexPath.row==6) {
         
 //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Logout"

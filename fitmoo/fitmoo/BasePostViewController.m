@@ -473,8 +473,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // now the upload request is set up we can creat the transfermanger, the credentials are already set up in the app delegate
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
     // start the upload
-    [[transferManager upload:_uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
-        
+//    [[transferManager upload:_uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
+    [[transferManager upload:_uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
         // once the uploadmanager finishes check if there were any errors
         if (task.error) {
             UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"

@@ -1,4 +1,4 @@
-/**
+/*
  Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
  Licensed under the Apache License, Version 2.0 (the "License").
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, AWSDynamoDBObjectMapperSaveBehavior) {
     AWSDynamoDBObjectMapperSaveBehaviorClobber
 };
 
-@class BFTask;
+@class AWSTask;
 @class AWSServiceConfiguration;
 @class AWSDynamoDB;
 @class AWSDynamoDBObjectMapperConfiguration;
@@ -101,13 +101,6 @@ typedef NS_ENUM(NSInteger, AWSDynamoDBObjectMapperSaveBehavior) {
 + (NSString *)rangeKeyAttribute;
 
 /**
- Returns the name of the attribute used for veresion control.
-
- @return A version attribute name.
- */
-+ (NSString *)versionAttribute;
-
-/**
  Returns an array of `NSString`s for the names of attributes that need to be ignored.
 
  @return An array of attribute names.
@@ -120,7 +113,7 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 /**
  @warning This class has been deprecated. Use `AWSDynamoDBObjectModel` instead.
  */
-@interface AWSDynamoDBModel : MTLModel <MTLJSONSerializing>
+@interface AWSDynamoDBModel : AWSMTLModel <AWSMTLJSONSerializing>
 
 @end
 
@@ -130,7 +123,7 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 /**
  A base class for all objects mapped to an Amazon DynamoDB table row. They need to inherit from this class.
  */
-@interface AWSDynamoDBObjectModel : AWSDynamoDBModel <MTLJSONSerializing>
+@interface AWSDynamoDBObjectModel : AWSDynamoDBModel <AWSMTLJSONSerializing>
 
 @end
 
@@ -315,9 +308,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 
  @param model A model to save.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)save:(AWSDynamoDBModel *)model;
+- (AWSTask *)save:(AWSDynamoDBModel *)model;
 
 /**
  Saves the object given into DynamoDB, using the specified configuration.
@@ -325,9 +318,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param model         A model to save.
  @param configuration A configuration.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)save:(AWSDynamoDBModel *)model
+- (AWSTask *)save:(AWSDynamoDBModel *)model
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration;
 
 /**
@@ -335,9 +328,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 
  @param model A model to delete.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)remove:(AWSDynamoDBModel *)model;
+- (AWSTask *)remove:(AWSDynamoDBModel *)model;
 
 /**
  Deletes the given object from its DynamoDB table using the specified configuration.
@@ -345,9 +338,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param model         A model to delete.
  @param configuration A configuration.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)remove:(AWSDynamoDBModel *)model
+- (AWSTask *)remove:(AWSDynamoDBModel *)model
      configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration;
 
 /**
@@ -357,9 +350,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param hashKey     A hash key value.
  @param rangeKey    A range key value.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)load:(Class)resultClass
+- (AWSTask *)load:(Class)resultClass
          hashKey:(id)hashKey
         rangeKey:(id)rangeKey;
 
@@ -371,9 +364,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param rangeKey      A range key value.
  @param configuration A configuration.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)load:(Class)resultClass
+- (AWSTask *)load:(Class)resultClass
          hashKey:(id)hashKey
         rangeKey:(id)rangeKey
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration;
@@ -384,9 +377,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param resultClass The class of the result object.
  @param expression  An expression object.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)query:(Class)resultClass
+- (AWSTask *)query:(Class)resultClass
        expression:(AWSDynamoDBQueryExpression *)expression;
 
 /**
@@ -396,9 +389,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param expression    An expression object.
  @param configuration A configuration.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)query:(Class)resultClass
+- (AWSTask *)query:(Class)resultClass
        expression:(AWSDynamoDBQueryExpression *)expression
     configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration;
 
@@ -408,9 +401,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param resultClass The class of the result object.
  @param expression  An expression object.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)scan:(Class)resultClass
+- (AWSTask *)scan:(Class)resultClass
       expression:(AWSDynamoDBScanExpression *)expression;
 
 /**
@@ -420,9 +413,9 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  @param expression    An expression object.
  @param configuration A configuration.
 
- @return BFTask.
+ @return AWSTask.
  */
-- (BFTask *)scan:(Class)resultClass
+- (AWSTask *)scan:(Class)resultClass
       expression:(AWSDynamoDBScanExpression *)expression
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration;
 
@@ -458,14 +451,70 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 @property (nonatomic, strong) NSNumber *scanIndexForward;
 
 /**
+ The hash attribute name used as hashKeyConditions. If nil, the class uses the return value of `hashKeyAttribute` in user-defined Object Mapper Class.
+ 
+ You should set this value when query a global secondary index where the index hash attribute name is different from table's hash attribute name.
+ */
+@property (nonatomic, strong) NSString *hashKeyAttribute;
+
+/**
  The value of the hash key.
  */
 @property (nonatomic, strong) id hashKeyValues;
 
 /**
- The range key conditions.
+ The condition that specifies the key value(s) for items to be retrieved by the Query action. For more information, see [AWSDynamoDBQueryInput keyConditionExpression]
+ 
+ *Important:* Unlike [AWSDynamoDBQueryInput keyConditionExpression], DynamoDB Object Mapper automatically provides the required hash key equality condition for you. You can provide an optinal range range key condition.
+ 
+ For example, you may set rangeKeyConditionExpression to `rangeAttributeName = :rangeval`  where `rangeAttributeName` is the attribute name of the range key. You also need to use the expressionAttributeValues property to replace tokens `:rangeval` with actual values at runtime.
+ 
+ @see [AWSDynamoDBQueryInput keyConditionExpression]
+ @see expressionAttributeNames
+ @see expressionAttributeValues
  */
-@property (nonatomic, strong) NSDictionary *rangeKeyConditions;
+@property (nonatomic, strong) NSString *rangeKeyConditionExpression;
+
+/**
+ A string that contains conditions DynamoDB applies after the Query operation, but before the data is returned. For more information, see [AWSDynamoDBQueryInput filterExpression]
+ 
+ @see [AWSDynamoDBQueryInput filterExpression]
+ @see expressionAttributeNames
+ @see expressionAttributeValues
+ */
+@property (nonatomic, strong) NSString *filterExpression;
+
+/**
+ A string that identifies one or more attributes to retrieve from the table. If no attribute names are specified, all attributes will be returned.
+ 
+ @see [AWSDynamoDBQueryInput projectionExpression]
+ @see expressionAttributeNames
+ @see expressionAttributeValues
+ */
+@property (nonatomic, strong) NSString *projectionExpression;
+
+/**
+ One or more substitution tokens for attribute names in an expression.
+ 
+ @see [AWSDynamoDBQueryInput expressionAttributeNames]
+ */
+@property (nonatomic, strong) NSDictionary *expressionAttributeNames;
+
+/**
+ One or more values that can be substituted in an expression.
+ 
+ @see [AWSDynamoDBQueryInput expressionAttributeValues]
+ */
+@property (nonatomic, strong) NSDictionary *expressionAttributeValues;
+
+/**
+ The range key conditions.
+ 
+ @warning This is a legacy parameter, provided for backward compatibility. New applications should use KeyConditionExpression instead. Do not combine legacy parameters and expression parameters in a single API call; otherwise, DynamoDB will return a ValidationException error.
+ 
+ @see KeyConditionExpression
+ */
+@property (nonatomic, strong) NSDictionary *rangeKeyConditions __attribute__ ((deprecated("Use 'keyConditionExpression' instead.")));
 
 /**
  The exclusive start key.
@@ -490,9 +539,41 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
 @interface AWSDynamoDBScanExpression : NSObject
 
 /**
+ A string that contains conditions that DynamoDB applies after the Scan operation, but before the data is returned.
+ 
+ @see [AWSDynamoDBScanInput filterExpression]
+ @see expressionAttributeNames
+ @see expressionAttributeValues
+ */
+@property (nonatomic, strong) NSString *filterExpression;
+
+/**
+ A string that identifies one or more attributes to retrieve from the specified table or index. If no attribute names are specified, all attributes will be returned.
+ 
+ @see [AWSDynamoDBScanInput projectionExpression]
+ @see expressionAttributeNames
+ @see expressionAttributeValues
+ */
+@property (nonatomic, strong) NSString *projectionExpression;
+
+/**
+ One or more substitution tokens for attribute names in an expression.
+ 
+ @see [AWSDynamoDBScanInput expressionAttributeNames]
+ */
+@property (nonatomic, strong) NSDictionary *expressionAttributeNames;
+
+/**
+ One or more values that can be substituted in an expression.
+ 
+ @see [AWSDynamoDBScanInput expressionAttributeValues]
+ */
+@property (nonatomic, strong) NSDictionary *expressionAttributeValues;
+
+/**
  The scan filter.
  */
-@property (nonatomic, strong) NSDictionary *scanFilter;
+@property (nonatomic, strong) NSDictionary *scanFilter __attribute__ ((deprecated("Use 'filterExpression' instead.")));
 
 /**
  The exclusive start key.
@@ -503,6 +584,11 @@ __attribute__ ((deprecated("Use 'AWSDynamoDBObjectModel' instead.")))
  The limit.
  */
 @property (nonatomic, strong) NSNumber *limit;
+
+/**
+ The index name.
+ */
+@property (nonatomic, strong) NSString *indexName;
 
 @end
 

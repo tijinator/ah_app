@@ -4,152 +4,102 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
+		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-APAddressBook.xcscheme</key>
+		<key>APAddressBook.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSAutoScaling.xcscheme</key>
+		<key>AWSAutoScaling.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSCloudWatch.xcscheme</key>
+		<key>AWSCloudWatch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSCore.xcscheme</key>
+		<key>AWSCore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSDynamoDB.xcscheme</key>
+		<key>AWSDynamoDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSEC2.xcscheme</key>
+		<key>AWSEC2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSElasticLoadBalancing.xcscheme</key>
+		<key>AWSElasticLoadBalancing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSKinesis.xcscheme</key>
+		<key>AWSKinesis.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSS3.xcscheme</key>
+		<key>AWSMobileAnalytics.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSSES.xcscheme</key>
+		<key>AWSS3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSSNS.xcscheme</key>
+		<key>AWSSES.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSSQS.xcscheme</key>
+		<key>AWSSNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AWSSimpleDB.xcscheme</key>
+		<key>AWSSQS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Bolts.xcscheme</key>
+		<key>AWSSimpleDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-EGOCache.xcscheme</key>
+		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FMDB.xcscheme</key>
+		<key>EGOCache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FSImageViewer.xcscheme</key>
+		<key>FSImageViewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
+		<key>Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-GZIP.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-JTCalendar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Mantle.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Reachability.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Stripe.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-SwipeBack.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TMCache.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TTTAttributedLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-UAProgressView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-UICKeyChainStore.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-XMLDictionary.xcscheme</key>
+		<key>JTCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -159,160 +109,180 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwipeBack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TTTAttributedLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UAProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>youtube-ios-player-helper-Assets.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>002586F176591E4AC2357EB2</key>
+		<key>157130DA3B5790A62C9285580B1793C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>034D032B5710920F8F1C011F</key>
+		<key>1E0E391DDFD80715D5D46398B1FDF76E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0580E70017591E4CC0A9B181</key>
+		<key>1E8F96B2DA89BFDE661E5CC9552B69E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>077F18B057C871C14EDE35A5</key>
+		<key>241CAEFCC34502496CE2BA6DA06D6AA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>12FBFB7CB38A6923A85B384C</key>
+		<key>2602F3D0DAC534568B6AD7EEA0DD1959</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>193B53D3235956E01EEEDE15</key>
+		<key>37DA8823B6E71A919A969C9729B2EC00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1CA8AE88184C5A34598DEC54</key>
+		<key>4187A5DFAC146115CF5D283EB9A121C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>269A05B18E1A02EA6E8E4E52</key>
+		<key>4D0130CD2557F481516FD7400CADC981</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C53E82955FFA5ABD2876036</key>
+		<key>4D1D316CB9BD9BBE4169B95795828500</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3838578AF8573D6418534B36</key>
+		<key>555CF66E5D087CB97CF592B388605B33</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B98CCEE1F9F700CD8B78434</key>
+		<key>5EA8D03578F9AA16EDEA592545858C6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3BE0D1658D4BF1675C3361FF</key>
+		<key>5F810D8EF2A5B1DB07570CF5CBAE7E62</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43CF19F1C492F2A1875C77DE</key>
+		<key>69BF9C954B82732CC113C2769C9CC76E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>443447A0E9A7941B067B8CD8</key>
+		<key>8547474DD37E856E78397DE5248634AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45009B0E4CA82BC1A8D89BD3</key>
+		<key>8FEF10BE63B7DB351D68BB710F72814C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D00E10AB45F73DB73A08DC4</key>
+		<key>901219B486CAC9F641B6BB4B7D5EB031</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B95B165E4F7327BA19E5E47</key>
+		<key>9BE274F7DC86A7A826CF1E0D5AF59895</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F0A5BB1CBFEC430A339312B</key>
+		<key>A08AEFDC024D13A4C5F909784AEE8C56</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C3FC0E28B749A3A2E2CEF0B</key>
+		<key>A5D74149151C19435FBED7862908B355</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85E2CB91FE4E252565359F06</key>
+		<key>ABB86C28639C7AAD6EF20377352DFAE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>910191A4650C55A0312C76DC</key>
+		<key>AC639D80A6665CD0F7BB34933374C604</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95739449B929086C36362EBF</key>
+		<key>B05430D5F057D8F5E616DAFB92E2F72C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9763D9097F0948484D70B3B6</key>
+		<key>B8D006ED903BABE5364442D0BA7EAEDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADC5EA51DBC5A5B047569684</key>
+		<key>C3AD7E342840A1BEA026D1D3A2D9C1A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B26277324F20BEB42DE90AA7</key>
+		<key>C3E955A623132B64BE9C901EEBB54BE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF84B3C0100B0DFE59CC508F</key>
+		<key>CEA448DB544C9DC1E5BF682A484D03DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D22E3B8F7AC97B9D9D016C45</key>
+		<key>EC4B8DAA2B57D414445B79B7E26A7F83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA8C9B21182710C8D80DAF12</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DB8132E8849848DC83805AB0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E758A6ED7C7477E051F6CAB2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E928AECD8ED49CF1B697C20D</key>
+		<key>F416B66613499E194BB8FF5A8FD13D17</key>
 		<dict>
 			<key>primary</key>
 			<true/>

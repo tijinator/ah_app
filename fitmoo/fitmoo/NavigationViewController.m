@@ -425,9 +425,18 @@
             [_Pagestuck addObject:key];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
-        
-        
-        
+ 
+    }else  if ([key isEqualToString:@"live"]) {
+        if (![currentPage isEqualToString:key]) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+            _livePage =[mainStoryboard instantiateViewControllerWithIdentifier:@"LiveViewController"];
+
+            [[self nav] pushViewController:_livePage animated:YES];
+            
+            currentPage=key;
+            [_Pagestuck addObject:key];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
     }else  if ([key isEqualToString:@"location"]) {
         if (![currentPage isEqualToString:key]) {

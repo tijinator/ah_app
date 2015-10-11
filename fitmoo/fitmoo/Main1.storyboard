@@ -1662,6 +1662,149 @@
             </objects>
             <point key="canvasLocation" x="589" y="1511"/>
         </scene>
+        <!--Live View Controller-->
+        <scene sceneID="x5s-JG-Ke9">
+            <objects>
+                <viewController storyboardIdentifier="LiveViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4S1-oI-ycy" customClass="LiveViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2SD-Dz-7VI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" id="6mK-0F-Zsd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitmoo share kill clift's post " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ref-OT-jYI" customClass="BentonSansMedium">
+                                        <rect key="frame" x="80" y="18" width="220" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RFn-Yy-MTs">
+                                        <rect key="frame" x="20" y="14" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 minutes ago" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k3d-DT-D9w" customClass="BentonSansBook">
+                                        <rect key="frame" x="80" y="36" width="220" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="top" id="yWG-D6-lUo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qht-kp-mHb">
+                                        <rect key="frame" x="0.0" y="22" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="whitearrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClick:" destination="4S1-oI-ycy" eventType="touchUpInside" id="Oa5-70-QSZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FITMOO LIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="44J-Y7-0pC" customClass="BentonSansBold">
+                                        <rect key="frame" x="40" y="28" width="240" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="4YO-g4-qif" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="60" width="320" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Yds-U8-JiO">
+                                <rect key="frame" x="0.0" y="240" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="adverButonClick:" destination="4S1-oI-ycy" eventType="touchUpInside" id="mRy-f7-R3e"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="vwc-b9-gru">
+                                <rect key="frame" x="0.0" y="323" width="320" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="135" id="4Lw-fR-t6q">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Lw-fR-t6q" id="e0V-gP-EI0">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4S1-oI-ycy" id="GVi-Ak-Ua2"/>
+                                    <outlet property="delegate" destination="4S1-oI-ycy" id="uXY-xv-KV3"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="6W2-8U-B4O">
+                                <rect key="frame" x="0.0" y="520" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="FDo-jc-YLT">
+                                        <rect key="frame" x="8" y="8" width="237" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4S1-oI-ycy" id="U9j-Tx-6Uq"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kMP-My-IpI">
+                                        <rect key="frame" x="253" y="7" width="63" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Post">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postButtonClick:" destination="4S1-oI-ycy" eventType="touchUpInside" id="YXp-bY-bIN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="advertiseButton" destination="Yds-U8-JiO" id="N9i-fQ-Jgb"/>
+                        <outlet property="buttomView" destination="6W2-8U-B4O" id="E9Q-za-Vne"/>
+                        <outlet property="dayLabel" destination="k3d-DT-D9w" id="u8B-Sy-Okf"/>
+                        <outlet property="headerView" destination="6mK-0F-Zsd" id="Fpr-Qp-4VL"/>
+                        <outlet property="heanderImage1" destination="RFn-Yy-MTs" id="amx-d3-vBu"/>
+                        <outlet property="leftButton" destination="Qht-kp-mHb" id="gdt-1L-f7Y"/>
+                        <outlet property="nameLabel" destination="Ref-OT-jYI" id="woR-T6-kLU"/>
+                        <outlet property="playerView" destination="4YO-g4-qif" id="506-B9-n4y"/>
+                        <outlet property="postButton" destination="kMP-My-IpI" id="R7a-0C-Slp"/>
+                        <outlet property="tableView" destination="vwc-b9-gru" id="sxt-r3-9er"/>
+                        <outlet property="textField" destination="FDo-jc-YLT" id="ouB-sD-Lf2"/>
+                        <outlet property="titleLabel" destination="44J-Y7-0pC" id="ElY-Gb-XBP"/>
+                        <outlet property="topView" destination="yWG-D6-lUo" id="lQm-IF-8IV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MWH-AJ-Mh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="1511"/>
+        </scene>
     </scenes>
     <resources>
         <image name="adduser.png" width="16" height="16"/>

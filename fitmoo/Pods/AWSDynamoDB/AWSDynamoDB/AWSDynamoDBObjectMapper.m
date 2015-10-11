@@ -1,4 +1,4 @@
-/**
+/*
  Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
  Licensed under the Apache License, Version 2.0 (the "License").
@@ -15,10 +15,12 @@
 
 #import "AWSDynamoDBObjectMapper.h"
 #import "AWSDynamoDB.h"
-#import <Bolts/Bolts.h>
+#import "AWSBolts.h"
 #import "AWSLogging.h"
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSCategory.h"
+
+static const NSString *AWSDynamoDBObjectMapperHashKeyAttributePlaceHolder = @":awsddbomhashvalueplaceholder";
 
 typedef NS_ENUM(NSInteger, AWSDynamoDBObjectMapperVersion) {
     AWSDynamoDBObjectMapperVersionUnknown,
@@ -261,12 +263,12 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-- (BFTask *)save:(AWSDynamoDBModel *)model {
+- (AWSTask *)save:(AWSDynamoDBModel *)model {
     return [self save:model
         configuration:self.configuration];
 }
 
-- (BFTask *)save:(AWSDynamoDBModel *)model
+- (AWSTask *)save:(AWSDynamoDBModel *)model
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration {
     switch (configuration.saveBehavior) {
         case AWSDynamoDBObjectMapperSaveBehaviorClobber: {
@@ -309,12 +311,12 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     return nil;
 }
 
-- (BFTask *)remove:(AWSDynamoDBModel *)model {
+- (AWSTask *)remove:(AWSDynamoDBModel *)model {
     return [self remove:model
           configuration:self.configuration];
 }
 
-- (BFTask *)remove:(AWSDynamoDBModel *)model
+- (AWSTask *)remove:(AWSDynamoDBModel *)model
      configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration {
     AWSDynamoDBDeleteItemInput *deleteItemInput = [AWSDynamoDBDeleteItemInput new];
     deleteItemInput.tableName = [[model class] performSelector:@selector(dynamoDBTableName)];
@@ -330,7 +332,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 #pragma clang diagnostic pop
 
-- (BFTask *)load:(Class)resultClass
+- (AWSTask *)load:(Class)resultClass
          hashKey:(id)hashKey
         rangeKey:(id)rangeKey {
     return [self load:resultClass
@@ -339,7 +341,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
         configuration:self.configuration];
 }
 
-- (BFTask *)load:(Class)resultClass
+- (AWSTask *)load:(Class)resultClass
          hashKey:(id)hashKey
         rangeKey:(id)rangeKey
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration {
@@ -361,7 +363,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }
     getItemInput.key = key;
 
-    return [[self.dynamoDB getItem:getItemInput] continueWithSuccessBlock:^id(BFTask *task) {
+    return [[self.dynamoDB getItem:getItemInput] continueWithSuccessBlock:^id(AWSTask *task) {
         AWSDynamoDBGetItemOutput *getItemOutput = task.result;
 
         NSError *error = nil;
@@ -372,24 +374,24 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
             itemsDictionary = [self removeAttributes:getItemOutput.item mapperVersion:AWSDynamoDBObjectMapperVersion1];
         }
 
-        id responseObject = [MTLJSONAdapter modelOfClass:resultClass
-                                      fromJSONDictionary:itemsDictionary
-                                                   error:&error];
+        id responseObject = [AWSMTLJSONAdapter modelOfClass:resultClass
+                                         fromJSONDictionary:itemsDictionary
+                                                      error:&error];
         if (error) {
-            return [BFTask taskWithError:error];
+            return [AWSTask taskWithError:error];
         }
         return responseObject;
     }];
 }
 
-- (BFTask *)query:(Class)resultClass
+- (AWSTask *)query:(Class)resultClass
        expression:(AWSDynamoDBQueryExpression *)expression {
     return [self query:resultClass
             expression:expression
          configuration:self.configuration];
 }
 
-- (BFTask *)query:(Class)resultClass
+- (AWSTask *)query:(Class)resultClass
        expression:(AWSDynamoDBQueryExpression *)expression
     configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration {
     AWSDynamoDBQueryInput *queryInput = [AWSDynamoDBQueryInput new];
@@ -400,21 +402,67 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     queryInput.exclusiveStartKey = expression.exclusiveStartKey;
     queryInput.indexName = expression.indexName;
 
+    NSString *hashKeyAttribute = expression.hashKeyAttribute;
+    if (hashKeyAttribute == nil) {
+        //if it is nil, use table's hashKeyAttribute
+        hashKeyAttribute = [resultClass performSelector:@selector(hashKeyAttribute)];
+    }
+    
     AWSDynamoDBAttributeValue *hashAttributeValue = [AWSDynamoDBAttributeValue new];
     [hashAttributeValue aws_setAttributeValue:expression.hashKeyValues
                                 mapperVersion:AWSDynamoDBObjectMapperVersion2]; //Either version 1 or version 2 should work for Key value.
-
-    AWSDynamoDBCondition *hashCondition = [AWSDynamoDBCondition new];
-    hashCondition.attributeValueList = @[hashAttributeValue];
-    hashCondition.comparisonOperator = AWSDynamoDBComparisonOperatorEQ;
-
-    NSString *hashKeyAttribute = [resultClass performSelector:@selector(hashKeyAttribute)];
-    NSMutableDictionary *keyConditions = [NSMutableDictionary dictionaryWithObject:hashCondition
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    if (expression.rangeKeyConditions) {
+#pragma clang diagnostic pop
+        //Use deprecated keyConditions for query if rangeKeyConditions has been set.
+        AWSDynamoDBCondition *hashCondition = [AWSDynamoDBCondition new];
+        hashCondition.attributeValueList = @[hashAttributeValue];
+        hashCondition.comparisonOperator = AWSDynamoDBComparisonOperatorEQ;
+        
+        NSMutableDictionary *keyConditions = [NSMutableDictionary dictionaryWithObject:hashCondition
                                                                             forKey:hashKeyAttribute];
-    [keyConditions addEntriesFromDictionary:expression.rangeKeyConditions];
-    queryInput.keyConditions = keyConditions;
-
-    return [[self.dynamoDB query:queryInput] continueWithSuccessBlock:^id(BFTask *task) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [keyConditions addEntriesFromDictionary:expression.rangeKeyConditions];
+        queryInput.keyConditions = keyConditions;
+    }
+    if (!expression.rangeKeyConditions || expression.rangeKeyConditionExpression){
+#pragma clang diagnostic pop
+        //Use keyConditionExpression for query.
+        NSString *hashConditionExpressionString = [NSString stringWithFormat:@"%@ = %@",hashKeyAttribute,AWSDynamoDBObjectMapperHashKeyAttributePlaceHolder];
+        queryInput.keyConditionExpression = hashConditionExpressionString;
+        queryInput.expressionAttributeValues = @{AWSDynamoDBObjectMapperHashKeyAttributePlaceHolder:hashAttributeValue};
+        
+    }
+    if (expression.rangeKeyConditionExpression) {
+        NSString *rangeConditionExpressionString = [NSString stringWithFormat:@" AND %@",expression.rangeKeyConditionExpression];
+        queryInput.keyConditionExpression = [queryInput.keyConditionExpression stringByAppendingString:rangeConditionExpressionString];
+    }
+    
+    //process expressionAttirubteValues
+    // {@":hashval":@"somevalue"} -> @{":hashval":@{"S","somevalue"}};
+    if (expression.expressionAttributeValues) {
+        NSMutableDictionary *mutableDic = [expression.expressionAttributeValues mutableCopy];
+        for (NSString *key in [mutableDic allKeys]) {
+            AWSDynamoDBAttributeValue *attributeValue = [AWSDynamoDBAttributeValue new];
+            if ([resultClass isSubclassOfClass:[AWSDynamoDBObjectModel class]]) {
+                [attributeValue aws_setAttributeValue:mutableDic[key] mapperVersion:AWSDynamoDBObjectMapperVersion2];
+            } else {
+                [attributeValue aws_setAttributeValue:mutableDic[key] mapperVersion:AWSDynamoDBObjectMapperVersion1];
+            }
+            [mutableDic setObject:attributeValue forKey:key];
+        }
+        [mutableDic addEntriesFromDictionary:queryInput.expressionAttributeValues];
+        queryInput.expressionAttributeValues = mutableDic;
+    }
+    
+    //assign other properties
+    queryInput.expressionAttributeNames = expression.expressionAttributeNames;
+    queryInput.filterExpression = expression.filterExpression;
+    queryInput.projectionExpression = expression.projectionExpression;
+    
+    return [[self.dynamoDB query:queryInput] continueWithSuccessBlock:^id(AWSTask *task) {
         AWSDynamoDBQueryOutput *queryOutput = task.result;
 
         NSMutableArray *items = [NSMutableArray new];
@@ -428,11 +476,11 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                 itemsDictionary = [self removeAttributes:item mapperVersion:AWSDynamoDBObjectMapperVersion1];
             }
 
-            id responseObject = [MTLJSONAdapter modelOfClass:resultClass
-                                          fromJSONDictionary:itemsDictionary
-                                                       error:&error];
+            id responseObject = [AWSMTLJSONAdapter modelOfClass:resultClass
+                                             fromJSONDictionary:itemsDictionary
+                                                          error:&error];
             if (error) {
-                return [BFTask taskWithError:error];
+                return [AWSTask taskWithError:error];
             }
             [items addObject:responseObject];
         }
@@ -444,23 +492,49 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
-- (BFTask *)scan:(Class)resultClass
+- (AWSTask *)scan:(Class)resultClass
       expression:(AWSDynamoDBScanExpression *)expression {
     return [self scan:resultClass
            expression:expression
         configuration:self.configuration];
 }
 
-- (BFTask *)scan:(Class)resultClass
+- (AWSTask *)scan:(Class)resultClass
       expression:(AWSDynamoDBScanExpression *)expression
    configuration:(AWSDynamoDBObjectMapperConfiguration *)configuration {
     AWSDynamoDBScanInput *scanInput = [AWSDynamoDBScanInput new];
     scanInput.tableName = [resultClass performSelector:@selector(dynamoDBTableName)];
     scanInput.limit = expression.limit;
     scanInput.exclusiveStartKey = expression.exclusiveStartKey;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     scanInput.scanFilter = expression.scanFilter;
+#pragma clang diagnostic pop
+    scanInput.indexName = expression.indexName;
+    
+    //process expressionAttirubteValues
+    // {@":hashval":@"somevalue"} -> @{":hashval":@{"S","somevalue"}};
+    if (expression.expressionAttributeValues) {
+        NSMutableDictionary *mutableDic = [expression.expressionAttributeValues mutableCopy];
+        for (NSString *key in [mutableDic allKeys]) {
+            AWSDynamoDBAttributeValue *attributeValue = [AWSDynamoDBAttributeValue new];
+            if ([resultClass isSubclassOfClass:[AWSDynamoDBObjectModel class]]) {
+                [attributeValue aws_setAttributeValue:mutableDic[key] mapperVersion:AWSDynamoDBObjectMapperVersion2];
+            } else {
+                [attributeValue aws_setAttributeValue:mutableDic[key] mapperVersion:AWSDynamoDBObjectMapperVersion1];
+            }
+            [mutableDic setObject:attributeValue forKey:key];
+        }
+        [mutableDic addEntriesFromDictionary:scanInput.expressionAttributeValues];
+        scanInput.expressionAttributeValues = mutableDic;
+    }
+    
+    //assign other properties
+    scanInput.filterExpression = expression.filterExpression;
+    scanInput.projectionExpression = expression.projectionExpression;
+    scanInput.expressionAttributeNames = expression.expressionAttributeNames;
 
-    return [[self.dynamoDB scan:scanInput] continueWithSuccessBlock:^id(BFTask *task) {
+    return [[self.dynamoDB scan:scanInput] continueWithSuccessBlock:^id(AWSTask *task) {
         AWSDynamoDBScanOutput *scanOutput = task.result;
 
         NSMutableArray *items = [NSMutableArray new];
@@ -474,11 +548,11 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                 itemsDictionary = [self removeAttributes:item mapperVersion:AWSDynamoDBObjectMapperVersion1];
             }
 
-            id responseObject = [MTLJSONAdapter modelOfClass:resultClass
+            id responseObject = [AWSMTLJSONAdapter modelOfClass:resultClass
                                           fromJSONDictionary:itemsDictionary
                                                        error:&error];
             if (error) {
-                return [BFTask taskWithError:error];
+                return [AWSTask taskWithError:error];
             }
             [items addObject:responseObject];
         }
@@ -496,8 +570,11 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     NSMutableDictionary *mutableItem = [NSMutableDictionary new];
     [item enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj respondsToSelector:@selector(aws_getAttributeValueWithVersion:)]) {
-            [mutableItem setObject:[obj aws_getAttributeValueWithVersion:mapperVersion]
-                            forKey:key];
+            id value = [obj aws_getAttributeValueWithVersion:mapperVersion];
+            if (value) {
+                [mutableItem setObject:value
+                                forKey:key];
+            }
         }
     }];
 
@@ -516,13 +593,26 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     return nil;
 }
 
+- (NSDictionary *)removeIgnoredAttributesFromJSONDictionary:(NSDictionary *)JSONDictionary {
+    
+    if ([[self class ] respondsToSelector:@selector(ignoreAttributes)] == NO) {
+        return JSONDictionary;
+    }
+    
+    NSArray *ignoredAttrArray = [[self class] performSelector:@selector(ignoreAttributes)];
+    NSMutableDictionary *resultDictionary = [JSONDictionary mutableCopy];
+    [resultDictionary removeObjectsForKeys:ignoredAttrArray];
+    return resultDictionary;
+}
+
 - (NSDictionary *)itemForPutItemInputWithVersion:(AWSDynamoDBObjectMapperVersion) mapperVersion {
     NSMutableDictionary *item = [NSMutableDictionary new];
     NSMutableArray *keyArray = [NSMutableArray arrayWithObject:[[self class] performSelector:@selector(hashKeyAttribute)]];
-    if ([self respondsToSelector:@selector(rangeKeyAttribute)]) {
+    if ([[self class] respondsToSelector:@selector(rangeKeyAttribute)]) {
         [keyArray addObject:[[self class] performSelector:@selector(rangeKeyAttribute)]];
     }
-    NSDictionary *dictionaryValue = [MTLJSONAdapter JSONDictionaryFromModel:self];
+    NSDictionary *dictionaryValue = [AWSMTLJSONAdapter JSONDictionaryFromModel:self];
+    dictionaryValue = [self removeIgnoredAttributesFromJSONDictionary:dictionaryValue];
 
     for (id key in dictionaryValue) {
         if ([keyArray containsObject:key]) {
@@ -550,7 +640,8 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 - (NSDictionary *)itemForUpdateItemInput:(AWSDynamoDBObjectMapperSaveBehavior) behavior mapperVersion:(AWSDynamoDBObjectMapperVersion)mapperVersion {
     NSMutableDictionary *item = [NSMutableDictionary new];
     NSArray *keyArray = [[self key] allKeys];
-    NSDictionary *dictionaryValue = [MTLJSONAdapter JSONDictionaryFromModel:self];
+    NSDictionary *dictionaryValue = [AWSMTLJSONAdapter JSONDictionaryFromModel:self];
+    dictionaryValue = [self removeIgnoredAttributesFromJSONDictionary:dictionaryValue];
 
     for (id key in dictionaryValue) {
         if (![keyArray containsObject:key]) {
@@ -603,7 +694,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     if ([[self class] respondsToSelector:@selector(rangeKeyAttribute)]) {
         [keyArray addObject:[[self class] performSelector:@selector(rangeKeyAttribute)]];
     }
-    NSDictionary *dictionaryValue = [MTLJSONAdapter JSONDictionaryFromModel:self];
+    NSDictionary *dictionaryValue = [AWSMTLJSONAdapter JSONDictionaryFromModel:self];
 
     for (id key in keyArray) {
         // For key attributes
