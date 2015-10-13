@@ -30,4 +30,13 @@
 @property (nonatomic, strong) Address *shippingAddress;
 @property (nonatomic, strong) Address *billingAddress;
 
+
+@property (nonatomic, strong) NSString *begin_time;
+@property (nonatomic, strong) NSString *event_location;
+@property (nonatomic, strong) NSString *customer_service_email;
+@property (nonatomic, strong) NSString *customer_service_no;
+@property (nonatomic, strong) NSString *detail_type;
+
+
+
 @end

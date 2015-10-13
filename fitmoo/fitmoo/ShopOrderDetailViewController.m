@@ -100,7 +100,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if ([_order.detail_type isEqualToString:@"EventInstance"]) {
+        
+        ShopEventOrderCell * cell =(ShopEventOrderCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell == nil)
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShopEventOrderCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        
+        cell.order= _order;
+        
+        if (![_order.status.uppercaseString isEqualToString:@"PENDING"]) {
+            _cancelButton.hidden=true;
+        }
+        
+        [cell buildCell];
+        
+       
+        
+        
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageButtonClick:)];
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
+        [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
+        cell.titleLabel.userInteractionEnabled=YES;
+        
+        
+        contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
+        return cell;
+
+        
+    }
     
     ShopOrderDetailCell*cell =(ShopOrderDetailCell *) [self.tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)

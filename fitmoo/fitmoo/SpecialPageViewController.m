@@ -761,7 +761,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (![_homeFeed.event.price isEqualToString:@"0"]) {
             [_BuyNowButton setTitle:@"BUY TICKET" forState:UIControlStateNormal];
         }
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -794,6 +794,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
          [self openShopCartPage];
+      
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FitmooHelper.h"
 #import "ShopOrderDetailCell.h"
+#import "ShopEventOrderCell.h"
 #import "UserManager.h"
 #import "ShopOrder.h"
 #import "ShopDetailViewController.h"

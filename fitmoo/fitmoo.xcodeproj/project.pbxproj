@@ -462,6 +462,8 @@
 		27A735711BB2323C004E7AB4 /* buynowbtn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A7356E1BB2323C004E7AB4 /* buynowbtn1.png */; settings = {ASSET_TAGS = (); }; };
 		27A735721BB2323C004E7AB4 /* buynowbtn1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A7356F1BB2323C004E7AB4 /* buynowbtn1@2x.png */; settings = {ASSET_TAGS = (); }; };
 		27A735731BB2323C004E7AB4 /* buynowbtn1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A735701BB2323C004E7AB4 /* buynowbtn1@3x.png */; settings = {ASSET_TAGS = (); }; };
+		27A987771BCC8FB100665AE7 /* ShopEventOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A987751BCC8FB100665AE7 /* ShopEventOrderCell.m */; settings = {ASSET_TAGS = (); }; };
+		27A987781BCC8FB100665AE7 /* ShopEventOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A987761BCC8FB100665AE7 /* ShopEventOrderCell.xib */; settings = {ASSET_TAGS = (); }; };
 		27A9DC481BBF51E40050772C /* cart_sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A9DC451BBF51E40050772C /* cart_sidemenu.png */; settings = {ASSET_TAGS = (); }; };
 		27A9DC491BBF51E40050772C /* cart_sidemenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A9DC461BBF51E40050772C /* cart_sidemenu@2x.png */; settings = {ASSET_TAGS = (); }; };
 		27A9DC4A1BBF51E40050772C /* cart_sidemenu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A9DC471BBF51E40050772C /* cart_sidemenu@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -1269,6 +1271,9 @@
 		27A7356E1BB2323C004E7AB4 /* buynowbtn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buynowbtn1.png; sourceTree = "<group>"; };
 		27A7356F1BB2323C004E7AB4 /* buynowbtn1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn1@2x.png"; sourceTree = "<group>"; };
 		27A735701BB2323C004E7AB4 /* buynowbtn1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buynowbtn1@3x.png"; sourceTree = "<group>"; };
+		27A987741BCC8FB100665AE7 /* ShopEventOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopEventOrderCell.h; sourceTree = "<group>"; };
+		27A987751BCC8FB100665AE7 /* ShopEventOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopEventOrderCell.m; sourceTree = "<group>"; };
+		27A987761BCC8FB100665AE7 /* ShopEventOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopEventOrderCell.xib; sourceTree = "<group>"; };
 		27A9DC451BBF51E40050772C /* cart_sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart_sidemenu.png; sourceTree = "<group>"; };
 		27A9DC461BBF51E40050772C /* cart_sidemenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart_sidemenu@2x.png"; sourceTree = "<group>"; };
 		27A9DC471BBF51E40050772C /* cart_sidemenu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cart_sidemenu@3x.png"; sourceTree = "<group>"; };
@@ -2673,6 +2678,9 @@
 				2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */,
 				2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */,
 				2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */,
+				27A987741BCC8FB100665AE7 /* ShopEventOrderCell.h */,
+				27A987751BCC8FB100665AE7 /* ShopEventOrderCell.m */,
+				27A987761BCC8FB100665AE7 /* ShopEventOrderCell.xib */,
 				27392C1E1BC04AC800C0132D /* ShopConfirmCell.h */,
 				27392C1F1BC04AC800C0132D /* ShopConfirmCell.m */,
 				27392C201BC04AC800C0132D /* ShopConfirmCell.xib */,
@@ -3366,6 +3374,7 @@
 				273FF5641AF7AA2C00B82DB3 /* logouticon.png in Resources */,
 				27188FBD1AD4695000C34372 /* rsz2_fitmoo_logo_white.png in Resources */,
 				27BA5A341B6A50E500B30B62 /* calendar_black@2x.png in Resources */,
+				27A987781BCC8FB100665AE7 /* ShopEventOrderCell.xib in Resources */,
 				27E79AE71BBE12E10089F991 /* greydownarrow.png in Resources */,
 				27CBC0DE1B0F84DB00699E1E /* eventsscreen.png in Resources */,
 				27988C8E1B0B7C7400BDE8EB /* mainmenu_storeicon@3x.png in Resources */,
@@ -3596,6 +3605,7 @@
 				2732B73C1AD8493100610821 /* TitleInfo.m in Sources */,
 				27392C211BC04AC800C0132D /* ShopConfirmCell.m in Sources */,
 				27ADE6421B3DC438001B8D99 /* ShareTableViewCell.m in Sources */,
+				27A987771BCC8FB100665AE7 /* ShopEventOrderCell.m in Sources */,
 				27B3DFA51B989D8E00423D88 /* Variants.m in Sources */,
 				27DE04EE1BA0868800050ADD /* ShopCheckoutViewController.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,

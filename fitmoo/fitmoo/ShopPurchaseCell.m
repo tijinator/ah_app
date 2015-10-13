@@ -46,15 +46,26 @@
     UIFont *font1= [UIFont fontWithName:@"BentonSans-Bold" size:(CGFloat)(10)];
 
     
+    NSString *string=@"";
+    if ([_order.detail_type isEqualToString:@"EventInstance"]) {
+    NSArray *stringArray= [_order.begin_time componentsSeparatedByString:@"|"];
+        
+    string= [NSString stringWithFormat:@"%@%@",[stringArray objectAtIndex:0],[stringArray objectAtIndex:1]];
+    string=string.uppercaseString;
+    }else
+    {
+    string= [NSString stringWithFormat:@"ENDORSED BY %@",_order.endorser_name.uppercaseString];
+    }
     
     
-    NSString *string= [NSString stringWithFormat:@"ENDORSED BY %@",_order.endorser_name.uppercaseString];
     NSString *string1= [NSString stringWithFormat:@"SOLD BY %@",_order.seller_name.uppercaseString];
     NSString *string2= [NSString stringWithFormat:@"STATUS %@",_order.status.uppercaseString];
     
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: font1} ];
+    
+     if (![_order.detail_type isEqualToString:@"EventInstance"]) {
     attributedString=(NSMutableAttributedString *) [[FitmooHelper sharedInstance] replaceAttributedString:attributedString Font:font range:@"ENDORSED BY" newString:@"ENDORSED BY"];
-
+     }
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineSpacing:8];
