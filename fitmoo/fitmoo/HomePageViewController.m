@@ -207,16 +207,21 @@
     
     for (NSDictionary *dic in _responseDic) {
         
-        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        
-//        if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-//            [_homeFeedArray addObject:feed];
-//        }
-        
-        if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-            [_homeFeedArray addObject:feed];
+        @try {
+            HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
+            
+            if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+                [_homeFeedArray addObject:feed];
+            }
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
         }
         
+
     }
     
     //remove this when event feed added

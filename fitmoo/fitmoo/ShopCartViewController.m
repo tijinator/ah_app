@@ -68,6 +68,10 @@
     NSDictionary *order_details= [dic objectForKey:@"order_details"];
     
     for (NSDictionary *detail in order_details) {
+        @try {
+            
+       
+        
         [_shopCart resetshopCartDetail];
          NSNumber *cart_shipping=[detail objectForKey:@"cart_shipping"];
         _shopCart.shop_cart_detail.cart_shipping= [cart_shipping stringValue];
@@ -170,6 +174,13 @@
         
         
         [_shopCart.shop_cart_details addObject:_shopCart.shop_cart_detail];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     

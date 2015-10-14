@@ -251,6 +251,9 @@
     }
     for (NSDictionary *dic in _responseDic) {
         
+        @try {
+            
+
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         bool samefeed=false;
         for (int i=0; i<[_homeFeedArray count]; i++) {
@@ -263,6 +266,14 @@
             if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
                 [_homeFeedArray addObject:feed];
             }
+            
+        }
+            
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
             
         }
         

@@ -8,6 +8,8 @@
 
 #import "ShopEventOrderCell.h"
 #import "FitmooHelper.h"
+#import <RSBarcodes/RSBarcodes.h>
+#import "RSCodeGen.h"
 @implementation ShopEventOrderCell
 
 - (void)awakeFromNib {
@@ -23,6 +25,8 @@
     _label1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label1 respectToSuperFrame:nil];
     _label2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label2 respectToSuperFrame:nil];
     _label3.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label3 respectToSuperFrame:nil];
+    _label4.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label4 respectToSuperFrame:nil];
+    _label5.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_label5 respectToSuperFrame:nil];
     
     _timeLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_timeLabel respectToSuperFrame:nil];
     _phoneNumberLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_phoneNumberLabel respectToSuperFrame:nil];
@@ -35,7 +39,7 @@
     _shipTotalLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shipTotalLabel respectToSuperFrame:nil];
     _totalPaidLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_totalPaidLabel respectToSuperFrame:nil];
     
-   
+    _barCodeImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_barCodeImage respectToSuperFrame:nil];
     
 }
 
@@ -72,7 +76,19 @@
     
     _totalPaidLabel.text=[NSString stringWithFormat:@"$%.2f", _order.total.floatValue+_order.order_shipping_total.floatValue];
     
+//    if (![_order.barcode_number isEqual:[NSNull null]]) {
+//        _label4.hidden=false;
+//        UIImage *image= [CodeGen genCodeWithContents:_order.barcode_number machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
+//        _barCodeImage.image=image;
+//        _label5.text=_order.barcode_number;
+//       // _label5.text=@"2554576007406370";
+//    }
     
+    
+    _label4.hidden=false;
+    UIImage *image= [CodeGen genCodeWithContents:@"2554576007406370" machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
+    _barCodeImage.image=image;
+    _label5.text=@"2554576007406370";
     
 }
 

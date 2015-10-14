@@ -51,6 +51,10 @@
         _searchArrayLeader= [[NSMutableArray alloc] init];
     //    NSDictionary *bulk= [_responseDic2 objectForKey:@"leaders"];
         for (NSDictionary *leader in _responseDic2) {
+            @try {
+                
+           
+            
             User *temUser= [[User alloc] init];
             temUser.name= [leader objectForKey:@"full_name"];
             
@@ -70,6 +74,14 @@
             NSDictionary *avatars= [profile objectForKey:@"avatars"];
             temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
             [_searchArrayLeader addObject:temUser];
+                
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
             
         }
     

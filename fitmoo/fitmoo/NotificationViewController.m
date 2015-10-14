@@ -55,6 +55,10 @@
     if (![notificationArray isEqual:[NSNull null ]]) {
         
         for (NSDictionary *notificationDic in notificationArray) {
+            
+            @try {
+                
+            
             _homeFeed= [[HomeFeed alloc] init];
              NSNumber *notification_id= [notificationDic objectForKey:@"id"];
             _homeFeed.notification_id= [notification_id stringValue];
@@ -86,21 +90,14 @@
             
             _homeFeed.text=[notificationDic objectForKey:@"text_message"];
              [_notificArray addObject:_homeFeed];
-//            if ([_homeFeed.type isEqualToString:@"LikeNotification"]) {
-//                _homeFeed.text=@"liked your post";
-//                  [_notificArray addObject:_homeFeed];
-//            }else if ([_homeFeed.type isEqualToString:@"EndorseFeedNotification"]) {
-//                _homeFeed.text=@"endorsed your post";
-//                  [_notificArray addObject:_homeFeed];
-//            }else if ([_homeFeed.type isEqualToString:@"CommentedFeedNotification"]) {
-//                _homeFeed.text=@"commented on your post";
-//                  [_notificArray addObject:_homeFeed];
-//            }else if ([_homeFeed.type isEqualToString:@"ShareFeedNotification"]) {
-//                _homeFeed.text=@"shared your post";
-//                  [_notificArray addObject:_homeFeed];
-//            }
-            
-          
+
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
         NSNumber *unread=[_responseDic objectForKey:@"unread_count"];
         _unread_count=[unread stringValue];
@@ -420,7 +417,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     [nameLabel sizeToFit];
    
    
-    UILabel *dayLabel=[[UILabel alloc] initWithFrame:CGRectMake(58, nameLabel.frame.size.height+nameLabel.frame.origin.y+3, 230, 20)];
+    UILabel *dayLabel=[[UILabel alloc] initWithFrame:CGRectMake(68, nameLabel.frame.size.height+nameLabel.frame.origin.y+3, 230, 20)];
     NSRange range1= NSMakeRange(0, _homeFeed.created_at.length-3);
     NSString * timestring= [_homeFeed.created_at substringWithRange:range1];
     NSTimeInterval time=(NSTimeInterval ) timestring.intValue;

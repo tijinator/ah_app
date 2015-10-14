@@ -76,6 +76,10 @@
     if (![likersArray isEqual:[NSNull null ]]&&[likersArray count]>0) {
         
         for (NSDictionary *likerDic in likersArray) {
+            @try {
+                
+            
+            
             _comments= [[Comments alloc] init];
             _comments.created_by_id= [likerDic objectForKey:@"id"];
             _comments.full_name=[likerDic objectForKey:@"full_name"];
@@ -90,6 +94,15 @@
             _comments.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
             
             [_likerArray addObject:_comments];
+                
+                
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
          [self.tableview reloadData];
     }

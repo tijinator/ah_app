@@ -103,6 +103,7 @@ PODS:
     - UAProgressView (~> 0.1)
   - JTCalendar (2.0.7)
   - Reachability (3.2)
+  - RSBarcodes (0.1.2)
   - Stripe (5.1.2):
     - Stripe/Core (= 5.1.2)
   - Stripe/Core (5.1.2)
@@ -118,6 +119,7 @@ DEPENDENCIES:
   - FSImageViewer (~> 3.2)
   - JTCalendar
   - Reachability
+  - RSBarcodes (~> 0.1.2)
   - Stripe
   - SwipeBack (~> 1.0)
   - TTTAttributedLabel (~> 1.10.1)
@@ -146,6 +148,7 @@ SPEC CHECKSUMS:
   FSImageViewer: 9106a89800e89a359b02d0c4bb7f7a3ddc1aff71
   JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RSBarcodes: b8896467f7eb051fe0f92946a1a63cb4987b4237
   Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
   SwipeBack: 45a42c333b7b9657b9f02cf19673339b3a006195
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a

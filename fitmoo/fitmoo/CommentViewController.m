@@ -50,6 +50,9 @@
     if (![commentsArray isEqual:[NSNull null ]]) {
      
         for (NSDictionary *commentsDic in commentsArray) {
+            @try {
+                
+            
             [_homeFeed resetComments];
             _homeFeed.comments.comment_id= [commentsDic objectForKey:@"id"];
             _homeFeed.comments.text= [commentsDic objectForKey:@"text"];
@@ -64,6 +67,13 @@
             _homeFeed.comments.cover_photo_url=[profile objectForKey:@"cover_photo_url"];
             
             [_homeFeed.commentsArray addObject:_homeFeed.comments];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
     }
     

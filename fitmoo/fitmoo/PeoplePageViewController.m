@@ -494,7 +494,9 @@
         _StoreFeedArray= [[NSMutableArray alloc]init];
     }
     for (NSDictionary *dic in _responseDicStore) {
-        
+        @try {
+            
+       
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         bool samefeed=false;
         for (int i=0; i<[_StoreFeedArray count]; i++) {
@@ -507,6 +509,14 @@
             if (!([feed.type isEqualToString:@"event"]||[feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
                 [_StoreFeedArray addObject:feed];
             }
+            
+        }
+            
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
             
         }
         
@@ -527,7 +537,8 @@
         _WorkoutFeedArray= [[NSMutableArray alloc]init];
     }
     for (NSDictionary *dic in _responseDicWorkout) {
-        
+        @try {
+            
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
         bool samefeed=false;
         for (int i=0; i<[_WorkoutFeedArray count]; i++) {
@@ -543,9 +554,17 @@
             
         }
         
-        
-    }
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     
+    
+    }
+
     if ([self.feedType isEqualToString:@"workout"]) {
         _homeFeedArray=[_WorkoutFeedArray mutableCopy];
     }
@@ -559,18 +578,28 @@
     }
     for (NSDictionary *dic in _responseDic) {
         
-        HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
-        bool samefeed=false;
-        for (int i=0; i<[_FeedArray count]; i++) {
-            HomeFeed *tempfeed= [_FeedArray objectAtIndex:i];
-            if ([feed.feed_id isEqual:tempfeed.feed_id]) {
-                samefeed=true;
+        
+        @try {
+            HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:dic];
+            bool samefeed=false;
+            for (int i=0; i<[_FeedArray count]; i++) {
+                HomeFeed *tempfeed= [_FeedArray objectAtIndex:i];
+                if ([feed.feed_id isEqual:tempfeed.feed_id]) {
+                    samefeed=true;
+                }
             }
+            if (samefeed==false) {
+                if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
+                    [_FeedArray addObject:feed];
+                }
+                
+            }
+
         }
-        if (samefeed==false) {
-            if (!([feed.type isEqualToString:@"service"]||[feed.type isEqualToString:@"membership"])) {
-                [_FeedArray addObject:feed];
-            }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
             
         }
         

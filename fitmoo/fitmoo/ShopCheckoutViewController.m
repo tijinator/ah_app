@@ -457,6 +457,10 @@
         _addressShipingArray=[[NSMutableArray alloc] init];
         _addressBillingArray=[[NSMutableArray alloc] init];
         for (NSDictionary * dic in _responseDic) {
+            @try {
+                
+           
+            
             Address *ad= [[FitmooHelper sharedInstance] parseAddress:dic];
             if ([ad.is_default_billing isEqualToString:@"1"]) {
                 _billingAddress=ad;
@@ -475,6 +479,14 @@
             
 
             [_addressArray addObject:ad];
+                
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
     
     

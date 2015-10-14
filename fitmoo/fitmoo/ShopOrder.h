@@ -36,7 +36,7 @@
 @property (nonatomic, strong) NSString *customer_service_email;
 @property (nonatomic, strong) NSString *customer_service_no;
 @property (nonatomic, strong) NSString *detail_type;
-
+@property (nonatomic, strong) NSString *barcode_number;
 
 
 @end

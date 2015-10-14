@@ -501,6 +501,7 @@
 {
     HomeFeed * homeFeed= [[HomeFeed alloc] init];
     
+    
     NSNumber * feed_id=[dic objectForKey:@"id"];
     homeFeed.feed_id= [feed_id stringValue];
     
@@ -884,7 +885,7 @@
         [homeFeed.photoArray addObject:homeFeed.photos];
     }
     
-    
+ 
     return homeFeed;
 }
 

@@ -18,21 +18,23 @@
 - (void) buildCell
 {
     _ItemTitleLabel.text=_shopCartDetail.title;
-    _ItemDetailLabel.text=_shopCartDetail.item_details;
+    _ItemDetailLabel.text=_shopCartDetail.item_details.uppercaseString;
     
-    _ItemTitleLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemTitleLabel];
+    // _ItemTitleLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemTitleLabel];
     _ItemDetailLabel.frame=[[FitmooHelper sharedInstance] caculateLabelHeight:_ItemDetailLabel];
     
     
-//    _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
+    //    _ItemPriceLabel.text=[NSString stringWithFormat:@"Qty %@ @ $%@", _shopCartDetail.quantity, _shopCartDetail.price];
     
-    RTLabel *priceLabel= [[RTLabel alloc] initWithFrame:_ItemPriceLabel.frame];
+    RTLabel *priceLabel= [[RTLabel alloc] initWithFrame:CGRectMake(_ItemPriceLabel.frame.origin.x, _ItemTitleLabel.frame.origin.y+_ItemTitleLabel.frame.size.height, _ItemPriceLabel.frame.size.width, _ItemPriceLabel.frame.size.height)];
+    
+    
     priceLabel.delegate=self;
-      [priceLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#109CFB>Qty %@ </font></a><font face=BentonSans-Bold size=12 color=#000000> @ $%@</font>",_shopCartDetail.shop_cart_detail_id ,_shopCartDetail.quantity, _shopCartDetail.price ]];
+    [priceLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#109CFB>Qty %@ </font></a><font face=BentonSans-Bold size=12 color=#000000> @ $%0.2f</font>",_shopCartDetail.shop_cart_detail_id ,_shopCartDetail.quantity, _shopCartDetail.price.floatValue ]];
     
     [self.contentView addSubview:priceLabel];
     
-   
+    
     
     
     _detailLabel1.text= _shopCartDetail.item_price;
@@ -45,26 +47,29 @@
         _detailLabel3.hidden=true;
         _label3.hidden=true;
     }
- 
+    
     
     AsyncImageView *headerImage = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _itemImage.frame.size.width, _itemImage.frame.size.height)];
     headerImage.userInteractionEnabled = NO;
     headerImage.exclusiveTouch = NO;
     headerImage.contentMode=UIViewContentModeScaleAspectFit;
- 
+    
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
-  
+    
     headerImage.imageURL =[NSURL URLWithString:_shopCartDetail.item_photo_url];
-
+    
     [_itemImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     _itemImage.clipsToBounds=YES;
     [_itemImage addSubview:headerImage];
     
-//    _itemImage.userInteractionEnabled = NO;
-//    _itemImage.exclusiveTouch = NO;
-
+    //    _itemImage.userInteractionEnabled = NO;
+    //    _itemImage.exclusiveTouch = NO;
+    
     _DeleteButton.tag=_shopCartDetail.shop_cart_detail_id.intValue;
+    
+    //    _ItemPriceLabel.frame=CGRectMake(_ItemPriceLabel.frame.origin.x, _ItemTitleLabel.frame.origin.y+_ItemTitleLabel.frame.size.height+5, _ItemPriceLabel.frame.size.width, _ItemPriceLabel.frame.size.height);
+    _ItemDetailLabel.frame=CGRectMake(_ItemDetailLabel.frame.origin.x, priceLabel.frame.origin.y+priceLabel.frame.size.height, _ItemDetailLabel.frame.size.width, _ItemDetailLabel.frame.size.height+20);
     
 }
 

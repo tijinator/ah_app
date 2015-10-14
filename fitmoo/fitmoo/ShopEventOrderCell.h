@@ -25,10 +25,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *label1;
 @property (strong, nonatomic) IBOutlet UILabel *label2;
 @property (strong, nonatomic) IBOutlet UILabel *label3;
+@property (strong, nonatomic) IBOutlet UILabel *label4;
+@property (strong, nonatomic) IBOutlet UILabel *label5;
 
 
 @property (strong, nonatomic) RTLabel *rtLabel;
 @property (strong, nonatomic) RTLabel *rtLabel1;
 
+@property (strong, nonatomic) IBOutlet UIImageView *barCodeImage;
 
 @end

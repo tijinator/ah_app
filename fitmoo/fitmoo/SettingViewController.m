@@ -231,6 +231,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) defineSettingObject
 {
+    @try {
+        
+   
+    
     _tempUser= [[User alloc] init];
     
     _tempUser.name= [_responseDic objectForKey:@"full_name"];
@@ -285,7 +289,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _tempUser.hide_instagram=num.stringValue;
    
      _privacyBoolArray= [[NSMutableArray alloc] initWithObjects:_tempUser.hide_global_privacy,_tempUser.hide_location,_tempUser.hide_email,_tempUser.hide_phone,_tempUser.hide_website,_tempUser.hide_facebook,_tempUser.hide_twitter,_tempUser.hide_linkedin, _tempUser.hide_google,_tempUser.hide_instagram, nil];
-    
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
 
 }
 

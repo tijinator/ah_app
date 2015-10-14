@@ -59,6 +59,7 @@
         order.customer_service_no=[dic objectForKey:@"customer_service_no"];
         order.begin_time=[dic objectForKey:@"begin_time"];
         order.detail_type=[dic objectForKey:@"detail_type"];
+        order.barcode_number=[dic objectForKey:@"barcode_number"];
 
         order.title= [dic objectForKey:@"title"];
         order.endorser_name= [dic objectForKey:@"endorser_name"];

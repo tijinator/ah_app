@@ -13,4 +13,4 @@ pod 'SwipeBack', '~> 1.0'
 pod 'Stripe'
 pod 'Reachability'
 pod "youtube-ios-player-helper", "~> 0.1.4"
-
+pod 'RSBarcodes', '~> 0.1.2'
