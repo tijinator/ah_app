@@ -35,7 +35,10 @@
     [self.contentView addSubview:priceLabel];
     
     
-    
+    if ([_shopCartDetail.is_event isEqual:@"1"]) {
+       priceLabel.userInteractionEnabled=NO;
+        
+    }
     
     _detailLabel1.text= _shopCartDetail.item_price;
     _detailLabel2.text= _shopCartDetail.seller_name.uppercaseString;
@@ -57,7 +60,13 @@
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage];
     
+    if (_shopCartDetail.item_photo_url==nil||[_shopCartDetail.item_photo_url isEqualToString:@""]) {
+        headerImage.image=[UIImage imageNamed:@"product_default.png"];
+    }else
+    {
+    
     headerImage.imageURL =[NSURL URLWithString:_shopCartDetail.item_photo_url];
+    }
     
     [_itemImage.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     _itemImage.clipsToBounds=YES;

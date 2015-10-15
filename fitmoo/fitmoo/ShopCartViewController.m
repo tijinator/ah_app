@@ -77,7 +77,8 @@
         _shopCart.shop_cart_detail.cart_shipping= [cart_shipping stringValue];
         
        
-        
+        NSNumber *is_event=[detail objectForKey:@"is_event"];
+        _shopCart.shop_cart_detail.is_event= [is_event stringValue];
         
         NSNumber *cart_subtotal=[detail objectForKey:@"cart_subtotal"];
         _shopCart.shop_cart_detail.cart_subtotal= [cart_subtotal stringValue];
@@ -548,6 +549,8 @@
     tapGestureRecognizer11.numberOfTapsRequired = 2;
     [cell.ItemTitleLabel addGestureRecognizer:tapGestureRecognizer11];
     cell.ItemTitleLabel.userInteractionEnabled=YES;
+    
+    
 
     
      contentHight=[NSNumber numberWithFloat:cell.contentView.frame.size.height];

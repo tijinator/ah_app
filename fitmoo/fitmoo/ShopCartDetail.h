@@ -38,6 +38,6 @@
 @property (nonatomic, strong) NSString *count_on_hand;
 @property (nonatomic, strong) NSString *feed_id;
 
-
+@property (nonatomic, strong) NSString *is_event;
 
 @end

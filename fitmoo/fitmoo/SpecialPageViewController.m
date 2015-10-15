@@ -19,6 +19,7 @@
     NSNumber * contentHight;
       float playerVolume;
      bool bodyLikeAnimation;
+    UIView *indicatorView;
 }
 @end
 
@@ -741,6 +742,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) attendEvent
 {
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
     User *localUser=[[UserManager sharedUserManager] localUser];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -761,11 +763,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if (![_homeFeed.event.price isEqualToString:@"0"]) {
             [_BuyNowButton setTitle:@"BUY TICKET" forState:UIControlStateNormal];
         }
+         [indicatorView removeFromSuperview];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
+               [indicatorView removeFromSuperview];
               NSLog(@"Error: %@", error);} // failure callback block
      ];
 
@@ -780,6 +784,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (void) buyEvent
 {
+    
+    indicatorView=[[FitmooHelper sharedInstance] addActivityIndicatorView:indicatorView and:self.view text:@"Processing..."];
     User *localUser=[[UserManager sharedUserManager] localUser];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -794,13 +800,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
          [self openShopCartPage];
-      
+        [indicatorView removeFromSuperview];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
           failure:^(AFHTTPRequestOperation *operation, NSError *error){
-              NSLog(@"Error: %@", error);} // failure callback block
+              NSLog(@"Error: %@", error);
+              [indicatorView removeFromSuperview];
+          } // failure callback block
      ];
 
 }

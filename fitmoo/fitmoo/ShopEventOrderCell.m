@@ -54,7 +54,7 @@
     _rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(_billAddressLabel.frame.origin.x, _billAddressLabel.frame.origin.y, _billAddressLabel.frame.size.width,100)];
     _rtLabel.lineSpacing=10;
     
-    [_rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=12 color=#575D60>%@</font>",[NSString stringWithFormat:@"%@", _order.event_location]]];
+    [_rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=12 color=#575D60>%@</font>",[NSString stringWithFormat:@"LOCATION: %@",_order.event_location.uppercaseString]]];
     CGSize optimumSize =[_rtLabel optimumSize];
     _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
     [self.contentView addSubview:_rtLabel];
@@ -76,19 +76,19 @@
     
     _totalPaidLabel.text=[NSString stringWithFormat:@"$%.2f", _order.total.floatValue+_order.order_shipping_total.floatValue];
     
-//    if (![_order.barcode_number isEqual:[NSNull null]]) {
-//        _label4.hidden=false;
-//        UIImage *image= [CodeGen genCodeWithContents:_order.barcode_number machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
-//        _barCodeImage.image=image;
-//        _label5.text=_order.barcode_number;
-//       // _label5.text=@"2554576007406370";
-//    }
+    if (![_order.barcode_number isEqual:[NSNull null]]) {
+        _label4.hidden=false;
+        UIImage *image= [CodeGen genCodeWithContents:_order.barcode_number machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
+        _barCodeImage.image=image;
+        _label5.text=_order.barcode_number;
+       // _label5.text=@"2554576007406370";
+    }
     
     
-    _label4.hidden=false;
-    UIImage *image= [CodeGen genCodeWithContents:@"2554576007406370" machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
-    _barCodeImage.image=image;
-    _label5.text=@"2554576007406370";
+//    _label4.hidden=false;
+//    UIImage *image= [CodeGen genCodeWithContents:@"2554576007406370" machineReadableCodeObjectType:AVMetadataObjectTypeCode128Code];
+//    _barCodeImage.image=image;
+//    _label5.text=@"2554576007406370";
     
 }
 
