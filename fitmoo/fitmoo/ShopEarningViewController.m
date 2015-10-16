@@ -74,7 +74,9 @@
     NSDictionary *redemptionsDic=[_responseDic objectForKey:@"redemptions"];
     
     for (NSDictionary *dic in redemptionsDic) {
-     
+        @try {
+            
+        
         [_earning resetRedeem];
         _earning.Redeem.created_at=[dic objectForKey:@"created_at"];
         
@@ -88,6 +90,13 @@
         _earning.Redeem.withdrawal_fee=[dic objectForKey:@"withdrawal_fee"];
         
         [_earning.RedeemArray addObject:_earning.Redeem];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }
     
     

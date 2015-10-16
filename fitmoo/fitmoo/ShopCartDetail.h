@@ -40,4 +40,6 @@
 
 @property (nonatomic, strong) NSString *is_event;
 
+
+
 @end

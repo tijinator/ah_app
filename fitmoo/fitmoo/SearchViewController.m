@@ -289,6 +289,9 @@
       
         
         for (NSDictionary * result in resultArray) {
+            @try {
+                
+            
             User *tempUser= [[User alloc]  init];
             NSNumber * isfollowing=[result objectForKey:@"is_following"];
             tempUser.is_following= [isfollowing stringValue];
@@ -309,12 +312,22 @@
             tempUser.user_id= [user_id stringValue];
             
             [_searchArrayPeople2 addObject:tempUser];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
         
         _searchArrayPeople1=[_searchArrayPeople2 mutableCopy];
 
     }else if ([category isEqualToString:@"workout"]) {
         for (NSDictionary * result in resultArray) {
+            @try {
+                
+            
             Workout *tempWk= [[Workout alloc]  init];
             
             NSNumber * wk_id=[result objectForKey:@"id"];
@@ -340,11 +353,21 @@
          
 
             [_searchArrayWorkout2 addObject:tempWk];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
          _searchArrayPeople1=[_searchArrayWorkout2 mutableCopy];
         
     }else if ([category isEqualToString:@"product"]) {
         for (NSDictionary * result in resultArray) {
+            @try {
+                
+           
             Product *tempPd= [[Product alloc]  init];
             
             NSNumber * pd_id=[result objectForKey:@"id"];
@@ -362,6 +385,13 @@
             tempPd.photo= [thumb objectForKey:@"photo_url"];
             }
             [_searchArrayProduct2 addObject:tempPd];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
          _searchArrayPeople1=[_searchArrayProduct2 mutableCopy];
         
@@ -400,6 +430,9 @@
 - (void) parseCommunity:(NSDictionary *) bulk
 {
     for (NSDictionary * comDic in bulk) {
+        @try {
+            
+        
         CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
         tempCom.cover_photo_url=[comDic objectForKey:@"cover_photo_url"];
         tempCom.name= [comDic objectForKey:@"name"];
@@ -413,6 +446,13 @@
             tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
         }
         [_searchArrayCommunity addObject:tempCom];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
@@ -425,6 +465,9 @@
 - (void) parseLeader:(NSDictionary *) bulk
 {
     for (NSDictionary *leader in bulk) {
+        @try {
+            
+        
         User *temUser= [[User alloc] init];
         temUser.name= [leader objectForKey:@"full_name"];
         
@@ -444,6 +487,13 @@
         NSDictionary *avatars= [profile objectForKey:@"avatars"];
         temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
         [_searchArrayLeader addObject:temUser];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
@@ -455,6 +505,9 @@
 - (void) parseProduct:(NSDictionary *) bulk
 {
     for (NSDictionary *pdDic in bulk) {
+        @try {
+        
+        
         Product *pd= [[Product alloc] init];
         NSNumber *pd_id= [pdDic objectForKey:@"id"];
         pd.product_id= [pd_id stringValue];
@@ -479,6 +532,13 @@
             
         }
         [_searchArrayProducts addObject:pd];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
@@ -491,6 +551,9 @@
 - (void) parseWorkout:(NSDictionary *) bulk
 {
     for (NSDictionary *wkDic in bulk) {
+        @try {
+            
+        
         Workout *wk= [[Workout alloc] init];
         NSNumber *wk_id= [wkDic objectForKey:@"id"];
         wk.workout_id= [wk_id stringValue];
@@ -515,6 +578,13 @@
         }
         
         [_searchArrayWorkouts addObject:wk];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
@@ -545,6 +615,10 @@
         _searchArrayPeople= [[NSMutableArray alloc] init];
         bulk= [_searchArrayTotalKeyword objectAtIndex:4];
         for (NSDictionary * result in bulk) {
+            
+            @try {
+                
+           
             User *tempUser= [[User alloc]  init];
             NSNumber * following=[result objectForKey:@"is_following"];
             tempUser.is_following= [following stringValue];
@@ -561,6 +635,13 @@
             tempUser.user_id= [user_id stringValue];
             
             [_searchArrayPeople addObject:tempUser];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
 
         

@@ -112,6 +112,8 @@
     _cardDic= [dic objectForKey:@"default_card"];
     
     if ([_cardDic isKindOfClass:[NSDictionary class]]) {
+        @try {
+            
         
         _cardTypeLabel= [[UILabel alloc] init];
         _monthLabel= [[UILabel alloc] init];
@@ -141,7 +143,13 @@
         _creditCard.cardNumber=_cardNumberTextField.text;
         _creditCard.cardType=_cardTypeLabel.text;
         
-        
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }
     
 }

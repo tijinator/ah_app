@@ -30,7 +30,24 @@
     [self initFrames];
     [self createObservers];
      self.navigationController.swipeBackEnabled = YES;
+    
+
     // Do any additional setup after loading the view.
+}
+
+
+- (void) defineShowAttendButton
+{
+    if ([_homeFeed.event.is_joined isEqualToString:@"1"]) {
+        if ([_homeFeed.event.price isEqualToString:@"0"]||[_homeFeed.event.bought_by_current_user isEqualToString:@"1"]||[_homeFeed.event.sold_out isEqualToString:@"over"]||[_homeFeed.event.sold_out isEqualToString:@"sold out"]) {
+
+            _BuyNowButton.hidden=true;
+        }else
+        {
+            [_BuyNowButton setTitle:@"BUY TICKET" forState:UIControlStateNormal];
+        }
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -362,7 +379,7 @@
     contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+3] ;
  
 
-    
+    [self defineShowAttendButton];
     return cell;
 }
 
@@ -762,9 +779,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.tableView reloadData];
         if (![_homeFeed.event.price isEqualToString:@"0"]) {
             [_BuyNowButton setTitle:@"BUY TICKET" forState:UIControlStateNormal];
+        }else
+        {
+            _BuyNowButton.hidden=true;
         }
          [indicatorView removeFromSuperview];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"makePostFinished" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didPostFinished" object:_homeFeed];
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
      
@@ -799,8 +819,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/cart/add" ];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-         [self openShopCartPage];
+        [self openShopCartPage];
         [indicatorView removeFromSuperview];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopImage" object:[[UserManager sharedUserManager] localUser]];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block

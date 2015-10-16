@@ -251,7 +251,7 @@
         _rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(90*_frameRadio, 205*_frameRadio, 200*_frameRadio,100)];
         [_rtLabel setDelegate:self];
         _rtLabel.lineSpacing=8;
-        [_rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans size=14>%@</font>",_homeFeed.text]];
+        [_rtLabel setText:[NSString stringWithFormat:@"<p><font face=BentonSans size=14>%@</font></p>",_homeFeed.text]];
         CGSize optimumSize =[_rtLabel optimumSize];
         
         _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);

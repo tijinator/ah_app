@@ -164,6 +164,9 @@
      _searchArrayPeople= [[NSMutableArray alloc] init];
      }
         for (NSDictionary * result in _responseDic) {
+            @try {
+                
+            
             User *tempUser= [[User alloc]  init];
             NSNumber * following=[result objectForKey:@"is_following"];
             tempUser.is_following= [following stringValue];
@@ -180,6 +183,13 @@
             tempUser.user_id= [user_id stringValue];
             
             [_searchArrayPeople addObject:tempUser];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
     [self.collectionView reloadData];
 
@@ -193,6 +203,9 @@
     _searchArrayCategory= [[NSMutableArray alloc] init];
    
         for (NSDictionary * result in _responseDic1) {
+            @try {
+                
+           
             User *tempUser= [[User alloc]  init];
         
             tempUser.cover_photo_url=[result objectForKey:@"photo_url"];
@@ -201,6 +214,13 @@
             tempUser.user_id= [user_id stringValue];
             
             [_searchArrayCategory addObject:tempUser];
+            }
+            @catch (NSException *exception) {
+                
+            }
+            @finally {
+                
+            }
         }
 
     [self.tableview reloadData];
@@ -241,6 +261,9 @@
     NSDictionary *productDic= [_responseDic1 objectForKey:@"products"];
 
     for (NSDictionary *wkDic in workoutDic) {
+        @try {
+            
+       
         Workout *wk= [[Workout alloc] init];
         NSNumber *wk_id= [wkDic objectForKey:@"id"];
         wk.workout_id= [wk_id stringValue];
@@ -265,11 +288,21 @@
           }
         
         [_searchArrayWorkouts addObject:wk];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
     
     for (NSDictionary *pdDic in productDic) {
+        @try {
+            
+       
         Product *pd= [[Product alloc] init];
         NSNumber *pd_id= [pdDic objectForKey:@"id"];
         pd.product_id= [pd_id stringValue];
@@ -294,10 +327,20 @@
 
         }
          [_searchArrayProducts addObject:pd];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
     for (NSDictionary *leader in leaderDic) {
+        @try {
+            
+       
         User *temUser= [[User alloc] init];
         temUser.name= [leader objectForKey:@"full_name"];
         
@@ -317,10 +360,20 @@
         NSDictionary *avatars= [profile objectForKey:@"avatars"];
         temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
         [_searchArrayLeader addObject:temUser];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
         
     }
     
     for (NSDictionary *community in communityDic) {
+        @try {
+            
+       
         CreatedByCommunity *temCom= [[CreatedByCommunity alloc] init];
         NSNumber *com_id= [community objectForKey:@"id"];
         temCom.created_by_community_id=[com_id stringValue];
@@ -332,6 +385,13 @@
         }
 
         [_searchArrayCommunity addObject:temCom];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }
     
     [self.tableview reloadData];
@@ -346,6 +406,9 @@
    
     
     for (NSDictionary * result in _responseDic2) {
+        @try {
+            
+       
         CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
         
         tempCom.cover_photo_url=[result objectForKey:@"photo_url"];
@@ -358,6 +421,13 @@
         }
         
         [_searchArrayKeyword addObject:tempCom];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }
     
     CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:0];

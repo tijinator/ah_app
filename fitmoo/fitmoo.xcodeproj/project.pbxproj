@@ -666,6 +666,9 @@
 		27CBC0E31B0F8D4D00699E1E /* BentonSansCondensedBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E21B0F8D4D00699E1E /* BentonSansCondensedBold.m */; };
 		27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBC0E51B0FB6A200699E1E /* LocationViewController.m */; };
 		27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */; };
+		27CD5E151BD087C100557781 /* fitmoolive.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CD5E121BD087C100557781 /* fitmoolive.png */; settings = {ASSET_TAGS = (); }; };
+		27CD5E161BD087C100557781 /* fitmoolive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CD5E131BD087C100557781 /* fitmoolive@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27CD5E171BD087C100557781 /* fitmoolive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CD5E141BD087C100557781 /* fitmoolive@3x.png */; settings = {ASSET_TAGS = (); }; };
 		27D0229A1BA8E77900A6FA2D /* CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D022991BA8E77900A6FA2D /* CreditCard.m */; };
 		27D027CA1B7E1B2300436FEF /* workout_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D027C81B7E1B2300436FEF /* workout_grey@2x.png */; };
 		27D027CB1B7E1B2300436FEF /* workout_grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D027C91B7E1B2300436FEF /* workout_grey@3x.png */; };
@@ -1512,6 +1515,9 @@
 		27CBC0E51B0FB6A200699E1E /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		27CC0F3C1B61064D005CC194 /* WorkTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTypeViewController.h; sourceTree = "<group>"; };
 		27CC0F3D1B61064D005CC194 /* WorkTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTypeViewController.m; sourceTree = "<group>"; };
+		27CD5E121BD087C100557781 /* fitmoolive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitmoolive.png; sourceTree = "<group>"; };
+		27CD5E131BD087C100557781 /* fitmoolive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitmoolive@2x.png"; sourceTree = "<group>"; };
+		27CD5E141BD087C100557781 /* fitmoolive@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitmoolive@3x.png"; sourceTree = "<group>"; };
 		27D022981BA8E77900A6FA2D /* CreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCard.h; sourceTree = "<group>"; };
 		27D022991BA8E77900A6FA2D /* CreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCard.m; sourceTree = "<group>"; };
 		27D027C81B7E1B2300436FEF /* workout_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "workout_grey@2x.png"; sourceTree = "<group>"; };
@@ -2074,6 +2080,9 @@
 				27D4D43D1BC964120074E420 /* event_tag.png */,
 				27D4D43E1BC964120074E420 /* event_tag@2x.png */,
 				27D4D43F1BC964120074E420 /* event_tag@3x.png */,
+				27CD5E121BD087C100557781 /* fitmoolive.png */,
+				27CD5E131BD087C100557781 /* fitmoolive@2x.png */,
+				27CD5E141BD087C100557781 /* fitmoolive@3x.png */,
 				27E79AE41BBE12E10089F991 /* greydownarrow.png */,
 				27E79AE51BBE12E10089F991 /* greydownarrow@2x.png */,
 				27E79AE61BBE12E10089F991 /* greydownarrow@3x.png */,
@@ -2897,6 +2906,7 @@
 				27B259931B1E493F00276273 /* greycommenticon.png in Resources */,
 				273FF5631AF7AA2C00B82DB3 /* leftmenuicon.png in Resources */,
 				27A1018E1B334554007B7BF3 /* rednotification@3x.png in Resources */,
+				27CD5E161BD087C100557781 /* fitmoolive@2x.png in Resources */,
 				27ADF1D81B14B1D8003A0A83 /* facebookbtn.png in Resources */,
 				27AC2BFA1BC1798100FD4131 /* cart_sidemenu_red.png in Resources */,
 				276094231AD708AD00A769CE /* SemplicitaPro-MediumItalic.otf in Resources */,
@@ -3226,6 +3236,7 @@
 				276094551AD708C100A769CE /* BentonSansCond-Medium.otf in Resources */,
 				27988CB61B0BB12500BDE8EB /* followsection_smallfollowbtn@2x.png in Resources */,
 				2752E9F91B015CBC003841DC /* greyarrow@3x.png in Resources */,
+				27CD5E151BD087C100557781 /* fitmoolive.png in Resources */,
 				27BA5A401B6A50E500B30B62 /* store_black@2x.png in Resources */,
 				279E57B81B20F0B40076C3B5 /* greywebsite@3x.png in Resources */,
 				274824EC1B70F5BF0058452C /* SeachInterestCell.xib in Resources */,
@@ -3351,6 +3362,7 @@
 				279E57A41B20E9530076C3B5 /* Stars.png in Resources */,
 				27F9DC941BAB932900F2A534 /* cart@3x.png in Resources */,
 				27B2598F1B1E44BA00276273 /* greycomment@3x.png in Resources */,
+				27CD5E171BD087C100557781 /* fitmoolive@3x.png in Resources */,
 				27A3AC321B96446600D78AAA /* blueheart130@3x.png in Resources */,
 				271DA84A1B5557BF00D4E075 /* CommunityTitileCell.xib in Resources */,
 				276094481AD708C100A769CE /* BentonSans-Medium.otf in Resources */,

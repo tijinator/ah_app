@@ -849,6 +849,19 @@
         homeFeed.event.name= [event objectForKey:@"name"];
         homeFeed.event.begin_time= [event objectForKey:@"begin_time"];
         homeFeed.event.end_time= [event objectForKey:@"end_time"];
+        NSNumber *bought_by_current_user= [event objectForKey:@"bought_by_current_user"];
+        homeFeed.event.bought_by_current_user=[bought_by_current_user stringValue];
+        
+        NSNumber *sold_out= [event objectForKey:@"sold_out"];
+      
+        
+        if ([sold_out isKindOfClass:[NSString class]]) {
+            homeFeed.event.sold_out=[event objectForKeyedSubscript:@"sold_out"];
+          
+        }else
+        {
+            homeFeed.event.sold_out=[sold_out stringValue];
+        }
         
         NSNumber *price=[event objectForKey:@"price"];
         homeFeed.event.price=[price stringValue];
@@ -879,6 +892,9 @@
         
         NSNumber *is_joined= [dic objectForKey:@"is_joined"];
         homeFeed.event.is_joined=[is_joined stringValue];
+        
+        
+       
         
         homeFeed.photos.originalUrl=homeFeed.event.theme;
         homeFeed.photos.stylesUrl=homeFeed.event.theme;

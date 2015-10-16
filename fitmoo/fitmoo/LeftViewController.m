@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png",@"earnings.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings",@"live", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings",@"Live", nil];
     
     
     self.tableView = ({

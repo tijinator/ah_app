@@ -43,7 +43,9 @@
     
     for (NSDictionary *dic in _responseDic) {
         
-        
+        @try {
+            
+       
         
         ShopOrder *order= [[ShopOrder alloc] init];
         
@@ -114,6 +116,13 @@
         order.billingAddress.zipcode=[billingDictionary objectForKey:@"zipcode"];
         
         [_orderArray addObject:order];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
     }
     
     

@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *event_instance_id;
 @property (nonatomic, strong) NSString *price;
 
-
+@property (nonatomic, strong) NSString *bought_by_current_user;
+@property (nonatomic, strong) NSString *sold_out;
 
 @end

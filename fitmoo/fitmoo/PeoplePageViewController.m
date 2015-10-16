@@ -1938,14 +1938,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             tempFeed=temp;
         }
     }
-    
+    if([tempFeed.type isEqualToString:@"event"])
+    {
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+        
+        specialPage.homeFeed=tempFeed;
+        
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        specialPage.searchId=tempUser.user_id;
+        specialPage.isEventDetail=true;
+        
+        [self.navigationController pushViewController:specialPage animated:YES];
+        
+    }else   //product
+    {
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
     ShopDetailViewController *shopDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
     shopDetail.homeFeed=tempFeed;
     [self.navigationController pushViewController:shopDetail animated:YES];
     
-    
+    }
 }
 
 
