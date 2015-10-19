@@ -32,6 +32,10 @@
     priceLabel.delegate=self;
     [priceLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#109CFB>Qty %@ </font></a><font face=BentonSans-Bold size=12 color=#000000> @ $%0.2f</font>",_shopCartDetail.shop_cart_detail_id ,_shopCartDetail.quantity, _shopCartDetail.price.floatValue ]];
     
+    CGSize optimumSize =[priceLabel optimumSize];
+    
+    priceLabel.frame=CGRectMake(priceLabel.frame.origin.x, priceLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
+    
     [self.contentView addSubview:priceLabel];
     
     
@@ -78,7 +82,7 @@
     _DeleteButton.tag=_shopCartDetail.shop_cart_detail_id.intValue;
     
     //    _ItemPriceLabel.frame=CGRectMake(_ItemPriceLabel.frame.origin.x, _ItemTitleLabel.frame.origin.y+_ItemTitleLabel.frame.size.height+5, _ItemPriceLabel.frame.size.width, _ItemPriceLabel.frame.size.height);
-    _ItemDetailLabel.frame=CGRectMake(_ItemDetailLabel.frame.origin.x, priceLabel.frame.origin.y+priceLabel.frame.size.height, _ItemDetailLabel.frame.size.width, _ItemDetailLabel.frame.size.height+20);
+    _ItemDetailLabel.frame=CGRectMake(_ItemDetailLabel.frame.origin.x, priceLabel.frame.origin.y+priceLabel.frame.size.height-10, _ItemDetailLabel.frame.size.width, _ItemDetailLabel.frame.size.height+20);
     
 }
 

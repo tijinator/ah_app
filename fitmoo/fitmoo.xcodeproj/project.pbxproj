@@ -2837,6 +2837,14 @@
 					27188F641AD4646300C34372 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = GQ8R63HQY2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					27188F801AD4646300C34372 = {
 						CreatedOnToolsVersion = 6.2;
@@ -3796,6 +3804,7 @@
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitmoo.mobile.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3817,6 +3826,7 @@
 				INFOPLIST_FILE = fitmoo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitmoo.mobile.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

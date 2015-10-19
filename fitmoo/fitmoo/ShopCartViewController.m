@@ -259,11 +259,20 @@
         [indicatorView removeFromSuperview];
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
         
+        if (feed.event.event_id!=nil) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            SpecialPageViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+            
+            detailPage.homeFeed=feed;
+            [self.navigationController pushViewController:detailPage animated:YES];
+        }else
+        {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
         ShopDetailViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
         
         detailPage.homeFeed=feed;
         [self.navigationController pushViewController:detailPage animated:YES];
+        }
         
         
         //      NSLog(@"Submit response data: %@", responseObject);
