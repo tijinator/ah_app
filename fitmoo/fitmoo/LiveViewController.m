@@ -28,7 +28,28 @@
     [super viewDidLoad];
     [self getLive];
     [self initFrames];
+    [self createObservers];
     // Do any additional setup after loading the view.
+}
+
+-(void)createObservers{
+ 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotification:) name:@"getNotification" object:nil];
+
+}
+
+-(void)getNotification:(NSNotification*)note{
+    _commentNoteDic= [note object];
+    
+ //   NSDictionary *created_by= [_commentNoteDic objectForKey:@"created_by"];
+//    NSMutableDictionary * mutableDict = [NSMutableDictionary dictionary];
+//    [mutableDict addEntriesFromDictionary:_commentNoteDic];
+//    [self parseCommentDic:mutableDict];
+    
+    NSMutableArray * mutableDict = [[NSMutableArray alloc] init];
+    [mutableDict addObject:_commentNoteDic];
+    [self parseCommentDic:(NSDictionary *)mutableDict];
+
 }
 
 
@@ -116,7 +137,10 @@
         }
     }
     
-  //  [self.tableView reloadData];
+    [self.tableView reloadData];
+    NSIndexPath* ipath = [NSIndexPath indexPathForRow: [_liveFeed.commentsArray count]-1 inSection: 0];
+    
+    [self.tableView scrollToRowAtIndexPath:ipath atScrollPosition: UITableViewScrollPositionTop animated:NO];
     
 }
 
@@ -132,7 +156,7 @@
     NSString *url= [NSString stringWithFormat:@"%@%@%@",[[UserManager sharedUserManager] feedsUrl], _liveFeed.live_feed_id ,@"/comments" ];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        [self.tableView reloadData];
+      //  [self.tableView reloadData];
         
         //      NSLog(@"Submit response data: %@", responseObject);
     } // success callback block
@@ -143,6 +167,32 @@
     
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self stopLive];
+}
+
+- (void) stopLive
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+    User *localUser= [[UserManager sharedUserManager] localUser];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"false", @"on_app_live_page",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/live_stream/on_app_live_page"];
+    [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+     
+        
+    } // success callback block
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             NSLog(@"Error: %@", error);
+             
+             [indicatorView removeFromSuperview];} // failure callback block
+     ];
+    
+}
 
 - (void) getLive
 {
@@ -194,12 +244,15 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        LiveCell *cell =(LiveCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-        if (cell == nil)
-        {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LiveCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
+//        LiveCell *cell =(LiveCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+//        if (cell == nil)
+//        {
+//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LiveCell" owner:self options:nil];
+//            cell = [nib objectAtIndex:0];
+//        }
+    
+    UITableViewCell * cell  = [[UITableViewCell alloc] init];
+    cell.selectionStyle= UITableViewCellSelectionStyleNone;
     
     RTLabel *rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(27*frameRadio, 10*frameRadio, 275*frameRadio,100)];
     rtLabel.delegate=self;
@@ -208,11 +261,15 @@
     Comments *temCom=[_liveFeed.commentsArray objectAtIndex:indexPath.row];
     
     [rtLabel setText:[NSString stringWithFormat:@"<a href='1'><font face=BentonSans-Bold size=12 color=#000000>%@ </font></a><font face=BentonSans-Bold size=12 color=#8D9AA0>%@ </font>",temCom.full_name,temCom.text]];
+    CGSize optimumSize =[rtLabel optimumSize];
+    rtLabel.frame=CGRectMake(rtLabel.frame.origin.x, rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
+
+    
     
     [cell.contentView addSubview:rtLabel];
     
 
-    contentHight=[NSNumber numberWithFloat:cell.contentView.frame.size.height];
+    contentHight=[NSNumber numberWithFloat:rtLabel.frame.size.height+rtLabel.frame.origin.y+10];
 
     return cell;
 }
@@ -376,7 +433,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)postButtonClick:(id)sender {
     if (![_textField.text isEqualToString:@""]) {
+        [_textField resignFirstResponder];
+        [self movedownView:_buttomView];
         [self performComment];
+        _textField.text=@"";
+    
+    }else
+    {
+      
+        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops!"
+        message : @"Please say something." delegate : nil cancelButtonTitle : @"OK"
+        otherButtonTitles : nil ];
+        [alert show ];
+         
+        
     }
     
     

@@ -164,6 +164,15 @@ NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     NSLog(@"%@", userInfo);
+    
+    
+    if ([[userInfo allKeys] containsObject:@"created_by"]) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"getNotification" object:userInfo];
+        return;
+    }
+    
+    
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     if (!state == UIApplicationStateActive )
     {

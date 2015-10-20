@@ -28,6 +28,7 @@
 
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSDictionary * commentNoteDic;
 
 @property (strong, nonatomic)  LiveFeed * liveFeed;
 
