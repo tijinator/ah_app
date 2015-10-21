@@ -41,6 +41,8 @@
 
 @property (strong, nonatomic) AsyncImageView *bannerImageView;
 
+@property (strong, nonatomic) UIView *textViewBackgroundView;
+
 - (IBAction)postButtonClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;

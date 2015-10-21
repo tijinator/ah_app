@@ -130,7 +130,10 @@
             endhour= [endhour substringToIndex:2];
             
          
-
+//            NSNumber *count_on_hand=[data objectForKey:@"seat_count"];
+//            _shopCart.shop_cart_detail.count_on_hand= [count_on_hand stringValue];
+            
+            _shopCart.shop_cart_detail.count_on_hand= @"10";
             
             if (beginhour.intValue>12) {
                 beginhour=[NSString stringWithFormat:@"%d%@", beginhour.intValue-12,@"pm" ];

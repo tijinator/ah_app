@@ -39,10 +39,10 @@
     [self.contentView addSubview:priceLabel];
     
     
-    if ([_shopCartDetail.is_event isEqual:@"1"]) {
-       priceLabel.userInteractionEnabled=NO;
-        
-    }
+//    if ([_shopCartDetail.is_event isEqual:@"1"]) {
+//       priceLabel.userInteractionEnabled=NO;
+//        
+//    }
     
     _detailLabel1.text= _shopCartDetail.item_price;
     _detailLabel2.text= _shopCartDetail.seller_name.uppercaseString;

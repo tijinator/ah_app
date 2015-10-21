@@ -139,7 +139,6 @@
     
     [self.tableView reloadData];
     NSIndexPath* ipath = [NSIndexPath indexPathForRow: [_liveFeed.commentsArray count]-1 inSection: 0];
-    
     [self.tableView scrollToRowAtIndexPath:ipath atScrollPosition: UITableViewScrollPositionTop animated:NO];
     
 }
@@ -260,7 +259,7 @@
 
     Comments *temCom=[_liveFeed.commentsArray objectAtIndex:indexPath.row];
     
-    [rtLabel setText:[NSString stringWithFormat:@"<a href='1'><font face=BentonSans-Bold size=12 color=#000000>%@ </font></a><font face=BentonSans-Bold size=12 color=#8D9AA0>%@ </font>",temCom.full_name,temCom.text]];
+    [rtLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#000000>%@ </font></a><font face=BentonSans-Bold size=12 color=#8D9AA0>%@ </font>",temCom.created_by_id,temCom.full_name,temCom.text]];
     CGSize optimumSize =[rtLabel optimumSize];
     rtLabel.frame=CGRectMake(rtLabel.frame.origin.x, rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
 
@@ -295,12 +294,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) initFrames
 {
-    _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:self.view];
-    _topView.frame= CGRectMake(0, 0, 320, 60);
-    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:self.view];
-    _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:self.view];
     
-    _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:self.view];
+    _tableView.frame= CGRectMake(0, 300, 320, 218);
+    _tableView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_tableView respectToSuperFrame:nil];
+    
+    _topView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_topView respectToSuperFrame:nil];
+    _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:nil];
+    
+
     
    
     _headerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_headerView respectToSuperFrame:nil];
@@ -349,10 +350,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void) moveUpView: (UIView *) moveView
 {
     
+    if (_textViewBackgroundView==nil) {
+        _textViewBackgroundView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        _textViewBackgroundView.backgroundColor=[UIColor blackColor];
+        _textViewBackgroundView.alpha=0.7;
+        [self.view addSubview:_textViewBackgroundView];
+    }
+    
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
+        
+        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218)*frameRadio-constentUp, _tableView.frame.size.width, _tableView.frame.size.height);
+        
     }completion:^(BOOL finished){}];
-    
+    [self.view bringSubviewToFront:_tableView];
+    [self.view bringSubviewToFront:moveView];
     
 }
 
@@ -360,7 +372,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
+        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218)*frameRadio, _tableView.frame.size.width, _tableView.frame.size.height);
+        
     }completion:^(BOOL finished){}];
+    [_textViewBackgroundView removeFromSuperview];
+    _textViewBackgroundView=nil;
+   // [self.view bringSubviewToFront:_tableView];
     
 }
 -(void)keyboardDidShow:(NSNotification*)notification
@@ -407,6 +424,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url
 {
    
+    NSString *key=[NSString stringWithFormat:@"%d", [url absoluteString].intValue+100];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    
+    
 }
 
 - (IBAction)backButtonClick:(id)sender {

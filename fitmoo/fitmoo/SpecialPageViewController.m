@@ -775,6 +775,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSDictionary *dic= responseObject;
         NSNumber *newTotal_attendees=[dic objectForKey:@"total_attendees"];
         _homeFeed.event.total_attendees=[newTotal_attendees stringValue];
+        
+        NSNumber *is_joined=[dic objectForKey:@"is_joined"];
+        _homeFeed.event.is_joined=[is_joined stringValue];
      
         [self.tableView reloadData];
         if (![_homeFeed.event.price isEqualToString:@"0"]) {
