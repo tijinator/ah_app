@@ -168,15 +168,16 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self showLive:true];
+    [self showLive:@"true"];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [self showLive:false];
+    
+    [self showLive:@"false"];
 }
 
-- (void) showLive:(BOOL) flag
+- (void) showLive:(NSString *) flag
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
