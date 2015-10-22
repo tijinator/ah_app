@@ -57,6 +57,11 @@
         }
 
         order.event_location=[dic objectForKey:@"event_location"];
+            
+        if ([order.event_location isEqual:[NSNull null]]) {
+            order.event_location=@"";
+        }
+            
         order.customer_service_email=[dic objectForKey:@"customer_service_email"];
         order.customer_service_no=[dic objectForKey:@"customer_service_no"];
         order.begin_time=[dic objectForKey:@"begin_time"];

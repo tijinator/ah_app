@@ -290,6 +290,8 @@
     _ShadowBuyNowButton.hidden=false;
     _headerTag.image= [UIImage imageNamed:@"event_tag.png"];
     
+    [_ShadowBuyNowButton setBackgroundImage:[UIImage imageNamed:@"attend_btn.png" ] forState:UIControlStateNormal];
+    
     //    _bodyLabel2.frame= CGRectMake(90,135, 200, _bodyLabel2.frame.size.height);
     //    _bodyLabel2.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_bodyLabel2 respectToSuperFrame:nil];
     //    [_bodyLabel2 setFont:_bodyLabel1.font];

@@ -37,6 +37,7 @@
     headerImage.imageURL =[NSURL URLWithString:_order.image_url];
     }
     
+    headerImage.contentMode=UIViewContentModeScaleAspectFit;
     [_ImageButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     _ImageButton.clipsToBounds=YES;
     [_ImageButton addSubview:headerImage];

@@ -677,6 +677,9 @@
 		27D0DF781B7CC38D00DC49C5 /* infoicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */; };
 		27D0DF791B7CC38D00DC49C5 /* infoicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */; };
 		27D11D411B828A440012094F /* fitmoo-live-logo-instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */; };
+		27D1AE081BD7FD350056F66E /* attend_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D1AE051BD7FD350056F66E /* attend_btn.png */; settings = {ASSET_TAGS = (); }; };
+		27D1AE091BD7FD350056F66E /* attend_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D1AE061BD7FD350056F66E /* attend_btn@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27D1AE0A1BD7FD350056F66E /* attend_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D1AE071BD7FD350056F66E /* attend_btn@3x.png */; settings = {ASSET_TAGS = (); }; };
 		27D4D4401BC964120074E420 /* event_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D4D43D1BC964120074E420 /* event_tag.png */; settings = {ASSET_TAGS = (); }; };
 		27D4D4411BC964120074E420 /* event_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D4D43E1BC964120074E420 /* event_tag@2x.png */; settings = {ASSET_TAGS = (); }; };
 		27D4D4421BC964120074E420 /* event_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D4D43F1BC964120074E420 /* event_tag@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -1528,6 +1531,9 @@
 		27D0DF751B7CC38D00DC49C5 /* infoicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@2x.png"; sourceTree = "<group>"; };
 		27D0DF761B7CC38D00DC49C5 /* infoicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoicon@3x.png"; sourceTree = "<group>"; };
 		27D11D401B828A440012094F /* fitmoo-live-logo-instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitmoo-live-logo-instagram.png"; sourceTree = "<group>"; };
+		27D1AE051BD7FD350056F66E /* attend_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attend_btn.png; sourceTree = "<group>"; };
+		27D1AE061BD7FD350056F66E /* attend_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attend_btn@2x.png"; sourceTree = "<group>"; };
+		27D1AE071BD7FD350056F66E /* attend_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attend_btn@3x.png"; sourceTree = "<group>"; };
 		27D4D43D1BC964120074E420 /* event_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_tag.png; sourceTree = "<group>"; };
 		27D4D43E1BC964120074E420 /* event_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_tag@2x.png"; sourceTree = "<group>"; };
 		27D4D43F1BC964120074E420 /* event_tag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_tag@3x.png"; sourceTree = "<group>"; };
@@ -2080,6 +2086,9 @@
 				27D4D43D1BC964120074E420 /* event_tag.png */,
 				27D4D43E1BC964120074E420 /* event_tag@2x.png */,
 				27D4D43F1BC964120074E420 /* event_tag@3x.png */,
+				27D1AE051BD7FD350056F66E /* attend_btn.png */,
+				27D1AE061BD7FD350056F66E /* attend_btn@2x.png */,
+				27D1AE071BD7FD350056F66E /* attend_btn@3x.png */,
 				27CD5E121BD087C100557781 /* fitmoolive.png */,
 				27CD5E131BD087C100557781 /* fitmoolive@2x.png */,
 				27CD5E141BD087C100557781 /* fitmoolive@3x.png */,
@@ -2896,6 +2905,7 @@
 				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
 				27AFADB51BACEE0C00FE42FA /* ShopOrderDetailCell.xib in Resources */,
 				27ADF1DE1B14B1D8003A0A83 /* invalidalert.png in Resources */,
+				27D1AE081BD7FD350056F66E /* attend_btn.png in Resources */,
 				27DDF4371B7B7C140011BB46 /* searchrightarrow.png in Resources */,
 				27A101841B334554007B7BF3 /* newposts@2x.png in Resources */,
 				27988CAB1B0BB12500BDE8EB /* followsection_followbtn@3x.png in Resources */,
@@ -2953,6 +2963,7 @@
 				2738D92E1B02456800F5087E /* selectedsquares@3x.png in Resources */,
 				27DDF4341B7B7C140011BB46 /* searchleftarrow.png in Resources */,
 				27AC92D61B066DF700BB7A0E /* selectedbars@2x.png in Resources */,
+				27D1AE0A1BD7FD350056F66E /* attend_btn@3x.png in Resources */,
 				279E57BE1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png in Resources */,
 				273FF57E1AF7AA2C00B82DB3 /* whitexicon.png in Resources */,
 				27CBC0D81B0F84DB00699E1E /* datebadge.png in Resources */,
@@ -2967,6 +2978,7 @@
 				273FF5501AF7AA2C00B82DB3 /* bluehighlightsquare.png in Resources */,
 				2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */,
 				27988CC21B0BC69A00BDE8EB /* FollowCell.xib in Resources */,
+				27D1AE091BD7FD350056F66E /* attend_btn@2x.png in Resources */,
 				276094221AD708AD00A769CE /* SemplicitaPro-Medium.otf in Resources */,
 				276FE39A1B866BF8009496DE /* instagramlogo_nutrition@2x.png in Resources */,
 				2760945A1AD708C100A769CE /* BentonSansExtraComp-Light.otf in Resources */,

@@ -166,12 +166,17 @@
     
 }
 
-- (void) viewWillDisappear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    [self stopLive];
+    [self showLive:true];
 }
 
-- (void) stopLive
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self showLive:false];
+}
+
+- (void) showLive:(BOOL) flag
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -179,7 +184,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
   
     User *localUser= [[UserManager sharedUserManager] localUser];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"false", @"on_app_live_page",nil];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",flag, @"on_app_live_page",nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl], @"/live_stream/on_app_live_page"];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
      
@@ -452,6 +457,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 */
 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    if (buttonIndex == 1)
+    {
+        
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_liveFeed.banner_link_url]];
+        
+    }
+    
+    
+}
+
 - (IBAction)postButtonClick:(id)sender {
     if (![_textField.text isEqualToString:@""]) {
         [_textField resignFirstResponder];
@@ -474,8 +493,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)adverButonClick:(id)sender {
     
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@""
+                                                   message:@"The link will take your outside the Fitmoo app, would you like to continue?"
+                                                  delegate:self
+                                         cancelButtonTitle:@"No"
+                                         otherButtonTitles:@"Yes",nil];
+    [alert show];
     
-       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_liveFeed.banner_link_url]];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+    
     
 }
 @end
