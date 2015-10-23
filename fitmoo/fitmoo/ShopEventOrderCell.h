@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *totalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *shipTotalLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalPaidLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *label1;
 @property (strong, nonatomic) IBOutlet UILabel *label2;

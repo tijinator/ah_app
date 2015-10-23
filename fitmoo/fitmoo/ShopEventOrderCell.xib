@@ -17,6 +17,7 @@
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
             <string>BentonSans-Bold</string>
+            <string>BentonSans-Bold</string>
         </mutableArray>
         <mutableArray key="BentonSans-Regular.otf">
             <string>BentonSans</string>
@@ -48,13 +49,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="URJ-1o-UqI" customClass="BentonSansBold">
-                        <rect key="frame" x="30" y="71" width="256" height="67"/>
+                        <rect key="frame" x="30" y="70" width="256" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <string key="text">ALICIA COHEN
 3948 56TH STREET
 NEW YORK, NY 10023</string>
                         <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="40l-2S-xF1" customClass="BentonSansBold">
+                        <rect key="frame" x="30" y="138" width="250" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="11"/>
+                        <color key="textColor" red="0.062745098040000002" green="0.61176470589999998" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELLER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jH5-BX-X1m" customClass="BentonSansBold">
@@ -128,7 +136,7 @@ NEW YORK, NY 10023</string>
                         <rect key="frame" x="40" y="480" width="240" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans" family="BentonSans" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -144,6 +152,7 @@ NEW YORK, NY 10023</string>
                 <outlet property="phoneNumberLabel" destination="HtX-lj-3gk" id="OMw-2x-mvY"/>
                 <outlet property="sellerLabel" destination="jH5-BX-X1m" id="gJU-WT-LU6"/>
                 <outlet property="shipTotalLabel" destination="1l6-mg-RpL" id="Kfn-DH-27h"/>
+                <outlet property="statusLabel" destination="40l-2S-xF1" id="A1h-fC-18u"/>
                 <outlet property="timeLabel" destination="DfE-rg-h5e" id="mBD-gO-JMG"/>
                 <outlet property="titleLabel" destination="Ng9-H3-aNH" id="dWr-nG-UkR"/>
                 <outlet property="totalLabel" destination="91q-Mq-0Rn" id="VH9-3E-hdF"/>

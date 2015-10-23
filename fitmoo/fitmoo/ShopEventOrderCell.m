@@ -39,6 +39,8 @@
     _shipTotalLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_shipTotalLabel respectToSuperFrame:nil];
     _totalPaidLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_totalPaidLabel respectToSuperFrame:nil];
     
+    _statusLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_statusLabel respectToSuperFrame:nil];
+    
     _barCodeImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_barCodeImage respectToSuperFrame:nil];
     
 }
@@ -62,7 +64,7 @@
     
     _phoneNumberLabel.text=_order.customer_service_no;
     _sellerLabel.text=_order.seller_name;
-    
+    _statusLabel.text= [NSString stringWithFormat:@"STATUS: %@",_order.status.uppercaseString];
     
     NSArray *stringArray= [_order.begin_time componentsSeparatedByString:@"|"];
     
