@@ -480,13 +480,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     
-    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_phoneTextField.text]==false) {
-        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
-                                                          message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
-                                                otherButtonTitles : nil ];
-        [alert show ];
-        return false;
-    }
+//    if ([[FitmooHelper sharedInstance] checkStringIsNumberOnly:_phoneTextField.text]==false) {
+//        UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"
+//                                                          message : @"Please enter number only for your phone number." delegate : nil cancelButtonTitle : @"OK"
+//                                                otherButtonTitles : nil ];
+//        [alert show ];
+//        return false;
+//    }
     
     return true;
 }

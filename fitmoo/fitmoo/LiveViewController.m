@@ -76,6 +76,10 @@
 
 - (void) parseLiveFeed
 {
+    
+    @try {
+        
+  
     NSDictionary *live_feed=[_responseDic objectForKey:@"live_feed"];
     NSDictionary *comments=[_responseDic objectForKey:@"comments"];
     NSDictionary *advertisement=[_responseDic objectForKey:@"advertisement"];
@@ -107,7 +111,13 @@
         [self parseCommentDic:comments];
         
     }
-    
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
    
     [self updatePlayerView];
     

@@ -367,9 +367,6 @@
 		279E57981B20B4EC0076C3B5 /* menugradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57891B20B4EC0076C3B5 /* menugradient.png */; };
 		279E57991B20B4EC0076C3B5 /* menugradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578A1B20B4EC0076C3B5 /* menugradient@2x.png */; };
 		279E579A1B20B4EC0076C3B5 /* menugradient@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578B1B20B4EC0076C3B5 /* menugradient@3x.png */; };
-		279E579B1B20B4EC0076C3B5 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578C1B20B4EC0076C3B5 /* splashscreen.png */; };
-		279E579C1B20B4EC0076C3B5 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578D1B20B4EC0076C3B5 /* splashscreen@2x.png */; };
-		279E579D1B20B4EC0076C3B5 /* splashscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578E1B20B4EC0076C3B5 /* splashscreen@3x.png */; };
 		279E579E1B20B4EC0076C3B5 /* startshopping.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E578F1B20B4EC0076C3B5 /* startshopping.png */; };
 		279E579F1B20B4EC0076C3B5 /* startshopping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57901B20B4EC0076C3B5 /* startshopping@2x.png */; };
 		279E57A01B20B4EC0076C3B5 /* startshopping@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57911B20B4EC0076C3B5 /* startshopping@3x.png */; };
@@ -726,6 +723,13 @@
 		27F9DCA31BABA25F00F2A534 /* ShopEarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9DCA21BABA25F00F2A534 /* ShopEarningViewController.m */; };
 		27F9DCA71BABA57800F2A534 /* ShopPurchaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F9DCA51BABA57800F2A534 /* ShopPurchaseCell.m */; };
 		27F9DCA81BABA57800F2A534 /* ShopPurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27F9DCA61BABA57800F2A534 /* ShopPurchaseCell.xib */; };
+		27FDD5151BD9B660001E9C47 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD5131BD9B660001E9C47 /* splashscreen.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD5161BD9B660001E9C47 /* splashscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD5141BD9B660001E9C47 /* splashscreen@3x.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD5181BD9B66C001E9C47 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD5171BD9B66C001E9C47 /* splashscreen@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD51D1BD9B68F001E9C47 /* 320x568.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD5191BD9B68F001E9C47 /* 320x568.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD51E1BD9B68F001E9C47 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD51A1BD9B68F001E9C47 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD51F1BD9B68F001E9C47 /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD51B1BD9B68F001E9C47 /* Default@2x~iphone.png */; settings = {ASSET_TAGS = (); }; };
+		27FDD5201BD9B68F001E9C47 /* default@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FDD51C1BD9B68F001E9C47 /* default@3x~iphone.png */; settings = {ASSET_TAGS = (); }; };
 		27FE159F1B8F852B00E124EF /* invitebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE15991B8F852B00E124EF /* invitebtn.png */; };
 		27FE15A01B8F852B00E124EF /* invitebtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE159A1B8F852B00E124EF /* invitebtn@2x.png */; };
 		27FE15A11B8F852B00E124EF /* invitebtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FE159B1B8F852B00E124EF /* invitebtn@3x.png */; };
@@ -1174,9 +1178,6 @@
 		279E57891B20B4EC0076C3B5 /* menugradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menugradient.png; sourceTree = "<group>"; };
 		279E578A1B20B4EC0076C3B5 /* menugradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menugradient@2x.png"; sourceTree = "<group>"; };
 		279E578B1B20B4EC0076C3B5 /* menugradient@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menugradient@3x.png"; sourceTree = "<group>"; };
-		279E578C1B20B4EC0076C3B5 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
-		279E578D1B20B4EC0076C3B5 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
-		279E578E1B20B4EC0076C3B5 /* splashscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@3x.png"; sourceTree = "<group>"; };
 		279E578F1B20B4EC0076C3B5 /* startshopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startshopping.png; sourceTree = "<group>"; };
 		279E57901B20B4EC0076C3B5 /* startshopping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startshopping@2x.png"; sourceTree = "<group>"; };
 		279E57911B20B4EC0076C3B5 /* startshopping@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startshopping@3x.png"; sourceTree = "<group>"; };
@@ -1588,6 +1589,13 @@
 		27F9DCA41BABA57800F2A534 /* ShopPurchaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPurchaseCell.h; sourceTree = "<group>"; };
 		27F9DCA51BABA57800F2A534 /* ShopPurchaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopPurchaseCell.m; sourceTree = "<group>"; };
 		27F9DCA61BABA57800F2A534 /* ShopPurchaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopPurchaseCell.xib; sourceTree = "<group>"; };
+		27FDD5131BD9B660001E9C47 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
+		27FDD5141BD9B660001E9C47 /* splashscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@3x.png"; sourceTree = "<group>"; };
+		27FDD5171BD9B66C001E9C47 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
+		27FDD5191BD9B68F001E9C47 /* 320x568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320x568.png; sourceTree = "<group>"; };
+		27FDD51A1BD9B68F001E9C47 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27FDD51B1BD9B68F001E9C47 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~iphone.png"; sourceTree = "<group>"; };
+		27FDD51C1BD9B68F001E9C47 /* default@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@3x~iphone.png"; sourceTree = "<group>"; };
 		27FE15991B8F852B00E124EF /* invitebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invitebtn.png; sourceTree = "<group>"; };
 		27FE159A1B8F852B00E124EF /* invitebtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invitebtn@2x.png"; sourceTree = "<group>"; };
 		27FE159B1B8F852B00E124EF /* invitebtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invitebtn@3x.png"; sourceTree = "<group>"; };
@@ -2083,6 +2091,9 @@
 		2752E91C1B014506003841DC /* with2xs */ = {
 			isa = PBXGroup;
 			children = (
+				27FDD5131BD9B660001E9C47 /* splashscreen.png */,
+				27FDD5141BD9B660001E9C47 /* splashscreen@3x.png */,
+				27FDD5171BD9B66C001E9C47 /* splashscreen@2x.png */,
 				27D4D43D1BC964120074E420 /* event_tag.png */,
 				27D4D43E1BC964120074E420 /* event_tag@2x.png */,
 				27D4D43F1BC964120074E420 /* event_tag@3x.png */,
@@ -2104,6 +2115,10 @@
 				27A9DC451BBF51E40050772C /* cart_sidemenu.png */,
 				27A9DC461BBF51E40050772C /* cart_sidemenu@2x.png */,
 				27A9DC471BBF51E40050772C /* cart_sidemenu@3x.png */,
+				27FDD5191BD9B68F001E9C47 /* 320x568.png */,
+				27FDD51A1BD9B68F001E9C47 /* Default-568h@2x.png */,
+				27FDD51B1BD9B68F001E9C47 /* Default@2x~iphone.png */,
+				27FDD51C1BD9B68F001E9C47 /* default@3x~iphone.png */,
 				27E79AEA1BBE12F10089F991 /* minus.png */,
 				27E79AEB1BBE12F10089F991 /* minus@2x.png */,
 				27E79AEC1BBE12F10089F991 /* minus@3x.png */,
@@ -2183,9 +2198,6 @@
 				279E57AD1B20F0B40076C3B5 /* greywebsite.png */,
 				279E57AE1B20F0B40076C3B5 /* greywebsite@2x.png */,
 				279E57AF1B20F0B40076C3B5 /* greywebsite@3x.png */,
-				279E578C1B20B4EC0076C3B5 /* splashscreen.png */,
-				279E578D1B20B4EC0076C3B5 /* splashscreen@2x.png */,
-				279E578E1B20B4EC0076C3B5 /* splashscreen@3x.png */,
 				279E578F1B20B4EC0076C3B5 /* startshopping.png */,
 				279E57901B20B4EC0076C3B5 /* startshopping@2x.png */,
 				279E57911B20B4EC0076C3B5 /* startshopping@3x.png */,
@@ -2899,6 +2911,7 @@
 				2752E9E71B015CBC003841DC /* deselectedbars@2x.png in Resources */,
 				27BC07CE1B1665A300AF414A /* buyicon@3x.png in Resources */,
 				2760944C1AD708C100A769CE /* BentonSansComp-Bold.otf in Resources */,
+				27FDD5151BD9B660001E9C47 /* splashscreen.png in Resources */,
 				273FF56F1AF7AA2C00B82DB3 /* settingsicon.png in Resources */,
 				27CBC0D71B0F84DB00699E1E /* bluepeopleicon@3x.png in Resources */,
 				27A1015E1B3342C3007B7BF3 /* searchfollowingbtn@3x.png in Resources */,
@@ -2957,6 +2970,7 @@
 				27988C871B0B7C7400BDE8EB /* mainmenu_houseicon@2x.png in Resources */,
 				27A101521B3342C3007B7BF3 /* greysearch@3x.png in Resources */,
 				27988CAD1B0BB12500BDE8EB /* followsection_followingbtn@2x.png in Resources */,
+				27FDD5201BD9B68F001E9C47 /* default@3x~iphone.png in Resources */,
 				27988CC91B0BE4C500BDE8EB /* shopscreen.png in Resources */,
 				27B2599B1B1E494900276273 /* greyhearticon@3x.png in Resources */,
 				278818AE1B06972500FE8A4C /* white_toggle@2x.png in Resources */,
@@ -3065,6 +3079,7 @@
 				277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */,
 				27ACD0FB1B0A708C00322ED5 /* workouttag@2x.png in Resources */,
 				2760944B1AD708C100A769CE /* BentonSansComp-Black.otf in Resources */,
+				27FDD5181BD9B66C001E9C47 /* splashscreen@2x.png in Resources */,
 				27A101591B3342C3007B7BF3 /* searchfollowbtn.png in Resources */,
 				27ADF1EE1B14B1D8003A0A83 /* or@2x.png in Resources */,
 				273FF5601AF7AA2C00B82DB3 /* hearticon.png in Resources */,
@@ -3081,6 +3096,7 @@
 				27A3AC351B96446600D78AAA /* blueheart140@3x.png in Resources */,
 				2752E9EB1B015CBC003841DC /* deselectedsquares@2x.png in Resources */,
 				27ADF1DC1B14B1D8003A0A83 /* greyx@2x.png in Resources */,
+				27FDD51F1BD9B68F001E9C47 /* Default@2x~iphone.png in Resources */,
 				27989F801B6810FD004D7D8A /* SubTableViewCell.xib in Resources */,
 				27F9DC971BAB932900F2A534 /* earnings@3x.png in Resources */,
 				27D0DF791B7CC38D00DC49C5 /* infoicon@3x.png in Resources */,
@@ -3149,6 +3165,7 @@
 				27A3AC281B96446600D78AAA /* blueheart100@2x.png in Resources */,
 				27ABBF001B84CE2900AB54D2 /* instagramlogo8@2x.png in Resources */,
 				2752EA231B015CBC003841DC /* video_icon.png in Resources */,
+				27FDD5161BD9B660001E9C47 /* splashscreen@3x.png in Resources */,
 				27988C931B0B7E7D00BDE8EB /* FollowCollectionViewCell.xib in Resources */,
 				2752EA121B015CBC003841DC /* sidemenu_icon@2x.png in Resources */,
 				2731C6321ADD632F00788181 /* Fitmoo-Info.plist in Resources */,
@@ -3226,7 +3243,6 @@
 				27BA5A331B6A50E500B30B62 /* calendar_black.png in Resources */,
 				2738D9201B023EE700F5087E /* following_btn.png in Resources */,
 				27BA5A3F1B6A50E500B30B62 /* store_black.png in Resources */,
-				279E579B1B20B4EC0076C3B5 /* splashscreen.png in Resources */,
 				27BA5A3A1B6A50E500B30B62 /* feed_black@2x.png in Resources */,
 				27ADF1F21B14B1D8003A0A83 /* passwordalert@3x.png in Resources */,
 				27A3AC2B1B96446600D78AAA /* blueheart110@2x.png in Resources */,
@@ -3293,7 +3309,6 @@
 				27CBC0DB1B0F84DB00699E1E /* checkinscreen.png in Resources */,
 				27AC2C011BC1CF3100FD4131 /* product_default@2x.png in Resources */,
 				2752EA151B015CBC003841DC /* whitecommenticon@2x.png in Resources */,
-				279E579D1B20B4EC0076C3B5 /* splashscreen@3x.png in Resources */,
 				2752E9E21B015CBC003841DC /* calendar@3x.png in Resources */,
 				27ADF1C31B14B1D8003A0A83 /* addprofilepicturebtn.png in Resources */,
 				27A3AC2A1B96446600D78AAA /* blueheart110.png in Resources */,
@@ -3327,10 +3342,10 @@
 				27FE15A11B8F852B00E124EF /* invitebtn@3x.png in Resources */,
 				276FE3951B866332009496DE /* instagramlogo_product@3x.png in Resources */,
 				27F9DC981BAB932900F2A534 /* purchases.png in Resources */,
-				279E579C1B20B4EC0076C3B5 /* splashscreen@2x.png in Resources */,
 				27F9DCA81BABA57800F2A534 /* ShopPurchaseCell.xib in Resources */,
 				273FF56D1AF7AA2C00B82DB3 /* rightpeopleicon.png in Resources */,
 				2752EA2B1B015CBC003841DC /* x@3x.png in Resources */,
+				27FDD51D1BD9B68F001E9C47 /* 320x568.png in Resources */,
 				273FF57C1AF7AA2C00B82DB3 /* whiteusericon.png in Resources */,
 				27AD26771B18F9F3008D338D /* defaultprofilepic@3x.png in Resources */,
 				2752E9E41B015CBC003841DC /* commenticon@2x.png in Resources */,
@@ -3413,6 +3428,7 @@
 				27A3AC2C1B96446600D78AAA /* blueheart110@3x.png in Resources */,
 				2752EA221B015CBC003841DC /* reversecamera@3x.png in Resources */,
 				278DF8DE1B2336A600ABF918 /* Images-2.xcassets in Resources */,
+				27FDD51E1BD9B68F001E9C47 /* Default-568h@2x.png in Resources */,
 				27A3AC271B96446600D78AAA /* blueheart100.png in Resources */,
 				27BA5A381B6A50E500B30B62 /* calendar_grey@3x.png in Resources */,
 				27ABBF021B84CE3400AB54D2 /* instagramlogo8@3x.png in Resources */,
