@@ -40,6 +40,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *postButton;
 
 @property (strong, nonatomic) AsyncImageView *bannerImageView;
+@property (strong, nonatomic) MPMoviePlayerController *streamPlayer;
+
 
 @property (strong, nonatomic) UIView *textViewBackgroundView;
 

@@ -126,6 +126,8 @@
         cell.titleLabel.userInteractionEnabled=YES;
         
         
+        
+        
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
         return cell;
 
@@ -154,6 +156,11 @@
     tapGestureRecognizer1.numberOfTapsRequired = 1;
     [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
     cell.titleLabel.userInteractionEnabled=YES;
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(upsButtonClick:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [cell.upsLabel addGestureRecognizer:tapGestureRecognizer];
+    cell.upsLabel.userInteractionEnabled=YES;
     
     
     contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
@@ -203,6 +210,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     
+}
+- (IBAction)upsButtonClick:(id)sender {
+   // _order.tracking_number
+    
+    if (![_order.tracking_number isEqualToString:@""]) {
+        NSString *upsString= [NSString stringWithFormat:@"%@%@",@"http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=",_order.tracking_number];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+    }
+        
+    
+
 }
 
 - (IBAction)imageButtonClick:(id)sender {

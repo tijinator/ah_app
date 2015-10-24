@@ -29,6 +29,7 @@
     [self getLive];
     [self initFrames];
     [self createObservers];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -58,17 +59,23 @@
     
     if ([_liveFeed.live_stream_video_id isEqual:[NSNull null]]) {
         
-    //    NSString *url= [NSString stringWithFormat:@"%@%@",_liveFeed.stream_url,@"&playsinline=1"];
-        
+        NSString *url= [NSString stringWithFormat:@"%@%@",_liveFeed.stream_url,@"&playsinline=1"];
+        NSString *url1= [NSString stringWithFormat:@"%@",_liveFeed.stream_url];
         UIWebView *web=[[UIWebView alloc] initWithFrame:self.playerView.frame];
-        NSString *html= [NSString stringWithFormat:@"<!DOCTYPE HTML><html><body><iframe webkit-playsinline src=\"%@\" width=\"%f\" height=\"%f\" frameborder=\"0\" scrolling=\"no\"> </iframe></body></html>",_liveFeed.stream_url,305*[[FitmooHelper sharedInstance] frameRadio],180*[[FitmooHelper sharedInstance] frameRadio]];
+        NSString *html= [NSString stringWithFormat:@"<!DOCTYPE HTML><html><body><iframe webkit-playsinline src=\"%@\" width=\"%f\" height=\"%f\" playsinline=1 frameborder=\"0\" scrolling=\"no\"> </iframe></body></html>",url1,305*[[FitmooHelper sharedInstance] frameRadio],180*[[FitmooHelper sharedInstance] frameRadio]];
 
         
         [web loadHTMLString:html baseURL:nil];
         self.playerView.hidden=true;
         web.allowsInlineMediaPlayback = YES;
-        [self.view addSubview:web];
+        web.mediaPlaybackRequiresUserAction=NO;
 
+        [self.view addSubview:web];
+      
+        
+       
+       
+     
     
     }else
     {
@@ -242,7 +249,7 @@
         
         [self parseLiveFeed];
         
-        [self.tableView reloadData];
+       // [self.tableView reloadData];
         
     } // success callback block
          failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -265,9 +272,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+   
+    NSInteger count=[_liveFeed.commentsArray count];
     
-    
-    return [_liveFeed.commentsArray count];
+    if (count==0) {
+        return 1;
+    }
+    return count;
     
 }
 
@@ -287,22 +298,26 @@
     UITableViewCell * cell  = [[UITableViewCell alloc] init];
     cell.selectionStyle= UITableViewCellSelectionStyleNone;
     
-    RTLabel *rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(27*frameRadio, 10*frameRadio, 275*frameRadio,100)];
-    rtLabel.delegate=self;
-    rtLabel.lineSpacing=8;
-
-    Comments *temCom=[_liveFeed.commentsArray objectAtIndex:indexPath.row];
     
-    [rtLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#000000>%@ </font></a><font face=BentonSans-Bold size=12 color=#8D9AA0>%@ </font>",temCom.created_by_id,temCom.full_name,temCom.text]];
-    CGSize optimumSize =[rtLabel optimumSize];
-    rtLabel.frame=CGRectMake(rtLabel.frame.origin.x, rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
-
+        RTLabel *rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(27*frameRadio, 10*frameRadio, 275*frameRadio,100)];
+        rtLabel.delegate=self;
+        rtLabel.lineSpacing=8;
+        
+        Comments *temCom=[_liveFeed.commentsArray objectAtIndex:indexPath.row];
+        if ([_liveFeed.commentsArray count]>0) {
+        [rtLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#000000>%@ </font></a><font face=BentonSans-Bold size=12 color=#8D9AA0>%@ </font>",temCom.created_by_id,temCom.full_name,temCom.text]];
+        CGSize optimumSize =[rtLabel optimumSize];
+        rtLabel.frame=CGRectMake(rtLabel.frame.origin.x, rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
+        
+        }
+        
+        [cell.contentView addSubview:rtLabel];
+        
+        
+        contentHight=[NSNumber numberWithFloat:rtLabel.frame.size.height+rtLabel.frame.origin.y+10];
     
     
-    [cell.contentView addSubview:rtLabel];
-    
-
-    contentHight=[NSNumber numberWithFloat:rtLabel.frame.size.height+rtLabel.frame.origin.y+10];
+  
 
     return cell;
 }
