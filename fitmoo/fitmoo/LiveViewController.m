@@ -58,6 +58,8 @@
     
     if ([_liveFeed.live_stream_video_id isEqual:[NSNull null]]) {
         
+    //    NSString *url= [NSString stringWithFormat:@"%@%@",_liveFeed.stream_url,@"&playsinline=1"];
+        
         UIWebView *web=[[UIWebView alloc] initWithFrame:self.playerView.frame];
         NSString *html= [NSString stringWithFormat:@"<!DOCTYPE HTML><html><body><iframe webkit-playsinline src=\"%@\" width=\"%f\" height=\"%f\" frameborder=\"0\" scrolling=\"no\"> </iframe></body></html>",_liveFeed.stream_url,305*[[FitmooHelper sharedInstance] frameRadio],180*[[FitmooHelper sharedInstance] frameRadio]];
 

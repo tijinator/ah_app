@@ -137,7 +137,7 @@
             NSNumber *count_on_hand=[detail objectForKey:@"remaining_ticket_count"];
             
             if ([count_on_hand isEqual:[NSNull null]]) {
-                 _shopCart.shop_cart_detail.count_on_hand= @"500";
+                 _shopCart.shop_cart_detail.count_on_hand= @"20";
             }else
             {
             _shopCart.shop_cart_detail.count_on_hand= [count_on_hand stringValue];
