@@ -27,21 +27,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUBTOTAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sw8-S6-3mT" customClass="BentonSansBold">
-                        <rect key="frame" x="27" y="10" width="83" height="21"/>
+                        <rect key="frame" x="20" y="10" width="83" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="12"/>
                         <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6oH-GG-pmO" customClass="BentonSansBold">
-                        <rect key="frame" x="27" y="35" width="83" height="21"/>
+                        <rect key="frame" x="20" y="35" width="83" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="12"/>
                         <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIPPING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yHr-Xb-AZn" customClass="BentonSansBold">
-                        <rect key="frame" x="27" y="60" width="198" height="21"/>
+                        <rect key="frame" x="20" y="60" width="198" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="12"/>
                         <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,7 +55,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="64H-Sw-DMO" customClass="BentonSansBold">
-                        <rect key="frame" x="27" y="85" width="138" height="21"/>
+                        <rect key="frame" x="20" y="85" width="138" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="BentonSans-Bold" family="BentonSans" pointSize="12"/>
                         <color key="textColor" red="0.3294117647" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>

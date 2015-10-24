@@ -134,7 +134,7 @@
             endhour= [endhour substringToIndex:2];
             
          
-            NSNumber *count_on_hand=[data objectForKey:@"remaining_ticket_count"];
+            NSNumber *count_on_hand=[detail objectForKey:@"remaining_ticket_count"];
             
             if ([count_on_hand isEqual:[NSNull null]]) {
                  _shopCart.shop_cart_detail.count_on_hand= @"500";

@@ -55,8 +55,26 @@
 
 - (void) updatePlayerView
 {
-    NSDictionary *playerVars = @{ @"playsinline" : @1,};
-    [self.playerView loadWithVideoId:_liveFeed.live_stream_video_id playerVars:playerVars];
+    
+    if ([_liveFeed.live_stream_video_id isEqual:[NSNull null]]) {
+        
+        UIWebView *web=[[UIWebView alloc] initWithFrame:self.playerView.frame];
+        NSString *html= [NSString stringWithFormat:@"<!DOCTYPE HTML><html><body><iframe webkit-playsinline src=\"%@\" width=\"%f\" height=\"%f\" frameborder=\"0\" scrolling=\"no\"> </iframe></body></html>",_liveFeed.stream_url,305*[[FitmooHelper sharedInstance] frameRadio],180*[[FitmooHelper sharedInstance] frameRadio]];
+
+        
+        [web loadHTMLString:html baseURL:nil];
+        self.playerView.hidden=true;
+        web.allowsInlineMediaPlayback = YES;
+        [self.view addSubview:web];
+
+    
+    }else
+    {
+        NSDictionary *playerVars = @{ @"playsinline" : @1,};
+        [self.playerView loadWithVideoId:_liveFeed.live_stream_video_id playerVars:playerVars];
+    }
+    
+
     
     [_bannerImageView removeFromSuperview];
     _bannerImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _advertiseButton.frame.size.width, _advertiseButton.frame.size.height)];
@@ -68,8 +86,6 @@
     _bannerImageView.userInteractionEnabled=NO;
     _bannerImageView.exclusiveTouch=NO;
     
-    
-  //  [_advertiseButton.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [_advertiseButton addSubview:_bannerImageView];
     
 }
@@ -91,8 +107,8 @@
     _liveFeed.live_stream_video_id=[live_feed objectForKey:@"live_stream_video_id"];
     _liveFeed.text=[live_feed objectForKey:@"text"];
     _liveFeed.stream_start=[live_feed objectForKey:@"stream_start"];
-    _liveFeed.stream_start=[live_feed objectForKey:@"stream_image_url"];
-    
+    _liveFeed.stream_image_url=[live_feed objectForKey:@"stream_image_url"];
+    _liveFeed.stream_url=[live_feed objectForKey:@"stream_url"];
     
     _liveFeed.company=[advertisement objectForKey:@"company"];
     _liveFeed.advertisement_id=[advertisement objectForKey:@"advertisement_id"];

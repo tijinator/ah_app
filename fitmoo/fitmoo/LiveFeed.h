@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * stream_start;
 @property (nonatomic, retain) NSString * stream_image_url;
+@property (nonatomic, retain) NSString * stream_url;
 
 //advertisement
 @property (nonatomic, retain) NSString * company;
