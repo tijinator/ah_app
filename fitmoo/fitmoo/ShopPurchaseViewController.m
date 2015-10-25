@@ -85,11 +85,16 @@
         order.payment_status= [dic objectForKey:@"payment_status"];
         order.image_url= [dic objectForKey:@"image_url"];
         order.options= [dic objectForKey:@"options"];
+       
         
         if ([order.options isEqual:[NSNull null]]) {
             order.options=@"";
         }
-
+        
+        order.carrier_name= [dic objectForKey:@"carrier_name"];
+        if ([order.carrier_name isEqual:[NSNull null]]) {
+                order.carrier_name=@"";
+        }
         
         NSNumber *o_id= [dic objectForKey:@"id"];
         order.o_id= [o_id stringValue];

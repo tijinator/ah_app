@@ -13,6 +13,7 @@
 #import "UserManager.h"
 #import "ShopOrder.h"
 #import "ShopDetailViewController.h"
+#import "SettingWebViewController.h"
 @interface ShopOrderDetailViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

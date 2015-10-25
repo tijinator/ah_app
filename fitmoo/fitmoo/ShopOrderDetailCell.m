@@ -87,7 +87,12 @@
     _paymentStatusLabel.text= _order.payment_status.uppercaseString;
     
     _fulfillStatusLabel.text=_order.status.uppercaseString;
-    _upsLabel.text=[NSString stringWithFormat:@"UPS: %@", _order.tracking_number];
+    _upsLabel.text=[NSString stringWithFormat:@"%@: %@",_order.carrier_name.uppercaseString ,_order.tracking_number];
+    
+    if ([_order.tracking_number isEqualToString:@""]) {
+      //  _upsLabel.hidden=true;
+        _upsLabel.text=@"NOT AVAILABLE";
+    }
     
     
     _rtLabel1=[[RTLabel alloc] initWithFrame:CGRectMake(_shipAddressLabel.frame.origin.x, _shipAddressLabel.frame.origin.y, _shipAddressLabel.frame.size.width,100)];

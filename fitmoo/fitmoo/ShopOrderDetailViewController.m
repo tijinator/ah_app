@@ -215,11 +215,47 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
    // _order.tracking_number
     
     if (![_order.tracking_number isEqualToString:@""]) {
-        NSString *upsString= [NSString stringWithFormat:@"%@%@",@"http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=",_order.tracking_number];
+          UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+        SettingWebViewController *webPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
+        
+        if ([_order.carrier_name isEqualToString:@"fedex"]) {
+            
+            NSString *upsString= [NSString stringWithFormat:@"%@%@",@"http://www.fedex.com/Tracking?action=track&tracknumbers=",_order.tracking_number];
+            
+         webPage.webviewLink=upsString;
+            
+         //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+            
+        }
+        
+        if ([_order.carrier_name isEqualToString:@"usps"]) {
+            
+            NSString *upsString= [NSString stringWithFormat:@"%@%@",@"https://tools.usps.com/go/TrackConfirmAction_input?qtc_tLabels1=",_order.tracking_number];
+         //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+            webPage.webviewLink=upsString;
+        }
+        
+        if ([_order.carrier_name isEqualToString:@"ups"]) {
+            
+            NSString *upsString= [NSString stringWithFormat:@"%@%@",@"http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=",_order.tracking_number];
+         //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+            webPage.webviewLink=upsString;
+        }
+        
+        if ([_order.carrier_name isEqualToString:@"dhl"]) {
+            
+            NSString *upsString= [NSString stringWithFormat:@"%@%@",@"http://track.dhl-usa.com/TrackByNbr.asp?ShipmentNumber=",_order.tracking_number];
+         //   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:upsString]];
+            webPage.webviewLink=upsString;
+        }
+        
+        
+        webPage.settingType= @"TRACKING";
+        [self.navigationController pushViewController:webPage animated:YES];
+      
     }
-        
+    
     
 
 }
