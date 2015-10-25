@@ -17,6 +17,7 @@
     double constentUp;
     double constentdown;
     double frameRadio;
+    double difference;
 }
 
 @property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
@@ -97,6 +98,12 @@
     
     [_advertiseButton addSubview:_bannerImageView];
     
+    if (_liveFeed.banner_link_url==nil  ) {
+        _advertiseButton.hidden=true;
+        self.tableView.frame=CGRectMake(_advertiseButton.frame.origin.x, _advertiseButton.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height+_advertiseButton.frame.size.height);
+        difference=_advertiseButton.frame.size.height-15*frameRadio;
+    }
+    
 }
 
 - (void) parseLiveFeed
@@ -119,15 +126,18 @@
     _liveFeed.stream_image_url=[live_feed objectForKey:@"stream_image_url"];
     _liveFeed.stream_url=[live_feed objectForKey:@"stream_url"];
     
-    _liveFeed.company=[advertisement objectForKey:@"company"];
-    _liveFeed.advertisement_id=[advertisement objectForKey:@"advertisement_id"];
-    _liveFeed.logo_image_url=[advertisement objectForKey:@"logo_image_url"];
-    _liveFeed.tagline_text=[advertisement objectForKey:@"tagline_text"];
-    _liveFeed.updated_at=[advertisement objectForKey:@"updated_at"];
-    _liveFeed.logo_link_url=[advertisement objectForKey:@"logo_link_url"];
-    
-    _liveFeed.banner_link_url=[advertisement objectForKey:@"banner_link_url"];
-    _liveFeed.app_banner_image_url=[advertisement objectForKey:@"app_banner_image_url"];
+        if (![advertisement isEqual:[NSNull null]]) {
+            _liveFeed.company=[advertisement objectForKey:@"company"];
+            _liveFeed.advertisement_id=[advertisement objectForKey:@"advertisement_id"];
+            _liveFeed.logo_image_url=[advertisement objectForKey:@"logo_image_url"];
+            _liveFeed.tagline_text=[advertisement objectForKey:@"tagline_text"];
+            _liveFeed.updated_at=[advertisement objectForKey:@"updated_at"];
+            _liveFeed.logo_link_url=[advertisement objectForKey:@"logo_link_url"];
+            
+            _liveFeed.banner_link_url=[advertisement objectForKey:@"banner_link_url"];
+            _liveFeed.app_banner_image_url=[advertisement objectForKey:@"app_banner_image_url"];
+        }
+ 
     
     
     
@@ -364,6 +374,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     constentdown=519;
     constentUp=300;
+    difference=0;
     frameRadio=[[FitmooHelper sharedInstance] frameRadio];
     
     if (self.view.frame.size.height<500) {
@@ -409,7 +420,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         moveView.frame=CGRectMake(0,constentdown*frameRadio-constentUp, moveView.frame.size.width, moveView.frame.size.height);
         
-        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218)*frameRadio-constentUp, _tableView.frame.size.width, _tableView.frame.size.height);
+        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218-difference)*frameRadio-constentUp, _tableView.frame.size.width, _tableView.frame.size.height);
         
     }completion:^(BOOL finished){}];
     [self.view bringSubviewToFront:_tableView];
@@ -421,7 +432,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 {
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         moveView.frame=CGRectMake(0, constentdown*frameRadio, moveView.frame.size.width, moveView.frame.size.height);
-        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218)*frameRadio, _tableView.frame.size.width, _tableView.frame.size.height);
+        _tableView.frame=CGRectMake(_tableView.frame.origin.x, (constentdown-218-difference)*frameRadio, _tableView.frame.size.width, _tableView.frame.size.height);
         
     }completion:^(BOOL finished){}];
     [_textViewBackgroundView removeFromSuperview];
