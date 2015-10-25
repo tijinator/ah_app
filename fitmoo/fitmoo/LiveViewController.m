@@ -104,6 +104,21 @@
         difference=_advertiseButton.frame.size.height-15*frameRadio;
     }
     
+    if (_liveFeed.profile_id!=nil) {
+        [_profileImageView removeFromSuperview];
+        _profileImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, _liveProfileButton.frame.size.width, _liveProfileButton.frame.size.height)];
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_profileImageView];
+        
+        _profileImageView.imageURL =[NSURL URLWithString:_liveFeed.profile_image];
+        _profileImageView.contentMode = UIViewContentModeScaleToFill;
+        
+        _profileImageView.userInteractionEnabled=NO;
+        _profileImageView.exclusiveTouch=NO;
+        _profileImageView.layer.cornerRadius=_profileImageView.frame.size.width/2;
+        
+        [_liveProfileButton addSubview:_profileImageView];
+    }
+    
 }
 
 - (void) parseLiveFeed
@@ -125,6 +140,22 @@
     _liveFeed.stream_start=[live_feed objectForKey:@"stream_start"];
     _liveFeed.stream_image_url=[live_feed objectForKey:@"stream_image_url"];
     _liveFeed.stream_url=[live_feed objectForKey:@"stream_url"];
+        
+     if ([[live_feed allKeys] containsObject:@"profile_id"]) {
+         NSNumber *profile_id= [live_feed objectForKey:@"profile_id"];
+         _liveFeed.profile_id= [profile_id stringValue];
+     }else
+     {
+          _liveFeed.profile_id= @"8";
+     }
+        
+     if ([[live_feed allKeys] containsObject:@"profile_image"]) {
+         _liveFeed.profile_image= [live_feed objectForKey:@"profile_image"];
+         
+     }else
+     {
+         _liveFeed.profile_image= @"https://cdn.fitmoo.com/avatars/5ecbffe7-9e66-4a16-a9dc-56deba4caae1/medium.png";
+     }
     
         if (![advertisement isEqual:[NSNull null]]) {
             _liveFeed.company=[advertisement objectForKey:@"company"];
@@ -361,7 +392,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _leftButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_leftButton respectToSuperFrame:nil];
     
 
-    
+    _liveProfileButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_liveProfileButton respectToSuperFrame:nil];
    
     _headerView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_headerView respectToSuperFrame:nil];
     _heanderImage1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_heanderImage1 respectToSuperFrame:nil];
@@ -557,6 +588,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"HasSeenPopup"];
+    
+    
+}
+- (IBAction)profileButtonClick:(id)sender {
+    if (_liveFeed.profile_id!=nil) {
+        NSString *key=[NSString stringWithFormat:@"%d", _liveFeed.profile_id.intValue+100];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
     
     
 }

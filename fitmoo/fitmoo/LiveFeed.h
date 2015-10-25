@@ -28,6 +28,9 @@
 @property (nonatomic, retain) NSString * banner_link_url;
 @property (nonatomic, retain) NSString * app_banner_image_url;
 
+@property (nonatomic, retain) NSString * profile_id;
+@property (nonatomic, retain) NSString * profile_image;
+
 
 -(void) resetComments;
 

@@ -25,7 +25,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
+- (IBAction)profileButtonClick:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *liveProfileButton;
 
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSDictionary * commentNoteDic;
@@ -40,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *postButton;
 
 @property (strong, nonatomic) AsyncImageView *bannerImageView;
+@property (strong, nonatomic) AsyncImageView *profileImageView;
 @property (strong, nonatomic) MPMoviePlayerController *streamPlayer;
 
 
