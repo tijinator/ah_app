@@ -19,9 +19,16 @@
     _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"search.png",@"notification.png",@"cart_sidemenu.png",@"follow.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
     _textArray= [[NSArray alloc] initWithObjects: @"Home",@"Search",@"Notifications",@"Cart",@"Discover",@"My Purchases",@"My Earnings",@"Live", nil];
     
+    double offset=30;
+    
+    if (self.view.frame.size.height<500) {
+        
+        
+        offset=140;
+    }
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height+30 - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height+offset - 54 * [_textArray count]) / 2.0f, self.view.frame.size.width, 54 *  [_textArray count]) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -271,6 +278,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //// multy high table cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    if (self.view.frame.size.height<500) {
+        
+        return 40;
+        
+    }
     
     return 53;
 }

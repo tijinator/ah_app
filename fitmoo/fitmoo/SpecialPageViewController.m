@@ -68,7 +68,7 @@
     if (self.view.frame.size.height<500) {
         
         _tableView.frame= CGRectMake(_tableView.frame.origin.x,_tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height-88);
-        
+        _BuyNowButton.frame= CGRectMake(_BuyNowButton.frame.origin.x, _BuyNowButton.frame.origin.y-88, _BuyNowButton.frame.size.width, _BuyNowButton.frame.size.height);
     }
 }
 
@@ -308,6 +308,10 @@
         [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         self.titleLabel.text=_homeFeed.event.name.uppercaseString;
         self.BuyNowButton.hidden=false;
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bodyImageTagClick:)];
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
+        [cell.bodyTitle addGestureRecognizer:tapGestureRecognizer1];
+        cell.bodyTitle.userInteractionEnabled=YES;
         
     }
     
@@ -341,6 +345,7 @@
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
     [cell.bodyLikeButton setTag:indexPath.row*100+4];
+    [cell.bodyTitle setTag:indexPath.row*100+8];
     NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
     [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
     if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -668,6 +673,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 - (IBAction)bodyImageButtonClick:(id)sender{
 
+    if ([_homeFeed.type isEqualToString:@"event"]&&_isEventDetail!=true) {
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+        
+        specialPage.homeFeed=_homeFeed;
+        
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        specialPage.searchId=tempUser.user_id;
+        specialPage.isEventDetail=true;
+        
+        [self.navigationController pushViewController:specialPage animated:YES];
+        
+        
+        return;
+    }
+    
     NSString * url= _homeFeed.videos.video_url;
     
     if(url==nil)
@@ -848,7 +870,23 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             [self attendEvent];
         }else
         {
-            [self buyEvent];
+            if (![_homeFeed.event.price isEqualToString:@"0"]) {
+                 [self buyEvent];
+            }else
+            {
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+                
+                specialPage.homeFeed=_homeFeed;
+                
+                User *tempUser= [[UserManager sharedUserManager] localUser];
+                specialPage.searchId=tempUser.user_id;
+                specialPage.isEventDetail=true;
+                
+                [self.navigationController pushViewController:specialPage animated:YES];
+
+            }
+           
         }
         
             

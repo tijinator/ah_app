@@ -766,6 +766,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         else if ([tempHomefeed.type isEqualToString:@"event"])
         {
             [cell setBodyFrameForEvent];
+            [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
+            [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bodyImageTagClick:)];
+            tapGestureRecognizer1.numberOfTapsRequired = 1;
+            [cell.bodyTitle addGestureRecognizer:tapGestureRecognizer1];
+            cell.bodyTitle.userInteractionEnabled=YES;
         }
         
         [cell rebuiltBodyViewFrame];
@@ -798,6 +804,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.optionButton setTag:indexPath.row*100+7];
         [cell.bodyImage setTag:indexPath.row*100+8];
         [cell.bodyLikeButton setTag:indexPath.row*100+4];
+        [cell.bodyTitle setTag:indexPath.row*100+8];
         NSString *totalLike= [NSString stringWithFormat:@" %@",[[FitmooHelper sharedInstance] getTextForNumber:tempHomefeed.total_like]];
         [cell.bodyLikeButton setTitle:totalLike forState:UIControlStateNormal];
         if ([tempHomefeed.is_liked isEqualToString:@"1"]) {
@@ -815,6 +822,16 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         [cell.shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.optionButton addTarget:self action:@selector(optionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.bodyImage addTarget:self action:@selector(bodyImageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITapGestureRecognizer *tapGestureRecognizer10 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bodyImageTagClick:)];
+        tapGestureRecognizer10.numberOfTapsRequired = 1;
+        UITapGestureRecognizer *tapGestureRecognizer11 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTagClick:)];
+        tapGestureRecognizer11.numberOfTapsRequired = 2;
+        [tapGestureRecognizer10 requireGestureRecognizerToFail:tapGestureRecognizer11];
+        
+        [cell.bodyImage addGestureRecognizer:tapGestureRecognizer10];
+        [cell.bodyImage addGestureRecognizer:tapGestureRecognizer11];
+        cell.bodyImage.userInteractionEnabled=YES;
         
         
         if(indexPath.row==[_homeFeedArray count])
@@ -932,6 +949,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController pushViewController:commentPage animated:YES];
     
+}
+- (IBAction)likeTagClick:(id)sender {
+    UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self likeButtonClick:myButton];
+    
+}
+
+- (IBAction)bodyImageTagClick:(id)sender {
+    float tag=[(UIGestureRecognizer *)sender view].tag;
+    UIButton *b= [[UIButton alloc] init];
+    b.tag=tag;
+    [self bodyImageButtonClick:b];
 }
 
 - (IBAction)bodyLikeButtonClick:(id)sender {

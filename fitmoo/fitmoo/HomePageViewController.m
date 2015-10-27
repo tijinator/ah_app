@@ -518,6 +518,11 @@
         [cell setBodyFrameForEvent];
         [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
         [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bodyImageTagClick:)];
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
+        [cell.bodyTitle addGestureRecognizer:tapGestureRecognizer1];
+        cell.bodyTitle.userInteractionEnabled=YES;
+        
 
     }
     
@@ -552,7 +557,7 @@
     [cell.optionButton setTag:indexPath.row*100+7];
     [cell.bodyImage setTag:indexPath.row*100+8];
     [cell.bodyLikeButton setTag:indexPath.row*100+4];
-    
+    [cell.bodyTitle setTag:indexPath.row*100+8];
    
   
     
@@ -972,6 +977,25 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSInteger index=(NSInteger) button.tag/100;
     
     HomeFeed *homefeed=[_homeFeedArray objectAtIndex:index];
+    
+    if ([homefeed.type isEqualToString:@"event"]) {
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+        
+        specialPage.homeFeed=homefeed;
+        
+        User *tempUser= [[UserManager sharedUserManager] localUser];
+        specialPage.searchId=tempUser.user_id;
+        specialPage.isEventDetail=true;
+        
+        [self.navigationController pushViewController:specialPage animated:YES];
+        
+        
+        return;
+    }
+    
+    
     NSString * url= homefeed.videos.video_url;
     if(url==nil)
     {

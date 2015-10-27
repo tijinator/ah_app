@@ -101,7 +101,7 @@
     if (_liveFeed.banner_link_url==nil  ) {
         _advertiseButton.hidden=true;
         self.tableView.frame=CGRectMake(_advertiseButton.frame.origin.x, _advertiseButton.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height+_advertiseButton.frame.size.height);
-        difference=_advertiseButton.frame.size.height-15*frameRadio;
+        difference=difference+_advertiseButton.frame.size.height-15*frameRadio;
     }
     
     if (_liveFeed.profile_id!=nil) {
@@ -416,6 +416,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
         constentdown=430;
         constentUp=222;
+        difference=-88;
         
     }
     

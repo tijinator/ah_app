@@ -574,6 +574,7 @@
     if (self.view.frame.size.height<500) {
         
         _tableView.frame= CGRectMake(_tableView.frame.origin.x,_tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height-88);
+        _BuyNowButton.frame= CGRectMake(_BuyNowButton.frame.origin.x, _BuyNowButton.frame.origin.y-88, _BuyNowButton.frame.size.width, _BuyNowButton.frame.size.height);
         
     }
     
