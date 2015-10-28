@@ -56,7 +56,10 @@
     _rtLabel=[[RTLabel alloc] initWithFrame:CGRectMake(_billAddressLabel.frame.origin.x, _billAddressLabel.frame.origin.y, _billAddressLabel.frame.size.width,100)];
     _rtLabel.lineSpacing=10;
     
-    [_rtLabel setText:[NSString stringWithFormat:@"<font face=BentonSans-Bold size=12 color=#575D60>%@</font>",[NSString stringWithFormat:@"LOCATION: %@",_order.event_location.uppercaseString]]];
+    [_rtLabel setText:[NSString stringWithFormat:@"<a href='%@'><font face=BentonSans-Bold size=12 color=#575D60>%@</font></a>",_order.event_location,[NSString stringWithFormat:@"LOCATION: %@",_order.event_location.uppercaseString]]];
+    
+   
+    
     CGSize optimumSize =[_rtLabel optimumSize];
     _rtLabel.frame=CGRectMake(_rtLabel.frame.origin.x, _rtLabel.frame.origin.y, optimumSize.width, optimumSize.height+10);
     [self.contentView addSubview:_rtLabel];

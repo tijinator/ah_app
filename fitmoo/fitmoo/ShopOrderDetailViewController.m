@@ -9,6 +9,7 @@
 #import "ShopOrderDetailViewController.h"
 #import <SwipeBack/SwipeBack.h>
 #import "AFNetworking.h"
+#import <MapKit/MapKit.h>
 @interface ShopOrderDetailViewController ()
 {
     NSNumber * contentHight;
@@ -55,11 +56,30 @@
         [indicatorView removeFromSuperview];
         HomeFeed *feed= [[FitmooHelper sharedInstance] generateHomeFeed:resDic];
         
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
-        ShopDetailViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+        if ([_order.detail_type isEqualToString:@"EventInstance"]) {
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            SpecialPageViewController *specialPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SpecialPageViewController"];
+            
+            specialPage.homeFeed=feed;
+            
+            User *tempUser= [[UserManager sharedUserManager] localUser];
+            specialPage.searchId=tempUser.user_id;
+            specialPage.isEventDetail=true;
+            
+            [self.navigationController pushViewController:specialPage animated:YES];
+
+            
+        }else
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
+            ShopDetailViewController *detailPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopDetailViewController"];
+            
+            detailPage.homeFeed=feed;
+            [self.navigationController pushViewController:detailPage animated:YES];
+        }
         
-        detailPage.homeFeed=feed;
-        [self.navigationController pushViewController:detailPage animated:YES];
+      
         
         
         //      NSLog(@"Submit response data: %@", responseObject);
@@ -116,8 +136,8 @@
         }
         
         [cell buildCell];
-        
-       
+        cell.rtLabel.delegate=self;
+        _phoneNumberLabel= cell.phoneNumberLabel;
         
         
         UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageButtonClick:)];
@@ -125,7 +145,10 @@
         [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
         cell.titleLabel.userInteractionEnabled=YES;
         
-        
+        UITapGestureRecognizer *tapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneButtonClick:)];
+        tapGestureRecognizer2.numberOfTapsRequired = 1;
+        [cell.phoneNumberLabel addGestureRecognizer:tapGestureRecognizer2];
+        cell.phoneNumberLabel.userInteractionEnabled=YES;
         
         
         contentHight=[NSNumber numberWithInt:cell.contentView.frame.size.height];
@@ -188,7 +211,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
+#pragma mark RTLabel delegate
 
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL*)url
+{
+    
+    NSString *newCountryString =[_order.event_location stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *address= [NSString stringWithFormat:@"%@%@",@"http://maps.apple.com/?q=",newCountryString];
+    NSURL *URL = [NSURL URLWithString:address];
+    [[UIApplication sharedApplication] openURL:URL];
+    
+}
 
 - (void) initFrames
 {
@@ -211,6 +244,46 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
 }
+
+
+- (NSString *)definePhoneNumber:(NSString *)s
+{
+    NSArray *ary = [s componentsSeparatedByString:@"("];
+    NSString *string=@"";
+    for (int i=0; i<[ary count]; i++) {
+        string= [NSString stringWithFormat:@"%@%@",string,[ary objectAtIndex:i]];
+    }
+    
+    ary=[string componentsSeparatedByString:@") "];
+    NSString *returnString=@"";
+    for (int i=0; i<[ary count]; i++) {
+        returnString= [NSString stringWithFormat:@"%@%@",returnString,[ary objectAtIndex:i]];
+    }
+    
+    ary=[returnString componentsSeparatedByString:@"-"];
+    NSString *returnString1=@"";
+    for (int i=0; i<[ary count]; i++) {
+        returnString1= [NSString stringWithFormat:@"%@%@",returnString1,[ary objectAtIndex:i]];
+    }
+    
+    return returnString1;
+}
+
+- (IBAction)phoneButtonClick:(id)sender
+{
+    if (![_phoneNumberLabel.text isEqualToString:@""]) {
+        NSString *phoneString= [NSString stringWithFormat:@"telprompt:%@",[self definePhoneNumber:_phoneNumberLabel.text]];
+        NSURL *phoneUrl = [NSURL URLWithString:phoneString];
+        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+        } else {
+            UIAlertView * calert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Call facility is not available!!!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            [calert show];
+        }
+    }
+ 
+}
+
 - (IBAction)upsButtonClick:(id)sender {
    // _order.tracking_number
     

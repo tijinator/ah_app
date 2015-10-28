@@ -242,6 +242,8 @@
     
 }
 
+
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [self showLive:@"true"];

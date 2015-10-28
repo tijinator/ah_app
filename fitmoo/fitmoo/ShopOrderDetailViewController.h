@@ -14,12 +14,16 @@
 #import "ShopOrder.h"
 #import "ShopDetailViewController.h"
 #import "SettingWebViewController.h"
-@interface ShopOrderDetailViewController : UIViewController
+#import "SpecialPageViewController.h"
+#import "RTLabel.h"
+@interface ShopOrderDetailViewController : UIViewController<RTLabelDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic)  ShopOrder * order;
+@property (strong, nonatomic)  UILabel * phoneNumberLabel;
+
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 - (IBAction)cancelButtonClick:(id)sender;
 

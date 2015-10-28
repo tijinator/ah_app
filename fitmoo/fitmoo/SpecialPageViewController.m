@@ -381,7 +381,7 @@
     cell.bodyImage.userInteractionEnabled=YES;
     
     
-    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+3] ;
+    contentHight=[NSNumber numberWithInteger: cell.buttomView.frame.origin.y + cell.buttomView.frame.size.height+60] ;
  
 
     [self defineShowAttendButton];
@@ -739,10 +739,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         
     } else
     {
+        
+         if (![_homeFeed.type isEqualToString:@"event"])
+        {
         self.videoURL= [NSURL URLWithString:url];
         MPMoviePlayerViewController*  movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.videoURL];
         [self presentMoviePlayerViewControllerAnimated:movieController];
         [movieController.moviePlayer play];
+        }
     }
     
     
