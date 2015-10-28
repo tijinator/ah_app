@@ -1119,7 +1119,6 @@
 //    _s3_bucket=@"fitmoo-uat";
 
 //----------------------- uat
-    
 //    _clientUrl= @"http://uat.fitmoo.com";
 //    _loginUrl= @"http://uat.fitmoo.com/api/tokens";
 //    _homeFeedUrl= @"http://uat.fitmoo.com/api/users/";
