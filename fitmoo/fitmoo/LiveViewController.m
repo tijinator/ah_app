@@ -80,7 +80,7 @@
     
     }else
     {
-        NSDictionary *playerVars = @{ @"playsinline" : @1,};
+        NSDictionary *playerVars = @{ @"playsinline" : @1, @"autohide" : @1, @"autoplay" : @1, @"controls" : @1, @"modestbranding" : @1, @"rel": @0, @"showinfo" : @0};
         [self.playerView loadWithVideoId:_liveFeed.live_stream_video_id playerVars:playerVars];
     }
     
