@@ -160,7 +160,22 @@
         }else if (!([key rangeOfString:@"search"].location ==NSNotFound))
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"search"];
+        }else if (!([key rangeOfString:@"live"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"live"];
+        }else if (!([key rangeOfString:@"earnings"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"earnings"];
+        }else if (!([key rangeOfString:@"purchases"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"purchases"];
+        }else if (!([key rangeOfString:@"cart"].location ==NSNotFound))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"cart"];
         }
+        
+        
+        
 
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setObject:nil forKey:@"fitmooDeepLinkKey"];

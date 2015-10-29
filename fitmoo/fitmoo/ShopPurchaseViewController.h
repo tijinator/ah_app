@@ -12,8 +12,8 @@
 #import "UserManager.h"
 #import "ShopOrder.h"
 #import "ShopOrderDetailViewController.h"
-
-@interface ShopPurchaseViewController : UIViewController
+#import "BaseViewController.h"
+@interface ShopPurchaseViewController : BaseViewController
 
 
 

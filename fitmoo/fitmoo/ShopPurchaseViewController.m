@@ -26,7 +26,9 @@
     contentHight=[NSNumber numberWithInteger:110*[[FitmooHelper sharedInstance] frameRadio]];
     [self initFrames];
 
-   
+    self.bottomView.hidden=true;
+    self.subBottomView.hidden=true;
+    self.view.backgroundColor=[UIColor whiteColor];
     
     // Do any additional setup after loading the view.
 }

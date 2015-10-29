@@ -1946,7 +1946,7 @@
                         <outlet property="leftButton" destination="Qht-kp-mHb" id="gdt-1L-f7Y"/>
                         <outlet property="liveProfileButton" destination="iQR-uT-AhU" id="gvQ-Du-CbQ"/>
                         <outlet property="playerView" destination="4YO-g4-qif" id="506-B9-n4y"/>
-                        <outlet property="postButton" destination="kMP-My-IpI" id="R7a-0C-Slp"/>
+                        <outlet property="postButton1" destination="kMP-My-IpI" id="3n5-aD-Ost"/>
                         <outlet property="tableView" destination="Fh3-1A-ts4" id="bir-d0-L1r"/>
                         <outlet property="textField" destination="FDo-jc-YLT" id="ouB-sD-Lf2"/>
                         <outlet property="titleLabel" destination="44J-Y7-0pC" id="ElY-Gb-XBP"/>

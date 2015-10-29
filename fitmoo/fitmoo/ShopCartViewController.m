@@ -34,6 +34,11 @@
     contentHight=[NSNumber numberWithInteger:165*[[FitmooHelper sharedInstance] frameRadio]];
     self.navigationController.swipeBackEnabled = YES;
     [self createObservers];
+    
+//    self.bottomView.hidden=true;
+//    self.subBottomView.hidden=true;
+//    self.view.backgroundColor=[UIColor whiteColor];
+    
   //  [self getShopCart];
     // Do any additional setup after loading the view.
 }

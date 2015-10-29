@@ -12,7 +12,8 @@
 #import "UserManager.h"
 #import "ShopRedemCell.h"
 #import "Earning.h"
-@interface ShopEarningViewController : UIViewController
+#import "BaseViewController.h"
+@interface ShopEarningViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

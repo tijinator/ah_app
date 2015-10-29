@@ -72,6 +72,15 @@
             NSNumber *created_by_id= [sender objectForKey:@"id"];
             _homeFeed.created_by.created_by_id=[created_by_id stringValue];
             _homeFeed.type= [notificationDic objectForKey:@"type"];
+                
+            if ([[notificationDic allKeys] containsObject:@"feed_action_id"]) {
+                NSNumber *feed_action_id= [notificationDic objectForKey:@"feed_action_id"];
+                if (![feed_action_id isEqual:[NSNull null]]) {
+                     _homeFeed.feed_action.feed_action_id=[feed_action_id stringValue];
+                }
+               
+            }
+            
        
             NSNumber *unread= [notificationDic objectForKey:@"unread"];
             _homeFeed.is_liked=[unread stringValue];
@@ -218,8 +227,11 @@
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         
         
-        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app",
-                                  nil];
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",  @"true", @"mobile",@"true", @"ios_app", nil];
+    
+        if (_homeFeed.feed_action.feed_action_id!=nil) {
+            jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",_homeFeed.feed_action.feed_action_id, @"fa_id",@"true", @"ios_app", nil];
+        }
         
         NSString * url= [NSString stringWithFormat: @"%@%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/feeds/",_homeFeed.feed_id];
         

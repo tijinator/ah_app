@@ -19,7 +19,8 @@
 #import "LiveCell.h"
 #import "LiveFeed.h"
 #import "RTLabel.h"
-@interface LiveViewController : UIViewController<RTLabelDelegate,UITextFieldDelegate>
+#import "BaseViewController.h"
+@interface LiveViewController : BaseViewController<RTLabelDelegate,UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
@@ -39,7 +40,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UITextField *textField;
-@property (strong, nonatomic) IBOutlet UIButton *postButton;
+@property (strong, nonatomic) IBOutlet UIButton *postButton1;
 
 @property (strong, nonatomic) AsyncImageView *bannerImageView;
 @property (strong, nonatomic) AsyncImageView *profileImageView;

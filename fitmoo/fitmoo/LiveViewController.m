@@ -30,7 +30,9 @@
     [self getLive];
     [self initFrames];
     [self createObservers];
-    
+    self.bottomView.hidden=true;
+    self.subBottomView.hidden=true;
+    self.view.backgroundColor=[UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
 
@@ -43,14 +45,17 @@
 -(void)getNotification:(NSNotification*)note{
     _commentNoteDic= [note object];
     
- //   NSDictionary *created_by= [_commentNoteDic objectForKey:@"created_by"];
-//    NSMutableDictionary * mutableDict = [NSMutableDictionary dictionary];
-//    [mutableDict addEntriesFromDictionary:_commentNoteDic];
-//    [self parseCommentDic:mutableDict];
+    NSDictionary *created_by= [_commentNoteDic objectForKey:@"created_by"];
+    NSNumber *created_by_id= [created_by objectForKey:@"id"];
+  
+    User *localUser= [[UserManager sharedUserManager] localUser];
     
-    NSMutableArray * mutableDict = [[NSMutableArray alloc] init];
-    [mutableDict addObject:_commentNoteDic];
-    [self parseCommentDic:(NSDictionary *)mutableDict];
+    if (![localUser.user_id isEqualToString:[created_by_id stringValue]]) {
+        NSMutableArray * mutableDict = [[NSMutableArray alloc] init];
+        [mutableDict addObject:_commentNoteDic];
+        [self parseCommentDic:(NSDictionary *)mutableDict];
+    }
+    
 
 }
 
@@ -230,6 +235,11 @@
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token", _textField.text, @"text",@"true", @"live_stream", nil];
     NSString *url= [NSString stringWithFormat:@"%@%@%@",[[UserManager sharedUserManager] feedsUrl], _liveFeed.live_feed_id ,@"/comments" ];
     [manager POST: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *dic= responseObject;
+        NSDictionary *commentdic=[dic objectForKey:@"comment"];
+        NSMutableArray * mutableDict = [[NSMutableArray alloc] init];
+        [mutableDict addObject:commentdic];
+        [self parseCommentDic:(NSDictionary *)mutableDict];
         
       //  [self.tableView reloadData];
         
@@ -424,8 +434,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     _textField.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_textField respectToSuperFrame:self.view];
     _textField.layer.cornerRadius=3;
-    _postButton.layer.cornerRadius=3;
-    _postButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton respectToSuperFrame:self.view];
+    _postButton1.layer.cornerRadius=3;
+    _postButton1.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_postButton1 respectToSuperFrame:self.view];
     _buttomView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_buttomView respectToSuperFrame:self.view];
     
     _advertiseButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_advertiseButton respectToSuperFrame:self.view];
