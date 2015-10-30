@@ -14,6 +14,7 @@
     NSNumber * contentHight;
     NSInteger selectedIndex;
     UIView *indicatorView;
+    bool pullDown;
 }
 @end
 
@@ -25,7 +26,7 @@
     selectedIndex=0;
     contentHight=[NSNumber numberWithInteger:110*[[FitmooHelper sharedInstance] frameRadio]];
     [self initFrames];
-
+    pullDown=false;
     self.bottomView.hidden=true;
     self.subBottomView.hidden=true;
     self.view.backgroundColor=[UIColor whiteColor];
@@ -155,7 +156,13 @@
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         _responseDic= responseObject;
         
-        
+        if (pullDown==true) {
+            [UIView animateWithDuration:0.5 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+                
+            }completion:^(BOOL finished){}];
+            pullDown=false;
+        }
         [self parstOrders];
         [self.tableView reloadData];
         
@@ -240,6 +247,15 @@
         cell = [nib objectAtIndex:0];
     }
     
+    if (indexPath.row==0) {
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [[FitmooHelper sharedInstance] resizeFrameWithFrame:_activityIndicator respectToSuperFrame:nil];
+        _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio], -20);
+        _activityIndicator.hidesWhenStopped = YES;
+        [cell.contentView addSubview:_activityIndicator];
+        cell.clipsToBounds=false;
+    }
+    
     cell.order= [_orderArray objectAtIndex:indexPath.row];
     [cell buildCell];
     
@@ -301,6 +317,51 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     
+    
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (pullDown==true) {
+        [_tableView setContentOffset:CGPointMake(0, -60) animated:YES];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if(self.tableView.contentOffset.y<-75){
+        
+        [_activityIndicator startAnimating];
+        
+        
+        
+        
+        pullDown=true;
+        [self getOrders];
+        
+        //it means table view is pulled down like refresh
+        return;
+    }
+    
+}
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+    
+    
+    if(self.tableView.contentOffset.y<-75){
+        if (_count==0) {
+            //   [self getShopCart];
+            [_activityIndicator startAnimating];
+        }
+        _count++;
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else
+    {
+        _count=0;
+    }
     
 }
 
