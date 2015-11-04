@@ -81,6 +81,13 @@
                
             }
             
+                
+            NSDictionary *data= [notificationDic objectForKey:@"data"];
+                
+            if ([[data allKeys] containsObject:@"destination"]) {
+                _homeFeed.destination= [data objectForKey:@"destination"];
+            }
+                
        
             NSNumber *unread= [notificationDic objectForKey:@"unread"];
             _homeFeed.is_liked=[unread stringValue];
@@ -486,9 +493,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     }
     
-    
-    
-    if ((_homeFeed.feed_id!=nil)&&(![_homeFeed.feed_id isEqual:[NSNull null]])) {
+    if ([_homeFeed.destination isEqualToString:@"live"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"live"];
+        
+        
+    }else if ((_homeFeed.feed_id!=nil)&&(![_homeFeed.feed_id isEqual:[NSNull null]])) {
         [self openSpecialPage];
     }else
     {

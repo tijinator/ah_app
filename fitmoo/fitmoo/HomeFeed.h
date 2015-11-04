@@ -61,6 +61,7 @@
 
 @property (nonatomic, strong) NSString * confirmation_id;
 @property (nonatomic, strong) NSString * confirmation_token;
+@property (nonatomic, strong) NSString * destination;
 
 -(void) resetAsycImageViewArray;
 -(id)init;

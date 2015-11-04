@@ -19,6 +19,7 @@
     User * tempUser1;
     UIButton *tempButton1;
     NSString *searchPeopleName;
+
   
 }
 @end
@@ -39,16 +40,25 @@
     
     [self getAlldiscoverBulk];
     self.navigationController.swipeBackEnabled = YES;
+    
+    [self initValue];
+    
+    _count=1;
     // Do any additional setup after loading the view.
 }
 
-
+- (void) initValue
+{
+      //  _limit=10;
+        _offset=0;
+        _searchArrayLeader= [[NSMutableArray alloc] init];
+}
 
 
 -(void) parseResponseBulk
 {
 
-        _searchArrayLeader= [[NSMutableArray alloc] init];
+    
     //    NSDictionary *bulk= [_responseDic2 objectForKey:@"leaders"];
         for (NSDictionary *leader in _responseDic2) {
             @try {
@@ -101,15 +111,22 @@
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
+    NSString *lim= [NSString stringWithFormat:@"%d", 10];
+    NSString *ofs= [NSString stringWithFormat:@"%d", _offset];
     
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile", nil];
+   
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit", nil];
     NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_leaders"];
     
     
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         _responseDic2= responseObject;
-        [self parseResponseBulk];
+        
+        if ([_responseDic2 count]>0) {
+            [self parseResponseBulk];
+        }
+     
         
         self.tableView.userInteractionEnabled=true;
         [indicatorView removeFromSuperview];
@@ -346,6 +363,29 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 }
 */
 
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+        if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+            
+            if (_count==0) {
+                
+                
+               
+                    _offset+=10;
+                    [self getAlldiscoverBulk];
+                    
+            }
+            _count++;
+            
+            
+        }else
+        {
+            _count=0;
+        }
+        
+        
+    
+    
+}
 
 
 - (IBAction)backButtonClick:(id)sender

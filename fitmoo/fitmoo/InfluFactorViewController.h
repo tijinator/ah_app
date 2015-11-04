@@ -38,4 +38,12 @@
 @property (strong, nonatomic) NSString *search_name;
 @property (strong, nonatomic)  CameraViewController *overlay;
 @property (strong, nonatomic)  UIImagePickerController *picker;
+
+
+@property (assign, nonatomic)  int count;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
+
+
+
 @end
