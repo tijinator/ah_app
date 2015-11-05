@@ -19,6 +19,7 @@
         NSString *searchPeopleName;
         BOOL sleep;
         double ticks;
+        NSString *keyword_id;
 }
 @end
 
@@ -244,11 +245,58 @@
     
 }
 
+- (void) parseLeader:(NSDictionary *) bulk
+{
+    for (NSDictionary *leader in bulk) {
+        @try {
+            
+            
+            User *temUser= [[User alloc] init];
+            temUser.name= [leader objectForKey:@"full_name"];
+            
+            NSNumber *days_a_week= [leader objectForKey:@"days_a_week"];
+            temUser.days_a_week= [days_a_week stringValue];
+            
+            NSNumber *workout_count= [leader objectForKey:@"workout_count"];
+            temUser.workout_count= [workout_count stringValue];
+            NSNumber *user_id= [leader objectForKey:@"id"];
+            temUser.user_id=[user_id stringValue];
+            
+            NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
+            temUser.nutrition_count= [nutrition_count stringValue];
+            
+            NSDictionary *profile= [leader objectForKey:@"profile"];
+            
+            NSDictionary *avatars= [profile objectForKey:@"avatars"];
+            temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
+            [_searchArrayLeader addObject:temUser];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
+        
+    }
+    
+    
+        [self.tableview reloadData];
+    
+}
+
+
 -(void) parseResponseBulk: (int) index
 {
     NSDictionary *bulk= [_searchArrayTotalKeyword objectAtIndex:index];
     
     _responseDic1=[bulk objectForKey:@"bulk"];
+    
+    keyword_id= [bulk objectForKey:@"id"];
+    
+    [self initLeaderValuable];
+    
+    [self getSearchLeaders];
     
     _searchArrayLeader= [[NSMutableArray alloc] init];
     _searchArrayCommunity= [[NSMutableArray alloc] init];
@@ -599,6 +647,38 @@
               [indicatorView removeFromSuperview];
          } // failure callback block
      
+     ];
+    
+}
+
+- (void) getSearchLeaders
+{
+    
+    User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSString *lim= [NSString stringWithFormat:@"%i", _limit];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverLeaderOffset];
+    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",@"10", @"limit",keyword_id, @"keyword_id",nil];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_discover_only_leaders"];
+    [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        _responseDicLeader= responseObject;
+        if ([_responseDicLeader count]>0) {
+            [self parseLeader:_responseDicLeader];
+           
+        }
+        self.tableview.userInteractionEnabled=true;
+        
+    } // success callback block
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError *error){
+             self.tableview.userInteractionEnabled=true;
+             
+             NSLog(@"Error: %@", error);} // failure callback block
      ];
     
 }
@@ -1071,18 +1151,46 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     _searchArrayPeople1= [[NSMutableArray alloc]init];
 }
 
+-(void) initLeaderValuable
+{
+      _DiscoverLeaderOffset=10;
+}
+
 -(void) initValuable
 {
     _offset=0;
     _limit=10;
     _count=1;
     
-   
+  
   
 }
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
-    
+    if(scroll == self.tableview) {
+        
+        if(self.tableview.contentOffset.y >= (self.tableview.contentSize.height - self.tableview.bounds.size.height)) {
+            
+            if (_count==0) {
+                
+                
+               
+                    _DiscoverLeaderOffset+=10;
+                    [self getSearchLeaders];
+                    
+            }
+            _count++;
+            
+            
+        }else
+        {
+            _count=0;
+        }
+
+        
+        
+        return;
+    }
     
     if(self.collectionView.contentOffset.x<-75){
         if (_count==0) {
@@ -1125,6 +1233,10 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 /*
 #pragma mark - Navigation

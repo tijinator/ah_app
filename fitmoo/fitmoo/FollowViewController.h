@@ -43,12 +43,14 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 
-
+@property (strong, nonatomic)  NSDictionary * responseDicLeader;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UILabel *lifestytleLabel;
 @property (assign, nonatomic)  int count;
 @property (assign, nonatomic)  int limit;
 @property (assign, nonatomic)  int offset;
+
+@property (assign, nonatomic)  int DiscoverLeaderOffset;
 
 @property (assign, nonatomic)  int searchcount;
 @property (assign, nonatomic)  int searchlimit;
