@@ -29,6 +29,7 @@
     contentHight=[NSNumber numberWithInteger:260*[[FitmooHelper sharedInstance] frameRadio]];
     [self initFrames];
     
+    
     _redeemArray= [[NSMutableArray alloc] init];
     
     _tableType=@"earning";
