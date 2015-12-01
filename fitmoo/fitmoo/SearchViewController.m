@@ -189,7 +189,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
     _timerQueue= [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(callQueue) userInfo:nil repeats:YES];
     self.automaticallyAdjustsScrollViewInsets = NO;
    
