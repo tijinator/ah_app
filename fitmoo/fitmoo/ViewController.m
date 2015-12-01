@@ -186,13 +186,39 @@
     }
     
     
-
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(trackingInternet:) userInfo:nil repeats:YES];
+        
+        
+    } else {
+        
+        
+        NSLog(@"There IS internet connection");
+        
+    }
     
     
 }
 
 
-
+- (void)trackingInternet:(NSTimer *)timer
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        
+    } else {
+        [timer invalidate];
+        [self checkLogin];
+        NSLog(@"There IS internet connection");
+        
+    }
+    
+}
 
 
 - (void) showImagesWithDelay
@@ -384,7 +410,11 @@
 
 - (void) addActivityIndicator
 {
-
+//    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    _activityIndicator.center = CGPointMake(160*[[FitmooHelper sharedInstance] frameRadio],  240*[[FitmooHelper sharedInstance] frameRadio]);
+//    _activityIndicator.hidesWhenStopped = YES;
+//    [self.view addSubview:_activityIndicator];
+//    [_activityIndicator startAnimating];
 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
