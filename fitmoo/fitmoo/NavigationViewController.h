@@ -48,5 +48,5 @@
 @property (strong, nonatomic)  LiveViewController *livePage;
 @property (strong, nonatomic)  NSDictionary * responseDic;
 @property (strong, nonatomic)  NSMutableArray *Pagestuck;
-
+@property (strong, nonatomic)  LanchScreen *lanchScreen;
 @end

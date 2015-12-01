@@ -14,7 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BasePostViewController.h"
 #import "SpecialPageViewController.h"
-
+#import "LanchScreen.h"
 @interface BaseViewController : UIViewController<UIApplicationDelegate>
 
 - (IBAction)openSideMenu:(id)sender;
@@ -45,6 +45,6 @@
 @property (strong, nonatomic) AVPlayer *moviePlayer;
 @property (strong, nonatomic) AVPlayer *moviePlayer1;
 - (void)playMovieWithUrl:(UIButton *)button withUrl:(NSString *) url;
-
+@property (strong, nonatomic)  LanchScreen *lanchScreen;
 - (void)slientVoice:(NSString *)url;
 @end

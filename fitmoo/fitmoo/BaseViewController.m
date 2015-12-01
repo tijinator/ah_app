@@ -211,7 +211,9 @@
         [alert show ];
         
        // [self.navigationController popToRootViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"login"];
+      //  [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"login"];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(trackingInternet:) userInfo:nil repeats:YES];
+        [self addActivityIndicator];
         
     } else {
         NSLog(@"There IS internet connection");
@@ -227,6 +229,42 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openSideMenu" object:Nil];
 }
 
+
+
+- (void)trackingInternet:(NSTimer *)timer
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        
+    } else {
+        [timer invalidate];
+        [_lanchScreen.view removeFromSuperview];
+        NSLog(@"There IS internet connection");
+        
+    }
+    
+}
+
+- (void) addActivityIndicator
+{
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    _lanchScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"LanchScreen"];
+    _lanchScreen.view.frame= CGRectMake(0, 0, 320*[[FitmooHelper sharedInstance] frameRadio], 571*[[FitmooHelper sharedInstance] frameRadio]);
+    [self.view addSubview:_lanchScreen.view];
+    [self.view bringSubviewToFront:_lanchScreen.view];
+    _lanchScreen.view.alpha=0;
+    
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        _lanchScreen.view.alpha=1;
+    }completion:^(BOOL finished){
+        
+        
+    }];
+    
+}
 
 -(void) addfootButtonsForThree
 {
