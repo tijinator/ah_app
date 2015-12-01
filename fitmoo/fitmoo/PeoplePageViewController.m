@@ -1256,6 +1256,12 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             [cell setBodyFrameForProduct];
             [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
             [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+            UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BuyNowTagClick:)];
+            tapGestureRecognizer1.numberOfTapsRequired = 1;
+            [cell.titleLabel setTag:tempHomefeed.feed_id.integerValue];
+            [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
+            cell.titleLabel.userInteractionEnabled=YES;
         }
         else if ([tempHomefeed.type isEqualToString:@"event"])
         {
@@ -1950,7 +1956,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"back"];
     //[FitmooHelper sharedInstance].firstTimeLoadingCircle=0;
 }
-
+- (IBAction)BuyNowTagClick:(id)sender {
+    UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self BuyNowButtonClick:myButton];
+    
+}
 
 - (IBAction)BuyNowButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;

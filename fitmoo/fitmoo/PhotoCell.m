@@ -84,6 +84,7 @@
         [label setAttributedText:attributedString];
       
         [_view1Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [_view1Button setBackgroundImage:[UIImage imageNamed:@"cement.png"] forState:UIControlStateNormal];
         [_view1Button addSubview:label];
     }else
     {
@@ -172,6 +173,7 @@
          [label setAttributedText:attributedString];
          
          [_view2Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+         [_view2Button setBackgroundImage:[UIImage imageNamed:@"cement.png"] forState:UIControlStateNormal];
          [_view2Button addSubview:label];
 
      }else
@@ -259,6 +261,7 @@
         [label setAttributedText:attributedString];
         
         [_view3Button.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        [_view3Button setBackgroundImage:[UIImage imageNamed:@"cement.png"] forState:UIControlStateNormal];
         [_view3Button addSubview:label];
 
     }else

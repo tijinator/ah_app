@@ -512,6 +512,12 @@
         [cell setBodyFrameForProduct];
         [cell.ShadowBuyNowButton setTag:tempHomefeed.feed_id.integerValue];
         [cell.ShadowBuyNowButton addTarget:self action:@selector(BuyNowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BuyNowTagClick:)];
+        tapGestureRecognizer1.numberOfTapsRequired = 1;
+        [cell.titleLabel setTag:tempHomefeed.feed_id.integerValue];
+        [cell.titleLabel addGestureRecognizer:tapGestureRecognizer1];
+        cell.titleLabel.userInteractionEnabled=YES;
     }
     else if ([tempHomefeed.type isEqualToString:@"event"])
     {
@@ -823,6 +829,11 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
 }
+- (IBAction)BuyNowTagClick:(id)sender {
+    UIButton *myButton = (UIButton *)[(UIGestureRecognizer *)sender view];
+    [self BuyNowButtonClick:myButton];
+    
+}
 
 - (IBAction)BuyNowButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
@@ -1019,8 +1030,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
         [self presentViewController:navigationController animated:YES completion:nil];
         
-    }else if ([url rangeOfString:@"vimeo"].location != NSNotFound) {
-        
+    }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
+
         
         [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
@@ -1040,7 +1051,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
                 }];
             }
         }];
-        
+    
         
     } else
     {

@@ -47,5 +47,6 @@
 @property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
 @property (strong, nonatomic) IBOutlet UIImageView *FacebookLabel;
 @property (strong, nonatomic)  id<FBGraphUser> cachedUser;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 

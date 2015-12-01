@@ -210,7 +210,8 @@
                                                 otherButtonTitles : nil ];
         [alert show ];
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
+       // [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"login"];
         
     } else {
         NSLog(@"There IS internet connection");

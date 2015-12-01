@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "Reachability.h"
 @interface ViewController ()
 {
     double constentUp;
@@ -160,9 +160,9 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [_activityIndicator stopAnimating];
-  //  [_lanchScreen.view removeFromSuperview];
+    //  [_lanchScreen.view removeFromSuperview];
     if (_sighUpView!=nil) {
-          _sighUpView=nil;
+        _sighUpView=nil;
     }
     if (_forgotPdView!=nil) {
         _forgotPdView=nil;
@@ -184,7 +184,40 @@
         [[FBSession activeSession] close];
         [FBSession.activeSession closeAndClearTokenInformation];
     }
+    
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(trackingInternet:) userInfo:nil repeats:YES];
+        
+        
+    } else {
+        
+        
+        NSLog(@"There IS internet connection");
+        
+    }
+    
+    
+}
 
+
+- (void)trackingInternet:(NSTimer *)timer
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        
+    } else {
+        [timer invalidate];
+        [self checkLogin];
+        NSLog(@"There IS internet connection");
+        
+    }
+    
 }
 
 
