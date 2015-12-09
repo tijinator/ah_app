@@ -518,9 +518,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     NSString *complete_uri= (NSString *)[_responseDic objectForKey:@"complete_uri"];
-    //   NSString *url= [NSString stringWithFormat:@"%@%@",@"https://api.vimeo.com", complete_uri];
-    //  NSString *url= [NSString stringWithFormat:@"%@%@",@"at.fitmoo.com/api/users/finish_vimeo_upload?", complete_uri];
-    NSString *url= @"http://uat.fitmoo.com/api/users/finish_vimeo_upload?";
+       NSString *url= [NSString stringWithFormat:@"%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/finish_vimeo_upload?" ];
+   // NSString *url= @"http://uat.fitmoo.com/api/users/finish_vimeo_upload?";
     NSString *completeUrl= [NSString stringWithFormat:@"%@%@",@"https://api.vimeo.com", complete_uri];
     //   [manager.requestSerializer setValue:@"bearer e98b9f19cbfed0fb03702cf28addb16e" forHTTPHeaderField:@"Authorization"];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:completeUrl, @"complete_url", nil];
@@ -613,9 +612,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    //      NSString *url= [NSString stringWithFormat:@"%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/get_upload_token_vimeo" ];
+          NSString *url= [NSString stringWithFormat:@"%@%@", [[UserManager sharedUserManager] clientUrl],@"/api/users/get_upload_token_vimeo" ];
     
-    NSString *url= [NSString stringWithFormat:@"%@%@", @"http://uat.fitmoo.com",@"/api/users/get_upload_token_vimeo" ];
+  
     
     [manager POST: url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
