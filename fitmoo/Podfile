@@ -1,16 +1,24 @@
-source 'https://github.com/CocoaPods/Specs.git'
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+# use_frameworks!
 
-inhibit_all_warnings!
+target 'fitmoo' do
+    pod 'AWSiOSSDKv2', '~> 2.2.2'
+    pod 'Facebook-iOS-SDK', '~> 3.0'
+    pod 'FSImageViewer', '~> 3.2'
+    pod 'APAddressBook'
+    pod 'TTTAttributedLabel' , '~> 1.10.1'
+    pod 'JTCalendar'
+    pod 'SwipeBack', '~> 1.0'
+    pod 'Stripe'
+    pod 'Reachability'
+    pod "youtube-ios-player-helper", "~> 0.1.4"
+    pod 'RSBarcodes', '~> 0.1.2'
+end
 
-pod 'AWSiOSSDKv2', '~> 2.2.2'
-pod 'Facebook-iOS-SDK', '~> 3.0'
-#pod 'google-plus-ios-sdk'
-pod 'FSImageViewer', '~> 3.2'
-pod 'APAddressBook'
-pod 'TTTAttributedLabel' , '~> 1.10.1'
-pod 'JTCalendar'
-pod 'SwipeBack', '~> 1.0'
-pod 'Stripe'
-pod 'Reachability'
-pod "youtube-ios-player-helper", "~> 0.1.4"
-pod 'RSBarcodes', '~> 0.1.2'
+target 'fitmooTests' do
+    
+end
+
+

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A71B0EB17899EE03C275CC93'
-               BlueprintName = 'youtube-ios-player-helper-Assets'
+               BlueprintIdentifier = '621A9E4EE5F544ADB1F36EDD554A4308'
+               BlueprintName = 'Pods-fitmoo'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Assets.bundle'>
+               BuildableName = 'libPods-fitmoo.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

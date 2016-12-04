@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2011&#8211;2015 Alamofire Software Foundation (http://alamofire.org/)
+			<string>Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>AFNetworking</string>
 			<key>Type</key>
@@ -49,6 +51,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>APAddressBook</string>
 			<key>Type</key>
@@ -114,17 +118,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -133,7 +137,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -142,7 +146,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -153,14 +157,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -170,7 +174,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -198,7 +202,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -362,6 +366,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSAutoScaling</string>
 			<key>Type</key>
@@ -427,17 +433,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -446,7 +452,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -455,7 +461,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -466,14 +472,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -483,7 +489,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -511,7 +517,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -675,6 +681,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSCloudWatch</string>
 			<key>Type</key>
@@ -740,17 +748,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -759,7 +767,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -768,7 +776,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -779,14 +787,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -796,7 +804,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -824,7 +832,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -988,6 +996,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSCore</string>
 			<key>Type</key>
@@ -1053,17 +1063,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -1072,7 +1082,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -1081,7 +1091,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -1092,14 +1102,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -1109,7 +1119,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -1137,7 +1147,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -1301,6 +1311,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSDynamoDB</string>
 			<key>Type</key>
@@ -1366,17 +1378,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -1385,7 +1397,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -1394,7 +1406,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -1405,14 +1417,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -1422,7 +1434,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -1450,7 +1462,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -1614,6 +1626,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSEC2</string>
 			<key>Type</key>
@@ -1679,17 +1693,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -1698,7 +1712,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -1707,7 +1721,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -1718,14 +1732,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -1735,7 +1749,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -1763,7 +1777,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -1927,6 +1941,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSElasticLoadBalancing</string>
 			<key>Type</key>
@@ -1992,17 +2008,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -2011,7 +2027,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -2020,7 +2036,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -2031,14 +2047,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -2048,7 +2064,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -2076,7 +2092,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -2240,6 +2256,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSKinesis</string>
 			<key>Type</key>
@@ -2305,17 +2323,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -2324,7 +2342,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -2333,7 +2351,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -2344,14 +2362,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -2361,7 +2379,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -2389,7 +2407,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -2553,6 +2571,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSMobileAnalytics</string>
 			<key>Type</key>
@@ -2618,17 +2638,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -2637,7 +2657,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -2646,7 +2666,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -2657,14 +2677,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -2674,7 +2694,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -2702,7 +2722,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -2866,6 +2886,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSS3</string>
 			<key>Type</key>
@@ -2931,17 +2953,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -2950,7 +2972,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -2959,7 +2981,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -2970,14 +2992,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -2987,7 +3009,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -3015,7 +3037,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -3179,6 +3201,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSSES</string>
 			<key>Type</key>
@@ -3244,17 +3268,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -3263,7 +3287,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -3272,7 +3296,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -3283,14 +3307,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -3300,7 +3324,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -3328,7 +3352,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -3492,6 +3516,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSSNS</string>
 			<key>Type</key>
@@ -3557,17 +3583,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -3576,7 +3602,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -3585,7 +3611,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -3596,14 +3622,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -3613,7 +3639,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -3641,7 +3667,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -3805,6 +3831,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSSQS</string>
 			<key>Type</key>
@@ -3870,17 +3898,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -3889,7 +3917,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -3898,7 +3926,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -3909,14 +3937,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -3926,7 +3954,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -3954,7 +3982,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -4118,6 +4146,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSSimpleDB</string>
 			<key>Type</key>
@@ -4183,17 +4213,17 @@ Amazon Cognito Sync - Copyright 2014 Amazon.com, Inc. or its affiliates. All Rig
 
 Amazon Software License
 
-This Amazon Software License (&#8220;License&#8221;) governs your use, reproduction, and distribution of the accompanying software as specified below.
+This Amazon Software License (“License”) governs your use, reproduction, and distribution of the accompanying software as specified below.
 1. Definitions
 
-&#8220;Licensor&#8221; means any person or entity that distributes its Work.
-&#8220;Software&#8221; means the original work of authorship made available under this License.
-&#8220;Work&#8221; means the Software and any additions to or derivative works of the Software that are made available under this License.
+“Licensor” means any person or entity that distributes its Work.
+“Software” means the original work of authorship made available under this License.
+“Work” means the Software and any additions to or derivative works of the Software that are made available under this License.
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221; have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution” have the meaning as provided under U.S. copyright law; provided, however, that for the purposes of this License, derivative works shall not include works that 
 
 remain separable from, or merely link (or bind by name) to the interfaces of, the Work.
-Works, including the Software, are &#8220;made available&#8221; under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
+Works, including the Software, are “made available” under this License by including in or with the Work either (a) a copyright notice referencing the applicability of this License to the Work, or (b) a copy of this License.
 
 2. License Grants
 
@@ -4202,7 +4232,7 @@ Works, including the Software, are &#8220;made available&#8221; under this Licen
 publicly perform, sublicense and distribute its Work and any resulting derivative works in any form.
 2.2 Patent Grant. Subject to the terms and conditions of this License, each Licensor grants to you a perpetual, worldwide, non-exclusive, royalty-free patent license to make, have made, use, sell, offer for sale, import, and otherwise 
 
-transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor&#8217;s Work (or portion thereof) individually and excluding any combinations with any 
+transfer its Work, in whole or in part. The foregoing license applies only to the patent claims licensable by Licensor that would be infringed by Licensor’s Work (or portion thereof) individually and excluding any combinations with any 
 
 other materials or technology.
 
@@ -4211,7 +4241,7 @@ other materials or technology.
 3.1 Redistribution. You may reproduce or distribute the Work only if (a) you do so under this License, (b) you include a complete copy of this License with your distribution, and (c) you retain without modification any copyright, patent, 
 
 trademark, or attribution notices that are present in the Work.
-3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (&#8220;Your Terms&#8221;) only if (a) Your Terms provide that the use limitation in 
+3.2 Derivative Works. You may specify that additional or different terms apply to the use, reproduction, and distribution of your derivative works of the Work (“Your Terms”) only if (a) Your Terms provide that the use limitation in 
 
 Section 3.3 applies to your derivative works, and (b) you identify the specific derivative works that are subject to Your Terms. Notwithstanding Your Terms, this License (including the redistribution requirements in Section 3.1) will 
 
@@ -4222,14 +4252,14 @@ Inc.
 3.4 Patent Claims. If you bring or threaten to bring a patent claim against any Licensor (including any claim, cross-claim or counterclaim in a lawsuit) to enforce any patents that you allege are infringed by any Work, then your rights 
 
 under this License from such Licensor (including the grants in Sections 2.1 and 2.2) will terminate immediately.
-3.5 Trademarks. This License does not grant any rights to use any Licensor&#8217;s or its affiliates&#8217; names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
+3.5 Trademarks. This License does not grant any rights to use any Licensor’s or its affiliates’ names, logos, or trademarks, except as necessary to reproduce the notices described in this License.
 3.6 Termination. If you violate any term of this License, then your rights under this License (including the grants in Sections 2.1 and 2.2) will terminate immediately.
 
 4. Disclaimer of Warranty.
 
-THE WORK IS PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
+THE WORK IS PROVIDED “AS IS” WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OR CONDITIONS OF M ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NON-INFRINGEMENT. YOU BEAR THE RISK 
 
-OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES&#8217; CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+OF UNDERTAKING ANY ACTIVITIES UNDER THIS LICENSE. SOME STATES’ CONSUMER LAWS DO NOT ALLOW EXCLUSION OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
 
 5. Limitation of Liability.
 
@@ -4239,7 +4269,7 @@ INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR RELATED TO THIS LICENSE, 
 
 MALFUNCTION, OR ANY OTHER COMM ERCIAL DAMAGES OR LOSSES), EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-Effective Date &#8211; April 18, 2008 &#169; 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
+Effective Date – April 18, 2008 © 2008 Amazon.com, Inc. or its affiliates. All rights reserved.
 
 
 ====================
@@ -4267,7 +4297,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ====================
 
-XMLWriter - Copyright (C) 2010 by Thomas R&#248;rvik Skj&#248;lberg
+XMLWriter - Copyright (C) 2010 by Thomas Rørvik Skjølberg
 CSURITemplate - Copyright (c) 2013 Cogenta Systems Ltd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -4431,6 +4461,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>AWSiOSSDKv2</string>
 			<key>Type</key>
@@ -4468,6 +4500,8 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
+			<key>License</key>
+			<string>BSD</string>
 			<key>Title</key>
 			<string>Bolts</string>
 			<key>Type</key>
@@ -4495,6 +4529,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>EGOCache</string>
 			<key>Type</key>
@@ -4523,6 +4559,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>FSImageViewer</string>
 			<key>Type</key>
@@ -4732,6 +4770,8 @@ THE SOFTWARE.</string>
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
+			<key>License</key>
+			<string>Apache License, Version 2.0</string>
 			<key>Title</key>
 			<string>Facebook-iOS-SDK</string>
 			<key>Type</key>
@@ -4758,6 +4798,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>JTCalendar</string>
 			<key>Type</key>
@@ -4786,6 +4828,8 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>RSBarcodes</string>
 			<key>Type</key>
@@ -4804,6 +4848,8 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </string>
+			<key>License</key>
+			<string>BSD</string>
 			<key>Title</key>
 			<string>Reachability</string>
 			<key>Type</key>
@@ -4832,6 +4878,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>Stripe</string>
 			<key>Type</key>
@@ -4861,6 +4909,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>SwipeBack</string>
 			<key>Type</key>
@@ -4888,6 +4938,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>TTTAttributedLabel</string>
 			<key>Type</key>
@@ -4916,6 +4968,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>UAProgressView</string>
 			<key>Type</key>
@@ -4937,6 +4991,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 </string>
+			<key>License</key>
+			<string>Apache</string>
 			<key>Title</key>
 			<string>youtube-ios-player-helper</string>
 			<key>Type</key>
@@ -4944,7 +5000,7 @@ limitations under the License.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Generated by CocoaPods - http://cocoapods.org</string>
+			<string>Generated by CocoaPods - https://cocoapods.org</string>
 			<key>Title</key>
 			<string></string>
 			<key>Type</key>

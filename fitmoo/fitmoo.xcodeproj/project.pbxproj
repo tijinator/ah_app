@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C173CF908B486873A634781 /* libPods-fitmoo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA2E94B533415EB664C1275 /* libPods-fitmoo.a */; };
 		2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703A7221B9E2E8A001F6440 /* RTLabel.m */; };
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
@@ -155,7 +156,6 @@
 		273FF5711AF7AA2C00B82DB3 /* shopicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF53F1AF7AA2C00B82DB3 /* shopicon.png */; };
 		273FF5751AF7AA2C00B82DB3 /* whitearrowicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5431AF7AA2C00B82DB3 /* whitearrowicon.png */; };
 		273FF5761AF7AA2C00B82DB3 /* whitecamerareverse.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5441AF7AA2C00B82DB3 /* whitecamerareverse.png */; };
-		273FF5771AF7AA2C00B82DB3 /* whitecommenticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5451AF7AA2C00B82DB3 /* whitecommenticon.png */; };
 		273FF57A1AF7AA2C00B82DB3 /* whitehearticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5481AF7AA2C00B82DB3 /* whitehearticon.png */; };
 		273FF57B1AF7AA2C00B82DB3 /* whitelargecameraicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF5491AF7AA2C00B82DB3 /* whitelargecameraicon.png */; };
 		273FF57C1AF7AA2C00B82DB3 /* whiteusericon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FF54A1AF7AA2C00B82DB3 /* whiteusericon.png */; };
@@ -744,7 +744,7 @@
 		27FF37031B8363AC008A3227 /* SearchTapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF37011B8363AC008A3227 /* SearchTapCell.xib */; };
 		27FF37071B83ABAC008A3227 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FF37051B83ABAC008A3227 /* SearchCell.m */; };
 		27FF37081B83ABAC008A3227 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FF37061B83ABAC008A3227 /* SearchCell.xib */; };
-		61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC700DB5F9343FBFFA1E76D /* libPods.a */; };
+		AFE3DA0EC719F5F56B59BD60 /* libPods-fitmooTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4A34B9D0E42120E630CBF /* libPods-fitmooTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -758,7 +758,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CC700DB5F9343FBFFA1E76D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B4A34B9D0E42120E630CBF /* libPods-fitmooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fitmooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FA2E94B533415EB664C1275 /* libPods-fitmoo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fitmoo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2703A7211B9E2E8A001F6440 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		2703A7221B9E2E8A001F6440 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
@@ -930,7 +931,6 @@
 		273FF53F1AF7AA2C00B82DB3 /* shopicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopicon.png; sourceTree = "<group>"; };
 		273FF5431AF7AA2C00B82DB3 /* whitearrowicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitearrowicon.png; sourceTree = "<group>"; };
 		273FF5441AF7AA2C00B82DB3 /* whitecamerareverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitecamerareverse.png; sourceTree = "<group>"; };
-		273FF5451AF7AA2C00B82DB3 /* whitecommenticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitecommenticon.png; sourceTree = "<group>"; };
 		273FF5481AF7AA2C00B82DB3 /* whitehearticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitehearticon.png; sourceTree = "<group>"; };
 		273FF5491AF7AA2C00B82DB3 /* whitelargecameraicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelargecameraicon.png; sourceTree = "<group>"; };
 		273FF54A1AF7AA2C00B82DB3 /* whiteusericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteusericon.png; sourceTree = "<group>"; };
@@ -1611,8 +1611,10 @@
 		27FF37041B83ABAC008A3227 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		27FF37051B83ABAC008A3227 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		27FF37061B83ABAC008A3227 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
-		B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		F81E84D967E00EE3E569149A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		65D916B948EE31BC3233C6B1 /* Pods-fitmooTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitmooTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fitmooTests/Pods-fitmooTests.release.xcconfig"; sourceTree = "<group>"; };
+		80176382099A11F1CB08A834 /* Pods-fitmooTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitmooTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fitmooTests/Pods-fitmooTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA16D93271E2388CD03F32C9 /* Pods-fitmoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitmoo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fitmoo/Pods-fitmoo.debug.xcconfig"; sourceTree = "<group>"; };
+		BCF50D76BAC9E3DEB67AA8A4 /* Pods-fitmoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitmoo.release.xcconfig"; path = "Pods/Target Support Files/Pods-fitmoo/Pods-fitmoo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1621,7 +1623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2736B2321AF004E40013B4B9 /* CoreGraphics.framework in Frameworks */,
-				61D2B97FFA4D4888191EDEB3 /* libPods.a in Frameworks */,
+				1C173CF908B486873A634781 /* libPods-fitmoo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,6 +1631,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE3DA0EC719F5F56B59BD60 /* libPods-fitmooTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1642,8 +1645,8 @@
 				27188F671AD4646300C34372 /* fitmoo */,
 				27188F841AD4646300C34372 /* fitmooTests */,
 				27188F661AD4646300C34372 /* Products */,
-				9EFAD12DB94C2C1F8BB2FB70 /* Pods */,
-				D96F9A295AC20A094AED2361 /* Frameworks */,
+				B710C42AE5105A61D3A16047 /* Pods */,
+				C29E4FE88512E7CE0BBC9DF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2040,7 +2043,6 @@
 				273FF53F1AF7AA2C00B82DB3 /* shopicon.png */,
 				273FF5431AF7AA2C00B82DB3 /* whitearrowicon.png */,
 				273FF5441AF7AA2C00B82DB3 /* whitecamerareverse.png */,
-				273FF5451AF7AA2C00B82DB3 /* whitecommenticon.png */,
 				273FF5481AF7AA2C00B82DB3 /* whitehearticon.png */,
 				273FF5491AF7AA2C00B82DB3 /* whitelargecameraicon.png */,
 				273FF54A1AF7AA2C00B82DB3 /* whiteusericon.png */,
@@ -2784,19 +2786,22 @@
 			name = CustomCells;
 			sourceTree = "<group>";
 		};
-		9EFAD12DB94C2C1F8BB2FB70 /* Pods */ = {
+		B710C42AE5105A61D3A16047 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */,
-				F81E84D967E00EE3E569149A /* Pods.release.xcconfig */,
+				BA16D93271E2388CD03F32C9 /* Pods-fitmoo.debug.xcconfig */,
+				BCF50D76BAC9E3DEB67AA8A4 /* Pods-fitmoo.release.xcconfig */,
+				80176382099A11F1CB08A834 /* Pods-fitmooTests.debug.xcconfig */,
+				65D916B948EE31BC3233C6B1 /* Pods-fitmooTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D96F9A295AC20A094AED2361 /* Frameworks */ = {
+		C29E4FE88512E7CE0BBC9DF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0CC700DB5F9343FBFFA1E76D /* libPods.a */,
+				1FA2E94B533415EB664C1275 /* libPods-fitmoo.a */,
+				00B4A34B9D0E42120E630CBF /* libPods-fitmooTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2808,12 +2813,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27188F8B1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmoo" */;
 			buildPhases = (
-				9337F955E5C525983E9D6ACF /* Check Pods Manifest.lock */,
+				44D988FC8BDBCC96CFCC6848 /* [CP] Check Pods Manifest.lock */,
 				27188F611AD4646300C34372 /* Sources */,
 				27188F621AD4646300C34372 /* Frameworks */,
 				27188F631AD4646300C34372 /* Resources */,
-				69376F4F6C3CD7F1B05058BB /* Copy Pods Resources */,
-				E482764DF225B3376C5961F6 /* Embed Pods Frameworks */,
+				2C972B05D56C9FF62A89ED68 /* [CP] Embed Pods Frameworks */,
+				21745B3C4FD1AC9EF10344CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2828,9 +2833,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27188F8E1AD4646300C34372 /* Build configuration list for PBXNativeTarget "fitmooTests" */;
 			buildPhases = (
+				4884A2CA3D9EDDF4B361F340 /* [CP] Check Pods Manifest.lock */,
 				27188F7D1AD4646300C34372 /* Sources */,
 				27188F7E1AD4646300C34372 /* Frameworks */,
 				27188F7F1AD4646300C34372 /* Resources */,
+				75B92763C345148113B0BA31 /* [CP] Embed Pods Frameworks */,
+				D4F30ACD1A806B040776653B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2997,7 +3005,6 @@
 				27ADF1D01B14B1D8003A0A83 /* continuebluebar@2x.png in Resources */,
 				279E57B01B20F0B40076C3B5 /* greylocation.png in Resources */,
 				273D6DF51B505B1300A56CCD /* leavebtn@3x.png in Resources */,
-				273FF5771AF7AA2C00B82DB3 /* whitecommenticon.png in Resources */,
 				279E57B11B20F0B40076C3B5 /* greylocation@2x.png in Resources */,
 				27B2598E1B1E44BA00276273 /* greycomment@2x.png in Resources */,
 				273FF56A1AF7AA2C00B82DB3 /* recordbtn.png in Resources */,
@@ -3483,49 +3490,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		69376F4F6C3CD7F1B05058BB /* Copy Pods Resources */ = {
+		21745B3C4FD1AC9EF10344CB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitmoo/Pods-fitmoo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9337F955E5C525983E9D6ACF /* Check Pods Manifest.lock */ = {
+		2C972B05D56C9FF62A89ED68 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitmoo/Pods-fitmoo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E482764DF225B3376C5961F6 /* Embed Pods Frameworks */ = {
+		44D988FC8BDBCC96CFCC6848 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4884A2CA3D9EDDF4B361F340 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		75B92763C345148113B0BA31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitmooTests/Pods-fitmooTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4F30ACD1A806B040776653B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitmooTests/Pods-fitmooTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3812,19 +3864,20 @@
 		};
 		27188F8C1AD4646300C34372 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0463DF9DA0A05242DA37C6F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = BA16D93271E2388CD03F32C9 /* Pods-fitmoo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = GQ8R63HQY2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitmoo.mobile.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3834,19 +3887,20 @@
 		};
 		27188F8D1AD4646300C34372 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F81E84D967E00EE3E569149A /* Pods.release.xcconfig */;
+			baseConfigurationReference = BCF50D76BAC9E3DEB67AA8A4 /* Pods-fitmoo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = GQ8R63HQY2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				INFOPLIST_FILE = fitmoo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fitmoo.mobile.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3856,6 +3910,7 @@
 		};
 		27188F8F1AD4646300C34372 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80176382099A11F1CB08A834 /* Pods-fitmooTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3876,6 +3931,7 @@
 		};
 		27188F901AD4646300C34372 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D916B948EE31BC3233C6B1 /* Pods-fitmooTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
