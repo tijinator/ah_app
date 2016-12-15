@@ -1138,12 +1138,12 @@
     
 //----------------------- live
     
-        _clientUrl= @"https://fitmoo.com";
-        _loginUrl= @"https://fitmoo.com/api/tokens";
-        _homeFeedUrl= @"https://fitmoo.com/api/users/";
-        _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
-        _postUrl=@"https://fitmoo.com/api/users/feeds";
-        _feedsUrl=@"https://fitmoo.com/api/feeds/";
+        _clientUrl= @"https://actionhouse.com";
+        _loginUrl= @"https://actionhouse.com/api/tokens";
+        _homeFeedUrl= @"https://actionhouse.com/api/users/";
+        _logoutUrl=@"https://actionhouse.com/api/tokens/delete_token?";
+        _postUrl=@"https://actionhouse.com/api/users/feeds";
+        _feedsUrl=@"https://actionhouse.com/api/feeds/";
 
         _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
         _s3_accountId=@"271404364214";

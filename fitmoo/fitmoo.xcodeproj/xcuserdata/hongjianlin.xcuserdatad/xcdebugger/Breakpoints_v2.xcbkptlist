@@ -16,7 +16,7 @@
             startingLineNumber = "1061"
             endingLineNumber = "1061"
             landmarkName = "-init"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -48,7 +48,7 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "-createObservers"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +64,7 @@
             startingLineNumber = "286"
             endingLineNumber = "286"
             landmarkName = "-leftSideMenuAction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,7 +144,7 @@
             startingLineNumber = "550"
             endingLineNumber = "550"
             landmarkName = "-generateHomeFeed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,7 +170,7 @@
             startingLineNumber = "905"
             endingLineNumber = "905"
             landmarkName = "-generateHomeFeed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,7 +186,7 @@
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "-awakeFromNib"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,7 +202,7 @@
             startingLineNumber = "135"
             endingLineNumber = "135"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,7 +218,7 @@
             startingLineNumber = "502"
             endingLineNumber = "502"
             landmarkName = "-generateHomeFeed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -234,7 +234,7 @@
             startingLineNumber = "820"
             endingLineNumber = "820"
             landmarkName = "-headerImageButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,7 +330,7 @@
             startingLineNumber = "446"
             endingLineNumber = "446"
             landmarkName = "-postButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -378,7 +378,7 @@
             startingLineNumber = "426"
             endingLineNumber = "426"
             landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -442,7 +442,7 @@
             startingLineNumber = "766"
             endingLineNumber = "766"
             landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -458,7 +458,7 @@
             startingLineNumber = "238"
             endingLineNumber = "238"
             landmarkName = "-postNotifications"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -474,7 +474,7 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "-awakeFromNib"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -554,7 +554,7 @@
             startingLineNumber = "803"
             endingLineNumber = "803"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -570,7 +570,7 @@
             startingLineNumber = "342"
             endingLineNumber = "342"
             landmarkName = "-cancelButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -586,7 +586,7 @@
             startingLineNumber = "991"
             endingLineNumber = "991"
             landmarkName = "-bodyImageButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -602,7 +602,7 @@
             startingLineNumber = "127"
             endingLineNumber = "127"
             landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -618,7 +618,7 @@
             startingLineNumber = "1628"
             endingLineNumber = "1628"
             landmarkName = "-optionButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -634,7 +634,7 @@
             startingLineNumber = "977"
             endingLineNumber = "977"
             landmarkName = "-optionButtonClick:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -650,7 +650,7 @@
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -730,7 +730,7 @@
             startingLineNumber = "338"
             endingLineNumber = "338"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -762,7 +762,7 @@
             startingLineNumber = "134"
             endingLineNumber = "134"
             landmarkName = "-checkLogin:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -986,7 +986,7 @@
             startingLineNumber = "790"
             endingLineNumber = "790"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1178,7 +1178,7 @@
             startingLineNumber = "435"
             endingLineNumber = "435"
             landmarkName = "-getHomePageItems"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1194,7 +1194,7 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1210,7 +1210,7 @@
             startingLineNumber = "779"
             endingLineNumber = "779"
             landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1226,7 +1226,7 @@
             startingLineNumber = "705"
             endingLineNumber = "705"
             landmarkName = "-getdiscoverItemForPeople"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1258,7 +1258,7 @@
             startingLineNumber = "707"
             endingLineNumber = "707"
             landmarkName = "-getdiscoverItemForPeople"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1274,7 +1274,7 @@
             startingLineNumber = "771"
             endingLineNumber = "771"
             landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1290,7 +1290,7 @@
             startingLineNumber = "757"
             endingLineNumber = "757"
             landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1306,7 +1306,7 @@
             startingLineNumber = "241"
             endingLineNumber = "241"
             landmarkName = "-postNotifications"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1322,7 +1322,7 @@
             startingLineNumber = "430"
             endingLineNumber = "430"
             landmarkName = "-setBodyFrameForNutrition"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1338,7 +1338,7 @@
             startingLineNumber = "576"
             endingLineNumber = "576"
             landmarkName = "-generateHomeFeed:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1354,7 +1354,7 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1370,7 +1370,7 @@
             startingLineNumber = "124"
             endingLineNumber = "124"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1386,7 +1386,7 @@
             startingLineNumber = "422"
             endingLineNumber = "422"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1402,7 +1402,7 @@
             startingLineNumber = "78"
             endingLineNumber = "78"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1418,7 +1418,7 @@
             startingLineNumber = "88"
             endingLineNumber = "88"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1434,7 +1434,7 @@
             startingLineNumber = "759"
             endingLineNumber = "759"
             landmarkName = "-scrollViewDidScroll:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1450,7 +1450,7 @@
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "-createObservers"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1466,7 +1466,7 @@
             startingLineNumber = "177"
             endingLineNumber = "177"
             landmarkName = "-setBodyFrameForProduct"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1482,7 +1482,7 @@
             startingLineNumber = "99"
             endingLineNumber = "99"
             landmarkName = "-addScrollView"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1498,7 +1498,7 @@
             startingLineNumber = "635"
             endingLineNumber = "635"
             landmarkName = "-removeViewsFromBodyView:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1514,7 +1514,7 @@
             startingLineNumber = "48"
             endingLineNumber = "48"
             landmarkName = "-rebuiltCommentViewFrame"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1946,7 +1946,7 @@
             startingLineNumber = "372"
             endingLineNumber = "372"
             landmarkName = "-showThreeSubButtons"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1994,7 +1994,7 @@
             startingLineNumber = "479"
             endingLineNumber = "479"
             landmarkName = "-addCommentView:Atindex:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2010,7 +2010,7 @@
             startingLineNumber = "396"
             endingLineNumber = "396"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2026,7 +2026,7 @@
             startingLineNumber = "469"
             endingLineNumber = "469"
             landmarkName = "-addCommentView:Atindex:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2042,7 +2042,7 @@
             startingLineNumber = "333"
             endingLineNumber = "333"
             landmarkName = "-hideThreeSubButtons"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
