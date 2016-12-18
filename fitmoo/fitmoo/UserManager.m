@@ -373,7 +373,7 @@
                 NSDictionary *cover_photo= [dic objectForKey:@"cover_photo"];
                 _localUser.created_by_community.cover_photo_url= [cover_photo objectForKey:@"url"];
                 if ([_localUser.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
-                    _localUser.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+                    _localUser.created_by_community.cover_photo_url= @"https://actionhouse.com/assets/group/cover-default.png";
                 }
                 [_localUser.communityArray addObject:_localUser.created_by_community];
                 
@@ -417,7 +417,7 @@
             NSDictionary *cover_photo= [dic objectForKey:@"cover_photo"];
             _localUser.created_by_community.cover_photo_url= [cover_photo objectForKey:@"url"];
             if ([_localUser.created_by_community.cover_photo_url isEqual:[NSNull null ]]) {
-                _localUser.created_by_community.cover_photo_url= @"https://fitmoo.com/assets/group/cover-default.png";
+                _localUser.created_by_community.cover_photo_url= @"https://actionhouse.com/assets/group/cover-default.png";
             }
             [_localUser.communityArray addObject:_localUser.created_by_community];
             
@@ -456,7 +456,7 @@
         
         localUser.profile_avatar_original=[_responseDic objectForKey:@"cover_photo_url"];
         if ([localUser.profile_avatar_original isEqual:[NSNull null ]]||localUser.profile_avatar_original==nil) {
-            localUser.profile_avatar_original= @"https://fitmoo.com/assets/group/cover-default.png";
+            localUser.profile_avatar_original= @"https://actionhouse.com/assets/group/cover-default.png";
         }
 
   
@@ -1138,20 +1138,20 @@
     
 //----------------------- live
     
-//        _clientUrl= @"https://actionhouse.com";
-//        _loginUrl= @"https://actionhouse.com/api/tokens";
-//        _homeFeedUrl= @"https://actionhouse.com/api/users/";
-//        _logoutUrl=@"https://actionhouse.com/api/tokens/delete_token?";
-//        _postUrl=@"https://actionhouse.com/api/users/feeds";
-//        _feedsUrl=@"https://actionhouse.com/api/feeds/";
+        _clientUrl= @"https://actionhouse.com";
+        _loginUrl= @"https://actionhouse.com/api/tokens";
+        _homeFeedUrl= @"https://actionhouse.com/api/users/";
+        _logoutUrl=@"https://actionhouse.com/api/tokens/delete_token?";
+        _postUrl=@"https://actionhouse.com/api/users/feeds";
+        _feedsUrl=@"https://actionhouse.com/api/feeds/";
 
     
-    _clientUrl= @"https://fitmoo.com";
-    _loginUrl= @"https://fitmoo.com/api/tokens";
-    _homeFeedUrl= @"https://fitmoo.com/api/users/";
-    _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
-    _postUrl=@"https://fitmoo.com/api/users/feeds";
-    _feedsUrl=@"https://fitmoo.com/api/feeds/";
+//    _clientUrl= @"https://fitmoo.com";
+//    _loginUrl= @"https://fitmoo.com/api/tokens";
+//    _homeFeedUrl= @"https://fitmoo.com/api/users/";
+//    _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
+//    _postUrl=@"https://fitmoo.com/api/users/feeds";
+//    _feedsUrl=@"https://fitmoo.com/api/feeds/";
     
         _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
         _s3_accountId=@"271404364214";

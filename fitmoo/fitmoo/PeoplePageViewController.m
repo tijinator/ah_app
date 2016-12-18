@@ -787,7 +787,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
         cell.nameLabel.text= temUser.name.uppercaseString;
         self.titleLabel.text= temUser.name.uppercaseString;
-        NSString * imageUrl= @"https://fitmoo.com/assets/cover/profile-cover.png";
+        NSString * imageUrl= @"https://actionhouse.com/assets/cover/profile-cover.png";
         if (![temUser.cover_photo_url isEqual:[NSNull null ]]) {
             imageUrl=temUser.cover_photo_url;
         }
@@ -1384,20 +1384,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row!=0) {
-//        HomeFeed *feed=[_homeFeedArray objectAtIndex:indexPath.row-1];
-//        NSString *link;
-//        if ([feed.type isEqualToString:@"product"]) {
-//            if (feed.feed_action.feed_action_id!=nil) {
-//                link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
-//            }
-//            
-//            
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"shopAction" object:link];
-//        }
-//    }
-    
-    
+
     
     
 }
@@ -1631,7 +1618,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         NSString *link;
         
         if (feed.feed_action.feed_action_id!=nil) {
-            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://fitmoo.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://actionhouse.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
         }
         
         ActionSheet.shoplink= link;
@@ -1770,7 +1757,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else if ([url rangeOfString:@"vimeo.com"].location != NSNotFound) {
         
         
-        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.fitmoo.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.actionhouse.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"

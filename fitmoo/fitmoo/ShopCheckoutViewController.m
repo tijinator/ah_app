@@ -1305,7 +1305,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([key isEqualToString:@"0"]) {
         
         SettingWebViewController *webPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.fitmoo.com/privacy-policy";
+        webPage.webviewLink=@"http://about.actionhouse.com/privacy-policy";
         webPage.settingType= @"PRIVACY POLICY";
         [self.navigationController pushViewController:webPage animated:YES];
         
@@ -1313,7 +1313,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     else if ([key isEqualToString:@"1"]) {
         SettingWebViewController *webPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.fitmoo.com/terms-and-conditions";
+        webPage.webviewLink=@"http://about.actionhouse.com/terms-and-conditions";
         webPage.settingType= @"TERMS";
         [self.navigationController pushViewController:webPage animated:YES];
      

@@ -159,7 +159,7 @@
          
      }else
      {
-         _liveFeed.profile_image= @"https://cdn.fitmoo.com/avatars/5ecbffe7-9e66-4a16-a9dc-56deba4caae1/medium.png";
+         _liveFeed.profile_image= @"https://cdn.actionhouse.com/avatars/5ecbffe7-9e66-4a16-a9dc-56deba4caae1/medium.png";
      }
     
         if (![advertisement isEqual:[NSNull null]]) {

@@ -429,7 +429,7 @@
         temCom.name=[community objectForKey:@"name"];
         temCom.cover_photo_url=[community objectForKey:@"cover_photo_url"];
         if ([temCom.cover_photo_url isEqual:[NSNull null]]) {
-            temCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
+            temCom.cover_photo_url=@"https://actionhouse.com/assets/group/cover-default.png";
         }
 
         [_searchArrayCommunity addObject:temCom];
@@ -465,7 +465,7 @@
         tempCom.created_by_community_id= [Com_id stringValue];
         
         if ([tempCom.cover_photo_url isEqualToString:@" "]) {
-            tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
+            tempCom.cover_photo_url=@"https://actionhouse.com/assets/group/cover-default.png";
         }
         
         [_searchArrayKeyword addObject:tempCom];

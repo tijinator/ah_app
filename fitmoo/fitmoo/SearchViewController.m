@@ -274,7 +274,7 @@
         CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
         tempCom.name= [textArray objectAtIndex:i];
         tempCom.created_by_community_id= [NSString stringWithFormat:@"%d", i];
-        tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
+        tempCom.cover_photo_url=@"https://actionhouse.com/assets/group/cover-default.png";
         [_searchArrayKeyword addObject:tempCom];
     }
     CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:0];
@@ -443,7 +443,7 @@
         tempCom.joiners_count= [member_count stringValue];
         
         if ([tempCom.cover_photo_url isEqual:[NSNull null]]) {
-            tempCom.cover_photo_url=@"https://fitmoo.com/assets/group/cover-default.png";
+            tempCom.cover_photo_url=@"https://actionhouse.com/assets/group/cover-default.png";
         }
         [_searchArrayCommunity addObject:tempCom];
         }

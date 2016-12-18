@@ -197,24 +197,24 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else if (indexPath.row==4) {
        
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.fitmoo.com/privacy-policy";
+        webPage.webviewLink=@"http://about.actionhouse.com/privacy-policy";
         webPage.settingType= @"PRIVACY POLICY";
         [self.navigationController pushViewController:webPage animated:YES];
         
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/privacy-policy"]];
+  
     }
     else if (indexPath.row==5) {
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.fitmoo.com/terms-and-conditions";
+        webPage.webviewLink=@"http://about.actionhouse.com/terms-and-conditions";
         webPage.settingType= @"TERMS";
         [self.navigationController pushViewController:webPage animated:YES];
-   //     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com/terms-and-conditions"]];
+  
     }else if (indexPath.row==6) {
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.fitmoo.com";
+        webPage.webviewLink=@"http://about.actionhouse.com";
         webPage.settingType= @"ABOUT";
         [self.navigationController pushViewController:webPage animated:YES];
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://about.fitmoo.com"]];
+  
     }
     
 }

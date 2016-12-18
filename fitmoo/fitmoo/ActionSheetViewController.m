@@ -406,17 +406,17 @@
 {
     
     if ([_action isEqualToString:@"invite"]||[_action isEqualToString:@"menu"]) {
-        return [NSString stringWithFormat:@"%@%@", @"https://urlrouter.fitmoo.com/profile/", _profileId];
+        return [NSString stringWithFormat:@"%@%@", @"https://urlrouter.actionhouse.com/profile/", _profileId];
     }
     
     NSString *url;
     
     NSString *rootUrl;
     if (_communityId!=nil) {
-        rootUrl=@"https://urlrouter.fitmoo.com/community/";
+        rootUrl=@"https://urlrouter.actionhouse.com/community/";
     }else
     {
-        rootUrl=@"https://urlrouter.fitmoo.com/profile/";
+        rootUrl=@"https://urlrouter.actionhouse.com/profile/";
     }
     
     if (_feedActionId!=nil) {
@@ -464,7 +464,7 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
     }else
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://actionhouse.com/store/landing"]];
     }
     
     

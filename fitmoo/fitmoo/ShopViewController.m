@@ -56,7 +56,7 @@
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
     }else
     {
-     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://fitmoo.com/store/landing"]];
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://actionhouse.com/store/landing"]];
     }
 }
 - (IBAction)backButtonClick:(id)sender {
