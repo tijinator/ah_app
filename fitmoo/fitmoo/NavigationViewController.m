@@ -357,18 +357,14 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
     }else  if ([key isEqualToString:@"cart"]) {
-      //  if (![currentPage isEqualToString:key]) {
+
             
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main1" bundle:nil];
         _cartPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"ShopCartViewController"];
         
-        
-      
+
         [[self nav] pushViewController:_cartPage animated:YES];
-            
-      //      currentPage=key;
-      //      [_Pagestuck addObject:key];
-      //  }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
         
     }else  if ([key isEqualToString:@"shop"]) {
@@ -442,13 +438,12 @@
         if (![currentPage isEqualToString:key]) {
             
             _locationPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"LocationViewController"];
-            //    [[self nav] popViewControllerAnimated:NO];
             [[self nav] pushViewController:_locationPage animated:YES];
     
             currentPage=key;
             [_Pagestuck addObject:key];
         }
-       // [[NSNotificationCenter defaultCenter] postNotificationName:@"hideSideMenu" object:Nil];
+     
         
         
         
