@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BentonSans-Medium.otf">
+            <string>BentonSans-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--People Tap View Controller-->
+        <scene sceneID="eSH-qS-7eA">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cUR-Km-OeU" customClass="PeopleTapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1uM-W8-1zi"/>
+                        <viewControllerLayoutGuide type="bottom" id="72b-59-bmG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yS7-58-1ZR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="196-kd-pnK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-Vd-fKD">
+                                        <rect key="frame" x="3" y="20" width="32" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SCd-Vd-fKD" secondAttribute="height" multiplier="16:15" id="ikY-Be-0Ln"/>
+                                        </constraints>
+                                        <state key="normal" image="whitearrow.png">
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClick:" destination="cUR-Km-OeU" eventType="touchUpInside" id="s6h-Pa-h7W"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-XN-H1P" customClass="SearchField">
+                                        <rect key="frame" x="26" y="60" width="269" height="30"/>
+                                        <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="F9O-XN-H1P" secondAttribute="height" multiplier="269:30" id="ebM-fq-sj1"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cUR-Km-OeU" id="gJX-Wh-4O4"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEOPLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-bb-2Lr">
+                                        <rect key="frame" x="37" y="20" width="247" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="e3K-bb-2Lr" secondAttribute="height" multiplier="247:30" id="EmW-nf-xKf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BentonSans-Medium" family="BentonSans" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="196-kd-pnK" secondAttribute="height" multiplier="16:5" id="5at-PW-q2X"/>
+                                    <constraint firstItem="F9O-XN-H1P" firstAttribute="centerX" secondItem="196-kd-pnK" secondAttribute="centerX" id="9SX-Z8-NWI"/>
+                                    <constraint firstItem="SCd-Vd-fKD" firstAttribute="centerX" secondItem="196-kd-pnK" secondAttribute="centerX" multiplier="0.12" id="CVN-5j-uh4"/>
+                                    <constraint firstItem="e3K-bb-2Lr" firstAttribute="centerY" secondItem="196-kd-pnK" secondAttribute="centerY" multiplier="0.7" id="Gt3-cK-GAx"/>
+                                    <constraint firstItem="F9O-XN-H1P" firstAttribute="width" secondItem="196-kd-pnK" secondAttribute="height" multiplier="269:100" id="JUn-ff-nlh"/>
+                                    <constraint firstItem="SCd-Vd-fKD" firstAttribute="centerY" secondItem="196-kd-pnK" secondAttribute="centerY" multiplier="0.7" id="K2v-iG-j3S"/>
+                                    <constraint firstItem="e3K-bb-2Lr" firstAttribute="width" secondItem="196-kd-pnK" secondAttribute="height" multiplier="247:100" id="rTj-4O-tOO"/>
+                                    <constraint firstItem="SCd-Vd-fKD" firstAttribute="width" secondItem="196-kd-pnK" secondAttribute="height" multiplier="8:25" id="xAQ-iJ-n4R"/>
+                                    <constraint firstItem="F9O-XN-H1P" firstAttribute="centerY" secondItem="196-kd-pnK" secondAttribute="centerY" multiplier="1.5" id="xJj-fN-iDa"/>
+                                    <constraint firstItem="e3K-bb-2Lr" firstAttribute="centerX" secondItem="196-kd-pnK" secondAttribute="centerX" id="zmB-e9-Qjo"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wUJ-3J-kal">
+                                <rect key="frame" x="0.0" y="100" width="320" height="468"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2DL-lH-91a">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="agD-Ym-KFH">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="wUJ-3J-kal" firstAttribute="leading" secondItem="yS7-58-1ZR" secondAttribute="leading" id="0uQ-E9-4I1"/>
+                            <constraint firstItem="72b-59-bmG" firstAttribute="top" secondItem="wUJ-3J-kal" secondAttribute="bottom" id="ChH-sA-HqA"/>
+                            <constraint firstItem="wUJ-3J-kal" firstAttribute="top" secondItem="196-kd-pnK" secondAttribute="bottom" id="EyY-sG-4Xa"/>
+                            <constraint firstItem="196-kd-pnK" firstAttribute="centerX" secondItem="yS7-58-1ZR" secondAttribute="centerX" id="LEL-61-2n3"/>
+                            <constraint firstItem="196-kd-pnK" firstAttribute="width" secondItem="yS7-58-1ZR" secondAttribute="height" multiplier="40:71" id="MTY-qU-BFn"/>
+                            <constraint firstAttribute="trailing" secondItem="wUJ-3J-kal" secondAttribute="trailing" id="PkI-cT-SrN"/>
+                            <constraint firstItem="196-kd-pnK" firstAttribute="centerY" secondItem="yS7-58-1ZR" secondAttribute="centerY" multiplier="0.178" id="YSq-Dn-Co2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="wUJ-3J-kal" id="ZAP-4L-5fi"/>
+                        <outlet property="headerView" destination="196-kd-pnK" id="p8T-sK-PcY"/>
+                        <outlet property="leftButton" destination="SCd-Vd-fKD" id="ZOw-ch-kWV"/>
+                        <outlet property="searchTermField" destination="F9O-XN-H1P" id="AcW-1F-u0W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2N-kh-1Yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950.625" y="-290.49295774647885"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="whitearrow.png" width="11" height="16"/>
+    </resources>
+</document>

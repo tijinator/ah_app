@@ -68,7 +68,7 @@
 @property (assign, nonatomic)  int searchlimit;
 @property (assign, nonatomic)  int searchoffset;
 
-@property (strong, nonatomic)  NSString * searchType;
+
 @property (strong, nonatomic)  NSString * searchterm;
 @property (strong, nonatomic)  NSString * selectedKeywordId;
 //@property (strong, nonatomic)  UITextField * searchTermField;
@@ -87,10 +87,15 @@
 @property (strong, nonatomic)  NSMutableArray * searchArrayCategory;
 @property (strong, nonatomic)  NSMutableArray * searchArrayKeyword;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCommunity;
-@property (strong, nonatomic)  NSMutableArray * searchArrayLeader;
+
 @property (strong, nonatomic)  NSMutableArray * searchArrayProducts;
 @property (strong, nonatomic)  NSMutableArray * searchArrayWorkouts;
 @property (strong, nonatomic)  NSMutableArray * searchArrayTotalKeyword;
+
+
+@property (strong, nonatomic)  NSMutableArray * searchArrayLeader;
+@property (strong, nonatomic)  NSMutableArray * searchArrayActive;
+@property (strong, nonatomic)  NSMutableArray * searchArrayFeature;
 
 @property (strong, nonatomic)  NSMutableArray * searchArrayPeopleName;
 

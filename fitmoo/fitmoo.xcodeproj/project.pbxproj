@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1C173CF908B486873A634781 /* libPods-fitmoo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA2E94B533415EB664C1275 /* libPods-fitmoo.a */; };
+		2701955C1EF58D710080BDD7 /* PeoplePageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2701955B1EF58D710080BDD7 /* PeoplePageService.m */; };
+		2701955F1EF58EBC0080BDD7 /* PeopleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2701955E1EF58EBC0080BDD7 /* PeopleRequest.m */; };
+		270195631EF5B9070080BDD7 /* PeopleTapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270195621EF5B9070080BDD7 /* PeopleTapViewController.m */; };
+		270195651EF5B98C0080BDD7 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270195641EF5B98C0080BDD7 /* Main2.storyboard */; };
+		270195681EF5C51E0080BDD7 /* SearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 270195671EF5C51E0080BDD7 /* SearchField.m */; };
 		2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703A7221B9E2E8A001F6440 /* RTLabel.m */; };
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
@@ -760,6 +765,15 @@
 /* Begin PBXFileReference section */
 		00B4A34B9D0E42120E630CBF /* libPods-fitmooTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fitmooTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA2E94B533415EB664C1275 /* libPods-fitmoo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fitmoo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2701955A1EF58D710080BDD7 /* PeoplePageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoplePageService.h; sourceTree = "<group>"; };
+		2701955B1EF58D710080BDD7 /* PeoplePageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoplePageService.m; sourceTree = "<group>"; };
+		2701955D1EF58EBC0080BDD7 /* PeopleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleRequest.h; sourceTree = "<group>"; };
+		2701955E1EF58EBC0080BDD7 /* PeopleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleRequest.m; sourceTree = "<group>"; };
+		270195611EF5B9070080BDD7 /* PeopleTapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTapViewController.h; sourceTree = "<group>"; };
+		270195621EF5B9070080BDD7 /* PeopleTapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTapViewController.m; sourceTree = "<group>"; };
+		270195641EF5B98C0080BDD7 /* Main2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main2.storyboard; sourceTree = "<group>"; };
+		270195661EF5C51E0080BDD7 /* SearchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchField.h; sourceTree = "<group>"; };
+		270195671EF5C51E0080BDD7 /* SearchField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchField.m; sourceTree = "<group>"; };
 		2703A7211B9E2E8A001F6440 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		2703A7221B9E2E8A001F6440 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
@@ -1638,6 +1652,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270195591EF58D240080BDD7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2701955A1EF58D710080BDD7 /* PeoplePageService.h */,
+				2701955B1EF58D710080BDD7 /* PeoplePageService.m */,
+				2701955D1EF58EBC0080BDD7 /* PeopleRequest.h */,
+				2701955E1EF58EBC0080BDD7 /* PeopleRequest.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		27188F5C1AD4646300C34372 = {
 			isa = PBXGroup;
 			children = (
@@ -1667,6 +1692,7 @@
 				27188F751AD4646300C34372 /* Main.storyboard */,
 				27A009AE1B3AE84C0081AD4E /* Main1.storyboard */,
 				274CBC9C1AD6D52700CD6CB7 /* AutoLayout.storyboard */,
+				270195641EF5B98C0080BDD7 /* Main2.storyboard */,
 				27188FC41AD4776700C34372 /* FitmooHelper.h */,
 				27188FC21AD4775200C34372 /* FitmooHelper.m */,
 				27B1B4671B175FE100F5F812 /* NavigationViewController.h */,
@@ -1681,6 +1707,7 @@
 				279E57811B20A5320076C3B5 /* LanchScreen.m */,
 				27F9DC9B1BAB992B00F2A534 /* LeftViewController.h */,
 				27F9DC9C1BAB992B00F2A534 /* LeftViewController.m */,
+				270195591EF58D240080BDD7 /* Networking */,
 				2736B2241AEFD99C0013B4B9 /* posts */,
 				27A3AC0F1B9629DE00D78AAA /* Shop */,
 				27A009B01B3AEF540081AD4E /* SidePages */,
@@ -1899,8 +1926,12 @@
 				27A6E71E1B305EF0000104CB /* NotificationViewController.m */,
 				27AD266F1B18DFF3008D338D /* SpecialPageViewController.h */,
 				27AD26701B18DFF3008D338D /* SpecialPageViewController.m */,
+				270195611EF5B9070080BDD7 /* PeopleTapViewController.h */,
+				270195621EF5B9070080BDD7 /* PeopleTapViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
 				27A101201B3334A7007B7BF3 /* SearchViewController.m */,
+				270195661EF5C51E0080BDD7 /* SearchField.h */,
+				270195671EF5C51E0080BDD7 /* SearchField.m */,
 				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
 				27250CF51AF9007C005FC4C5 /* ShopViewController.m */,
 				27CBC0E41B0FB6A200699E1E /* LocationViewController.h */,
@@ -3418,6 +3449,7 @@
 				27AC92DC1B066E0300BB7A0E /* selectedsquares_brand@2x.png in Resources */,
 				279E57A01B20B4EC0076C3B5 /* startshopping@3x.png in Resources */,
 				27AC92E11B067E9500BB7A0E /* redheart.png in Resources */,
+				270195651EF5B98C0080BDD7 /* Main2.storyboard in Resources */,
 				27B259821B1E42B900276273 /* whitex@2x.png in Resources */,
 				27ADF1D21B14B1D8003A0A83 /* continuegreybar.png in Resources */,
 				273FF5641AF7AA2C00B82DB3 /* logouticon.png in Resources */,
@@ -3602,6 +3634,7 @@
 				27C319A31BA1F12800701D86 /* CheckoutAddressCell.m in Sources */,
 				2732B7331AD8454600610821 /* CreatedBy.m in Sources */,
 				27410DF01AFAB34200CF230C /* CatmullRomSpline.m in Sources */,
+				270195681EF5C51E0080BDD7 /* SearchField.m in Sources */,
 				27C3199E1BA1F05500701D86 /* UITableView+reloadData.m in Sources */,
 				276F44251B0CFB6700342DC9 /* FollowHeaderCell.m in Sources */,
 				27AD26711B18DFF3008D338D /* SpecialPageViewController.m in Sources */,
@@ -3612,6 +3645,7 @@
 				27C319A81BA21CEF00701D86 /* ShopPaymentInfoCell.m in Sources */,
 				27DB8D811B5D9090005380CA /* Workout.m in Sources */,
 				272582771AD593150059F43C /* LocalUser.m in Sources */,
+				270195631EF5B9070080BDD7 /* PeopleTapViewController.m in Sources */,
 				2725827A1AD5A4DE0059F43C /* User.m in Sources */,
 				27940B2B1B9F24D9007F722D /* ShopCartViewController.m in Sources */,
 				27F9DCA01BABA24600F2A534 /* ShopPurchaseViewController.m in Sources */,
@@ -3678,6 +3712,7 @@
 				27988C921B0B7E7D00BDE8EB /* FollowCollectionViewCell.m in Sources */,
 				27F9DCA31BABA25F00F2A534 /* ShopEarningViewController.m in Sources */,
 				279E57821B20A5320076C3B5 /* LanchScreen.m in Sources */,
+				2701955F1EF58EBC0080BDD7 /* PeopleRequest.m in Sources */,
 				2787C90D1B38AD7700B182FF /* Contacts.m in Sources */,
 				2725820E1AD5735F0059F43C /* UIUnderlinedButton.m in Sources */,
 				27CC0F3E1B61064D005CC194 /* WorkTypeViewController.m in Sources */,
@@ -3706,6 +3741,7 @@
 				27DE04EE1BA0868800050ADD /* ShopCheckoutViewController.m in Sources */,
 				27CBC0E61B0FB6A200699E1E /* LocationViewController.m in Sources */,
 				27BAF7731B97445B004E69B4 /* BentonSansExtraCompBook.m in Sources */,
+				2701955C1EF58D710080BDD7 /* PeoplePageService.m in Sources */,
 				271DA8491B5557BF00D4E075 /* CommunityTitileCell.m in Sources */,
 				2731C63A1ADDAAD000788181 /* ActionSheetViewController.m in Sources */,
 				2795A9181B9A31F700A1C7CD /* BentonSansExtraCompRegular.m in Sources */,
