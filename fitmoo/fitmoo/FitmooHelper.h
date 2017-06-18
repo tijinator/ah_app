@@ -15,6 +15,9 @@
 #import "Workout.h"
 #import "State.h"
 #import "Address.h"
+
+#define SCREEN_RATIO_IPHONE [[UIScreen mainScreen] bounds].size.width / 320
+
 @interface FitmooHelper : NSObject{
     
 }

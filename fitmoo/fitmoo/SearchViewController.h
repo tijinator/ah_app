@@ -31,6 +31,7 @@
 #import "SearchPhotoCell.h"
 #import "SearchTapCell.h"
 #import "SearchCell.h"
+#import "FollowTableCell.h"
 @interface SearchViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
 
 

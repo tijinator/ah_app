@@ -755,18 +755,22 @@
     
     
     if (indexPath.row==0 || indexPath.row == 1) {
-        SeachInterestCell *cell =(SeachInterestCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        FollowTableCell *cell =(FollowTableCell *) [self.tableview cellForRowAtIndexPath:indexPath];
         
         if (cell==nil) {
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SeachInterestCell" owner:self options:nil];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowTableCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        cell.searchArrayKeyword=self.searchArrayKeyword;
-        cell.selectedKeywordId=self.selectedKeywordId;
-        cell.searchType=@"discover";
-        [cell addScrollView];
+        if (indexPath.row == 0) {
+            cell.totalArray = self.searchArrayFeature;
+            cell.titleLabel.text = @"FEATURED";
+        }else{
+            cell.totalArray = self.searchArrayActive;
+            cell.titleLabel.text = @"ACTIVE";
+        }
+        [cell.collectionView reloadData];
         
-        contentHight=[NSNumber numberWithDouble:cell.scrollView.frame.size.height+1];
+        contentHight=[NSNumber numberWithDouble:cell.bodyView.frame.size.height* SCREEN_RATIO_IPHONE];
         [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
         
         return cell;

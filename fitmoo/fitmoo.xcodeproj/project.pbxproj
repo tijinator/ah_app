@@ -13,6 +13,8 @@
 		270195631EF5B9070080BDD7 /* PeopleTapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270195621EF5B9070080BDD7 /* PeopleTapViewController.m */; };
 		270195651EF5B98C0080BDD7 /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270195641EF5B98C0080BDD7 /* Main2.storyboard */; };
 		270195681EF5C51E0080BDD7 /* SearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = 270195671EF5C51E0080BDD7 /* SearchField.m */; };
+		270195711EF6A8180080BDD7 /* FollowTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2701956F1EF6A8180080BDD7 /* FollowTableCell.m */; };
+		270195721EF6A8180080BDD7 /* FollowTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 270195701EF6A8180080BDD7 /* FollowTableCell.xib */; };
 		2703A7231B9E2E8A001F6440 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2703A7221B9E2E8A001F6440 /* RTLabel.m */; };
 		2711144C1ADF07220056EB13 /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2711144B1ADF07220056EB13 /* UserManagerTests.m */; };
 		271114511ADF115D0056EB13 /* FitmooHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188FC21AD4775200C34372 /* FitmooHelper.m */; };
@@ -774,6 +776,9 @@
 		270195641EF5B98C0080BDD7 /* Main2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main2.storyboard; sourceTree = "<group>"; };
 		270195661EF5C51E0080BDD7 /* SearchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchField.h; sourceTree = "<group>"; };
 		270195671EF5C51E0080BDD7 /* SearchField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchField.m; sourceTree = "<group>"; };
+		2701956E1EF6A8180080BDD7 /* FollowTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableCell.h; sourceTree = "<group>"; };
+		2701956F1EF6A8180080BDD7 /* FollowTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableCell.m; sourceTree = "<group>"; };
+		270195701EF6A8180080BDD7 /* FollowTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowTableCell.xib; sourceTree = "<group>"; };
 		2703A7211B9E2E8A001F6440 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		2703A7221B9E2E8A001F6440 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		2711144B1ADF07220056EB13 /* UserManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManagerTests.m; sourceTree = "<group>"; };
@@ -2813,6 +2818,9 @@
 			children = (
 				27C3199F1BA1F0AE00701D86 /* shopCells */,
 				27392C1D1BC0485E00C0132D /* otherCells */,
+				2701956E1EF6A8180080BDD7 /* FollowTableCell.h */,
+				2701956F1EF6A8180080BDD7 /* FollowTableCell.m */,
+				270195701EF6A8180080BDD7 /* FollowTableCell.xib */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -3325,6 +3333,7 @@
 				27A9DC4A1BBF51E40050772C /* cart_sidemenu@3x.png in Resources */,
 				279E57BD1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png in Resources */,
 				273FF5521AF7AA2C00B82DB3 /* cameraicon.png in Resources */,
+				270195721EF6A8180080BDD7 /* FollowTableCell.xib in Resources */,
 				2752EA1A1B015CBC003841DC /* whitehearticon.png in Resources */,
 				27ADF1C91B14B1D8003A0A83 /* changeprofilepicture.png in Resources */,
 				27BA5A421B6A50E500B30B62 /* store_grey.png in Resources */,
@@ -3653,6 +3662,7 @@
 				27DBA2581B6687080019C56A /* CalendarCell.m in Sources */,
 				27A665431BA3106A00CF0FAA /* CheckoutAdrPrefillCell.m in Sources */,
 				27940B351B9F7570007F722D /* ShopInfoTotalCell.m in Sources */,
+				270195711EF6A8180080BDD7 /* FollowTableCell.m in Sources */,
 				27ADF1FF1B1519AD003A0A83 /* SignUpViewController.m in Sources */,
 				2732B72D1AD83DC300610821 /* Photos.m in Sources */,
 				27FF37021B8363AC008A3227 /* SearchTapCell.m in Sources */,

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FollowTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="245.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBZ-iR-JDa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="246"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEATURED PEOPLE + BRANDS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uef-FX-4UI" customClass="BentonSansBold">
+                                <rect key="frame" x="15" y="14" width="226" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uef-FX-4UI" secondAttribute="height" multiplier="226:21" id="1dh-61-4Ap"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.60392156860000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WO3-SZ-nl4">
+                                <rect key="frame" x="0.0" y="47.5" width="320" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s6c-bM-Jgl">
+                                    <size key="itemSize" width="101" height="210"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="7Nq-0n-01a"/>
+                                    <outlet property="delegate" destination="-1" id="LUi-hF-aI9"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="uef-FX-4UI" firstAttribute="centerX" secondItem="gBZ-iR-JDa" secondAttribute="centerX" multiplier="0.8" id="3rN-E9-hFo"/>
+                            <constraint firstItem="uef-FX-4UI" firstAttribute="width" secondItem="gBZ-iR-JDa" secondAttribute="height" multiplier="113:123" id="Dyr-ll-gA5"/>
+                            <constraint firstItem="uef-FX-4UI" firstAttribute="centerY" secondItem="gBZ-iR-JDa" secondAttribute="centerY" multiplier="0.2" id="K2z-VI-vao"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gBZ-iR-JDa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7eE-7l-5ap"/>
+                    <constraint firstItem="gBZ-iR-JDa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="c0P-XR-kQM"/>
+                    <constraint firstAttribute="bottom" secondItem="gBZ-iR-JDa" secondAttribute="bottom" id="gyQ-g6-iVI"/>
+                    <constraint firstAttribute="trailing" secondItem="gBZ-iR-JDa" secondAttribute="trailing" id="sRP-pU-IaO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bodyView" destination="gBZ-iR-JDa" id="SR9-xC-Eoz"/>
+                <outlet property="collectionView" destination="WO3-SZ-nl4" id="XbU-6s-48C"/>
+                <outlet property="titleLabel" destination="uef-FX-4UI" id="6ek-gf-loL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
