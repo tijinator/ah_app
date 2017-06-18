@@ -571,7 +571,7 @@
         self.searchArrayLeader = [[NSMutableArray alloc] init];
         self.searchArrayActive = [[NSMutableArray alloc] init];
         self.searchArrayFeature = [[NSMutableArray alloc] init];
-        [self.searchArrayLeader addObjectsFromArray:[results objectAtIndex:2]];
+     //   [self.searchArrayLeader addObjectsFromArray:[results objectAtIndex:2]];
         [self.searchArrayActive addObjectsFromArray:[results objectAtIndex:1]];
         [self.searchArrayFeature addObjectsFromArray:[results objectAtIndex:0]];
         self.tableview.userInteractionEnabled=true;
@@ -641,7 +641,7 @@
     }
     
 
-    int count=2+(int)[_searchArrayLeader count];
+    int count=3+(int)[_searchArrayLeader count];
 
     return count;
     
@@ -776,18 +776,32 @@
         return cell;
     }
     
-
-    int count=2;
-   
     
+    if (indexPath.row==2) {
+        FollowTableCell *cell =(FollowTableCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        
+        if (cell==nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowTableCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+   
+        cell.titleLabel.text = @"POPULAR";
+        cell.collectionView.hidden = true;
+        
+        contentHight=[NSNumber numberWithDouble:45* SCREEN_RATIO_IPHONE];
+        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        
+        return cell;
+    }
+    
+
+    int count=3;
     FollowLeaderBoardCell *cell =(FollowLeaderBoardCell *) [self.tableview cellForRowAtIndexPath:indexPath];
     if (cell==nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowLeaderBoardCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
-   
-
     User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count)];
     cell.tempUser= tempUser;
     
@@ -946,6 +960,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _DiscoverAllLimit=9;
     _DiscoverCount=1;
+    _DiscoverLeaderOffset = -9;
 
 }
 

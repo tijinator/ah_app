@@ -11,7 +11,8 @@
 #import "AsyncImageView.h"
 #import "UserManager.h"
 #import "User.h"
-
+#import "PeoplePageService.h"
+#import "PeopleRequest.h"
 @interface FollowTableCell : UITableViewCell <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet BentonSansBold *titleLabel;
 
@@ -23,4 +24,8 @@
 
 @property (weak, nonatomic) UIButton *tempButton1;
 @property (weak, nonatomic) User *tempUser1;
+@property (assign, nonatomic)  int count;
+@property (assign, nonatomic)  int limit;
+@property (assign, nonatomic)  int offset;
+@property (nonatomic, strong) PeoplePageService *service;
 @end

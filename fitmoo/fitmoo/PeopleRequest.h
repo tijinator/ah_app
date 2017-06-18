@@ -15,8 +15,12 @@
 
 - (NSString *)url;
 - (NSDictionary *)parameters;
-
+- (NSDictionary *)infinityParameters;
+- (NSString *)featureUrl;
+- (NSString *)activeUrl;
+@property (assign, nonatomic)  int offset;
 
 + (PeopleRequest *)requestWithPeople;
++ (PeopleRequest *)requestWithOffsetPeople:(int) off;
 
 @end

@@ -24,4 +24,13 @@ typedef void (^ServiceFailureCallback)(NSError * _Nonnull error);
                                          failure:(ServiceFailureCallback _Nullable )failure;
 
 
+- (void)getFeatureUserRequest:(PeopleRequest *_Nullable)request
+                    success:(TotalListSuccessCallback _Nullable )success
+                    failure:(ServiceFailureCallback _Nullable )failure;
+
+- (void)getActiveUserRequest:(PeopleRequest *_Nullable)request
+                      success:(TotalListSuccessCallback _Nullable )success
+                      failure:(ServiceFailureCallback _Nullable )failure;
+
+
 @end

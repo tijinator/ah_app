@@ -15,6 +15,7 @@
     self.totalArray = [[NSArray alloc] init];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.service = [[PeoplePageService alloc] init];
     UINib *cellNib = [UINib nibWithNibName:@"FollowCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"FollowCollectionViewCell"];
     
@@ -25,7 +26,8 @@
     [self.collectionView setCollectionViewLayout:flowLayout];
     
     _collectionView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_collectionView respectToSuperFrame:nil];
-
+    _titleLabel.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_titleLabel respectToSuperFrame:nil];
+    [self initValuable];
     // Initialization code
 }
 
@@ -151,6 +153,65 @@
     
 }
 
+-(void) initValuable
+{
+    _offset=8;
+    _limit=10;
+    _count=1;
+    
+}
+
+
+- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+
+  if(self.collectionView.contentOffset.x >= (self.collectionView.contentSize.width - self.collectionView.bounds.size.width+20)) {
+ 
+        if (_count==0) {
+            if (self.collectionView.contentOffset.x<0) {
+                _offset =18;
+            }else
+            {
+                _offset +=10;
+                
+            }
+            
+            if ([self.titleLabel.text isEqualToString:@"FEATURED"]) {
+                PeopleRequest *request = [PeopleRequest requestWithOffsetPeople:_offset];
+                
+                [self.service getFeatureUserRequest:request success:^(NSArray * _Nullable results) {
+                    NSMutableArray *tempArray = [self.totalArray mutableCopy];
+                    [tempArray addObjectsFromArray:results];
+                    self.totalArray = [tempArray copy];
+                    [self.collectionView reloadData];
+                } failure:^(NSError * _Nonnull error) {
+                    
+                }];
+
+            }else if ([self.titleLabel.text isEqualToString:@"ACTIVE"]) {
+                PeopleRequest *request = [PeopleRequest requestWithOffsetPeople:_offset];
+                
+                [self.service getActiveUserRequest:request success:^(NSArray * _Nullable results) {
+                    NSMutableArray *tempArray = [self.totalArray mutableCopy];
+                    [tempArray addObjectsFromArray:results];
+                    self.totalArray = [tempArray copy];
+                    [self.collectionView reloadData];
+                } failure:^(NSError * _Nonnull error) {
+                    
+                }];
+                
+            }
+            
+         //   [self getdiscoverItemForPeople];
+            
+        }
+        _count++;
+    }else
+    {
+        _count=0;
+    }
+    
+    
+}
 
 
 

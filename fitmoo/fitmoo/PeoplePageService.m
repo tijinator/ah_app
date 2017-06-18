@@ -118,4 +118,56 @@
 }
 
 
+- (void)getFeatureUserRequest:(PeopleRequest *_Nullable)request
+                    success:(TotalListSuccessCallback _Nullable )success
+                    failure:(ServiceFailureCallback _Nullable )failure{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET: request.featureUrl parameters:request.infinityParameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *dic = (NSDictionary *) responseObject;
+        NSArray *featuredDic= [dic objectForKey:@"featured"];
+        NSArray *featureArray = [self parsePeople:featuredDic];
+    
+        success(featureArray);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        failure(error);
+    }
+     
+     ];
+    
+}
+
+- (void)getActiveUserRequest:(PeopleRequest *_Nullable)request
+                    success:(TotalListSuccessCallback _Nullable )success
+                    failure:(ServiceFailureCallback _Nullable )failure{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET: request.activeUrl parameters:request.infinityParameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *dic = (NSDictionary *) responseObject;
+
+        NSArray *activeDic= [dic objectForKey:@"active"];
+        
+       
+        NSArray *activeArray = [self parsePeople:activeDic];
+        
+       
+        success(activeArray);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        failure(error);
+    }
+     
+     ];
+    
+}
+
+
+
 @end

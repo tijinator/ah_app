@@ -1161,9 +1161,6 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     _offset=0;
     _limit=10;
     _count=1;
-    
-  
-  
 }
 - (void)scrollViewDidScroll: (UIScrollView*)scroll {
     
