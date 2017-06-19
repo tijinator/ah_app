@@ -1,11 +1,10 @@
 //
-//  SearchViewController.h
+//  SearchProductViewController.h
 //  fitmoo
 //
-//  Created by hongjian lin on 4/17/15.
-//  Copyright (c) 2015 com.fitmoo. All rights reserved.
+//  Created by hongjian lin on 6/19/17.
+//  Copyright © 2017 com.fitmoo. All rights reserved.
 //
-
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -32,7 +31,8 @@
 #import "SearchTapCell.h"
 #import "SearchCell.h"
 #import "FollowTableCell.h"
-@interface SearchViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
+
+@interface SearchProductViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
@@ -74,6 +74,8 @@
 @property (strong, nonatomic)  NSString * selectedKeywordId;
 //@property (strong, nonatomic)  UITextField * searchTermField;
 @property (strong, nonatomic)  NSDictionary * responseDic;
+@property (strong, nonatomic)  NSDictionary * responseDic1;
+@property (strong, nonatomic)  NSDictionary * responseDic2;
 @property (strong, nonatomic)  NSDictionary * responseDicLeader;
 @property (strong, nonatomic)  NSDictionary * responseDicWorkouts;
 @property (strong, nonatomic)  NSDictionary * responseDicProducts;
@@ -87,6 +89,9 @@
 @property (strong, nonatomic)  NSMutableArray * searchArrayKeyword;
 @property (strong, nonatomic)  NSMutableArray * searchArrayCommunity;
 
+@property (strong, nonatomic)  NSMutableArray * searchArrayProducts;
+@property (strong, nonatomic)  NSMutableArray * searchArrayWorkouts;
+@property (strong, nonatomic)  NSMutableArray * searchArrayTotalKeyword;
 
 
 @property (strong, nonatomic)  NSMutableArray * searchArrayLeader;
@@ -101,6 +106,8 @@
 @property (strong, nonatomic) IBOutlet UITextField * searchTermField;
 @property (strong, nonatomic) IBOutlet UIButton *addUser;
 - (IBAction)addUserButtonClick:(id)sender;
+
+
 
 
 @end

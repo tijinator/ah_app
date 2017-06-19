@@ -335,9 +335,9 @@
         
     }else  if ([key isEqualToString:@"follow"]) {
           if (![currentPage isEqualToString:key]) {
-        
-              _followPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"FollowViewController"];
-              [[self nav] pushViewController:_followPage animated:YES];
+              UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main2" bundle:nil];
+              _searchProductPage = [mainStoryboard instantiateViewControllerWithIdentifier:@"SearchProductViewController"];
+              [[self nav] pushViewController:_searchProductPage animated:YES];
         
               currentPage=key;
               [_Pagestuck addObject:key];

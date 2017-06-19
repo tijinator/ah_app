@@ -27,6 +27,7 @@
 #import "ShopPurchaseViewController.h"
 #import "ShopEarningViewController.h"
 #import "LiveViewController.h"
+#import "SearchProductViewController.h"
 @interface NavigationViewController : UIViewController
 
 @property (strong, nonatomic) UIViewController *baseView;
@@ -35,7 +36,8 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) HomePageViewController *homePage;
 @property (strong, nonatomic) PeoplePageViewController *peoplePage;
-@property (strong, nonatomic) FollowViewController *followPage;
+//@property (strong, nonatomic) FollowViewController *followPage;
+@property (strong, nonatomic) SearchProductViewController *searchProductPage;
 @property (strong, nonatomic) SettingViewController *settingPage;
 @property (strong, nonatomic)  ShopViewController *shopPage;
 @property (strong, nonatomic)  LocationViewController *locationPage;

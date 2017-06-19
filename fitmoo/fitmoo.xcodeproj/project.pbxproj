@@ -389,6 +389,7 @@
 		279E57BC1B20FBDB0076C3B5 /* leftsidemenubackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57B91B20FBDB0076C3B5 /* leftsidemenubackground.png */; };
 		279E57BD1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57BA1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png */; };
 		279E57BE1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279E57BB1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png */; };
+		279F270E1EF813F40034113F /* SearchProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279F270D1EF813F40034113F /* SearchProductViewController.m */; };
 		27A009AF1B3AE84C0081AD4E /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A009AE1B3AE84C0081AD4E /* Main1.storyboard */; };
 		27A009B41B3AF0C60081AD4E /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A009B31B3AF0C60081AD4E /* ComposeViewController.m */; };
 		27A101211B3334A7007B7BF3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A101201B3334A7007B7BF3 /* SearchViewController.m */; };
@@ -1210,6 +1211,8 @@
 		279E57B91B20FBDB0076C3B5 /* leftsidemenubackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftsidemenubackground.png; sourceTree = "<group>"; };
 		279E57BA1B20FBDB0076C3B5 /* leftsidemenubackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftsidemenubackground@2x.png"; sourceTree = "<group>"; };
 		279E57BB1B20FBDB0076C3B5 /* leftsidemenubackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftsidemenubackground@3x.png"; sourceTree = "<group>"; };
+		279F270C1EF813F40034113F /* SearchProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchProductViewController.h; sourceTree = "<group>"; };
+		279F270D1EF813F40034113F /* SearchProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchProductViewController.m; sourceTree = "<group>"; };
 		27A009AE1B3AE84C0081AD4E /* Main1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
 		27A009B21B3AF0C60081AD4E /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		27A009B31B3AF0C60081AD4E /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
@@ -1935,6 +1938,8 @@
 				270195621EF5B9070080BDD7 /* PeopleTapViewController.m */,
 				27A1011F1B3334A7007B7BF3 /* SearchViewController.h */,
 				27A101201B3334A7007B7BF3 /* SearchViewController.m */,
+				279F270C1EF813F40034113F /* SearchProductViewController.h */,
+				279F270D1EF813F40034113F /* SearchProductViewController.m */,
 				270195661EF5C51E0080BDD7 /* SearchField.h */,
 				270195671EF5C51E0080BDD7 /* SearchField.m */,
 				27250CF41AF9007C005FC4C5 /* ShopViewController.h */,
@@ -3718,6 +3723,7 @@
 				27A3AC131B962D4A00D78AAA /* ShopTableViewCell.m in Sources */,
 				27988CC51B0BCE9A00BDE8EB /* SecondFollowViewController.m in Sources */,
 				2732B7361AD845FC00610821 /* CreatedByCommunity.m in Sources */,
+				279F270E1EF813F40034113F /* SearchProductViewController.m in Sources */,
 				27AD26651B18BACC008D338D /* UITextView+Placeholder.m in Sources */,
 				27988C921B0B7E7D00BDE8EB /* FollowCollectionViewCell.m in Sources */,
 				27F9DCA31BABA25F00F2A534 /* ShopEarningViewController.m in Sources */,
