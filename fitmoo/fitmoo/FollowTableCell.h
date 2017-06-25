@@ -13,12 +13,25 @@
 #import "User.h"
 #import "PeoplePageService.h"
 #import "PeopleRequest.h"
+#import "Product.h"
+
+
+@protocol FollowTableCellDelegate
+
+- (void) getSpecialPage: (NSString *) key;
+
+@end
+
 @interface FollowTableCell : UITableViewCell <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet BentonSansBold *titleLabel;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property(strong, nonatomic) NSArray * totalArray;
+@property(strong, nonatomic) NSString * cellType;
+
+@property(weak, nonatomic) id<FollowTableCellDelegate> celldelegate;
+
 
 @property (weak, nonatomic) IBOutlet UIView *bodyView;
 

@@ -18,6 +18,7 @@
 - (NSDictionary *)infinityParameters;
 - (NSString *)featureUrl;
 - (NSString *)activeUrl;
+- (NSString *)productPeopleUrl;
 @property (assign, nonatomic)  int offset;
 
 + (PeopleRequest *)requestWithPeople;

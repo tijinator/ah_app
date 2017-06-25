@@ -38,6 +38,9 @@
 {
    
     UIFont *font = [UIFont fontWithName:@"BentonSans-Medium" size:self.font.pointSize];
+    if (!self.text ) {
+        self.text = @"";
+    }
     NSMutableAttributedString *attributedString= [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: font}  ];
     
    

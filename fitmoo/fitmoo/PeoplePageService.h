@@ -32,5 +32,9 @@ typedef void (^ServiceFailureCallback)(NSError * _Nonnull error);
                       success:(TotalListSuccessCallback _Nullable )success
                       failure:(ServiceFailureCallback _Nullable )failure;
 
+- (void)getProductUserRequest:(PeopleRequest *_Nullable)request
+                     success:(TotalListSuccessCallback _Nullable )success
+                     failure:(ServiceFailureCallback _Nullable )failure;
+
 
 @end

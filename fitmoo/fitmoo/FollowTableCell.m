@@ -51,6 +51,28 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FollowCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FollowCollectionViewCell" forIndexPath:indexPath];
     
+    if ([self.cellType isEqualToString:@"product"]) {
+        Product *temProd = [self.totalArray objectAtIndex:indexPath.row];
+        cell.nameLabel.text = temProd.title;
+        AsyncImageView *headerImage2 = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0,cell.image.frame.size.width, cell.image.frame.size.height)];
+        headerImage2.userInteractionEnabled = NO;
+        headerImage2.exclusiveTouch = NO;
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:headerImage2];
+        
+        headerImage2.imageURL =[NSURL URLWithString:temProd.photo];
+        [cell.image.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+        cell.userLabel.hidden = true;
+        cell.blackImage.hidden = true;
+        cell.nameLabel.numberOfLines = 4;
+        
+        [cell.image addSubview:headerImage2];
+        [cell.followButton setTitle:@"Buy" forState:UIControlStateNormal];
+        [cell.followButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        cell.followButton.tag= temProd.feed_id.integerValue;
+        [cell.followButton addTarget:self action:@selector(buyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }
+    
     User *tempUser= [self.totalArray objectAtIndex:indexPath.row];
     cell.userLabel.text=[[FitmooHelper sharedInstance] getTextForNumber:tempUser.followers];
     cell.nameLabel.text= tempUser.name;
@@ -87,23 +109,28 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger  selectedImageIndex = indexPath.row;
-    User *tempUser= [self.totalArray objectAtIndex:selectedImageIndex];
-    NSString *key=[NSString stringWithFormat:@"%d", tempUser.user_id.intValue+100];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    if ([self.cellType isEqualToString:@"product"]) {
+        Product *temprod = [self.totalArray objectAtIndex:indexPath.row];
+        [self.celldelegate getSpecialPage:temprod.feed_id];
+    }else{
+        NSInteger  selectedImageIndex = indexPath.row;
+        User *tempUser= [self.totalArray objectAtIndex:selectedImageIndex];
+        NSString *key=[NSString stringWithFormat:@"%d", tempUser.user_id.intValue+100];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
+    }
+    
     
     
 }
 
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//    return CGSizeMake(100.f, 205.f);
-//}
-
+- (IBAction)buyButtonClick:(id)sender {
+    UIButton *tempButton = (UIButton *)sender;
+    NSInteger index=(NSInteger) tempButton.tag;
+    NSString * key= [NSString stringWithFormat:@"%ld",(long)index];
+    [self.celldelegate getSpecialPage:key];
+    
+}
 
 
 - (IBAction)followButtonClick:(id)sender {
@@ -175,7 +202,7 @@
                 
             }
             
-            if ([self.titleLabel.text isEqualToString:@"FEATURED"]) {
+            if ([self.titleLabel.text isEqualToString:@"FEATURED"] && ![self.cellType isEqualToString:@"product"]) {
                 PeopleRequest *request = [PeopleRequest requestWithOffsetPeople:_offset];
                 
                 [self.service getFeatureUserRequest:request success:^(NSArray * _Nullable results) {

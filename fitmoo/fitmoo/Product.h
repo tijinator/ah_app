@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSString *gender;
-
+@property (nonatomic, strong) NSString *feed_id;
 
 
 @property (nonatomic, strong) NSString *original_price;

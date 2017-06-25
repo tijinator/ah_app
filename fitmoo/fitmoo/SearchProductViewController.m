@@ -390,31 +390,37 @@
 }
 
 
-- (void) parseLeader:(NSDictionary *) bulk
+
+- (void) parseProduct:(NSDictionary *) bulk
 {
-    for (NSDictionary *leader in bulk) {
+    for (NSDictionary *pdDic in bulk) {
         @try {
             
             
-            User *temUser= [[User alloc] init];
-            temUser.name= [leader objectForKey:@"full_name"];
+            Product *pd= [[Product alloc] init];
+            NSNumber *pd_id= [pdDic objectForKey:@"id"];
+            pd.product_id= [pd_id stringValue];
+            pd.title=[pdDic objectForKey:@"text"];
+            if ([pd.title isEqual:[NSNull null]]) {
+                pd.title=@"";
+            }
             
-            NSNumber *days_a_week= [leader objectForKey:@"days_a_week"];
-            temUser.days_a_week= [days_a_week stringValue];
+            NSDictionary *photo= [pdDic objectForKey:@"photo"];
+            if (![photo isEqual:[NSNull null]]) {
+                NSDictionary *style= [photo objectForKey:@"styles"];
+                NSDictionary *slider=[style objectForKey:@"small"];
+                pd.photo= [slider objectForKey:@"photo_url"];
+                
+            }
             
-            NSNumber *workout_count= [leader objectForKey:@"workout_count"];
-            temUser.workout_count= [workout_count stringValue];
-            NSNumber *user_id= [leader objectForKey:@"id"];
-            temUser.user_id=[user_id stringValue];
-            
-            NSNumber *nutrition_count= [leader objectForKey:@"nutrition_count"];
-            temUser.nutrition_count= [nutrition_count stringValue];
-            
-            NSDictionary *profile= [leader objectForKey:@"profile"];
-            
-            NSDictionary *avatars= [profile objectForKey:@"avatars"];
-            temUser.profile_avatar_thumb= [avatars objectForKey:@"thumb"];
-            [self.searchArrayLeader addObject:temUser];
+            NSDictionary *video= [pdDic objectForKey:@"video"];
+            if (![video isEqual:[NSNull null]]) {
+                
+                NSDictionary *thumbnail= [video objectForKey:@"thumbnail"];
+                pd.videos=[thumbnail objectForKey:@"url"];
+                
+            }
+            [_searchArrayProducts addObject:pd];
         }
         @catch (NSException *exception) {
             
@@ -425,18 +431,13 @@
         
     }
     
+   
     [self.tableview reloadData];
+    
     
 }
 
-
-
-
-
-
-
-
-- (void) getSearchLeaders
+- (void) getSearchProducts
 {
     
     User *localUser= [[FitmooHelper sharedInstance] getUserLocally];
@@ -446,16 +447,17 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSString *lim= [NSString stringWithFormat:@"%i", _DiscoverAllLimit];
-    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverLeaderOffset];
+    NSString *ofs= [NSString stringWithFormat:@"%i", _DiscoverProductOffset];
     NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:localUser.secret_id, @"secret_id", localUser.auth_token, @"auth_token",@"true", @"mobile",ofs, @"offset",lim, @"limit",nil];
-    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_leaders"];
+    NSString *url= [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/discover/app_search_only_products"];
     [manager GET: url parameters:jsonDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         
-        _responseDicLeader= responseObject;
-        if ([_responseDicLeader count]>0) {
-            [self parseLeader:_responseDicLeader];
-            LeaderHere=true;
+        _responseDicProducts= responseObject;
+        if ([_responseDicProducts count]>0) {
+            [self parseProduct:_responseDicProducts];
+            ProductHere=true;
         }
+        
         self.tableview.userInteractionEnabled=true;
         
     } // success callback block
@@ -467,6 +469,8 @@
      ];
     
 }
+
+
 
 - (void) getSpecialPage: (NSString *) key
 {
@@ -558,16 +562,13 @@
     
     PeopleRequest *request = [PeopleRequest requestWithPeople];
     
-    [self.service getTotalUserRequest:request success:^(NSArray * results) {
-        self.searchArrayLeader = [[NSMutableArray alloc] init];
-        self.searchArrayActive = [[NSMutableArray alloc] init];
+    [self.service getProductUserRequest:request success:^(NSArray * results) {
         self.searchArrayFeature = [[NSMutableArray alloc] init];
-        //   [self.searchArrayLeader addObjectsFromArray:[results objectAtIndex:2]];
-        [self.searchArrayActive addObjectsFromArray:[results objectAtIndex:1]];
-        [self.searchArrayFeature addObjectsFromArray:[results objectAtIndex:0]];
+        self.searchArrayProducts = [[NSMutableArray alloc] init];
+        [self.searchArrayFeature addObjectsFromArray:results];
         self.tableview.userInteractionEnabled=true;
         [indicatorView removeFromSuperview];
-        [self.tableview reloadData];
+        [self getSearchProducts];
         
     } failure:^(NSError * _Nonnull error) {
         self.tableview.userInteractionEnabled=true;
@@ -632,7 +633,13 @@
     }
     
     
-    int count=3+(int)[_searchArrayLeader count];
+   
+    int count=(int)[_searchArrayProducts count]/3;
+    if ([_searchArrayProducts count]%3!=0) {
+        count=count+1;
+    }
+    count=count+2;
+
     
     return count;
     
@@ -745,20 +752,18 @@
     }
     
     
-    if (indexPath.row==0 || indexPath.row == 1) {
+    if (indexPath.row==0 ) {
         FollowTableCell *cell =(FollowTableCell *) [self.tableview cellForRowAtIndexPath:indexPath];
         
         if (cell==nil) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowTableCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        if (indexPath.row == 0) {
-            cell.totalArray = self.searchArrayFeature;
-            cell.titleLabel.text = @"FEATURED";
-        }else{
-            cell.totalArray = self.searchArrayActive;
-            cell.titleLabel.text = @"ACTIVE";
-        }
+        cell.celldelegate = self;
+        cell.totalArray = self.searchArrayFeature;
+        cell.titleLabel.text = @"FEATURED";
+        cell.cellType = @"product";
+      
         [cell.collectionView reloadData];
         
         contentHight=[NSNumber numberWithDouble:cell.bodyView.frame.size.height* SCREEN_RATIO_IPHONE];
@@ -768,7 +773,7 @@
     }
     
     
-    if (indexPath.row==2) {
+    if (indexPath.row==1) {
         FollowTableCell *cell =(FollowTableCell *) [self.tableview cellForRowAtIndexPath:indexPath];
         
         if (cell==nil) {
@@ -776,7 +781,7 @@
             cell = [nib objectAtIndex:0];
         }
         
-        cell.titleLabel.text = @"POPULAR";
+        cell.titleLabel.text = @"TRENDING PRODUCTS";
         cell.collectionView.hidden = true;
         
         contentHight=[NSNumber numberWithDouble:45* SCREEN_RATIO_IPHONE];
@@ -786,34 +791,67 @@
     }
     
     
-    int count=3;
-    FollowLeaderBoardCell *cell =(FollowLeaderBoardCell *) [self.tableview cellForRowAtIndexPath:indexPath];
-    if (cell==nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FollowLeaderBoardCell" owner:self options:nil];
+    
+        SearchPhotoCell *cell =(SearchPhotoCell *) [self.tableview cellForRowAtIndexPath:indexPath];
+        
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SearchPhotoCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-    }
+        cell.searchType=@"product";
+        int current=(int) (indexPath.row-1)*3;
+        if (current<[_searchArrayProducts count]) {
+            Product *pd1=[_searchArrayProducts objectAtIndex:current];
+            cell.pd1= pd1;
+            cell.view1Button.tag=pd1.product_id.integerValue;
+            [cell.view1Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView1Item];
+        }else
+        {
+            cell.view1.hidden=true;
+        }
+        
+        if (current+1<[_searchArrayProducts count]) {
+            Product *pd2=[_searchArrayProducts objectAtIndex:current+1];
+            cell.pd2= pd2;
+            cell.view2Button.tag=pd2.product_id.integerValue;
+            [cell.view2Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView2Item];
+        }else
+        {
+            cell.view2.hidden=true;
+        }
+        
+        if (current+2<[_searchArrayProducts count]) {
+            Product *pd3=[_searchArrayProducts objectAtIndex:current+2];
+            cell.pd3= pd3;
+            cell.view3Button.tag=pd3.product_id.integerValue;
+            [cell.view3Button addTarget:self action:@selector(productButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [cell setView3Item];
+        }else
+        {
+            cell.view3.hidden=true;
+        }
+        
+        contentHight=[NSNumber numberWithDouble:105*[[FitmooHelper sharedInstance] frameRadio]+1] ;
+        int count=(int)[_searchArrayProducts count]/3;
+        if ([_searchArrayProducts count]%3!=0) {
+            count=count+1;
+        }
+        if(indexPath.row==count)
+        {
+            contentHight=[NSNumber numberWithInteger:contentHight.intValue+60];
+        }
+        if (indexPath.row>=[_heighArray count]) {
+            [_heighArray addObject:contentHight];
+        }else
+        {
+            [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
+        }
+        
+        
+        return cell;
+        
     
-    User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count)];
-    cell.tempUser= tempUser;
-    
-    [cell buildCell];
-    cell.CountLabel.text=[NSString stringWithFormat:@"%ld",indexPath.row-count+1];
-    
-    contentHight=[NSNumber numberWithDouble:75*[[FitmooHelper sharedInstance] frameRadio]];
-    
-    if (indexPath.row+1==count+(int)[_searchArrayLeader count]) {
-        contentHight=[NSNumber numberWithDouble:135*[[FitmooHelper sharedInstance] frameRadio]];
-    }
-    
-    if (indexPath.row>=[_heighArray count]) {
-        [_heighArray addObject:contentHight];
-    }else
-    {
-        [_heighArray replaceObjectAtIndex:indexPath.row withObject:contentHight];
-    }
-    
-    
-    return cell;
     
 }
 
@@ -951,7 +989,7 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _DiscoverAllLimit=9;
     _DiscoverCount=1;
-    _DiscoverLeaderOffset = -9;
+    _DiscoverProductOffset = 0;
     
 }
 
@@ -1025,8 +1063,8 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
             
             if (_count==0) {
                 
-                _DiscoverLeaderOffset+=9;
-                [self getSearchLeaders];
+                _DiscoverProductOffset+=9;
+                [self getSearchProducts];
                 
             }
             _count++;
@@ -1121,6 +1159,14 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
         _searchArrayPeople1= [_searchArrayPeople2 mutableCopy];
         [self.tableview reloadData];
     }
+}
+
+
+- (IBAction)productButtonClick:(id)sender {
+    UIButton *tempButton = (UIButton *)sender;
+    NSInteger index=(NSInteger) tempButton.tag;
+    NSString * key= [NSString stringWithFormat:@"%ld",(long)index];
+    [self getSpecialPage:key];
 }
 
 

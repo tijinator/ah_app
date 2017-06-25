@@ -32,7 +32,7 @@
 #import "SearchCell.h"
 #import "FollowTableCell.h"
 
-@interface SearchProductViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate>
+@interface SearchProductViewController : BaseViewController <UITextFieldDelegate,UIScrollViewDelegate,FollowTableCellDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

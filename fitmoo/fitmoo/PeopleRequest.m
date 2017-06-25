@@ -57,6 +57,12 @@
     return [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/users/discover?keyword=&gender=&lat=&lng=&min=0&max=102tab=active"];
 }
 
+- (NSString *)productPeopleUrl
+{
+    return [NSString stringWithFormat:@"%@%@",[[UserManager sharedUserManager] clientUrl],@"/api/products/home_products.json"];
+}
+
+
 
 - (NSString *)url
 {

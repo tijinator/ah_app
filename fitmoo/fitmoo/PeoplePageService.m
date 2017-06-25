@@ -88,6 +88,43 @@
 }
 
 
+- (NSArray *)parseProduct:(NSArray *) results {
+    NSMutableArray * searchArrayProducts = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *pdDic in results) {
+        @try {
+            
+            
+            Product *pd= [[Product alloc] init];
+            NSNumber *pd_id= [pdDic objectForKey:@"id"];
+            pd.product_id= [pd_id stringValue];
+            pd.title=[pdDic objectForKey:@"title"];
+            if ([pd.title isEqual:[NSNull null]]) {
+                pd.title=@"";
+            }
+            
+            pd.photo= [pdDic objectForKey:@"photo_url"];
+            NSNumber *feed_id= [pdDic objectForKey:@"feed_id"];
+            pd.feed_id = [feed_id stringValue];
+            
+            
+            [searchArrayProducts addObject:pd];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
+        
+    }
+    return searchArrayProducts;
+ 
+    
+    
+}
+
+
 - (void)getTotalUserRequest:(PeopleRequest *_Nullable)request
                     success:(TotalListSuccessCallback _Nullable )success
                     failure:(ServiceFailureCallback _Nullable )failure{
@@ -166,6 +203,27 @@
      
      ];
     
+}
+
+
+- (void)getProductUserRequest:(PeopleRequest *_Nullable)request
+                      success:(TotalListSuccessCallback _Nullable )success
+                      failure:(ServiceFailureCallback _Nullable )failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET: request.productPeopleUrl parameters:request.parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSArray *dicArray = (NSArray *) responseObject;
+        NSArray *productArray = [self parseProduct:dicArray];
+        success(productArray);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSLog(@"Error: %@", error);
+        failure(error);
+    }
+     
+     ];
+
 }
 
 
