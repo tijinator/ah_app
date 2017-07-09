@@ -310,6 +310,12 @@
 		27940B311B9F36D1007F722D /* ShopCartDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 27940B301B9F36D1007F722D /* ShopCartDetail.m */; };
 		27940B351B9F7570007F722D /* ShopInfoTotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27940B331B9F7570007F722D /* ShopInfoTotalCell.m */; };
 		27940B361B9F7570007F722D /* ShopInfoTotalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27940B341B9F7570007F722D /* ShopInfoTotalCell.xib */; };
+		27958C191F12B40800D476A0 /* productBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C161F12B40800D476A0 /* productBuy.png */; };
+		27958C1A1F12B40800D476A0 /* productBuy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C171F12B40800D476A0 /* productBuy@2x.png */; };
+		27958C1B1F12B40800D476A0 /* productBuy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C181F12B40800D476A0 /* productBuy@3x.png */; };
+		27958C1F1F12B69100D476A0 /* productIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C1C1F12B69100D476A0 /* productIcon.png */; };
+		27958C201F12B69100D476A0 /* productIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C1D1F12B69100D476A0 /* productIcon@2x.png */; };
+		27958C211F12B69100D476A0 /* productIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27958C1E1F12B69100D476A0 /* productIcon@3x.png */; };
 		2795A9141B9A0B5100A1C7CD /* ShopInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */; };
 		2795A9151B9A0B5100A1C7CD /* ShopInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */; };
 		2795A9181B9A31F700A1C7CD /* BentonSansExtraCompRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 2795A9171B9A31F700A1C7CD /* BentonSansExtraCompRegular.m */; };
@@ -1119,6 +1125,12 @@
 		27940B321B9F7570007F722D /* ShopInfoTotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoTotalCell.h; sourceTree = "<group>"; };
 		27940B331B9F7570007F722D /* ShopInfoTotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoTotalCell.m; sourceTree = "<group>"; };
 		27940B341B9F7570007F722D /* ShopInfoTotalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopInfoTotalCell.xib; sourceTree = "<group>"; };
+		27958C161F12B40800D476A0 /* productBuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productBuy.png; sourceTree = "<group>"; };
+		27958C171F12B40800D476A0 /* productBuy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productBuy@2x.png"; sourceTree = "<group>"; };
+		27958C181F12B40800D476A0 /* productBuy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productBuy@3x.png"; sourceTree = "<group>"; };
+		27958C1C1F12B69100D476A0 /* productIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productIcon.png; sourceTree = "<group>"; };
+		27958C1D1F12B69100D476A0 /* productIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productIcon@2x.png"; sourceTree = "<group>"; };
+		27958C1E1F12B69100D476A0 /* productIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productIcon@3x.png"; sourceTree = "<group>"; };
 		2795A9111B9A0B5100A1C7CD /* ShopInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoCell.h; sourceTree = "<group>"; };
 		2795A9121B9A0B5100A1C7CD /* ShopInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoCell.m; sourceTree = "<group>"; };
 		2795A9131B9A0B5100A1C7CD /* ShopInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopInfoCell.xib; sourceTree = "<group>"; };
@@ -2130,6 +2142,9 @@
 		2752E91C1B014506003841DC /* with2xs */ = {
 			isa = PBXGroup;
 			children = (
+				27958C161F12B40800D476A0 /* productBuy.png */,
+				27958C171F12B40800D476A0 /* productBuy@2x.png */,
+				27958C181F12B40800D476A0 /* productBuy@3x.png */,
 				27FDD5131BD9B660001E9C47 /* splashscreen.png */,
 				27FDD5141BD9B660001E9C47 /* splashscreen@3x.png */,
 				27FDD5171BD9B66C001E9C47 /* splashscreen@2x.png */,
@@ -2393,6 +2408,9 @@
 				27B2597E1B1E42B900276273 /* whitex.png */,
 				27B2597F1B1E42B900276273 /* whitex@2x.png */,
 				27B259801B1E42B900276273 /* whitex@3x.png */,
+				27958C1C1F12B69100D476A0 /* productIcon.png */,
+				27958C1D1F12B69100D476A0 /* productIcon@2x.png */,
+				27958C1E1F12B69100D476A0 /* productIcon@3x.png */,
 				2752E9DD1B015CBC003841DC /* x.png */,
 				2752E9DE1B015CBC003841DC /* x@2x.png */,
 				2752E9DF1B015CBC003841DC /* x@3x.png */,
@@ -3001,6 +3019,7 @@
 				276094241AD708AD00A769CE /* SemplicitaPro-Regular.otf in Resources */,
 				273D6DF41B505B1300A56CCD /* leavebtn@2x.png in Resources */,
 				273FF5571AF7AA2C00B82DB3 /* endorsetextbackground.png in Resources */,
+				27958C1F1F12B69100D476A0 /* productIcon.png in Resources */,
 				27988CBB1B0BB12500BDE8EB /* followsection_usericon.png in Resources */,
 				2760945E1AD717E700A769CE /* fontello.ttf in Resources */,
 				27CBC0DA1B0F84DB00699E1E /* datebadge@3x.png in Resources */,
@@ -3016,6 +3035,7 @@
 				27988CB81B0BB12500BDE8EB /* followsection_smallfollowingbtn.png in Resources */,
 				2752EA241B015CBC003841DC /* video_icon@2x.png in Resources */,
 				27988C871B0B7C7400BDE8EB /* mainmenu_houseicon@2x.png in Resources */,
+				27958C201F12B69100D476A0 /* productIcon@2x.png in Resources */,
 				27A101521B3342C3007B7BF3 /* greysearch@3x.png in Resources */,
 				27988CAD1B0BB12500BDE8EB /* followsection_followingbtn@2x.png in Resources */,
 				27FDD5201BD9B68F001E9C47 /* default@3x~iphone.png in Resources */,
@@ -3038,6 +3058,7 @@
 				276FE39F1B866C0A009496DE /* instagramlogo_workout.png in Resources */,
 				27ADF1F31B14B1D8003A0A83 /* signupbtn.png in Resources */,
 				273FF5501AF7AA2C00B82DB3 /* bluehighlightsquare.png in Resources */,
+				27958C1B1F12B40800D476A0 /* productBuy@3x.png in Resources */,
 				2738D9221B023EE700F5087E /* following_btn@3x.png in Resources */,
 				27988CC21B0BC69A00BDE8EB /* FollowCell.xib in Resources */,
 				27D1AE091BD7FD350056F66E /* attend_btn@2x.png in Resources */,
@@ -3140,6 +3161,7 @@
 				27988C8D1B0B7C7400BDE8EB /* mainmenu_storeicon@2x.png in Resources */,
 				27A3AC331B96446600D78AAA /* blueheart140.png in Resources */,
 				27E79AF21BBE12F10089F991 /* minus@3x.png in Resources */,
+				27958C211F12B69100D476A0 /* productIcon@3x.png in Resources */,
 				27A3AC351B96446600D78AAA /* blueheart140@3x.png in Resources */,
 				2752E9EB1B015CBC003841DC /* deselectedsquares@2x.png in Resources */,
 				27ADF1DC1B14B1D8003A0A83 /* greyx@2x.png in Resources */,
@@ -3232,6 +3254,7 @@
 				27ACD0FA1B0A708C00322ED5 /* nutritiontag@3x.png in Resources */,
 				27DDF43C1B7B7C140011BB46 /* workoutdefault@3x.png in Resources */,
 				279E57BC1B20FBDB0076C3B5 /* leftsidemenubackground.png in Resources */,
+				27958C1A1F12B40800D476A0 /* productBuy@2x.png in Resources */,
 				27DDF43B1B7B7C140011BB46 /* workoutdefault@2x.png in Resources */,
 				2738D9211B023EE700F5087E /* following_btn@2x.png in Resources */,
 				27A101851B334554007B7BF3 /* newposts@3x.png in Resources */,
@@ -3347,6 +3370,7 @@
 				27BA5A461B6A50E500B30B62 /* workout_black@2x.png in Resources */,
 				276094431AD708C100A769CE /* BentonSans-Black.otf in Resources */,
 				2738D93A1B02850300F5087E /* PhotoCell.xib in Resources */,
+				27958C191F12B40800D476A0 /* productBuy.png in Resources */,
 				27E79AF31BBE12F10089F991 /* plus.png in Resources */,
 				27ADF1E51B14B1D8003A0A83 /* loginbtn@2x.png in Resources */,
 				27B259831B1E42B900276273 /* whitex@3x.png in Resources */,
