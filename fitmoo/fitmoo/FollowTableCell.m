@@ -68,6 +68,7 @@
         [cell.image addSubview:headerImage2];
         //[cell.followButton setTitle:@"Buy" forState:UIControlStateNormal];
         [cell.followButton setBackgroundImage:[UIImage imageNamed:@"productBuy.png"] forState:UIControlStateNormal];
+        cell.followButton.transform = CGAffineTransformIdentity;
         cell.followButton.transform = CGAffineTransformTranslate(cell.followButton.transform, 0, -10);
         cell.followButton.tag= temProd.feed_id.integerValue;
         [cell.followButton addTarget:self action:@selector(buyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
