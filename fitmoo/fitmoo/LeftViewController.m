@@ -16,7 +16,7 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"follow.png",@"notification.png",@"cart_sidemenu.png",@"productIcon.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"follow.png",@"notification.png",@"cart_sidemenu.png",@"shop.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
     _textArray= [[NSArray alloc] initWithObjects: @"FEED",@"PEOPLE",@"Notifications",@"Cart",@"PRODUCTS",@"My Purchases",@"My Earnings",@"Live", nil];
     
     double offset=30;
