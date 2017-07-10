@@ -16,8 +16,8 @@
     [self initFrames];
     _notifucationStatus=@"0";
     _prenotifucationStatus=@"1";
-    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"follow.png",@"notification.png",@"cart_sidemenu.png",@"shop.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
-    _textArray= [[NSArray alloc] initWithObjects: @"FEED",@"PEOPLE",@"Notifications",@"Cart",@"PRODUCTS",@"My Purchases",@"My Earnings",@"Live", nil];
+    _imageArray= [[NSArray alloc] initWithObjects: @"home.png",@"follow.png",@"shop.png",@"notification.png",@"cart_sidemenu.png",@"purchases.png",@"earnings.png",@"fitmoolive.png", nil];
+    _textArray= [[NSArray alloc] initWithObjects: @"FEED",@"PEOPLE",@"PRODUCTS",@"Notifications",@"Cart",@"My Purchases",@"My Earnings",@"Live", nil];
     
     double offset=30;
     
@@ -198,7 +198,7 @@
     cell.textLabel.text = text.uppercaseString;
     cell.imageView.image = [UIImage imageNamed:_imageArray[indexPath.row]];
     
-    if (indexPath.row==2) {
+    if (indexPath.row==3) {
         if ([_notifucationStatus isEqualToString:@"1"]) {
           cell.imageView.image = [UIImage imageNamed:@"rednotification.png"];
         }else
@@ -208,7 +208,7 @@
     }
     
     
-    if (indexPath.row==3) {
+    if (indexPath.row==4) {
         if (_cart_number.intValue>0) {
             cell.imageView.image = [UIImage imageNamed:@"cart_sidemenu_red.png"];
         }else
@@ -244,11 +244,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else if (indexPath.row==1) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"search"];
     }else if (indexPath.row==2) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
-    }else if (indexPath.row==3) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"cart"];
-    }else if (indexPath.row==4) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"follow"];
+
+    }else if (indexPath.row==3) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"notifications"];
+
+    }else if (indexPath.row==4) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"cart"];
     }else if (indexPath.row==5) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:@"purchases"];
     }else if (indexPath.row==7) {
