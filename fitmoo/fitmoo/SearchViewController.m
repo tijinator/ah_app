@@ -838,7 +838,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         if(indexPath.row>count)
         {
             
-            User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count-1)];
+            User *tempUser= [_searchArrayLeader objectAtIndex:(indexPath.row-count-3)];
             NSString* key=[NSString stringWithFormat:@"%ld", (long)tempUser.user_id.intValue+100];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSideMenuAction" object:key];
             
