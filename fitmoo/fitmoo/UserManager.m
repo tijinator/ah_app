@@ -1146,13 +1146,6 @@
         _feedsUrl=@"https://actionhouse.com/api/feeds/";
 
     
-//    _clientUrl= @"https://fitmoo.com";
-//    _loginUrl= @"https://fitmoo.com/api/tokens";
-//    _homeFeedUrl= @"https://fitmoo.com/api/users/";
-//    _logoutUrl=@"https://fitmoo.com/api/tokens/delete_token?";
-//    _postUrl=@"https://fitmoo.com/api/users/feeds";
-//    _feedsUrl=@"https://fitmoo.com/api/feeds/";
-    
         _amazonUploadUrl= @"https://cdn.fitmoo.com/photos/";
         _s3_accountId=@"271404364214";
         _s3_identityPoolId=@"us-east-1:6e327cce-01bb-44a6-99b1-1cb03b4ab870";
