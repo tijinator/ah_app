@@ -7,7 +7,7 @@
 //
 
 #import "FitmooHelper.h"
-
+#import "UserManager.h"
 @implementation FitmooHelper
 
 + (FitmooHelper*)sharedInstance
@@ -608,7 +608,8 @@
         homeFeed.created_by_community.name= [createdByCommunity objectForKey:@"name"];
         homeFeed.created_by_community.cover_photo_url= [createdByCommunity objectForKey:@"cover_photo_url"];
         if ([homeFeed.created_by_community.cover_photo_url isEqual:[NSNull null ]]||homeFeed.created_by_community.cover_photo_url==nil) {
-            homeFeed.created_by_community.cover_photo_url= @"https://actionhouse.com/assets/group/cover-default.png";
+            homeFeed.created_by_community.cover_photo_url= [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/assets/group/cover-default.png"];
+            
         }
     }
     
@@ -628,7 +629,8 @@
             homeFeed.feed_action.created_by_community.cover_photo_url= [coverPhoto objectForKey:@"url"];
             
             if ([homeFeed.feed_action.created_by_community.cover_photo_url isEqual:[NSNull null ]]||homeFeed.feed_action.created_by_community.cover_photo_url==nil) {
-                homeFeed.feed_action.created_by_community.cover_photo_url= @"https://actionhouse.com/assets/group/cover-default.png";
+                homeFeed.feed_action.created_by_community.cover_photo_url= [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/assets/group/cover-default.png"];
+                
             }
             
         }
@@ -873,11 +875,12 @@
                     homeFeed.event.theme= [medium  objectForKey:@"photo_url"];
                 
                 if ([homeFeed.event.theme isEqual:[NSNull null]]) {
-                     homeFeed.event.theme=@"https://actionhouse.com/assets/cover/theme-event-feed.png";
-                   
+                     homeFeed.event.theme= [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/assets/cover/theme-event-feed.png"];
+                    
                 }else if(homeFeed.event.theme==nil||[homeFeed.event.theme isEqualToString:@""])
                 {
-                    homeFeed.event.theme=@"https://actionhouse.com/assets/cover/theme-event-feed.png";
+                    homeFeed.event.theme= [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/assets/cover/theme-event-feed.png"];
+                    
                 }
               
         

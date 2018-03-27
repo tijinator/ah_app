@@ -408,7 +408,7 @@ static NSString *letters = @"#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     }
     User *user= [[UserManager sharedUserManager] localUser];
-    NSString * message=[NSString stringWithFormat:@"%@%@",@"Hi,\n \nI would like to invite you to join me on ActionHouse.com. A new platform for everything fitness, health & wellness.\n \nPlease click this link to follow me: ", user.vanity_url ];
+    NSString * message=[NSString stringWithFormat:@"%@%@",@"Hi,\n \nI would like to invite you to join me on THC.com. A new platform for everything fitness, health & wellness.\n \nPlease click this link to follow me: ", user.vanity_url ];
     
     [self sendSMS:message recipientList:phoneArray];
     

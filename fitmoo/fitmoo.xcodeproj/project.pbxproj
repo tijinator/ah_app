@@ -5580,6 +5580,11 @@
 					"$(PROJECT_DIR)/fitmoo",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"THC=1",
+				);
 				INFOPLIST_FILE = "fitmoo copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -5602,6 +5607,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"THC=1",
 				);
 				INFOPLIST_FILE = "fitmoo copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -5700,6 +5710,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitmoo",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"THC=1",
 				);
 				INFOPLIST_FILE = "fitmoo copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

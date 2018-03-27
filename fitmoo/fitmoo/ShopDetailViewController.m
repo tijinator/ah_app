@@ -14,6 +14,7 @@
 #import "CommentViewController.h"
 #import "ActionSheetViewController.h"
 #import <SwipeBack/SwipeBack.h>
+#import "UserManager.h"
 @interface ShopDetailViewController ()
 {
     NSNumber * contentHight;
@@ -829,7 +830,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         ActionSheet.action= @"endorse";
         NSString *link;
         if (feed.feed_action.feed_action_id!=nil) {
-            link= [NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://actionhouse.com/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
+            link= [NSString stringWithFormat:@"%@%@%@%@%@%@%@",UserManager.baseUrl,@"/profile/",feed.feed_action.user_id,@"/feed/",feed.feed_id,@"/fa/",feed.feed_action.feed_action_id];
         }
         ActionSheet.shoplink= link;
     }else if ([feed.action_sheet isEqualToString:@"report"]) {

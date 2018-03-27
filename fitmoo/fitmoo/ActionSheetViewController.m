@@ -406,17 +406,18 @@
 {
     
     if ([_action isEqualToString:@"invite"]||[_action isEqualToString:@"menu"]) {
-        return [NSString stringWithFormat:@"%@%@", @"https://urlrouter.actionhouse.com/profile/", _profileId];
+        return [NSString stringWithFormat:@"%@%@%@",UserManager.baseUrl,@"/profile/", _profileId];
     }
     
     NSString *url;
     
     NSString *rootUrl;
     if (_communityId!=nil) {
-        rootUrl=@"https://urlrouter.actionhouse.com/community/";
+        rootUrl= [NSString stringWithFormat:@"%@%@", UserManager.routerBaseUrl, @"/community/"];
+
     }else
     {
-        rootUrl=@"https://urlrouter.actionhouse.com/profile/";
+        rootUrl= [NSString stringWithFormat:@"%@%@", UserManager.routerBaseUrl, @"/profile/"];
     }
     
     if (_feedActionId!=nil) {
@@ -464,7 +465,7 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
     }else
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://actionhouse.com/store/landing"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/store/landing"]]];
     }
     
     

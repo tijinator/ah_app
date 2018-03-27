@@ -546,7 +546,7 @@
 {
 
     if ([url rangeOfString:@"vimeo"].location != NSNotFound) {
-        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:@"http://www.actionhouse.com"  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+        [YTVimeoExtractor fetchVideoURLFromURL:url quality:YTVimeoVideoQualityMedium referer:UserManager.baseUrl  completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
             if (error) {
                 NSLog(@"Error : %@", [error localizedDescription]);
                 UIAlertView *alert = [[ UIAlertView alloc ] initWithTitle : @"Oops"

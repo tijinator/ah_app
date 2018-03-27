@@ -56,7 +56,7 @@
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_shoplink]];
     }else
     {
-     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://actionhouse.com/store/landing"]];
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:  [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/store/landing"]]];
     }
 }
 - (IBAction)backButtonClick:(id)sender {

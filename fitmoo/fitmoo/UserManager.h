@@ -25,6 +25,10 @@
 //+ (UserManager*) sharedInstance;
 
 + (id)sharedUserManager;
++ (NSString *) baseUrl;
++ (NSString *) aboutBaseUrl;
++ (NSString *) routerBaseUrl;
+
 - (void) saveLocalUser: (User *) localUser;
 - (void) setContext: (NSManagedObjectContext *) con;
 - (User *) getUserLocally;

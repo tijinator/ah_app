@@ -268,7 +268,7 @@
         CreatedByCommunity *tempCom= [[CreatedByCommunity alloc]  init];
         tempCom.name= [textArray objectAtIndex:i];
         tempCom.created_by_community_id= [NSString stringWithFormat:@"%d", i];
-        tempCom.cover_photo_url=@"https://actionhouse.com/assets/group/cover-default.png";
+        tempCom.cover_photo_url= [NSString stringWithFormat:@"%@%@", UserManager.baseUrl, @"/assets/group/cover-default.png"];
         [_searchArrayKeyword addObject:tempCom];
     }
     CreatedByCommunity *temCom=[_searchArrayKeyword objectAtIndex:0];

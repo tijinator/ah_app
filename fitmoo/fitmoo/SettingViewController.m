@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "AFNetworking.h"
+#import "UserManager.h"
 @interface SettingViewController ()
 
 @end
@@ -197,7 +198,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }else if (indexPath.row==4) {
        
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.actionhouse.com/privacy-policy";
+        webPage.webviewLink= [NSString stringWithFormat:@"%@%@", UserManager.aboutBaseUrl, @"/privacy-policy"];
         webPage.settingType= @"PRIVACY POLICY";
         [self.navigationController pushViewController:webPage animated:YES];
         
@@ -205,13 +206,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     else if (indexPath.row==5) {
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.actionhouse.com/terms-and-conditions";
+        webPage.webviewLink= [NSString stringWithFormat:@"%@%@", UserManager.aboutBaseUrl, @"/terms-and-conditions"];
         webPage.settingType= @"TERMS";
         [self.navigationController pushViewController:webPage animated:YES];
   
     }else if (indexPath.row==6) {
         SettingWebViewController *webPage = [[self storyboard] instantiateViewControllerWithIdentifier:@"SettingWebViewController"];
-        webPage.webviewLink=@"http://about.actionhouse.com";
+        webPage.webviewLink= UserManager.aboutBaseUrl;
         webPage.settingType= @"ABOUT";
         [self.navigationController pushViewController:webPage animated:YES];
   
