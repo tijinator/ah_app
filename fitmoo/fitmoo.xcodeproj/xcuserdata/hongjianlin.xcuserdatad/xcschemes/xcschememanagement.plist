@@ -12,7 +12,7 @@
 		<key>THC.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>31</integer>
+			<integer>30</integer>
 		</dict>
 		<key>fitmoo copy.xcscheme</key>
 		<dict>
@@ -21,24 +21,13 @@
 			<key>orderHint</key>
 			<integer>30</integer>
 		</dict>
+		<key>fitmoo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>27188F641AD4646300C34372</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>27188F801AD4646300C34372</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>27E6B255205847620071B4DA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
