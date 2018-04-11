@@ -315,8 +315,8 @@
 
 - (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
     
-    NSString *user_id1=firstUser[@"id"];
-    NSString *user_id2=secondUser[@"id"];
+    NSString *user_id1=firstUser.objectID;
+    NSString *user_id2=secondUser.objectID;
     
     if (![user_id1 isEqual:user_id2]) {
         return false;
@@ -340,11 +340,10 @@
         
         User *localUser= [[User alloc] init];
         
-        localUser.email= user[@"email"];
-        localUser.gender=user[@"gender"];
-        localUser.name= user[@"name"];
-        localUser.day_of_birth= user[@"birthday"];
-        localUser.facebook_uid=user[@"id"];
+        localUser.email= user.username;
+        localUser.name= user.name;
+        localUser.day_of_birth= user.birthday;
+        localUser.facebook_uid=user.objectID;
     
     
     if (loginExists ==false) {
