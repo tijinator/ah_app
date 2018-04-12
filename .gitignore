@@ -4,9 +4,11 @@ xcuserdata/
 build/
 DerivedData/
 
+*.xcbkptlist
 *.lock
 *.DS_Store
 *.xcuserstate
 *.ipa
 *.pbxuser
 !fitmoo/Assets.xcassets/**/*.json
+IDEWorkspaceChecks.plist
