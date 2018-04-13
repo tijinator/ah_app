@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '70481D8663EE0633C9F2D7723AF473BA'
-               BlueprintName = 'RSBarcodes'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libRSBarcodes.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "672C7CA8DA3E879003DFB722DA87F1BA"
+               BlueprintName = "RSBarcodes"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libRSBarcodes.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

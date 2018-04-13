@@ -15,12 +15,13 @@
 #import "User.h"
 #import <CoreData/CoreData.h>
 #import "HomePageViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
+
 #import "LanchScreen.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 
-
-@interface ViewController : UIViewController<FBLoginViewDelegate,UITextFieldDelegate>
+@interface ViewController : UIViewController<FBSDKLoginButtonDelegate, UITextFieldDelegate>
 //@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (strong, nonatomic) IBOutlet UIImageView *fitmooNameImage;
@@ -44,9 +45,9 @@
 @property (strong, nonatomic) IBOutlet UIView *separateView;
 @property (strong, nonatomic) IBOutlet UIView *separateView1;
 @property (strong, nonatomic) IBOutlet UILabel *orLabel;
-@property (strong, nonatomic) IBOutlet FBLoginView *facebookLoginView;
+@property (strong, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginView;
 @property (strong, nonatomic) IBOutlet UIImageView *FacebookLabel;
-@property (strong, nonatomic)  id<FBGraphUser> cachedUser;
+//@property (strong, nonatomic)  id<FBGraphUser> cachedUser;
 @property (strong, nonatomic) NSTimer *timer;
 @end
 

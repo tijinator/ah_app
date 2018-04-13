@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E61BB060AE64E119D51B6458DE19408B'
-               BlueprintName = 'AWSEC2'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAWSEC2.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F4DEA1698CFC4D3798C264C047BFD21C"
+               BlueprintName = "AWSEC2"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libAWSEC2.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="T6d-bR-gSN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="T6d-bR-gSN">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -933,7 +933,6 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="T6d-bR-gSN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OWh-Qo-nRv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -960,17 +959,10 @@
                                 <rect key="frame" x="0.0" y="168" width="320" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="Cpf-A0-Iu4" customClass="FBLoginView">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WkB-GR-eYq" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="25" y="127" width="270" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebookbtn.png" id="724-fV-D2C">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
+                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="SwN-Xh-9ug">
                                         <rect key="frame" x="25" y="255" width="270" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1043,11 +1035,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="J35-Bj-eah"/>
                     <connections>
-                        <outlet property="FacebookLabel" destination="724-fV-D2C" id="63D-hA-Qvl"/>
                         <outlet property="backView" destination="zgn-Tb-kci" id="npH-mh-sMt"/>
                         <outlet property="backgroundImage" destination="1DG-uo-uUj" id="ZGV-oB-pXe"/>
                         <outlet property="emailTextField" destination="phk-LX-3fK" id="9jg-bN-O4X"/>
-                        <outlet property="facebookLoginView" destination="Cpf-A0-Iu4" id="7f9-ix-aKR"/>
+                        <outlet property="facebookLoginView" destination="WkB-GR-eYq" id="yGb-ui-P0F"/>
                         <outlet property="fitmooNameImage" destination="wBw-0n-Z09" id="wVe-fi-mKf"/>
                         <outlet property="forgotPasswordButton" destination="aO1-9i-WYt" id="5O2-aa-2eH"/>
                         <outlet property="loginButton" destination="VTO-cI-KXk" id="xgr-ti-76o"/>
@@ -3035,7 +3026,6 @@ instructions to reset your password.</string>
         <image name="continuegreybar.png" width="322" height="55"/>
         <image name="defaultprofilepic.png" width="69" height="69"/>
         <image name="defaultprofilepicture.png" width="320" height="320"/>
-        <image name="facebookbtn.png" width="268" height="45"/>
         <image name="followsection_smallfollowbtn.png" width="117" height="37"/>
         <image name="greyrightarrow.png" width="8" height="12"/>
         <image name="greyx.png" width="13" height="13"/>
@@ -3055,9 +3045,4 @@ instructions to reset your password.</string>
         <image name="whitedots.png" width="23" height="5"/>
         <image name="whitex.png" width="15" height="15"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4D6751A96379F59838B6DB36F477CB21'
-               BlueprintName = 'AWSCloudWatch'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAWSCloudWatch.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6CEA50786D0115DA4D379CB1EBD9BFD0"
+               BlueprintName = "AWSCloudWatch"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libAWSCloudWatch.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

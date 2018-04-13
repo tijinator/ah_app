@@ -37,7 +37,7 @@
     loginExists=false;
      [self checkLogin];
     
-    _cachedUser= nil;
+   // _cachedUser= nil;
     self.facebookLoginView.delegate = self;
     self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
 
@@ -166,23 +166,23 @@
         _forgotPdView=nil;
     }
     
-    FBSession* session = [FBSession activeSession];
-    [session closeAndClearTokenInformation];
-    [session close];
-    [FBSession setActiveSession:nil];
-    
-    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
-    
-    for (NSHTTPCookie* cookie in facebookCookies) {
-        [cookies deleteCookie:cookie];
-    }
-    if ([[FBSession activeSession] isOpen])
-    {
-        [[FBSession activeSession] close];
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    
+//    FBSession* session = [FBSession activeSession];
+//    [session closeAndClearTokenInformation];
+//    [session close];
+//    [FBSession setActiveSession:nil];
+//
+//    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];
+//
+//    for (NSHTTPCookie* cookie in facebookCookies) {
+//        [cookies deleteCookie:cookie];
+//    }
+//    if ([[FBSession activeSession] isOpen])
+//    {
+//        [[FBSession activeSession] close];
+//        [FBSession.activeSession closeAndClearTokenInformation];
+//    }
+//
     
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
@@ -305,58 +305,89 @@
 
 #pragma mark - FBLoginView Delegate method implementation
 
--(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+- (void)loginButton:(FBSDKLoginButton *)loginButton
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+              error:(NSError *)error {
+    User *localUser= [[User alloc] init];
     
-    loginView.frame = CGRectMake(25, 127, 270, 48);
-    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
-    [self addActivityIndicator1];
-    
+//    localUser.email = [result.token.permissions valueForKey:@"email"]
+//    localUser.name= user.name;
+//    localUser.day_of_birth= user.birthday;
+//    localUser.facebook_uid=user.objectID;
 }
 
-- (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
-    
-    NSString *user_id1=firstUser.objectID;
-    NSString *user_id2=secondUser.objectID;
-    
-    if (![user_id1 isEqual:user_id2]) {
-        return false;
-    }
-    
-    if (![firstUser.name isEqual:secondUser.name]) {
-        return false;
-    }
-    
-    if (![firstUser.name isEqual:secondUser.name]) {
-        return false;
-    }
-    
-    return true;
-}
+//-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+//
+//    loginView.frame = CGRectMake(25, 127, 270, 48);
+//    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+//    [self addActivityIndicator1];
+//
+//}
+//
+//- (BOOL)isUser:(id<FBGraphUser>)firstUser equalToUser:(id<FBGraphUser>)secondUser {
+//
+//    NSString *user_id1=firstUser.objectID;
+//    NSString *user_id2=secondUser.objectID;
+//
+//    if (![user_id1 isEqual:user_id2]) {
+//        return false;
+//    }
+//
+//    if (![firstUser.name isEqual:secondUser.name]) {
+//        return false;
+//    }
+//
+//    if (![firstUser.name isEqual:secondUser.name]) {
+//        return false;
+//    }
+//
+//    return true;
+//}
+//
+//-(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
+//    NSLog(@"%@", user);
+//
+//        User *localUser= [[User alloc] init];
+//
+//        localUser.email= user.username;
+//        localUser.name= user.name;
+//        localUser.day_of_birth= user.birthday;
+//        localUser.facebook_uid=user.objectID;
+//
+//
+//    if (loginExists ==false) {
+//        [self addActivityIndicator];
+//        [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
+//        _cachedUser = user;
+//    }
+//
+//
+//}
 
--(void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
-    NSLog(@"%@", user);
-    
-    //if (![self isUser:_cachedUser equalToUser:user]) {
-        
-        User *localUser= [[User alloc] init];
-        
-        localUser.email= user.username;
-        localUser.name= user.name;
-        localUser.day_of_birth= user.birthday;
-        localUser.facebook_uid=user.objectID;
-    
-    
-    if (loginExists ==false) {
-        [self addActivityIndicator];
-        [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
-        _cachedUser = user;
-    }
-    
-        
-  //  }
-    
-    
-}
+//-(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
+//    loginView.frame = CGRectMake(25, 127, 270, 48);
+//    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
+//    for (id obj in loginView.subviews)
+//    {
+//
+//
+//        if ([obj isKindOfClass:[UILabel class]])
+//        {
+//            UILabel * loginLabel =  obj;
+//            loginLabel.text = @"CONTINUE WITH FACEBOOK";
+//            loginLabel.textAlignment = NSTextAlignmentCenter;
+//            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
+//        }
+//    }
+//
+//}
+//
+//
+//-(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
+//    NSLog(@"%@", [error localizedDescription]);
+//}
+
+
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -381,28 +412,6 @@
         
     }];
     return YES;
-}
--(void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView{
-    loginView.frame = CGRectMake(25, 127, 270, 48);
-    loginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginView respectToSuperFrame:self.view];
-    for (id obj in loginView.subviews)
-    {
-        
-        
-        if ([obj isKindOfClass:[UILabel class]])
-        {
-            UILabel * loginLabel =  obj;
-            loginLabel.text = @"CONTINUE WITH FACEBOOK";
-            loginLabel.textAlignment = NSTextAlignmentCenter;
-            //    loginLabel.frame = CGRectMake(0, 0, 271, 37);
-        }
-    }
-    
-}
-
-
--(void)loginView:(FBLoginView *)loginView handleError:(NSError *)error{
-    NSLog(@"%@", [error localizedDescription]);
 }
 
 - (void) addActivityIndicator

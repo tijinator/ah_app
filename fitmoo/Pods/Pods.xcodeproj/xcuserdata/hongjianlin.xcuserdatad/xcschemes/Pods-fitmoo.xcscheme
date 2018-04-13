@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '621A9E4EE5F544ADB1F36EDD554A4308'
-               BlueprintName = 'Pods-fitmoo'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-fitmoo.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0C85B73AD6AAFD47E4B71DF7D6A16F7A"
+               BlueprintName = "Pods-fitmoo"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libPods-fitmoo.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

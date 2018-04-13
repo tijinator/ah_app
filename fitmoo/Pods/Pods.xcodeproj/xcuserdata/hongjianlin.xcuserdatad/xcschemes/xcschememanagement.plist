@@ -9,352 +9,213 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 		<key>APAddressBook.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>4</integer>
 		</dict>
 		<key>AWSAutoScaling.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>5</integer>
 		</dict>
 		<key>AWSCloudWatch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>6</integer>
 		</dict>
 		<key>AWSCore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		</dict>
 		<key>AWSDynamoDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>8</integer>
 		</dict>
 		<key>AWSEC2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>9</integer>
 		</dict>
 		<key>AWSElasticLoadBalancing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>10</integer>
 		</dict>
 		<key>AWSKinesis.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>11</integer>
 		</dict>
 		<key>AWSMobileAnalytics.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>12</integer>
 		</dict>
 		<key>AWSS3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>13</integer>
 		</dict>
 		<key>AWSSES.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>14</integer>
 		</dict>
 		<key>AWSSNS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>16</integer>
 		</dict>
 		<key>AWSSQS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>17</integer>
 		</dict>
 		<key>AWSSimpleDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>15</integer>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>18</integer>
 		</dict>
 		<key>EGOCache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>16</integer>
-		</dict>
-		<key>FSImageViewer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
-		</dict>
-		<key>Facebook-iOS-SDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
-		</dict>
-		<key>JTCalendar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
-		<key>Pods-fitmoo.xcscheme</key>
+		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
-		<key>Pods-fitmooTests.xcscheme</key>
+		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>RSBarcodes.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>23</integer>
-		</dict>
-		<key>Reachability.xcscheme</key>
+		<key>FSImageViewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
-		<key>Stripe.xcscheme</key>
+		<key>JTCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>Pods-fitmoo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
-		<key>SwipeBack.xcscheme</key>
+		<key>Pods-fitmooTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>25</integer>
 		</dict>
-		<key>TTTAttributedLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>26</integer>
-		</dict>
-		<key>UAProgressView.xcscheme</key>
+		<key>RSBarcodes.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>27</integer>
 		</dict>
-		<key>youtube-ios-player-helper.xcscheme</key>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
+		<key>Stripe.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>28</integer>
 		</dict>
+		<key>SwipeBack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>29</integer>
+		</dict>
+		<key>TTTAttributedLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>30</integer>
+		</dict>
+		<key>UAProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>31</integer>
+		</dict>
+		<key>youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>32</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0BE4A16FFDEF8D8F814E3AE6A2577F6C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2CBEA3CE131BF2D6E6508128FBC718A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2D748A1E7B7DFC967C340F9954065967</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3038494344FD1DB9D4384141B8AC2094</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>316D5BB1421F22AA9105333F4B2CC32B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3B321072C3797A4959F8186A580A1F01</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>498D77CF7F798AC8046897896D34EE5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4D6751A96379F59838B6DB36F477CB21</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>543E1521CDB3F2F5F9DD85D97DC5063A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5711D84D742DF4644E8AD7D8FAB2F27D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>621A9E4EE5F544ADB1F36EDD554A4308</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>647DDFB96F906622211598DA3DE772BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>69C06608CA6798ED06C35900B5BEB083</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>70481D8663EE0633C9F2D7723AF473BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8F88AA548990C1705685B56E4CEA6C14</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>92FED22A85D321E32F6DAC93CE062104</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9B8243445E57B8B3B23BD8AC72F3EB97</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A29B55EA2AC8A9F3677005E6FBCDBC9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A3A9364E9FEEC6214072BE83F4B794A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AC09EC0591034519BA148D15DCF281B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0E1CB741EA95EF8C6E6024A2330D0FE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B909E6E3D7FFED0A868B8558AC1F6AFA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C95C45974D77E3E41FE9D2A80E093179</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E61BB060AE64E119D51B6458DE19408B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E62DE4DCC29BCEB4D94A38AA2055D6BB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EB97AAB8E64A2A0657F50E9AF2D81517</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EEB101B9D8680505C97954895690DBA9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FC243518FAB0ECF998145C9E853F4B87</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FEC01AC4795EC6C28B7C27C5488D8C78</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

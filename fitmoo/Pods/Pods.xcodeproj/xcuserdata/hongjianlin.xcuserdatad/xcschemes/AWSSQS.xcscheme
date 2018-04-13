@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3038494344FD1DB9D4384141B8AC2094'
-               BlueprintName = 'AWSSQS'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAWSSQS.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "96A7BD520A09124AF3AD0132156ECE2C"
+               BlueprintName = "AWSSQS"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libAWSSQS.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

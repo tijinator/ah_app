@@ -7,7 +7,6 @@
 //
 
 #import "UserManager.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "AFNetworking.h"
 @implementation UserManager
 
@@ -922,10 +921,10 @@
               NSLog(@"Error: %@", error);} // failure callback block
      ];
     
-    FBSession* session = [FBSession activeSession];
-    [session closeAndClearTokenInformation];
-    [session close];
-    [FBSession setActiveSession:nil];
+//    FBSession* session = [FBSession activeSession];
+//    [session closeAndClearTokenInformation];
+//    [session close];
+//    [FBSession setActiveSession:nil];
     
     NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray* facebookCookies = [cookies cookiesForURL:[NSURL         URLWithString:@"https://facebook.com/"]];

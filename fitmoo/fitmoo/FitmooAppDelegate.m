@@ -7,8 +7,8 @@
 //
 
 #import "FitmooAppDelegate.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "Stripe.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @interface FitmooAppDelegate ()
 
 @end
@@ -24,7 +24,8 @@ NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Stripe setDefaultPublishableKey:StripePublishableKey];
     
-    [FBLoginView class];
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     
     NSManagedObjectContext * context = [self managedObjectContext];
     [[FitmooHelper sharedInstance] setContext:context];
@@ -66,8 +67,7 @@ NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
     
     [self createObservers];
 
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
+
         UIUserNotificationSettings *settings =
         [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
          UIUserNotificationTypeBadge |
@@ -75,14 +75,7 @@ NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
                                           categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         UIRemoteNotificationTypeAlert |
-         UIRemoteNotificationTypeBadge |
-         UIRemoteNotificationTypeSound];
-    }
+   
 
   
     
@@ -255,9 +248,13 @@ NSString * const StripePublishableKey = @"pk_live_UVVnMWJUX8EpotlP7ucJOrNX";
         return YES;
     }
         
- 
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication];
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation
+                    ];
+    // Add any custom logic here.
+    return handled;
 }
 
 -(void)handleDeeplink:(NSString*)url{

@@ -1,0 +1,6 @@
+framework module Pods_fitmoo {
+  umbrella header "Pods-fitmoo-umbrella.h"
+
+  export *
+  module * { export * }
+}

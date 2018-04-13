@@ -88,15 +88,17 @@ PODS:
     - AWSCore (= 2.2.7)
   - AWSSQS (2.2.7):
     - AWSCore (= 2.2.7)
-  - Bolts (1.1.5):
-    - Bolts/AppLinks (= 1.1.5)
-    - Bolts/Tasks (= 1.1.5)
-  - Bolts/AppLinks (1.1.5):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.1.5)
+  - Bolts/Tasks (1.9.0)
   - EGOCache (2.1.3)
-  - Facebook-iOS-SDK (3.23.2):
-    - Bolts (~> 1.0)
+  - FBSDKCoreKit (4.31.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.31.1):
+    - FBSDKCoreKit
   - FSImageViewer (3.2):
     - AFNetworking (~> 2.5)
     - EGOCache (~> 2.1)
@@ -115,7 +117,7 @@ PODS:
 DEPENDENCIES:
   - APAddressBook
   - AWSiOSSDKv2 (~> 2.2.2)
-  - Facebook-iOS-SDK (~> 3.0)
+  - FBSDKLoginKit
   - FSImageViewer (~> 3.2)
   - JTCalendar
   - Reachability
@@ -124,6 +126,38 @@ DEPENDENCIES:
   - SwipeBack (~> 1.0)
   - TTTAttributedLabel (~> 1.10.1)
   - youtube-ios-player-helper (~> 0.1.4)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - APAddressBook
+    - AWSAutoScaling
+    - AWSCloudWatch
+    - AWSCore
+    - AWSDynamoDB
+    - AWSEC2
+    - AWSElasticLoadBalancing
+    - AWSiOSSDKv2
+    - AWSKinesis
+    - AWSMobileAnalytics
+    - AWSS3
+    - AWSSES
+    - AWSSimpleDB
+    - AWSSNS
+    - AWSSQS
+    - Bolts
+    - EGOCache
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FSImageViewer
+    - JTCalendar
+    - Reachability
+    - RSBarcodes
+    - Stripe
+    - SwipeBack
+    - TTTAttributedLabel
+    - UAProgressView
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -142,9 +176,10 @@ SPEC CHECKSUMS:
   AWSSimpleDB: 3e699c4437f17f70fce66558731232431e1b1090
   AWSSNS: 6f526c50d4013eacd4c35af4b9b35eb415d202ec
   AWSSQS: 0def5dfc1385564d88ebf88a0bdf7227f5f855e1
-  Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   EGOCache: f0295dbe041156acabd39021354ad1045ee49e72
-  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
+  FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
   FSImageViewer: 9106a89800e89a359b02d0c4bb7f7a3ddc1aff71
   JTCalendar: 473587233eaba5601ad14efe82ed2903e696527c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -155,6 +190,6 @@ SPEC CHECKSUMS:
   UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 6f3efca77eb287daab1e29e7dd1006dc0e20d148
+PODFILE CHECKSUM: f2c4dd1d8d1705d19305fd62bbbdc8f8609f2f81
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.0
