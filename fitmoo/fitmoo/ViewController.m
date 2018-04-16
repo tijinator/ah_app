@@ -38,8 +38,8 @@
      [self checkLogin];
     
    // _cachedUser= nil;
-    self.facebookLoginView.delegate = self;
     self.facebookLoginView.readPermissions = @[@"public_profile", @"email", @"user_birthday"];
+    self.facebookLoginView.delegate = self;
 
     [self createObservers];
     [self showImagesWithDelay];
@@ -87,8 +87,6 @@
     
     self.facebookLoginView.frame = CGRectMake(25, 127, 270, 48);
     self.facebookLoginView.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:self.facebookLoginView respectToSuperFrame:self.view];
-    
-   
 
     
     User *localUser= [[UserManager sharedUserManager] getUserLocally];
@@ -305,15 +303,40 @@
 
 #pragma mark - FBLoginView Delegate method implementation
 
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+    
+}
+
 - (void)loginButton:(FBSDKLoginButton *)loginButton
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
-    User *localUser= [[User alloc] init];
     
-//    localUser.email = [result.token.permissions valueForKey:@"email"]
-//    localUser.name= user.name;
-//    localUser.day_of_birth= user.birthday;
-//    localUser.facebook_uid=user.objectID;
+    if (!error) {
+        loginButton.frame = CGRectMake(25, 127, 270, 48);
+        loginButton.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:loginButton respectToSuperFrame:self.view];
+    }
+    
+    User *localUser= [[User alloc] init];
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"email,name,birthday,gender,id"}]
+startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+    NSLog(@"test");
+    if (!error) {
+        
+        localUser.email= result[@"email"];
+        localUser.gender=result[@"gender"];
+        localUser.name= result[@"name"];
+        localUser.day_of_birth= result[@"birthday"];
+        localUser.facebook_uid=result[@"id"];
+    }
+    
+    if (loginExists ==false) {
+        [self addActivityIndicator];
+        [[UserManager sharedUserManager] checkEmailExistFromFitmoo:localUser];
+      //  _cachedUser = user;
+    }
+}];
+    
+
 }
 
 //-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{

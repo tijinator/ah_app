@@ -959,9 +959,10 @@
                                 <rect key="frame" x="0.0" y="168" width="320" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WkB-GR-eYq" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="25" y="127" width="270" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WkB-GR-eYq" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="26" y="129" width="268" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="facebookbtn.png"/>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" id="SwN-Xh-9ug">
                                         <rect key="frame" x="25" y="255" width="270" height="45"/>
@@ -3026,6 +3027,7 @@ instructions to reset your password.</string>
         <image name="continuegreybar.png" width="322" height="55"/>
         <image name="defaultprofilepic.png" width="69" height="69"/>
         <image name="defaultprofilepicture.png" width="320" height="320"/>
+        <image name="facebookbtn.png" width="268" height="45"/>
         <image name="followsection_smallfollowbtn.png" width="117" height="37"/>
         <image name="greyrightarrow.png" width="8" height="12"/>
         <image name="greyx.png" width="13" height="13"/>
