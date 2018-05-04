@@ -1023,6 +1023,12 @@
 		276FE39F1B866C0A009496DE /* instagramlogo_workout.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39C1B866C0A009496DE /* instagramlogo_workout.png */; };
 		276FE3A01B866C0A009496DE /* instagramlogo_workout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39D1B866C0A009496DE /* instagramlogo_workout@2x.png */; };
 		276FE3A11B866C0A009496DE /* instagramlogo_workout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FE39E1B866C0A009496DE /* instagramlogo_workout@3x.png */; };
+		277A036A209CF9DA004AE3DB /* splashscreen1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0367209CF9D7004AE3DB /* splashscreen1@2x.png */; };
+		277A036B209CF9DA004AE3DB /* splashscreen1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0367209CF9D7004AE3DB /* splashscreen1@2x.png */; };
+		277A036C209CF9DA004AE3DB /* splashscreen1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0368209CF9D8004AE3DB /* splashscreen1@3x.png */; };
+		277A036D209CF9DA004AE3DB /* splashscreen1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0368209CF9D8004AE3DB /* splashscreen1@3x.png */; };
+		277A036E209CF9DA004AE3DB /* splashscreen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0369209CF9D9004AE3DB /* splashscreen1.png */; };
+		277A036F209CF9DA004AE3DB /* splashscreen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 277A0369209CF9D9004AE3DB /* splashscreen1.png */; };
 		277BE8FA1B1FAB2C00AE4B36 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F71B1FAB2C00AE4B36 /* profile.png */; };
 		277BE8FB1B1FAB2C00AE4B36 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */; };
 		277BE8FC1B1FAB2C00AE4B36 /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */; };
@@ -1836,6 +1842,9 @@
 		276FE39C1B866C0A009496DE /* instagramlogo_workout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagramlogo_workout.png; sourceTree = "<group>"; };
 		276FE39D1B866C0A009496DE /* instagramlogo_workout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_workout@2x.png"; sourceTree = "<group>"; };
 		276FE39E1B866C0A009496DE /* instagramlogo_workout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagramlogo_workout@3x.png"; sourceTree = "<group>"; };
+		277A0367209CF9D7004AE3DB /* splashscreen1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen1@2x.png"; sourceTree = "<group>"; };
+		277A0368209CF9D8004AE3DB /* splashscreen1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen1@3x.png"; sourceTree = "<group>"; };
+		277A0369209CF9D9004AE3DB /* splashscreen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen1.png; sourceTree = "<group>"; };
 		277BE8F71B1FAB2C00AE4B36 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		277BE8F81B1FAB2C00AE4B36 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		277BE8F91B1FAB2C00AE4B36 /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@3x.png"; sourceTree = "<group>"; };
@@ -2888,6 +2897,9 @@
 		2752E91C1B014506003841DC /* with2xs */ = {
 			isa = PBXGroup;
 			children = (
+				277A0369209CF9D9004AE3DB /* splashscreen1.png */,
+				277A0367209CF9D7004AE3DB /* splashscreen1@2x.png */,
+				277A0368209CF9D8004AE3DB /* splashscreen1@3x.png */,
 				27958C161F12B40800D476A0 /* productBuy.png */,
 				27958C171F12B40800D476A0 /* productBuy@2x.png */,
 				27958C181F12B40800D476A0 /* productBuy@3x.png */,
@@ -3751,6 +3763,7 @@
 				27A1015E1B3342C3007B7BF3 /* searchfollowingbtn@3x.png in Resources */,
 				276094451AD708C100A769CE /* BentonSans-Book.otf in Resources */,
 				27AFADB51BACEE0C00FE42FA /* ShopOrderDetailCell.xib in Resources */,
+				277A036A209CF9DA004AE3DB /* splashscreen1@2x.png in Resources */,
 				27ADF1DE1B14B1D8003A0A83 /* invalidalert.png in Resources */,
 				27D1AE081BD7FD350056F66E /* attend_btn.png in Resources */,
 				27DDF4371B7B7C140011BB46 /* searchrightarrow.png in Resources */,
@@ -3876,6 +3889,7 @@
 				27A3AC341B96446600D78AAA /* blueheart140@2x.png in Resources */,
 				27DDF4361B7B7C140011BB46 /* searchleftarrow@3x.png in Resources */,
 				276094531AD708C100A769CE /* BentonSansCond-Book.otf in Resources */,
+				277A036E209CF9DA004AE3DB /* splashscreen1.png in Resources */,
 				27988CAA1B0BB12500BDE8EB /* followsection_followbtn@2x.png in Resources */,
 				27AC92D11B066DF000BB7A0E /* selectedbars_brand@3x.png in Resources */,
 				279E57961B20B4EC0076C3B5 /* greyrightarrow@2x.png in Resources */,
@@ -4108,6 +4122,7 @@
 				27ADF1F61B14B1D8003A0A83 /* skipbar.png in Resources */,
 				27A1018F1B334554007B7BF3 /* settings.png in Resources */,
 				276094551AD708C100A769CE /* BentonSansCond-Medium.otf in Resources */,
+				277A036C209CF9DA004AE3DB /* splashscreen1@3x.png in Resources */,
 				27988CB61B0BB12500BDE8EB /* followsection_smallfollowbtn@2x.png in Resources */,
 				2752E9F91B015CBC003841DC /* greyarrow@3x.png in Resources */,
 				27CD5E151BD087C100557781 /* fitmoolive.png in Resources */,
@@ -4349,6 +4364,7 @@
 				275B858E2080FD4500EDF27E /* searchfollowingbtn@3x.png in Resources */,
 				275B858F2080FD4500EDF27E /* BentonSans-Book.otf in Resources */,
 				275B85902080FD4500EDF27E /* ShopOrderDetailCell.xib in Resources */,
+				277A036B209CF9DA004AE3DB /* splashscreen1@2x.png in Resources */,
 				275B85912080FD4500EDF27E /* invalidalert.png in Resources */,
 				275B85922080FD4500EDF27E /* attend_btn.png in Resources */,
 				275B85932080FD4500EDF27E /* searchrightarrow.png in Resources */,
@@ -4474,6 +4490,7 @@
 				275B860B2080FD4500EDF27E /* blueheart140@2x.png in Resources */,
 				275B860C2080FD4500EDF27E /* searchleftarrow@3x.png in Resources */,
 				275B860D2080FD4500EDF27E /* BentonSansCond-Book.otf in Resources */,
+				277A036F209CF9DA004AE3DB /* splashscreen1.png in Resources */,
 				275B860E2080FD4500EDF27E /* followsection_followbtn@2x.png in Resources */,
 				275B860F2080FD4500EDF27E /* selectedbars_brand@3x.png in Resources */,
 				275B86102080FD4500EDF27E /* greyrightarrow@2x.png in Resources */,
@@ -4706,6 +4723,7 @@
 				275B86F32080FD4500EDF27E /* skipbar.png in Resources */,
 				275B86F42080FD4500EDF27E /* settings.png in Resources */,
 				275B86F52080FD4500EDF27E /* BentonSansCond-Medium.otf in Resources */,
+				277A036D209CF9DA004AE3DB /* splashscreen1@3x.png in Resources */,
 				275B86F62080FD4500EDF27E /* followsection_smallfollowbtn@2x.png in Resources */,
 				275B86F72080FD4500EDF27E /* greyarrow@3x.png in Resources */,
 				275B86F82080FD4500EDF27E /* fitmoolive.png in Resources */,

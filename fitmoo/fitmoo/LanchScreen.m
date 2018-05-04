@@ -27,6 +27,15 @@
     _commingSoonImage.frame= [[FitmooHelper sharedInstance] resizeFrameWithFrame:_commingSoonImage respectToSuperFrame:self.view];
     
     _commingSoonImage.image=[UIImage imageNamed:@"splashscreen.png"];
+    
+    
+#ifdef THC
+    _commingSoonImage.image=[UIImage imageNamed:@"splashscreen1.png"];
+#else
+
+#endif
+   
+    
     [self.view insertSubview:_commingSoonImage atIndex:0];
     
 }
